@@ -56,3 +56,5 @@ yay
 
 # 
 kernel-modules-hook
+systemd-swap
+

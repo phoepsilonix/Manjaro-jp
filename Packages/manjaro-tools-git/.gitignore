@@ -1,5 +1,5 @@
 *.tar.gz
-manjaro-tools/*
-src/*
-pkg/*
-*.log
+*.tar.xz
+*.tar.zst
+artifacts/
+
