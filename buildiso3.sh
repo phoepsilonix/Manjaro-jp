@@ -55,18 +55,18 @@ do
 	ed=${data[1]}
         echo "build pre-image"
         echo "buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso"
-        buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso 
-        #buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso -r $usb/tmp/build
+        #buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso 
+        buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso -r $usb/tmp/build
         echo "build iso"
-        buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t $usb/tmp/iso 
-        #buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t $usb/tmp/iso -r $usb/tmp/build
+        #buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t $usb/tmp/iso 
+        buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t $usb/tmp/iso -r $usb/tmp/build
 done
 
 echo "Move iso files to Artifacts folder"
 #sudo chown -R phoepsilonix:phoepsilonix $usb/tmp/iso/
 sync
 find $usb/tmp/iso -type f -name "*.iso" | xargs -I{} mv {} $usb/artifacts/ && sync
-#find $usb/artifacts -type f -name "*.iso" | xargs -I{} sudo -u phoepsilonix cp -a {} $artifacts && sync
+rsync -avcn $usb/artifacts/*.iso $artifacts/ && sync
 sync
 
 # 終了
