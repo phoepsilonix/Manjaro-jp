@@ -1,0 +1,48 @@
+variables:
+  MAKEFLAGS: "-j10"
+  VERBOSE: 1
+  PACMAN_OPTS: --needed --noconfirm
+
+cache:
+  key: pkgs-v1
+  paths:
+    # For some reason Gitlab CI only supports storing cache/artifacts in a path relative to the build directory
+    - /var/cache/pacman/pkg/
+
+.manjaro-test:
+  image: phoepsilonix/manjarolinux@sha256:3a6b623b3bf0ab1963dc3c8a1447de3b9dea64ca5d4a0319b76cb85e7e5f0feb
+  before_script:
+    - cp  $CI_PROJECT_DIR/pacman-manjaro-jp.conf /etc/pacman.conf
+    - mkdir -p /etc/manjaro-tools
+    - cp  $CI_PROJECT_DIR/manjaro-tools.conf /etc/manjaro-tools/manjaro-tools.conf
+    - pacman-key --init 
+    - pacman-key --populate
+    - pacman-key --recv-keys "536487F1470D7187" --keyserver hkps://keyserver.ubuntu.com
+    - export GPG_TTY=$(tty)
+    - gpg -v --batch --import <(echo "$GPG_PRIVATE_KEY")
+    - pacman-key --import-trustdb ~/.gnupg/
+    - pacman-mirrors --geoip
+    - pacman -Sy
+    - pacman -Syu $PACMAN_OPTS
+      base-devel git clang lld git-lfs openssh rsync lsb-release
+    - pacman -Syu $PACMAN_OPTS manjaro-tools-iso-git
+    - mkdir -p ~/.config/manjaro-tools/
+    - cp  $CI_PROJECT_DIR/iso-profiles.conf ~/.config/manjaro-tools/
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | ssh-add -
+    - mkdir -p ~/.ssh/ && chmod 700 ~/.ssh/
+    - ssh-keyscan -t ssh-ed25519 storage.osdn.net frs.sourceforge.net >> ~/.ssh/known_hosts 
+
+manjaro:
+  extends: .manjaro-test
+  script:
+    - git clone --depth 1 --single-branch https://gitlab.com/phoepsilonix/Manjaro-jp/
+    - cd Manjaro-jp
+    - sync
+    - ./OSDN-SF-mirror.sh
+    - ./Japanese-buildiso.sh
+    - dmesg
+    - ./Japanese-iso-sign.sh
+    - ./OSDN-SF-mirror.sh
+  timeout: 3hours
+  

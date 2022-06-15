@@ -1,0 +1,40 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 0b2ace9..a527d5c 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -2,7 +2,7 @@
+ 
+ pkgname=manjaro-application-utility
+ pkgver=1.3.3
+-pkgrel=7
++pkgrel=8
+ _BRANCH=master
+ pkgdesc="A simple application utility for Manjaro Linux"
+ arch=('any')
+@@ -12,8 +12,24 @@ depends=('gtk3' 'libpamac>=11' 'manjaro-icons' 'pamac-cli' 'pamac-gtk' 'python'
+          'python-gobject' 'python-requests')
+ makedepends=('git' 'python-babel' 'python-setuptools')
+ checkdepends=('python-coverage')
+-source=("git+${url}.git#branch=${_BRANCH}")
+-sha256sums=('SKIP')
++source=("git+${url}.git#branch=${_BRANCH}"
++        '001-fcitx5-japanese.patch')
++
++sha256sums=('SKIP'
++            '56532a189d449a2b63dab9e0072ee4a0518391f7b89eb2860220cd00130d5156')
++
++prepare(){
++  cd "$srcdir/application-utility"
++
++  local src
++  for src in "${source[@]}"; do
++      src="${src%%::*}"
++      src="${src##*/}"
++      [[ $src = *.patch ]] || continue
++      msg2 "Applying patch: $src..."
++      patch -Np1 -i ../$src
++  done
++}
+ 
+ build() {
+   cd "$srcdir/application-utility"

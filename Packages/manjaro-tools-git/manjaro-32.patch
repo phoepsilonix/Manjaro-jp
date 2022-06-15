@@ -1,0 +1,72 @@
+diff --git a/data/manjaro-tools.conf b/data/manjaro-tools.conf
+index b2adbdf..a448884 100644
+--- a/data/manjaro-tools.conf
++++ b/data/manjaro-tools.conf
+@@ -3,7 +3,7 @@
+ ######################################################
+ 
+ # default target branch
+-# target_branch=stable
++# target_branch=x32-stable
+ 
+ # default target arch: auto detect
+ # target_arch=$(uname -m)
+diff --git a/data/pacman-mirrors.conf b/data/pacman-mirrors.conf
+index 566e409..0848ee4 100644
+--- a/data/pacman-mirrors.conf
++++ b/data/pacman-mirrors.conf
+@@ -2,8 +2,8 @@
+ ## /etc/pacman-mirrors.conf
+ ##
+ 
+-## Branch Pacman should use (stable, testing, unstable)
+-Branch = stable
++## Branch Pacman should use (x32-stable, x32-testing, x32-unstable)
++Branch = x32-stable
+ 
+ ## Generation method
+ ## 1) rank   - rank mirrors depending on their access time
+diff --git a/lib/util-iso.sh b/lib/util-iso.sh
+index 3931e55..a05353a 100644
+--- a/lib/util-iso.sh
++++ b/lib/util-iso.sh
+@@ -262,7 +262,7 @@ gen_iso_fn(){
+     fi
+     vars+=("${dist_release}")
+ 
+-    [[ ! ${target_branch} == "stable" ]] && vars+=("${target_branch}")
++    [[ ! ${target_branch} == "stable" ]] && vars+=("${target_branch/x32-/}")
+ 
+     [[ ${extra} == 'false' ]] && vars+=("minimal")
+ 
+diff --git a/lib/util.sh b/lib/util.sh
+index 61fc5c7..7a06200 100644
+--- a/lib/util.sh
++++ b/lib/util.sh
+@@ -66,7 +66,7 @@ get_pac_mirrors_conf(){
+     local conf="$tmp_dir/pacman-mirrors-$1.conf"
+     cp "${DATADIR}/pacman-mirrors.conf" "$conf"
+     sed -i "$conf" \
+-        -e "s|Branch = stable|Branch = $1|"
++        -e "s|Branch = x32-stable|Branch = $1|"
+ 
+     echo "$conf"
+ }
+@@ -203,7 +203,7 @@ set_branch(){
+ }
+ 
+ init_common(){
+-    [[ -z ${target_branch} ]] && target_branch='stable'
++    [[ -z ${target_branch} ]] && target_branch='x32-stable'
+ 
+     [[ -z ${target_arch} ]] && target_arch=$(uname -m)
+ 
+@@ -783,7 +783,7 @@ is_valid_arch_iso(){
+ 
+ is_valid_branch(){
+     case $1 in
+-        'stable'|'stable-staging'|'testing'|'unstable') return 0 ;;
++        'x32-stable'|'x32-stable-staging'|'x32-testing'|'x32-unstable') return 0 ;;
+         *) return 1 ;;
+     esac
+ }

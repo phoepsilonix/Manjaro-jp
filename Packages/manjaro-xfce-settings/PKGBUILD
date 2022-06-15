@@ -1,0 +1,95 @@
+# Maintainer: Ramon Buldó <rbuldo@gmail.com>
+# Maintainer: Philip Müller <philm@manjaro.org>
+# Maintainer: Bernhard Landauer <oberon@manjaro.org>
+
+pkgbase=manjaro-xfce-settings
+pkgname=('manjaro-xfce-settings'
+         'manjaro-xfce-minimal-settings')
+pkgver=20220410
+pkgrel=1
+pkgdesc="Manjaro Linux Xfce settings"
+arch=('any')
+url="https://gitlab.manjaro.org/profiles-and-settings/manjaro-xfce-settings"
+license=('GPL')
+depends=('illyria-wallpaper'
+         'manjaro-base-skel'
+         'manjaro-icons'
+         'matcha-gtk-theme'
+         'noto-fonts'
+         'papirus-maia-icon-theme'
+         'qt5ct'
+         'xcape'
+         'xcursor-breeze')
+makedepends=('git')
+source=("$pkgbase::git+$url.git" 'manjaro-xfce-settings.hook' 'mxs-bgd-sym'
+        'xfce-pbw.sh' 'xfce-panel-workaround.desktop'
+	'001-vivaldi.patch')
+sha256sums=('SKIP'
+            'b18b45c0b88a4e282aa7f75caa5ab245443beba5de004042df3cf7361c1e4a2e'
+            '03770c4735b588bdee49f7e1e5d73d8500524d875603c473bdf0f4ffb862c152'
+            'b5cf080ac4121f52a74ae64cdbb4862dc7b130698ab221a5c41de71a6fe38d13'
+            '3afbe1b3e8b8339ace5f8496f8fcd605d5768c10145da15a71a9d487be45a8c9'
+            'cc9a338ff2930eeb714d6a8c772447155b25ce3b6dd4c437205a406628ca568a')
+
+
+prepare() {
+  cd ${srcdir}/${pkgbase}
+  local src
+  for src in "${source[@]}"; do
+      src="${src%%::*}"
+      src="${src##*/}"
+      [[ $src = *.patch ]] || continue
+      msg2 "Applying patch: $src..."
+      patch -Np2 < "../$src"
+  done
+}
+
+pkgver() {
+	date +%Y%m%d
+}
+
+_inst_dir(){
+	install -d $pkgdir/etc
+	cp -rL $srcdir/$pkgbase$1/skel $pkgdir/etc
+
+	install -d $pkgdir/usr/share/glib-2.0/schemas
+	cp $srcdir/$pkgbase/schemas/* $pkgdir/usr/share/glib-2.0/schemas
+}
+
+package_manjaro-xfce-settings() {
+	pkgdesc='Manjaro Linux XFCE Settings'
+	conflicts=('manjaro-desktop-settings' 'manjaro-xfce-gtk3-settings')
+	provides=('manjaro-desktop-settings' 'manjaro-xfce-gtk3-settings' 'manjaro-xfce-gtk3-minimal-settings')
+	replaces=('manjaro-xfce-gtk3-settings')
+
+	_inst_dir
+
+	local _subst="
+		s|%BIN%|mxs-bgd-sym|g
+	"
+	sed "${_subst}" "${srcdir}/manjaro-xfce-settings.hook" |
+		install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/manjaro-xfce-settings.hook"
+	install -Dm755 "${srcdir}/mxs-bgd-sym" "${pkgdir}/usr/bin/mxs-bgd-sym"
+	install -Dm755 "${srcdir}/xfce-pbw.sh" "${pkgdir}/etc/skel/.config/autostart/xfce-pbw.sh"
+	install -Dm755 "${srcdir}/xfce-panel-workaround.desktop" "${pkgdir}/etc/skel/.config/autostart/xfce-panel-workaround.desktop"
+}
+
+#############minimal######################
+
+package_manjaro-xfce-minimal-settings() {
+	pkgdesc='Manjaro Linux xfce-minimal settings'
+	conflicts=('manjaro-desktop-settings' 'manjaro-xfce-gtk3-minimal-settings')
+	provides=('manjaro-desktop-settings' 'manjaro-xfce-gtk3-minimal-settings')
+	replaces=('manjaro-xfce-gtk3-minimal-settings')
+
+	_inst_dir '/minimal'
+
+	local _subst="
+		s|%BIN%|mxms-bgd-sym|g
+	"
+	sed "${_subst}" "${srcdir}/manjaro-xfce-settings.hook" |
+		install -Dm644 /dev/stdin "${pkgdir}/usr/share/libalpm/hooks/manjaro-xfce-minimal-settings.hook"
+	install -Dm755 "${srcdir}/mxs-bgd-sym" "${pkgdir}/usr/bin/mxms-bgd-sym"
+	install -Dm755 "${srcdir}/xfce-pbw.sh" "${pkgdir}/etc/skel/.config/autostart/xfce-pbw.sh"
+	install -Dm755 "${srcdir}/xfce-panel-workaround.desktop" "${pkgdir}/etc/skel/.config/autostart/xfce-panel-workaround.desktop"
+}

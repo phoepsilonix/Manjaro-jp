@@ -1,0 +1,58 @@
+# For Japanese
+fcitx5-im
+fcitx5-mozc
+manjaro-asian-input-support-fcitx5
+# AUR fcitx5-input-support
+
+# for asian?
+#fcitx-table-other
+#fcitx-table-extra
+
+# Japanese Fonts
+ipa-fonts
+ttf-sazanami
+noto-fonts-cjk
+noto-fonts-extra
+adobe-source-han-sans-jp-fonts
+adobe-source-han-serif-jp-fonts
+morisawa-biz-ud-mincho-fonts
+morisawa-biz-ud-gothic-fonts
+
+# Emoji Fonts
+noto-fonts-emoji
+unicode-emoji
+# nodejs-emojione
+
+# browser
+vivaldi
+vivaldi-ffmpeg-codecs
+
+# vivaldi option pkg
+libnotify
+
+# mail
+#thunderbird
+# thunderbird option pkg
+#libotr
+
+# kernel clang build.
+# dkms clang lld
+clang 
+llvm
+lld
+
+#timeshift or snapper
+#timeshift-autosnap-manjaro
+#snapper
+#snapper-gui
+#snap-pac
+
+#office 
+libreoffice-fresh
+libreoffice-fresh-ja
+
+#aur helper
+yay
+
+# 
+kernel-modules-hook

@@ -1,0 +1,46 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 54a73da..fdd294f 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -93,11 +93,11 @@ sha256sums=('SKIP'
+             '39d7843dfe1e10ead912a81be370813b8621794a7967b3cc5e4d4188b5bf7264'
+             '4cae03685c238a60169f1134165ff010faebddb5b3218d92d32e0b6729b27656'
+             '01264c247283b7bbdef65d7646541c022440ddaf54f8eaf5aeb3a02eb98b4dd8'
+-            'c9a22df3e437599851e3c3e5725b853e8cd36728ae8fce8af5e693f4ce7c8e44'
++            '81e634e1a671924f034bda591b2a44db142ff18836225ba448a6e23ef32fd515'
+             '89bbfe11cec0a07f5b0f170cde35abcc4cbf16d8db7b4920435525f71527fc10'
+             '7fc95d49c0febe98a76e56b606a280565cb736580adecf163bc6b5aca8e7cbd8'
+             'a6a3e6a7c2380aff66b6096d478aed790c927ceed551ce52c0c454191eb4e3aa'
+-            '2eb199f510340cf8d190ba2fa80d5bdcf1e2e7ca53e8011af2ee62ea3b8dd03b'
++            'bd279d65005037616e8b617789f08ea35bd95ac9d32e9108f36a8e3f263a7378'
+             'a97ddf6694fa5070463a2d3f997205436a63fbe125071dd1bef0d59999adff70')
+             
+ _backports=(
+diff --git a/grub-set-bootflag b/grub-set-bootflag
+index b57caf1..0b7f730 100755
+--- a/grub-set-bootflag
++++ b/grub-set-bootflag
+@@ -2,4 +2,4 @@
+ echo ">> Info: 'grub-set-bootflag' has currently no function."
+ echo "         To hide the menu set the following in '/etc/default/grub':"
+ echo "         GRUB_TIMEOUT=10"
+-echo "         GRUB_TIMEOUT_STYLE=hidden"
++echo "         GRUB_TIMEOUT_STYLE=menu"
+diff --git a/grub.default b/grub.default
+index 9e0f376..6a4a8d8 100755
+--- a/grub.default
++++ b/grub.default
+@@ -1,6 +1,6 @@
+ GRUB_DEFAULT=saved
+ GRUB_TIMEOUT=5
+-GRUB_TIMEOUT_STYLE=hidden
++GRUB_TIMEOUT_STYLE=menu
+ GRUB_DISTRIBUTOR="Manjaro"
+ GRUB_CMDLINE_LINUX_DEFAULT="quiet udev.log_priority=3"
+ GRUB_CMDLINE_LINUX=""
+@@ -59,4 +59,4 @@ GRUB_COLOR_HIGHLIGHT="green/black"
+ # needs 'rw' as boot parameter, to avoid delay in boot-time. 'fsck' needs to be
+ # removed from 'mkinitcpio.conf' to make 'systemd-fsck' work.
+ # See also Arch-Wiki: https://wiki.archlinux.org/index.php/Fsck#Boot_time_checking
+-#GRUB_ROOT_FS_RO=true
++GRUB_ROOT_FS_RO=true

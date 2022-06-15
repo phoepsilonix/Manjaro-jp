@@ -1,0 +1,8 @@
+--- a/manjaro-xfce-settings/skel/.config/xfce4/helpers.rc	2022-04-10 12:06:59.132569681 +0900
++++ b/manjaro-xfce-settings/skel/.config/xfce4/helpers.rc	2022-04-10 12:07:19.959235828 +0900
+@@ -1,4 +1,4 @@
+ FileManager=Thunar
+-WebBrowser=firefox
++WebBrowser=vivaldi-stable
+ MailReader=thunderbird
+ 

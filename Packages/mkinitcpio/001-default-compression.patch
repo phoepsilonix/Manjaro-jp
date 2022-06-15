@@ -1,0 +1,53 @@
+--- a/mkinitcpio	2021-11-29 20:15:01.000000000 +0900
++++ b/mkinitcpio	2022-06-13 17:50:59.811035637 +0900
+@@ -218,13 +218,13 @@
+             msg "Creating %s-compressed initcpio image: %s" "$compress" "$out"
+             ;;&
+         xz)
+-            COMPRESSION_OPTIONS=('--check=crc32' "${COMPRESSION_OPTIONS[@]}")
++            COMPRESSION_OPTIONS=('-e' '-9' '-T0' '--check=crc32' "${COMPRESSION_OPTIONS[@]}")
+             ;;
+         lz4)
+             COMPRESSION_OPTIONS=('-l' "${COMPRESSION_OPTIONS[@]}")
+             ;;
+         zstd)
+-            COMPRESSION_OPTIONS=('-T0' "${COMPRESSION_OPTIONS[@]}")
++            COMPRESSION_OPTIONS=('--ultra' '-11' '-T0' "${COMPRESSION_OPTIONS[@]}")
+             ;;
+     esac
+ 
+@@ -670,7 +670,7 @@
+         die 'Unable to write to %s' "$_optgenimg"
+     fi
+ 
+-    _optcompress=${_optcompress:-${COMPRESSION:-zstd}}
++    _optcompress=${_optcompress:-${COMPRESSION:-xz}}
+     if ! type -P "$_optcompress" >/dev/null; then
+         warning "Unable to locate compression method: %s" "$_optcompress"
+         _optcompress=cat
+--- a/man/mkinitcpio.conf.5.txt	2022-06-13 18:18:10.286088309 +0900
++++ b/man/mkinitcpio.conf.5.txt	2022-06-13 18:18:32.049207773 +0900
+@@ -55,7 +55,7 @@
+ 	Defines a program to filter the generated image through. The kernel
+ 	understands the compression formats yielded by the *zstd*, *gzip*, *bzip2*,
+ 	*lz4*, *lzop*, *lzma*, and *xz* compressors. If unspecified, this setting
+-	defaults to *zstd* compression. In order to create an uncompressed image,
++	defaults to *xz* compression. In order to create an uncompressed image,
+ 	define this variable as *cat*.
+ +
+ It's not hard to realize that a filter such as a *tac* or *rev* will cause
+--- a/mkinitcpio.conf	2022-06-13 18:24:48.446510043 +0900
++++ b/mkinitcpio.conf	2022-06-13 18:26:05.270714911 +0900
+@@ -58,10 +58,10 @@
+ #COMPRESSION="gzip"
+ #COMPRESSION="bzip2"
+ #COMPRESSION="lzma"
+-#COMPRESSION="xz"
++COMPRESSION="xz"
+ #COMPRESSION="lzop"
+ #COMPRESSION="lz4"
+ 
+ # COMPRESSION_OPTIONS
+ # Additional options for the compressor
+-#COMPRESSION_OPTIONS=()
++COMPRESSION_OPTIONS=('-e' '-9' '-T0' '--check=crc32')

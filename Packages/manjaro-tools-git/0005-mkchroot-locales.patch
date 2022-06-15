@@ -1,0 +1,19 @@
+diff --git a/bin/mkchroot.in b/bin/mkchroot.in
+index 68da8af..56ce0ee 100644
+--- a/bin/mkchroot.in
++++ b/bin/mkchroot.in
+@@ -115,6 +115,14 @@ if ${build_locales}; then
+     printf '%s.UTF-8 UTF-8\n' en_US > "$working_dir/etc/locale.gen"
+     printf 'LANG=%s.UTF-8\n' en_US > "$working_dir/etc/locale.conf"
+     printf 'LC_MESSAGES=C\n' >> "$working_dir/etc/locale.conf"
++else
++    # this is the buildiso case.
++    # buildiso does not call mkchoot with the -L option.
++    # For rootfs, it is expected that generating locales is less likely to cause problems.
++    sed -e 's|#en_US.UTF-8 UTF-8|en_US.UTF-8 UTF-8|' -i "$working_dir/etc/locale.gen"
++    echo 'LANG=en_US.UTF-8' > "$working_dir/etc/locale.conf"
++    echo 'LC_MESSAGES=C' >> "$working_dir/etc/locale.conf"
++fi
+ 
+     chroot_args=(${pac_conf:+-C "$pac_conf"} ${makepkg_conf:+-M "$makepkg_conf"} \
+                  ${mirrors_conf:+-S "$mirrors_conf"} ${build_mirror:+-B "$build_mirror"} \

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+## Colored message
+
+msg() {
+ALL_OFF="\e[1;0m"
+BOLD="\e[1;1m"
+GREEN="${BOLD}\e[1;32m"
+local mesg=$1; shift
+printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}" "$@" >&2
+}
+ 
+## Check if printing support is installed
+
+if pacman -Qi cups > /dev/null 2>&1; then
+  echo ""
+  msg "Printing support installed"
+  echo ""
+else 
+  echo ""
+  msg "Printing support not installed, to enable please type this in a terminal:
+  -> pamac install manjaro-printer
+  -> or install manjaro-printer package via Add/Remove Software"
+  echo ""
+fi
+
+## Inform users about QT style changes
+
+if pacman -Qi qt5ct > /dev/null 2>&1; then
+  echo ""
+  msg "We have switched back to QGnomePlatform for GNOME 42.
+  qt5ct and qt6ct (Qt Configuration Utilities) may be marked as orphans.
+  If you want use QGnomePlatform with the Adwaita Qt style,
+  you'll need remove or comment the QT_QPA_PLATFORMTHEME variable
+  in /etc/environment."
+  echo ""
+fi

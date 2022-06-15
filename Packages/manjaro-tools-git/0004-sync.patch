@@ -1,0 +1,24 @@
+diff --git a/lib/util-iso-image.sh b/lib/util-iso-image.sh
+index 124fab4..144c548 100644
+--- a/lib/util-iso-image.sh
++++ b/lib/util-iso-image.sh
+@@ -369,6 +369,7 @@ copy_from_cache(){
+     sed -i "s/.*\///" "$list"
+ 
+     msg2 "Copying mhwd package cache ..."
++    sync
+     rsync -v --files-from="$list" /var/cache/pacman/pkg "$1${mhwd_repo}"
+ }
+ 
+diff --git a/lib/util-publish.sh b/lib/util-publish.sh
+index b1a4c43..6de972a 100644
+--- a/lib/util-publish.sh
++++ b/lib/util-publish.sh
+@@ -86,6 +86,7 @@ sync_dir(){
+     msg "Start upload [%s] to [%s] ..." "$1" "${project}"
+ 
+     while [[ $count -le $max_count ]]; do
++        sync
+         rsync ${rsync_args[*]} --exclude '.latest*' --exclude 'index.html' --exclude 'links.txt' ${src_dir}/ ${server}/${target_dir}/
+         if [[ $? != 0 ]]; then
+             count=$(($count + 1))

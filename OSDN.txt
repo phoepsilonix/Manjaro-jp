@@ -1,0 +1,11 @@
+Manjaro Linux(https://manjaro.org/ )の日本語版ライブ環境およびインストーラーを用意する。 具体的には
+
+1. 日本語入力を標準インストール（fcitx5-mozc） 2. 日本語フォントの標準インストール(絵文字も含む) 3.ライブ環境でも日本語入力と表示を可能にする。 USBメモリなどから起動するLive環境でも、日本語の入力及び日本語フォントによる表示を可能とする。 4. kernelは5.17系および5.18系を採用する。 5. 標準ブラウザとしてVivaldi(https://vivaldi.com/ )を採用する。
+
+公式に合わせてGNOME、KDE、xfceの３種類を用意する予定です。
+
+https://gitlab.com/phoep/manjaro-jp/
+https://github.com/phoepsilonix/Manjaro-jp
+https://sourceforge.net/projects/manjaro-jp/
+
+(GPG signing public key:536487F1470D7187) <phoepsilonix あっと gmail どっと com>

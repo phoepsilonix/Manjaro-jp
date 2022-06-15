@@ -1,0 +1,10 @@
+[Manjaro Linux](https://manjaro.org) の日本語対応
+　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。
+[kernel](https://www.kernel.org)-5.18系(clang製)。
+公式に合わせて、GNOME,KDE,Xfceの３種類を用意する予定です。
+配布ファイルはISOと一部パッケージファイルです。
+標準ブラウザとして[Vivaldi](https://vivaldi.com/)を採用します。
+
+Bitcoin
+1F9BNxvoBfxYm4E1PqF6J9FYqyCtLypdP
+

@@ -1,0 +1,172 @@
+diff --git a/locale/ja/LC_MESSAGES/application_utility.po b/locale/ja/LC_MESSAGES/application_utility.po
+new file mode 100644
+index 0000000..efe27a7
+--- /dev/null
++++ b/locale/ja/LC_MESSAGES/application_utility.po
+@@ -0,0 +1,120 @@
++# Translations template for application-utility.
++# Copyright (C) 2018 ORGANIZATION
++# This file is distributed under the same license as the application-utility
++# project.
++# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
++#
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: application-utility 1.0.1\n"
++"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
++"POT-Creation-Date: 2018-09-16 18:43+0200\n"
++"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
++"Language-Team: LANGUAGE <LL@li.org>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=utf-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Generated-By: Babel 2.6.0\n"
++
++#: application_utility/constants/txt.py:29
++msgid "Manjaro Application Maintenance"
++msgstr ""
++
++#: application_utility/constants/txt.py:30
++msgid "Manjaro Application Utility"
++msgstr ""
++
++#: application_utility/constants/txt.py:31
++msgid "Select/Deselect apps you want to install/remove"
++msgstr ""
++
++#: application_utility/constants/txt.py:32
++msgid "when ready"
++msgstr "準備ができました。"
++
++#: application_utility/constants/txt.py:34
++msgid "advanced"
++msgstr "上級者向け"
++
++#: application_utility/constants/txt.py:35
++msgid "Toggle an extended selection of packages"
++msgstr "上級者向けのアプリケーションを一覧に表示します。"
++
++#: application_utility/constants/txt.py:36
++msgid "download"
++msgstr "ダウンロード"
++
++#: application_utility/constants/txt.py:37
++msgid "Download the most recent selection of packages"
++msgstr "最新のパッケージセレクションをダウンロードすることができます。"
++
++#: application_utility/constants/txt.py:38
++msgid "reset"
++msgstr "取消"
++
++#: application_utility/constants/txt.py:39
++msgid "Reset your current selections..."
++msgstr "現在の選択を取り消します。"
++
++#: application_utility/constants/txt.py:40
++msgid "UPDATE SYSTEM"
++msgstr "アプリケーションの追加と削除"
++
++#: application_utility/constants/txt.py:41
++msgid "Apply your current selections to the system"
++msgstr "選択したアプリケーションを導入します。"
++
++#: application_utility/constants/txt.py:42
++msgid "close"
++msgstr "閉じる"
++
++#: application_utility/constants/txt.py:43
++msgid "Discard selections and close app"
++msgstr "選択項目を破棄し、アプリを終了します。"
++
++#: application_utility/constants/txt.py:45
++msgid "Group"
++msgstr "グループ"
++
++#: application_utility/constants/txt.py:46
++msgid "Application"
++msgstr "アプリケーション"
++
++#: application_utility/constants/txt.py:47
++msgid "Description"
++msgstr "詳細"
++
++#: application_utility/constants/txt.py:48
++msgid "Install/Remove"
++msgstr "インストール/削除"
++
++#: application_utility/constants/txt.py:49
++msgid "Installed"
++msgstr "インストール済み"
++
++#: application_utility/constants/txt.py:50
++msgid "to remove"
++msgstr "削除する"
++
++#: application_utility/constants/txt.py:52
++msgid "Your selections has been reset"
++msgstr "選択した項目がリセットされました。"
++
++#: application_utility/constants/txt.py:53
++msgid "App data has been downloaded and list is reset"
++msgstr "アプリケーションのデータがダウンロードされ、一覧がリセットされました。"
++
++#: application_utility/constants/txt.py:54
++msgid "Your system has been updated"
++msgstr "アプリケーションの追加と削除が完了しました。"
++
++#: application_utility/constants/txt.py:55
++msgid "Download not available"
++msgstr "ダウンロードができません。"
++
++#: application_utility/constants/txt.py:56
++msgid "server could not be reached"
++msgstr "サーバへの接続できませんでした。"
++
+diff --git a/setup.py b/setup.py
+index b13d0b5..01c25e4 100644
+--- a/setup.py
++++ b/setup.py
+@@ -78,7 +78,8 @@ setup(
+     package_dir={'application_utility': 'application_utility'},
+     data_files=[('share/application-utility', ['share/default.json', 'share/preferences.json']),
+                 ('share/locale/da/LC_MESSAGES', ['locale/da/LC_MESSAGES/application_utility.mo']),
+-                ('share/locale/fr/LC_MESSAGES', ['locale/fr/LC_MESSAGES/application_utility.mo'])],
++                ('share/locale/fr/LC_MESSAGES', ['locale/fr/LC_MESSAGES/application_utility.mo']),
++                ('share/locale/ja/LC_MESSAGES', ['locale/ja/LC_MESSAGES/application_utility.mo'])],
+     scripts=["scripts/manjaro-application-utility"],
+     install_requires=requirements,
+     license="GPL3",
+diff --git a/share/default.json b/share/default.json
+index dbd78aa..ee95aae 100644
+--- a/share/default.json
++++ b/share/default.json
+@@ -179,6 +179,13 @@
+         "icon": "gnumeric",
+         "description": "Manjaro extended language support",
+         "apps": [
++          {
++            "name": "Manjaro Asian Input Support Fcitx5",
++            "icon": "gnumeric",
++            "description": "Manjaro extended language support with fcitx5 support",
++            "pkg": "manjaro-asian-input-support-fcitx5",
++            "extra": []
++          },
+           {
+             "name": "Manjaro Asian Input Support Fcitx",
+             "icon": "gnumeric",
+@@ -231,6 +238,13 @@
+                 ],
+                 "extra": []
+             },
++            {
++                "name": "GNOME TextEditor",
++                "icon": "org.gnome.TextEditor",
++                "description": "Gnome TextEditor.",
++                "pkg": "gnome-text-editor",
++                "extra": []
++            },
+             {
+                 "name": "Gedit",
+                 "icon": "gedit",

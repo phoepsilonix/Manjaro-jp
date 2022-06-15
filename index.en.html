@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Manjaro-JP</title>
+<meta name="generator" content="md2html">
+<meta charset="utf-8"/>
+</head>
+<h1><a href="https://osdn.net/projects/manjaro-jp/">Manjaro Linux JP</a></h1>
+<h2>Japanese language support for <a href="https://manjaro.org/">Manjaro Linux</a></h2>
+<p>　Supports Japanese input and display by default, including live environment.
+<a href="https://kernel.org/">kernel-5.17 series, and 5.18 series</a>.
+GNOME, KDE, and Xfce will be available for official use.
+The distribution files are ISO and some package files.
+Please boot from a USB memory stick, etc.
+It may be easier to use <a href="https://ventoy.net/">Ventoy</a> to boot from USB memory.</p>
+<h3>Main Features</h3>
+<p>The Linux kernel is as up-to-date as possible.
+The kernel is built using clang.
+Japanese input (fcitx5-mozc) and Japanese fonts are installed as standard.
+Use <a href="https://vivaldi.com/">Vivaldi</a> as the standard browser.
+Standard installation of <a href="https://www.libreoffice.org">libreoffice-fresh</a> as office software.</p>
+<p>ISOs for live environment &amp; installation are available at the following distribution sites.
+Please try it if you like.</p>
+<h5>Notes</h5>
+<ol>
+<li><p>secure boot is not supported
+Please disable Secure Boot in your BIOS settings.
+(If you want secure boot support, Ubuntu is a fast option, and Ubuntu Flavour offers several desktop environments). 2.</p>
+</li>
+<li><p>if Vivaldi displays an error message about insufficient video codecs
+You may get an error message that there is not enough h.264 codec to play the video.
+This is because it may take some time for Vivaldi to update its components. After a while, it will be updated automatically.
+You can also manually update the Vivaldi components by going to <a href="vivaldi://components">Vivaldi components screen ( vivaldi://components )</a>. 3.</p>
+</li>
+<li><p>if the startup menu does not appear
+The menu can be displayed by modifying /etc/default/grub and executing update-grub. 修正点は、GRUB_TIMEOUT_STYLEをhiddenからmenuに変更します。
+The fix is to change GRUB_TIMEOUT_STYLE from hidden to menu.
+After that, if you run update-grub with administrator privileges, the menu will be displayed from the next boot. If the file system is btrfs, you can choose to boot from snapshots, etc.
+Change GRUB_TIMEOUT_STYLE=menu.
+Set TIMEOUT to an appropriate number of seconds.</p>
+</li>
+</ol>
+<pre><code class="language-sh">sudo nano /etc/default/grub
+</code></pre>
+<p>Then, execute the following command.</p>
+<pre><code class="language-sh">sudo update-grub
+</code></pre>
+<hr>
+<h3>Place of distribution</h3>
+<table>
+<tr>
+<td><a href="https://osdn.net/projects/manjaro-jp/" target="_blank"><img src="https://osdn.net/sflogo.php?group_id=14185&type=1" width="210" height="62" alt="OSDN"></a></td>
+<td><a href="https://osdn.net/projects/manjaro-jp/" target="_blank">Manjaro-Linux-jp at OSDN</a></td>
+</tr>
+<tr>
+<td><a href="https://sourceforge.net/projects/manjaro-jp/" target="_blank"><img src="http://sourceforge.net/sflogo.php?group_id=66882&amp;type=5" width="210" height="62" border="0" alt="SourceForge Logo"></a></td>
+<td><a href="https://sourceforge.net/projects/manjaro-jp/" target="_blank">Manjaro-Linux-jp at SourceForge</a></td>
+</tr>
+<tr>
+<td><a href="https://terabox.com/s/19YM2KYCFY1sPaIXz_W-i-A" target="_blank"><img src="https://s0.teraboxcdn.com/fe-opera-static/node-static-v4/fe-webv4-main/img/logo.4e10d647.png" width="210" height="62" alt="TeraBox"></a></td>
+<td><a href="https://terabox.com/s/19YM2KYCFY1sPaIXz_W-i-A" target="_blank">Manjaro-Linux-jp at Terabox</a></td>
+</tr>
+</table>
+<p>Thank you for the valuable storage space.
+Distributed at the above 3 locations.</p>
+<hr>
+<h3>Memorandum</h3>
+<h5>manjaro-tools-iso changes</h5>
+<ol>
+<li>the first line of the mirrorlist is used as standard for where to get the packages used for buildiso.
+By default, the mirrorlist is not loaded and the EU server is used.</li>
+<li>to prioritize the order of repositories specified in user-repos.conf in order to include the packages I have prepared in the ISO. This is mainly to include the latest version of the kernel.</li>
+</ol>
+<h3>Update History</h3>
+<details><summary>Our History</summary>
+<h5>20220401</h5>
+<p>kernel-5.17.1 (clang build)
+linux517-broadcom-wl,linux517-zfs package was also built and added.
+The modifications to the broadcom-wl-dkms package and other information can be found in the <a href="https://gitlab.com/phoepsilonix/">Packages folder</a> in <a href="https://gitlab.com/phoepsilonix/manjaro-jp">gitlab</a> manjaro-jp/-/tree/main/Packages/broadcom-wl-dkms).</p>
+<h5>20220408</h5>
+<p>The only standard browser is <a href="https://vivaldi.com/">Vivaldi</a>.
+You are of course free to change to any other browser.
+The initial value of GRUB at boot time in the live environment has been changed for Japan.</p>
+<h5>20220411</h5>
+<p>Fixed a bug in package update.
+Added Japanese fonts.
+Morisawa BIZ UD font <a href="https://www.morisawa.co.jp/">Morisawa Inc.</a> <a href="https://www.morisawa.co.jp/about/news/6706">released under SIL OFL license</a> Morisawa BIZ UD Mincho](https://github.com/googlefonts/morisawa-biz-ud-mincho), <a href="https://github.com/googlefonts/">Morisawa BIZ UD Gothic</a> morisawa-biz-ud-gothic) are preinstalled.
+The fonts are the same as the ones released on Github. License file etc. are also included. (I also built it myself and found no differences in the binaries.)
+For more information, please check the above original site or the Github document.
+Support <a href="https://www.morisawa.co.jp/products/fonts/bizplus/lineup/">Morisawa BIZ+ font</a>.</p>
+<h5>20220413</h5>
+<p>Morisawa BIZ UD font package has been registered with AUR.</p>
+<h5>20220414</h5>
+<p>Updated to kernel-5.17.3.</p>
+<h5>20220421</h5>
+<p>Updated to kernel-5.17.4.</p>
+<h5>20220422</h5>
+<p>Changed Japanese input to fcitx5-mozc.</p>
+<h5>20220424</h5>
+<p>Enabled Japanese keyboard and Mozc by default.</p>
+<h5>20220428</h5>
+<p>kernel-5.17.5</p>
+<h5>20220510</h5>
+<p>kernel-5.17.6</p>
+<h5>20220513</h5>
+<p>The desktop environment GNOME has been updated to GNOME42.</p>
+<h5>20220517</h5>
+<p>kernel-5.17.8</p>
+<h5>20220519</h5>
+<p>kernel-5.17.9</p>
+<h5>20220526</h5>
+<p>kernel-5.17.11</p>
+<h5>20220527</h5>
+<p>Updated nvidia driver version to 515.43.04.
+Added kernel-5.18 series.</p>
+<h5>20220531</h5>
+<p>kernel-5.17.12</p>
+<p>kernel-5.18.1</p>
+</details>
+<h5>202200607</h5>
+<p>kernel-5.17.13</p>
+<p>kernel-5.18.2</p>
+<h5>20220608</h5>
+<p>Office Software Related Changes</p>
+<p>Eliminated the selection of office software in the installer.</p>
+<p>Mainly to reduce space requirements, we eliminated the selection of office software in the installer and changed the standard installed office software from onlyoffice-desktopeditor to libreoffice-fresh.</p>
+<h5>20220611</h5>
+<p>kernel-5.17.14</p>
+<p>kernel-5.18.3</p>
+<p>Updated nvidia driver version to 515.48.07.</p>
+<p>Fixed virtualbox-host-dkms to build on linux518.</p>
+<p>Added nginx-quic package and other packages to manjaro-jp repository, although they are not included in ISO.</p>
+<p>Included manjaro-jp repository in pacman.conf.</p>
+<h5>20220614</h5>
+<p>Bug fixes in the installer.</p>
+<p>Changed editor from gedit to gnome-text-editor in GNOME version.</p>
+<hr>
+<p>Addendum for your reference.
+If you have a PC with Linux installed, you can use an unofficial (no official support) dual boot environment with ChromeOS. If you have a PC with Linux installed, you can create a dual-boot environment with ChromeOS, which is unofficial (no official support). This is for those who have some knowledge.
+If you are interested, please refer to <a href="https://github.com/sebanc/brunch/blob/master/install-with-linux.md">here</a>.</p>
+<hr>
+<p>In the ArchLinux family, which features rolling releases, <a href="https://garudalinux.org">Garuda Linux</a> also looks good.</p>
+<hr>
+<pre><code>[manjaro-jp].
+SigLevel = Optional TrustAll
+Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
+</code></pre>
+<p><a href="https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/">Manjaro-JP pkgs</a></p>
+
+<a href="https://gitlab.com/phoepsilonix/manjaro-jp/">Manjaro-JP at gitlab</a>
+<a href="https://github.com/phoepsilonix/Manjaro-jp/">Manjaro-JP at github</a>
+<a href="https://sourceforge.net/projects/manjaro-jp/">Manjaro-JP at sf</a>
+<a href="https://manjaro-jp.sourceforge.io/">Manjaro-JP at sf web</a>
+(GPG signing public key:536487F1470D7187) &lt;phoepsilonix at gmail dot com&gt;</p>
+<a href="https://revolut.me/phoepsilonix"> Please donate to me. </a>
+<a href="https://paypal.me/phoepsilonix"> Please donate to me. </a>
+Bitcoin
+1F9BNxvoBfxYm4E1PqF6J9FYqyCtLypdP
+Ethreum
+0x680932c238653da1d9d0950153c8a2b9d8f76a3e
+</body>
+</html>
