@@ -54,13 +54,13 @@ do
 	data=(${edition[@]})
 	ed=${data[1]}
         echo "build pre-image"
-        echo "buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso -r $usb/tmp/build"
-        #buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso 
-        buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso -r $usb/tmp/build
+        echo "buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build"
+        #buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso 
+        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build
         echo "build iso"
-        echo "buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t $usb/tmp/iso -r $usb/tmp/build"
-        #buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t $usb/tmp/iso 
-        buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t $usb/tmp/iso -r $usb/tmp/build
+        echo "buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build"
+        #buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso 
+        buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build
 done
 
 echo "Move iso files to Artifacts folder"

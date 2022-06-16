@@ -1,21 +1,5 @@
 --- a/mkinitcpio	2021-11-29 20:15:01.000000000 +0900
 +++ b/mkinitcpio	2022-06-13 17:50:59.811035637 +0900
-@@ -218,13 +218,13 @@
-             msg "Creating %s-compressed initcpio image: %s" "$compress" "$out"
-             ;;&
-         xz)
--            COMPRESSION_OPTIONS=('--check=crc32' "${COMPRESSION_OPTIONS[@]}")
-+            COMPRESSION_OPTIONS=('-e' '-9' '-T0' '--check=crc32' "${COMPRESSION_OPTIONS[@]}")
-             ;;
-         lz4)
-             COMPRESSION_OPTIONS=('-l' "${COMPRESSION_OPTIONS[@]}")
-             ;;
-         zstd)
--            COMPRESSION_OPTIONS=('-T0' "${COMPRESSION_OPTIONS[@]}")
-+            COMPRESSION_OPTIONS=('--ultra' '-11' '-T0' "${COMPRESSION_OPTIONS[@]}")
-             ;;
-     esac
- 
 @@ -670,7 +670,7 @@
          die 'Unable to write to %s' "$_optgenimg"
      fi
@@ -50,4 +34,4 @@
  # COMPRESSION_OPTIONS
  # Additional options for the compressor
 -#COMPRESSION_OPTIONS=()
-+COMPRESSION_OPTIONS=('-e' '-9' '-T0' '--check=crc32')
++COMPRESSION_OPTIONS=('-e' '-9' '-T0')
