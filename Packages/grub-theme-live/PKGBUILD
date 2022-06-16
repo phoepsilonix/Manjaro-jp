@@ -1,0 +1,58 @@
+# Maintainer: Philip Müller <philm[at]manjaro[dog]org>
+# Contributor: artoo <artoo@manjaro.org>
+# Contributor: anex <assassin.anex[@]gmail.com>
+# Contributor: Stefano Capitani <stefano@manjaro.org>
+# Contributor: Matti Hyttinen <matti@manjaro.org> 
+
+
+pkgbase=grub-theme-live
+pkgname=('grub-theme-live-common' 'grub-theme-live-manjaro' 'grub-theme-manjaro')
+pkgver=20.2
+pkgrel=14
+_commit=8887ab91b1e0309ba55b5cd9ec7d445c202b9446
+
+pkgdesc='Manjaro Linux grub theme'
+arch=('any')
+url="https://gitlab.manjaro.org/artwork/branding/grub-theme"
+license=('GPL')
+makedepends=('git')
+source=("grub-theme::git+$url.git#commit=$_commit"
+	"001-Japanese-default.patch")
+sha256sums=('SKIP'
+            'ea5dea09a6433f7b9d227197669b1d7d8968d81a3001f1d348faf32a3966c1f0')
+
+prepare() {
+  cd ${srcdir}/grub-theme
+  local src
+  for src in "${source[@]}"; do
+      src="${src%%::*}"
+      src="${src##*/}"
+      [[ $src = *.patch ]] || continue
+      msg2 "Applying patch: $src..."
+      patch -Np2 < "../$src"
+  done
+}
+
+package_grub-theme-live-common() {
+    depends=('grub')
+    conflicts=('grub-theme-live')
+    replaces=('grub-theme-live')
+
+    cd grub-theme
+    make PREFIX=/usr DESTDIR=${pkgdir} install_common
+}
+package_grub-theme-live-manjaro() {
+    depends=('grub-theme-live-common')
+
+    cd grub-theme
+    make PREFIX=/usr DESTDIR=${pkgdir} install_manjaro
+}
+
+package_grub-theme-manjaro() {
+	depends=('grub')
+	install=manjaro-theme.install
+    
+    cd grub-theme/manjaro-live
+    sed -i -e 's,.*text = "Welcome to Manjaro".*,#text = "Welcome to Manjaro",' theme.txt #remove welcome message
+    find . -type f -exec install -D -m644 {} ${pkgdir}/usr/share/grub/themes/manjaro/{} \;
+}

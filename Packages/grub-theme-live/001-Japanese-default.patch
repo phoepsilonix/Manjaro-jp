@@ -1,0 +1,14 @@
+--- a/grub-theme/cfg/defaults.cfg	2022-04-08 11:11:43.848649642 +0900
++++ b/grub-theme/cfg/defaults.cfg	2022-04-08 11:11:16.937130187 +0900
+@@ -1,7 +1,8 @@
+ if [ -z "${def_bootlang}" ]; then
+-    def_bootlang="en_US"
+-    def_keyboard="us"
+-    def_timezone="UTC"
++    hwclock="utc=yes"
++    def_bootlang="ja_JP"
++    def_keyboard="jp"
++    def_timezone="Asia/Tokyo"
+ fi
+ if [ -z "${bootlang}" ]; then
+     bootlang="lang=${def_bootlang}"
