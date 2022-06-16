@@ -1,0 +1,44 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 0b35e14..34cf055 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -18,18 +18,20 @@ depends=('illyria-wallpaper'
+          'matcha-gtk-theme'
+          'noto-fonts'
+          'papirus-maia-icon-theme'
+-         'qt5-styleplugins'
+          'qt5ct'
+          'xcape'
+          'xcursor-breeze')
+ makedepends=('git')
+ source=("$pkgbase::git+$url.git" 'manjaro-xfce-settings.hook' 'mxs-bgd-sym'
+-        'xfce-pbw.sh' 'xfce-panel-workaround.desktop')
++        'xfce-pbw.sh' 'xfce-panel-workaround.desktop'
++        '001-vivaldi.patch')
++
+ sha256sums=('SKIP'
+             'b18b45c0b88a4e282aa7f75caa5ab245443beba5de004042df3cf7361c1e4a2e'
+             '03770c4735b588bdee49f7e1e5d73d8500524d875603c473bdf0f4ffb862c152'
+             'c2a09b24e47df963fae456df3286e0f1525eb16b48da5a020579e788037631da'
+-            '3afbe1b3e8b8339ace5f8496f8fcd605d5768c10145da15a71a9d487be45a8c9')
++            '3afbe1b3e8b8339ace5f8496f8fcd605d5768c10145da15a71a9d487be45a8c9'
++            'cc9a338ff2930eeb714d6a8c772447155b25ce3b6dd4c437205a406628ca568a')
+ 
+ pkgver() {
+ 	date +%Y%m%d
+@@ -80,3 +82,15 @@ package_manjaro-xfce-minimal-settings() {
+ 	install -Dm755 "${srcdir}/xfce-pbw.sh" "${pkgdir}/etc/skel/.config/autostart/xfce-pbw.sh"
+ 	install -Dm755 "${srcdir}/xfce-panel-workaround.desktop" "${pkgdir}/etc/skel/.config/autostart/xfce-panel-workaround.desktop"
+ }
++
++prepare() {
++  cd ${srcdir}/${pkgbase}
++  local src
++  for src in "${source[@]}"; do
++      src="${src%%::*}"
++      src="${src##*/}"
++      [[ $src = *.patch ]] || continue
++      msg2 "Applying patch: $src..."
++      patch -Np2 -i ../$src
++  done
++}

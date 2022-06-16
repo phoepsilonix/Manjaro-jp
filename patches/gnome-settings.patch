@@ -2,15 +2,6 @@ diff --git a/manjaro-gnome-settings/PKGBUILD b/manjaro-gnome-settings/PKGBUILD
 index bb18e26..db0d6e7 100644
 --- a/manjaro-gnome-settings/PKGBUILD
 +++ b/manjaro-gnome-settings/PKGBUILD
-@@ -3,7 +3,7 @@
- 
- pkgname=('manjaro-gnome-settings' 'manjaro-gnome-extension-settings' 'manjaro-gdm-branding')
- pkgbase=manjaro-gnome-settings
--pkgver=20220606
-+pkgver=20220616
- pkgrel=1
- arch=('any')
- url="https://gitlab.manjaro.org/profiles-and-settings/manjaro-gnome-settings"
 @@ -14,6 +14,7 @@ source=("git+$url.git"
  		'manjaro-gnome-messages.script'
  		'manjaro-gdm-branding-install.hook'
