@@ -199,3 +199,9 @@
 [submodule "Packages/linux517-extramodules/zfs"]
 	path = Packages/linux517-extramodules/zfs
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/zfs
+[submodule "Packages/manjaro-xfce-settings"]
+	path = Packages/manjaro-xfce-settings
+	url = ssh://git@gitlab.manjaro.org:22277/packages/community/xfce/manjaro-xfce-settings.git
+[submodule "Packages/gnome-settings"]
+	path = Packages/gnome-settings
+	url = ssh://git@gitlab.manjaro.org:22277/packages/community/gnome/gnome-settings.git

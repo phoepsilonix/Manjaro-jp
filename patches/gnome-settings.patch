@@ -1,0 +1,48 @@
+diff --git a/manjaro-gnome-settings/PKGBUILD b/manjaro-gnome-settings/PKGBUILD
+index bb18e26..db0d6e7 100644
+--- a/manjaro-gnome-settings/PKGBUILD
++++ b/manjaro-gnome-settings/PKGBUILD
+@@ -3,7 +3,7 @@
+ 
+ pkgname=('manjaro-gnome-settings' 'manjaro-gnome-extension-settings' 'manjaro-gdm-branding')
+ pkgbase=manjaro-gnome-settings
+-pkgver=20220606
++pkgver=20220616
+ pkgrel=1
+ arch=('any')
+ url="https://gitlab.manjaro.org/profiles-and-settings/manjaro-gnome-settings"
+@@ -14,6 +14,7 @@ source=("git+$url.git"
+ 		'manjaro-gnome-messages.script'
+ 		'manjaro-gdm-branding-install.hook'
+ 		'manjaro-gdm-branding-remove.hook'
++                '001-vivaldi.patch'
+ )
+ makedepends=('git')
+ sha256sums=('SKIP'
+@@ -21,7 +22,8 @@ sha256sums=('SKIP'
+             '588f024527bcc54ecb6d6f5d1c6c4879c400ec37cacabd2547540aadf0e0bda7'
+             '133abdada6c6438f6d735f8aceba2b4ccef216892969c58f89445b108af5f266'
+             '37c9338b05824d0371f09fa3f19df13902c436367d4bf01d55ebeae4a4966060'
+-            '9696a9efdb9c36c99f00eae025405657cbb036cee2b18c7d2039598e8f57e05c')
++            '9696a9efdb9c36c99f00eae025405657cbb036cee2b18c7d2039598e8f57e05c'
++            'e05f269665144366ad76a9be4fd188399658a15c77074788b7ae609c2a0f5b0e')
+ 
+ pkgver() {
+ 	date +%Y%m%d
+@@ -122,3 +124,16 @@ package_manjaro-gdm-branding() {
+ 
+ #	_inst_dir '/minimal'
+ #}
++
++prepare() {
++  cd ${srcdir}/${pkgbase}
++  local src
++  for src in "${source[@]}"; do
++      src="${src%%::*}"
++      src="${src##*/}"
++      [[ $src = *.patch ]] || continue
++      msg2 "Applying patch: $src..."
++      patch -Np1 -i ../$src
++  done
++}
++
