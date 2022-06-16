@@ -66,7 +66,7 @@ done
 echo "Move iso files to Artifacts folder"
 #sudo chown -R phoepsilonix:phoepsilonix $usb/tmp/iso/
 sync
-find ~/tmp/tmp ~/tmp/mytmp -type f -name "*.iso" | xargs -I{} mv {} $usb/artifacts/ && sync
+find ~/tmp/tmp -type f -name "*.iso" | xargs -I{} mv {} $usb/artifacts/ && sync
 rsync -avn $usb/artifacts/*.iso $artifacts/ && sync
 sync
 
