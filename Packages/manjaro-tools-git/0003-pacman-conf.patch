@@ -1,0 +1,48 @@
+diff --git a/data/pacman-default.conf b/data/pacman-default.conf
+index 85db4c3..fd92522 100644
+--- a/data/pacman-default.conf
++++ b/data/pacman-default.conf
+@@ -38,7 +38,7 @@ Architecture = auto
+ # We cannot check disk space from within a chroot environment
+ #CheckSpace
+ #VerbosePkgLists
+-#ParallelDownloads = 5
++ParallelDownloads = 5
+ 
+ # By default, pacman accepts packages signed by keys that its local keyring
+ # trusts (see pacman-key and its man page), as well as unsigned packages.
+@@ -73,6 +73,10 @@ LocalFileSigLevel = Optional
+ # repo name header and Include lines. You can add preferred servers immediately
+ # after the header, and they will be used before the default mirrors.
+ 
++[manjaro-jp]
++SigLevel = Optional TrustAll
++Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
++
+ [core]
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
+diff --git a/data/pacman-multilib.conf b/data/pacman-multilib.conf
+index 97510ae..dca516d 100644
+--- a/data/pacman-multilib.conf
++++ b/data/pacman-multilib.conf
+@@ -38,7 +38,7 @@ Architecture = auto
+ # We cannot check disk space from within a chroot environment
+ #CheckSpace
+ #VerbosePkgLists
+-#ParallelDownloads = 5
++ParallelDownloads = 5
+ 
+ # By default, pacman accepts packages signed by keys that its local keyring
+ # trusts (see pacman-key and its man page), as well as unsigned packages.
+@@ -73,6 +73,10 @@ LocalFileSigLevel = Optional
+ # repo name header and Include lines. You can add preferred servers immediately
+ # after the header, and they will be used before the default mirrors.
+ 
++[manjaro-jp]
++SigLevel = Optional TrustAll
++Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
++
+ [core]
+ SigLevel = PackageRequired
+ Include = /etc/pacman.d/mirrorlist
