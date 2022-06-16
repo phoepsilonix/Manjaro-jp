@@ -2,6 +2,7 @@
 
 # 参照するiso-profilesはカレントディレクトリが優先される。
 pkgs=`pwd`/Japanese-pkgs.txt
+pkgs2=`pwd`/Japanese-pkgs-root.txt
 pkgdir=`pwd`/iso-profiles
 usb=/run/media/phoepsilonix/Ventoy
 gkey="-g $(cat ~/.gnupg/sign.txt)"
@@ -15,6 +16,7 @@ artifacts=`pwd`/artifacts
 # 日本語パッケージを加えるファイル
 #pkg1=Packages-Live
 pkg2=Packages-Desktop
+pkg3=Packages-Root
 
 # エディション指定
 editions=(
@@ -45,6 +47,8 @@ do
 	#cat $pkgs >> $pkgdir/$edition[0]/$edition[1]/$pkg1
 	# Desktopパッケージに加える。ライブは不要みたい。
 	cat $pkgs >> $pkgdir/$path/$pkg2
+        # Packages-Rootに追加
+	cat $pkgs2 >> $pkgdir/$path/$pkg3
 done
 
 # buildiso prepare image

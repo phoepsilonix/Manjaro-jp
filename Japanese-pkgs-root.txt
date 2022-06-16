@@ -1,0 +1,6 @@
+# 循環参照を避ける
+neofetch
+filesystem
+bash
+tzdata
+linux-api-headers
