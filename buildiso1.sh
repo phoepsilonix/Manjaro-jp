@@ -54,10 +54,11 @@ do
 	data=(${edition[@]})
 	ed=${data[1]}
         echo "build pre-image"
-        echo "buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso"
+        echo "buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso -r $usb/tmp/build"
         #buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso 
         buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso -r $usb/tmp/build
         echo "build iso"
+        echo "buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t $usb/tmp/iso -r $usb/tmp/build"
         #buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t $usb/tmp/iso 
         buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t $usb/tmp/iso -r $usb/tmp/build
 done

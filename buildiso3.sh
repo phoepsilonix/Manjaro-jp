@@ -18,9 +18,9 @@ pkg2=Packages-Desktop
 
 # エディション指定
 editions=(
-        "manjaro gnome"
+#       "manjaro gnome"
 #	"manjaro kde"
-#	"manjaro xfce"
+	"manjaro xfce"
 #	"community cinnamon" 
 #       "community mate"
 #	"community lxqt"
@@ -54,19 +54,20 @@ do
 	data=(${edition[@]})
 	ed=${data[1]}
         echo "build pre-image"
-        echo "buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso"
+        echo "buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t ./tmp/tmp -r ./tmp/mytmp/"
         #buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso 
-        buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t $usb/tmp/iso -r $usb/tmp/build
+        buildiso -d xz -f -k $kernel -p $ed -x -v $gkey -t ./tmp/tmp -r ./tmp/mytmp
         echo "build iso"
+        echo "buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t ./tmp/tmp -r ./tmp/mytmp"
         #buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t $usb/tmp/iso 
-        buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t $usb/tmp/iso -r $usb/tmp/build
+        buildiso -d xz -f -k $kernel -p $ed -zc -v $gkey -t ./tmp/tmp -r ./tmp/mytmp
 done
 
 echo "Move iso files to Artifacts folder"
 #sudo chown -R phoepsilonix:phoepsilonix $usb/tmp/iso/
 sync
-find $usb/tmp/iso -type f -name "*.iso" | xargs -I{} mv {} $usb/artifacts/ && sync
-rsync -avcn $usb/artifacts/*.iso $artifacts/ && sync
+find ./.tmp/tmp ./.tmp/mytmp -type f -name "*.iso" | xargs -I{} mv {} $usb/artifacts/ && sync
+rsync -avn $usb/artifacts/*.iso $artifacts/ && sync
 sync
 
 # 終了
