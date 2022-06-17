@@ -40,7 +40,7 @@ sudo rsync -av --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to loca
 sudo rsync -av --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # OSDNへアップデート
-rsync -rLtgoDv --no-perms --progress --delete ./*.sig ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
+rsync -rLtgoDv -c --no-perms --progress --delete ./*.sig ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 rsync -rLtgoDv --size-only --no-perms --progress --delete ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 
 #rsync -aLvn --delete ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/manjaro-jp || { echo "SF rsync error" ; exit 1 ; }

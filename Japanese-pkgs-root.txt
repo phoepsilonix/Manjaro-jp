@@ -1,6 +1,6 @@
-# 循環参照を避ける
-neofetch
+# 循環参照するので予め導入しておく
 filesystem
 bash
 tzdata
 linux-api-headers
+neofetch
