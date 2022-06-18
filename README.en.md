@@ -144,9 +144,12 @@ Fixed virtualbox-host-dkms to build on linux518.
 Added nginx-quic package and other packages to manjaro-jp repository, although they are not included in ISO.
 Included manjaro-jp repository in pacman.conf.
 
-###### 20220614
+##### 20220614
 Bug fixes in the installer.
 Changed editor from gedit to gnome-text-editor in GNOME version.
+
+##### 20220619
+kernel-5.18.5
 
 
 ---

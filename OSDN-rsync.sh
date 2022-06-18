@@ -24,7 +24,7 @@ rsync -rLtgoDv --no-perms --progress --delete ../*.torrent phoepsilonix@storage.
 
 # 残りをまともて高速チェックでアップロード
 rsync -rLtgoDv --size-only --no-perms --delete --progress ../ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
-#rsync -aLv --no-perms --progress  ../README.md ../README.en.md ../README.ja.md phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/
+rsync -aLv --no-perms --progress  ../README.md ../README.en.md ../README.ja.md phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/
 rsync -LtgoDv --no-perms --progress ../../index.html ../../index.ja.html ../../index.en.html phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs
 
 exit 0;

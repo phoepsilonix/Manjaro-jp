@@ -20,9 +20,9 @@ pkg3=Packages-Root
 
 # エディション指定
 editions=(
-        "manjaro gnome"
+#       "manjaro gnome"
 #	"manjaro kde"
-#	"manjaro xfce"
+	"manjaro xfce"
 #	"community cinnamon" 
 #       "community mate"
 #	"community lxqt"
@@ -60,7 +60,7 @@ do
         echo "build pre-image"
         echo "buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build"
         #buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso 
-        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build
+        #buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build
         echo "build iso"
         echo "buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build"
         #buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso 
