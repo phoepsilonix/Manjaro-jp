@@ -205,3 +205,15 @@
 [submodule "Packages/gnome-settings"]
 	path = Packages/gnome-settings
 	url = ssh://git@gitlab.manjaro.org:22277/packages/community/gnome/gnome-settings.git
+[submodule "Packages/bbswitch"]
+	path = Packages/bbswitch
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/bbswitch
+[submodule "Packages/broadcom-wl"]
+	path = Packages/broadcom-wl
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/broadcom-wl
+[submodule "Packages/nvidia"]
+	path = Packages/nvidia
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/nvidia
+[submodule "Packages/nvidia-390xx"]
+	path = Packages/nvidia-390xx
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/nvidia-390xx
