@@ -9,7 +9,7 @@ do
 
         # masterブランチをchekoutして、pullでリモートの最新版を取得する
         cd $m;
-        git checkout master;
+        git checkout;
         git pull;
         cd ..;
 done
