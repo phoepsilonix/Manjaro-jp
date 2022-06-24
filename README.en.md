@@ -134,7 +134,6 @@ kernel-5.18.2
 Office Software Related Changes
 Eliminated the selection of office software in the installer.
 Mainly to reduce space requirements, we eliminated the selection of office software in the installer and changed the standard installed office software from onlyoffice-desktopeditor to libreoffice-fresh.
-</details>
 
 ##### 20220611
 kernel-5.17.14
@@ -147,9 +146,13 @@ Included manjaro-jp repository in pacman.conf.
 ##### 20220614
 Bug fixes in the installer.
 Changed editor from gedit to gnome-text-editor in GNOME version.
+</details>
 
 ##### 20220619
 kernel-5.18.5
+
+##### 20220624
+kernel-5.18.6
 
 
 ---
