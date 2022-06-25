@@ -55,6 +55,10 @@ libreoffice-fresh-ja
 yay
 
 # 
-kernel-modules-hook
+#kernel-modules-hook
 systemd-swap
 
+#audio
+manjaro-pipewire
+wireplumber
+pipewire-jack

@@ -22,7 +22,7 @@ btrfsmaintenance
 >extra manjaro-alsa
 >extra manjaro-gstreamer
 #>extra manjaro-modem              # ?
->extra manjaro-pulse
+#>extra manjaro-pulse
 >extra libdvdcss
 
 ## Fonts

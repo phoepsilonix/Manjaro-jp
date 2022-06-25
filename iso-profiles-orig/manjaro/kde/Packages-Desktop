@@ -5,6 +5,7 @@ networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
+networkmanager-l2tp
 nss-mdns # NSS support for mDNS (optdepend for avahi)
 ntp
 mobile-broadband-provider-info
@@ -25,15 +26,15 @@ gst-plugins-good
 gst-plugins-ugly
 libcanberra
 >multilib lib32-libcanberra
-libcanberra-pulse
->multilib lib32-libcanberra-pulse
+#libcanberra-pulse
+#>multilib lib32-libcanberra-pulse
 libdvdcss
 manjaro-alsa
-manjaro-pulse
+#manjaro-pulse
 phonon-qt5-gstreamer
-pulseaudio-bluetooth
-pulseaudio-ctl
-pulseaudio-zeroconf
+#pulseaudio-bluetooth
+#pulseaudio-ctl
+#pulseaudio-zeroconf
 
 ## Btrfs
 grub-btrfs
@@ -79,9 +80,9 @@ pamac-gtk
 pamac-tray-icon-plasma
 pamac-cli
 >extra apparmor
->extra snapd
->extra snapd-glib
->extra pamac-snap-plugin
+#>extra snapd
+#>extra snapd-glib
+#>extra pamac-snap-plugin
 >extra pamac-flatpak-plugin
 #discover-snap
 #discover
@@ -280,7 +281,6 @@ xorg-mkfontscale
 ## Desktop Utils
 perl-file-mimeinfo
 xdg-utils
-zensu
 #>extra kernel-alive
 
 ## Misc
