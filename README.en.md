@@ -153,7 +153,10 @@ kernel-5.18.5
 
 ##### 20220624
 kernel-5.18.6
+Switched from audio-related manjaro-pulse to manjaro-pipewire.
 
+##### 20220627
+kernel-5.18.7
 
 ---
 Addendum for your reference.

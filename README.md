@@ -151,6 +151,10 @@ kernel-5.18.5
 
 ##### 20220624
 kernel-5.18.6
+オーディオ関係のmanjaro-pulseをmanjaro-pipewireに切り替えました。
+
+##### 20220627
+kernel-5.18.7
 
 
 ---
