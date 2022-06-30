@@ -158,6 +158,11 @@ Switched from audio-related manjaro-pulse to manjaro-pipewire.
 ##### 20220627
 kernel-5.18.7
 
+##### 20220630
+kernel-5.18.8
+nvidia-utils 515.57
+
+
 ---
 Addendum for your reference.
 If you have a PC with Linux installed, you can use an unofficial (no official support) dual boot environment with ChromeOS. If you have a PC with Linux installed, you can create a dual-boot environment with ChromeOS, which is unofficial (no official support). This is for those who have some knowledge.
