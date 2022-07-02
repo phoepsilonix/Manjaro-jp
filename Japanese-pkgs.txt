@@ -53,6 +53,7 @@ libreoffice-fresh-ja
 
 #aur helper
 yay
+#paru
 
 # 
 #kernel-modules-hook
@@ -61,4 +62,6 @@ systemd-swap
 #audio
 manjaro-pipewire
 wireplumber
+wireplumber-docs
+pipewire-v4l2
 pipewire-jack
