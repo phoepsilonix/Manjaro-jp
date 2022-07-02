@@ -26,8 +26,8 @@ gst-plugins-good
 gst-plugins-ugly
 libcanberra
 >multilib lib32-libcanberra
-libcanberra-pulse
->multilib lib32-libcanberra-pulse
+#libcanberra-pulse
+#>multilib lib32-libcanberra-pulse
 libdvdcss
 manjaro-alsa
 #manjaro-pulse
