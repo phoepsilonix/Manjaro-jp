@@ -162,6 +162,8 @@ kernel-5.18.7
 kernel-5.18.8
 nvidia-utils 515.57
 
+##### 20220703
+kernel-5.18.9
 
 ---
 Addendum for your reference.
