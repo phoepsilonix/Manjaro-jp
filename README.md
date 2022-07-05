@@ -144,7 +144,6 @@ manjaro-jpリポジトリをpacman.confに含めました。
 ##### 20220614
 インストーラーのバグ修正。
 GNOME版においてエディタをgeditからgnome-text-editorへ変更しました。
-</details>
 
 ##### 20220619
 kernel-5.18.5
@@ -155,6 +154,7 @@ kernel-5.18.6
 
 ##### 20220627
 kernel-5.18.7
+</details>
 
 ##### 20220630
 kernel-5.18.8

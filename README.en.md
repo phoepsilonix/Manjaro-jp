@@ -146,7 +146,6 @@ Included manjaro-jp repository in pacman.conf.
 ##### 20220614
 Bug fixes in the installer.
 Changed editor from gedit to gnome-text-editor in GNOME version.
-</details>
 
 ##### 20220619
 kernel-5.18.5
@@ -157,6 +156,7 @@ Switched from audio-related manjaro-pulse to manjaro-pipewire.
 
 ##### 20220627
 kernel-5.18.7
+</details>
 
 ##### 20220630
 kernel-5.18.8
