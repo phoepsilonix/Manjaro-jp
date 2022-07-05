@@ -165,6 +165,10 @@ nvidia-utils 515.57
 ##### 20220703
 kernel-5.18.9
 
+##### 20220705
+cups-browsed enabled.
+
+
 ---
 Addendum for your reference.
 If you have a PC with Linux installed, you can use an unofficial (no official support) dual boot environment with ChromeOS. If you have a PC with Linux installed, you can create a dual-boot environment with ChromeOS, which is unofficial (no official support). This is for those who have some knowledge.

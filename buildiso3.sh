@@ -40,16 +40,16 @@ editions=(
 #cp -r iso-profiles-orig/* $pkgdir
 
 # add Japanese pkgs and vivaldi
-#for edition in "${editions[@]}"
-#do
-#	data=(${edition[@]})
-#	path=${data[0]}/${data[1]}
-#	#cat $pkgs >> $pkgdir/$edition[0]/$edition[1]/$pkg1
-#	# Desktopパッケージに加える。ライブは不要みたい。
-#	cat $pkgs >> $pkgdir/$path/$pkg2
- #       # Packages-Rootに追加
-#	cat $pkgs2 >> $pkgdir/$path/$pkg3
-#done
+for edition in "${editions[@]}"
+do
+	data=(${edition[@]})
+	path=${data[0]}/${data[1]}
+	#cat $pkgs >> $pkgdir/$edition[0]/$edition[1]/$pkg1
+	# Desktopパッケージに加える。ライブは不要みたい。
+	cat $pkgs >> $pkgdir/$path/$pkg2
+        # Packages-Rootに追加
+	cat $pkgs2 >> $pkgdir/$path/$pkg3
+done
 
 # buildiso prepare image
 echo "build image"
@@ -59,7 +59,7 @@ do
 	ed=${data[1]}
         echo "build pre-image"
         echo "buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build"
-        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso 
+#        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso 
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build
         echo "build iso"
         echo "buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build"
