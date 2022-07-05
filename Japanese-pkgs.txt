@@ -65,3 +65,6 @@ wireplumber
 wireplumber-docs
 pipewire-v4l2
 pipewire-jack
+
+#network printer and usb
+ipp-usb
