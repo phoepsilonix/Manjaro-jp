@@ -22,11 +22,19 @@ ls -1 *.iso *.sig > ~/.cache/mytmp1
 cat SHA256SUMS | awk '{print $2}' > ~/.cache/mytmp2
 files=($(diff -u ~/.cache/mytmp2 ~/.cache/mytmp1 | tail +4))
 rm ~/.cache/mytmp1 ~/.cache/mytmp2
+
+files=(${files[@]/#@@})
+files=(${files[@]/#[+-][0-9]*})
 files=(${files[@]/#manjaro*})
+for f in ${files[@]}
+do
+        echo $f
+done
 
 file=(${files[@]/#+*})
 for f in ${file[@]}
 do
+        echo ${f:1}
         sed -i -e "/${f:1}/d" SHA256SUMS
 done
 
