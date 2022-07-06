@@ -26,10 +26,12 @@ rm ~/.cache/mytmp1 ~/.cache/mytmp2
 files=(${files[@]/#@@})
 files=(${files[@]/#[+-][0-9]*})
 files=(${files[@]/#manjaro*})
-for f in ${files[@]}
-do
-        echo $f
-done
+
+# check
+#for f in ${files[@]}
+#do
+#        echo $f
+#done
 
 file=(${files[@]/#+*})
 for f in ${file[@]}
