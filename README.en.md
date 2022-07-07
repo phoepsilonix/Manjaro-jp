@@ -165,8 +165,9 @@ nvidia-utils 515.57
 ##### 20220703
 kernel-5.18.9
 
-##### 20220705
+##### 20220706
 cups-browsed enabled.
+The ipp-usb package has been added.
 
 
 ---
