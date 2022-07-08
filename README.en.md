@@ -169,6 +169,9 @@ kernel-5.18.9
 cups-browsed enabled.
 The ipp-usb package has been added.
 
+##### 20220709
+kernel-5.18.10
+
 
 ---
 Addendum for your reference.
