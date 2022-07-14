@@ -61,8 +61,10 @@ systemd-swap
 
 #audio
 manjaro-pipewire
-wireplumber
-wireplumber-docs
+pipewire-media-session
+pipewire-media-session-docs
+#wireplumber
+#wireplumber-docs
 pipewire-v4l2
 pipewire-jack
 
