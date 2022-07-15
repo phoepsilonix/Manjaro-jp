@@ -23,7 +23,11 @@ done
 
 # レポジトリデータベースの更新
 #rm $repo.db.* $repo.files.*
-repo-add $repo.db.tar.xz --sign --key $repo_key ./*.zst 
+
+# バージョンでsortしておく。repo-addは、あとから追加されたものが優先されるため。
+pkgfiles=$(ls -v ./*.zst)
+
+repo-add $repo.db.tar.xz -n --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -R --sign --key $repo_key ./*.zst 
 #repo-add $repo.db.tar.xz -n -R --sign --key $repo_key ./*.zst
 
