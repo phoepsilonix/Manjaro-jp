@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo pacman -Sy nginx-quic nginx-mod-brotli git-lfs base-devel neovim clang lld llvm aria2 manjaro-tools-iso-git --needed
+sudo pacman -Sy nginx-quic nginx-mod-brotli git-lfs base-devel neovim clang lld llvm aria2 manjaro-tools-iso-git rsync sox --needed
 
 mkdir -p ~/gitlab
 cd ~/gitlab
@@ -11,7 +11,7 @@ sudo cp makepkg.conf /etc/
 cp makepkg.conf ~/.makepkg.conf
 
 usb=/run/media/phoepsilonix/Ventoy
-[[-e $usb/ ]] && rsync -av $usb/artifacts/ ./artifacts/
+[[ -e $usb/ ]] && rsync -av $usb/artifacts/ ./artifacts/
 
 sudo cp nginx.conf /etc/nginx/
 sync
