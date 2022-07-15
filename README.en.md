@@ -172,6 +172,9 @@ The ipp-usb package has been added.
 ##### 20220709
 kernel-5.18.10
 
+##### 20220714
+kernel-5.18.11
+
 
 ---
 Addendum for your reference.

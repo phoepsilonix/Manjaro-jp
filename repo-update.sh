@@ -23,7 +23,8 @@ done
 
 # レポジトリデータベースの更新
 #rm $repo.db.* $repo.files.*
-repo-add $repo.db.tar.xz -R --sign --key $repo_key ./*.zst 
+repo-add $repo.db.tar.xz --sign --key $repo_key ./*.zst 
+#repo-add $repo.db.tar.xz -R --sign --key $repo_key ./*.zst 
 #repo-add $repo.db.tar.xz -n -R --sign --key $repo_key ./*.zst
 
 # レポジトリデータベースの署名の検証
