@@ -50,8 +50,9 @@ rsync -aLv --size-only --no-perms --progress --delete ./*.zst phoepsilonix@stora
 #rsync -rLtgoDv --no-perms --progress --delete ./*.sig ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 #rsync -rLtgoDv --size-only --no-perms --progress --delete ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 
+#sourceforge コロンがファイル名に含まれるとエラーになる。
 #rsync -aLvn --delete ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/manjaro-jp || { echo "SF rsync error" ; exit 1 ; }
-rsync -aLv -c --progress --delete ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/manjaro-jp || { echo "SF rsync error" ; exit 1 ; }
+#rsync -aLv -c --progress --delete ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/manjaro-jp || { echo "SF rsync error" ; exit 1 ; }
 
 exit 0;
 
