@@ -2,6 +2,7 @@
 
 # 保存先フォルダ
 artifacts=`pwd`/artifacts
+repo_key=$(cat ~/.gnupg/sign.txt)
 
 # GPG署名、SHA256SUMS、torrent
 cd $artifacts
@@ -11,7 +12,7 @@ echo "gpg sign"
 # gpg署名
 for f in *.iso
 do
-	[[ ! -e $f.sig ]] && gpg -b $f
+	[[ ! -e $f.sig ]] &&  { echo "gpg sign: $f" ; gpg --default-key $repo_key -v -b $f; }
 done
 
 echo "sha256sums"
