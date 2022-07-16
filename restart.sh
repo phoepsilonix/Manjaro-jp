@@ -6,6 +6,7 @@ mkdir -p ~/gitlab
 cd ~/gitlab
 [[ ! -e Manjaro-jp ]] && git clone git@gitlab.com:phoepsilonix/Manjaro-jp.git
 cd ~/gitlab/Manjaro-jp
+git submodule --init
 
 sudo cp makepkg.conf /etc/
 cp makepkg.conf ~/.makepkg.conf
