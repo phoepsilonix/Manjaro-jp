@@ -168,6 +168,7 @@ gnome-tweaks
 >extra gnome-shell-extension-gsconnect
 >extra gnome-shell-extension-material-shell
 >extra gnome-shell-extension-x11gestures
+>extra gnome-shell-extension-legacy-theme-auto-switcher
 
 ## Themes
 #adwaita-maia
