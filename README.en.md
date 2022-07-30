@@ -181,6 +181,9 @@ kernel-5.18.12
 ##### 20220725
 kernel-5.18.14
 
+##### 20220731
+kernel-5.18.15
+
 
 ---
 Addendum for your reference.
