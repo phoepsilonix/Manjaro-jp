@@ -3,6 +3,7 @@
 # 保存先フォルダ
 artifacts=`pwd`/artifacts
 repo_key=$(cat ~/.gnupg/sign.txt)
+usb=/run/media/phoepsilonix/Ventoy
 
 # GPG署名、SHA256SUMS、torrent
 cd $artifacts
@@ -49,6 +50,7 @@ do
 done
 
 sort -k2 -u SHA256SUMS > tmp && mv tmp SHA256SUMS
+cp SHA256SUMS $usb/artifacts
 
 echo "torrent"
 # torrentファイル作成
