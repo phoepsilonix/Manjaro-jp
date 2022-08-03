@@ -6,7 +6,12 @@ cd r8168
 git diff | patch -R -i -
 cd ../tp_smapi
 git diff | patch -R -i -
+cd ../broadcom-wl
+git diff | patch -R -i -
+cd ../virtualbox-modules
+git diff | patch -R -i -
 cd ..
+
 
 for m in $(cat ../extramodules.txt)
 do
@@ -26,5 +31,9 @@ patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/r8168-extramodules.patch
 cd ../tp_smapi
 rm tp_smapi-clang.patch
 patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/tp_smapi-build-with-clang.patch
+cd ../broadcom-wl
+patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/broadcom-wl-extramodules.patch
+cd ../virtualbox-modules
+patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/virtualbox--extramodules.patch
 
 exit 0
