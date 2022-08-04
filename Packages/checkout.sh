@@ -32,8 +32,8 @@ cd ../tp_smapi
 rm tp_smapi-clang.patch
 patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/tp_smapi-build-with-clang.patch
 cd ../broadcom-wl
-patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/broadcom-wl-extramodules.patch
+patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/broadcom-wl-extramodule.patch
 cd ../virtualbox-modules
-patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/virtualbox--extramodules.patch
+patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/virtualbox-extramodule.patch
 
 exit 0
