@@ -156,7 +156,6 @@ Switched from audio-related manjaro-pulse to manjaro-pipewire.
 
 ##### 20220627
 kernel-5.18.7
-</details>
 
 ##### 20220630
 kernel-5.18.8
@@ -183,6 +182,11 @@ kernel-5.18.14
 
 ##### 20220731
 kernel-5.18.15
+</details>
+
+##### 20220805
+kernel-5.18.16
+nvidia-utils 515.65
 
 
 ---
