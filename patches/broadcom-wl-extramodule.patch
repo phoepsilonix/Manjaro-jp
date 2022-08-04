@@ -1,0 +1,13 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index a29b1f3..4a8ee1d 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -35,7 +35,7 @@ build() {
+ 
+   msg2 "$CFLAGS, ${CXXFLAGS}"
+ 
+-  fakeroot dkms build --dkmstree "$srcdir" -m "broadcom-wl/$pkgver" -k "$_kernver"
++  sudo -u phoepsilonix dkms build --dkmstree "$srcdir" -m "broadcom-wl/$pkgver" -k "$_kernver"
+ }
+ 
+ package(){
