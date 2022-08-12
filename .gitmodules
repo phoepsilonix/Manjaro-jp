@@ -160,9 +160,6 @@
 [submodule "Packages/linux518-extramodules/vhba-module"]
 	path = Packages/linux518-extramodules/vhba-module
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/vhba-module
-[submodule "Packages/linux518-extramodules/virtualbox-modules"]
-	path = Packages/linux518-extramodules/virtualbox-modules
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/virtualbox-modules
 [submodule "Packages/linux518-extramodules/zfs"]
 	path = Packages/linux518-extramodules/zfs
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/zfs
@@ -217,3 +214,6 @@
 [submodule "Packages/nvidia-390xx"]
 	path = Packages/nvidia-390xx
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/nvidia-390xx
+[submodule "Packages/linux518-extramodules/virtualbox-modules"]
+	path = Packages/linux518-extramodules/virtualbox-modules
+	url = ssh://gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/virtualbox-modules
