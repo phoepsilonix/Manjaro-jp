@@ -61,9 +61,6 @@
 [submodule "Packages/linux517-broadcom-wl"]
 	path = Packages/linux517-extramodules/broadcom-wl
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/broadcom-wl.git
-[submodule "Packages/linux518-virtualbox-modules"]
-	path = Packages/linux518-extramodules/virtualbox-modules
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/virtualbox-modules
 [submodule "Packages/linux517-nvidia-390xx"]
 	path = Packages/linux517-extramodules/nvidia-390xx
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/nvidia-390xx
@@ -216,7 +213,7 @@
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/nvidia-390xx
 [submodule "Packages/linux518-extramodules/virtualbox-modules"]
 	path = Packages/linux518-extramodules/virtualbox-modules
-	url = ssh://gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/virtualbox-modules
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/virtualbox-modules
 [submodule "Packages/linux519-extramodules/acpi_call"]
 	path = Packages/linux519-extramodules/acpi_call
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux519-extramodules/acpi_call.git
