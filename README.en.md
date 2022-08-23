@@ -191,6 +191,12 @@ nvidia-utils 515.65
 ##### 20220812
 kernel-5.18.17
 
+##### 20220819
+kernel-5.18.18
+
+##### 20220823
+kernel-5.18.19
+
 
 ---
 Addendum for your reference.
