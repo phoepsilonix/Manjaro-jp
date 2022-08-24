@@ -8,7 +8,7 @@ usb=/run/media/phoepsilonix/Ventoy
 gkey="-g $(cat ~/.gnupg/sign.txt)"
 #gkey=""
 
-kernel=linux518
+kernel=linux519
 
 # 保存先フォルダ
 artifacts=`pwd`/artifacts
