@@ -1,21 +1,25 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 0b35e14..34cf055 100644
+index 2bfceb5..0793bec 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -18,18 +18,20 @@ depends=('illyria-wallpaper'
-          'matcha-gtk-theme'
-          'noto-fonts'
-          'papirus-maia-icon-theme'
--         'qt5-styleplugins'
-          'qt5ct'
-          'xcape'
+@@ -5,8 +5,8 @@
+ pkgbase=manjaro-xfce-settings
+ pkgname=('manjaro-xfce-settings'
+          'manjaro-xfce-minimal-settings')
+-pkgver=20220616
+-pkgrel=2
++pkgver=20220827
++pkgrel=1
+ pkgdesc="Manjaro Linux Xfce settings"
+ arch=('any')
+ url="https://gitlab.manjaro.org/profiles-and-settings/manjaro-xfce-settings"
+@@ -23,12 +23,14 @@ depends=('illyria-wallpaper'
           'xcursor-breeze')
  makedepends=('git')
  source=("$pkgbase::git+$url.git" 'manjaro-xfce-settings.hook' 'mxs-bgd-sym'
 -        'xfce-pbw.sh' 'xfce-panel-workaround.desktop')
 +        'xfce-pbw.sh' 'xfce-panel-workaround.desktop'
 +        '001-vivaldi.patch')
-+
  sha256sums=('SKIP'
              'b18b45c0b88a4e282aa7f75caa5ab245443beba5de004042df3cf7361c1e4a2e'
              '03770c4735b588bdee49f7e1e5d73d8500524d875603c473bdf0f4ffb862c152'
@@ -26,7 +30,7 @@ index 0b35e14..34cf055 100644
  
  pkgver() {
  	date +%Y%m%d
-@@ -80,3 +82,15 @@ package_manjaro-xfce-minimal-settings() {
+@@ -79,3 +81,15 @@ package_manjaro-xfce-minimal-settings() {
  	install -Dm755 "${srcdir}/xfce-pbw.sh" "${pkgdir}/etc/skel/.config/autostart/xfce-pbw.sh"
  	install -Dm755 "${srcdir}/xfce-panel-workaround.desktop" "${pkgdir}/etc/skel/.config/autostart/xfce-panel-workaround.desktop"
  }

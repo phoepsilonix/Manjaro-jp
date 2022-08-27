@@ -1,5 +1,5 @@
 diff --git a/manjaro-gnome-settings/PKGBUILD b/manjaro-gnome-settings/PKGBUILD
-index bb18e26..db0d6e7 100644
+index ed16f1e..6cc7c6a 100644
 --- a/manjaro-gnome-settings/PKGBUILD
 +++ b/manjaro-gnome-settings/PKGBUILD
 @@ -14,6 +14,7 @@ source=("git+$url.git"
@@ -16,7 +16,7 @@ index bb18e26..db0d6e7 100644
              '37c9338b05824d0371f09fa3f19df13902c436367d4bf01d55ebeae4a4966060'
 -            '9696a9efdb9c36c99f00eae025405657cbb036cee2b18c7d2039598e8f57e05c')
 +            '9696a9efdb9c36c99f00eae025405657cbb036cee2b18c7d2039598e8f57e05c'
-+            'e05f269665144366ad76a9be4fd188399658a15c77074788b7ae609c2a0f5b0e')
++            '75fed49601bf1efe76a5e9dc901339054f86e8ada491ee49f1623f6664f67973')
  
  pkgver() {
  	date +%Y%m%d
