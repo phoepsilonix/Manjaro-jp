@@ -2,8 +2,7 @@
 
 ## Japanese language support for [Manjaro Linux](https://manjaro.org/)
 　Supports Japanese input and display by default, including live environment.
-[kernel-5.18 series](https://kernel.org/).
-5.17.15 (EOL) will also be built and distributed at OSDN.
+[kernel-5.19 series](https://kernel.org/).
 
 GNOME, KDE, and Xfce will be available for official use.
 The distribution files are ISO and some package files.
@@ -182,7 +181,6 @@ kernel-5.18.14
 
 ##### 20220731
 kernel-5.18.15
-</details>
 
 ##### 20220805
 kernel-5.18.16
@@ -196,6 +194,10 @@ kernel-5.18.18
 
 ##### 20220823
 kernel-5.18.19
+</details>
+
+##### 20220827
+kernel-5.19.4
 
 
 ---

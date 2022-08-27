@@ -2,8 +2,7 @@
 
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。
-[kernel-5.18系](https://kernel.org/)。
-5.17.15(EOL)もビルドは行い、OSDNにて配布します。
+[kernel-5.19系](https://kernel.org/)。
 
 公式に合わせて、GNOME、KDE、Xfceの３種類を用意する予定です。
 配布ファイルはISOと一部パッケージファイルです。
@@ -180,7 +179,6 @@ kernel-5.18.14
 
 ##### 20220731
 kernel-5.18.15
-</details>
 
 ##### 20220805
 kernel-5.18.16
@@ -194,6 +192,10 @@ kernel-5.18.18
 
 ##### 20220823
 kernel-5.18.19
+</details>
+
+##### 20220827
+kernel-5.19.4
 
 
 ---
