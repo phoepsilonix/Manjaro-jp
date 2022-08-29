@@ -1,0 +1,30 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 2c5ab56..061cab1 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -81,9 +81,13 @@ prepare() {
+   for src in "${source[@]}"; do
+       src="${src%%::*}"
+       src="${src##*/}"
+-      [[ $src = *.patch ]] || continue
+-      msg2 "Applying patch: $src..."
+-      patch -Np1 < "../$src"
++      if [[ $src =~ .*\.patch ]]; then
++              msg2 "Applying patch: $src..."
++              patch -Np1 < "../$src"
++      elif [[ $src =~ .*\.gitpatch ]]; then
++              msg2 "Applying gitpatch: $src..."
++              git --git-dir= apply -p1 --stat --apply "../$src"
++      fi
+   done
+ 
+   msg2 "add config"
+@@ -104,6 +108,8 @@ prepare() {
+   msg "get kernel version"
+   make prepare
+ 
++  make menuconfig
++
+   msg "rewrite configuration"
+   yes "" | make config >/dev/null
+ }
