@@ -6,10 +6,10 @@ cd r8168
 git diff | patch -R -i -
 cd ../tp_smapi
 git diff | patch -R -i -
-cd ../broadcom-wl
-git diff | patch -R -i -
-cd ../virtualbox-modules
-git diff | patch -R -i -
+#cd ../broadcom-wl
+#git diff | patch -R -i -
+#cd ../virtualbox-modules
+#git diff | patch -R -i -
 cd ..
 
 
@@ -32,9 +32,9 @@ updpkgsums
 cd ../tp_smapi
 rm tp_smapi-clang.patch
 patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/tp_smapi-build-with-clang.patch
-cd ../broadcom-wl
-patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/broadcom-wl-extramodule.patch
-cd ../virtualbox-modules
-patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/virtualbox-extramodule.patch
+#cd ../broadcom-wl
+#patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/broadcom-wl-extramodule.patch
+#cd ../virtualbox-modules
+#patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/virtualbox-extramodule.patch
 
 exit 0

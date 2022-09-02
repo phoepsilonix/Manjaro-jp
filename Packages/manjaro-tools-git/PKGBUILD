@@ -3,7 +3,7 @@
 # Maintainer: Frede Hundewadt <fhatmanjarorg>
 
 _pkgbase=manjaro-tools
-_ver=0.15.13dev
+_ver=0.15.15dev
 #_branch=stable-0.15.x
 _branch=master
 
@@ -12,8 +12,8 @@ pkgname=('manjaro-tools-base-git'
         'manjaro-tools-pkg-git'
         'manjaro-tools-iso-git'
         'manjaro-tools-yaml-git')
-pkgver=r2996.d3ab091
-pkgrel=2
+pkgver=r3000.caf6064
+pkgrel=1
 arch=('x86_64')
 pkgdesc='Development tools for Manjaro Linux'
 license=('GPL')
