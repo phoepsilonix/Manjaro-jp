@@ -50,6 +50,7 @@ sudo update-grub
 ---|---  
 [<img src="http://sourceforge.net/sflogo.php?group_id=66882&type=5" width="180">](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
 [<img src="https://s0.teraboxcdn.com/fe-opera-static/node-static-v4/fe-webv4-main/img/logo.4e10d647.png" width="180">](https://terabox.com/s/19YM2KYCFY1sPaIXz_W-i-A) | [Manjaro-Linux-jp at Terabox](https://terabox.com/s/19YM2KYCFY1sPaIXz_W-i-A)  
+[]() | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/5eMXlJaY#Dzp2PKdRgj0A6IQJsDv1Ew)
 
 貴重な、ストレージをありがとうございます。
 上記、３箇所にて配布しています。
@@ -199,6 +200,9 @@ kernel-5.19.4
 
 ##### 20220902
 kernel-5.19.6
+
+##### 20220907
+kernel-5.19.7
 
 
 ---
