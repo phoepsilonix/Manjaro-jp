@@ -234,6 +234,6 @@ Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
 [revolut](https://revolut.me/phoepsilonix)
 [paypal](https://paypal.me/phoepsilonix)
 Bitcoin
-1F9BNxvoBfxYm4E1PqF6J9FYqyCtLypdP
+15wwyVLTCtd1i4tuArwAcsCYPb2YBFH1CB
 Ethreum
 0x680932c238653da1d9d0950153c8a2b9d8f76a3e
