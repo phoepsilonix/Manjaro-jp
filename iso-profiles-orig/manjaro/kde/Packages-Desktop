@@ -26,16 +26,9 @@ gst-plugins-good
 gst-plugins-ugly
 libcanberra
 >multilib lib32-libcanberra
-#libcanberra-pulse
-#>multilib lib32-libcanberra-pulse
 libdvdcss
 manjaro-alsa
-#manjaro-pulse
 phonon-qt5-gstreamer
-#pulseaudio-bluetooth
-#pulseaudio-ctl
-#pulseaudio-zeroconf
-
 ## Btrfs
 grub-btrfs
 timeshift-autosnap-manjaro
@@ -180,7 +173,6 @@ unarchiver  # RAR format support
 ## Optional dependencies for dolphin
 kdegraphics-thumbnailers  # PDF and PS thumbnails
 ffmpegthumbs              # video thumbnails
-ruby                      # installing new service menus with GHNS
 
 ## Optional dependencies for gwenview
 kimageformats     # support for dds, xcf, exr, psd, and more image formats
@@ -206,14 +198,10 @@ poppler-data  # encoding data to display PDF documents containing CJK characters
 ## Applications
 >extra elisa
 dmidecode # for inxi -m output
-#firefox
 htop
 inxi
 #>extra krita
 #ms-office-online
-#>extra onlyoffice-desktopeditors
-#>extra freeoffice
-#>extra libreoffice-still
 manjaro-hello
 manjaro-application-utility
 manjaro-settings-manager-kcm
