@@ -2,9 +2,7 @@
 
 curdir=${PWD##*/}
 
-cd r8168
-git diff | patch -R -i -
-cd ../tp_smapi
+cd tp_smapi
 git diff | patch -R -i -
 cd ..
 
@@ -22,10 +20,7 @@ do
         cd ..;
 done
  
-cd r8168
-patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/r8168-extramodules.patch
-updpkgsums
-cd ../tp_smapi
+cd tp_smapi
 rm tp_smapi-clang.patch
 patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/tp_smapi-build-with-clang.patch
 
