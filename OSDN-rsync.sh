@@ -15,17 +15,17 @@ usb=/run/media/phoepsilonix/Ventoy
 
 # OSDNへアップデート
 echo "OSDN"
-rsync -rLtgoDvP --no-perms --progress --delete ./*.sig ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
-rsync -rLtgoDvP --no-perms --progress --delete ../*.sig ../*.md ../SHA256SUMS phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
+rsync -rLtgoDv --partaial --no-perms --progress --delete ./*.sig ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
+rsync -rLtgoDv --partaial --no-perms --progress --delete ../*.sig ../*.md ../SHA256SUMS phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
 
 # torrentファイルはisoのあとにアップロードさせる。
-rsync -rLtgoDvP --size-only --no-perms --delete --progress ../*.iso phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
-rsync -rLtgoDvP --no-perms --progress --delete ../*.torrent phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
+rsync -rLtgoDv --partaial --size-only --no-perms --delete --progress ../*.iso phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
+rsync -rLtgoDv --partaial --no-perms --progress --delete ../*.torrent phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
 
 # 残りをまともて高速チェックでアップロード
-rsync -rLtgoDvP --size-only --no-perms --delete --progress ../ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
-rsync -aLvP --no-perms --progress  ../README.md ../README.en.md ../README.ja.md phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/
-rsync -LtgoDvP --no-perms --progress ../../index.html ../../index.ja.html ../../index.en.html phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs
+rsync -rLtgoDv --partaial --size-only --no-perms --delete --progress ../ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
+rsync -aLv --partaial --no-perms --progress  ../README.md ../README.en.md ../README.ja.md phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/
+rsync -LtgoDv --partaial --no-perms --progress ../../index.html ../../index.ja.html ../../index.en.html phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs
 
 exit 0;
 
