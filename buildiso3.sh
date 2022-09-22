@@ -29,12 +29,6 @@ editions=(
 #	"community lxqt-kwin"
 )
 
-# 初期化
-#rm -rf $artifacts
-#mkdir -p $artifacts
-#rm -rf $pkgdir
-#mkdir -p $pkgdir
-
 # profiles.confを微修正
 # user-repos.confを追加したiso-profilesを用意する
 #cp -r iso-profiles-orig/* $pkgdir
@@ -59,12 +53,12 @@ do
 	data=(${edition[@]})
 	ed=${data[1]}
         echo "build pre-image"
-        echo "buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build"
-        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso 
+        echo "buildiso -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso"
+        buildiso -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build
-        echo "build iso"
-        echo "buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build"
-        buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso 
+#        echo "build iso"
+#        echo "buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build"
+#        buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso 
         #buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build
 done
 
