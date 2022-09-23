@@ -2,11 +2,11 @@
 
 curdir=${PWD##*/}
 
-cd r8168
-git diff | patch -R -i -
-cd ../tp_smapi
-git diff | patch -R -i -
-cd ..
+#cd r8168
+#git diff | patch -R -i -
+#cd ../tp_smapi
+#git diff | patch -R -i -
+#cd ..
 
 
 for m in $(cat ../extramodules.txt)
@@ -17,6 +17,7 @@ do
 
         # masterブランチをchekoutして、pullでリモートの最新版を取得する
         cd $m;
+        git diff --binary | patch -R -i -
         git checkout master;
         git pull origin master;
         cd ..;
