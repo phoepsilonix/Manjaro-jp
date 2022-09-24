@@ -67,6 +67,7 @@ pipewire-media-session-docs
 #wireplumber-docs
 pipewire-v4l2
 pipewire-jack
+pipewire-x11-bell
 
 #network printer and usb
 ipp-usb
