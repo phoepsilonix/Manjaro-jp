@@ -17,7 +17,7 @@ do
 
         # masterブランチをchekoutして、pullでリモートの最新版を取得する
         cd $m;
-        git diff --binary | git apply --check --stat --apply -R -
+        git diff --binary | git apply --check --stat --apply --allow-empty -R -
         git checkout master;
         git pull origin master;
         cd ..;
