@@ -1,5 +1,5 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 89658c7..951601d 100644
+index d8cfbc0..8cab15e 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -27,8 +27,16 @@ makedepends=('git' "$_linuxprefix-headers")
@@ -32,11 +32,11 @@ index 0000000..1ba5e58
 +--- a/tp_smapi.c
 ++++ b/tp_smapi.c
 +@@ -199,7 +199,7 @@ static int smapi_request(u32 inEBX, u32 inECX,
-+ 			 "=m"(tmpEDI),
-+ 			 "=m"(tmpESI)
-+ 			:"m"(inEBX), "m"(inECX), "m"(inEDI), "m"(inESI),
-+-			 "m"((u16)smapi_port)
-++			 "m"(smapi_port)
-+ 			:"%eax", "%ebx", "%ecx", "%edx", "%edi",
-+ 			 "%esi");
-+ 
++                       "=m"(tmpEDI),
++                        "=m"(tmpESI)
++                       :"m"(inEBX), "m"(inECX), "m"(inEDI), "m"(inESI),
++-                       "m"((u16)smapi_port)
+++                       "m"(smapi_port)
++                       :"%eax", "%ebx", "%ecx", "%edx", "%edi",
++                        "%esi");
++
