@@ -219,6 +219,9 @@ kernel-5.19.10
 kernel-5.19.11
 nvidia-utils 515.76
 
+##### 20221003
+kernel-5.19.12
+
 
 ---
 Addendum for your reference.
