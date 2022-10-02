@@ -1,5 +1,5 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index d8cfbc0..8cab15e 100644
+index 238161c..65ac8df 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -27,8 +27,16 @@ makedepends=('git' "$_linuxprefix-headers")
@@ -11,7 +11,7 @@ index d8cfbc0..8cab15e 100644
 +source=("git+https://github.com/evgeni/tp_smapi#commit=$_commit"
 +        'tp_smapi-clang.patch')
 +sha256sums=('SKIP'
-+            'c394a59bb8cd8fb76646ccc3698568759df844ae28b35c07b9e2cd3cf95c739f')
++            'cb5d682450af8ac8436e1645d4fdaa32382ae83cc03c03b0c2f878f78e017be5')
 +
 +prepare() {
 +  cd $_pkgname
@@ -23,7 +23,7 @@ index d8cfbc0..8cab15e 100644
    cd $_pkgname
 diff --git a/tp_smapi-clang.patch b/tp_smapi-clang.patch
 new file mode 100644
-index 0000000..1ba5e58
+index 0000000..fb37d7d
 --- /dev/null
 +++ b/tp_smapi-clang.patch
 @@ -0,0 +1,13 @@
@@ -31,12 +31,12 @@ index 0000000..1ba5e58
 +index 6346287..1e54da2 100644
 +--- a/tp_smapi.c
 ++++ b/tp_smapi.c
-+@@ -199,7 +199,7 @@ static int smapi_request(u32 inEBX, u32 inECX,
-+                       "=m"(tmpEDI),
-+                        "=m"(tmpESI)
-+                       :"m"(inEBX), "m"(inECX), "m"(inEDI), "m"(inESI),
-+-                       "m"((u16)smapi_port)
-++                       "m"(smapi_port)
-+                       :"%eax", "%ebx", "%ecx", "%edx", "%edi",
-+                        "%esi");
-+
++@@ -199,7 +199,7 @@
++ 			 "=m"(tmpEDI),
++ 			 "=m"(tmpESI)
++ 			:"m"(inEBX), "m"(inECX), "m"(inEDI), "m"(inESI),
++-			 "m"((u16)smapi_port)
+++			 "m"(smapi_port)
++ 			:"%eax", "%ebx", "%ecx", "%edx", "%edi",
++ 			 "%esi");
++ 
