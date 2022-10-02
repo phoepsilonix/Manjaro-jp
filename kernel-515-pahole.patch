@@ -1,0 +1,43 @@
+diff --git a/0501-pahole-skip_encoding_btf_enum64.patch b/0501-pahole-skip_encoding_btf_enum64.patch
+new file mode 100644
+index 0000000..ce91383
+--- /dev/null
++++ b/0501-pahole-skip_encoding_btf_enum64.patch
+@@ -0,0 +1,13 @@
++diff --git a/scripts/pahole-flags.sh b/scripts/pahole-flags.sh
++index 0d99ef17e4a5..d4f3d63cb434 100755
++--- a/scripts/pahole-flags.sh
+++++ b/scripts/pahole-flags.sh
++@@ -20,4 +20,8 @@  if [ "${pahole_ver}" -ge "122" ]; then
++ 	extra_paholeopt="${extra_paholeopt} -j"
++ fi
++ 
+++if [ "${pahole_ver}" -ge "124" ]; then
+++	extra_paholeopt="${extra_paholeopt} --skip_encoding_btf_enum64"
+++fi
+++
++ echo ${extra_paholeopt}
+diff --git a/PKGBUILD b/PKGBUILD
+index faec23e..caeb2f5 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -64,7 +64,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
+         '0410-bootsplash.patch'
+         '0411-bootsplash.patch'
+         '0412-bootsplash.patch'
+-        '0413-bootsplash.gitpatch')
++        '0413-bootsplash.gitpatch'
++        '0501-pahole-skip_encoding_btf_enum64.patch')
+ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
+             'f3350d8187d35ba2e915694ee700b83e072bb054381631999ee23e49227683ad'
+             '48d5c16526d70be9696b161714cf2c5ea51d31baa2b2ba2fbd4ac1cb56da8572'
+@@ -97,7 +98,8 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
+             'e9f22cbb542591087d2d66dc6dc912b1434330ba3cd13d2df741d869a2c31e89'
+             '27471eee564ca3149dd271b0817719b5565a9594dc4d884fe3dc51a5f03832bc'
+             '60e295601e4fb33d9bf65f198c54c7eb07c0d1e91e2ad1e0dd6cd6e142cb266d'
+-            '035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef')
++            '035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef'
++            '9dcafece9e0986d32b7961f3a0b86844ea271e249e9bd868d72d0fa1a019d79e')
+ 
+ prepare() {
+   cd "linux-${_basekernel}"
