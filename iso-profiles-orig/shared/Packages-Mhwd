@@ -12,7 +12,7 @@ KERNEL-rtl8723bu
 
 KERNEL-bbswitch
 KERNEL-broadcom-wl
-KERNEL-r8168
+#KERNEL-r8168
 KERNEL-zfs
 zfs-utils
 #KERNEL-rt3562sta
