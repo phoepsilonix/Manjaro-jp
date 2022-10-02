@@ -1,0 +1,15 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index f140935..0daccf2 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -36,6 +36,10 @@ build() {
+   msg2 "$CFLAGS, ${CXXFLAGS}"
+ 
+   fakeroot dkms build --dkmstree "$srcdir" -m "broadcom-wl/$pkgver" -k "$_kernver"
++  cd "$srcdir/$_pkgname/$pkgver/$_kernver/$CARCH/module"
++  zstd -d *.zst
++  /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key.pem /var/lib/dkms/signing_key.x509 *.ko
++  zstd -q -f -T0 -20 --ultra *.ko
+ }
+ 
+ package(){

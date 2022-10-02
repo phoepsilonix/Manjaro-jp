@@ -1,0 +1,15 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 4a833cc..1dbb79a 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -37,6 +37,10 @@ build() {
+                 --libexecdir=/usr/lib/zfs-${pkgver} --with-config=kernel \
+                 --with-linux=/usr/lib/modules/${_kernver}/build
+     make
++    for file in module/*/*.ko
++    do
++        /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key.pem /var/lib/dkms/signing_key.x509 $file
++    done
+ }
+ 
+ package(){

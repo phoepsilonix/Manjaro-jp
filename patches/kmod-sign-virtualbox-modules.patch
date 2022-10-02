@@ -1,0 +1,15 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 45a9396..bf28e8b 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -30,6 +30,10 @@ build() {
+   # build host modules
+   echo 'Host modules'
+   fakeroot dkms build --dkmstree "$srcdir" -m vboxhost/${pkgver}_OSE -k ${_kernver}
++  cd "$srcdir/vboxhost/$_pkgver/$_kernver/$CARCH/module"
++  zstd -d *.zst
++  /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key.pem /var/lib/dkms/signing_key.x509 *.ko
++  zstd -q -f -T0 -20 --ultra *.ko
+ }
+ 
+ package(){

@@ -1,0 +1,15 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index a7c999b..0973bd6 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -52,6 +52,10 @@ build() {
+ 
+     cd "${_pkg}"
+     make -C kernel SYSSRC=/usr/lib/modules/"${_kernver}/build" module
++    for file in kernel/*.ko
++    do
++        /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key.pem /var/lib/dkms/signing_key.x509 $file
++    done
+ }
+ 
+ package() {
