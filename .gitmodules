@@ -250,3 +250,39 @@
 [submodule "Packages/linux519-extramodules/zfs"]
 	path = Packages/linux519-extramodules/zfs
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux519-extramodules/zfs.git
+[submodule "Packages/linux60-extramodules/acpi_call"]
+	path = Packages/linux60-extramodules/acpi_call
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux60-extramodules/acpi_call
+[submodule "Packages/linux60-extramodules/bbswitch"]
+	path = Packages/linux60-extramodules/bbswitch
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux60-extramodules/bbswitch
+[submodule "Packages/linux60-extramodules/broadcom-wl"]
+	path = Packages/linux60-extramodules/broadcom-wl
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux60-extramodules/broadcom-wl
+[submodule "Packages/linux60-extramodules/nvidia"]
+	path = Packages/linux60-extramodules/nvidia
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux60-extramodules/nvidia
+[submodule "Packages/linux60-extramodules/nvidia-390xx"]
+	path = Packages/linux60-extramodules/nvidia-390xx
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux60-extramodules/nvidia-390xx
+[submodule "Packages/linux60-extramodules/nvidia-470xx"]
+	path = Packages/linux60-extramodules/nvidia-470xx
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux60-extramodules/nvidia-470xx
+[submodule "Packages/linux60-extramodules/r8168"]
+	path = Packages/linux60-extramodules/r8168
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux60-extramodules/r8168
+[submodule "Packages/linux60-extramodules/rtl8723bu"]
+	path = Packages/linux60-extramodules/rtl8723bu
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux60-extramodules/rtl8723bu
+[submodule "Packages/linux60-extramodules/tp_smapi"]
+	path = Packages/linux60-extramodules/tp_smapi
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux60-extramodules/tp_smapi
+[submodule "Packages/linux60-extramodules/vhba-module"]
+	path = Packages/linux60-extramodules/vhba-module
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux60-extramodules/vhba-module
+[submodule "Packages/linux60-extramodules/virtualbox-modules"]
+	path = Packages/linux60-extramodules/virtualbox-modules
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux60-extramodules/virtualbox-modules
+[submodule "Packages/linux60-extramodules/zfs"]
+	path = Packages/linux60-extramodules/zfs
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux60-extramodules/zfs
