@@ -1,5 +1,5 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 1b7ca90..c8c8203 100644
+index 644c5ec..5323f9d 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -22,7 +22,7 @@ groups=("$_linuxprefix-extramodules")
@@ -7,12 +7,12 @@ index 1b7ca90..c8c8203 100644
          'linux518.patch' 'linux519.patch')
  sha256sums=('76f9e7c26a8ade7b01dd34060f5b17d74387f15e9b6baa6dbba8c43634a31ce6'
 -            'd8d542770e504775600f686d03412a37cc32489872be7aeb388b5b08d9806096'
-+            'e7d9e20c3b82dbfd8c43ee71c039f0b98b25b57d7c1b17c88618dca629c59f00'
++            'c06cad41446ecd636c09e1a29c4e1434619d58e4932b6d166defcb3eb8fe6728'
              'f19c663f278096a93b2fc80222e208a54ab8677f6d7eeb9c15150c7c55ec2eff')
  
  install=$_pkgname.install
 diff --git a/linux518.patch b/linux518.patch
-index aa0dd86..ac30e4d 100644
+index aa0dd86..5f0ba2c 100644
 --- a/linux518.patch
 +++ b/linux518.patch
 @@ -1,7 +1,7 @@
