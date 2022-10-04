@@ -6,7 +6,7 @@ index d8cfbc0..8cab15e 100644
    # https://bugs.archlinux.org/task/54975 (kernel has no _GLOBAL_OFFSET_TABLE_):
    # Clear EXTRA_CFLAGS since it defaults to injecting CFLAGS and -fno-plt breaks the modules
    make HDAPS=1 KVER="$(</usr/lib/modules/${_extraver}/version)" EXTRA_CFLAGS=
-+  /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key.pem /var/lib/dkms/signing_key.x509 ${_pkgname}.ko
++  /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${kernver}.x509 ${_pkgname}.ko
  }
  
  package() {

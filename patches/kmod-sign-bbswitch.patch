@@ -6,7 +6,7 @@ index edf184a..3e6ce6e 100644
    cd ${_pkgname}-${pkgver}
    # KDIR is necessary even when cleaning
    make KDIR=/usr/lib/modules/${_kernver}/build
-+  /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key.pem /var/lib/dkms/signing_key.x509 ${_pkgname}.ko
++  /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${kernver}.x509 ${_pkgname}.ko
  }
  
  package() {

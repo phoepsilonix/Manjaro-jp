@@ -6,7 +6,7 @@ index 044224f..3f67ab6 100644
      # any kernel but the current.
      make clean
      make -C /usr/lib/modules/$_kernver/build M="$srcdir/$_pkgname-$_commit" modules
-+    /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key.pem /var/lib/dkms/signing_key.x509 ${_libname}.ko
++    /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${kernver}.x509 ${_libname}.ko
  }
  
  package() {

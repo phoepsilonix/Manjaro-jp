@@ -1,15 +1,19 @@
 #!/bin/sh
 
 curdir=${PWD##*/}
+exdir=$(cat /usr/lib/modules/${curdir}-MANJARO/version)
+exdir=/usr/lib/modules/${exdir}/build
+echo $exdir
+sudo chown -R phoepsilonix:phoepsilonix $exdir
 
 #cd r8168
 #git diff | patch -R -i -
 #cd ../tp_smapi
 #git diff | patch -R -i -
 #cd ..
-#cd tp_smapi
-#rm tp_smapi-clang.patch
-#cd ..
+cd tp_smapi
+rm tp_smapi-clang.patch
+cd ..
 
 for m in $(cat ../extramodules.txt)
 do

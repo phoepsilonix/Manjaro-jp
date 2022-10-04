@@ -8,7 +8,7 @@ index 4a833cc..1dbb79a 100644
      make
 +    for file in module/*/*.ko
 +    do
-+        /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key.pem /var/lib/dkms/signing_key.x509 $file
++        /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${kernver}.x509 $file
 +    done
  }
  
