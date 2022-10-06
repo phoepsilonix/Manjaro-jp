@@ -28,7 +28,8 @@ cache:
 manjaro:
   extends: .manjaro-test
   script:
-    - su builder -s /bin/bash;
+    - useradd phoepsilonix
+    - su phoepsilonix -s /bin/bash;
       cd $HOME;
       export set LLVM=1;
       export set LLVM_IAS=1;
