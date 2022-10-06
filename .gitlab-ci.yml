@@ -39,7 +39,7 @@ manjaro:
     - export set LD='ld.lld'
     - git clone --depth 1 --single-branch https://gitlab.com/phoepsilonix/Manjaro-jp/
     - cd Manjaro-jp/Packages/linux515
-    - sudo -u phoepsilonix makepkg -sCc --noconfirm --needed
+    - makepkg -sCc --noconfirm --needed
     - mkdir -p ~/binaries
     - 7z a -v100m ~/binaries/linux515.7z *.zst src/linux-5.15/certs/signing_key.*
   artifacts:
