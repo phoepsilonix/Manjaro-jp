@@ -24,6 +24,8 @@ cache:
     - pacman -Syu $PACMAN_OPTS
       base-devel git clang lld git-lfs openssh rsync lsb-release
     - pacman -Syu $PACMAN_OPTS
+    - useradd builder
+    - su builder
     - export set LLVM=1
     - export set LLVM_IAS=1
     - export set CC='clang'
