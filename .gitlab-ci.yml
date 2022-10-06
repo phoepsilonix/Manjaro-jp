@@ -10,7 +10,7 @@ cache:
     - /var/cache/pacman/pkg/
 
 .manjaro-test:
-  image: phoepsilonix/manjarolinux@sha256:f33bba9814b3ebe30616c961b87afc144710dbcc1066ec6f4c83ec23dc1bd719
+  image: manjarolinux@sha256:f33bba9814b3ebe30616c961b87afc144710dbcc1066ec6f4c83ec23dc1bd719
   before_script:
     - cp  $CI_PROJECT_DIR/makepkg.conf /etc/makepkg.conf
     - pacman-key --init 
@@ -24,6 +24,13 @@ cache:
     - pacman -Syu $PACMAN_OPTS
       base-devel git clang lld git-lfs openssh rsync lsb-release
     - pacman -Syu $PACMAN_OPTS
+    - export set LLVM=1
+    - export set LLVM_IAS=1
+    - export set CC='clang'
+    - export set CXX='clang++'
+    - export set HOSTCC='clang'
+    - export set HOSTCXX='clang++'
+    - export set LD='ld.lld'
 
 manjaro:
   extends: .manjaro-test
