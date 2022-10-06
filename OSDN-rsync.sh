@@ -1,31 +1,31 @@
 #!/bin/sh
 #set -eux
 
-repo_dir=./artifacts/manjaro-jp/
-cd $repo_dir;
+repo_dir=./artifacts/
 
 # localhostsのレポジトリを更新 
 echo "localhost"
-sudo rsync -av --delete ./ /root/manjaro-jp/ || { echo "rsync to local backup error" ; exit 1 ; }
+#sudo rsync -avz --delete $repo_dir/manjaro-jp/ /root/manjaro-jp/ || { echo "rsync to local backup error" ; exit 1 ; }
 
 # USBへバックアップ
 echo "usb"
 usb=/run/media/phoepsilonix/Ventoy
-#rsync -aLv ../../artifacts/ $usb/artifacts/
+#rsync -aLv $repo_dir/ $usb/artifacts/
 
 # OSDNへアップデート
 echo "OSDN"
-rsync -rLtgoDvP --no-perms --delete ./*.sig ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
-rsync -rLtgoDvP --no-perms --delete ../*.sig ../*.md ../SHA256SUMS phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
+rsync -ptgoLvP --no-perms --exclude=*.iso --exclude=*.torrent $repo_dir/ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
 
 # torrentファイルはisoのあとにアップロードさせる。
-rsync -rLtgoDvP --size-only --no-perms --delete ../*.iso phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
-rsync -rLtgoDvP --no-perms --delete ../*.torrent phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
+rsync -ptgoLvP --size-only --no-perms $repo_dir/*.iso phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
+rsync -ptgoLvP --no-perms $repo_dir/*.torrent phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
 
 # 残りをまともて高速チェックでアップロード
-rsync -rLtgoDvP --size-only --no-perms --delete ../ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
-rsync -rLtgoDvP --no-perms ../README.md ../README.en.md ../README.ja.md phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/
-rsync -rLtgoDvP --no-perms ../../index.html ../../index.ja.html ../../index.en.html phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs
+rsync -ptgoLvP --size-only $repo_dir/ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
+rsync -ptgoLvPz --no-perms $repo_dir/README.md $repo_dir/README.en.md $repo_dir/README.ja.md phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/
+rsync -ptgoLvPz --no-perms index.html index.ja.html index.en.html phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs
+
+# manjaro-jpはrepo-update.shで更新する。
 
 exit 0;
 
