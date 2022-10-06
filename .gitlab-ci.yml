@@ -36,5 +36,4 @@ manjaro:
 
 artifacts:
   paths:
-    - *.7z.00[0-9]
-  expire_in: 1 week
+    - ./*.7z.00[0-9]
