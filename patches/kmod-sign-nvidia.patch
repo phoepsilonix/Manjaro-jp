@@ -8,7 +8,7 @@ index b022c8d..8fa6339 100644
      make -C kernel SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 +    for file in kernel/*.ko
 +    do
-+        /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key.pem /var/lib/dkms/signing_key.x509 $file
++        /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $file
 +    done
  }
  

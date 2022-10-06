@@ -6,7 +6,7 @@ index 1b7ca90..c8c8203 100644
        M="$srcdir/$_pkgname-$pkgver/src" \
        EXTRA_CFLAGS="-DCONFIG_R8168_NAPI -DCONFIG_R8168_VLAN -DCONFIG_ASPM -DENABLE_S5WOL -DENABLE_EEE" \
        modules
-+    /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${kernver}.x509 ${_pkgname}.ko
++    /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 src/${_pkgname}.ko
  }
  
  package() {

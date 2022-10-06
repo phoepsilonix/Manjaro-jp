@@ -7,9 +7,9 @@ index f140935..0daccf2 100644
  
    fakeroot dkms build --dkmstree "$srcdir" -m "broadcom-wl/$pkgver" -k "$_kernver"
 +  cd "$srcdir/$_pkgname/$pkgver/$_kernver/$CARCH/module"
-+  zstd -d *.zst
-+  /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${kernver}.x509 *.ko
-+  zstd -q -f -T0 -20 --ultra *.ko
++  xz -d *.xz
++  /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 *.ko
++  xz -9 -e -T0 *.ko
  }
  
  package(){

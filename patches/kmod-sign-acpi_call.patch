@@ -6,7 +6,7 @@ index 7ed6961..53df7dd 100644
    _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
    cd "${_pkgname}-${pkgver}"
    make KVER="${_kernver}"
-+  /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${kernver}.x509 ${_pkgname}.ko
++  /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 ${_pkgname}.ko
  }
  
  package() {
