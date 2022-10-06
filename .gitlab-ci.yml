@@ -29,22 +29,22 @@ manjaro:
   extends: .manjaro-test
   script:
     - su builder -s /bin/bash
-    - cd $HOME
-    - export set LLVM=1
-    - export set LLVM_IAS=1
-    - export set CC='clang'
-    - export set CXX='clang++'
-    - export set HOSTCC='clang'
-    - export set HOSTCXX='clang++'
-    - export set LD='ld.lld'
-    - git clone --depth 1 --single-branch https://gitlab.com/phoepsilonix/Manjaro-jp/
-    - cd Manjaro-jp/Packages/linux515
-    - makepkg -sCc --noconfirm --needed
-    - mkdir -p ~/binaries
-    - 7z a -v100m ~/binaries/linux515.7z *.zst src/linux-5.15/certs/signing_key.*
+      cd $HOME
+      export set LLVM=1
+      export set LLVM_IAS=1
+      export set CC='clang'
+      export set CXX='clang++'
+      export set HOSTCC='clang'
+      export set HOSTCXX='clang++'
+      export set LD='ld.lld'
+      git clone --depth 1 --single-branch https://gitlab.com/phoepsilonix/Manjaro-jp/
+      cd Manjaro-jp/Packages/linux515
+      makepkg -sCc --noconfirm --needed
+      mkdir -p ~/binaries
+      7z a -v100m ~/binaries/linux515.7z *.zst src/linux-5.15/certs/signing_key.*
   artifacts:
     paths:
-       - ~/binaries/
+       - /home/builder/binaries/
     expire_in: 7 days
   timeout: 24 hours
 
