@@ -1,0 +1,40 @@
+variables:
+  MAKEFLAGS: "-j10"
+  VERBOSE: 1
+  PACMAN_OPTS: --needed --noconfirm
+
+cache:
+  key: pkgs-v1
+  paths:
+    # For some reason Gitlab CI only supports storing cache/artifacts in a path relative to the build directory
+    - /var/cache/pacman/pkg/
+
+.manjaro-test:
+  image: phoepsilonix/manjarolinux@sha256:f33bba9814b3ebe30616c961b87afc144710dbcc1066ec6f4c83ec23dc1bd719
+  before_script:
+    - cp  $CI_PROJECT_DIR/makepkg.conf /etc/makepkg.conf
+    - pacman-key --init 
+    - pacman-key --populate
+    - pacman-key --recv-keys "536487F1470D7187" --keyserver hkps://keyserver.ubuntu.com
+    - export GPG_TTY=$(tty)
+    - gpg -v --batch --import <(echo "$GPG_PRIVATE_KEY")
+    - pacman-key --import-trustdb ~/.gnupg/
+    - pacman-mirrors --geoip
+    - pacman -Sy
+    - pacman -Syu $PACMAN_OPTS
+      base-devel git clang lld git-lfs openssh rsync lsb-release
+    - pacman -Syu $PACMAN_OPTS
+
+manjaro:
+  extends: .manjaro-test
+  script:
+    - git clone --depth 1 --single-branch https://gitlab.com/phoepsilonix/Manjaro-jp/
+    - cd Manjaro-jp/Packages/linux515
+    - makepkg -sCc
+    - 7z a -v100m linux515.7z *.zst src/linux-5.15/certs/signing_key.*
+  timeout: 3hours
+
+artifacts:
+  paths:
+    - *.7z.00[0-9]
+  expire_in: 1 week
