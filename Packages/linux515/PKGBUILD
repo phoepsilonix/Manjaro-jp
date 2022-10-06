@@ -68,7 +68,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0501-pahole-skip_encoding_btf_enum64.patch')
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '47f56015c8e255d8ceb4ff2ada1a0215492365e73e2774c17a0246d31bc11d28'
-            '48d5c16526d70be9696b161714cf2c5ea51d31baa2b2ba2fbd4ac1cb56da8572'
+            '2e328771449818ee97b6d3f7c1b2bc2ae281923c37f0e9edf7a8a44640259a36'
             '986f8d802f37b72a54256f0ab84da83cb229388d58c0b6750f7c770818a18421'
             'e2823eff3355b7c88a3fa327ea2f84f23cbd36569e0a5f0f76599023f63a52ca'
             'ce53090a4572cd6162d22225113082f7e4df5028a1230529d170460e26dcf849'
