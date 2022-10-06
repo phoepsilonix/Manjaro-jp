@@ -46,3 +46,7 @@ manjaro:
   artifacts:
     paths:
        - ~/binaries/
+    expire_in: 7 days
+  timeout: 24 hours
+  
+      
