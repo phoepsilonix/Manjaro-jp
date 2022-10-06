@@ -24,7 +24,12 @@ cache:
     - pacman -Syu $PACMAN_OPTS
       base-devel git clang lld git-lfs openssh rsync lsb-release p7zip
     - pacman -Syu $PACMAN_OPTS
+
+manjaro:
+  extends: .manjaro-test
+  script:
     - su builder
+    - cd
     - export set LLVM=1
     - export set LLVM_IAS=1
     - export set CC='clang'
@@ -32,10 +37,6 @@ cache:
     - export set HOSTCC='clang'
     - export set HOSTCXX='clang++'
     - export set LD='ld.lld'
-
-manjaro:
-  extends: .manjaro-test
-  script:
     - git clone --depth 1 --single-branch https://gitlab.com/phoepsilonix/Manjaro-jp/
     - cd Manjaro-jp/Packages/linux515
     - makepkg -sCc --noconfirm --needed
