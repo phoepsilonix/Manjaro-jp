@@ -31,9 +31,8 @@ manjaro:
     - git clone --depth 1 --single-branch https://gitlab.com/phoepsilonix/Manjaro-jp/
     - cd Manjaro-jp/Packages/linux515
     - makepkg -sCc
-    - 7z a -v100m linux515.7z *.zst src/linux-5.15/certs/signing_key.*
-  timeout: 3hours
-
-artifacts:
-  paths:
-    - ./*.7z.00[0-9]
+    - mkdir -p ~/binaries
+    - 7z a -v100m ~/binaries/linux515.7z *.zst src/linux-5.15/certs/signing_key.*
+  artifacts:
+    paths:
+       - ~/binaries/
