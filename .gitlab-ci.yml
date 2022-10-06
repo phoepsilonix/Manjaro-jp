@@ -45,7 +45,7 @@ manjaro:
       7z a -v100m ~/binaries/linux515.7z *.zst src/linux-5.15/certs/signing_key.*;
   artifacts:
     paths:
-       - /home/builder/binaries/
+       - /home/phoepsilonix/binaries/
     expire_in: 7 days
   timeout: 24 hours
 
