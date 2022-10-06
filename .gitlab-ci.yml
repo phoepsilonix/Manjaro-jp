@@ -24,7 +24,7 @@ cache:
     - pacman -Syu $PACMAN_OPTS
       base-devel git clang lld git-lfs openssh rsync lsb-release p7zip
     - pacman -Syu $PACMAN_OPTS
-    - useradd -d /builds/{GITLAB_USER} -g users -M -N builder
+    # useradd -d /builds/{GITLAB_USER} -g users -M -N builder
     - chown -R builder:users ..
     - sudo -H -i -u builder sh -e -x umask 0077                                                                                                                               
 
