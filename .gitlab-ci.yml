@@ -10,7 +10,7 @@ cache:
     - /var/cache/pacman/pkg/
 
 .manjaro-test:
-  image: manjarolinux@sha256:f33bba9814b3ebe30616c961b87afc144710dbcc1066ec6f4c83ec23dc1bd719
+  image: manjarolinux/build@sha256:f33bba9814b3ebe30616c961b87afc144710dbcc1066ec6f4c83ec23dc1bd719
   before_script:
     - cp  $CI_PROJECT_DIR/makepkg.conf /etc/makepkg.conf
     - pacman-key --init 
