@@ -29,9 +29,8 @@ cache:
 manjaro:
   extends: .manjaro-test
   script:
-    - chown -R builder:users ..
-    - sudo -H -i -u builder bash -e -x
-    - umask 0077                                                                                                                               
+    - chown -R builder:users /root
+    - sudo -H -i -u builder
     - cd $HOME;
     - echo $HOME
     - umask
