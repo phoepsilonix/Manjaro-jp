@@ -25,22 +25,25 @@ cache:
       base-devel git clang lld git-lfs openssh rsync lsb-release p7zip
     - pacman -Syu $PACMAN_OPTS
     # useradd -d /builds/{GITLAB_USER} -g users -M -N builder
-    - chown -R builder:users ..
-    - sudo -H -i -u builder bash -e -x
-    - umask 0077                                                                                                                               
 
 manjaro:
   extends: .manjaro-test
   script:
-      cd $HOME;
-      export set LLVM=1;
-      export set LLVM_IAS=1;
-      export set CC='clang';
-      export set CXX='clang++';
-      export set HOSTCC='clang';
-      export set HOSTCXX='clang++';
-      export set LD='ld.lld';
-      sudo -u builder git clone --depth 1 --single-branch https://gitlab.com/phoepsilonix/Manjaro-jp/;
+    - chown -R builder:users ..
+    - sudo -H -i -u builder bash -e -x
+    - umask 0077                                                                                                                               
+    - cd $HOME;
+    - echo $HOME
+    - umask
+    - pwd
+    - export set LLVM=1;
+    - export set LLVM_IAS=1;
+    - export set CC='clang';
+    - export set CXX='clang++';
+    - export set HOSTCC='clang';
+    - export set HOSTCXX='clang++';
+    - export set LD='ld.lld';
+    - sudo -u builder git clone --depth 1 --single-branch https://gitlab.com/phoepsilonix/Manjaro-jp/;
       cd Manjaro-jp/Packages/linux515;
       sudo -u builder makepkg -sCc --noconfirm --needed;
       mkdir -p /binaries;
