@@ -35,18 +35,19 @@ manjaro:
     - echo $HOME
     - umask
     - pwd
-    - export set LLVM=1;
-    - export set LLVM_IAS=1;
-    - export set CC='clang';
-    - export set CXX='clang++';
-    - export set HOSTCC='clang';
-    - export set HOSTCXX='clang++';
-    - export set LD='ld.lld';
+    - sudo -u builder bash |
+      export set LLVM=1;
+      export set LLVM_IAS=1;
+      export set CC='clang';
+      export set CXX='clang++';
+      export set HOSTCC='clang';
+      export set HOSTCXX='clang++';
+      export set LD='ld.lld';
     - sudo -u builder git clone --depth 1 --single-branch https://gitlab.com/phoepsilonix/Manjaro-jp/;
-      cd Manjaro-jp/Packages/linux515;
-      sudo -u builder makepkg -sCc --noconfirm --needed;
-      mkdir -p /binaries;
-      7z a -v100m /binaries/linux515.7z *.zst src/linux-5.15/certs/signing_key.*;
+    - cd Manjaro-jp/Packages/linux515;
+    - sudo -u builder makepkg -sCc --noconfirm --needed;
+    - mkdir -p /binaries;
+    - 7z a -v100m /binaries/linux515.7z *.zst src/linux-5.15/certs/signing_key.*;
   artifacts:
     paths:
        - /binaries/
