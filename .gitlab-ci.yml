@@ -22,7 +22,8 @@ cache:
     - pacman-mirrors --geoip
     - pacman -Sy
     - pacman -Syu $PACMAN_OPTS
-      base-devel git clang lld git-lfs openssh rsync lsb-release p7zip
+      base-devel git clang llvm lld git-lfs openssh rsync lsb-release p7zip
+      docbook-xml libxslt bc cpio docbook-xsl inetutils pahole xmlto
     - pacman -Syu $PACMAN_OPTS
     # useradd -d /builds/{GITLAB_USER} -g users -M -N builder
 
