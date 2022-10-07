@@ -26,7 +26,8 @@ cache:
     - pacman -Syu $PACMAN_OPTS
     # useradd -d /builds/{GITLAB_USER} -g users -M -N builder
     - chown -R builder:users ..
-    - sudo -H -i -u builder sh -e -x umask 0077                                                                                                                               
+    - sudo -H -i -u builder bash -e -x
+    - umask 0077                                                                                                                               
 
 manjaro:
   extends: .manjaro-test
