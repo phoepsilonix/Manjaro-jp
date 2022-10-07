@@ -139,8 +139,6 @@ prepare() {
   msg "get kernel version"
   make prepare
 
-  make menuconfig
-
   msg "rewrite configuration"
   yes "" | make config >/dev/null
 }
