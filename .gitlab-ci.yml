@@ -13,6 +13,7 @@ cache:
   image: manjarolinux/build@sha256:f33bba9814b3ebe30616c961b87afc144710dbcc1066ec6f4c83ec23dc1bd719
   before_script:
     - cp  $CI_PROJECT_DIR/makepkg.conf /etc/makepkg.conf
+    - cp  $CI_PROJECT_DIR/pacman-manjaro-jp.conf /etc/pacman.conf
     - pacman-key --init 
     - pacman-key --populate
     - pacman-key --recv-keys "536487F1470D7187" --keyserver hkps://keyserver.ubuntu.com
@@ -31,11 +32,7 @@ manjaro:
   extends: .manjaro-test
   script:
     - chown -R builder:users /root
-    - sudo -H -i -u builder |
-      cd $HOME;
-      echo $HOME;
-    - umask
-    - pwd
+    - sudo -H -i -u builder && pwd && ls -l
     - sudo -u builder git clone --depth 1 --single-branch https://gitlab.com/phoepsilonix/Manjaro-jp/;
     - cd Manjaro-jp/Packages/linux515;
     - sudo -u builder LLVM=1 LLVM_IAS=1 CC='clang' CXX='clang++' HOSTCC='clang' HOSTCXX='clang++' LD='ld.lld' makepkg -sCc --noconfirm --needed;
