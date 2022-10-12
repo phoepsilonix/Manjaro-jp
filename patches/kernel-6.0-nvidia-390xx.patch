@@ -12,7 +12,7 @@ index d9b2eaf..e735b3a 100644
  sha256sums=('20a10d71b13e03924a26b822d80884d961a8e2c61564645049d727f7d5a814ec'
 -            'd1f6d83ea075eeadab2edb88108d166d70cea4a76d340877365cb2586e7beb0e')
 +            'd1f6d83ea075eeadab2edb88108d166d70cea4a76d340877365cb2586e7beb0e'
-+            'e323a4ddd8ce9e32060c63a9922a20a7b662b200d1ad4c0f08a79f7ad0b6051a')
++            '50673c848f9424aae32a5fedc8443dd1063aafd7642153db327b99a68d0cdea6')
  
  _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
  
