@@ -29,7 +29,7 @@ new file mode 100644
 index 0000000..fdfeabd
 --- /dev/null
 +++ b/kernel-6.0.patch
-@@ -0,0 +1,60 @@
+@@ -0,0 +1,43 @@
 +From 17bed78791d6f311c83ff1794d085b18c9f89730 Mon Sep 17 00:00:00 2001
 +From: Joan Bruguera <joanbrugueram@gmail.com>
 +Date: Wed, 3 Aug 2022 00:56:57 +0200
