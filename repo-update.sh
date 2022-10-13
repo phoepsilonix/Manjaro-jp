@@ -22,7 +22,7 @@ do
 done
 
 # レポジトリデータベースの更新
-rm $repo.db.* $repo.files.*
+#rm $repo.db.* $repo.files.*
 
 # バージョンでsortしておく。repo-addは、あとから追加されたものが優先されるため。
 pkgfiles=$(ls -v ./*.zst)

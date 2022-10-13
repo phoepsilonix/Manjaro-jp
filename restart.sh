@@ -1,6 +1,7 @@
 #!/bin/sh
 
-sudo pacman -Sy nginx-quic nginx-mod-brotli git-lfs base-devel neovim clang lld llvm aria2 manjaro-tools-iso-git rsync sox --needed
+sudo pacman -Sy nginx-quic nginx-quic-mod-brotli git-lfs base-devel neovim clang lld llvm aria2 manjaro-tools-iso-git rsync sox --needed
+sudo pacman -Sy --needed paru fuse-overlayfs
 
 mkdir -p ~/gitlab
 cd ~/gitlab
@@ -12,7 +13,7 @@ sudo cp makepkg.conf /etc/
 cp makepkg.conf ~/.makepkg.conf
 
 usb=/run/media/phoepsilonix/Ventoy
-[[ -e $usb/ ]] && rsync -av $usb/artifacts/ ./artifacts/
+[[ -e $usb/ ]] && rsync -avp $usb/artifacts/ ./artifacts/
 
 sudo cp nginx.conf /etc/nginx/
 sync
@@ -24,6 +25,13 @@ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh >
 # For example, we just use `~/.cache/dein` as installation directory
 sh ./installer.sh ~/.cache/dein
 rm installer.sh
+
+# iso-profiles buildiso
+mkdir -p ~/work
+cd work
+git clone https://gitlab.manjaro.org/profiles-and-settings/iso-profiles.git iso-profiles
+git clone ssh://git@gitlab.manjaro.org:22277/packages/core/linux519.git
+git clone ssh://git@gitlab.manjaro.org:22277/packages/core/linux515.git
 
 # end
 exit 0
