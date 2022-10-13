@@ -2,16 +2,16 @@ diff --git a/schemas/99_manjaro-settings.gschema.override b/schemas/99_manjaro-s
 index 3de523e..6b3d448 100644
 --- a/schemas/99_manjaro-settings.gschema.override
 +++ b/schemas/99_manjaro-settings.gschema.override
-@@ -40,7 +40,7 @@ tap-and-drag=true
+@@ -39,7 +39,7 @@
+ 
  [org.gnome.shell]
  always-show-log-out=true
- disable-extension-version-validation=true
 -favorite-apps=['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.gedit.desktop', 'gnome-terminal.desktop', 'org.manjaro.pamac.manager.desktop', 'calamares.desktop', 'manjaro-architect.desktop']
 +favorite-apps=['vivaldi-stable.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'gnome-terminal.desktop', 'org.manjaro.pamac.manager.desktop', 'calamares.desktop', 'manjaro-architect.desktop']
  enabled-extensions=['pamac-updates@manjaro.org', 'dash-to-dock@micxgx.gmail.com', 'appindicatorsupport@rgcjonas.gmail.com', 'gnome-ui-tune@itstime.tech', 'legacyschemeautoswitcher@joshimukul29.gmail.com', 'x11gestures@joseexposito.github.io']
  
  [org.gnome.Terminal.Legacy.Profile]
-@@ -61,13 +61,6 @@ default-zoom-level='small'
+@@ -60,13 +60,6 @@
  thumbnail-limit=1000
  show-create-link=true
  
