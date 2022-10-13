@@ -9,7 +9,7 @@ token=$(cat ~/.ssh/line-token)
 
 tail -f /dev/null $PID && \
         curl -X POST -H "Authorization: Bearer $token" -F message="$P done" https://notify-api.line.me/api/notify || \
-        curl -X POST -H "Authorization: Bearer $token" -F message='$P error" https://notify-api.line.me/api/notify
+        curl -X POST -H "Authorization: Bearer $token" -F message="$P error" https://notify-api.line.me/api/notify
 
 echo
 exit 0
