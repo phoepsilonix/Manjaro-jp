@@ -94,3 +94,18 @@ which
 wpa_supplicant
 xfsprogs
 
+## Network
+networkmanager
+>extra networkmanager-openconnect
+>extra networkmanager-openvpn
+>extra networkmanager-pptp
+>extra network-manager-sstp
+>extra networkmanager-strongswan
+>extra networkmanager-vpnc
+ntp
+>extra modemmanager                # optional for networkmanager
+usb_modeswitch                     # Optional for modemmanager
+openresolv                         # optional for networkmanager
+>extra openssh                     # optional for gnome-control-center
+>extra nss-mdns                    # optional for avahi; avahi required by gvfs
+
