@@ -8,7 +8,7 @@ usb=/run/media/phoepsilonix/Ventoy
 gkey="-g $(cat ~/.gnupg/sign.txt)"
 #gkey=""
 
-kernel=linux519
+kernel=linux60
 
 # 保存先フォルダ
 artifacts=`pwd`/artifacts
@@ -20,7 +20,7 @@ pkg3=Packages-Root
 
 # エディション指定
 editions=(
-        "manjaro gnome"
+        "manjaro architect"
 #	"manjaro kde"
 #	"manjaro xfce"
 #	"community cinnamon" 
@@ -62,15 +62,17 @@ do
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso 
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build
         echo "build iso"
-        echo "buildiso -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso"
-        buildiso -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
+        echo "buildiso -d xz -f -k $kernel -p $ed $gkey" 
+        buildiso -d xz -f -k $kernel -p $ed $gkey
+#        buildiso -x -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
+#        buildiso -zc -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
         #buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build
 done
 
 echo "Move iso files to Artifacts folder"
 #sudo chown -R phoepsilonix:phoepsilonix $usb/tmp/iso/
 sync
-find $usb/tmp/iso -type f -name "*.iso" | xargs -I{} mv {} $usb/artifacts/ && sync
+find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
 #rsync -avn $usb/artifacts/*.iso $artifacts/ && sync
 sync
 

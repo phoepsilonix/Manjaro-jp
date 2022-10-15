@@ -23,6 +23,7 @@ do
 
         # masterブランチをchekoutして、pullでリモートの最新版を取得する
         cd $m;
+        git switch -f master
         git diff --binary HEAD | git apply --check --stat --apply --allow-empty -R -
         git checkout master;
         git pull origin master;
