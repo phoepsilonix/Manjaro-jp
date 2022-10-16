@@ -227,6 +227,10 @@ kernel-5.19.14
 kernel-5.19.15
 nvidia-utils 520.56.06
 
+##### 20221016
+kernel-5.19.16
+nvidia-utils 520.56.06-2
+
 
 ---
 参考までに、追記。

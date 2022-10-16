@@ -227,7 +227,11 @@ kernel-5.19.14
 
 ##### 20221013
 kernel-5.19.15
-nvidia-utils 520.56.06
+nvidia-utils 520.56.06-1
+
+##### 20221016
+kernel-5.19.16
+nvidia-utils 520.56.06-2
 
 
 ---
