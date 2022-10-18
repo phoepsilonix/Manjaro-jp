@@ -1,0 +1,138 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index bd6b773..c18d136 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -25,11 +25,11 @@ _GRUB_EMU_BUILD="1"
+ 
+ pkgname=grub
+ pkgdesc="GNU GRand Unified Bootloader (2)"
+-_commit='2f4430cc0a44fd8c8aa7aee5c51887667ad3d6c3'
++_commit='1df05ac832e392c2b08286f11b3e01ad9ef1d3d2'
+ _unifont_ver='15.0.01'
+-_pkgver=2.06.r261.g2f4430cc0
++_pkgver=2.06.r341.g1df05ac83
+ pkgver=${_pkgver/-/}
+-pkgrel=3
++pkgrel=1
+ arch=('x86_64' 'i686' 'aarch64')
+ url='https://www.gnu.org/software/grub/'
+ license=('GPL3')
+@@ -88,9 +88,9 @@ sha256sums=('SKIP'
+             'SKIP'
+             '5dee6628c48eef79812bb9e86ee772068d85e7fcebbd2b2b8d1e19d24eda9dab'
+             '63c611189a60d68c6ae094f2ced91ac576b3921b7fd2e75a551c2dc6baefc35e'
+-            '40f23e1a36fd4f9821d63bdec0c4334aeb3ceddde15857a21c97c0002fd4900f'
++            'b2f81a9bf63ec4dd0d7b0dc48225acfd536b4087fabf82f373706d6a5d00eb36'
+             '20b2b6e7f501596b5cce6ffa05906980427f760c03d308d0e045cf2ecf47bb0e'
+-            'ddfda7c170fe386fa340440178096260ae72b5cbab23f2566634b7c54f812a07'
++            'b7d6b9a50e61b49f36e62f9a875930ae280f95e8c27baacc3ac10db8b19e6d78'
+             'a522514edb264374c8cce08998c5586ffc832091c5db1be7bf8b21078223e2a6'
+             '39d7843dfe1e10ead912a81be370813b8621794a7967b3cc5e4d4188b5bf7264'
+             '4cae03685c238a60169f1134165ff010faebddb5b3218d92d32e0b6729b27656'
+@@ -153,10 +153,11 @@ prepare() {
+ 	echo "Patch to export $PATH"
+ 	patch -Np1 -i "${srcdir}/grub-export-path.patch"
+ 
++
+ 	echo "Patch to include Manjaro Linux Modifications"
+ 	patch -Np1 -i "${srcdir}/grub-manjaro-modifications.patch"
+ 
+-	echo "fgrep is obsolescent using grep -F"
++	echo "Patch to fgrep is obsolescent using grep -F"
+ 	patch -Np1 -i "${srcdir}/fgrep-is-obsolescent-using-grep-F.patch"
+ 
+ 	echo "Add Ubuntu patches"
+diff --git a/fgrep-is-obsolescent-using-grep-F.patch b/fgrep-is-obsolescent-using-grep-F.patch
+index 8fff90c..b5c93f6 100644
+--- a/fgrep-is-obsolescent-using-grep-F.patch
++++ b/fgrep-is-obsolescent-using-grep-F.patch
+@@ -33,64 +33,3 @@ index c052638cd..84f3b26df 100644
+             tmp="$tmp $i"
+         fi
+      done
+-diff --git a/util/grub.d/10_hurd.in b/util/grub.d/10_hurd.in
+-index 2fafa4e59..b26c2567d 100644
+---- a/util/grub.d/10_hurd.in
+-+++ b/util/grub.d/10_hurd.in
+-@@ -222,7 +222,7 @@ while [ "x$kernels" != "x" ] ; do
+-   hurd_entry "$kernel" advanced
+-   hurd_entry "$kernel" recovery
+- 
+--  kernels=`echo $kernels | tr ' ' '\n' | fgrep -vx "$kernel" | tr '\n' ' '`
+-+  kernels=`echo $kernels | tr ' ' '\n' | grep -F -vx "$kernel" | tr '\n' ' '`
+- done
+- 
+- # If at least one kernel was found, then we need to
+-diff --git a/util/grub.d/10_kfreebsd.in b/util/grub.d/10_kfreebsd.in
+-index 199b20e16..0ed082f05 100644
+---- a/util/grub.d/10_kfreebsd.in
+-+++ b/util/grub.d/10_kfreebsd.in
+-@@ -239,7 +239,7 @@ while [ "x$list" != "x" ] ; do
+-     kfreebsd_entry "${OS}" "${version}" recovery "-s"
+-   fi
+- 
+--  list=`echo $list | tr ' ' '\n' | fgrep -vx "$kfreebsd" | tr '\n' ' '`
+-+  list=`echo $list | tr ' ' '\n' | grep -F -vx "$kfreebsd" | tr '\n' ' '`
+- done
+- 
+- # If at least one kernel was found, then we need to
+-diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+-index b4a4d6900..4b22eeadc 100644
+---- a/util/grub.d/10_linux.in
+-+++ b/util/grub.d/10_linux.in
+-@@ -296,7 +296,7 @@ while [ "x$list" != "x" ] ; do
+-                 "${GRUB_CMDLINE_LINUX_RECOVERY} ${GRUB_CMDLINE_LINUX}"
+-   fi
+- 
+--  list=`echo $list | tr ' ' '\n' | fgrep -vx "$linux" | tr '\n' ' '`
+-+  list=`echo $list | tr ' ' '\n' | grep -F -vx "$linux" | tr '\n' ' '`
+- done
+- 
+- # If at least one kernel was found, then we need to
+-diff --git a/util/grub.d/20_linux_xen.in b/util/grub.d/20_linux_xen.in
+-index 51a983926..d6e299b99 100644
+---- a/util/grub.d/20_linux_xen.in
+-+++ b/util/grub.d/20_linux_xen.in
+-@@ -352,12 +352,12 @@ while [ "x${xen_list}" != "x" ] ; do
+- 		"${GRUB_CMDLINE_LINUX_RECOVERY} ${GRUB_CMDLINE_LINUX}" "${GRUB_CMDLINE_XEN}"
+- 	fi
+- 
+--	list=`echo $list | tr ' ' '\n' | fgrep -vx "$linux" | tr '\n' ' '`
+-+	list=`echo $list | tr ' ' '\n' | grep -F -vx "$linux" | tr '\n' ' '`
+-     done
+-     if [ x"$is_top_level" != xtrue ]; then
+- 	echo '	}'
+-     fi
+--    xen_list=`echo $xen_list | tr ' ' '\n' | fgrep -vx "$current_xen" | tr '\n' ' '`
+-+    xen_list=`echo $xen_list | tr ' ' '\n' | grep -F -vx "$current_xen" | tr '\n' ' '`
+- done
+- 
+- # If at least one kernel was found, then we need to
+--- 
+-2.37.3
+-
+diff --git a/grub-manjaro-modifications.patch b/grub-manjaro-modifications.patch
+index 48cb0f5..5076b5e 100644
+--- a/grub-manjaro-modifications.patch
++++ b/grub-manjaro-modifications.patch
+@@ -26,20 +26,6 @@ index d3e879b8e..4a56a5958 100644
+  
+  if test "x${grub_cfg}" != "x"; then
+    rm -f "${grub_cfg}.new"
+-diff --git a/util/grub-mkconfig_lib.in b/util/grub-mkconfig_lib.in
+-index 301d1ac22..803dddb4e 100644
+---- a/util/grub-mkconfig_lib.in
+-+++ b/util/grub-mkconfig_lib.in
+-@@ -253,6 +253,9 @@ version_test_gt ()
+-     *.old:*.old) ;;
+-     *.old:*) version_test_gt_a="`echo "$version_test_gt_a" | sed -e 's/\.old$//'`" ; version_test_gt_cmp=gt ;;
+-     *:*.old) version_test_gt_b="`echo "$version_test_gt_b" | sed -e 's/\.old$//'`" ; version_test_gt_cmp=ge ;;
+-+    *-lts:*-lts) ;;
+-+    *-lts:*) version_test_gt_a="`echo "$version_test_gt_a" | sed -e 's/-lts$//'`" ; version_test_gt_cmp=gt ;;
+-+    *:*-lts) version_test_gt_b="`echo "$version_test_gt_b" | sed -e 's/-lts$//'`" ; version_test_gt_cmp=ge ;;
+-   esac
+-   version_test_numeric "$version_test_gt_a" "$version_test_gt_cmp" "$version_test_gt_b"
+-   return "$?"
+ diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+ index e8b01c0d0..c3dd34a59 100644
+ --- a/util/grub.d/10_linux.in
