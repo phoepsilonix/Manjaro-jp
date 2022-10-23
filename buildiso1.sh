@@ -20,7 +20,7 @@ pkg3=Packages-Root
 
 # エディション指定
 editions=(
-        "manjaro architect"
+        "manjaro gnome"
 #	"manjaro kde"
 #	"manjaro xfce"
 #	"community cinnamon" 

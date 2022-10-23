@@ -24,8 +24,8 @@ unicode-emoji
 # nodejs-emojione
 
 # browser
-vivaldi
-vivaldi-ffmpeg-codecs
+#vivaldi
+#vivaldi-ffmpeg-codecs
 
 # vivaldi option pkg
 libnotify
