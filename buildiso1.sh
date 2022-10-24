@@ -63,7 +63,7 @@ do
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build
         echo "build iso"
         echo "buildiso -d xz -f -k $kernel -p $ed $gkey" 
-        buildiso -d xz -f -k $kernel -p $ed $gkey
+        buildiso  -d xz -f -k $kernel -p $ed $gkey
 #        buildiso -x -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
 #        buildiso -zc -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
         #buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build
