@@ -30,11 +30,10 @@ Please disable Secure Boot in your BIOS settings.
 [![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 ---|---  
 [![SourceForge](http://sourceforge.net/sflogo.php?group_id=66882&type=5)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
-[Terabox](https://terabox.com/s/19YM2KYCFY1sPaIXz_W-i-A) | [Manjaro-Linux-jp at Terabox](https://terabox.com/s/19YM2KYCFY1sPaIXz_W-i-A)
 [![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
 
 Thank you for the valuable storage space.
-Distributed at the above 4 locations.
+Distributed at the above 3 locations.
 
 ---
 ### Memorandum
