@@ -2,7 +2,7 @@
 
 ## Japanese language support for [Manjaro Linux](https://manjaro.org/)
 　Supports Japanese input and display by default, including live environment.
-[kernel-5.19 series](https://kernel.org/).
+[kernel-6.0 series](https://kernel.org/).
 
 GNOME, KDE, and Xfce will be available for official use.
 The distribution files are ISO and some package files.
@@ -14,7 +14,7 @@ It is recommended to reformat the first partition with ext4 when installing Vent
 The Linux kernel is as up-to-date as possible.
 The kernel is built using clang.
 Japanese input (fcitx5-mozc) and Japanese fonts are installed as standard.
-Use [Vivaldi](https://vivaldi.com/) as the standard browser.
+Use [Floorp](https://floorp.ablaze.one/) as the standard browser.
 Standard installation of [libreoffice-fresh](https://www.libreoffice.org) as office software.
 
 ISOs for live environment & installation are available at the following distribution sites.
@@ -24,26 +24,6 @@ Please try it if you like.
 1. secure boot is not supported
 Please disable Secure Boot in your BIOS settings.
 (If you want secure boot support, Ubuntu is a fast option, and Ubuntu Flavour offers several desktop environments). 
-
-2. if Vivaldi displays an error message about insufficient video codecs
-You may get an error message that there is not enough h.264 codec to play the video.
-This is because it may take some time for Vivaldi to update its components. After a while, it will be updated automatically.
-You can also manually update the Vivaldi components by going to [Vivaldi components screen ( vivaldi://components )](vivaldi://components). 
-
-3. if the startup menu does not appear
-The menu can be displayed by modifying /etc/default/grub and executing update-grub. 
-The fix is to change GRUB_TIMEOUT_STYLE from hidden to menu.
-After that, if you run update-grub with administrator privileges, the menu will be displayed from the next boot. If the file system is btrfs, you can choose to boot from snapshots, etc.
-Change GRUB_TIMEOUT_STYLE=menu.
-Set TIMEOUT to an appropriate number of seconds.
-```sh
-sudo nano /etc/default/grub
-```
-
-Then, execute the following command.
-```sh
-sudo update-grub
-```
 
 ---
 ### Place of distribution
@@ -195,7 +175,6 @@ kernel-5.18.18
 
 ##### 20220823
 kernel-5.18.19
-</details>
 
 ##### 20220827
 kernel-5.19.4
@@ -232,7 +211,11 @@ nvidia-utils 520.56.06-1
 ##### 20221016
 kernel-5.19.16
 nvidia-utils 520.56.06-2
+</details>
 
+##### 20221025
+kernel-6.0.3
+The standard browser was changed to [Floorp](https://floorp.ablaze.one/).
 
 ---
 Addendum for your reference.

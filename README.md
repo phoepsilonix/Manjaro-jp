@@ -2,7 +2,7 @@
 
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。
-[kernel-5.19系](https://kernel.org/)。
+[kernel-6.0系](https://kernel.org/)。
 
 公式に合わせて、GNOME、KDE、Xfceの３種類を用意する予定です。
 配布ファイルはISOと一部パッケージファイルです。
@@ -14,7 +14,7 @@ Ventoyの導入時に最初のパーティションをext4でフォーマット�
 Linuxカーネルは、なるべく最新のものを採用します。
 またカーネルのビルドにはclangを用います。
 日本語入力(fcitx5-mozc)、日本語フォントを標準インストールします。
-標準ブラウザとして[Vivaldi](https://vivaldi.com/)を採用します。
+標準ブラウザとして[Floorp](https://floorp.ablaze.one/)を採用します。
 オフィスソフトとして[libreoffice-fresh](https://ja.libreoffice.org)を標準インストールします。
 
 ライブ環境＆インストール用のISOを下記の配布先で公開しています。
@@ -24,25 +24,6 @@ Linuxカーネルは、なるべく最新のものを採用します。
 1. セキュアブートには非対応
 対応していませんので、BIOSの設定でセキュアブートを無効にしてご利用ください。
 （セキュアブート対応を望む場合、Ubuntuが早いと思います。Ubuntu Flavourでデスクトップ環境も複数提供されています。）
-
-2. Vivaldiの動画コーデック不足のエラー表示がでる場合
-動画の再生に必要なh.264コーデックが足りないというエラーがでる場合があるようです。
-これはVivaldiのコンポーネントの更新に、時間がかかる場合があるためのようです。しばらくすると、自動更新されるかと思います。
-また[Vivaldiのコンポーネント画面( vivaldi://components )](vivaldi://components)で手動更新も可能です。
-
-3. 起動メニューが出ない場合
-/etc/default/grubを修正して、update-grubを実行することで、メニュー表示が可能です。修正点は、GRUB_TIMEOUT_STYLEをhiddenからmenuに変更します。
-その後、管理者権限でupdate-grubを実行すれば、次回の起動時からメニュー表示がでます。ファイルシステムがbtrfsの場合、スナップショットからの起動なども選択できるようになります。
-GRUB_TIMEOUT_STYLE=menu に変更します。
-TIMEOUTも適当な秒数を設定してください。
-```sh
-sudo nano /etc/default/grub
-```
-
-その後、次のコマンド実行です。
-```sh
-sudo update-grub
-```
 
 ---
 ### 配布場所
@@ -193,7 +174,6 @@ kernel-5.18.18
 
 ##### 20220823
 kernel-5.18.19
-</details>
 
 ##### 20220827
 kernel-5.19.4
@@ -230,7 +210,11 @@ nvidia-utils 520.56.06
 ##### 20221016
 kernel-5.19.16
 nvidia-utils 520.56.06-2
+</details>
 
+##### 20221025
+kernel-6.0.3
+標準ブラウザを[Floorp](https://floorp.ablaze.one/)に変更しました。
 
 ---
 参考までに、追記。
