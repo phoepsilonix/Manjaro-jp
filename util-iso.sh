@@ -72,7 +72,7 @@ make_sig () {
     msg2 "Creating signature file..."
     cd "$1"
     user_own "$1"
-    su ${OWNER} -c "gpg --detach-sign --default-key ${gpgkey} $2.sfs"
+    su ${OWNER} -c "gpg --detach-sign --passphrase-file /home/phoepsilonix/.ssh/pass --batch --pinentry-mode=loopback --default-key ${gpgkey} $2.sfs"
     chown -R root "$1"
     cd ${OLDPWD}
 }
@@ -375,13 +375,14 @@ make_image_desktop() {
         seed_snaps ${path}
 
 	#flatpak test hard coding
-	manjaro-chroot ${path} pacman -S --needed flatpak
+	manjaro-chroot ${path} pacman -S --needed flatpak --noconfirm
 	manjaro-chroot ${path} flatpak remote-add  --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	#flatpak remote-add --system flathub https://flathub.org/repo/flathub.flatpakrepo
 	# Browser floorp
 	manjaro-chroot ${path} flatpak install -y one.ablaze.floorp
 	manjaro-chroot ${path} glib-compile-schemas /usr/share/glib-2.0/schemas/
 	manjaro-chroot ${path} update-desktop-database /usr/share/applications/ /var/lib/flatpak/exports/share/applications/
+	[[ -e ${path}/usr/share/xfce4/helpers ]] && manjaro-chroot ${path} update-desktop-database /usr/share/xfce4/helpers/
 
         echo "Enable os-prober"
         sed -i -e 's,.*GRUB_DISABLE_OS_PROBER=.*,GRUB_DISABLE_OS_PROBER=false,' "${path}/etc/default/grub"
@@ -431,6 +432,7 @@ make_image_live() {
 	
 	manjaro-chroot ${path} glib-compile-schemas /usr/share/glib-2.0/schemas/
 	manjaro-chroot ${path} update-desktop-database /usr/share/applications/ /var/lib/flatpak/exports/share/applications/
+	[[ -e ${path}/usr/share/xfce4/helpers ]] && manjaro-chroot ${path} update-desktop-database /usr/share/xfce4/helpers/
 
         echo "Enable os-prober"
 
