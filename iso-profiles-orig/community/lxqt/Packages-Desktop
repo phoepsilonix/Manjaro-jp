@@ -5,7 +5,7 @@
 gparted
 
 ## webbrowser
-#firefox
+firefox
 
 ## text edit and notes
 featherpad
@@ -87,6 +87,8 @@ norse-sddm-theme
 ## ALSA
 alsa-utils
 alsa-firmware
+pavucontrol-qt
+wireplumber
 sof-firmware
 
 ## settings manager
@@ -116,6 +118,7 @@ python-pyxdg
 squashfs-tools
 xdg-user-dirs
 xdg-user-dirs-gtk
+xdg-desktop-portal-lxqt
 xdg-utils
 zlib
 
