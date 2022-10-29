@@ -31,10 +31,11 @@ Linuxカーネルは、なるべく最新のものを採用します。
 ---|---  
 [![SourceForge](http://sourceforge.net/sflogo.php?group_id=66882&type=5)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
 [![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
-[Terabox](https://terabox.com/s/19YM2KYCFY1sPaIXz_W-i-A) | [Manjaro-Linux-jp at Terabox](https://terabox.com/s/19YM2KYCFY1sPaIXz_W-i-A)
 
 貴重な、ストレージをありがとうございます。
 上記、3箇所にて配布しています。
+
+[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0)は、ファイルサイズ4G以上のものもアップロードできるので、お勧めです。
 
 ---
 ### 備忘録

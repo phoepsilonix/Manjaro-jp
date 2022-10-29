@@ -35,6 +35,8 @@ Please disable Secure Boot in your BIOS settings.
 Thank you for the valuable storage space.
 Distributed at the above 3 locations.
 
+[MEGA Storage](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A") is recommended because it can upload file sizes of 4G or more.
+
 ---
 ### Memorandum
 ##### manjaro-tools-iso changes
