@@ -286,3 +286,39 @@
 [submodule "Packages/linux60-extramodules/zfs"]
 	path = Packages/extramodules-6.0/zfs
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux60-extramodules/zfs
+[submodule "Packages/extramodules-5.10/acpi_call"]
+	path = Packages/extramodules-5.10/acpi_call
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux510-extramodules/acpi_call.git
+[submodule "Packages/extramodules-5.10/bbswitch"]
+	path = Packages/extramodules-5.10/bbswitch
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux510-extramodules/bbswitch.git
+[submodule "Packages/extramodules-5.10/broadcom-wl"]
+	path = Packages/extramodules-5.10/broadcom-wl
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux510-extramodules/broadcom-wl.git
+[submodule "Packages/extramodules-5.10/nvidia"]
+	path = Packages/extramodules-5.10/nvidia
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux510-extramodules/nvidia.git
+[submodule "Packages/extramodules-5.10/nvidia-390xx"]
+	path = Packages/extramodules-5.10/nvidia-390xx
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux510-extramodules/nvidia-390xx.git
+[submodule "Packages/extramodules-5.10/nvidia-470xx"]
+	path = Packages/extramodules-5.10/nvidia-470xx
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux510-extramodules/nvidia-470xx.git
+[submodule "Packages/extramodules-5.10/r8168"]
+	path = Packages/extramodules-5.10/r8168
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux510-extramodules/r8168.git
+[submodule "Packages/extramodules-5.10/rtl8723bu"]
+	path = Packages/extramodules-5.10/rtl8723bu
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux510-extramodules/rtl8723bu.git
+[submodule "Packages/extramodules-5.10/tp_smapi"]
+	path = Packages/extramodules-5.10/tp_smapi
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux510-extramodules/tp_smapi.git
+[submodule "Packages/extramodules-5.10/vhba-module"]
+	path = Packages/extramodules-5.10/vhba-module
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux510-extramodules/vhba-module.git
+[submodule "Packages/extramodules-5.10/virtualbox-modules"]
+	path = Packages/extramodules-5.10/virtualbox-modules
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux510-extramodules/virtualbox-modules.git
+[submodule "Packages/extramodules-5.10/zfs"]
+	path = Packages/extramodules-5.10/zfs
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux510-extramodules/zfs.git
