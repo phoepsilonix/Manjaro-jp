@@ -40,6 +40,8 @@ do
 done
 
 # localhost
+cat ~/.ssh/pass|sudo -S ls
+eval `keychain --agents ssh --eval id_ed25519`
 sudo rsync -av --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # usb
