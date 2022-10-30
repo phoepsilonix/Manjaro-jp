@@ -5,6 +5,7 @@ repo_dir=artifacts
 # SourceForge
 echo "SourceForge"
 # iso
+eval `keychain --agents ssh --eval id_ed25519`
 touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/pass --batch --pinentry-mode=loopback -b INFO
 rsync -LtgoDvndP --exclude=\.* $repo_dir/ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
 

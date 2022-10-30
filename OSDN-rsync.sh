@@ -10,7 +10,8 @@ usb=/run/media/phoepsilonix/Ventoy
 
 # OSDNへアップデート
 echo "OSDN"
-touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/pass --batch --pinentry-mode=loopback -b INFO
+#touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/pass --batch --pinentry-mode=loopback -b INFO
+eval `keychain --agents ssh --eval id_ed25519`
 rsync -ptgoLvP --no-perms --exclude=*.iso --exclude=\.* --exclude=*.torrent $repo_dir/ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
 
 # torrentファイルはisoのあとにアップロードさせる。
