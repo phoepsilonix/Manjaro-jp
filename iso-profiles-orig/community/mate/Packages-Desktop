@@ -1,4 +1,6 @@
 adwaita-icon-theme
+flatpak
+xdg-desktop-portal-gtk
 alsa-firmware
 dconf-editor
 dmidecode
@@ -100,7 +102,6 @@ ttf-inconsolata
 ttf-indic-otf
 ttf-liberation
 manjaro-mate-panel-layout
-vino
 xdg-user-dirs-gtk
 xdg-utils
 xf86-input-elographics
@@ -122,7 +123,6 @@ caja-open-terminal
 >extra pidgin
 >extra uget
 >extra transmission-gtk
->extra onlyoffice-desktopeditors
 timeshift 								#backup utility
 #>extra kernel-alive 					#after a kernel update this maintain usable the modules
 >extra libdvdcss

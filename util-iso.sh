@@ -358,7 +358,15 @@ make_image_desktop() {
 	cp "${tmp_dir}/custom-pacman.conf" "${path}/etc/pacman.conf" && sync
 
         pacman -Qr "${path}" > "${path}/desktopfs-pkgs.txt"
-        cp "${path}/desktopfs-pkgs.txt" ${iso_dir}/$(gen_iso_fn)-pkgs.txt
+	
+	#flatpak test hard coding
+	manjaro-chroot ${path} pacman -S --needed flatpak --noconfirm
+	manjaro-chroot ${path} flatpak remote-add  --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+	#flatpak remote-add --system flathub https://flathub.org/repo/flathub.flatpakrepo
+	# Browser floorp
+	manjaro-chroot ${path} flatpak install -y one.ablaze.floorp
+        
+	cp "${path}/desktopfs-pkgs.txt" ${iso_dir}/$(gen_iso_fn)-pkgs.txt
         [[ -e ${profile_dir}/desktop-overlay ]] && copy_overlay "${profile_dir}/desktop-overlay" "${path}"
 
         if [[ -e "${path}/usr/share/calamares/branding/manjaro/calamares-sidebar.qml" ]]; then
@@ -374,12 +382,7 @@ make_image_desktop() {
 
         seed_snaps ${path}
 
-	#flatpak test hard coding
-	manjaro-chroot ${path} pacman -S --needed flatpak --noconfirm
-	manjaro-chroot ${path} flatpak remote-add  --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-	#flatpak remote-add --system flathub https://flathub.org/repo/flathub.flatpakrepo
-	# Browser floorp
-	manjaro-chroot ${path} flatpak install -y one.ablaze.floorp
+	# 
 	manjaro-chroot ${path} glib-compile-schemas /usr/share/glib-2.0/schemas/
 	manjaro-chroot ${path} update-desktop-database /usr/share/applications/ /var/lib/flatpak/exports/share/applications/
 	[[ -e ${path}/usr/share/xfce4/helpers ]] && manjaro-chroot ${path} update-desktop-database /usr/share/xfce4/helpers/
