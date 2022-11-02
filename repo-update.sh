@@ -4,6 +4,7 @@
 repo_dir=./artifacts/manjaro-jp
 repo_key=$(cat ~/.gnupg/sign.txt)
 usb=/run/media/phoepsilonix/Ventoy
+repo=manjaro-jp
 
 cd $repo_dir; 
 
@@ -26,7 +27,7 @@ done
 # バージョンでsortしておく。repo-addは、あとから追加されたものが優先されるため。
 pkgfiles=$(ls -v ./*.zst)
 
-repo-add $repo.db.tar.xz --sign --key $repo_key ${pkgfiles}
+LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -n --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -R --sign --key $repo_key ./*.zst 
 #repo-add $repo.db.tar.xz -n -R --sign --key $repo_key ./*.zst
@@ -38,14 +39,6 @@ do
 	gpg -v --default-key $repo_key --verify $f ${f%.*} || { echo "repo db verify error" ; exit 1; }
 done
 
-# localhost
-cat ~/.ssh/pass|sudo -S ls
-eval `keychain --agents ssh --eval id_ed25519`
-sudo rsync -av --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
-
-# usb
-sudo rsync -av --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
-
 password=$(cat ~/.ssh/pass)
 expect << EOF
   spawn ssh-add /home/phoepsilonix/.ssh/id_ed25519
@@ -55,7 +48,14 @@ expect << EOF
 EOF
 eval `keychain --agents ssh --eval id_ed25519`
 
-repo=manjaro-jp
+
+# localhost
+cat ~/.ssh/pass|sudo -S ls > /dev/null
+sudo rsync -av --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
+
+# usb
+sudo rsync -av --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
+
 # OSDNへアップデート
 rsync -aLvcP --no-perms --delete ./*.sig ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 rsync -aLvP --size-only --no-perms --delete ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
