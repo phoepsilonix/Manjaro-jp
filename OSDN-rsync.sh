@@ -8,15 +8,30 @@ echo "usb"
 usb=/run/media/phoepsilonix/Ventoy
 #rsync -aLv $repo_dir/ $usb/artifacts/
 
+set -u     # Stop if an unbound variable is referenced
+set -e     # Stop on first error
+export HISTIGNORE="expect*";
+
 # OSDNへアップデート
 echo "OSDN"
 #touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/pass --batch --pinentry-mode=loopback -b INFO
+## Launch the expect magic
+password=$(cat ~/.ssh/pass)
+  #spawn ssh-add /home/phoepsilonix/.ssh/id_ed25519
+  #spawn keychain --agents ssh --eval id_ed25519
+expect << EOF
+  spawn ssh-add /home/phoepsilonix/.ssh/id_ed25519
+  expect "* passphrase *:"
+  send "$password\r"
+  expect eof
+EOF
 eval `keychain --agents ssh --eval id_ed25519`
+
 rsync -ptgoLvP --no-perms --exclude=*.iso --exclude=\.* --exclude=*.torrent $repo_dir/ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
 
 # torrentファイルはisoのあとにアップロードさせる。
 touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/pass --batch --pinentry-mode=loopback -b INFO
-rsync -ptgoLvP --size-only --no-perms --exclude=\.* $repo_dir/*.iso phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
+#rsync -ptgoLvP --size-only --no-perms --exclude=\.* $repo_dir/*.iso phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
 #rsync -ptgoLvP --no-perms --exclude=\.* $repo_dir/*.torrent phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
 
 # 残りをまともて高速チェックでアップロード

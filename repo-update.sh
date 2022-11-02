@@ -1,7 +1,6 @@
 #!/bin/sh
 #set -eux
 
-repo=manjaro-jp
 repo_dir=./artifacts/manjaro-jp
 repo_key=$(cat ~/.gnupg/sign.txt)
 usb=/run/media/phoepsilonix/Ventoy
@@ -47,6 +46,16 @@ sudo rsync -av --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to loca
 # usb
 sudo rsync -av --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
+password=$(cat ~/.ssh/pass)
+expect << EOF
+  spawn ssh-add /home/phoepsilonix/.ssh/id_ed25519
+  expect "* passphrase *:"
+  send "$password\r"
+  expect eof
+EOF
+eval `keychain --agents ssh --eval id_ed25519`
+
+repo=manjaro-jp
 # OSDNへアップデート
 rsync -aLvcP --no-perms --delete ./*.sig ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 rsync -aLvP --size-only --no-perms --delete ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }

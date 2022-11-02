@@ -15,7 +15,7 @@ done
 for f in *.zst.sig 
 do
 	echo "$f ${f%.*} gpg verify"
-	gpg -v --default-key $repo_key --verify $f ${f%.*} || { echo "pkg verify error" ; exit 1; }
+	gpg -v --passphrase-file ~/.ssh/pass --batch --pinentry-mode=loopback --default-key $repo_key --verify $f ${f%.*} || { echo "pkg verify error" ; exit 1; }
 done
         cd ..;
 done
