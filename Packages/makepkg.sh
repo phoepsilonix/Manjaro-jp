@@ -6,7 +6,7 @@ curdir=${PWD##*/}
 for m in $(cat ../extramodules.txt)
 do
         cd $m;
-        makepkg -sCc
+        yes | makepkg -sCc
         cd ..;
 done
  

@@ -8,7 +8,7 @@ do
 # 署名がないパッケージに署名をする
 for f in *.zst 
 do
-	[[ ! -f "$f.sig" ]] && { echo "gpg sign: $f" ; gpg --default-key $repo_key -v -b $f; }
+	[[ ! -f "$f.sig" ]] && { echo "gpg sign: $f" ; gpg --passphrase-file ~/.ssh/pass --batch --pinentry-mode=loopback --default-key $repo_key -v -b $f; }
 done
 
 # パッケージの署名の検証

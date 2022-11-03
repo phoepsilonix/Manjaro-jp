@@ -17,8 +17,6 @@ echo "OSDN"
 #touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/pass --batch --pinentry-mode=loopback -b INFO
 ## Launch the expect magic
 password=$(cat ~/.ssh/pass)
-  #spawn ssh-add /home/phoepsilonix/.ssh/id_ed25519
-  #spawn keychain --agents ssh --eval id_ed25519
 expect << EOF
   spawn ssh-add /home/phoepsilonix/.ssh/id_ed25519
   expect "* passphrase *:"
