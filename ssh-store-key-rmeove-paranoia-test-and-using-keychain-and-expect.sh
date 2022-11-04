@@ -4,15 +4,21 @@
 # not using gpg-agent,ssh-agent,pinentry-gnome
 #
 
+# exit 
+trap "
+keychain --clear
+keychain -k mine
+" EXIT
+
 export HISTIGNORE="expect*";
 # ssh store key remove clear delete
 echo "removing ssh store keys,Identities"
 #
 #ssh-add -D
 keychain --clear
+keychain -k mine
 
 # pkill ssh-agent 
-keychain -k mine
 # if pkill all ssh-agent process
 # keychain -k all
 
