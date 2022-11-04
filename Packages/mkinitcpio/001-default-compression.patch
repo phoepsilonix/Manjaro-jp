@@ -1,28 +1,40 @@
---- a/mkinitcpio	2021-11-29 20:15:01.000000000 +0900
-+++ b/mkinitcpio	2022-06-13 17:50:59.811035637 +0900
-@@ -670,7 +670,7 @@
+diff --git a/mkinitcpio b/mkinitcpio
+index d819e6d..3af22ea 100755
+--- a/mkinitcpio
++++ b/mkinitcpio
+@@ -691,7 +691,7 @@ if [[ $_optgenimg ]]; then
          die 'Unable to write to %s' "$_optgenimg"
      fi
  
--    _optcompress=${_optcompress:-${COMPRESSION:-zstd}}
+-    _optcompress=${_optcompress:-${COMPRESSION:-gzip}}
 +    _optcompress=${_optcompress:-${COMPRESSION:-xz}}
      if ! type -P "$_optcompress" >/dev/null; then
          warning "Unable to locate compression method: %s" "$_optcompress"
          _optcompress=cat
---- a/man/mkinitcpio.conf.5.txt	2022-06-13 18:18:10.286088309 +0900
-+++ b/man/mkinitcpio.conf.5.txt	2022-06-13 18:18:32.049207773 +0900
-@@ -55,7 +55,7 @@
- 	Defines a program to filter the generated image through. The kernel
- 	understands the compression formats yielded by the *zstd*, *gzip*, *bzip2*,
- 	*lz4*, *lzop*, *lzma*, and *xz* compressors. If unspecified, this setting
--	defaults to *zstd* compression. In order to create an uncompressed image,
-+	defaults to *xz* compression. In order to create an uncompressed image,
- 	define this variable as *cat*.
+diff --git a/man/mkinitcpio.conf.5.txt b/man/mkinitcpio.conf.5.txt
+index d206766..987cfaa 100644
+--- a/man/mkinitcpio.conf.5.txt
++++ b/man/mkinitcpio.conf.5.txt
+@@ -56,7 +56,7 @@ Variables
+ 	the kernel understands the compression formats yielded by the *gzip*, *bzip2*,
+ 	*lz4*, *lzop*, *lzma*, and *xz* compressors. As of linux 5.9 the kernel also
+ 	understands the compression formats yielded by the *zstd* compressor.
+-	If unspecified, this setting defaults to *gzip* compression.
++	If unspecified, this setting defaults to *xz* compression.
+ 	In order to create an uncompressed image, define
+ 	this variable as *cat*.
  +
- It's not hard to realize that a filter such as a *tac* or *rev* will cause
---- a/mkinitcpio.conf	2022-06-13 18:24:48.446510043 +0900
-+++ b/mkinitcpio.conf	2022-06-13 18:26:05.270714911 +0900
-@@ -58,10 +58,10 @@
+diff --git a/mkinitcpio.conf.orig b/mkinitcpio.conf
+index 6ea97fd..2b061ef 100644
+--- a/mkinitcpio.conf
++++ b/mkinitcpio.conf
+@@ -52,12 +52,12 @@ FILES=()
+ HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
+ 
+ # COMPRESSION
+-# Use this to compress the initramfs image. By default, gzip compression
++# Use this to compress the initramfs image. By default, xz compression
+ # is used. Use 'cat' to create an uncompressed image.
  #COMPRESSION="gzip"
  #COMPRESSION="bzip2"
  #COMPRESSION="lzma"
@@ -30,8 +42,12 @@
 +COMPRESSION="xz"
  #COMPRESSION="lzop"
  #COMPRESSION="lz4"
- 
+ #COMPRESSION="zstd"
+@@ -65,6 +65,7 @@ HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
  # COMPRESSION_OPTIONS
  # Additional options for the compressor
--#COMPRESSION_OPTIONS=()
+ #COMPRESSION_OPTIONS=()
 +COMPRESSION_OPTIONS=('-e' '-9' '-T0')
+ 
+ # MODULES_DECOMPRESS
+ # Decompress kernel modules during initramfs creation.
