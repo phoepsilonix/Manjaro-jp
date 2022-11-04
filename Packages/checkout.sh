@@ -4,6 +4,7 @@ curdir=${PWD##*/}
 exdir=$(cat /usr/lib/modules/${curdir}-MANJARO/version)
 exdir=/usr/lib/modules/${exdir}/build
 echo $exdir
+cat ~/.ssh/pass| sudo -S pwd >/dev/null
 sudo chown -R phoepsilonix:phoepsilonix $exdir
 
 #cd r8168

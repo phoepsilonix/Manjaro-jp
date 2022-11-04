@@ -11,14 +11,14 @@ cd $repo_dir;
 # 署名がないパッケージに署名をする
 for f in *.zst 
 do
-	[[ ! -f "$f.sig" ]] && { echo "gpg sign: $f" ; gpg --default-key $repo_key -v -b $f; }
+	[[ ! -f "$f.sig" ]] && { echo "gpg sign: $f" ; gpg --passphrase-file ~/.ssh/pass --batch --pinentry-mode=loopback --default-key $repo_key -v -b $f; }
 done
 
 # パッケージの署名の検証
 for f in *.zst.sig 
 do
 	echo "$f ${f%.*} gpg verify"
-	gpg -v --default-key $repo_key --verify $f ${f%.*} || { echo "pkg verify error" ; exit 1; }
+	gpg --passphrase-file ~/.ssh/pass --batch --pinentry-mode=loopback -v --default-key $repo_key --verify $f ${f%.*} || { echo "pkg verify error" ; exit 1; }
 done
 
 # レポジトリデータベースの更新
@@ -39,6 +39,7 @@ do
 	gpg -v --default-key $repo_key --verify $f ${f%.*} || { echo "repo db verify error" ; exit 1; }
 done
 
+export HISTIGNORE="expect*";
 password=$(cat ~/.ssh/pass)
 expect << EOF
   spawn ssh-add /home/phoepsilonix/.ssh/id_ed25519
