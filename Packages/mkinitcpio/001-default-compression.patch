@@ -24,8 +24,8 @@ index d206766..987cfaa 100644
  	In order to create an uncompressed image, define
  	this variable as *cat*.
  +
-diff --git a/mkinitcpio.conf.orig b/mkinitcpio.conf
-index 6ea97fd..2b061ef 100644
+diff --git a/mkinitcpio.conf b/mkinitcpio.conf
+index 6ea97fd..a27c352 100644
 --- a/mkinitcpio.conf
 +++ b/mkinitcpio.conf
 @@ -52,12 +52,12 @@ FILES=()
@@ -43,7 +43,7 @@ index 6ea97fd..2b061ef 100644
  #COMPRESSION="lzop"
  #COMPRESSION="lz4"
  #COMPRESSION="zstd"
-@@ -65,6 +65,7 @@ HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
+@@ -65,9 +65,10 @@ HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
  # COMPRESSION_OPTIONS
  # Additional options for the compressor
  #COMPRESSION_OPTIONS=()
@@ -51,3 +51,7 @@ index 6ea97fd..2b061ef 100644
  
  # MODULES_DECOMPRESS
  # Decompress kernel modules during initramfs creation.
+ # Enable to speedup boot process, disable to save RAM
+ # during early userspace. Switch (yes/no).
+-#MODULES_DECOMPRESS="yes"
++MODULES_DECOMPRESS="yes"
