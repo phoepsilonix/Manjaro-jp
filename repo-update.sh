@@ -50,18 +50,23 @@ expect << EOF
   }
   expect eof
 EOF
-eval `keychain --agents ssh --eval id_ed25519`
+eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 
 # localhost
 cat ~/.ssh/pass|sudo -S ls > /dev/null
+eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 sudo rsync -av --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # usb
+eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 sudo rsync -av --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # OSDNへアップデート
+eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 rsync -aLvcP --no-perms --delete ./*.sig ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
+eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 rsync -aLvP --size-only --no-perms --delete ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
+eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 rsync -aLvP --size-only --no-perms --delete ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 #rsync -rLtgoDv --no-perms --progress --delete ./*.sig ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 #rsync -rLtgoDv --size-only --no-perms --progress --delete ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
