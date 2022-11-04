@@ -42,13 +42,15 @@ done
 export HISTIGNORE="expect*";
 password=$(cat ~/.ssh/pass)
 expect << EOF
-  spawn ssh-add /home/phoepsilonix/.ssh/id_ed25519
-  expect "* passphrase *:"
-  send "$password\r"
+  spawn keychain --agents ssh --eval id_ed25519
+  expect "* passphrase *:" {
+        stty -echo
+        send "$password\r"
+        stty echo
+  }
   expect eof
 EOF
 eval `keychain --agents ssh --eval id_ed25519`
-
 
 # localhost
 cat ~/.ssh/pass|sudo -S ls > /dev/null
