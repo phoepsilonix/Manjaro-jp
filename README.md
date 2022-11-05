@@ -217,6 +217,11 @@ nvidia-utils 520.56.06-2
 kernel-6.0.3
 標準ブラウザを[Floorp](https://floorp.ablaze.one/)に変更しました。
 
+##### 20221105
+kernel-6.0.7
+mkinitcpio-32-2
+
+
 ---
 参考までに、追記。
 LinuxをインストールしたPCがあれば、非公式？な(公式サポートがない)ChromeOSとのデュアルブート環境も作れるみたいです。ある程度知識のある方向けです。

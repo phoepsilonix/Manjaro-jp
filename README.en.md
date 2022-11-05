@@ -218,6 +218,11 @@ nvidia-utils 520.56.06-2
 kernel-6.0.3
 The standard browser was changed to [Floorp](https://floorp.ablaze.one/).
 
+##### 20221105
+kernel-6.0.7
+mkinitcpio-32-2
+
+
 ---
 Addendum for your reference.
 If you have a PC with Linux installed, you can use an unofficial (no official support) dual boot environment with ChromeOS. If you have a PC with Linux installed, you can create a dual-boot environment with ChromeOS, which is unofficial (no official support). This is for those who have some knowledge.
