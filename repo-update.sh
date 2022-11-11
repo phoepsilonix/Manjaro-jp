@@ -73,7 +73,7 @@ sudo rsync -av --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to loc
 
 # OSDNへアップデート
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
-rsync -avcPL --no-perms ./*.sig ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
+rsync -avPL --no-perms ./*.sig ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 rsync -avPL --size-only --no-perms ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
