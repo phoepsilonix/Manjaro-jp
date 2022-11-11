@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 repo_dir=artifacts
 gpg_pass=~/.ssh/gpg-passphrase
@@ -18,15 +18,15 @@ keychain -k mine
 password=$(gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -dq $ssh_pass)
 
 ###### expectでパスフレーズ入力を自動化
-expect << EOF
+expect -c "
   spawn keychain --agents ssh --eval id_ed25519
-  expect "* passphrase *:" {
+  expect \"* passphrase *:\" 
         stty -echo
-        send "$password\r"
+        send \"$password\n\"
         stty echo
-  }
+  
   expect eof
-EOF
+"
 
 ###### このスクリプト内で、有効化させる。
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
@@ -37,7 +37,7 @@ echo "SourceForge"
 rsync -LtgoDvndP --exclude=\.* --exclude= $repo_dir/ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
 # torrentファイルよりも先にisoをアップロードする。
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
-rsync -LtgoDvP --exclude=\.* --exclude=*\.torrent $repo_dir/ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
+rsync -LtgoDvdP --exclude=\.* --exclude=*\.torrent $repo_dir/ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
 
 # artifactsフォルダのみ。SFはファイル名にコロンを許容しないので、manjaro-jpはバックアップしない。
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`

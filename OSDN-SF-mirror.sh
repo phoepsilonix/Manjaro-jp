@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #set -eux
 
 repo_dir=./artifacts/
@@ -11,9 +11,7 @@ password=$(cat ~/.ssh/pass)
 expect << EOF
   spawn keychain --agents ssh --eval id_ed25519
   expect "* passphrase *:" {
-        stty -echo
         send "$password\r"
-        stty echo
   }
   expect eof
 EOF
