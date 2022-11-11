@@ -363,8 +363,9 @@ make_image_desktop() {
 	manjaro-chroot ${path} pacman -S --needed flatpak --noconfirm
 	manjaro-chroot ${path} flatpak remote-add  --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	#flatpak remote-add --system flathub https://flathub.org/repo/flathub.flatpakrepo
-	# Browser floorp
-	manjaro-chroot ${path} flatpak install -y one.ablaze.floorp
+	# Browser 
+	#manjaro-chroot ${path} flatpak install -y one.ablaze.floorp
+        manjaro-chroot ${path} flatpak install -y org.mozilla.firefox
         
 	cp "${path}/desktopfs-pkgs.txt" ${iso_dir}/$(gen_iso_fn)-pkgs.txt
         [[ -e ${profile_dir}/desktop-overlay ]] && copy_overlay "${profile_dir}/desktop-overlay" "${path}"
