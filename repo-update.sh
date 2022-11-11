@@ -11,17 +11,17 @@ ssh_pass=~/.ssh/ssh-passphrase.gpg
 cd $repo_dir; 
 
 # 署名がないパッケージに署名をする
-#for f in *.zst 
-#do
-#	[[ ! -f "$f.sig" ]] && { echo "gpg sign: $f" ; gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback --default-key $repo_key -v -b $f; }
-#done
+for f in *.zst 
+do
+	[[ ! -f "$f.sig" ]] && { echo "gpg sign: $f" ; gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback --default-key $repo_key -v -b $f; }
+done
 
 # パッケージの署名の検証
-#for f in *.zst.sig 
-#do
-#	echo "$f ${f%.*} gpg verify"
-#	gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -v --default-key $repo_key --verify $f ${f%.*} || { echo "pkg verify error" ; exit 1; }
-#done
+for f in *.zst.sig 
+do
+	echo "$f ${f%.*} gpg verify"
+	gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -v --default-key $repo_key --verify $f ${f%.*} || { echo "pkg verify error" ; exit 1; }
+done
 
 # レポジトリデータベースの更新
 #rm $repo.db.* $repo.files.*
@@ -29,7 +29,7 @@ cd $repo_dir;
 # バージョンでsortしておく。repo-addは、あとから追加されたものが優先されるため。
 pkgfiles=$(ls -v ./*.zst)
 
-#LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz --sign --key $repo_key ${pkgfiles}
+LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -n --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -R --sign --key $repo_key ./*.zst 
 #repo-add $repo.db.tar.xz -n -R --sign --key $repo_key ./*.zst
