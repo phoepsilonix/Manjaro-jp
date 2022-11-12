@@ -39,7 +39,7 @@ tap-and-drag=true
 
 [org.gnome.shell]
 always-show-log-out=true
-favorite-apps=['one.ablaze.floorp.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'gnome-terminal.desktop', 'org.manjaro.pamac.manager.desktop', 'calamares.desktop', 'manjaro-architect.desktop']
+favorite-apps=['org.mozilla.firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'gnome-terminal.desktop', 'org.manjaro.pamac.manager.desktop', 'calamares.desktop', 'manjaro-architect.desktop']
 enabled-extensions=['pamac-updates@manjaro.org', 'dash-to-dock@micxgx.gmail.com', 'appindicatorsupport@rgcjonas.gmail.com', 'gnome-ui-tune@itstime.tech', 'legacyschemeautoswitcher@joshimukul29.gmail.com', 'x11gestures@joseexposito.github.io']
 
 [org.gnome.Terminal.Legacy.Profile]

@@ -72,7 +72,7 @@ make_sig () {
     msg2 "Creating signature file..."
     cd "$1"
     user_own "$1"
-    su ${OWNER} -c "gpg --detach-sign --passphrase-file /home/phoepsilonix/.ssh/pass --batch --pinentry-mode=loopback --default-key ${gpgkey} $2.sfs"
+    su ${OWNER} -c "gpg --detach-sign --passphrase-file /home/phoepsilonix/.ssh/gpg-passphrase --batch --pinentry-mode=loopback --default-key ${gpgkey} $2.sfs"
     chown -R root "$1"
     cd ${OLDPWD}
 }
