@@ -14,7 +14,7 @@ It is recommended to reformat the first partition with ext4 when installing Vent
 The Linux kernel is as up-to-date as possible.
 The kernel is built using clang.
 Japanese input (fcitx5-mozc) and Japanese fonts are installed as standard.
-Use [Floorp](https://floorp.ablaze.one/) as the standard browser.
+The flatpak version [Firefox](https://www.mozilla.org/ja/firefox/browsers/) or [Floorp](https://floorp.ablaze.one/) is used as the standard browser.
 Standard installation of [libreoffice-fresh](https://www.libreoffice.org) as office software.
 
 ISOs for live environment & installation are available at the following distribution sites.

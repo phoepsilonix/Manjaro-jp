@@ -14,7 +14,7 @@ Ventoyの導入時に最初のパーティションをext4でフォーマット�
 Linuxカーネルは、なるべく最新のものを採用します。
 またカーネルのビルドにはclangを用います。
 日本語入力(fcitx5-mozc)、日本語フォントを標準インストールします。
-標準ブラウザとして[Floorp](https://floorp.ablaze.one/)を採用します。
+標準ブラウザとして、flatpak版[Firefox](https://www.mozilla.org/ja/firefox/browsers/)または[Floorp](https://floorp.ablaze.one/)を採用します。
 オフィスソフトとして[libreoffice-fresh](https://ja.libreoffice.org)を標準インストールします。
 
 ライブ環境＆インストール用のISOを下記の配布先で公開しています。
