@@ -221,6 +221,9 @@ kernel-6.0.3
 kernel-6.0.7
 mkinitcpio-32-2
 
+##### 20221112
+標準ブラウザとして、flatpak版[Firefox](https://www.mozilla.org/ja/firefox/browsers/)または[Floorp](https://floorp.ablaze.one/)を採用します。
+kernel-6.0.8
 
 ---
 参考までに、追記。

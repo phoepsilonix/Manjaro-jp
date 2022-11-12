@@ -222,6 +222,10 @@ The standard browser was changed to [Floorp](https://floorp.ablaze.one/).
 kernel-6.0.7
 mkinitcpio-32-2
 
+##### 20221112
+The flatpak version [Firefox](https://www.mozilla.org/ja/firefox/browsers/) or [Floorp](https://floorp.ablaze.one/) is used as the standard browser.
+kernel-6.0.8
+
 
 ---
 Addendum for your reference.
