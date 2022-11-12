@@ -7,7 +7,7 @@ cd $repo_dir;
 mkdir -p $repo_dir/manjaro-jp/
 
 export HISTIGNORE="expect*";
-password=$(cat ~/.ssh/pass)
+password=$(cat ~/.ssh/gpg-passphrase)
 expect << EOF
   spawn keychain --agents ssh --eval id_ed25519
   expect "* passphrase *:" {
@@ -19,14 +19,14 @@ EOF
 # OSDNへアップデート
 echo "OSDN"
 eval `keychain --agents ssh --eval id_ed25519`
-rsync -rLtgoDv --checksum --no-perms --progress ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
+rsync -avPL --size-only --no-perms --delete ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
 
 # SourceForge
 echo "SourceForge"
 # iso
 eval `keychain --agents ssh --eval id_ed25519`
-rsync -aLvn --checksum ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
-rsync -aLv --checksum --progress ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
+rsync -aLvPn --size-only --delete --exclude=manjaro-jp/* ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
+rsync -aLvP --size-only --delete --exclude=manjaro-jp/* ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
 
 exit 0;
 
