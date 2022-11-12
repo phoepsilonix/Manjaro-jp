@@ -6,8 +6,19 @@ cd $repo_dir;
 
 mkdir -p $repo_dir/manjaro-jp/
 
+###### expectによる、履歴を残さない
 export HISTIGNORE="expect*";
-password=$(cat ~/.ssh/gpg-passphrase)
+
+###### スクリプト終了時には、keychainをクリアして、ssh-agentを停止する。
+trap "
+keychain --clear
+keychain -k mine
+" EXIT
+
+###### sshのパスフレーズを復号化する
+password=$(gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -dq $ssh_pass)
+
+###### expectでパスフレーズ入力を自動化
 expect << EOF
   spawn keychain --agents ssh --eval id_ed25519
   expect "* passphrase *:" {
@@ -15,6 +26,9 @@ expect << EOF
   }
   expect eof
 EOF
+
+###### このスクリプト内で、有効化させる。
+eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 
 # OSDNへアップデート
 echo "OSDN"

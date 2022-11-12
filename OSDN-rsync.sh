@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 #set -eux
 
 repo_dir=./artifacts/
-gpg_pass=~/.ssh/gpg-passphrase
-ssh_pass=~/.ssh/ssh-passphrase.gpg
+
+. keychain.sh
 
 # USBへバックアップ
 echo "usb"
@@ -12,32 +12,6 @@ usb=/run/media/phoepsilonix/Ventoy
 
 set -u     # Stop if an unbound variable is referenced
 #set -e     # Stop on first error
-
-###### expectによる、履歴を残さない
-export HISTIGNORE="expect*";
-
-###### スクリプト終了時には、keychainをクリアして、ssh-agentを停止する。
-trap "
-keychain --clear
-keychain -k mine
-" EXIT
-
-###### sshのパスフレーズを復号化する
-password=$(gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -dq $ssh_pass)
-
-###### expectでパスフレーズ入力を自動化
-expect << EOF
-  spawn keychain --agents ssh --eval id_ed25519
-  expect "* passphrase *:" {
-        stty -echo
-        send "$password\r"
-        stty echo
-  }
-  expect eof
-EOF
-
-###### このスクリプト内で、有効化させる。
-eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 
 # OSDNへアップデート
 echo "OSDN"
