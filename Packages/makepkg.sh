@@ -18,11 +18,7 @@ expect -c "
                 send -- \"$password\r\"
                 exp_continue
         }
-        \"y/N\" {
-                send \"y\r\"
-                exp_continue
-        }
-        \"Y/n\" {
+        \"\\[Yy\\]/\\[Nn\\]\" {
                 send \"y\r\"
                 exp_continue
         }
