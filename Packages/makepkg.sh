@@ -14,11 +14,11 @@ expect -c "
   spawn makepkg -sCc
   expect {
         eof { exit 0 }
-        \"password for\" {
+        {\[sudo\] password for } {
                 send -- \"$password\r\"
                 exp_continue
         }
-        \"\\[Yy\\]/\\[Nn\\]\" {
+        -re {\[[Yy]/[Nn]\]} {
                 send \"y\r\"
                 exp_continue
         }
