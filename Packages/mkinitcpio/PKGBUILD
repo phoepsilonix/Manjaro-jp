@@ -33,8 +33,8 @@ source=("https://sources.archlinux.org/other/$pkgname/$pkgname-$pkgver.tar.gz"{,
         # Upstream PRs
         https://github.com/archlinux/mkinitcpio/pull/88.patch
         https://github.com/archlinux/mkinitcpio/pull/89.patch
-        "001-default-compression.patch"
-        "002-remove-shutdown-hooks.patch")
+        "001-default-compression.patch")
+#        "002-remove-shutdown-hooks.patch")
 install=mkinitcpio.install
 sha256sums=('f167d0b9831a5b6ae388525ebc92cea3a4766429e16ee2b56dbaa8d3b7c73ab2'
             'SKIP'
@@ -43,8 +43,8 @@ sha256sums=('f167d0b9831a5b6ae388525ebc92cea3a4766429e16ee2b56dbaa8d3b7c73ab2'
             'dc57b5d5c09fb32d9cd87dd939ed867cd1fe78088fe5aa6d33c5512c86806e24'
             '63a1bb3c85299ec9d93163a5800e27cacbf9177307adb653a06e1cd4b221b328'
             '80f1504c716f1704ed0ec49f4c8204de5c381d9ad9dab004adbb6c5091f86226'
-            '18e1adbcad481054b0fb665af402ea3367593aa8bc3b6c90884ed8b51677da65'
-            '40a53ec98ffc89f2dd6ac50e9b10b6342e0b52f87705c5e86cde82bc510e24a7')
+            '18e1adbcad481054b0fb665af402ea3367593aa8bc3b6c90884ed8b51677da65')
+#            '40a53ec98ffc89f2dd6ac50e9b10b6342e0b52f87705c5e86cde82bc510e24a7')
 validpgpkeys=('ECCAC84C1BA08A6CC8E63FBBF22FB1D78A77AEAB'    # Giancarlo Razzolini
               'C100346676634E80C940FB9E9C02FF419FECBE16')   # Morten Linderud
 

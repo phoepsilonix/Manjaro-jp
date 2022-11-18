@@ -226,6 +226,9 @@ mkinitcpio-32-2
 The flatpak version [Firefox](https://www.mozilla.org/ja/firefox/browsers/) or [Floorp](https://floorp.ablaze.one/) is used as the standard browser.
 kernel-6.0.8
 
+##### 20221118
+kernel-6.0.9
+
 
 ---
 Addendum for your reference.

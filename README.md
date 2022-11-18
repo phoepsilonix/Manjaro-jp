@@ -225,6 +225,10 @@ mkinitcpio-32-2
 標準ブラウザとして、flatpak版[Firefox](https://www.mozilla.org/ja/firefox/browsers/)または[Floorp](https://floorp.ablaze.one/)を採用します。
 kernel-6.0.8
 
+##### 20221118
+kernel-6.0.9
+
+
 ---
 参考までに、追記。
 LinuxをインストールしたPCがあれば、非公式？な(公式サポートがない)ChromeOSとのデュアルブート環境も作れるみたいです。ある程度知識のある方向けです。
