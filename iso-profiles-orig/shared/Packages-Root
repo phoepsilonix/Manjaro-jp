@@ -25,6 +25,7 @@ systemd-sysvcompat
 tar
 util-linux
 xz
+core/openssl
 
 # Manjaro
 >multilib gcc-libs-multilib
