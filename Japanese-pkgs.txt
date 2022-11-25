@@ -48,12 +48,12 @@ lld
 #snap-pac
 
 #office 
-libreoffice-fresh
-libreoffice-fresh-ja
+#libreoffice-fresh
+#libreoffice-fresh-ja
 
 #aur helper
 yay
-#paru
+paru
 
 # 
 #kernel-modules-hook

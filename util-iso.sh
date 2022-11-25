@@ -366,6 +366,7 @@ make_image_desktop() {
 	# Browser 
 	#manjaro-chroot ${path} flatpak install -y one.ablaze.floorp
         manjaro-chroot ${path} flatpak install -y org.mozilla.firefox
+        manjaro-chroot ${path} flatpak install -y org.libreoffice.LibreOffice
         
 	cp "${path}/desktopfs-pkgs.txt" ${iso_dir}/$(gen_iso_fn)-pkgs.txt
         [[ -e ${profile_dir}/desktop-overlay ]] && copy_overlay "${profile_dir}/desktop-overlay" "${path}"
