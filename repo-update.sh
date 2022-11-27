@@ -10,6 +10,10 @@ ssh_pass=~/.ssh/ssh-passphrase.gpg
 
 cd $repo_dir; 
 
+# usb
+# 古いパッケージをバックアップ
+sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
+
 # 署名がないパッケージに署名をする
 for f in *.zst *.xz
 do
@@ -24,12 +28,15 @@ do
 done
 
 # レポジトリデータベースの更新
-#rm $repo.db.* $repo.files.*
+rm $repo.db.* $repo.files.*
 
 # バージョンでsortしておく。repo-addは、あとから追加されたものが優先されるため。
 pkgfiles=$(ls -v ./*.zst ./*.xz)
 
-LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz --sign --key $repo_key ${pkgfiles}
+# repo-add
+#-n 新しいパッケージのみ追加
+#-R 古いパッケージを削除
+LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -n -R --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -n --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -R --sign --key $repo_key ./*.zst 
 #repo-add $repo.db.tar.xz -n -R --sign --key $repo_key ./*.zst
@@ -66,10 +73,10 @@ EOF
 
 # localhost
 cat $gpg_pass |sudo -S ls > /dev/null
-sudo rsync -av --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
+sudo rsync -avP --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # usb
-sudo rsync -av --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
+sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # OSDNへアップデート
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
