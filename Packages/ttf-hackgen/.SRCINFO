@@ -1,0 +1,13 @@
+pkgbase = ttf-hackgen
+	pkgdesc = A Japanese monospace font for programming
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://github.com/yuru7/HackGen
+	arch = any
+	license = custom
+	source = https://github.com/yuru7/HackGen/releases/download/v2.7.1/HackGen_NF_v2.7.1.zip
+	source = https://github.com/yuru7/HackGen/raw/master/LICENSE
+	sha256sums = 3c1949682567f8b4d4984c30b1439f051f2062a3138ddbf2262c12d087f60d92
+	sha256sums = 9bfc3b3826a9c71042b87fda90a19cda4918894cdbd449cab163b7a7c93c5aa7
+
+pkgname = ttf-hackgen

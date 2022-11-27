@@ -217,9 +217,6 @@
 [submodule "Packages/nginx-quic"]
 	path = Packages/nginx-quic
 	url = https://aur.archlinux.org/nginx-quic.git
-[submodule "Packages/ttf-cica"]
-	path = Packages/ttf-cica
-	url = https://aur.archlinux.org/ttf-cica.git
 [submodule "Packages/morisawa-biz-ud-fonts"]
 	path = Packages/morisawa-biz-ud-fonts
 	url = https://aur.archlinux.org/morisawa-biz-ud-fonts.git
