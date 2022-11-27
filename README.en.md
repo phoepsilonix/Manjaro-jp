@@ -229,6 +229,9 @@ kernel-6.0.8
 ##### 20221118
 kernel-6.0.9
 
+##### 20221128
+kernel-6.0.10
+Changed LibreOffice to the flatpak version.
 
 ---
 Addendum for your reference.
