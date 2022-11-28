@@ -232,6 +232,8 @@ kernel-6.0.9
 kernel-6.0.10
 LibreOfficeをflatpak版に変更しました。
 fcitx5の初期設定のキーボードをjp-kana86に変更しました。
+gnome-terminalの初期フォントを設定しました。
+
 
 ---
 参考までに、追記。
