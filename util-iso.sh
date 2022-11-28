@@ -368,8 +368,11 @@ make_image_desktop() {
         manjaro-chroot ${path} flatpak install -y org.mozilla.firefox
         manjaro-chroot ${path} flatpak install -y org.libreoffice.LibreOffice
         fontname="FirgeNerd Console"
-        fontsize=15
-        manjaro-chroot ${path} gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ font "${fontname} ${fontsize}"
+        fontsize=14
+#        profile_id=$(manjaro-chroot ${path} dconf list /org/gnome/terminal/legacy/profiles:/ | tr -d :/)
+#        manjaro-chroot ${path} dconf write /org/gnome/terminal/legacy/profiles:/:${profile_id}/font "'${fontname} ${fontsize}'"
+
+        manjaro-chroot ${path} gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ font "'${fontname} ${fontsize}'"
 
         
 	cp "${path}/desktopfs-pkgs.txt" ${iso_dir}/$(gen_iso_fn)-pkgs.txt
