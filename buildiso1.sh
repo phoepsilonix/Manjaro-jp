@@ -32,12 +32,12 @@ editions=(
 # 初期化
 #rm -rf $artifacts
 #mkdir -p $artifacts
-#rm -rf $pkgdir
-#mkdir -p $pkgdir
+rm -rf $pkgdir
+mkdir -p $pkgdir
 
 # profiles.confを微修正
 # user-repos.confを追加したiso-profilesを用意する
-#cp -r iso-profiles-orig/* $pkgdir
+cp -r iso-profiles-orig/* $pkgdir
 
 # add Japanese pkgs and vivaldi
 for edition in "${editions[@]}"
@@ -65,9 +65,9 @@ do
         echo "buildiso -d xz -f -k $kernel -p $ed $gkey" 
         cat ~/.ssh/gpg-passphrase|sudo -S ls
         touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback -b INFO
-#        buildiso  -d xz -f -k $kernel -p $ed $gkey
+        buildiso  -d xz -f -k $kernel -p $ed $gkey
 #        buildiso -x -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
-        buildiso -zc -d xz -f -k $kernel -p $ed $gkey
+#        buildiso -zc -d xz -f -k $kernel -p $ed $gkey
         #buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build
 done
 
