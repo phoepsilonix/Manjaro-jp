@@ -231,6 +231,7 @@ kernel-6.0.9
 ##### 20221128
 kernel-6.0.10
 LibreOfficeをflatpak版に変更しました。
+fcitx5の初期設定のキーボードをjp-kana86に変更しました。
 
 ---
 参考までに、追記。
