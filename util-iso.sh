@@ -368,8 +368,14 @@ make_image_desktop() {
                 systemd-nspawn -D ${path} flatpak install -y org.libreoffice.LibreOffice
         fi
 
+        
 	cp "${path}/desktopfs-pkgs.txt" ${iso_dir}/$(gen_iso_fn)-pkgs.txt
+        
         [[ -e ${profile_dir}/desktop-overlay ]] && copy_overlay "${profile_dir}/desktop-overlay" "${path}"
+        
+        if [[ "${profile}" == "gnome" ]];then
+                systemd-nspawn -D ${path} dconf update
+        fi
 
         if [[ -e "${path}/usr/share/calamares/branding/manjaro/calamares-sidebar.qml" ]]; then
             configure_branding "${path}"

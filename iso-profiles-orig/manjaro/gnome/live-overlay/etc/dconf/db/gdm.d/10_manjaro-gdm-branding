@@ -11,6 +11,6 @@ picture-uri='file:///usr/share/backgrounds/illyria-default-lockscreen.jpg'
 font='FirgeNerd Console 13'
 use-system-font=false
 
-[/org/gnome/desktop/input-sources]
+[org/gnome/desktop/input-sources]
 sources=[('xkb', 'jp+kana86')]
 xkb-options=['lv3:ralt_switch']
