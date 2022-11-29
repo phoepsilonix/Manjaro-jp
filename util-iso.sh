@@ -359,20 +359,14 @@ make_image_desktop() {
 
         pacman -Qr "${path}" > "${path}/desktopfs-pkgs.txt"
 	
-        if [[ "$profile" == "gnome" ]] ;then
-                fontname="FirgeNerd Console"
-                fontsize=14
-                [[ "${profile}" == "gnome" ]] && systemd-nspawn -D ${path} echo -e "[legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]\nfont='FirgeNerd Console 13'\nuse-system-font=false" | dbus-launch dconf load /org/gnome/terminal/
-                [[ "${profile}" == "gnome" ]] && systemd-nspawn -D ${path} echo -e "[/]\nsources=[('xkb', 'jp+kana86')]\nxkb-options=['lv3:ralt_switch']"| dbus-launch dconf load /org/gnome/desktop/input-sources/
+        if [[ "${profile}" != "architect" ]];then
+                systemd-nspawn -D ${path} pacman -S --needed flatpak --noconfirm
+                systemd-nspawn -D ${path} flatpak remote-add  --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+	        # Browser 
+	        #systemd-nspawn -D ${path} flatpak install -y one.ablaze.floorp
+                systemd-nspawn -D ${path} flatpak install -y org.mozilla.firefox
+                systemd-nspawn -D ${path} flatpak install -y org.libreoffice.LibreOffice
         fi
-
-	systemd-nspawn -D ${path} pacman -S --needed flatpak --noconfirm
-	systemd-nspawn -D ${path} flatpak remote-add  --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-	#flatpak remote-add --system flathub https://flathub.org/repo/flathub.flatpakrepo
-	# Browser 
-	#systemd-nspawn -D ${path} flatpak install -y one.ablaze.floorp
-        systemd-nspawn -D ${path} flatpak install -y org.mozilla.firefox
-        systemd-nspawn -D ${path} flatpak install -y org.libreoffice.LibreOffice
 
 	cp "${path}/desktopfs-pkgs.txt" ${iso_dir}/$(gen_iso_fn)-pkgs.txt
         [[ -e ${profile_dir}/desktop-overlay ]] && copy_overlay "${profile_dir}/desktop-overlay" "${path}"
@@ -390,10 +384,11 @@ make_image_desktop() {
 
         seed_snaps ${path}
 
-	# 
-	systemd-nspawn -D ${path} glib-compile-schemas /usr/share/glib-2.0/schemas/
-	systemd-nspawn -D ${path} update-desktop-database /usr/share/applications/ /var/lib/flatpak/exports/share/applications/
-	[[ -e ${path}/usr/share/xfce4/helpers ]] && systemd-nspawn -D ${path} update-desktop-database /usr/share/xfce4/helpers/
+        if [[ "${profile}" != "architect" ]];then
+	        systemd-nspawn -D ${path} glib-compile-schemas /usr/share/glib-2.0/schemas/
+	        systemd-nspawn -D ${path} update-desktop-database /usr/share/applications/ /var/lib/flatpak/exports/share/applications/
+	        [[ -e ${path}/usr/share/xfce4/helpers ]] && systemd-nspawn -D ${path} update-desktop-database /usr/share/xfce4/helpers/
+        fi
 
         echo "Enable os-prober"
         sed -i -e 's,.*GRUB_DISABLE_OS_PROBER=.*,GRUB_DISABLE_OS_PROBER=false,' "${path}/etc/default/grub"
@@ -438,21 +433,14 @@ make_image_live() {
         
         configure_polkit_user_rules "${path}"
 
-
-        if [[ "$profile" == "gnome" ]] ;then
-                fontname="FirgeNerd Console"
-                fontsize=14
-                [[ "${profile}" == "gnome" ]] && systemd-nspawn -D -D ${path} echo -e "[legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]\nfont='FirgeNerd Console 13'\nuse-system-font=false" | dbus-launch dconf load /org/gnome/terminal/
-                [[ "${profile}" == "gnome" ]] && systemd-nspawn -D -D ${path} echo -e "[/]\nsources=[('xkb', 'jp+kana86')]\nxkb-options=['lv3:ralt_switch']"| dbus-launch dconf load /org/gnome/desktop/input-sources/
-        fi
-
-
         cp "${DATADIR}/pacman-multilib.conf" "${path}/etc/pacman.conf" && sync
         reset_pac_conf "${path}"
 	
-	systemd-nspawn -D ${path} glib-compile-schemas /usr/share/glib-2.0/schemas/
-	systemd-nspawn -D ${path} update-desktop-database /usr/share/applications/ /var/lib/flatpak/exports/share/applications/
-	[[ -e ${path}/usr/share/xfce4/helpers ]] && systemd-nspawn -D ${path} update-desktop-database /usr/share/xfce4/helpers/
+        if [[ "${profile}" != "architect" ]];then
+	        systemd-nspawn -D ${path} glib-compile-schemas /usr/share/glib-2.0/schemas/
+	        systemd-nspawn -D ${path} update-desktop-database /usr/share/applications/ /var/lib/flatpak/exports/share/applications/
+	        [[ -e ${path}/usr/share/xfce4/helpers ]] && systemd-nspawn -D ${path} update-desktop-database /usr/share/xfce4/helpers/
+        fi
 
         echo "Enable os-prober"
 
