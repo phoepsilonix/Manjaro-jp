@@ -373,10 +373,6 @@ make_image_desktop() {
         
         [[ -e ${profile_dir}/desktop-overlay ]] && copy_overlay "${profile_dir}/desktop-overlay" "${path}"
         
-        if [[ "${profile}" == "gnome" ]];then
-                systemd-nspawn -D ${path} dconf update
-        fi
-
         if [[ -e "${path}/usr/share/calamares/branding/manjaro/calamares-sidebar.qml" ]]; then
             configure_branding "${path}"
             msg "Done [Distribution: Release ${dist_release} Codename ${dist_codename}]"
