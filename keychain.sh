@@ -8,8 +8,8 @@ export HISTIGNORE="expect*";
 
 ###### スクリプト終了時には、keychainをクリアして、ssh-agentを停止する。
 trap "
-keychain --clear
 keychain -k mine
+keychain --clear
 " EXIT
 
 ###### sshのパスフレーズを復号化する
