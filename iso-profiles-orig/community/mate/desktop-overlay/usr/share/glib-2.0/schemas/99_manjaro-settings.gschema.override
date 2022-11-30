@@ -1,5 +1,5 @@
 [com.solus-project.brisk-menu]
-favourites=['one.ablaze.floorp.desktop', 'mate-terminal.desktop', 'caja-browser.desktop']
+favourites=['org.mozilla.firefox.desktop', 'mate-terminal.desktop', 'caja-browser.desktop']
 pinned-shortcuts=['matecc.desktop', 'pamac-manager.desktop']
 
 [org.mate.background]

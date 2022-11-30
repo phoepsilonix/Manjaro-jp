@@ -1,6 +1,4 @@
 adwaita-icon-theme
-flatpak
-xdg-desktop-portal-gtk
 alsa-firmware
 dconf-editor
 dmidecode
@@ -114,6 +112,7 @@ yelp
 caja-open-terminal
 >extra caja-wallpaper
 >extra gtk3-print-backends
+>extra manjaro-documentation-en
 >extra mate-themes
 >extra mate-tweak
 >extra mate-screensaver
@@ -123,6 +122,7 @@ caja-open-terminal
 >extra pidgin
 >extra uget
 >extra transmission-gtk
+>extra onlyoffice-desktopeditors
 timeshift 								#backup utility
 #>extra kernel-alive 					#after a kernel update this maintain usable the modules
 >extra libdvdcss
