@@ -149,5 +149,6 @@ timeshift 								#backup utility
 #>extra yaourt
 manjaro-aur-support
 
+xdg-desktop-portal-gtk
 xdg-user-dirs
 xorg-server
