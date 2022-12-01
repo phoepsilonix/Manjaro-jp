@@ -36,7 +36,7 @@ pkgfiles=$(ls -v ./*.zst ./*.xz)
 # repo-add
 #-n 新しいパッケージのみ追加
 #-R 古いパッケージを削除
-LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -n -R --sign --key $repo_key ${pkgfiles}
+LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -n --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -R --sign --key $repo_key ./*.zst 
 #repo-add $repo.db.tar.xz -n -R --sign --key $repo_key ./*.zst
@@ -80,7 +80,7 @@ sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to lo
 
 # OSDNへアップデート
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
-rsync -avPL --no-perms ./*.sig ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
+rsync -avPLc --no-perms ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 rsync -avPL --size-only --no-perms ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }

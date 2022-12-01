@@ -99,3 +99,7 @@ icon-theme-name="Papirus-Dark-Maia"
 font-name="Cantarell Regular 10"
 
 
+[org.mate.peripherals-keyboard-xkb.kbd]
+layouts=['jp\tkana86']
+options=['terminate\tterminate:ctrl_alt_bksp']
+
