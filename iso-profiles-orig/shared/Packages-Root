@@ -25,7 +25,6 @@ systemd-sysvcompat
 tar
 util-linux
 xz
-core/openssl
 
 # Manjaro
 >multilib gcc-libs-multilib
@@ -94,4 +93,6 @@ wget
 which
 wpa_supplicant
 xfsprogs
-
+openssl
+openssl-1.1
+pacman-static

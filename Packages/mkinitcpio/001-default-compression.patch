@@ -7,7 +7,7 @@ index d819e6d..3af22ea 100755
      fi
  
 -    _optcompress=${_optcompress:-${COMPRESSION:-gzip}}
-+    _optcompress=${_optcompress:-${COMPRESSION:-xz}}
++    _optcompress=${_optcompress:-${COMPRESSION:-zstd}}
      if ! type -P "$_optcompress" >/dev/null; then
          warning "Unable to locate compression method: %s" "$_optcompress"
          _optcompress=cat
@@ -20,34 +20,29 @@ index d206766..987cfaa 100644
  	*lz4*, *lzop*, *lzma*, and *xz* compressors. As of linux 5.9 the kernel also
  	understands the compression formats yielded by the *zstd* compressor.
 -	If unspecified, this setting defaults to *gzip* compression.
-+	If unspecified, this setting defaults to *xz* compression.
++	If unspecified, this setting defaults to *zstd* compression.
  	In order to create an uncompressed image, define
  	this variable as *cat*.
  +
 diff --git a/mkinitcpio.conf b/mkinitcpio.conf
-index 6ea97fd..a27c352 100644
+index 6ea97fd..7353fd1 100644
 --- a/mkinitcpio.conf
 +++ b/mkinitcpio.conf
-@@ -52,12 +52,12 @@ FILES=()
- HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
- 
- # COMPRESSION
--# Use this to compress the initramfs image. By default, gzip compression
-+# Use this to compress the initramfs image. By default, xz compression
- # is used. Use 'cat' to create an uncompressed image.
+@@ -57,17 +57,17 @@ HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
  #COMPRESSION="gzip"
  #COMPRESSION="bzip2"
  #COMPRESSION="lzma"
 -#COMPRESSION="xz"
-+COMPRESSION="xz"
++#COMPRESSION="pixz"
  #COMPRESSION="lzop"
  #COMPRESSION="lz4"
- #COMPRESSION="zstd"
-@@ -65,9 +65,10 @@ HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
+-#COMPRESSION="zstd"
++COMPRESSION="zstd"
+ 
  # COMPRESSION_OPTIONS
  # Additional options for the compressor
- #COMPRESSION_OPTIONS=()
-+COMPRESSION_OPTIONS=('-e' '-9' '-T0')
+-#COMPRESSION_OPTIONS=()
++COMPRESSION_OPTIONS=('-19' '--ultra')
  
  # MODULES_DECOMPRESS
  # Decompress kernel modules during initramfs creation.
