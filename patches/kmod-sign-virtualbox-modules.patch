@@ -10,7 +10,7 @@ index 474f3a3..27becc6 100644
 +  for f in *.ko.*
 +  do
 +          case "$f" in
-+          *.zstd)
++          *.zst)
 +                zstd -d $f
 +                COMPRESS=zstd
 +                ;;
