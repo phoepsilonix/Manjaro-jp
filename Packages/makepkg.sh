@@ -2,6 +2,7 @@
 
 export HISTIGNORE="expect*";
 export IGNORE_CC_MISMATCH=1
+export LC_ALL=C
 password=$(cat ~/.ssh/gpg-passphrase)
 
 curdir=${PWD##*/}
@@ -14,7 +15,7 @@ expect -c "
   spawn makepkg -sCc
   expect {
         eof { exit 0 }
-        {\[sudo\] password for } {
+        -gl {\[sudo\] password for } {
                 send -- \"$password\r\"
                 exp_continue
         }
