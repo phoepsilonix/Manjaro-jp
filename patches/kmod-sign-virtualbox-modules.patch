@@ -1,18 +1,39 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 45a9396..23c62c3 100644
+index 474f3a3..27becc6 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -30,6 +30,13 @@ build() {
+@@ -30,6 +30,34 @@ build() {
    # build host modules
    echo 'Host modules'
    fakeroot dkms build --dkmstree "$srcdir" -m vboxhost/${pkgver}_OSE -k ${_kernver}
 +  cd "$srcdir/vboxhost/$_pkgver/$_kernver/$CARCH/module"
-+  zstd -d *.zst
++  for f in *.ko.*
++  do
++          case "$f" in
++          *.zstd)
++                zstd -d $f
++                COMPRESS=zstd
++                ;;
++          *.xz)
++                xz -d $f
++                COMPRESS=xz
++                ;;
++          esac
++  done
++
 +  for f in *.ko
 +  do
-+      /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $f
++          /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $f
 +  done
-+  zstd -f -22 --ultra -T0 *.ko
++
++  case "$COMPRESS" in
++  zstd)
++          zstd -f -22 --ultra -T0 *.ko
++          ;;
++  xz)
++          xz -T0 -9 -e *.ko
++          ;;
++  esac
  }
  
  package(){
