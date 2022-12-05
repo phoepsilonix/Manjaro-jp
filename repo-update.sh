@@ -10,6 +10,7 @@ ssh_pass=~/.ssh/ssh-passphrase.gpg
 
 cd $repo_dir; 
 
+sudo -S pwd < $gpg_pass > /dev/null
 # usb
 # 古いパッケージをバックアップ
 sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
