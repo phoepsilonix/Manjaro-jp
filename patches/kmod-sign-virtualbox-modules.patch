@@ -7,12 +7,12 @@ index 45a9396..23c62c3 100644
    echo 'Host modules'
    fakeroot dkms build --dkmstree "$srcdir" -m vboxhost/${pkgver}_OSE -k ${_kernver}
 +  cd "$srcdir/vboxhost/$_pkgver/$_kernver/$CARCH/module"
-+  zstd -d *.zstd
++  zstd -d *.zst
 +  for f in *.ko
 +  do
 +      /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $f
 +  done
-+  zstd -22 --ultra -T0 *.ko
++  zstd -f -22 --ultra -T0 *.ko
  }
  
  package(){
