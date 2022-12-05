@@ -13,7 +13,7 @@ cd $repo_dir;
 sudo -S pwd < $gpg_pass > /dev/null
 # usb
 # 古いパッケージをバックアップ
-sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
+#sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # 署名がないパッケージに署名をする
 for f in *.zst *.xz
@@ -73,11 +73,11 @@ expect << EOF
 EOF
 
 # localhost
-cat $gpg_pass |sudo -S ls > /dev/null
+cat $gpg_pass |sudo -S pwd > /dev/null
 sudo rsync -avP --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # usb
-sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
+#sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # OSDNへアップデート
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
