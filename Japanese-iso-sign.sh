@@ -13,7 +13,7 @@ echo "gpg sign"
 # gpg署名
 for f in *.iso
 do
-	[[ ! -e $f.sig ]] &&  { echo "gpg sign: $f" ; gpg --passphrase-file ~/.ssh/gpgpassphrase --batch --pinentry-mode=loopback --default-key $repo_key -v -b $f; }
+	[[ ! -e $f.sig ]] &&  { echo "gpg sign: $f" ; gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback --default-key $repo_key -v -b $f; }
 done
 
 echo "sha256sums"

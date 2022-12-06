@@ -235,6 +235,8 @@ Changed LibreOffice to the flatpak version.
 Changed fcitx5's default keyboard to jp-kana86.
 Set initial font for gnome-terminal.
 
+##### 20221206
+kernel-6.0.11
 
 ---
 Addendum for your reference.
