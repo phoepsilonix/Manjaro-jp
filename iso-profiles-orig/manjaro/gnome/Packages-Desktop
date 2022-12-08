@@ -22,7 +22,7 @@ grub-btrfs
 >extra libdvdcss
 >extra manjaro-alsa
 >extra manjaro-gstreamer
->extra manjaro-modem              # ?
+#>extra manjaro-modem              # ?
 #>extra manjaro-pulse
 
 ## Fonts
@@ -81,7 +81,7 @@ gnome-logs
 #gnome-screenshot                  # New screenshot tool integrated
 gnome-session
 gnome-settings-daemon
-gnome-shell
+#gnome-shell
 gnome-shell-extensions
 #gnome-software                    # pamac-gtk used instead
 gnome-system-monitor
@@ -159,6 +159,7 @@ gnome-tweaks
 ## GNOME Shell Extensions
 >extra gnome-shell-extension-appindicator
 >extra gnome-shell-extension-arcmenu
+>extra gnome-shell-extension-custom-accent-colors
 >extra gnome-shell-extension-dash-to-dock
 >extra gnome-shell-extension-dash-to-panel
 >extra gnome-shell-extension-desktop-icons-ng
@@ -171,6 +172,7 @@ gnome-tweaks
 ## Themes
 adw-gtk-theme
 >extra gdm-plymouth
+gnome-shell-maia
 gnome-themes-extra
 gnome-wallpapers
 grub-theme-manjaro
@@ -199,7 +201,7 @@ fprintd                            # needed for fingerprint reader
 gnome-browser-connector
 gnome-firmware
 >extra gnome-layout-switcher
-#gnome-tour
+gnome-tour
 >extra gnuchess                    # optional for gnome-chess to play against computer
 gparted
 gthumb
@@ -213,10 +215,10 @@ inxi
 lollypop
 #manjaro-application-utility       # required by manjaro-hello
 #manjaro-gnome-vanilla
-#manjaro-hello
+manjaro-hello
 >extra manjaro-log-helper
 manjaro-settings-manager-notifier
-manjaro-starter
+#manjaro-starter
 #mousetweaks
 nautilus-admin
 nautilus-empty-file
