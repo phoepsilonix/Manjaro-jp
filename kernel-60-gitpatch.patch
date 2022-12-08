@@ -1,0 +1,33 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 4f08a1c..7d0a536 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -16,8 +16,8 @@ url="https://www.kernel.org/"
+ license=('GPL2')
+ makedepends=(bc docbook-xsl libelf pahole git inetutils kmod xmlto cpio perl tar xz)
+ options=('!strip')
+-source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz"
+-        "https://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
++source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz"
++        "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
+         'config'
+         # ARCH Patches
+         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
+@@ -78,10 +78,13 @@ prepare() {
+   for src in "${source[@]}"; do
+       src="${src%%::*}"
+       src="${src##*/}"
+-      [[ $src = *.patch ]] || continue
+-      msg2 "Applying patch: $src..."
+-      patch -Np1 < "../$src"
+-  done
++      if [[ $src =~ .*\.patch ]]; then
++              msg2 "Applying patch: $src..."
++              patch -Np1 < "../$src"
++      elif [[ $src =~ .*\.gitpatch ]]; then
++              msg2 "Applying gitpatch: $src..."
++              git --git-dir= apply -p1 --stat --apply "../$src"
++      fi
+ 
+   msg2 "add config"
+   cat "../config" > ./.config
