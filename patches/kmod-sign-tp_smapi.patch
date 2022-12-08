@@ -1,8 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index d8cfbc0..8cab15e 100644
+index d24dc42..086f0df 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -41,6 +49,7 @@ build() {
+@@ -41,14 +49,25 @@ build() {
    # https://bugs.archlinux.org/task/54975 (kernel has no _GLOBAL_OFFSET_TABLE_):
    # Clear EXTRA_CFLAGS since it defaults to injecting CFLAGS and -fno-plt breaks the modules
    make HDAPS=1 KVER="$(</usr/lib/modules/${_extraver}/version)" EXTRA_CFLAGS=
@@ -10,4 +10,23 @@ index d8cfbc0..8cab15e 100644
  }
  
  package() {
-
+   # install kernel modules
+   find . -name "*.ko" -exec install -Dt "$pkgdir$_extramodules" {} +
+ 
+-  # compress kernel modules
+-  find "${pkgdir}" -name "*.ko" -exec gzip -9 {} +
++  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
++  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
++  COMPRESS=${COMPRESS% 1}
++  case $COMPRESS in
++  ZSTD)
++    COMP_CMD="zstd -T0 -22 --ultra --auto-threads=logical --rm -f"
++    ;;
++  XZ)
++    COMP_CMD="xz -T0 -f -q -9 --lzma2=dict=2MiB"
++    ;;
++  esac
++  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
+ 
+   # load module on startup
+   echo tp_smapi > "../${_pkgname}.conf"

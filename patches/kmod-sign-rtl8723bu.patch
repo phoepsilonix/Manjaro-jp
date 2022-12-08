@@ -1,5 +1,5 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 044224f..3f67ab6 100644
+index 6e84256..9753ee9 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -38,6 +38,7 @@ build() {
@@ -10,3 +10,23 @@ index 044224f..3f67ab6 100644
  }
  
  package() {
+@@ -47,6 +48,17 @@ package() {
+ 
+     # set the kernel we've built for inside the install script
+     sed -i -e "s/EXTRAMODULES=.*/EXTRAMODULES=${_extramodules}/g" "${startdir}/${install}"
+-
+-    find "$pkgdir" -name '*.ko' -exec gzip -9 {} \;
++    _kernver="$(cat /usr/lib/modules/$_extramodules/version || true)"
++  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
++  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
++  COMPRESS=${COMPRESS% 1}
++  case $COMPRESS in
++  ZSTD)
++    COMP_CMD="zstd -T0 -22 --ultra --auto-threads=logical --rm -f"
++    ;;
++  XZ)
++    COMP_CMD="xz -T0 -f -q -9 --lzma2=dict=2MiB"
++    ;;
++  esac
++  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
+ }

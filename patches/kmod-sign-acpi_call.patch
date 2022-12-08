@@ -1,8 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 7ed6961..53df7dd 100644
+index 89e8ee4..b6be638 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -27,6 +27,7 @@ build() {
+@@ -27,14 +27,27 @@ build() {
    _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
    cd "${_pkgname}-${pkgver}"
    make KVER="${_kernver}"
@@ -10,4 +10,24 @@ index 7ed6961..53df7dd 100644
  }
  
  package() {
-
+   cd "${_pkgname}-${pkgver}"
+ 
++  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+   install -dm 755 "${pkgdir}"/usr/lib/{modules/${_extramodules},modules-load.d}
+   install -m 644 acpi_call.ko "${pkgdir}"/usr/lib/modules/${_extramodules}/
+-  gzip "${pkgdir}"/usr/lib/modules/${_extramodules}/acpi_call.ko
++  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
++  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
++  COMPRESS=${COMPRESS% 1}
++  case $COMPRESS in
++  ZSTD)
++    COMP_CMD="zstd -T0 -22 --ultra --auto-threads=logical --rm -f"
++    ;;
++  XZ)
++    COMP_CMD="xz -T0 -f -q -9 --lzma2=dict=2MiB"
++    ;;
++  esac
++  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
+   echo acpi_call > "${pkgdir}"/usr/lib/modules-load.d/${pkgname}.conf
+ 
+   install -dm 755 "${pkgdir}"/usr/share/${pkgname}
