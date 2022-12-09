@@ -1,45 +1,47 @@
-diff --unified --recursive --text mkinitcpio-31.orig/libalpm/scripts/mkinitcpio-install mkinitcpio-31/libalpm/scripts/mkinitcpio-install
---- mkinitcpio-31.orig/libalpm/scripts/mkinitcpio-install	2021-11-29 04:15:01.000000000 -0700
-+++ mkinitcpio-31/libalpm/scripts/mkinitcpio-install	2021-11-30 13:38:27.209473375 -0700
-@@ -15,20 +15,32 @@
-         continue
-     fi
+diff --unified --recursive --text a/libalpm/scripts/mkinitcpio b/libalpm/scripts/mkinitcpio
+--- a/libalpm/scripts/mkinitcpio	2022-11-20 13:18:56.000000000 -0700
++++ b/libalpm/scripts/mkinitcpio	2022-11-25 13:27:18.847308184 -0700
+@@ -7,7 +7,7 @@
  
-+    if ! read -r kernelbase > /dev/null 2>&1 < "${line%/vmlinuz}/kernelbase"; then
-+        # this kernel has no kernelbase, use pkgbase
-+        kernelbase="${pkgbase}"
-+    fi
-+
-     preset="/etc/mkinitcpio.d/${pkgbase}.preset"
-+
-+    # sed expression for following substitutions
-+    _subst="
-+      s|%PKGBASE%|${pkgbase}|g
-+      s|%KERNELBASE%|${kernelbase}|g
-+    "
-+
-     if [[ ! -e $preset ]]; then
-         if [[ -e $preset.pacsave ]]; then
-             # move the pacsave to the template
-             mv "${preset}.pacsave" "$preset"
+ process_preset() {
+     if [[ -n "$pkgbase" && -e "$preset" ]]; then
+-        if ! cmp "$preset" > /dev/null 2>&1 <(sed "s|%PKGBASE%|${pkgbase}|g" /usr/share/mkinitcpio/hook.preset); then
++        if ! cmp "$preset" > /dev/null 2>&1 <(sed "s|%KERNELBASE%|${kernelbase}|g" /usr/share/mkinitcpio/hook.preset); then
+             if [[ ! -e "$preset.pacsave" ]]; then
+                 # save the preset as pacsave
+                 mv -- "$preset" "$preset.pacsave" && return 0
+@@ -27,13 +27,13 @@
+             mv -- "${preset}.pacsave" "$preset"
          else
              # create the preset from the template
--            sed "s|%PKGBASE%|${pkgbase}|g" /usr/share/mkinitcpio/hook.preset \
-+            sed "${_subst}" /usr/share/mkinitcpio/hook.preset \
+-            sed "s|%PKGBASE%|${1}|g" /usr/share/mkinitcpio/hook.preset \
++            sed "s|%KERNELBASE%|${kernelbase}|g" /usr/share/mkinitcpio/hook.preset \
                  | install -Dm644 /dev/stdin "$preset"
          fi
      fi
  
      # always install the kernel
--    install -Dm644 "${line}" "/boot/vmlinuz-${pkgbase}"
+-    install -Dm644 "$line" "/boot/vmlinuz-${1}"
 +    install -Dm644 "${line}" "/boot/vmlinuz-${kernelbase}"
  
      # compound args for each kernel
-     args+=(-p "${pkgbase}")
-diff --unified --recursive --text mkinitcpio-31.orig/libalpm/scripts/mkinitcpio-remove mkinitcpio-31/libalpm/scripts/mkinitcpio-remove
---- mkinitcpio-31.orig/libalpm/scripts/mkinitcpio-remove	2021-11-29 04:15:01.000000000 -0700
-+++ mkinitcpio-31/libalpm/scripts/mkinitcpio-remove	2021-11-30 13:38:27.209473375 -0700
-@@ -28,11 +28,17 @@
+     args+=(-p "$1")
+@@ -41,10 +41,10 @@
+ 
+ remove_kernel() {
+     # remove the actual kernel and images for the package being removed
+-    kernel="/boot/vmlinuz-${1}"
+-    preset="/etc/mkinitcpio.d/${1}.preset"
+-    initramfs="/boot/initramfs-${1}.img"
+-    fallback_initramfs="/boot/initramfs-${1}-fallback.img"
++    kernel="/boot/vmlinuz-${kernelbase}"
++    preset="/etc/mkinitcpio.d/${kernelbase}.preset"
++    initramfs="/boot/initramfs-${kernelbase}.img"
++    fallback_initramfs="/boot/initramfs-${kernelbase}-fallback.img"
+     # remove the installed kernel
+     rm -f -- "$kernel"
+ 
+@@ -66,6 +66,11 @@
          continue
      fi
  
@@ -48,33 +50,14 @@ diff --unified --recursive --text mkinitcpio-31.orig/libalpm/scripts/mkinitcpio-
 +        kernelbase="${pkgbase}"
 +    fi
 +
-     # remove the actual kernel and images for the package being removed
--    kernel="/boot/vmlinuz-${pkgbase}"
-+    kernel="/boot/vmlinuz-${kernelbase}"
-     preset="/etc/mkinitcpio.d/${pkgbase}.preset"
--    initramfs="/boot/initramfs-${pkgbase}.img"
--    fallback_initramfs="/boot/initramfs-${pkgbase}-fallback.img"
-+    initramfs="/boot/initramfs-${kernelbase}.img"
-+    fallback_initramfs="/boot/initramfs-${kernelbase}-fallback.img"
-+
-     if [[ -e $kernel ]]; then
-         # remove the installed kernel
-         rm $kernel
-Only in mkinitcpio-31/libalpm/scripts: mkinitcpio-remove.orig
-diff --unified --recursive --text mkinitcpio-31.orig/mkinitcpio.d/example.preset mkinitcpio-31/mkinitcpio.d/example.preset
---- mkinitcpio-31.orig/mkinitcpio.d/example.preset	2021-11-29 04:15:01.000000000 -0700
-+++ mkinitcpio-31/mkinitcpio.d/example.preset	2021-11-30 14:09:28.797770680 -0700
-@@ -15,14 +15,14 @@
- # presetname_image   - the filename of generated image
- # presetname_options - any extra options
- 
--#default_kver="3.0-ARCH"
-+#default_kver="5.3.8-3-MANJARO"
- #default_config="/etc/mkinitcpio.conf"
--default_image="/tmp/initramfs-linux.img"
--default_efi_image="/efi/EFI/Linux/arch-linux.efi"
-+default_image="/boot/initramfs-5.3-x86_64.img"
-+default_efi_image="/efi/EFI/Manjaro/grubx64.efi"
+     case "$1" in
+         install) install_kernel "$pkgbase";;
+         remove) remove_kernel "$pkgbase";;
+diff --unified --recursive --text a/mkinitcpio.d/example.preset b/mkinitcpio.d/example.preset
+--- a/mkinitcpio.d/example.preset	2022-11-20 13:18:56.000000000 -0700
++++ b/mkinitcpio.d/example.preset	2022-11-25 13:25:08.956417074 -0700
+@@ -21,8 +21,8 @@
+ default_efi_image="/efi/EFI/Linux/arch-linux.efi"
  default_options=""
  
 -#fallback_kver="3.0-ARCH"
@@ -85,9 +68,9 @@ diff --unified --recursive --text mkinitcpio-31.orig/mkinitcpio.d/example.preset
 +fallback_image="/boot/initramfs-5.3-x86_64-fallback.img"
 +fallback_efi_image="/efi/EFI/Manjaro/grubx64-fallback.efi"
  fallback_options="-S autodetect"
-diff --unified --recursive --text mkinitcpio-31.orig/mkinitcpio.d/hook.preset mkinitcpio-31/mkinitcpio.d/hook.preset
---- mkinitcpio-31.orig/mkinitcpio.d/hook.preset	2021-11-29 04:15:01.000000000 -0700
-+++ mkinitcpio-31/mkinitcpio.d/hook.preset	2021-11-30 13:38:27.209473375 -0700
+diff --unified --recursive --text a/mkinitcpio.d/hook.preset b/mkinitcpio.d/hook.preset
+--- a/mkinitcpio.d/hook.preset	2022-11-20 13:18:56.000000000 -0700
++++ b/mkinitcpio.d/hook.preset	2022-11-25 13:26:02.945395342 -0700
 @@ -1,14 +1,14 @@
  # mkinitcpio preset file for the '%PKGBASE%' package
  
