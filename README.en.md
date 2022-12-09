@@ -15,7 +15,7 @@ The Linux kernel is as up-to-date as possible.
 The kernel is built using clang.
 Japanese input (fcitx5-mozc) and Japanese fonts are installed as standard.
 The flatpak version [Firefox](https://www.mozilla.org/ja/firefox/browsers/) or [Floorp](https://floorp.ablaze.one/) is used as the standard browser.
-Standard installation of [libreoffice-fresh](https://www.libreoffice.org) as office software.
+Standard installation of the flatpak version [LibreOffice](https://www.libreoffice.org) as office software.
 
 ISOs for live environment & installation are available at the following distribution sites.
 Please try it if you like.
