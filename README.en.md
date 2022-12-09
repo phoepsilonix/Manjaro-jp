@@ -238,6 +238,10 @@ Set initial font for gnome-terminal.
 ##### 20221206
 kernel-6.0.11
 
+##### 20221209
+kernel-6.0.12
+
+
 ---
 Addendum for your reference.
 If you have a PC with Linux installed, you can use an unofficial (no official support) dual boot environment with ChromeOS. If you have a PC with Linux installed, you can create a dual-boot environment with ChromeOS, which is unofficial (no official support). This is for those who have some knowledge.
