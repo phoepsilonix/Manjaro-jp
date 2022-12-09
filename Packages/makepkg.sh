@@ -16,11 +16,15 @@ expect -c "
   expect {
         eof { exit 0 }
         -gl {\[sudo\] password for } {
-                send -- \"$password\r\"
+                send -- \"$password\n\"
                 exp_continue
         }
         -re {\[[Yy]/[Nn]\]} {
-                send \"y\r\"
+                send \"y\n\"
+                exp_continue
+        }
+        -gl {Enter a number (default=1)} {
+                send \"\n\"
                 exp_continue
         }
         exp_continue

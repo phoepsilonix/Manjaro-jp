@@ -172,7 +172,7 @@ gnome-tweaks
 ## Themes
 adw-gtk-theme
 >extra gdm-plymouth
-gnome-shell
+gnome-shell-maia
 gnome-themes-extra
 gnome-wallpapers
 grub-theme-manjaro

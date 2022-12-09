@@ -16,13 +16,13 @@ sudo -S pwd < $gpg_pass > /dev/null
 #sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # 署名がないパッケージに署名をする
-for f in *.zst *.xz
+for f in *.zst
 do
 	[[ ! -f "$f.sig" ]] && { echo "gpg sign: $f" ; gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback --default-key $repo_key -v -b $f; }
 done
 
 # パッケージの署名の検証
-for f in *.zst.sig *.xz.sig
+for f in *.zst.sig
 do
 	echo "$f ${f%.*} gpg verify"
 	gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -v --default-key $repo_key --verify $f ${f%.*} || { echo "pkg verify error" ; exit 1; }
