@@ -29,7 +29,7 @@ Please disable Secure Boot in your BIOS settings.
 ### Place of distribution
 [![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 ---|---  
-[![SourceForge](http://sourceforge.net/sflogo.php?group_id=66882&type=5)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
+[![SourceForge](https://sourceforge.net/sflogo.php?group_id=66882&type=5)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
 [![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
 
 Thank you for the valuable storage space.
@@ -238,7 +238,7 @@ Set initial font for gnome-terminal.
 ##### 20221206
 kernel-6.0.11
 
-##### 20221209
+##### 20221210
 kernel-6.0.12
 
 
@@ -272,4 +272,3 @@ ETH
 ```0xe9968CFb2bc0D2aB789c45E31042938265A151Bb```
 USDT(TRC20)
 ```TFmZcyVjobYKNUXeXLmWdj4ZphGU2tTptj```
-

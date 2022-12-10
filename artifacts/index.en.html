@@ -1,19 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
+    <meta charset="utf-8">
 <title>Manjaro-JP</title>
-<meta name="generator" content="md2html">
-<meta charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="https://phoepsilonix.love/bl-kernel/css/bootstrap.min.css?version=3.14.1">
+<link rel="stylesheet" type="text/css" href="https://phoepsilonix.love/bl-themes/phoepsilonix/css/bootstrap.min.css?version=3.14.1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./default.min.css">
+<script src="./highlight.min.js"></script>
+<style>
+li.list-group-item{padding-left: 0px;}
+a:hover .card h4{color:#126efd;}
+a:hover h5{color:#126efd;}
+p a{color:#126efd;text-decoration: none;}
+p a:hover{color:#126efd;text-decoration: none;}
+li.list-group-item a:hover{color:#126efd;}
+.ft p a:hover {color:#126efd;}
+p img{width:100%;border-radius: 6px;}
+</style>
 </head>
+<body>
 <h1><a href="https://osdn.net/projects/manjaro-jp/">Manjaro Linux JP</a></h1>
 <h2>Japanese language support for <a href="https://manjaro.org/">Manjaro Linux</a></h2>
 <p>　Supports Japanese input and display by default, including live environment.
-<a href="https://kernel.org/">kernel-6.0 series</a>.
-
-GNOME, KDE, and Xfce will be available for official use.
+<a href="https://kernel.org/">kernel-6.0 series</a>.</p>
+<p>GNOME, KDE, and Xfce will be available for official use.
 The distribution files are ISO and some package files.
-Please boot from a USB memory stick, etc.
-It may be easier to use <a href="https://ventoy.net/">Ventoy</a> to boot from USB memory.</p>
+Please boot from a USB memory stick, etc. 
+It may be easier to use <a href="https://ventoy.net/">Ventoy</a> to boot from USB memory.
+It is recommended to reformat the first partition with ext4 when installing Ventoy.</p>
 <h3>Main Features</h3>
 <p>The Linux kernel is as up-to-date as possible.
 The kernel is built using clang.
@@ -24,43 +41,20 @@ Standard installation of the flatpak version <a href="https://www.libreoffice.or
 Please try it if you like.</p>
 <h5>Notes</h5>
 <ol>
-<li><p>secure boot is not supported
+<li>secure boot is not supported
 Please disable Secure Boot in your BIOS settings.
-(If you want secure boot support, Ubuntu is a fast option, and Ubuntu Flavour offers several desktop environments). 2.</p>
-</li>
-<li><p>if the startup menu does not appear
-The menu can be displayed by modifying /etc/default/grub and executing update-grub. 修正点は、GRUB_TIMEOUT_STYLEをhiddenからmenuに変更します。
-The fix is to change GRUB_TIMEOUT_STYLE from hidden to menu.
-After that, if you run update-grub with administrator privileges, the menu will be displayed from the next boot. If the file system is btrfs, you can choose to boot from snapshots, etc.
-Change GRUB_TIMEOUT_STYLE=menu.
-Set TIMEOUT to an appropriate number of seconds.</p>
-</li>
+(If you want secure boot support, Ubuntu is a fast option, and Ubuntu Flavour offers several desktop environments). </li>
 </ol>
-<pre><code class="language-sh">sudo nano /etc/default/grub
-</code></pre>
-<p>Then, execute the following command.</p>
-<pre><code class="language-sh">sudo update-grub
-</code></pre>
-<hr>
+<hr />
 <h3>Place of distribution</h3>
-<table>
-<tr>
-<td><a href="https://osdn.net/projects/manjaro-jp/" target="_blank"><img src="https://osdn.net/sflogo.php?group_id=14185&type=1" width="210" height="62" alt="OSDN"></a></td>
-<td><a href="https://osdn.net/projects/manjaro-jp/" target="_blank">Manjaro-Linux-jp at OSDN</a></td>
-</tr>
-<tr>
-<td><a href="https://sourceforge.net/projects/manjaro-jp/" target="_blank"><img src="http://sourceforge.net/sflogo.php?group_id=66882&amp;type=5" width="210" height="62" border="0" alt="SourceForge Logo"></a></td>
-<td><a href="https://sourceforge.net/projects/manjaro-jp/" target="_blank">Manjaro-Linux-jp at SourceForge</a></td>
-</tr>
-<tr>
-<td><a href="https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A" target="_blank"><img src="https://mega.nz/favicon.ico" height="62" alt="MEGA"></a></td>
-<td><a href="https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A" target="_blank">Manjaro-Linux-jp at MEGA</a></td>
-</tr>
-</table>
+<table><thead><tr><th><a href="https://osdn.net/projects/manjaro-jp/"><img src="https://osdn.net/sflogo.php?group_id=14185&amp;type=1" alt="OSDN" /></a></th><th><a href="https://osdn.net/projects/manjaro-jp/">Manjaro-Linux-jp at OSDN</a></th></tr></thead><tbody>
+<tr><td><a href="https://sourceforge.net/projects/manjaro-jp/"><img src="https://sourceforge.net/sflogo.php?group_id=66882&amp;type=5" alt="SourceForge" /></a></td><td><a href="https://sourceforge.net/projects/manjaro-jp/">Manjaro-Linux-jp at SourceForge</a></td></tr>
+<tr><td><a href="https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A"><img src="https://mega.nz/favicon.ico" alt="MEGA" /></a></td><td><a href="https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A">Manjaro-Linux-jp at MEGA</a></td></tr>
+</tbody></table>
 <p>Thank you for the valuable storage space.
 Distributed at the above 3 locations.</p>
-<p><a href=https://mega.nz/storage/aff=gVLIePn4Hy0>MEGA Storage</a> is recommended because it can upload file sizes of 4G or more.<p>
-<hr>
+<p><a href="https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A%22">MEGA Storage</a> is recommended because it can upload file sizes of 4G or more.</p>
+<hr />
 <h3>Memorandum</h3>
 <h5>manjaro-tools-iso changes</h5>
 <ol>
@@ -69,7 +63,8 @@ By default, the mirrorlist is not loaded and the EU server is used.</li>
 <li>to prioritize the order of repositories specified in user-repos.conf in order to include the packages I have prepared in the ISO. This is mainly to include the latest version of the kernel.</li>
 </ol>
 <h3>Update History</h3>
-<details><summary>Our History</summary>
+<details>
+<summary>Our History</summary>
 <h5>20220401</h5>
 <p>kernel-5.17.1 (clang build)
 linux517-broadcom-wl,linux517-zfs package was also built and added.
@@ -111,40 +106,40 @@ Support <a href="https://www.morisawa.co.jp/products/fonts/bizplus/lineup/">Mori
 <p>Updated nvidia driver version to 515.43.04.
 Added kernel-5.18 series.</p>
 <h5>20220531</h5>
-<p>kernel-5.17.12</p>
-<p>kernel-5.18.1</p>
-<h5>202200607</h5>
-<p>kernel-5.17.13</p>
-<p>kernel-5.18.2</p>
+<p>kernel-5.17.12
+kernel-5.18.1</p>
+<h5>20220607</h5>
+<p>kernel-5.17.13
+kernel-5.18.2</p>
 <h5>20220608</h5>
-<p>Office Software Related Changes</p>
-<p>Eliminated the selection of office software in the installer.</p>
-<p>Mainly to reduce space requirements, we eliminated the selection of office software in the installer and changed the standard installed office software from onlyoffice-desktopeditor to libreoffice-fresh.</p>
+<p>Office Software Related Changes
+Eliminated the selection of office software in the installer.
+Mainly to reduce space requirements, we eliminated the selection of office software in the installer and changed the standard installed office software from onlyoffice-desktopeditor to libreoffice-fresh.</p>
 <h5>20220611</h5>
-<p>kernel-5.17.14</p>
-<p>kernel-5.18.3</p>
-<p>Updated nvidia driver version to 515.48.07.</p>
-<p>Fixed virtualbox-host-dkms to build on linux518.</p>
-<p>Added nginx-quic package and other packages to manjaro-jp repository, although they are not included in ISO.</p>
-<p>Included manjaro-jp repository in pacman.conf.</p>
+<p>kernel-5.17.14
+kernel-5.18.3
+Updated nvidia driver version to 515.48.07.
+Fixed virtualbox-host-dkms to build on linux518.
+Added nginx-quic package and other packages to manjaro-jp repository, although they are not included in ISO.
+Included manjaro-jp repository in pacman.conf.</p>
 <h5>20220614</h5>
-<p>Bug fixes in the installer.</p>
-<p>Changed editor from gedit to gnome-text-editor in GNOME version.</p>
+<p>Bug fixes in the installer.
+Changed editor from gedit to gnome-text-editor in GNOME version.</p>
 <h5>20220619</h5>
 <p>kernel-5.18.5</p>
 <h5>20220624</h5>
-<p>kernel-5.18.6</p>
-<p>Switched from audio-related manjaro-pulse to manjaro-pipewire.</p>
+<p>kernel-5.18.6
+Switched from audio-related manjaro-pulse to manjaro-pipewire.</p>
 <h5>20220627</h5>
 <p>kernel-5.18.7</p>
 <h5>20220630</h5>
-<p>kernel-5.18.8</p>
-<p>nvidia-utils 515.57</p>
+<p>kernel-5.18.8
+nvidia-utils 515.57</p>
 <h5>20220703</h5>
 <p>kernel-5.18.9</p>
 <h5>20220706</h5>
-<p>cups-browsed enabled.</p>
-<p>The ipp-usb package has been added.</p>
+<p>cups-browsed enabled.
+The ipp-usb package has been added.</p>
 <h5>20220709</h5>
 <p>kernel-5.18.10</p>
 <h5>20220714</h5>
@@ -156,8 +151,8 @@ Added kernel-5.18 series.</p>
 <h5>20220731</h5>
 <p>kernel-5.18.15</p>
 <h5>20220805</h5>
-<p>kernel-5.18.16</p>
-<p>nvidia-utils 515.65</p>
+<p>kernel-5.18.16
+nvidia-utils 515.65</p>
 <h5>20220812</h5>
 <p>kernel-5.18.17</p>
 <h5>20220819</h5>
@@ -177,64 +172,65 @@ Added kernel-5.18 series.</p>
 <h5>20220922</h5>
 <p>kernel-5.19.10</p>
 <h5>20220925</h5>
-<p>kernel-5.19.11</p>
-<p>nvidia-utils 515.76</p>
+<p>kernel-5.19.11
+nvidia-utils 515.76</p>
 <h5>20221003</h5>
 <p>kernel-5.19.12</p>
 <h5>20221006</h5>
 <p>kernel-5.19.14</p>
 <h5>20221013</h5>
-<p>kernel-5.19.15</p>
-<p>nvidia-utils 520.56.06-1</p>
+<p>kernel-5.19.15
+nvidia-utils 520.56.06-1</p>
 <h5>20221016</h5>
-<p>kernel-5.19.16</p>
-<p>nvidia-utils 520.56.06-2</p>
+<p>kernel-5.19.16
+nvidia-utils 520.56.06-2</p>
 </details>
 <h5>20221025</h5>
-<p>kernel-6.0.3</p>
-<p>The standard browser was changed to [Floorp](https://floorp.ablaze.one/).</p>
+<p>kernel-6.0.3
+The standard browser was changed to <a href="https://floorp.ablaze.one/">Floorp</a>.</p>
 <h5>20221105</h5>
-<p>kernel-6.0.7</p>
-<p>mkinitcpio-32-2</p>
+<p>kernel-6.0.7
+mkinitcpio-32-2</p>
 <h5>20221112</h5>
-<p>The flatpak version <a href="https://www.mozilla.org/ja/firefox/browsers/">Firefox</a> or <a href="https://floorp.ablaze.one/">Floorp</a> is used as the standard browser.</p>
-<p>kernel-6.0.8</p>
+<p>The flatpak version <a href="https://www.mozilla.org/ja/firefox/browsers/">Firefox</a> or <a href="https://floorp.ablaze.one/">Floorp</a> is used as the standard browser.
+kernel-6.0.8</p>
 <h5>20221118</h5>
 <p>kernel-6.0.9</p>
 <h5>20221128</h5>
-<p>kernel-6.0.10</p>
-<p>Changed LibreOffice to the flatpak version.</p>
-<p>Changed fcitx5's default keyboard to jp-kana86.</p>
-<p>Set initial font for gnome-terminal.</p>
+<p>kernel-6.0.10
+Changed LibreOffice to the flatpak version.
+Changed fcitx5’s default keyboard to jp-kana86.
+Set initial font for gnome-terminal.</p>
 <h5>20221206</h5>
 <p>kernel-6.0.11</p>
-<h5>20221209</h5>
+<h5>20221210</h5>
 <p>kernel-6.0.12</p>
-<hr>
+<hr />
 <p>Addendum for your reference.
 If you have a PC with Linux installed, you can use an unofficial (no official support) dual boot environment with ChromeOS. If you have a PC with Linux installed, you can create a dual-boot environment with ChromeOS, which is unofficial (no official support). This is for those who have some knowledge.
 If you are interested, please refer to <a href="https://github.com/sebanc/brunch/blob/master/install-with-linux.md">here</a>.</p>
-<hr>
+<hr />
 <p>In the ArchLinux family, which features rolling releases, <a href="https://garudalinux.org">Garuda Linux</a> also looks good.</p>
-<hr>
-<pre><code>[manjaro-jp].
+<hr />
+<pre><code>[manjaro-jp]
 SigLevel = Optional TrustAll
 Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
 </code></pre>
-<p><a href="https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/">Manjaro-JP pkgs</a></p>
-
-<a href="https://gitlab.com/phoepsilonix/manjaro-jp/">Manjaro-JP at gitlab</a>
+<p><a href="https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/">manjaro-jp pkgs</a></p>
+<p><a href="https://gitlab.com/phoepsilonix/manjaro-jp/">Manjaro-JP at gitlab</a>
 <a href="https://github.com/phoepsilonix/Manjaro-jp/">Manjaro-JP at github</a>
 <a href="https://sourceforge.net/projects/manjaro-jp/">Manjaro-JP at sf</a>
 <a href="https://manjaro-jp.sourceforge.io/">Manjaro-JP at sf web</a>
-(GPG signing public key:536487F1470D7187) &lt;phoepsilonix at gmail dot com&gt;</p>
-<a href="https://revolut.me/phoepsilonix"> Please donate to me. </a>
-<a href="https://paypal.me/phoepsilonix"> Please donate to me. </a>
-<p>BTC</p>
-<p>3FNDG4oES4HmR5byStmAFMasdTyaYjus3k</p>
-<p>ETH</p>
-<p>0xe9968CFb2bc0D2aB789c45E31042938265A151Bb</p>
-<p>USDT(TRC20)</p>
-<p>TFmZcyVjobYKNUXeXLmWdj4ZphGU2tTptj</p>
+(GPG signing public key:536487F1470D7187) <phoepsilonix at gmail dot com>
+<a href="https://revolut.me/phoepsilonix">revolut</a>
+<a href="https://paypal.me/phoepsilonix">paypal</a></p>
+<p>BTC
+<code>3FNDG4oES4HmR5byStmAFMasdTyaYjus3k</code>
+ETH
+<code>0xe9968CFb2bc0D2aB789c45E31042938265A151Bb</code>
+USDT(TRC20)
+<code>TFmZcyVjobYKNUXeXLmWdj4ZphGU2tTptj</code></p>
+<script src="highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 </body>
 </html>
