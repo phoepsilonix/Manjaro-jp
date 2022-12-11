@@ -5,6 +5,7 @@
 <title>Manjaro-JP</title>
 <link rel="stylesheet" type="text/css" href="https://phoepsilonix.love/bl-kernel/css/bootstrap.min.css?version=3.14.1">
 <link rel="stylesheet" type="text/css" href="https://phoepsilonix.love/bl-themes/phoepsilonix/css/bootstrap.min.css?version=3.14.1">
+<link rel="stylesheet" type="text/css" href="https://phoepsilonix.love/bl-themes/phoepsilonix/css/sport.css?version=3.14.1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap" rel="stylesheet">
@@ -18,70 +19,55 @@ let el = document.getElementById( "insertText" );
 el.innerHTML = Doc.body.innerHTML;
 hljs.highlightAll();
 
-function selectText(tag_id, button_id) {
-    let elm = document.getElementById(button_id);
-    let selection = window.getSelection();
+Array.prototype.forEach.call(document.querySelectorAll('pre > code'), addSelectButton);
+
+function addSelectButton(elmCodeFrame){
+    var elmSelectButton = document.createElement('div');
+    elmSelectButton.setAttribute('class', '__select-code');
+
+    elmSelectButton.setAttribute('style', "\
+        display: inline-block;\
+        left: 90%;\
+        float: right;\
+        font-weight: bold;\
+        background-color: transparent;\
+        cursor: pointer;")
+
+    elmSelectButton.addEventListener('click', function(){
+        select(elmCodeFrame);
+    });
+    elmSelectButton.insertAdjacentHTML('afterbegin', '<span>Copy</span><i class="fa fa-clipboard"/>');
+    elmCodeFrame.insertBefore(elmSelectButton, elmCodeFrame.firstChild);
+    console.log(elmSelectButton);
+}
+
+function select(elm){
+    var selection = window.getSelection();
     selection.removeAllRanges();
-    var element= document.getElementById(tag_id);
-    var rng = document.createRange();
-    rng.selectNodeContents(element);
-    window.getSelection().addRange(rng);
-    document.execCommand("copy");
+    var range = document.createRange();
+    range.selectNodeContents(elm);
+    selection.addRange(range);
+    document.execCommand('copy');
     selection.removeAllRanges();
     var span = elm.querySelector('.__select-code span');
+    span.innerHTML="Copied";
     span.style.transition = 'none';
-    span.style.opacity = 0;
     setTimeout(function() {
+      span.style.opacity = 0;
       span.style.transition = 'opacity 1s';
     }, 500);
     setTimeout(function() {
-      span.style.opacity = 1;
+      span.innerHTML="Copy";
+      span.style.opacity =1;
     }, 1000);
-}
-
-let pre_tags = document.getElementsByTagName("pre");
-let counter = 0;
-while (counter < pre_tags.length ) {
-    
-    let code_tag = pre_tags[counter].getElementsByTagName("code")[0];
-    let tag_id = "code_"+counter;
-    let button_id = "button_" + counter;
-    addSelectButton(tag_id, button_id, code_tag);
-
-    counter +=1;
-}
-    
-function addSelectButton(tag_id, button_id, elmCodeFrame){
-    var elmSelectButton = document.createElement('div');
-    elmSelectButton.setAttribute("id", button_id);
-    elmCodeFrame.setAttribute("id", tag_id);
-    elmSelectButton.setAttribute('class', '__select-code');
-    elmSelectButton.setAttribute("style", "position: relative; left: 80%; top: 0px;\
-        border: 0px;\
-        font-weight: bold;\
-        pading: 0px;\
-        margin: 0px;\
-        width: 80px;\
-        background-color: transparent;\
-        border: none;\
-        cursor: pointer;\
-        outline: none;\
-        padding: 0;\
-        opacity: 1;\
-        appearance: none;")
-    elmSelectButton.addEventListener('click', function(){
-        selectText(tag_id, button_id);
-    });
-    elmSelectButton.insertAdjacentHTML('afterbegin', '<span>Copy!</span><i class="fa fa-clipboard"/>');
-    elmCodeFrame.insertBefore(elmSelectButton, elmCodeFrame.firstChild);
 }
 };
 </script>
 </head>
 <body>
 <header></header>
-<div id="insertText"></div>
 <object id="svgObject" data="./README.ja.html" type="text/html" hidden></object>
+<div id="insertText"></div>
 <footer></footer>
 </body>
 </html>
