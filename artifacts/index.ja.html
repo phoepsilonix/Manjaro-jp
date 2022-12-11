@@ -1,235 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8">
+<head>
+<meta charset=utf-8>
 <title>Manjaro-JP</title>
 <link rel="stylesheet" type="text/css" href="https://phoepsilonix.love/bl-kernel/css/bootstrap.min.css?version=3.14.1">
 <link rel="stylesheet" type="text/css" href="https://phoepsilonix.love/bl-themes/phoepsilonix/css/bootstrap.min.css?version=3.14.1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./default.min.css">
+<link rel="stylesheet" href="./sunburst.min.css">
 <script src="./highlight.min.js"></script>
-<style>
-li.list-group-item{padding-left: 0px;}
-a:hover .card h4{color:#126efd;}
-a:hover h5{color:#126efd;}
-p a{color:#126efd;text-decoration: none;}
-p a:hover{color:#126efd;text-decoration: none;}
-li.list-group-item a:hover{color:#126efd;}
-.ft p a:hover {color:#126efd;}
-p img{width:100%;border-radius: 6px;}
-</style>
+<script>
+window.onload=function() {
+let a = document.getElementById("svgObject");
+let Doc = a.contentDocument;
+let el = document.getElementById( "insertText" );
+el.innerHTML = Doc.body.innerHTML;
+hljs.highlightAll();
+
+function selectText(tag_id, button_id) {
+    let elm = document.getElementById(button_id);
+    let selection = window.getSelection();
+    selection.removeAllRanges();
+    var element= document.getElementById(tag_id);
+    var rng = document.createRange();
+    rng.selectNodeContents(element);
+    window.getSelection().addRange(rng);
+    document.execCommand("copy");
+    selection.removeAllRanges();
+    var span = elm.querySelector('.__select-code span');
+    span.style.transition = 'none';
+    span.style.opacity = 0;
+    setTimeout(function() {
+      span.style.transition = 'opacity 1s';
+    }, 500);
+    setTimeout(function() {
+      span.style.opacity = 1;
+    }, 1000);
+}
+
+let pre_tags = document.getElementsByTagName("pre");
+let counter = 0;
+while (counter < pre_tags.length ) {
+    
+    let code_tag = pre_tags[counter].getElementsByTagName("code")[0];
+    let tag_id = "code_"+counter;
+    let button_id = "button_" + counter;
+    addSelectButton(tag_id, button_id, code_tag);
+
+    counter +=1;
+}
+    
+function addSelectButton(tag_id, button_id, elmCodeFrame){
+    var elmSelectButton = document.createElement('div');
+    elmSelectButton.setAttribute("id", button_id);
+    elmCodeFrame.setAttribute("id", tag_id);
+    elmSelectButton.setAttribute('class', '__select-code');
+    elmSelectButton.setAttribute("style", "position: relative; left: 80%; top: 0px;\
+        border: 0px;\
+        font-weight: bold;\
+        pading: 0px;\
+        margin: 0px;\
+        width: 80px;\
+        background-color: transparent;\
+        border: none;\
+        cursor: pointer;\
+        outline: none;\
+        padding: 0;\
+        opacity: 1;\
+        appearance: none;")
+    elmSelectButton.addEventListener('click', function(){
+        selectText(tag_id, button_id);
+    });
+    elmSelectButton.insertAdjacentHTML('afterbegin', '<span>Copy!</span><i class="fa fa-clipboard"/>');
+    elmCodeFrame.insertBefore(elmSelectButton, elmCodeFrame.firstChild);
+}
+};
+</script>
 </head>
 <body>
-<h1><a href="https://osdn.net/projects/manjaro-jp/">Manjaro Linux JP</a></h1>
-<h2><a href="https://manjaro.org/">Manjaro Linux</a> の日本語対応</h2>
-<p>　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。
-<a href="https://kernel.org/">kernel-6.0系</a>。</p>
-<p>公式に合わせて、GNOME、KDE、Xfceの３種類を用意する予定です。
-配布ファイルはISOと一部パッケージファイルです。
-USBメモリなどから起動してください。 
-USBメモリからの起動は、<a href="https://ventoy.net/">Ventoy</a>を使うと楽かもしれません。
-Ventoyの導入時に最初のパーティションをext4でフォーマットし直すのがお勧めです。</p>
-<h3>主な特徴</h3>
-<p>Linuxカーネルは、なるべく最新のものを採用します。
-またカーネルのビルドにはclangを用います。
-日本語入力(fcitx5-mozc)、日本語フォントを標準インストールします。
-標準ブラウザとして、flatpak版<a href="https://www.mozilla.org/ja/firefox/browsers/">Firefox</a>または<a href="https://floorp.ablaze.one/">Floorp</a>を採用します。
-オフィスソフトとしてflatpak版<a href="https://ja.libreoffice.org">LibreOffice</a>を標準インストールします。</p>
-<p>ライブ環境＆インストール用のISOを下記の配布先で公開しています。
-よかったら、お試しください。</p>
-<h5>注意事項</h5>
-<ol>
-<li>セキュアブートには非対応
-対応していませんので、BIOSの設定でセキュアブートを無効にしてご利用ください。
-（セキュアブート対応を望む場合、Ubuntuが早いと思います。Ubuntu Flavourでデスクトップ環境も複数提供されています。）</li>
-</ol>
-<hr />
-<h3>配布場所</h3>
-<table><thead><tr><th><a href="https://osdn.net/projects/manjaro-jp/"><img src="https://osdn.net/sflogo.php?group_id=14185&amp;type=1" alt="OSDN" /></a></th><th><a href="https://osdn.net/projects/manjaro-jp/">Manjaro-Linux-jp at OSDN</a></th></tr></thead><tbody>
-<tr><td><a href="https://sourceforge.net/projects/manjaro-jp/"><img src="https://sourceforge.net/sflogo.php?group_id=66882&amp;type=5" alt="SourceForge" /></a></td><td><a href="https://sourceforge.net/projects/manjaro-jp/">Manjaro-Linux-jp at SourceForge</a></td></tr>
-<tr><td><a href="https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A"><img src="https://mega.nz/favicon.ico" alt="MEGA" /></a></td><td><a href="https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A">Manjaro-Linux-jp at MEGA</a></td></tr>
-</tbody></table>
-<p>貴重な、ストレージをありがとうございます。
-上記、3箇所にて配布しています。</p>
-<p><a href="https://mega.nz/storage/aff=gVLIePn4Hy0">MEGA Storage</a>は、ファイルサイズ4G以上のものもアップロードできるので、お勧めです。</p>
-<hr />
-<h3>備忘録</h3>
-<h5>manjaro-tools-isoの変更箇所</h5>
-<ol>
-<li>buildisoに用いるパッケージの取得先をmirrorlistの先頭行を標準にしています。
-デフォルトではミラーリストを読み込まず、EUのサーバーが使われる。</li>
-<li>自分が用意したパッケージを優先的にISOに含めるために、user-repos.confで指定したレポジトリの順位を優先させています。主にkernelの最新版を含めるためです。</li>
-</ol>
-<h3>更新履歴</h3>
-<details><summary>これまでの歩み</summary>
-<h5>20220401</h5>
-<p>kernel-5.17.1 (clangビルド)
-linux517-broadcom-wl,linux517-zfsパッケージもビルドして追加しました。
-broadcom-wl-dkmsパッケージの修正内容などは、<a href="https://gitlab.com/phoepsilonix/manjaro-jp">gitlab</a>の<a href="https://gitlab.com/phoepsilonix/manjaro-jp/-/tree/main/Packages/broadcom-wl-dkms">Packagesフォルダ</a>をご参照ください。</p>
-<h5>20220408</h5>
-<p>標準のブラウザを<a href="https://vivaldi.com/">Vivaldi</a>のみにしました。
-もちろん他のブラウザにも自由に変更できます。
-ライブ環境のブート時のGRUBの初期値を日本向けにしました。</p>
-<h5>20220411</h5>
-<p>パッケージ更新の不具合修正。
-日本語フォントの追加。
-<a href="https://www.morisawa.co.jp/">Morisawa Inc. 様</a>が<a href="https://www.morisawa.co.jp/about/news/6706">SIL OFLライセンスのもとに公開</a>してくださったMorisawa BIZ UDフォントの<a href="https://github.com/googlefonts/morisawa-biz-ud-mincho">Morisawa BIZ UD明朝</a>、<a href="https://github.com/googlefonts/morisawa-biz-ud-gothic">Morisawa BIZ UDゴシック</a>をプリインストールしました。
-Githubで公開されているフォントをそのまま収録したものです。ライセンスファイルなども同梱しています。(自分でもビルドしましたが、バイナリに差異はありませんでした。)
-詳しくは上記の本家サイトやGithubの文書をご確認ください。
-<a href="https://www.morisawa.co.jp/products/fonts/bizplus/lineup/">Morisawa BIZ+ フォント</a>を応援しましょう。</p>
-<h5>20220413</h5>
-<p>AURにMorisawa BIZ UDフォントパッケージを登録しました。</p>
-<h5>20220414</h5>
-<p>kernel-5.17.3 に更新しました。</p>
-<h5>20220421</h5>
-<p>kernel-5.17.4に更新しました。</p>
-<h5>20220422</h5>
-<p>日本語入力をfcitx5-mozcに変更しました。</p>
-<h5>20220424</h5>
-<p>日本語キーボードとMozcを標準で有効にしました。</p>
-<h5>20220428</h5>
-<p>kernel-5.17.5</p>
-<h5>20220510</h5>
-<p>kernel-5.17.6</p>
-<h5>20220513</h5>
-<p>デスクトップ環境のGNOMEがGNOME42に更新されました。</p>
-<h5>20220517</h5>
-<p>kernel-5.17.8</p>
-<h5>20220519</h5>
-<p>kernel-5.17.9</p>
-<h5>20220526</h5>
-<p>kernel-5.17.11</p>
-<h5>20220527</h5>
-<p>nvidiaドライバのバージョンを515.43.04に更新。
-kernel-5.18系を追加。</p>
-<h5>20220531</h5>
-<p>kernel-5.17.12
-kernel-5.18.1</p>
-<h5>20220607</h5>
-<p>kernel-5.17.13
-kernel-5.18.2</p>
-<h5>20220608</h5>
-<p>オフィスソフト関連の変更
-インストーラーでのオフィスソフトの選択をなくしました。
-主に容量を減らすために、インストーラーでのオフィスソフトの選択をなくし、標準インストールするオフィスソフトをonlyoffice-desktopeditorからlibreoffice-freshに変更しました。</p>
-<h5>20220611</h5>
-<p>kernel-5.17.14
-kernel-5.18.3
-nvidiaドライバのバージョンを515.48.07に更新。
-virtualbox-host-dkmsをlinux518でビルドできるように修正。
-ISOには含まれませんが、nginx-quicパッケージなどをmanjaro-jpリポジトリに追加しました。
-manjaro-jpリポジトリをpacman.confに含めました。</p>
-<h5>20220614</h5>
-<p>インストーラーのバグ修正。
-GNOME版においてエディタをgeditからgnome-text-editorへ変更しました。</p>
-<h5>20220619</h5>
-<p>kernel-5.18.5</p>
-<h5>20220624</h5>
-<p>kernel-5.18.6
-オーディオ関係のmanjaro-pulseをmanjaro-pipewireに切り替えました。</p>
-<h5>20220627</h5>
-<p>kernel-5.18.7</p>
-<h5>20220630</h5>
-<p>kernel-5.18.8
-nvidia-utils 515.57</p>
-<h5>20220703</h5>
-<p>kernel-5.18.9</p>
-<h5>20220706</h5>
-<p>cups-browsedを有効にしました。
-ipp-usbパッケージを追加しました。</p>
-<h5>20220709</h5>
-<p>kernel-5.18.10</p>
-<h5>20220714</h5>
-<p>kernel-5.18.11</p>
-<h5>20220716</h5>
-<p>kernel-5.18.12</p>
-<h5>20220725</h5>
-<p>kernel-5.18.14</p>
-<h5>20220731</h5>
-<p>kernel-5.18.15</p>
-<h5>20220805</h5>
-<p>kernel-5.18.16
-nvidia-utils 515.65</p>
-<h5>20220812</h5>
-<p>kernel-5.18.17</p>
-<h5>20220819</h5>
-<p>kernel-5.18.18</p>
-<h5>20220823</h5>
-<p>kernel-5.18.19</p>
-<h5>20220827</h5>
-<p>kernel-5.19.4</p>
-<h5>20220902</h5>
-<p>kernel-5.19.6</p>
-<h5>20220907</h5>
-<p>kernel-5.19.7</p>
-<h5>20220910</h5>
-<p>kernel-5.19.8</p>
-<h5>20220917</h5>
-<p>kernel-5.19.9</p>
-<h5>20220922</h5>
-<p>kernel-5.19.10</p>
-<h5>20220925</h5>
-<p>kernel-5.19.11
-nvidia-utils 515.76</p>
-<h5>20221003</h5>
-<p>kernel-5.19.12</p>
-<h5>20221006</h5>
-<p>kernel-5.19.14</p>
-<h5>20221013</h5>
-<p>kernel-5.19.15
-nvidia-utils 520.56.06</p>
-<h5>20221016</h5>
-<p>kernel-5.19.16
-nvidia-utils 520.56.06-2</p>
-</details>
-<h5>20221025</h5>
-<p>kernel-6.0.3
-標準ブラウザを<a href="https://floorp.ablaze.one/">Floorp</a>に変更しました。</p>
-<h5>20221105</h5>
-<p>kernel-6.0.7
-mkinitcpio-32-2</p>
-<h5>20221112</h5>
-<p>標準ブラウザとして、flatpak版<a href="https://www.mozilla.org/ja/firefox/browsers/">Firefox</a>または<a href="https://floorp.ablaze.one/">Floorp</a>を採用します。
-kernel-6.0.8</p>
-<h5>20221118</h5>
-<p>kernel-6.0.9</p>
-<h5>20221128</h5>
-<p>kernel-6.0.10
-LibreOfficeをflatpak版に変更しました。
-fcitx5の初期設定のキーボードを日本語(かな 86)に変更しました。
-gnome-terminalの初期フォントを設定しました。</p>
-<h5>20221206</h5>
-<p>kernel-6.0.11</p>
-<h5>20221210</h5>
-<p>kernel-6.0.12</p>
-<hr />
-<p>参考までに、追記。
-LinuxをインストールしたPCがあれば、非公式？な(公式サポートがない)ChromeOSとのデュアルブート環境も作れるみたいです。ある程度知識のある方向けです。
-興味がある方は、<a href="https://github.com/sebanc/brunch/blob/master/install-with-linux.md">こちら</a>をご参考にしてください。</p>
-<hr />
-<p>ローリングリリースが特徴のArchLinux系では、<a href="https://garudalinux.org">Garuda Linux</a>も良さそうです。</p>
-<hr />
-<pre><code>[manjaro-jp]
-SigLevel = Optional TrustAll
-Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
-</code></pre>
-<p><a href="https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/">manjaro-jp pkgs</a></p>
-<p><a href="https://gitlab.com/phoepsilonix/manjaro-jp/">Manjaro-JP at gitlab</a>
-<a href="https://github.com/phoepsilonix/Manjaro-jp/">Manjaro-JP at github</a>
-<a href="https://sourceforge.net/projects/manjaro-jp/">Manjaro-JP at sf</a>
-<a href="https://manjaro-jp.sourceforge.io/">Manjaro-JP at sf web</a>
-(GPG signing public key:536487F1470D7187) &lt;phoepsilonix あっと gmail どっと com&gt;
-<a href="https://revolut.me/phoepsilonix">revolut</a>
-<a href="https://paypal.me/phoepsilonix">Paypal</a></p>
-<p>BTC
-<code>3FNDG4oES4HmR5byStmAFMasdTyaYjus3k</code>
-ETH
-<code>0xe9968CFb2bc0D2aB789c45E31042938265A151Bb</code>
-USDT(TRC20)
-<code>TFmZcyVjobYKNUXeXLmWdj4ZphGU2tTptj</code></p>
-<script src="highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
+<header></header>
+<div id="insertText"></div>
+<object id="svgObject" data="./README.ja.html" type="text/html" hidden></object>
+<footer></footer>
 </body>
 </html>
