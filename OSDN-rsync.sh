@@ -31,7 +31,7 @@ eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 rsync -avPLz --no-perms $repo_dir/README.md $repo_dir/README.en.md $repo_dir/README.ja.md phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 cd $repo_dir
-rsync -avPLz --no-perms index.html index.ja.html index.en.html phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs
+rsync -avPLz --no-perms index.html index.ja.html index.en.html README.ja.html README.en.html phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs
 
 # manjaro-jpはrepo-update.shで更新する。
 

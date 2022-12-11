@@ -22,7 +22,7 @@ eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 rsync -avPLz README.md README.ja.md README.en.md phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 cd $repo_dir
-rsync -avPLz ./index.html ./index.en.html ./index.ja.html phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/
+rsync -avPLz ./index.html ./index.en.html ./index.ja.html ./README.ja.html ./README.en.html phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/
 
 exit 0;
 
