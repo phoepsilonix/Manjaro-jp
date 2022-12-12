@@ -220,3 +220,39 @@
 [submodule "Packages/morisawa-biz-ud-fonts"]
 	path = Packages/morisawa-biz-ud-fonts
 	url = https://aur.archlinux.org/morisawa-biz-ud-fonts.git
+[submodule "Packages/extramodules-6.1/acpi_call"]
+	path = Packages/extramodules-6.1/acpi_call
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/acpi_call
+[submodule "Packages/extramodules-6.1/bbswitch"]
+	path = Packages/extramodules-6.1/bbswitch
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/bbswitch
+[submodule "Packages/extramodules-6.1/broadcom-wl"]
+	path = Packages/extramodules-6.1/broadcom-wl
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/broadcom-wl
+[submodule "Packages/extramodules-6.1/nvidia"]
+	path = Packages/extramodules-6.1/nvidia
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/nvidia
+[submodule "Packages/extramodules-6.1/nvidia-390xx"]
+	path = Packages/extramodules-6.1/nvidia-390xx
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/nvidia-390xx
+[submodule "Packages/extramodules-6.1/nvidia-470xx"]
+	path = Packages/extramodules-6.1/nvidia-470xx
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/nvidia-470xx
+[submodule "Packages/extramodules-6.1/r8168"]
+	path = Packages/extramodules-6.1/r8168
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/r8168
+[submodule "Packages/extramodules-6.1/rtl8723bu"]
+	path = Packages/extramodules-6.1/rtl8723bu
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/rtl8723bu
+[submodule "Packages/extramodules-6.1/tp_smapi"]
+	path = Packages/extramodules-6.1/tp_smapi
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/tp_smapi
+[submodule "Packages/extramodules-6.1/vhba-module"]
+	path = Packages/extramodules-6.1/vhba-module
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/vhba-module
+[submodule "Packages/extramodules-6.1/virtualbox-modules"]
+	path = Packages/extramodules-6.1/virtualbox-modules
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/virtualbox-modules
+[submodule "Packages/extramodules-6.1/zfs"]
+	path = Packages/extramodules-6.1/zfs
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/zfs
