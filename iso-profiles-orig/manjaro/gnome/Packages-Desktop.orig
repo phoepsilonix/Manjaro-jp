@@ -11,7 +11,7 @@ networkmanager
 ntp
 openresolv                         # optional for networkmanager
 >extra openssh                     # optional for gnome-control-center
-#usb_modeswitch                    # required by manjaro-modem; optional for modemmanager
+#usb_modeswitch                     # Optional for modemmanager
 
 ## Btrfs
 btrfsmaintenance
@@ -22,8 +22,8 @@ grub-btrfs
 >extra libdvdcss
 >extra manjaro-alsa
 >extra manjaro-gstreamer
->extra manjaro-modem
->extra manjaro-pulse
+#>extra manjaro-modem              # ?
+#>extra manjaro-pulse
 
 ## Fonts
 ttf-dejavu
@@ -74,17 +74,18 @@ gnome-disk-utility
 gnome-keyring
 gnome-logs
 #>extra gnome-maps
-#gnome-menus                       # required by alacarte; optional for gnome-shell-extensions
+#gnome-menus                       # optional for gnome-shell-extensions
 #gnome-music                       # lollypop included instead
 #gnome-photos
 #>extra gnome-remote-desktop       # optional for gnome-control-center
+#gnome-screenshot                  # New screenshot tool integrated
 gnome-session
 gnome-settings-daemon
-gnome-shell
+#gnome-shell
 gnome-shell-extensions
 #gnome-software                    # pamac-gtk used instead
 gnome-system-monitor
-#gnome-text-editor                  # gedit included instead
+gnome-text-editor
 gnome-user-docs
 >extra gnome-user-share            # optional for gnome-control-center
 #gnome-video-effects               # required by cheese
@@ -118,7 +119,7 @@ xdg-user-dirs-gtk
 >extra endeavour
 #evolution                         # geary included instead
 >extra geary
-gedit
+#gedit
 #ghex
 #glade
 >extra gnome-boxes
@@ -158,6 +159,7 @@ gnome-tweaks
 ## GNOME Shell Extensions
 >extra gnome-shell-extension-appindicator
 >extra gnome-shell-extension-arcmenu
+>extra gnome-shell-extension-custom-accent-colors
 >extra gnome-shell-extension-dash-to-dock
 >extra gnome-shell-extension-dash-to-panel
 >extra gnome-shell-extension-desktop-icons-ng
@@ -170,10 +172,12 @@ gnome-tweaks
 ## Themes
 adw-gtk-theme
 >extra gdm-plymouth
+gnome-shell-maia
 gnome-themes-extra
 gnome-wallpapers
 grub-theme-manjaro
 >extra illyria-wallpaper
+manjaro-artwork
 manjaro-gdm-branding
 #manjaro-gdm-theme                 # Needs updating for GNOME 42
 >extra manjaro-wallpapers-18.0
@@ -191,7 +195,7 @@ xcursor-breeze
 >extra caffeine-ng
 >extra deja-dup
 >extra ffmpegthumbnailer
-firefox
+#firefox
 fprintd                            # needed for fingerprint reader
 >extra fragments
 gnome-browser-connector
@@ -214,10 +218,11 @@ lollypop
 manjaro-hello
 >extra manjaro-log-helper
 manjaro-settings-manager-notifier
+#manjaro-starter
 #mousetweaks
 nautilus-admin
 nautilus-empty-file
->extra onlyoffice-desktopeditors
+#>extra onlyoffice-desktopeditors
 polkit-gnome
 >extra power-profiles-daemon       # optional for gnome-control-center
 >extra seahorse
@@ -262,3 +267,4 @@ xorg-xinit
 >extra bmenu
 manjaro-ranger-settings
 >extra pacui
+
