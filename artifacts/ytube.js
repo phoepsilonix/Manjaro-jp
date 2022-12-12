@@ -1,13 +1,53 @@
 window.onload=function() {
-  var movies = document.getElementsByClassName("ytVideo");
-  for (var i = 0; i < movies.length; i++) {
-      movies[i].id="ytVideo"+i;
-      movies[i].innerHTML = '<img class="embed-responsive rounded" id="yt-thumb' + i + '" src="http://i.ytimg.com/vi/' + movies[i].attributes['data'].value + '/maxresdefault.jpg">';
-      embedYoutube(i);
-  }
+
+async function getThumbnail(vid) {
+const THUMB_TYPES = [
+    /** w1280 */
+    'maxresdefault.jpg',
+    'maxres1.jpg',
+    /** w640 */
+    'sddefault.jpg',
+    'sd1.jpg',
+    /** w480 */
+    'hqdefault.jpg',
+    /** w320 */
+    'mqdefault.jpg',
+    /** w120 */
+    'default.jpg',
+];
+const getYtThumbnail = async (vid) => {
+    const loadImage = (src) => {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = (e) => resolve(img);
+            img.src = src;
+        });
+    };
+    for (let i = 0; i < THUMB_TYPES.length; i++) {
+        const fileName = `https://img.youtube.com/vi/${vid}/${THUMB_TYPES[i]}`;
+        const res = await loadImage(fileName);
+        if (!THUMB_TYPES[i + 1] || (res).width > 120 ) {
+            return fileName;
+        }
+    }
+};
+    return await getYtThumbnail(vid);
+}
+      (async () => {
+          var movies = document.getElementsByClassName("ytVideo");
+          for (var i = 0; i < movies.length; i++) {
+              movies[i].id="ytVideo"+i;
+              var vid = movies[i].attributes['data'].value;
+              var thumbnail;
+              thumbnail = await getThumbnail(vid);
+              console.log(thumbnail)
+              movies[i].innerHTML = '<img class="embed-responsive rounded" id="yt-thumb' + i + '" src="' + thumbnail + '">';
+              await embedYoutube(i);
+          }
+      })();
 }
  
-function embedYoutube(num) {
+async function embedYoutube(num) {
     document.getElementById('yt-thumb' + num).addEventListener('click', function() {
         var movie = document.getElementById("ytVideo"+num);
         if (movie.childNodes.length == 1) {

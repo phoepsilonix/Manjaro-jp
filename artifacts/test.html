@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="./sunburst.min.css">
 <script src="./highlight.min.js"></script>
 <script type="module">
-import init, * as wasm from './wasm-markdown/wasm_markdown.js';
+import init, { pulldown_cmark as wasm } from './wasm-markdown/wasm_markdown.js';
 var markdown_file = './README.ja.md';
 
 window.onload=function() {
@@ -22,7 +22,7 @@ init()
        	.then(response => response.text())
         .then(data => {
         let el = document.getElementById( "insertText" );
-        el.innerHTML = wasm.pulldown_cmark(data);
+        el.innerHTML = wasm(data);
         hljs.highlightAll();
         addCopybtn();
         });
@@ -78,8 +78,6 @@ function select(elm){
 </head>
 <body>
 <header></header>
-<object id="svgObject" data="./README.ja.md" type="text/markdown"></object>
-<object id="svgObject" data="./README.ja.md"></object>
 <div id="insertText"></div>
 <footer></footer>
 </body>
