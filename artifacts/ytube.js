@@ -50,16 +50,16 @@ async function embedYoutube(num) {
     document.getElementById('yt-thumb' + num).addEventListener('click', function() {
         var movie = document.getElementById("ytVideo"+num);
         if (movie.childNodes.length == 1) {
-            var frame = document.createElement('iframe');
-            movie.className="embed-responsive embed-responsive-16by9";
-            frame.frameborder="0";
-            frame.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-            frame.sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation";
-            frame.allowfullscreen="1";
-            frame.className="embed-responsive rounded";
-　          frame.src="https://www.youtube.com/embed/" + movie.attributes['data'].value;
-            frame.src="https://www.youtube.com/embed/" + movie.attributes['data'].value + "?controls=1&amp;autoplay=1&amp;disablekb=1&amp;enablejsapi=1&amp;iv_load_policy=3&amp;playsinline=1&amp;rel=0&amp;autohide=0&amp;origin=https%3A%2F%2Fphoepsilonix.love&amp;widgetid=1";
-            frame.addEventListener('load', function(event) {
+		var myhost="https%3A%2F%2Fphoepsilonix.love";
+        	var frame = document.createElement('iframe');
+        	movie.className="embed-responsive embed-responsive-16by9";
+            	frame.frameborder="0";
+            	frame.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            	frame.sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation";
+            	frame.allowfullscreen="1";
+            	frame.className="embed-responsive rounded";
+		frame.src="https://www.youtube.com/embed/" + movie.attributes['data'].value + "?controls=1&amp;disablekb=1&amp;enablejsapi=1&amp;iv_load_policy=3&amp;playsinline=1&amp;rel=0&amp;autohide=0&amp;origin=" + myhost + "&amp;widgetid=1";
+            	frame.addEventListener('load', function(event) {
                 let arg=null;
                 let action="playVideo";
                 this.contentWindow.postMessage('{"event":"command", "func":"'+action+'", "args":'+arg+'}', '*');
@@ -69,7 +69,4 @@ async function embedYoutube(num) {
     });
 }
 
-var scriptUrl = 'https:\/\/www.youtube.com\/s\/player\/e96685ea\/www-widgetapi.vflset\/www-widgetapi.js';window['yt_embedsEnableIframeSrcWithIntent'] =  true ;try{var ttPolicy=window.trustedTypes.createPolicy("youtube-widget-api",{createScriptURL:function(x){return x}});scriptUrl=ttPolicy.createScriptURL(scriptUrl)}catch(e){}var YT;if(!window["YT"])YT={loading:0,loaded:0};var YTConfig;if(!window["YTConfig"])YTConfig={"host":"https://phoepsilonix.love"};
-if(!YT.loading){YT.loading=1;(function(){var l=[];YT.ready=function(f){if(YT.loaded)f();else l.push(f)};window.onYTReady=function(){YT.loaded=1;for(var i=0;i<l.length;i++)try{l[i]()}catch(e$0){}};YT.setConfig=function(c){for(var k in c)if(c.hasOwnProperty(k))YTConfig[k]=c[k]};var a=document.createElement("script");a.type="text/javascript";a.id="www-widgetapi-script";a.src=scriptUrl;a.async=true;var c=document.currentScript;if(c){var n=c.nonce||c.getAttribute("nonce");if(n)a.setAttribute("nonce",n)}var b=
-document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})()};
 

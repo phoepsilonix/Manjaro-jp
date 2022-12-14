@@ -8,7 +8,7 @@ usb=/run/media/phoepsilonix/Ventoy
 gkey="-g $(cat ~/.gnupg/sign.txt)"
 #gkey=""
 
-kernel=linux60
+kernel=linux61
 
 # 保存先フォルダ
 artifacts=`pwd`/artifacts
@@ -65,7 +65,7 @@ do
         echo "buildiso -d xz -f -k $kernel -p $ed $gkey" 
         cat ~/.ssh/gpg-passphrase|sudo -S pwd >/dev/null 2>&1
         touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback -b INFO
-        buildiso  -d xz -f -k $kernel -p $ed $gkey
+        buildiso  -d xz -f -k $kernel -p $ed $gkey || exit 1
 #        buildiso -x -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
 #        buildiso -zc -d xz -f -k $kernel -p $ed $gkey
         #buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build
