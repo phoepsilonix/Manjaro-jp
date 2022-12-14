@@ -1,27 +1,5 @@
 window.onload=function() {
 
-var codes = document.getElementsByClassName("print-code");
-if ( codes != null) {
-    for(let i=0; i < codes.length; i++) {
-        let d = codes[i];
-        let filename = d.attributes['data'].value;
-        let lang = d.attributes['lang'].value;
-        fetch(filename)
-            .then(response => response.text())
-            .then(data => {
-            let p = document.createElement('pre');
-            let c = document.createElement('code');
-            c.className = lang;
-            let text = document.createTextNode(data);
-            p.appendChild(c);
-            c.appendChild(text);
-            hljs.highlightElement(c);
-            addSelectButton(c);
-            d.replaceWith(p);
-        });
-    }
-}
-
 hljs.highlightAll();
 
 Array.prototype.forEach.call(document.querySelectorAll('pre > code'), addSelectButton);
@@ -65,4 +43,27 @@ function select(elm){
       span.style.opacity =1;
     }, 1000);
 }
-};
+
+var codes = document.getElementsByClassName("print-code");
+if ( codes != null) {
+    for(let i=0; i < codes.length; i++) {
+        let d = codes[i];
+        let filename = d.attributes['data'].value;
+        let lang = d.attributes['lang'].value;
+        fetch(filename)
+            .then(response => response.text())
+            .then(data => {
+            let p = document.createElement('pre');
+            let c = document.createElement('code');
+            c.className = lang;
+            let text = document.createTextNode(data);
+            p.appendChild(c);
+            c.appendChild(text);
+            hljs.highlightElement(c);
+            addSelectButton(c);
+            d.replaceWith(p);
+        });
+    }
+}
+
+}
