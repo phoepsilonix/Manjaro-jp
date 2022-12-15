@@ -235,7 +235,10 @@ kernel-6.0.9
 kernel-6.0.10  
 Changed LibreOffice to the flatpak version.  
 Changed fcitx5's default keyboard to jp-kana86.  
-Set initial font for gnome-terminal.
+The initial font of gnome-terminal has been changed to FirgeNerd Console.  
+The following fonts are now pre-installed.  
+[Firge: programming font synthesised from Fira Mono and Genjyu Gothic Firge (Firge)](https://github.com/yuru7/Firge)  
+[HackGen: programming font combining Hack and Genju Gothic Hakugen (HackGen)](https://github.com/yuru7/HackGen)
 
 ##### 20221206
 kernel-6.0.11

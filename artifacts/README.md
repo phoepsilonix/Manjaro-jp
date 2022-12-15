@@ -233,7 +233,10 @@ kernel-6.0.9
 kernel-6.0.10  
 LibreOfficeをflatpak版に変更しました。  
 fcitx5の初期設定のキーボードを日本語(かな 86)に変更しました。  
-gnome-terminalの初期フォントを設定しました。  
+gnome-terminalの初期フォントをFirgeNerd Consoleに変更しました。  
+下記フォントをプリインストールしました。  
+[Firge: Fira Mono と源真ゴシックを合成したプログラミングフォント Firge (ファージ)](https://github.com/yuru7/Firge)  
+[HackGen: Hack と源柔ゴシックを合成したプログラミングフォント 白源 (はくげん／HackGen)](https://github.com/yuru7/HackGen)
 
 ##### 20221206
 kernel-6.0.11
