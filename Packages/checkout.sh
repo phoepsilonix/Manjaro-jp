@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ../keychain.sh
+. ../../keychain.sh
 
 curdir=${PWD##*/}
 exdir=$(cat /usr/lib/modules/${curdir}-MANJARO/version)

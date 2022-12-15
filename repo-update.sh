@@ -37,7 +37,7 @@ pkgfiles=$(ls -v ./*.zst ./*.xz)
 # repo-add
 #-n 新しいパッケージのみ追加
 #-R 古いパッケージを削除
-LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz --sign --key $repo_key ${pkgfiles}
+LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -R --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -n --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -R --sign --key $repo_key ./*.zst 
 #repo-add $repo.db.tar.xz -n -R --sign --key $repo_key ./*.zst

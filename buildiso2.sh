@@ -66,7 +66,7 @@ do
         echo "buildiso -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso"
         cat ~/.ssh/gpg-passphrase|sudo -S pwd >/dev/null 2>&1
         rm -f INFO.sig && gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback -b INFO
-        buildiso -d xz -f -k $kernel -p $ed $gkey 
+        buildiso -d xz -f -k $kernel -p $ed $gkey || exit 1
         #buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build
 done
 

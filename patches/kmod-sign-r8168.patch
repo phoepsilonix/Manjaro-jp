@@ -1,17 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 872e66e..6e01f8c 100644
+index 872e66e..3d733e1 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -22,7 +22,7 @@ groups=("$_linuxprefix-extramodules")
- source=("https://github.com/mtorromeo/r8168/archive/refs/tags/$pkgver.tar.gz"
-         'linux518.patch' 'linux519.patch')
- sha256sums=('76f9e7c26a8ade7b01dd34060f5b17d74387f15e9b6baa6dbba8c43634a31ce6'
--            'd8d542770e504775600f686d03412a37cc32489872be7aeb388b5b08d9806096'
-+            'c06cad41446ecd636c09e1a29c4e1434619d58e4932b6d166defcb3eb8fe6728'
-             'f19c663f278096a93b2fc80222e208a54ab8677f6d7eeb9c15150c7c55ec2eff')
- 
- install=$_pkgname.install
-@@ -45,14 +45,26 @@ build() {
+@@ -45,12 +45,26 @@ build() {
        M="$srcdir/$_pkgname-$pkgver/src" \
        EXTRA_CFLAGS="-DCONFIG_R8168_NAPI -DCONFIG_R8168_VLAN -DCONFIG_ASPM -DENABLE_S5WOL -DENABLE_EEE" \
        modules
@@ -21,66 +12,20 @@ index 872e66e..6e01f8c 100644
  package() {
      cd "$_pkgname-$pkgver/src"
      install -D -m644 $_pkgname.ko "$pkgdir/usr/lib/modules/$_extramodules/$_pkgname.ko"
-+    _kernver="$(cat /usr/lib/modules/$_extramodules/version || true)"
-+  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
-+  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
-+  COMPRESS=${COMPRESS% 1}
-+  case $COMPRESS in
-+  ZSTD)
-+    COMP_CMD="zstd -T0 -22 --ultra --auto-threads=logical --rm -f"
-+    ;;
-+  XZ)
-+    COMP_CMD="xz -T0 -f -q -9 --lzma2=dict=2MiB"
-+    ;;
-+  esac
-+  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
  
++    _kernver="$(cat /usr/lib/modules/$_extramodules/version || true)"
++    COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
++    COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
++    COMPRESS=${COMPRESS% 1}
++    case $COMPRESS in
++    ZSTD)
++        COMP_CMD="zstd -T0 -22 --ultra --auto-threads=logical --rm -f"
++        ;;
++    XZ)
++        COMP_CMD="xz -T0 -f -q -9 --lzma2=dict=2MiB"
++        ;;
++    esac
++    find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
      # set the kernel we've built for inside the install script
      sed -i -e "s/EXTRAMODULES=.*/EXTRAMODULES=${_extramodules}/g" "${startdir}/${_pkgname}.install"
--
--    find "$pkgdir" -name '*.ko' -exec gzip -9 {} \;
- }
-diff --git a/linux518.patch b/linux518.patch
-index aa0dd86..5f0ba2c 100644
---- a/linux518.patch
-+++ b/linux518.patch
-@@ -1,7 +1,7 @@
- diff -u -r r8168-8.050.00/src/r8168_n.c r8168-8.050.00-linux518/src/r8168_n.c
- --- r8168-8.050.00/src/r8168_n.c	2022-05-06 09:48:25.000000000 +0000
- +++ r8168-8.050.00-linux518/src/r8168_n.c	2022-05-24 21:31:05.802807395 +0000
--@@ -3698,9 +3698,15 @@
-+@@ -3714,9 +3714,15 @@
-          txd->opts2 = 0;
-          while (1) {
-                  memset(tmpAddr, pattern++, len - 14);
-@@ -17,7 +17,7 @@ diff -u -r r8168-8.050.00/src/r8168_n.c r8168-8.050.00-linux518/src/r8168_n.c
-                  txd->opts1 = cpu_to_le32(DescOwn | FirstFrag | LastFrag | len);
-  
-                  RTL_W32(tp, RxConfig, RTL_R32(tp, RxConfig)  | AcceptMyPhys);
--@@ -3726,7 +3732,11 @@
-+@@ -3742,7 +3748,11 @@
-                  if (rx_len == len) {
-                          dma_sync_single_for_cpu(tp_to_dev(tp), le64_to_cpu(rxd->addr), tp->rx_buf_sz, DMA_FROM_DEVICE);
-                          i = memcmp(skb->data, rx_skb->data, rx_len);
-@@ -29,7 +29,7 @@ diff -u -r r8168-8.050.00/src/r8168_n.c r8168-8.050.00-linux518/src/r8168_n.c
-                          if (i == 0) {
-  //              dev_printk(KERN_INFO, tp_to_dev(tp), "loopback test finished\n",rx_len,len);
-                                  break;
--@@ -26403,11 +26413,20 @@
-+@@ -26445,11 +26455,20 @@
-  
-          if ((sizeof(dma_addr_t) > 4) &&
-              use_dac &&
-@@ -50,3 +50,12 @@ diff -u -r r8168-8.050.00/src/r8168_n.c r8168-8.050.00-linux518/src/r8168_n.c
-                  if (rc < 0) {
-  #if LINUX_VERSION_CODE > KERNEL_VERSION(2,6,0)
-                          if (netif_msg_probe(tp))
-+@@ -29987,7 +30006,7 @@
-+         spin_lock_irqsave(&tp->lock, flags);
-+
-+         /* restore last modified mac address */
-+-        rtl8168_rar_set(tp, dev->dev_addr);
-++        rtl8168_rar_set(tp, (uint8_t*)dev->dev_addr);
-+
-+         spin_unlock_irqrestore(&tp->lock, flags);
-+
+ 
