@@ -9,8 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./sunburst.min.css">
-<script src="./highlight.min.js"></script>
+<script src="https://kit.fontawesome.com/99398214e6.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://phoepsilonix.love/sunburst.min.css">
+<script src="https://phoepsilonix.love/highlight.min.js"></script>
 <script type="module">
 import init, { pulldown_cmark as wasm } from './wasm-markdown/wasm_markdown.js';
 var markdown_file = './README.ja.md';
@@ -30,10 +31,10 @@ init()
 
 
 function addCopybtn(){
-    Array.prototype.forEach.call(document.querySelectorAll('pre > code'), addSelectButton);
+        Array.prototype.forEach.call(document.querySelectorAll('pre > code'), addCopyButton);
 }
 
-function addSelectButton(elmCodeFrame){
+function addCopyButton(elmCodeFrame){
     var elmSelectButton = document.createElement('div');
     elmSelectButton.setAttribute('class', '__select-code');
 
@@ -48,9 +49,8 @@ function addSelectButton(elmCodeFrame){
     elmSelectButton.addEventListener('click', function(){
         select(elmCodeFrame);
     });
-    elmSelectButton.insertAdjacentHTML('afterbegin', '<span>Copy</span><i class="fa fa-clipboard"/>');
+    elmSelectButton.insertAdjacentHTML('afterbegin', '<span></span><i class="fa fa-clipboard"/>');
     elmCodeFrame.insertBefore(elmSelectButton, elmCodeFrame.firstChild);
-    console.log(elmSelectButton);
 }
 
 function select(elm){
@@ -69,9 +69,36 @@ function select(elm){
       span.style.transition = 'opacity 1s';
     }, 500);
     setTimeout(function() {
-      span.innerHTML="Copy";
+      span.innerHTML="";
       span.style.opacity =1;
     }, 1000);
+}
+
+var codes = document.getElementsByClassName("print-code");
+if ( codes != null) {
+    for(let i=0; i < codes.length; i++) {
+        let d = codes[i];
+        let filename = d.attributes['data'].value;
+        let lang;
+        if (d.attributes['lang'] === undefined) {
+            lang ="";
+        } else {
+            lang = d.attributes['lang'].value;
+        }
+        fetch(filename)
+            .then(response => response.text())
+            .then(data => {
+            let p = document.createElement('pre');
+            let c = document.createElement('code');
+            c.className = lang;
+            let text = document.createTextNode(data);
+            p.appendChild(c);
+            c.appendChild(text);
+            hljs.highlightElement(c);
+            addCopyButton(c);
+            d.replaceWith(p);
+        });
+    }
 }
 };
 </script>
