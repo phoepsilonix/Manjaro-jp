@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset=utf-8>
+<title>Manjaro-JP</title>
+<link rel="stylesheet" type="text/css" href="https://phoepsilonix.love/bl-kernel/css/bootstrap.min.css?version=3.14.1">
+<link rel="stylesheet" type="text/css" href="https://phoepsilonix.love/bl-themes/phoepsilonix/css/bootstrap.min.css?version=3.14.1">
+<link rel="stylesheet" type="text/css" href="https://phoepsilonix.love/bl-themes/phoepsilonix/css/sport.css?version=3.14.1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/99398214e6.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://phoepsilonix.love/sunburst.min.css">
+<script src="https://phoepsilonix.love/highlight.min.js"></script>
+<script type="module">
+import init, { pulldown_cmark as wasm } from './wasm-markdown/wasm_markdown.js';
+
+window.onload=function() {
+init()
+.then(() => {
+        let md = document.getElementById( "source-markdown" );
+        let output = document.getElementById("output-html");
+        output.innerHTML = wasm(md.innerHTML);
+        hljs.highlightElement(output);
+        addCopyButton(output);
+});
+}
+document.onchange=function(){
+        let md = document.getElementById( "source-markdown" );
+        let output = document.getElementById("output-html");
+        output.innerHTML = wasm(md.innerHTML);
+        hljs.highlightElement(output);
+        addCopyButton(output);
+});
+
+};
+
+function addCopybtn(){
+        Array.prototype.forEach.call(document.querySelectorAll('pre > code'), addCopyButton);
+}
+
+function addCopyButton(elmCodeFrame){
+    var elmSelectButton = document.createElement('div');
+    elmSelectButton.setAttribute('class', '__select-code');
+
+    elmSelectButton.setAttribute('style', "\
+        display: inline-block;\
+        left: 90%;\
+        float: right;\
+        font-weight: bold;\
+        background-color: transparent;\
+        cursor: pointer;")
+
+    elmSelectButton.addEventListener('click', function(){
+        select(elmCodeFrame);
+    });
+    elmSelectButton.insertAdjacentHTML('afterbegin', '<span></span><i class="fa fa-clipboard"/>');
+    elmCodeFrame.insertBefore(elmSelectButton, elmCodeFrame.firstChild);
+}
+
+function select(elm){
+    var selection = window.getSelection();
+    selection.removeAllRanges();
+    var range = document.createRange();
+    range.selectNodeContents(elm);
+    selection.addRange(range);
+    document.execCommand('copy');
+    selection.removeAllRanges();
+    var span = elm.querySelector('.__select-code span');
+    span.innerHTML="Copied";
+    span.style.transition = 'none';
+    setTimeout(function() {
+      span.style.opacity = 0;
+      span.style.transition = 'opacity 1s';
+    }, 500);
+    setTimeout(function() {
+      span.innerHTML="";
+      span.style.opacity =1;
+    }, 1000);
+}
+
+</script>
+</head>
+<body>
+<header></header>
+<div>
+<textarea id="source-markdown"></textarea>
+<section id="output-html"></section>
+</div>
+<footer></footer>
+</body>
+</html>
