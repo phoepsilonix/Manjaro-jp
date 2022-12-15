@@ -21,7 +21,7 @@ ISOs for live environment & installation are available at the following distribu
 Please try it if you like.
 
 ##### Notes
-1. secure boot is not supported
+1. secure boot is not supported.<br />
 Please disable Secure Boot in your BIOS settings.
 (If you want secure boot support, Ubuntu is a fast option, and Ubuntu Flavour offers several desktop environments). 
 
@@ -40,9 +40,10 @@ Distributed at the above 3 locations.
 ---
 ### Memorandum
 ##### manjaro-tools-iso changes
-1. the first line of the mirrorlist is used as standard for where to get the packages used for buildiso.
+1. the first line of the mirrorlist is used as standard for where to get the packages used for buildiso.<br />
 By default, the mirrorlist is not loaded and the EU server is used.
-2. to prioritize the order of repositories specified in user-repos.conf in order to include the packages I have prepared in the ISO. This is mainly to include the latest version of the kernel.
+2. to prioritize the order of repositories specified in user-repos.conf in order to include the packages I have prepared in the ISO.<br />
+This is mainly to include the latest version of the kernel.
 
 ### Update History
 <details>
