@@ -2,9 +2,9 @@ window.onload=function() {
 
 hljs.highlightAll();
 
-Array.prototype.forEach.call(document.querySelectorAll('pre > code'), addSelectButton);
+Array.prototype.forEach.call(document.querySelectorAll('pre > code'), addCopyButton);
 
-function addSelectButton(elmCodeFrame){
+function addCopyButton(elmCodeFrame){
     var elmSelectButton = document.createElement('div');
     elmSelectButton.setAttribute('class', '__select-code');
 
@@ -49,7 +49,12 @@ if ( codes != null) {
     for(let i=0; i < codes.length; i++) {
         let d = codes[i];
         let filename = d.attributes['data'].value;
-        let lang = d.attributes['lang'].value;
+        let lang;
+        if (d.attributes['lang'] === undefined) {
+            lang ="";
+        } else {
+            lang = d.attributes['lang'].value;
+        }
         fetch(filename)
             .then(response => response.text())
             .then(data => {
@@ -60,7 +65,7 @@ if ( codes != null) {
             p.appendChild(c);
             c.appendChild(text);
             hljs.highlightElement(c);
-            addSelectButton(c);
+            addCopyButton(c);
             d.replaceWith(p);
         });
     }
