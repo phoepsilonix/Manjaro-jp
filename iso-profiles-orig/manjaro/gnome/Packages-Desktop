@@ -161,7 +161,7 @@ gnome-tweaks
 >extra gnome-shell-extension-custom-accent-colors
 >extra gnome-shell-extension-dash-to-dock
 >extra gnome-shell-extension-dash-to-panel
->extra gnome-shell-extension-desktop-icons-ng
++>extra gnome-shell-extension-gtk4-desktop-icons-ng
 >extra gnome-shell-extension-gnome-ui-tune
 >extra gnome-shell-extension-gsconnect
 >extra gnome-shell-extension-legacy-theme-auto-switcher
@@ -179,6 +179,7 @@ kvantum-manjaro
 #>extra illyria-wallpaper
 manjaro-gdm-branding
 #manjaro-gdm-theme                 # Needs updating for GNOME 42
+manjaro-gnome-backgrounds
 #>extra manjaro-wallpapers-18.0
 papirus-maia-icon-theme
 >extra plymouth-theme-manjaro
