@@ -25,6 +25,14 @@ Please try it if you like.
 Please disable Secure Boot in your BIOS settings.
 (If you want secure boot support, Ubuntu is a fast option, and Ubuntu Flavour offers several desktop environments). 
 
+2. if the installer screen disappears during installation  
+It can often be avoided by manually setting the swap partition.  
+If the swap partition is /dev/sdX, try enabling swap manually with the following command.
+```
+sudo mkswap /dev/sdX
+sudo swapon /dev/sdX
+```
+
 ---
 ### Place of distribution
 [![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  

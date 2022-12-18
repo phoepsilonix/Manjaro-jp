@@ -3,7 +3,7 @@
 pkgname=nginx-quic-mod-brotli
 epoch=1
 pkgver=1.0.9
-pkgrel=2
+pkgrel=3
 
 _commit=6e975bcb015f62e1f303054897783355e2a877dc
 _modname="ngx_${pkgname#nginx-quic-mod-}"

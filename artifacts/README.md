@@ -25,6 +25,14 @@ Linuxカーネルは、なるべく最新のものを採用します。
 対応していませんので、BIOSの設定でセキュアブートを無効にしてご利用ください。  
 （セキュアブート対応を望む場合、Ubuntuが早いと思います。Ubuntu Flavourでデスクトップ環境も複数提供されています。）
 
+2. インストール途中でインストーラー画面が消える場合には  
+swapパーティションを手動で設定することで、回避できる場合が多いです。  
+swapパーティションを/dev/sdXとした場合、次のようなコマンドで手動でswapを有効にしてみてください。
+```
+sudo mkswap /dev/sdX
+sudo swapon /dev/sdX
+```
+
 ---
 ### 配布場所
 [![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)
