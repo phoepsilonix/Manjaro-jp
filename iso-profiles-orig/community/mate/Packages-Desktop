@@ -6,7 +6,7 @@ hexchat
 eom
 atril
 engrampa
-#firefox
+firefox
 lightdm
 lightdm-slick-greeter
 lightdm-settings
@@ -64,7 +64,7 @@ manjaro-artwork
 manjaro-browser-settings
 manjaro-mate-settings
 manjaro-hotfixes
-#manjaro-pulse
+manjaro-pulse
 manjaro-settings-manager-notifier
 manjaro-hello
 >extra snapd
@@ -84,9 +84,9 @@ numlockx
 openresolv
 pamac
 powertop
-#pulseaudio-bluetooth
-#pulseaudio-ctl
-#pulseaudio-zeroconf
+pulseaudio-bluetooth
+pulseaudio-ctl
+pulseaudio-zeroconf
 alsa-utils
 avahi
 networkmanager
@@ -112,6 +112,7 @@ yelp
 caja-open-terminal
 >extra caja-wallpaper
 >extra gtk3-print-backends
+>extra manjaro-documentation-en
 >extra mate-themes
 >extra mate-tweak
 >extra mate-screensaver
@@ -138,8 +139,6 @@ timeshift 								#backup utility
 #>extra fakeroot
 #>extra flex
 #>extra gcc
-#>extra >multilib gcc-libs-multilib
-#>extra >multilib gcc-multilib
 #>extra libtool
 #>extra m4
 #>extra make
@@ -148,6 +147,5 @@ timeshift 								#backup utility
 #>extra yaourt
 manjaro-aur-support
 
-xdg-desktop-portal-gtk
 xdg-user-dirs
 xorg-server

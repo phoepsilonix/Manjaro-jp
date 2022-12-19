@@ -27,8 +27,6 @@ gvfs-goa
 gvfs-google
 >extra galculator
 >extra gcc
->extra >multilib gcc-libs-multilib
->extra >multilib gcc-multilib
 >extra gcolor3
 >extra gimp
 >extra git
@@ -74,10 +72,11 @@ manjaro-alsa
 manjaro-application-utility
 manjaro-browser-settings
 manjaro-cinnamon-settings
+>extra manjaro-documentation-en
 manjaro-hello
 manjaro-hotfixes
 >extra manjaro-printer
-#manjaro-pulse
+manjaro-pulse
 manjaro-settings-manager-notifier
 >extra mesa-demos
 >basic midori
@@ -117,9 +116,9 @@ pkg-config
 >extra popsicle
 >extra powertop
 #>extra pragha
-#>extra pulseaudio-bluetooth
-#pulseaudio-ctl
-#pulseaudio-zeroconf
+>extra pulseaudio-bluetooth
+pulseaudio-ctl
+pulseaudio-zeroconf
 python-ptyprocess
 screenfetch
 >extra snapd

@@ -11,7 +11,7 @@ networkmanager
 ntp
 openresolv                         # optional for networkmanager
 >extra openssh                     # optional for gnome-control-center
-#usb_modeswitch                     # Optional for modemmanager
+#usb_modeswitch                    # required by manjaro-modem; optional for modemmanager
 
 ## Btrfs
 btrfsmaintenance
@@ -22,7 +22,7 @@ grub-btrfs
 >extra libdvdcss
 >extra manjaro-alsa
 >extra manjaro-gstreamer
-#>extra manjaro-modem              # ?
+#>extra manjaro-modem
 #>extra manjaro-pulse
 
 ## Fonts
@@ -73,18 +73,17 @@ gnome-disk-utility
 gnome-keyring
 gnome-logs
 #>extra gnome-maps
-#gnome-menus                       # optional for gnome-shell-extensions
+#gnome-menus                       # required by alacarte; optional for gnome-shell-extensions
 #gnome-music                       # lollypop included instead
 #gnome-photos
 #>extra gnome-remote-desktop       # optional for gnome-control-center
-#gnome-screenshot                  # New screenshot tool integrated
 gnome-session
 gnome-settings-daemon
-#gnome-shell
+#gnome-shell                       # custom gnome-shell-maia used
 gnome-shell-extensions
 #gnome-software                    # pamac-gtk used instead
 gnome-system-monitor
-gnome-text-editor
+gnome-text-editor                  # gedit included instead
 gnome-user-docs
 >extra gnome-user-share            # optional for gnome-control-center
 #gnome-video-effects               # required by cheese
@@ -269,3 +268,78 @@ xorg-xinit
 manjaro-ranger-settings
 >extra pacui
 
+# For Japanese
+fcitx5-im
+fcitx5-mozc
+manjaro-asian-input-support-fcitx5
+# AUR fcitx5-input-support
+
+# for asian?
+#fcitx-table-other
+#fcitx-table-extra
+
+# Japanese Fonts
+ipa-fonts
+ttf-sazanami
+noto-fonts-cjk
+noto-fonts-extra
+adobe-source-han-sans-jp-fonts
+adobe-source-han-serif-jp-fonts
+morisawa-biz-ud-mincho-fonts
+morisawa-biz-ud-gothic-fonts
+ttf-firge
+ttf-hackgen
+
+# Emoji Fonts
+noto-fonts-emoji
+unicode-emoji
+# nodejs-emojione
+
+# browser
+#vivaldi
+#vivaldi-ffmpeg-codecs
+
+# vivaldi option pkg
+libnotify
+
+# mail
+#thunderbird
+# thunderbird option pkg
+#libotr
+
+# kernel clang build.
+# dkms clang lld
+clang 
+llvm
+lld
+
+#timeshift or snapper
+#timeshift-autosnap-manjaro
+#snapper
+#snapper-gui
+#snap-pac
+
+#office 
+#libreoffice-fresh
+#libreoffice-fresh-ja
+
+#aur helper
+yay
+paru
+
+# 
+#kernel-modules-hook
+systemd-swap
+
+#audio
+manjaro-pipewire
+pipewire-media-session
+pipewire-media-session-docs
+#wireplumber
+#wireplumber-docs
+pipewire-v4l2
+pipewire-jack
+pipewire-x11-bell
+
+#network printer and usb
+ipp-usb

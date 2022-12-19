@@ -1,4 +1,5 @@
 ## Branding
+minisforum-kde-settings
 plasma-theme-minisforum
 
 ## Network
@@ -115,6 +116,7 @@ sddm
 sddm-kcm
 
 ## Plasma5
+audiocd-kio
 bluedevil
 kde-gtk-config
 kdeplasma-addons
@@ -252,7 +254,6 @@ telegram-desktop
 vivaldi
 vivaldi-ffmpeg-codecs
 #yakuake
-#matray
 
 ## Paid Applications
 crossover-extras
@@ -269,7 +270,6 @@ crossover-extras
 manjaro-documentation-en
 
 ## Settings packages
-minisforum-kde-settings
 manjaro-browser-settings
 
 ## Xorg Input Drivers

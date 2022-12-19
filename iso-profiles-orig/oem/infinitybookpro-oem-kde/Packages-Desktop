@@ -58,8 +58,6 @@ bison
 fakeroot
 flex
 gcc
->multilib gcc-libs-multilib
->multilib gcc-multilib
 libtool
 m4
 make
@@ -167,6 +165,7 @@ wallpapers-tuxedo
 
 ## KDE Applications
 ark
+audiocd-kio
 #digikam
 dolphin
 dolphin-plugins
