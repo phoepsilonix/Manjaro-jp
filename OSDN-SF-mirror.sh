@@ -3,6 +3,7 @@
 
 . keychain.sh
 
+./md2html.sh
 repo_dir=./artifacts/
 cd $repo_dir;
 
