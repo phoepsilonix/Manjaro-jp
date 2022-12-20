@@ -1,116 +1,64 @@
-# OPENBOX PROFILE
-
-## PDFVIEW
-mupdf
-
-## EDITOR
-xed
-micro
-
-## FILEMANAGER
-mc
-pcmanfm-gtk3
-
-## WEB BROWSER
-firefox
-
-## PARTITION MANAGER
-gparted
-
-## NETWORK
-### CLI UTILS
-arp-scan
-firewalld
-net-tools
-network-manager-applet
-networkmanager-openvpn
-networkmanager
-nm-connection-editor
-openresolv
-openssh
-traceroute
-whois
-
-## FONTS - THEMING - ICONS - CURSORS
-manjaro-openbox-scripts
-norse-theme
-masalla-icon-theme
-terminus-font
-ttf-font-awesome
-ttf-font-icons
-ttf-icomoon-icons
-ttf-polybar-icons
-ttf-shadow-fonts
-
-## SETTINGS MANAGEMENT
-kvantum-qt5
-lxappearance-gtk3
-obconf
-qt5ct
-
-## DISPLAY MANAGER
-sddm
-norse-sddm-theme
-
-## CONFIGURATION DEPENDENCIES
-alacritty
-arandr
-dunst
-fzf
-gpicview
-gsimplecal
-i3lock
-jgmenu
-numlockx
-picom
-rofi
-skippy-xd
-tint2
-xcape
-xdialog
-zenity
-
-## CORE
-### WINDOW MANAGER
-lxmenu-data
-lxsession-gtk3          # session
-#obkey-gtk3              # hotkey editor
-obmenu-generator        # pipe menu generator
-openbox                 # window manager
-wmctrl
-
-## alsa
-alsa-utils
-alsa-firmware
-sof-firmware
-
-### SYSTEM ICON THEMES
-adwaita-icon-theme
-hicolor-icon-theme
-
-### SYSTEM CURSOR THEME
-xcursor-pinux
-
-### SYSTEM FONTS
-freetype2
-ttf-dejavu
-
-### system
 accountsservice
+adwaita-icon-theme
+arandr
+arp-scan
+dracula-openbox-theme
+firefox
+freetype2
+fzf
 gnome-keyring
-gtk-engines
+gsimplecal
 gtk-engine-murrine
 gtk3
-perl-file-mimeinfo
+hicolor-icon-theme
+i3lock-color
+jgmenu
+libappindicator-gtk3
+libdbusmenu-gtk3
+libindicator-gtk3
+lxappearance-obconf
+lxmenu-data
+manjaro-openbox-maia
+manjaro-openbox-matcha
+manjaro-settings-manager
+manjaro-system
+mate-power-manager
+mc
+menu-cache
+net-tools
+network-manager-applet
+networkmanager
+networkmanager-openconnect
+networkmanager-openvpn
+networkmanager-pptp
+networkmanager-vpnc
+nm-connection-editor
+numlockx
+obconf
+openbox
+openresolv
+openssh
+picom
 polkit
+polkit-gnome
+polkit-qt5
+pulseaudio-alsa
 python-pyxdg
+rofi
+skippy-xd
 squashfs-tools
+terminus-font
+tint2
+traceroute
+ttf-dejavu
+whois
+wmctrl
+xcape
 xdg-user-dirs
 xdg-user-dirs-gtk
 xdg-utils
-xdg-desktop-portal-gtk
-
-### XORG
+xf86-input-evdev
+xf86-input-libinput
 xorg-fonts-100dpi
 xorg-fonts-75dpi
 xorg-fonts-type1
@@ -124,97 +72,3 @@ xorg-xinput
 xorg-xkill
 xorg-xprop
 xorg-xwininfo
-
-## Xorg drivers
-xf86-input-evdev
-xf86-input-libinput
-agave
-bashrc-mabox
-beautyline
-betterlockscreen
-btop
-bunsen-themes-git
-canta-gtk-theme
-canta-icon-theme
-cava
-cherrytree
-chicago95-gtk-theme-git-v2.0.1.r119.g149a54c
-chicago95-icon-theme-git-v2.0.1.r119.g149a54c
-cht.sh-git
-colormenu
-colorpicker
-conky-no-nvidia
-cornora-20200406-1-any.pkg.tar.xz
-cortile-git
-darkcold-gtk-theme
-dmenu-extended-git-r355.2906f5f-1-any.pkg.tar.xz
-dracula-gtk-theme-v2.0
-dracula-openbox-theme-r11.b322250
-espanso
-espanso-bin
-fsearch
-fuzzy-pkg-finder
-gkrellm-themes-20030109-1-any.pkg.tar.xz
-gkrellmlaunch-0.5-7-x86_64.pkg.tar.xz
-gruvbox-material-gtk-theme-git-r14.cc255d43
-gruvbox-material-icon-theme-git-r14.cc255d43
-i3lock-color
-jgmenu
-libglade
-libglademm
-lx-colors-themes-20181210-1-any.pkg.tar.xz
-lxrandr
-lxrandr-gtk3
-mabox-artwork-20181221.71a5a88-1-any.pkg.tar.xz
-mabox-browser-settings
-mabox-colorizer
-mabox-common-20181205-1-any.pkg.tar.xz
-mabox-exo
-mabox-gkrellm-themes-20200419-1-any.pkg.tar.xz
-mabox-i18n-files
-mabox-keyring-20181205-1-any.pkg.tar.xz
-mabox-pcmanfm-actions
-mabox-pipemenus
-mabox-release
-mabox-themes
-mabox-themes-eithne
-mabox-tools
-mabox-utilities-20200218-1-any.pkg.tar.xz
-mabox-wallpapers
-maboxlinux.db
-maboxlinux.db.tar.xz
-maboxlinux.files
-maboxlinux.files.tar.xz
-mb-jgtools
-netwmpager
-nordic-bluish-accent-standard-buttons-theme
-nordic-bluish-accent-theme
-nordic-darker-standard-buttons-theme
-nordic-darker-theme
-nordic-polar-standard-buttons-theme
-nordic-standard-buttons-theme
-nordic-theme
-notify-send.sh
-numix-circle-icon-theme
-numix-cursor-theme
-numix-icon-theme
-numix-square-icon-theme
-papirus-folders-gui
-pipe-viewer-git
-pygrid
-pyradio
-python2-xlib
-qdirstat
-quicktile
-sardi-icons
-sxcs
-tela-circle-icon-theme-git
-theme.sh-git
-ttf-autour-one
-ttf-lucide-font
-url-handler-pamac
-wpgtk
-xcursor-chicago95-git-v2.0.1.r119.g149a54c
-yad
-yadsu
-ytfzf
