@@ -1,8 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index ad199f9..94bee57 100644
+index dfd09ab..1a1c78e 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -30,6 +30,34 @@ build() {
+@@ -30,6 +30,25 @@ build() {
    # build host modules
    echo 'Host modules'
    fakeroot dkms build --dkmstree "$srcdir" -m vboxhost/${pkgver}_OSE -k ${_kernver}
@@ -25,19 +25,10 @@ index ad199f9..94bee57 100644
 +  do
 +          /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $f
 +  done
-+
-+  case "$COMPRESS" in
-+  zstd)
-+          zstd -f -22 --ultra -T0 *.ko
-+          ;;
-+  xz)
-+          xz -T0 -9 -e *.ko
-+          ;;
-+  esac
  }
  
  package(){
-@@ -38,8 +66,18 @@ package(){
+@@ -38,8 +57,18 @@ package(){
    cd "vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
    install -Dm644 * -t "$pkgdir/usr/lib/modules/$_extramodules/"
  

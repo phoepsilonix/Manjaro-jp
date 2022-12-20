@@ -1,5 +1,5 @@
 diff --git a/lib/util-iso.sh b/lib/util-iso.sh
-index 3931e55..7f3ae9c 100644
+index fedfb9d..f65d6ef 100644
 --- a/lib/util-iso.sh
 +++ b/lib/util-iso.sh
 @@ -331,6 +331,7 @@ make_image_root() {
@@ -10,31 +10,20 @@ index 3931e55..7f3ae9c 100644
          pacman -Qr "${path}" > "${path}/rootfs-pkgs.txt"
          copy_overlay "${profile_dir}/root-overlay" "${path}"
  
-@@ -338,6 +339,7 @@ make_image_root() {
- 
-         configure_lsb "${path}"
- 
-+        cp "${DATADIR}/pacman-multilib.conf" "${path}/etc/pacman.conf" && sync
-         clean_up_image "${path}"
-         : > ${work_dir}/build.${FUNCNAME}
-         msg "Done [Base installation] (rootfs)"
-@@ -353,6 +355,7 @@ make_image_desktop() {
+@@ -353,11 +354,10 @@ make_image_desktop() {
          mount_fs_root "${path}"
  
          chroot_create "${path}" "${packages}"
+-
 +	cp "${tmp_dir}/custom-pacman.conf" "${path}/etc/pacman.conf" && sync
- 
          pacman -Qr "${path}" > "${path}/desktopfs-pkgs.txt"
          cp "${path}/desktopfs-pkgs.txt" ${iso_dir}/$(gen_iso_fn)-pkgs.txt
-@@ -363,6 +366,7 @@ make_image_desktop() {
+         [[ -e ${profile_dir}/desktop-overlay ]] && copy_overlay "${profile_dir}/desktop-overlay" "${path}"
+-
+         if [[ -e "${path}/usr/share/calamares/branding/manjaro/calamares-sidebar.qml" ]]; then
+             configure_branding "${path}"
              msg "Done [Distribution: Release ${dist_release} Codename ${dist_codename}]"
-         fi
- 
-+        cp "${DATADIR}/pacman-multilib.conf" "${path}/etc/pacman.conf" && sync
-         reset_pac_conf "${path}"
- 
-         seed_snaps ${path}
-@@ -394,6 +398,7 @@ make_image_live() {
+@@ -397,6 +397,7 @@ make_image_live() {
          mount_fs_select "${path}"
  
          chroot_create "${path}" "${packages}"
@@ -42,15 +31,7 @@ index 3931e55..7f3ae9c 100644
  
          pacman -Qr "${path}" > "${path}/livefs-pkgs.txt"
          copy_overlay "${profile_dir}/live-overlay" "${path}"
-@@ -406,6 +411,7 @@ make_image_live() {
-         
-         configure_polkit_user_rules "${path}"
- 
-+        cp "${DATADIR}/pacman-multilib.conf" "${path}/etc/pacman.conf" && sync
-         reset_pac_conf "${path}"
- 
-         umount_fs
-@@ -423,6 +429,7 @@ make_image_mhwd() {
+@@ -429,6 +430,7 @@ make_image_mhwd() {
          mkdir -p ${path}${mhwd_repo}
  
          mount_fs_select "${path}"
@@ -58,20 +39,19 @@ index 3931e55..7f3ae9c 100644
  
          reset_pac_conf "${path}"
  
-@@ -436,6 +443,7 @@ make_image_mhwd() {
-         cp ${DATADIR}/pacman-mhwd.conf ${path}/opt/mhwd
-         make_repo "${path}"
-         configure_mhwd_drivers "${path}"
-+	cp "${DATADIR}/pacman-multilib.conf" "${path}/etc/pacman.conf" && sync
- 
-         umount_fs
-         clean_up_image "${path}"
-@@ -606,7 +614,7 @@ get_pacman_conf(){
+@@ -612,7 +614,14 @@ get_pacman_conf(){
          info "detected: %s" "user-repos.conf"
          check_user_repos_conf "${user_conf}"
          conf=${tmp_dir}/custom-pacman.conf
 -        cat ${DATADIR}/pacman-$pac_arch.conf ${user_conf} > "$conf"
-+        cat ${user_conf} ${DATADIR}/pacman-$pac_arch.conf > "$conf"
++        a=$(($(grep -n "\[core\]" ${DATADIR}/pacman-$pac_arch.conf |sed -e 's/:.*//g') - 1))
++        b=$(wc -l ${DATADIR}/pacman-$pac_arch.conf |sed -e 's/ .*//g')
++        head -$a ${DATADIR}/pacman-$pac_arch.conf > "$conf"
++        cat ${user_conf} >> "$conf"
++        tail -$b ${DATADIR}/pacman-$pac_arch.conf >> "$conf"
++        if [[ "$profile" == "mabox" ]]; then
++            sed 's/manjaro-keyring/manjaro-keyring mabox-keyring/' -i "$conf"
++        fi
      else
          conf="${DATADIR}/pacman-$pac_arch.conf"
      fi

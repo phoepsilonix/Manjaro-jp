@@ -12,7 +12,7 @@ pkgname=('manjaro-tools-base-git'
         'manjaro-tools-pkg-git'
         'manjaro-tools-iso-git'
         'manjaro-tools-yaml-git')
-pkgver=r3003.1838316
+pkgver=r3004.dc48e4e
 pkgrel=2
 arch=('x86_64')
 pkgdesc='Development tools for Manjaro Linux'
@@ -28,14 +28,15 @@ source=("manjaro-tools::git+$url.git#branch=$_branch"
         '0004-sync.patch'
         '0005-mkchroot-locales.patch'
         '0006-remove-hook-miso_shutdown.patch')
+
 sha256sums=('SKIP'
             '634debacab926f662471d2b268860e56ae96dc72ab0a76f55cc7e75b5b8572f0'
-            '57f643363423f3487343f1c9d34b81a2c5b51c7a441b746b489b15900b60f2d5'
+            '54c0fb2e7e988af722cab945c31804f1e2455e7862ac83fedcb1fe9d2af99111'
             'fb5d50e31882ccc1c0533a4fc737f02b2e78e161d758fb8b95a55e0b6a072bda'
-            '938142c16b1e543625b0c545269574f7f8d3fbee8b3cc6fab233b202ca454003'
+            'c7d6bee2841c144fa719b077ab67c8782a75e99f9a6402d76d0e05a66bca2624'
             'ebfde8111af60871838bfa2fd5e981258881df9596615d36bedc003108dd0694'
             '8220c2915d24dea5deb1ea6d2213844a35f5638fcfcfb813e6f6ac3524cf47a2'
-            'eb09e25aa9e0fdd16b21a431d44a528bd543f455082f98929d24c102c1337643')
+            '6de183ab242b1bb724bee565050186efaf42064849523d6179c56ed6af207bd1')
 
 
 prepare() {

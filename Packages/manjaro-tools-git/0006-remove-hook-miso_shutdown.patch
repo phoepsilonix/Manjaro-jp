@@ -1,0 +1,14 @@
+diff --git a/initcpio/hooks/miso_shutdown b/initcpio/hooks/miso_shutdown
+deleted file mode 100644
+index 4be6da0..0000000
+--- a/initcpio/hooks/miso_shutdown
++++ /dev/null
+@@ -1,6 +0,0 @@
+-run_cleanuphook() {
+-    rm -rf /usr/lib/modules
+-    cp -ax /. /run/initramfs
+-}
+-
+-# vim: set ft=sh ts=4 sw=4 et:
+
+

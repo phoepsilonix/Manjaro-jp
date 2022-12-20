@@ -1,5 +1,4 @@
 adwaita-icon-theme
-alsa-firmware
 dconf-editor
 dmidecode
 hexchat
@@ -59,12 +58,10 @@ gvfs-smb
 inxi
 imagewriter
 libappindicator-gtk3
-manjaro-alsa
 manjaro-artwork
 manjaro-browser-settings
 manjaro-mate-settings
 manjaro-hotfixes
-manjaro-pulse
 manjaro-settings-manager-notifier
 manjaro-hello
 >extra snapd
@@ -84,10 +81,6 @@ numlockx
 openresolv
 pamac
 powertop
-pulseaudio-bluetooth
-pulseaudio-ctl
-pulseaudio-zeroconf
-alsa-utils
 avahi
 networkmanager
 ntp
@@ -112,7 +105,6 @@ yelp
 caja-open-terminal
 >extra caja-wallpaper
 >extra gtk3-print-backends
->extra manjaro-documentation-en
 >extra mate-themes
 >extra mate-tweak
 >extra mate-screensaver

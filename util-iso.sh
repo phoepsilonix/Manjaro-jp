@@ -339,7 +339,7 @@ make_image_root() {
 
         configure_lsb "${path}"
 
-        cp "${DATADIR}/pacman-multilib.conf" "${path}/etc/pacman.conf" && sync
+	cp "${tmp_dir}/custom-pacman.conf" "${path}/etc/pacman.conf" && sync
         clean_up_image "${path}"
         : > ${work_dir}/build.${FUNCNAME}
         msg "Done [Base installation] (rootfs)"
@@ -381,7 +381,7 @@ make_image_desktop() {
             msg "Done [Distribution: Release ${dist_release} Codename ${dist_codename}]"
         fi
 
-        cp "${DATADIR}/pacman-multilib.conf" "${path}/etc/pacman.conf" && sync
+	cp "${tmp_dir}/custom-pacman.conf" "${path}/etc/pacman.conf" && sync
         reset_pac_conf "${path}"
 
         seed_snaps ${path}
@@ -435,7 +435,7 @@ make_image_live() {
         
         configure_polkit_user_rules "${path}"
 
-        cp "${DATADIR}/pacman-multilib.conf" "${path}/etc/pacman.conf" && sync
+	cp "${tmp_dir}/custom-pacman.conf" "${path}/etc/pacman.conf" && sync
         reset_pac_conf "${path}"
 	
         if [[ "${profile}" != "architect" ]];then
@@ -475,7 +475,7 @@ make_image_mhwd() {
         cp ${DATADIR}/pacman-mhwd.conf ${path}/opt/mhwd
         make_repo "${path}"
         configure_mhwd_drivers "${path}"
-	cp "${DATADIR}/pacman-multilib.conf" "${path}/etc/pacman.conf" && sync
+	cp "${tmp_dir}/custom-pacman.conf" "${path}/etc/pacman.conf" && sync
 
         umount_fs
         clean_up_image "${path}"
@@ -646,7 +646,14 @@ get_pacman_conf(){
         info "detected: %s" "user-repos.conf"
         check_user_repos_conf "${user_conf}"
         conf=${tmp_dir}/custom-pacman.conf
-        cat ${user_conf} ${DATADIR}/pacman-$pac_arch.conf > "$conf"
+        a=$(($(grep -n "\[core\]" ${DATADIR}/pacman-$pac_arch.conf |sed -e 's/:.*//g') - 1))
+        b=$(wc -l ${DATADIR}/pacman-$pac_arch.conf |sed -e 's/ .*//g')
+        head -$a ${DATADIR}/pacman-$pac_arch.conf > "$conf"
+        cat ${user_conf} >> "$conf"
+        tail -$b ${DATADIR}/pacman-$pac_arch.conf >> "$conf"
+        if [[ "$profile" == "mabox" ]]; then
+            sed 's/manjaro-keyring/manjaro-keyring mabox-keyring/' -i "$conf"
+        fi
     else
         conf="${DATADIR}/pacman-$pac_arch.conf"
     fi
