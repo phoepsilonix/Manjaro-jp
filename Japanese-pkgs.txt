@@ -73,3 +73,7 @@ pipewire-x11-bell
 
 #network printer and usb
 ipp-usb
+
+#mouse touchpad
+gestures
+libinput-gestures

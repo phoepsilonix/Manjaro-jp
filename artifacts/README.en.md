@@ -257,6 +257,9 @@ kernel-6.0.12
 ##### 20221215
 kernel-6.0.13
 
+##### 20221220
+kernel-6.0.14
+
 
 ---
 Addendum for your reference.  
@@ -277,14 +280,16 @@ Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
 [Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/manjaro-jp/)
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)
-[Manjaro-JP at sf web](https://manjaro-jp.sourceforge.io/)
-(GPG signing public key:536487F1470D7187) <phoepsilonix at gmail dot com>
+[Manjaro-JP at sf web](https://manjaro-jp.sourceforge.io/)  
+(GPG signing public key:536487F1470D7187) <phoepsilonix at gmail dot com>  
 [revolut](https://revolut.me/phoepsilonix)
 [paypal](https://paypal.me/phoepsilonix)
 
 BTC
 ```3FNDG4oES4HmR5byStmAFMasdTyaYjus3k```
+
 ETH
 ```0xe9968CFb2bc0D2aB789c45E31042938265A151Bb```
+
 USDT(TRC20)
 ```TFmZcyVjobYKNUXeXLmWdj4ZphGU2tTptj```

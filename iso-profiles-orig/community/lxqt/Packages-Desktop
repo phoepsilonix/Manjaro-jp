@@ -88,11 +88,9 @@ norse-sddm-theme
 alsa-utils
 alsa-firmware
 pavucontrol-qt
-wireplumber
 sof-firmware
 
 ## settings manager
-manjaro-documentation-en
 manjaro-hello
 obconf-qt
 

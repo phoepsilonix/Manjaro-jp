@@ -43,7 +43,7 @@ manjaro-hotfixes
 manjaro-pulse
 manjaro-settings-manager-notifier
 manjaro-hello
->extra snapd
+#>extra snapd
 mesa-demos
 mobile-broadband-provider-info
 modemmanager
@@ -60,10 +60,11 @@ numlockx
 openresolv
 pamac-gtk
 powertop
-pulseaudio-bluetooth
-pulseaudio-ctl
-pulseaudio-zeroconf
-alsa-utils
+manjaro-alsa
+#pulseaudio-bluetooth
+#pulseaudio-ctl
+#pulseaudio-zeroconf
+#alsa-utils
 avahi
 networkmanager
 ntp
@@ -84,7 +85,6 @@ xf86-input-void
 xorg-twm
 xorg-xinit
 yelp
->extra manjaro-documentation-en
 #>extra libreoffice-fresh
 >extra thunderbird
 >extra lollypop

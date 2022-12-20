@@ -43,7 +43,6 @@ leafpad
 
 ## user information
 manjaro-application-utility
-manjaro-documentation-en
 manjaro-hello
 
 ## Sound support
@@ -54,7 +53,6 @@ pavucontrol
 pipewire
 pipewire-v4l2
 pipewire-zeroconf
-wireplumber
 
 ## Display manager
 sddm

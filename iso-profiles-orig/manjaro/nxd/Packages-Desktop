@@ -23,17 +23,17 @@ gst-plugins-bad
 gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
-libcanberra
->multilib lib32-libcanberra
-libcanberra-pulse
->multilib lib32-libcanberra-pulse
+#libcanberra
+#>multilib lib32-libcanberra
+#libcanberra-pulse
+#>multilib lib32-libcanberra-pulse
 libdvdcss
 manjaro-alsa
-manjaro-pulse
+#manjaro-pulse
 phonon-qt5-gstreamer
-pulseaudio-bluetooth
-pulseaudio-ctl
-pulseaudio-zeroconf
+#pulseaudio-bluetooth
+#pulseaudio-ctl
+#pulseaudio-zeroconf
 
 ## Connect Packages
 android-tools
@@ -93,13 +93,14 @@ pamac-gtk
 pamac-tray-appindicator
 pamac-cli
 >extra apparmor
->extra snapd
->extra snapd-glib
->extra pamac-snap-plugin
+#>extra snapd
+#>extra snapd-glib
+#>extra pamac-snap-plugin
 #discover-snap
 #discover
 #packagekit-qt5
 >extra flatpak
+>extra libpamac-flatpak-plugin
 >extra fwupd 
 #octopi
 #octopi-cachecleaner
@@ -310,7 +311,6 @@ systemd-kcm
 #>extra jdk8-openjdk
 
 ## Documentation
-manjaro-documentation-en
 
 ## Settings packages
 #>extra manjaro-kde-settings
