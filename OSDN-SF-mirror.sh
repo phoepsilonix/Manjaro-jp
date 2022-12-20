@@ -22,8 +22,8 @@ rsync -avPLz --no-perms ./*.css ./*.js index.html index.ja.html index.en.html RE
 echo "SourceForge"
 # iso
 eval `keychain --agents ssh --eval id_ed25519`
-rsync -aLvPn --size-only --delete --exclude=manjaro-jp/* ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
-rsync -aLvP --size-only --delete --exclude=manjaro-jp/* ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
+rsync -aLvPn --size-only --delete --exclude=manjaro-jp/* --exclude=*\.html ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
+rsync -aLvP --size-only --delete --exclude=manjaro-jp/* --exclude=*\.html ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
 rsync -avPLz ./*.css ./*.js ./index.html ./index.en.html ./index.ja.html ./README.ja.html ./README.en.html phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/
 
 
