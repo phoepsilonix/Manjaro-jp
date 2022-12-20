@@ -213,9 +213,9 @@ ibus
 inxi
 #>extra libappindicator-gtk3       # required by gnome-shell-extension-appindicator & caffeine-ng
 lollypop
-#manjaro-application-utility       # required by manjaro-hello
+manjaro-application-utility       # required by manjaro-hello
 #manjaro-gnome-vanilla
-#manjaro-hello
+manjaro-hello
 >extra manjaro-log-helper
 manjaro-settings-manager-notifier
 manjaro-starter

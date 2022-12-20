@@ -222,7 +222,6 @@ nvidia-utils 520.56.06-1
 ##### 20221016
 kernel-5.19.16  
 nvidia-utils 520.56.06-2
-</details>
 
 ##### 20221025
 kernel-6.0.3  
@@ -238,6 +237,7 @@ kernel-6.0.8
 
 ##### 20221118
 kernel-6.0.9
+</details>
 
 ##### 20221128
 kernel-6.0.10  

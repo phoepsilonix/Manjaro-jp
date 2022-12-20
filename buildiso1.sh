@@ -20,25 +20,25 @@ pkg3=Packages-Root
 
 # エディション指定
 editions=(
-        "manjaro gnome"
-	"manjaro kde"
-	"manjaro xfce"
-#	"community cinnamon" 
+#        "manjaro gnome"
+#	"manjaro kde"
+#	"manjaro xfce"
+	"community cinnamon" 
         "community mate"
 #	"community lxqt"
 #	"community lxqt-kwin"
-	"community sway"
+#	"community sway"
 )
 
 # 初期化
 #rm -rf $artifacts
 #mkdir -p $artifacts
-rm -rf $pkgdir
-mkdir -p $pkgdir
+#rm -rf $pkgdir
+#mkdir -p $pkgdir
 
 # profiles.confを微修正
 # user-repos.confを追加したiso-profilesを用意する
-cp -r iso-profiles-orig/* $pkgdir
+#cp -r iso-profiles-orig/* $pkgdir
 
 # add Japanese pkgs and vivaldi
 for edition in "${editions[@]}"
