@@ -5,7 +5,7 @@ hexchat
 eom
 atril
 engrampa
-firefox
+#firefox
 lightdm
 lightdm-slick-greeter
 lightdm-settings
@@ -114,7 +114,7 @@ caja-open-terminal
 >extra pidgin
 >extra uget
 >extra transmission-gtk
->extra onlyoffice-desktopeditors
+#>extra onlyoffice-desktopeditors
 timeshift 								#backup utility
 #>extra kernel-alive 					#after a kernel update this maintain usable the modules
 >extra libdvdcss

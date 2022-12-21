@@ -642,8 +642,9 @@ get_pacman_conf(){
         info "detected: %s" "user-repos.conf"
         check_user_repos_conf "${user_conf}"
         conf=${tmp_dir}/custom-pacman.conf
-        a=$(($(grep -n "\[core\]" ${DATADIR}/pacman-$pac_arch.conf |sed -e 's/:.*//g') - 1))
+        a=$(($(grep -n "\[core\]" ${DATADIR}/pacman-$pac_arch.conf |sed -e 's/:.*//g')-1))
         b=$(wc -l ${DATADIR}/pacman-$pac_arch.conf |sed -e 's/ .*//g')
+        b=$(($b-$a))
         head -$a ${DATADIR}/pacman-$pac_arch.conf > "$conf"
         cat ${user_conf} >> "$conf"
         tail -$b ${DATADIR}/pacman-$pac_arch.conf >> "$conf"

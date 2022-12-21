@@ -20,12 +20,12 @@ pkg3=Packages-Root
 
 # エディション指定
 editions=(
-#        "manjaro gnome"
+#"manjaro gnome"
 #	"manjaro kde"
 #	"manjaro xfce"
-	"community cinnamon" 
+        "community cinnamon" 
         "community mate"
-	"community mabox"
+#	"community mabox"
 #	"community lxqt"
 #	"community lxqt-kwin"
 #	"community sway"
@@ -67,7 +67,9 @@ do
         echo "buildiso -d xz -k $kernel -p $ed $gkey" 
         cat ~/.ssh/gpg-passphrase|sudo -S pwd >/dev/null 2>&1
         touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback -b INFO
-        buildiso  -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sg "$ed done" || ./line-notify.sh "$ed error" 
+        buildiso  -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
+        sync
+        find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
 #        buildiso -x -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
 #        buildiso -zc -d xz -f -k $kernel -p $ed $gkey
         #buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build
