@@ -356,8 +356,6 @@ make_image_desktop() {
         chroot_create "${path}" "${packages}"
 	cp "${tmp_dir}/custom-pacman.conf" "${path}/etc/pacman.conf" && sync
 
-        pacman -Qr "${path}" > "${path}/desktopfs-pkgs.txt"
-	
         if [[ "${profile}" != "architect" ]];then
                 systemd-nspawn -D ${path} pacman -S --needed flatpak --noconfirm
                 systemd-nspawn -D ${path} flatpak remote-add  --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -367,8 +365,9 @@ make_image_desktop() {
                 systemd-nspawn -D ${path} flatpak install -y org.libreoffice.LibreOffice
         fi
 
-        
-	cp "${path}/desktopfs-pkgs.txt" ${iso_dir}/$(gen_iso_fn)-pkgs.txt
+        pacman -Qr "${path}" > "${path}/desktopfs-pkgs.txt"
+
+        cp "${path}/desktopfs-pkgs.txt" ${iso_dir}/$(gen_iso_fn)-pkgs.txt
         
         [[ -e ${profile_dir}/desktop-overlay ]] && copy_overlay "${profile_dir}/desktop-overlay" "${path}"
         

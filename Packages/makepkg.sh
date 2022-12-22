@@ -10,26 +10,27 @@ for m in $(cat ../extramodules.txt)
 do
         cd $m;
 #        cat ~/.ssh/gpg-passphrase|sudo -S pwd > /dev/null
-expect -c "
+expect <<EOF
   set timeout -1
   spawn makepkg -sCc
   expect {
         eof { exit 0 }
         -gl {\[sudo\] password for } {
-                send -- \"$password\n\"
+                send -- "$password\n"
                 exp_continue
         }
         -re {\[[Yy]/[Nn]\]} {
-                send \"y\n\"
+                send "y\n"
                 exp_continue
         }
         -gl {Enter a number (default=1)} {
-                send \"\n\"
+                send "\n"
                 exp_continue
         }
         exp_continue
   }
-"
+EOF
+
 #        makepkg -sCc --noconfirm
         cd ..;
 done
