@@ -9,8 +9,10 @@ palette=['rgb(46,52,54)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rg
 rewrap-on-resize=true
 visible-name='manjaro'
 
-[org.gnome.desktop.app-folders]
-folder-children=['accessories', 'games', 'office', 'system-tools']
+[org.gnome.shell]
+always-show-log-out=true
+favorite-apps=['org.mozilla.firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.gedit.desktop', 'gnome-terminal.desktop', 'org.manjaro.pamac.manager.desktop', 'calamares.desktop', 'manjaro-architect.desktop']
+enabled-extensions=['pamac-updates@manjaro.org', 'dash-to-dock@micxgx.gmail.com', 'appindicatorsupport@rgcjonas.gmail.com', 'gnome-ui-tune@itstime.tech', 'legacyschemeautoswitcher@joshimukul29.gmail.com', 'x11gestures@joseexposito.github.io', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'custom-accent-colors@demiskp']
 
 [org.gnome.desktop.input-sources]
 sources=[('xkb', 'jp+kana86')]
@@ -18,3 +20,4 @@ xkb-options=['lv3:ralt_switch']
 
 [org.gnome.desktop.media-handling]
 autorun-x-content-start-app=['x-content/ostree-repository']
+

@@ -1,4 +1,4 @@
 FileManager=Thunar
-WebBrowser=Firefox
+WebBrowser=org.mozilla.firefox
 MailReader=thunderbird
 

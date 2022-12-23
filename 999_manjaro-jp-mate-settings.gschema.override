@@ -1,0 +1,8 @@
+[com.solus-project.brisk-menu]
+favourites=['org.mozilla.firefox.desktop', 'mate-terminal.desktop', 'caja-browser.desktop']
+pinned-shortcuts=['matecc.desktop', 'pamac-manager.desktop']
+
+[org.mate.peripherals-keyboard-xkb.kbd]
+layouts=['jp\tkana86']
+options=['terminate\tterminate:ctrl_alt_bksp']
+
