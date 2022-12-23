@@ -1,8 +1,7 @@
 diff --git a/initcpio/hooks/miso_shutdown b/initcpio/hooks/miso_shutdown
-deleted file mode 100644
 index 4be6da0..0000000
 --- a/initcpio/hooks/miso_shutdown
-+++ /dev/null
++++ b/initcpio/hooks/miso_shutdown
 @@ -1,6 +0,0 @@
 -run_cleanuphook() {
 -    rm -rf /usr/lib/modules

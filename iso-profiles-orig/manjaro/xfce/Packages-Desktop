@@ -19,6 +19,8 @@ grub-btrfs
 timeshift-autosnap-manjaro
 
 ## Libraries for Sound/Audio/Video
+alsa-firmware
+alsa-utils
 ffmpeg
 gst-libav
 gst-plugins-bad
