@@ -6,30 +6,31 @@ export LC_ALL=C
 password=$(cat ~/.ssh/gpg-passphrase)
 
 curdir=${PWD##*/}
-for m in $(cat ../extramodules.txt)
+#for m in $(cat ../extramodules.txt)
+for m in $(grep nvidia ../extramodules.txt)
 do
         cd $m;
 #        cat ~/.ssh/gpg-passphrase|sudo -S pwd > /dev/null
-expect <<EOF
+expect -c "
   set timeout -1
   spawn makepkg -sCc
   expect {
         eof { exit 0 }
         -gl {\[sudo\] password for } {
-                send -- "$password\n"
+                send -- \"$password\r\"
                 exp_continue
         }
         -re {\[[Yy]/[Nn]\]} {
-                send "y\n"
+                send \"y\r\"
                 exp_continue
         }
         -gl {Enter a number (default=1)} {
-                send "\n"
+                send \"\r\"
                 exp_continue
         }
         exp_continue
   }
-EOF
+"
 
 #        makepkg -sCc --noconfirm
         cd ..;
