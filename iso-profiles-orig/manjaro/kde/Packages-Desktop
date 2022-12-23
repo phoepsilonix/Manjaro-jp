@@ -64,7 +64,7 @@ pamac-cli
 #>extra snapd
 #>extra snapd-glib
 #>extra pamac-snap-plugin
->extra pamac-flatpak-plugin
+>extra libpamac-flatpak-plugin
 #discover-snap
 #discover
 packagekit-qt5

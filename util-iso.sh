@@ -357,7 +357,6 @@ make_image_desktop() {
 	cp "${tmp_dir}/custom-pacman.conf" "${path}/etc/pacman.conf" && sync
 
         if [[ "${profile}" != "architect" ]];then
-                systemd-nspawn -D ${path} pacman -S --needed flatpak --noconfirm
                 systemd-nspawn -D ${path} flatpak remote-add  --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	        # Browser 
 	        #systemd-nspawn -D ${path} flatpak install -y one.ablaze.floorp

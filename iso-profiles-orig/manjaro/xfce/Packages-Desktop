@@ -69,8 +69,8 @@ terminus-font
 pamac-gtk
 >extra snapd
 >extra snapd-glib
->extra pamac-snap-plugin
->extra pamac-flatpak-plugin
+#>extra pamac-snap-plugin
+>extra libpamac-flatpak-plugin
 
 ## Printing
 >extra manjaro-printer

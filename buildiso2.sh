@@ -4,7 +4,7 @@
 pkgs=`pwd`/Japanese-pkgs.txt
 pkgs2=`pwd`/Japanese-pkgs-root.txt
 pkgdir=`pwd`/iso-profiles
-usb=/var/cache/majaro-tools/
+usb=/run/media/phoepsilonix/Ventoy
 gkey="-g $(cat ~/.gnupg/sign.txt)"
 #gkey=""
 
@@ -20,13 +20,15 @@ pkg3=Packages-Root
 
 # エディション指定
 editions=(
-        "manjaro gnome"
-#	"manjaro kde"
-#	"manjaro xfce"
-#	"community cinnamon" 
-#       "community mate"
+#        "manjaro gnome"
+	"manjaro kde"
+	"manjaro xfce"
+        "community cinnamon" 
+        "community mate"
+	"community mabox"
 #	"community lxqt"
 #	"community lxqt-kwin"
+#	"community sway"
 )
 
 # 初期化
@@ -43,13 +45,12 @@ editions=(
 for edition in "${editions[@]}"
 do
 	data=(${edition[@]})
-        path=${data[0]}/${data[1]}
+	path=${data[0]}/${data[1]}
 	#cat $pkgs >> $pkgdir/$edition[0]/$edition[1]/$pkg1
 	# Desktopパッケージに加える。ライブは不要みたい。
 	cat $pkgs >> $pkgdir/$path/$pkg2
         # Packages-Rootに追加
 	cat $pkgs2 >> $pkgdir/$path/$pkg3
-        sync
 done
 
 # buildiso prepare image
@@ -63,10 +64,14 @@ do
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso 
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build
         echo "build iso"
-        echo "buildiso -d xz -k $kernel -p $ed $gkey -t $usb/tmp/iso"
+        echo "buildiso -d xz -k $kernel -p $ed $gkey" 
         cat ~/.ssh/gpg-passphrase|sudo -S pwd >/dev/null 2>&1
-        rm -f INFO.sig && gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback -b INFO
-        buildiso -d xz -f -k $kernel -p $ed $gkey || exit 1
+        touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback -b INFO
+        buildiso  -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
+        sync
+        find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
+#        buildiso -x -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
+#        buildiso -zc -d xz -f -k $kernel -p $ed $gkey
         #buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build
 done
 
