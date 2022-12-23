@@ -1,7 +1,7 @@
 diff --unified --recursive --text a/libalpm/scripts/mkinitcpio b/libalpm/scripts/mkinitcpio
---- a/libalpm/scripts/mkinitcpio	2022-11-20 13:18:56.000000000 -0700
-+++ b/libalpm/scripts/mkinitcpio	2022-11-25 13:27:18.847308184 -0700
-@@ -7,7 +7,7 @@
+--- a/libalpm/scripts/mkinitcpio	2022-12-07 13:58:22.000000000 -0700
++++ b/libalpm/scripts/mkinitcpio	2022-12-09 16:42:35.885529416 -0700
+@@ -8,7 +8,7 @@
  
  process_preset() {
      if [[ -n "$pkgbase" && -e "$preset" ]]; then
@@ -10,7 +10,7 @@ diff --unified --recursive --text a/libalpm/scripts/mkinitcpio b/libalpm/scripts
              if [[ ! -e "$preset.pacsave" ]]; then
                  # save the preset as pacsave
                  mv -- "$preset" "$preset.pacsave" && return 0
-@@ -27,13 +27,13 @@
+@@ -28,13 +28,13 @@
              mv -- "${preset}.pacsave" "$preset"
          else
              # create the preset from the template
@@ -26,7 +26,7 @@ diff --unified --recursive --text a/libalpm/scripts/mkinitcpio b/libalpm/scripts
  
      # compound args for each kernel
      args+=(-p "$1")
-@@ -41,10 +41,10 @@
+@@ -42,10 +42,10 @@
  
  remove_kernel() {
      # remove the actual kernel and images for the package being removed
@@ -41,7 +41,7 @@ diff --unified --recursive --text a/libalpm/scripts/mkinitcpio b/libalpm/scripts
      # remove the installed kernel
      rm -f -- "$kernel"
  
-@@ -66,6 +66,11 @@
+@@ -67,6 +67,11 @@
          continue
      fi
  
@@ -53,26 +53,37 @@ diff --unified --recursive --text a/libalpm/scripts/mkinitcpio b/libalpm/scripts
      case "$1" in
          install) install_kernel "$pkgbase";;
          remove) remove_kernel "$pkgbase";;
+Only in b/libalpm/scripts: mkinitcpio.orig
 diff --unified --recursive --text a/mkinitcpio.d/example.preset b/mkinitcpio.d/example.preset
---- a/mkinitcpio.d/example.preset	2022-11-20 13:18:56.000000000 -0700
-+++ b/mkinitcpio.d/example.preset	2022-11-25 13:25:08.956417074 -0700
-@@ -21,8 +21,8 @@
- default_efi_image="/efi/EFI/Linux/arch-linux.efi"
+--- a/mkinitcpio.d/example.preset	2022-12-07 13:58:22.000000000 -0700
++++ b/mkinitcpio.d/example.preset	2022-12-09 16:36:33.058367648 -0700
+@@ -15,14 +15,14 @@
+ # presetname_image   - the filename of generated image
+ # presetname_options - any extra options
+ 
+-#default_kver="3.0-ARCH"
++#default_kver="5.3.8-3-MANJARO"
+ #default_config="/etc/mkinitcpio.conf"
+-default_image="/tmp/initramfs-linux.img"
+-default_uki="/efi/EFI/Linux/arch-linux.efi"
++default_image="/boot/initramfs-5.3-x86_64.img"
++default_uki="/efi/EFI/Manjaro/grubx64.efi"
  default_options=""
  
 -#fallback_kver="3.0-ARCH"
-+#fallback_kver="5.3.8-3-MANJARO"
++#fallback_kver="5.3.8-3-MANJARO
  #fallback_config="/etc/mkinitcpio.conf"
 -fallback_image="/tmp/initramfs-linux-fallback.img"
--fallback_efi_image="/efi/EFI/Linux/arch-linux-fallback.efi"
-+fallback_image="/boot/initramfs-5.3-x86_64-fallback.img"
-+fallback_efi_image="/efi/EFI/Manjaro/grubx64-fallback.efi"
+-fallback_uki="/efi/EFI/Linux/arch-linux-fallback.efi"
++fallback_image="boot/initramfs-5.3-x86_64-fallback.img"
++fallback_uki="/efi/EFI/Manjaro/grubx64-fallback.efi"
  fallback_options="-S autodetect"
 diff --unified --recursive --text a/mkinitcpio.d/hook.preset b/mkinitcpio.d/hook.preset
---- a/mkinitcpio.d/hook.preset	2022-11-20 13:18:56.000000000 -0700
-+++ b/mkinitcpio.d/hook.preset	2022-11-25 13:26:02.945395342 -0700
+--- a/mkinitcpio.d/hook.preset	2022-12-07 13:58:22.000000000 -0700
++++ b/mkinitcpio.d/hook.preset	2022-12-09 16:38:59.665822735 -0700
 @@ -1,14 +1,14 @@
- # mkinitcpio preset file for the '%PKGBASE%' package
+-# mkinitcpio preset file for the '%PKGBASE%' package
++# mkinitcpio preset file for the '%KERNELBASE%' package
  
  ALL_config="/etc/mkinitcpio.conf"
 -ALL_kver="/boot/vmlinuz-%PKGBASE%"

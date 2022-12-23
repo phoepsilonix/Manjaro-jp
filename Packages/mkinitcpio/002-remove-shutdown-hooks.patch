@@ -3,12 +3,13 @@ deleted file mode 100644
 index ce64caf..0000000
 --- a/hooks/shutdown
 +++ /dev/null
-@@ -1,8 +0,0 @@
+@@ -1,9 +0,0 @@
 -#!/usr/bin/ash
+-# SPDX-License-Identifier: GPL-2.0-only
 -
 -run_cleanuphook() {
 -    rm -rf /usr/lib/modules
--    cp -ax / /run/initramfs
+-    cp -ax /. /run/initramfs
 -}
 -
 -# vim: set ft=sh ts=4 sw=4 et:
