@@ -6,3 +6,7 @@ pinned-shortcuts=['matecc.desktop', 'pamac-manager.desktop']
 layouts=['jp\tkana86']
 options=['terminate\tterminate:ctrl_alt_bksp']
 
+[org.mate.desktop.peripherals.keyboard]
+numlock-state=true
+remember-numlock-state=false
+

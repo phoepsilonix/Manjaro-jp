@@ -1,2 +1,7 @@
 [org.gnome.libgnomekbd.keyboard]
 layouts=['jp\tkana86']
+
+[org.cinnamon.desktop.peripherals.keyboard]
+numlock-state=true
+remember-numlock-state=false
+

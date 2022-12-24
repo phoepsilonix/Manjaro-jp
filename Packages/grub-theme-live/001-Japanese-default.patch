@@ -1,14 +1,39 @@
---- a/grub-theme/cfg/defaults.cfg	2022-04-08 11:11:43.848649642 +0900
-+++ b/grub-theme/cfg/defaults.cfg	2022-04-08 11:11:16.937130187 +0900
+diff --git a/cfg/defaults.cfg b/cfg/defaults.cfg
+index c2c0889..2574667 100644
+--- a/cfg/defaults.cfg
++++ b/cfg/defaults.cfg
 @@ -1,7 +1,8 @@
  if [ -z "${def_bootlang}" ]; then
 -    def_bootlang="en_US"
 -    def_keyboard="us"
 -    def_timezone="UTC"
-+    hwclock="utc=yes"
++    hwclock="utc=no"
 +    def_bootlang="ja_JP"
-+    def_keyboard="jp"
++    def_keyboard="jp106"
 +    def_timezone="Asia/Tokyo"
  fi
  if [ -z "${bootlang}" ]; then
      bootlang="lang=${def_bootlang}"
+diff --git a/locales/ja_JP b/locales/ja_JP
+index 9842e72..a27e5f6 100644
+--- a/locales/ja_JP
++++ b/locales/ja_JP
+@@ -2,7 +2,7 @@ lang=ja
+ bootlang="lang=ja_JP"
+ def_bootlang="ja_JP"
+ if [ -z "${keyboard}" ]; then
+-  def_keyboard="jp"
++  def_keyboard="jp106"
+ fi
+ if [ -z "${timezone}" ]; then
+   def_timezone="Asia/Tokyo"
+diff --git a/locales/keyboards b/locales/keyboards
+index 8f1680a..376d750 100644
+--- a/locales/keyboards
++++ b/locales/keyboards
+@@ -1,4 +1,4 @@
+-for kk in us ba be bg br by ca ch cz de dk es et fi fr gb gr hr hu ie il is it jp kr latam no pl pt ro ru se si sk tr ua; do
++for kk in us ba be bg br by ca ch cz de dk es et fi fr gb gr hr hu ie il is it jp106 kr latam no pl pt ro ru se si sk tr ua; do
+       menuentry "keytable=${kk}" "${kk}" {def_keyboard="${2}"
+ keyboard="keytable=${2}"
+ menu_reload

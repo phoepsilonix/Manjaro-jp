@@ -21,3 +21,7 @@ xkb-options=['lv3:ralt_switch']
 [org.gnome.desktop.media-handling]
 autorun-x-content-start-app=['x-content/ostree-repository']
 
+[org.gnome.desktop.peripherals.keyboard]
+numlock-state=true
+remember-numlock-state=false
+
