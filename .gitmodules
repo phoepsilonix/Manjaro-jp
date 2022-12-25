@@ -256,3 +256,6 @@
 [submodule "Packages/extramodules-6.1/zfs"]
 	path = Packages/extramodules-6.1/zfs
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/zfs
+[submodule "Packages/grub-theme-live-dev"]
+	path = Packages/grub-theme-live-dev
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/grub-theme-live-dev.git
