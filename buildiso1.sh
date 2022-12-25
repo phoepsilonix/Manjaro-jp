@@ -20,12 +20,12 @@ pkg3=Packages-Root
 
 # エディション指定
 editions=(
-#"manjaro gnome"
-#	"manjaro kde"
-#	"manjaro xfce"
- #       "community cinnamon" 
-  #      "community mate"
-        "community openbox"
+        "manjaro gnome"
+	"manjaro kde"
+	"manjaro xfce"
+        "community cinnamon"
+        "community mate"
+#        "community openbox"
 #	"community mabox"
 #	"community lxqt"
 #	"community lxqt-kwin"
