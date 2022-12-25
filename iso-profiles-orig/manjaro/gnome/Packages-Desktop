@@ -257,7 +257,7 @@ manjaro-gnome-settings
 >extra manjaro-input
 
 ## Xorg Server
-numlockx
+numlockl
 xorg-mkfontscale
 xorg-server
 xorg-twm

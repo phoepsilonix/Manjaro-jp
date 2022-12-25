@@ -238,7 +238,7 @@ libva-mesa-driver
 libva-vdpau-driver
 mesa-demos
 >multilib lib32-mesa-demos
-numlockx
+numlockl
 xdg-user-dirs
 xorg-server
 xorg-twm

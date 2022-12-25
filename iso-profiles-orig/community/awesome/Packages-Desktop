@@ -230,7 +230,7 @@ manjaro-zsh-config
 >extra libva-vdpau-driver
 >extra mesa-demos
 >extra >multilib lib32-mesa-demos
->extra numlockx
+>extra numlockl
 >extra xdg-user-dirs
 xorg-server
 >extra xorg-twm
