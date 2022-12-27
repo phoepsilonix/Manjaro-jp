@@ -140,6 +140,7 @@ xfce4-whiskermenu-plugin
 xfce4-xkb-plugin
 xfce4-pulseaudio-plugin
 pavucontrol
+pipewire-pulse
 
 ## Themes
 >extra manjaro-wallpapers-18.0

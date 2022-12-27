@@ -80,6 +80,7 @@ nss-mdns
 numlockl
 openresolv
 pamac
+libpamac-flatpak-plugin
 powertop
 avahi
 networkmanager
