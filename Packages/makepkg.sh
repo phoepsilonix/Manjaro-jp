@@ -36,7 +36,6 @@ expect -c "
                 sleep 1
                 exp_continue
         }
-        sleep 1
         exp_continue
   }
 "

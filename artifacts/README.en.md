@@ -263,6 +263,9 @@ kernel-6.0.14
 ##### 20221224
 kernel-6.0.15
 
+##### 20230101
+kernel-6.1.2
+
 
 ---
 Addendum for your reference.  
