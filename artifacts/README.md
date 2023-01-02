@@ -2,7 +2,7 @@
 
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
-[kernel-6.0系](https://kernel.org/)。
+[kernel-6.1系](https://kernel.org/)。
 
 公式に合わせて、GNOME、KDE、Xfceの３種類を用意する予定です。  
 配布ファイルはISOと一部パッケージファイルです。  
