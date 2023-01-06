@@ -23,10 +23,10 @@ editions=(
         "manjaro gnome"
 	"manjaro kde"
 	"manjaro xfce"
-        "community cinnamon"
+        "community cinnamon" 
         "community mate"
         "community openbox"
-#	"community mabox"
+        "manjaro architect"
 #	"community lxqt"
 #	"community lxqt-kwin"
 #	"community sway"
@@ -49,10 +49,11 @@ do
 	path=${data[0]}/${data[1]}
 	#cat $pkgs >> $pkgdir/$edition[0]/$edition[1]/$pkg1
 	# Desktopパッケージに加える。ライブは不要みたい。
-	cat $pkgs >> $pkgdir/$path/$pkg2
+        if [[ "${data[1]}" != "architect" ]] ;then
+            cat $pkgs >> $pkgdir/$path/$pkg2
         # Packages-Rootに追加
-	cat $pkgs2 >> $pkgdir/$path/$pkg3
-        sync
+            cat $pkgs2 >> $pkgdir/$path/$pkg3
+        fi
 done
 
 # buildiso prepare image
@@ -69,7 +70,6 @@ do
         echo "buildiso -d xz -k $kernel -p $ed $gkey" 
         cat ~/.ssh/gpg-passphrase|sudo -S pwd >/dev/null 2>&1
         touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback -b INFO
-        sync
         buildiso  -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
         sync
         find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync

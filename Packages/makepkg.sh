@@ -43,6 +43,8 @@ expect -c "
 #        makepkg -sCc --noconfirm
         cd ..;
 done
- 
+
+../../line-notify.sh "$curdir done"
+
 exit 0
 

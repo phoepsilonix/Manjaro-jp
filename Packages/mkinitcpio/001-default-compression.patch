@@ -25,15 +25,20 @@ index d206766..987cfaa 100644
  	this variable as *cat*.
  +
 diff --git a/mkinitcpio.conf b/mkinitcpio.conf
-index 6ea97fd..7353fd1 100644
+index 710e05f..97fa49f 100644
 --- a/mkinitcpio.conf
 +++ b/mkinitcpio.conf
-@@ -57,17 +57,17 @@ HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
+@@ -52,7 +52,7 @@ FILES=()
+ HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block filesystems fsck)
+ 
+ # COMPRESSION
+-# Use this to compress the initramfs image. By default, gzip compression
++# Use this to compress the initramfs image. By default, zstd compression
+ # is used. Use 'cat' to create an uncompressed image.
  #COMPRESSION="gzip"
  #COMPRESSION="bzip2"
- #COMPRESSION="lzma"
--#COMPRESSION="xz"
-+#COMPRESSION="pixz"
+@@ -60,14 +60,14 @@ HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block filesy
+ #COMPRESSION="xz"
  #COMPRESSION="lzop"
  #COMPRESSION="lz4"
 -#COMPRESSION="zstd"
@@ -42,7 +47,7 @@ index 6ea97fd..7353fd1 100644
  # COMPRESSION_OPTIONS
  # Additional options for the compressor
 -#COMPRESSION_OPTIONS=()
-+COMPRESSION_OPTIONS=('-22' '--ultra' '--auto-threads=logical')
++COMPRESSION_OPTIONS=('-22' '--ultra' '--auto-threads=physical')
  
  # MODULES_DECOMPRESS
  # Decompress kernel modules during initramfs creation.
