@@ -8,7 +8,7 @@ usb=/var/cache/majaro-tools/
 gkey="-g $(cat ~/.gnupg/sign.txt)"
 #gkey=""
 
-kernel=linux60
+kernel=linux61
 
 # 保存先フォルダ
 artifacts=`pwd`/artifacts
@@ -21,8 +21,8 @@ pkg3=Packages-Root
 # エディション指定
 editions=(
 #        "manjaro gnome"
-#	"manjaro kde"
-	"manjaro xfce"
+	"manjaro kde"
+#	"manjaro xfce"
 #	"community cinnamon" 
 #       "community mate"
 #	"community lxqt"

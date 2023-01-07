@@ -20,12 +20,12 @@ pkg3=Packages-Root
 
 # エディション指定
 editions=(
-        "manjaro gnome"
+#        "manjaro gnome"
 	"manjaro kde"
-	"manjaro xfce"
-        "community cinnamon" 
+#	"manjaro xfce"
+#        "community cinnamon" 
         "community mate"
-        "community openbox"
+#        "community openbox"
         "manjaro architect"
 #	"community lxqt"
 #	"community lxqt-kwin"
@@ -54,6 +54,7 @@ do
         # Packages-Rootに追加
             cat $pkgs2 >> $pkgdir/$path/$pkg3
         fi
+        sync
 done
 
 # buildiso prepare image
@@ -67,8 +68,10 @@ do
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso 
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build
         echo "build iso"
-        echo "buildiso -d xz -k $kernel -p $ed $gkey" 
+        echo "buildiso -d xz -k $kernel -p $ed $gkey"
+        sync
         cat ~/.ssh/gpg-passphrase|sudo -S pwd >/dev/null 2>&1
+        sync
         touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback -b INFO
         buildiso  -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
         sync

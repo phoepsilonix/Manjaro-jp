@@ -266,6 +266,10 @@ kernel-6.0.15
 ##### 20230101
 kernel-6.1.2
 
+##### 20230107
+kernel-6.1.3
+nvidia-utils 525.78.01
+
 
 ---
 Addendum for your reference.  
