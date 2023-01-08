@@ -19,7 +19,7 @@ index 872e66e..3d733e1 100644
 +    COMPRESS=${COMPRESS% 1}
 +    case $COMPRESS in
 +    ZSTD)
-+        COMP_CMD="zstd -T0 -22 --ultra --auto-threads=logical --rm -f"
++        COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
 +        ;;
 +    XZ)
 +        COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"

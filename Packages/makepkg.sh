@@ -22,7 +22,9 @@ expect -c "
   expect {
         eof { exit 0 }
         -gl {\[sudo\] password for } {
-                send -- \"$password\r\"
+                stty -echo
+                send \"$password\r\"
+                stty echo
                 sleep 1
                 exp_continue
         }
