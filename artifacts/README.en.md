@@ -273,6 +273,9 @@ nvidia-utils 525.78.01
 ##### 20230108
 kernel-6.1.4
 
+##### 20230113
+kernel-6.1.5
+
 
 ---
 Addendum for your reference.  
