@@ -276,6 +276,9 @@ kernel-6.1.4
 ##### 20230113
 kernel-6.1.5
 
+##### 20230116
+kernel-6.1.6
+
 
 ---
 Addendum for your reference.  
