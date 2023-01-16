@@ -12,13 +12,19 @@
 <link rel="stylesheet" href="https://phoepsilonix.love/sunburst.min.css">
 <script src="https://phoepsilonix.love/highlight.min.js"></script>
 <script>
+var source_file = './README.ja.html';
+
 window.onload=function() {
-let a = document.getElementById("svgObject");
-let Doc = a.contentDocument;
-let el = document.getElementById( "insertText" );
-el.innerHTML = Doc.body.innerHTML;
-hljs.highlightAll();
-addCopybtn();
+    	fetch(source_file)
+       	.then(response => response.text())
+        .then(data => {
+        let el = document.getElementById( "insertText" );
+        let text = document.createTextNode(data);
+        el.innerHTML = text.data;
+        hljs.highlightAll();
+        addCopybtn();
+        });
+}
 
 function addCopybtn(){
         Array.prototype.forEach.call(document.querySelectorAll('pre > code'), addCopyButton);
@@ -90,12 +96,10 @@ if ( codes != null) {
         });
     }
 }
-};
 </script>
 </head>
 <body>
 <header></header>
-<object id="svgObject" data="./README.ja.html" type="text/html" hidden></object>
 <div id="insertText"></div>
 <footer></footer>
 </body>
