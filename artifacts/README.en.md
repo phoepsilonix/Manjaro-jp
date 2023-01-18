@@ -4,7 +4,7 @@
 　Supports Japanese input and display by default, including live environment.  
 [kernel-6.1 series](https://kernel.org/).
 
-GNOME, KDE, and Xfce will be available for official use.  
+KDE, xfce and GNOME will be available for official use.  
 The distribution files are ISO and some package files.  
 Please boot from a USB memory stick, etc.  
 It may be easier to use [Ventoy](https://ventoy.net/) to boot from USB memory.  
