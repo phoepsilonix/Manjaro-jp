@@ -37,16 +37,20 @@ editions=(
 #mkdir -p $artifacts
 rm -rf $pkgdir
 mkdir -p $pkgdir
+cp -r iso-profiles-orig/* $pkgdir/
+sync
 
 # profiles.confを微修正
 # user-repos.confを追加したiso-profilesを用意する
-cp -r iso-profiles-orig/* $pkgdir
 
 # add Japanese pkgs and vivaldi
 for edition in "${editions[@]}"
 do
 	data=(${edition[@]})
 	path=${data[0]}/${data[1]}
+        mkdir -p $pkgdir/$path/
+        echo cp -r iso-profiles-orig/$path $pkgdir/${data[0]}/
+        cp -r iso-profiles-orig/$path $pkgdir/${data[0]}/
 	#cat $pkgs >> $pkgdir/$edition[0]/$edition[1]/$pkg1
 	# Desktopパッケージに加える。ライブは不要みたい。
         if [[ "${data[1]}" != "architect" ]] ;then
