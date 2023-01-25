@@ -281,6 +281,9 @@ kernel-6.1.6
 kernel-6.1.7
 nvidia-utils 525.85.05
 
+##### 20230125
+manjaro-release 22.0.1
+kernel-6.1.8
 
 ---
 参考までに、追記。  
