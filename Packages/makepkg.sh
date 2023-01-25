@@ -22,18 +22,18 @@ expect -c "
   expect {
         eof { exit 0 }
         -gl {\[sudo\] password for } {
-                send \"$password\r\"
                 sleep 1
+                send \"$password\r\"
                 exp_continue
         }
         -re {\[[Yy]/[Nn]\]} {
-                send \"y\r\"
                 sleep 1
+                send \"y\r\"
                 exp_continue
         }
         -gl {Enter a number (default=1)} {
-                send \"\r\"
                 sleep 1
+                send \"\r\"
                 exp_continue
         }
         exp_continue

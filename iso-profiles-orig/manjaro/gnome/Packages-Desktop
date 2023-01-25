@@ -215,10 +215,10 @@ inxi
 lollypop
 #manjaro-application-utility       # required by manjaro-hello, no need to be explicitly installed
 #manjaro-gnome-vanilla
-manjaro-hello                      # using manjaro-starter instead
+manjaro-hello
 >extra manjaro-log-helper
 manjaro-settings-manager-notifier
-manjaro-starter
+#manjaro-starter
 #mousetweaks
 nautilus-admin
 nautilus-empty-file

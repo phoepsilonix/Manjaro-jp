@@ -59,7 +59,7 @@ sudo swapon /dev/sdX
 ##### 20220401
 kernel-5.17.1 (clangビルド)  
 linux517-broadcom-wl,linux517-zfsパッケージもビルドして追加しました。  
-broadcom-wl-dkmsパッケージの修正内容などは、[gitlab](https://gitlab.com/phoepsilonix/manjaro-jp)の[Packagesフォルダ](https://gitlab.com/phoepsilonix/manjaro-jp/-/tree/main/Packages/broadcom-wl-dkms)をご参照ください。
+broadcom-wl-dkmsパッケージの修正内容などは、[gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp)の[Packagesフォルダ](https://gitlab.com/phoepsilonix/Manjaro-jp/-/tree/main/Packages/broadcom-wl-dkms)をご参照ください。
 
 ##### 20220408
 標準のブラウザを[Vivaldi](https://vivaldi.com/)のみにしました。  
@@ -298,7 +298,7 @@ Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
 ```
 [manjaro-jp pkgs](https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/)
 
-[Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/manjaro-jp/)
+[Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)
 [Manjaro-JP at sf web](https://manjaro-jp.sourceforge.io/)  

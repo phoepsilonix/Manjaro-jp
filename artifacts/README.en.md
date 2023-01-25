@@ -60,7 +60,7 @@ This is mainly to include the latest version of the kernel.
 ##### 20220401
 kernel-5.17.1 (clang build)  
 linux517-broadcom-wl,linux517-zfs package was also built and added.  
-The modifications to the broadcom-wl-dkms package and other information can be found in the [Packages folder](https://gitlab.com/phoepsilonix/) in [gitlab](https://gitlab.com/phoepsilonix/manjaro-jp) manjaro-jp/-/tree/main/Packages/broadcom-wl-dkms).
+The modifications to the broadcom-wl-dkms package and other information can be found in the [Packages folder](https://gitlab.com/phoepsilonix/Manjaro-jp/-/tree/main/Packages/broadcom-wl-dkms).
 
 ##### 20220408
 The only standard browser is [Vivaldi](https://vivaldi.com/).  
@@ -300,7 +300,7 @@ Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
 ```
 [manjaro-jp pkgs](https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/)
 
-[Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/manjaro-jp/)
+[Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)
 [Manjaro-JP at sf web](https://manjaro-jp.sourceforge.io/)  
