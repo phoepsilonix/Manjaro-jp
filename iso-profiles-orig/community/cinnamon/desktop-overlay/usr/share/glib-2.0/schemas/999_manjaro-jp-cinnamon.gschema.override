@@ -5,3 +5,6 @@ layouts=['jp\tkana86']
 numlock-state=true
 remember-numlock-state=false
 
+[org.cinnamon]
+favorite-apps=['org.mozilla.firefox.desktop', 'org.manjaro.pamac.manager.desktop', 'cinnamon-settings.desktop', 'hexchat.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop']
+
