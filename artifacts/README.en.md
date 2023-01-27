@@ -309,14 +309,15 @@ Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)
 [Manjaro-JP at sf web](https://manjaro-jp.sourceforge.io/)  
 (GPG signing public key:536487F1470D7187) <phoepsilonix at gmail dot com>  
-[revolut](https://revolut.me/phoepsilonix)
-[paypal](https://paypal.me/phoepsilonix)
+[revolut](https://revolut.me/phoepsilonix)  
+[Paypal](https://paypal.me/phoepsilonix)  
+[Patreon](https://patreon.com/user?u=87853674&utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=creatorshare_creator&utm_content=join_link)  
 
 BTC
-```3FNDG4oES4HmR5byStmAFMasdTyaYjus3k```
+```15wwyVLTCtd1i4tuArwAcsCYPb2YBFH1CB```
 
-ETH
-```0xe9968CFb2bc0D2aB789c45E31042938265A151Bb```
+ETH(main net)
+```0x6d814317881ee2ea617fa6989f255f19b949eb60```
 
-USDT(TRC20)
-```TFmZcyVjobYKNUXeXLmWdj4ZphGU2tTptj```
+USDT(ERC20)
+```0x7e92844d51094eb164a7f4444524b55c31748546```
