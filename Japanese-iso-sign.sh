@@ -50,17 +50,19 @@ do
 done
 
 sort -k2 -u SHA256SUMS > tmp && mv tmp SHA256SUMS
-cp SHA256SUMS $usb/artifacts
+#cp SHA256SUMS $usb/artifacts
 
 echo "torrent"
 # torrentファイル作成
 for f in *.iso
 do
-	[[ ! -e $f.torrent ]] && \
-	mktorrent -a udp://tracker.opentrackr.org:1337/announce \
+	if [[ ! -e $f.torrent ]] ;then
+        echo $f
+	mktorrent -t0 -a udp://tracker.opentrackr.org:1337/announce \
 		-a udp://tracker.torrent.eu.org:451 \
 		-w "https://sourceforge.net/projects/manjaro-jp/files/$f/download" \
-		-w "https://osdn.net/projects/manjaro-jp/storage/$f" $f 
+		-w "https://osdn.net/projects/manjaro-jp/storage/$f" $f
+        fi
 done
 
 # 終了
