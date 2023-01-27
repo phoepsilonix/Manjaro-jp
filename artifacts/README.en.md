@@ -277,15 +277,16 @@ kernel-6.1.5
 
 ##### 20230116
 kernel-6.1.6
-</details>
 
 ##### 20230120
 kernel-6.1.7  
 nvidia-utils 525.85.05
+</details>
 
-##### 20230125
+##### 20230127
 manjaro-release 22.0.1  
 kernel-6.1.8
+nvidia-utils 525.85.05
 
 
 ---
