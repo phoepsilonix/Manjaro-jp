@@ -6,9 +6,14 @@ curdir=${PWD##*/}
 exdir=$(cat /usr/lib/modules/${curdir}-MANJARO/version)
 exdir=/usr/lib/modules/${exdir}/build
 echo $exdir
+ver=${curdir/extramodules-}
+if [[ "$ver" == "6.1" ]] ;then ver=5.15
+elif [[ "$ver" == "5.10" ]] ;then ver=6.1
+else ver=6.1
+fi
+
 sudo -S pwd < ~/.ssh/gpg-passphrase >/dev/null
 sudo chown -R phoepsilonix:phoepsilonix $exdir
-
 #cd r8168
 #git diff | patch -R -i -
 #cd ../tp_smapi
@@ -37,6 +42,14 @@ do
                         echo "$patch Applying"
                         git apply --check --stat --apply $patch
                 fi
+        done
+        files=$(ls ../../extramodules-$ver/$m/*.{gz,zip,asc,xz,run,bz2} 2>/dev/null)
+        for f in $files
+        do
+            if [[ -f $f ]] ;then
+                echo ln $f ./
+                ln $f ./
+            fi
         done
         cd ..;
 done
