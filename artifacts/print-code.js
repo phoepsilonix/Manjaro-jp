@@ -1,5 +1,6 @@
+/// <reference path="./highlight.min.ts" />
 window.onload = function () {
-    hljs.highlightAll();
+    hljs.highlightAll;
     Array.prototype.forEach.call(document.querySelectorAll('pre > code'), addCopyButton);
     function addCopyButton(elmCodeFrame) {
         var elmSelectButton = document.createElement('div');
