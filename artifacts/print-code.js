@@ -1,6 +1,5 @@
-/// <reference path="./highlight.min.ts" />
 window.onload = function () {
-    hljs.highlightAll;
+    hljs.highlightAll();
     Array.prototype.forEach.call(document.querySelectorAll('pre > code'), addCopyButton);
     function addCopyButton(elmCodeFrame) {
         var elmSelectButton = document.createElement('div');
@@ -15,7 +14,7 @@ window.onload = function () {
         elmSelectButton.addEventListener('click', function () {
             select(elmCodeFrame);
         });
-        elmSelectButton.insertAdjacentHTML('afterbegin', '<span></span><i class="fa fa-clipboard"/>');
+        elmSelectButton.insertAdjacentHTML('afterbegin', '<span></span><svg width="16" height="16" class="bi bi-clipboard" role="img" fill="currentColor"><use xlink:href="./icon.svg#clipboard"/></svg>');
         elmCodeFrame.insertBefore(elmSelectButton, elmCodeFrame.firstChild);
     }
     function select(elm) {
