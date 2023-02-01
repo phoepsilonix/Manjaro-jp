@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.0
-Name=Firefox
+Name=Floorp
 GenericName=Web Browser
 GenericName[ca]=Navegador web
 GenericName[cs]=Webový prohlížeč
@@ -42,20 +42,15 @@ Comment[pt]=Navegue na Internet
 Comment[pt_BR]=Navegue na Internet
 Comment[sk]=Prehliadanie internetu
 Comment[sv]=Surfa på webben
-Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox --file-forwarding org.mozilla.firefox @@u %u @@
-Icon=org.mozilla.firefox
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=floorp one.ablaze.floorp
+Icon=one.ablaze.floorp
 Terminal=false
-Type=X-XFCE-Helper
+Type=Application
 MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
-StartupNotify=true
 Categories=Network;WebBrowser;
 Keywords=web;browser;internet;
 Actions=new-window;new-private-window;profile-manager-window;
-StartupWMClass=firefox
-X-Flatpak=org.mozilla.firefox
-X-XFCE-Category=WebBrowser
-X-XFCE-CommandsWithParameter=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox --file-forwarding org.mozilla.firefox @@u %u @@
-X-XFCE-Commands=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox --file-forwarding org.mozilla.firefox
+X-Flatpak=one.ablaze.floorp
 
 [Desktop Action new-window]
 Name=Open a New Window
@@ -163,9 +158,7 @@ Name[wo]=Palanteer bu bees
 Name[xh]=Ifestile entsha
 Name[zh-CN]=新建窗口
 Name[zh-TW]=開新視窗
-Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox --file-forwarding org.mozilla.firefox --new-window @@u %u @@
-X-XFCE-CommandsWithParameter=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox --file-forwarding org.mozilla.firefox --new-window @@u %u @@
-X-XFCE-Commands=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox --file-forwarding org.mozilla.firefox --new-window
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/floorp one.ablaze.floorp --new-window
 
 [Desktop Action new-private-window]
 Name=Open a New Private Window
@@ -273,10 +266,9 @@ Name[wo]=Panlanteeru biir bu bees
 Name[xh]=Ifestile yangasese entsha
 Name[zh-CN]=新建隐私浏览窗口
 Name[zh-TW]=新增隱私視窗
-X-XFCE-CommandsWithParameter=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox --file-forwarding org.mozilla.firefox --private-window @@u %u @@
-X-XFCE-Commands=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox --file-forwarding org.mozilla.firefox --private-window
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/floorp one.ablaze.floorp --private-window
 
 [Desktop Action profile-manager-window]
 Name=Open the Profile Manager
 Name[cs]=Správa profilů
-X-XFCE-Commands=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox org.mozilla.firefox --ProfileManager
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/floorp one.ablaze.floorp --ProfileManager

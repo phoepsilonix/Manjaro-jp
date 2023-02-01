@@ -24,7 +24,7 @@ border = #3f3f3f
 border_width = 0.5
 roundness = 2.0
 # $BROWSER is used by default
-browser = firefox
+browser = floorp
 
 [colors]
 background = rgba(38,38,38,0.90)
