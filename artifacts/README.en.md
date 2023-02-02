@@ -288,6 +288,9 @@ manjaro-release 22.0.1
 kernel-6.1.8  
 nvidia-utils 525.85.05
 
+##### 20230202
+kernel-6.1.9
+
 
 ---
 Addendum for your reference.  
