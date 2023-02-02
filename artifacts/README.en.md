@@ -23,7 +23,7 @@ Please try it if you like.
 ##### Notes
 1. secure boot is not supported.  
 Please disable Secure Boot in your BIOS settings.
-(If you want secure boot support, Ubuntu is a fast option, and Ubuntu Flavour offers several desktop environments). 
+(If you want secure boot support, Ubuntu is a fast option, and [Ubuntu flavours](https://ubuntu.com/desktop/flavours) offers several desktop environments). 
 
 2. if the installer screen disappears during installation  
 It can often be avoided by manually setting the swap partition.  
