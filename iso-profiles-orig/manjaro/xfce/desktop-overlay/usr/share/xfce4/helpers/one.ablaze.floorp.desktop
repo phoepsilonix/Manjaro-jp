@@ -45,12 +45,17 @@ Comment[sv]=Surfa på webben
 Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=floorp one.ablaze.floorp
 Icon=one.ablaze.floorp
 Terminal=false
-Type=Application
 MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
 Categories=Network;WebBrowser;
 Keywords=web;browser;internet;
 Actions=new-window;new-private-window;profile-manager-window;
+Type=X-XFCE-Helper
+StartupWMClass=floorp
+X-XFCE-Category=WebBrowser
+X-XFCE-CommandsWithParameter=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=floorp one.ablaze.floorp @@u %u @@
+X-XFCE-Commands=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox one.ablaze.floorp
 X-Flatpak=one.ablaze.floorp
+
 
 [Desktop Action new-window]
 Name=Open a New Window
