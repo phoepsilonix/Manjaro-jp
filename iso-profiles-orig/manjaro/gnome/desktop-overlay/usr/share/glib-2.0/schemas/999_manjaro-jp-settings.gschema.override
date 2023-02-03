@@ -28,10 +28,17 @@ remember-numlock-state=false
 [org.gnome.desktop.interface]
 color-scheme='prefer-dark'
 cursor-theme='Bibata-Modern-Classic'
-document-font-name='Sans 11'
+document-font-name='Noto Sans CJK JP 12'
 enable-animations=true
 font-name='Noto Sans CJK JP 11'
 gtk-im-module='gtk-im-context-simple'
 gtk-theme='Adw-dark'
 icon-theme='Papirus-Dark-Maia'
 monospace-font-name='FirgeNerd Console 11'
+
+[org.gnome.desktop.wm.preferences]
+titlebar-uses-system-font=false
+button-layout='appmenu:minimize,maximize,close'
+focus-mode='click'
+titlebar-font="Noto Sans CJK JP Bold 11"
+
