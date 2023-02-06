@@ -15,7 +15,7 @@ window.onload = function () {
         elmSelectButton.addEventListener('click', function () {
             select(elmCodeFrame);
         });
-        elmSelectButton.insertAdjacentHTML('afterbegin', '<span></span><svg width="16" height="16" class="bi bi-clipboard" role="img"><use xlink:href="./icon.svg#clipboard"/></svg>');
+        elmSelectButton.insertAdjacentHTML('afterbegin', '<span></span><svg width="16" height="16" class="bi bi-clipboard" role="img" fill="currentcolor"><use xlink:href="./icon.svg#clipboard"/></svg>');
         elmCodeFrame.insertBefore(elmSelectButton, elmCodeFrame.firstChild);
     }
     function select(elm) {
