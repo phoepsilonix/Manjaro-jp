@@ -33,10 +33,11 @@ sudo mkswap /dev/sdX
 sudo swapon /dev/sdX
 ```
 
-Also, with the calamares installer running, try to disqualify it from the OOM killer (forced exit) with the following command.
+The following command should also be used to specify that the OOM killer (forced termination) is not applicable.
 ```
-pidof calamares | xargs -n1 sudo choom -n -1000 -p
+pidof -xw Xwayland calamares_polkit|xargs -n1 sudo choom -n -1000 -p
 ```
+
 
 ---
 ### Place of distribution

@@ -33,9 +33,9 @@ sudo mkswap /dev/sdX
 sudo swapon /dev/sdX
 ```
 
-またcalamaresインストーラーを立ち上げた状態で、次のコマンドでOOM killer（強制終了）の対象外にしてみましょう。
+また次のコマンドで、OOM killer（強制終了）の対象外を指定しておきましょう。
 ```
-pidof calamares | xargs -n1 sudo choom -n -1000 -p
+pidof -xw Xwayland calamares_polkit|xargs -n1 sudo choom -n -1000 -p
 ```
 
 
