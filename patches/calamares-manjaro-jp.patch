@@ -1,0 +1,238 @@
+diff --git a/001-no-oom.patch b/001-no-oom.patch
+new file mode 100644
+index 0000000..bc6bf41
+--- /dev/null
++++ b/001-no-oom.patch
+@@ -0,0 +1,11 @@
++diff --git a/data/calamares_polkit b/data/calamares_polkit
++index 363dcf7..3880361 100644
++--- a/data/calamares_polkit
+++++ b/data/calamares_polkit
++@@ -1,4 +1,6 @@
++ #!/bin/bash
+++NO_OOM_KILLER="`pidof -xw Xwayland` $$"
+++echo $NO_OOM_KILLER | xargs -n1 sudo choom -n -1000 -p 
++ if [ $(which pkexec) ]; then
++ 	pkexec --disable-internal-agent "/usr/bin/calamares" "-D6" "$@"
++ else
+diff --git a/002-grub-efi-install.patch b/002-grub-efi-install.patch
+new file mode 100644
+index 0000000..a593a1d
+--- /dev/null
++++ b/002-grub-efi-install.patch
+@@ -0,0 +1,146 @@
++diff --git a/src/modules/bootloader/main.py b/src/modules/bootloader/main.py
++index d7f4a71..c16790d 100644
++--- a/src/modules/bootloader/main.py
+++++ b/src/modules/bootloader/main.py
++@@ -568,17 +568,30 @@ def run_grub_install(fw_type, partitions, efi_directory):
++         assert efi_directory is not None
++         efi_bootloader_id = efi_label(efi_directory)
++         efi_target, efi_grub_file, efi_boot_file = get_grub_efi_parameters()
+++        grub_modules = get_modules()
++ 
++         if is_zfs:
++             check_target_env_call(["sh", "-c", "ZPOOL_VDEV_NAME_PATH=1 " + libcalamares.job.configuration["grubInstall"]
++                                    + " --target=" + efi_target + " --efi-directory=" + efi_directory
+++                                   + " --modules=\"" + grub_modules + "\" --sbat /usr/share/grub/sbat.csv"
++                                    + " --bootloader-id=" + efi_bootloader_id + " --force"])
++         else:
++             check_target_env_call([libcalamares.job.configuration["grubInstall"],
++                                    "--target=" + efi_target,
++                                    "--efi-directory=" + efi_directory,
+++                                   "--modules=\"" + grub_modules + "\"",
+++                                   "--sbat /usr/share/grub/sbat.csv",
++                                    "--bootloader-id=" + efi_bootloader_id,
++                                    "--force"])
+++        install_path = libcalamares.globalstorage.value("rootMountPoint")
+++        MOK_path = install_path + '/etc/secureboot/'
+++        if os.path.exists(MOK_path + 'MOK.key'):
+++            grub_path = install_path + "/" + efi_directory + "/EFI/" + efi_bootloader_id + "/grubx64.efi"
+++            checl_target_env_call(["mokutil", '--import', MOK_path + 'MOK.cer'])
+++            check_target_env_call(["sbsign", "--key", MOK_path + 'MOK.key', "--cert", MOK_path + 'MOK.crt', "--output", grub_path, grub_path])
+++            check_target_env_call(["sh", "-c", "/usr/bin/find " + install_path + "/boot/ -maxdepth 1 -name 'vmlinuz-*' | xargs -I{} /bin/sh -c 'if ! /usr/bin/sbverify --list {} 2>/dev/null | /usr/bin/grep -q \"signature certificates\" - ;then sudo /usr/bin/sbsign --key " + MOK_path + "MOK.key --cert " + MOK_path + "MOK.crt --output {} {}; fi'"])
+++            os.makedirs(os.path.join(install_path, "/etc/pacman.d/hooks"), exist_ok=True)
+++            shutil.copy2(os.path.join(install_path, "/usr/share/libalpm/hooks/99-secureboot-kernel.hook") , os.path.join(install_path, "/etc/pacman.d/hooks/"))
++     else:
++         assert efi_directory is None
++         if libcalamares.globalstorage.value("bootLoader") is None:
++@@ -751,6 +764,110 @@ def prepare_bootloader(fw_type):
++             "boot-loader '{!s}' and firmware '{!s}' "
++             "is not supported.".format(efi_boot_loader, fw_type) )
++ 
+++def get_modules():
+++    platform=os.uname().machine
+++
+++    CD_MODULES="""
+++    all_video
+++	boot
+++	btrfs
+++	cat
+++	chain
+++	configfile
+++	echo
+++	efifwsetup
+++	efinet
+++	ext2
+++	fat
+++	font
+++	gettext
+++	gfxmenu
+++	gfxterm
+++	gfxterm_background
+++	gzio
+++	halt
+++	help
+++	hfsplus
+++	iso9660
+++	jpeg
+++	keystatus
+++	loadenv
+++	loopback
+++	linux
+++	ls
+++	lsefi
+++	lsefimmap
+++	lsefisystab
+++	lssal
+++	memdisk
+++	minicmd
+++	normal
+++	ntfs
+++	part_apple
+++	part_msdos
+++	part_gpt
+++	password_pbkdf2
+++	png
+++	probe
+++	reboot
+++	regexp
+++	search
+++	search_fs_uuid
+++	search_fs_file
+++	search_label
+++	sleep
+++	smbios
+++	squash4
+++	test
+++	true
+++	video
+++	xfs
+++	zfs
+++	zfscrypt
+++	zfsinfo
+++    """
+++
+++    # Platform-specific modules
+++    if platform in ['x86_64', 'i386']:
+++	    CD_MODULES+="""
+++    cpuid
+++	play
+++	tpm
+++    """
+++
+++    GRUB_MODULES = CD_MODULES + """
+++    cryptodisk
+++	gcry_arcfour
+++	gcry_blowfish
+++	gcry_camellia
+++	gcry_cast5
+++	gcry_crc
+++	gcry_des
+++	gcry_dsa
+++	gcry_idea
+++	gcry_md4
+++	gcry_md5
+++	gcry_rfc2268
+++	gcry_rijndael
+++	gcry_rmd160
+++	gcry_rsa
+++	gcry_seed
+++	gcry_serpent
+++	gcry_sha1
+++	gcry_sha256
+++	gcry_sha512
+++	gcry_tiger
+++	gcry_twofish
+++	gcry_whirlpool
+++	luks
+++	lvm
+++	mdraid09
+++	mdraid1x
+++	raid5rec
+++	raid6rec
+++    """
+++    GRUB_MODULES=" ".join(GRUB_MODULES.split())
+++    return GRUB_MODULES
++ 
++ def run():
++     """
+diff --git a/PKGBUILD b/PKGBUILD
+index d9836f6..4a0d7a5 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -3,7 +3,7 @@
+ pkgname=calamares
+ pkgver=3.2.61
+ _pkgver=3.2.61
+-pkgrel=10
++pkgrel=12
+ _commit=8a6b3d19e17d5a92d0ad8f743c55965f03ff9fac
+ pkgdesc='Distribution-independent installer framework'
+ arch=('i686' 'x86_64')
+@@ -24,11 +24,15 @@ source+=(#"$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$pkgver/calamares-v$
+          'https://gitlab.manjaro.org/codesardine/calamares/-/commit/b140b67c9fddb96701e46d23e9a72ddfbe77e0d0.patch'
+          'https://gitlab.manjaro.org/applications/calamares/-/merge_requests/37.patch'
+          'fullscreen.patch'
++         '001-no-oom.patch'
++         '002-grub-efi-install.patch'
+          "$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz"
+         )
+ sha256sums=('39c38180b6c7d6088984c300e3fdf125b571525d1d252b59a52388e1780f98e4'
+             '993c4d3babd7ead9a20fb43c338d3223f1531c55a2bdb0bf2dd899db22433214'
+-            '87708be424d199ddee02ec349a32a914c02f53555c69ad45556ab016c74671b5'
++            'bdc4fc36dcf5adfae0f422dd0c9407949f5b8e27943961c05e9bcde9306306ed'
++            '29504645cc1d33bbed45a4726f971cb787e9af3cb4b3923a98213d225310660b'
++            '91c74cfa10a737eb4defadd99dbb3f65294d5614abce8b246972d215bbd2755a'
+             '081415e5d6a44691cb984ccaea276e113ec8a058ce12dd3b774640ad44aeacd8')
+ 
+ prepare() {
+@@ -57,6 +61,10 @@ prepare() {
+ 	
+ 	# https://gitlab.manjaro.org/applications/calamares/-/merge_requests/37
+ 	patch -Np1 -i ../37.patch
++
++	patch -Np1 -i ../fullscreen.patch
++	patch -Np1 -i ../001-no-oom.patch
++	patch -Np1 -i ../002-grub-efi-install.patch
+ }
+ 
+ build() {
+diff --git a/fullscreen.patch b/fullscreen.patch
+index eb21420..b734b41 100644
+--- a/fullscreen.patch
++++ b/fullscreen.patch
+@@ -7,12 +7,12 @@ index 88e8e2919..a72e0863d 100644
+      cDebug() << "STARTUP: loadModules for all modules done";
+      m_moduleManager->checkRequirements();
+ -    if ( Calamares::Branding::instance()->windowMaximize() )
+-+    if ( Calamares::Branding::instance()->windowFullscreen() )
+++    if ( Calamares::Branding::instance()->windowFullScreen() )
+      {
+          m_mainwindow->setWindowFlag( Qt::FramelessWindowHint );
+ -        m_mainwindow->showMaximized();
+ +        m_mainwindow->setWindowFlag( Qt::WindowStaysOnTopHint );
+-+        m_mainwindow->showFullscreen();
+++        m_mainwindow->showFullScreen();
+      }
+      else
+      {
+@@ -25,7 +25,7 @@ index a5a2e535d..908693e81 100644
+      bool welcomeStyleCalamares() const { return m_welcomeStyleCalamares; }
+      bool welcomeExpandingLogo() const { return m_welcomeExpandingLogo; }
+ -    bool windowMaximize() const { return m_windowExpansion == WindowExpansion::Fullscreen; }
+-+    bool windowFullscreen() const { return m_windowExpansion == WindowExpansion::Fullscreen; }
+++    bool windowFullScreen() const { return m_windowExpansion == WindowExpansion::Fullscreen; }
+      bool windowExpands() const { return m_windowExpansion != WindowExpansion::Fixed; }
+      QPair< WindowDimension, WindowDimension > windowSize() const
+      {

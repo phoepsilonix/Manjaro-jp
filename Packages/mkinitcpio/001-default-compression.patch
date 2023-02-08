@@ -47,7 +47,7 @@ index 710e05f..97fa49f 100644
  # COMPRESSION_OPTIONS
  # Additional options for the compressor
 -#COMPRESSION_OPTIONS=()
-+COMPRESSION_OPTIONS=('-22' '--ultra' '--auto-threads=physical')
++COMPRESSION_OPTIONS=('-22' '--ultra')
  
  # MODULES_DECOMPRESS
  # Decompress kernel modules during initramfs creation.
