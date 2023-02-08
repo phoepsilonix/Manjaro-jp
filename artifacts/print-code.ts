@@ -1,10 +1,9 @@
 /// <reference path="./highlight.min.ts" />
 
-window.onload=function() {
-
-hljs.highlightAll();
-
-Array.prototype.forEach.call(document.querySelectorAll('pre > code'), addCopyButton);
+function addCopyBtn() {
+    hljs.highlightAll();
+    Array.prototype.forEach.call(document.querySelectorAll('pre > code'), addCopyButton);
+}
 
 function addCopyButton(elmCodeFrame){
     var elmSelectButton = document.createElement('div');
@@ -22,7 +21,7 @@ function addCopyButton(elmCodeFrame){
         select(elmCodeFrame);
     });
     elmSelectButton.insertAdjacentHTML('afterbegin', '<span></span><svg width="16" height="16" class="bi bi-clipboard" role="img" fill="currentColor"><use xlink:href="./icon.svg#clipboard"/></svg>');
-    elmCodeFrame.insertBefore(elmSelectButton, elmCodeFrame.firstChild);
+    elmCodeFrame.firstChild.before(elmSelectButton);
 }
 
 function select(elm){
@@ -46,6 +45,7 @@ function select(elm){
     }, 1000);
 }
 
+function print_code(){
 var codes = document.getElementsByClassName("print-code");
 if ( codes != null) {
     for(let i=0; i < codes.length; i++) {
@@ -72,5 +72,4 @@ if ( codes != null) {
         });
     }
 }
-
 }

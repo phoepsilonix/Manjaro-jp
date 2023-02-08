@@ -80,14 +80,19 @@ sudo rsync -avP --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to loc
 #sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # OSDNへアップデート
-eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
-rsync -avPLc --no-perms ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
+#eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
+#rsync -avPLc --no-perms ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
+
+#eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
+#rsync -avPL --size-only --no-perms ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
-rsync -avPL --size-only --no-perms ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
-
-eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
-rsync -avPL --size-only --no-perms --delete --exclude=\.* ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
+#rsync -avPL --size-only --no-perms --delete --exclude=\.* ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
+jf rt u ./ manjaro-jp --quiet 
+jf rt u ./manjaro-jp.db manjaro-jp --quiet 
+jf rt u ./manjaro-jp.db.sig manjaro-jp --quiet 
+jf rt u ./manjaro-jp.files manjaro-jp --quiet 
+jf rt u ./manjaro-jp.files.sig manjaro-jp --quiet 
 
 exit 0;
 

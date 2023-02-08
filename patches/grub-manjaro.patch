@@ -1,5 +1,22 @@
+diff --git a/99-secureboot-kernel.hook b/99-secureboot-kernel.hook
+new file mode 100644
+index 0000000..2051694
+--- /dev/null
++++ b/99-secureboot-kernel.hook
+@@ -0,0 +1,11 @@
++[Trigger]
++Type = Path
++Operation = Install
++Operation = Upgrade
++Target = boot/linux*.kver
++
++[Action]
++Description = Signing Kenel for Secureboot
++When = PostTransaction
++Exec = /bin/sh -c 'while read -r f; do f=$(cat "$f"); f="/boot/vmlinuz-${f%.*}-x86_64" ; if ! /usr/bin/sbverify --list "$f" 2>/dev/null | /usr/bin/grep -q "signature certificates" - ;then /usr/bin/sbsign --key /etc/secureboot/MOK.key --cert /etc/secureboot/MOK.crt --output "$f" "$f" ;fi done'
++NeedsTargets
 diff --git a/PKGBUILD b/PKGBUILD
-index bd6b773..c18d136 100644
+index bd6b773..8ac2b99 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -25,11 +25,11 @@ _GRUB_EMU_BUILD="1"
@@ -7,17 +24,45 @@ index bd6b773..c18d136 100644
  pkgname=grub
  pkgdesc="GNU GRand Unified Bootloader (2)"
 -_commit='2f4430cc0a44fd8c8aa7aee5c51887667ad3d6c3'
-+_commit='1df05ac832e392c2b08286f11b3e01ad9ef1d3d2'
++_commit=65bc45963014773e2062ccc63ff34a089d2e352e
  _unifont_ver='15.0.01'
 -_pkgver=2.06.r261.g2f4430cc0
-+_pkgver=2.06.r341.g1df05ac83
++_pkgver=2.06.r456.g65bc45963
  pkgver=${_pkgver/-/}
 -pkgrel=3
-+pkgrel=1
++pkgrel=2
  arch=('x86_64' 'i686' 'aarch64')
  url='https://www.gnu.org/software/grub/'
  license=('GPL3')
-@@ -88,9 +88,9 @@ sha256sums=('SKIP'
+@@ -51,7 +51,10 @@ optdepends=('freetype2: For grub-mkfont usage'
+             'efibootmgr: For grub-install EFI support'
+             'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
+             'os-prober: To detect other OSes when generating grub.cfg in BIOS systems'
+-            'mtools: For grub-mkrescue FAT FS support')
++            'mtools: For grub-mkrescue FAT FS support'
++            'mokutil: For secure boot'
++            'sbsigntools: For secure boot'
++            )
+ 
+ if [[ "${_GRUB_EMU_BUILD}" == "1" ]]; then
+     makedepends+=('libusb' 'sdl')
+@@ -70,7 +73,6 @@ source=("git+https://git.savannah.gnu.org/git/grub.git#commit=${_commit}"
+         'grub-export-path.patch'
+         'grub-manjaro-modifications.patch'
+         'grub-use-efivarfs.patch'
+-        'fgrep-is-obsolescent-using-grep-F.patch'
+         '0001-grub-maybe_quiet.patch'
+         '0002-grub-gettext_quiet.patch'
+         '0003-grub-quick-boot.patch'
+@@ -80,6 +82,7 @@ source=("git+https://git.savannah.gnu.org/git/grub.git#commit=${_commit}"
+         'grub.cfg'
+         'update-grub'
+         'grub-set-bootflag'
++        '99-secureboot-kernel.hook'
+         "${pkgname}.hook")
+ 
+ sha256sums=('SKIP'
+@@ -88,18 +91,18 @@ sha256sums=('SKIP'
              'SKIP'
              '5dee6628c48eef79812bb9e86ee772068d85e7fcebbd2b2b8d1e19d24eda9dab'
              '63c611189a60d68c6ae094f2ced91ac576b3921b7fd2e75a551c2dc6baefc35e'
@@ -25,92 +70,62 @@ index bd6b773..c18d136 100644
 +            'b2f81a9bf63ec4dd0d7b0dc48225acfd536b4087fabf82f373706d6a5d00eb36'
              '20b2b6e7f501596b5cce6ffa05906980427f760c03d308d0e045cf2ecf47bb0e'
 -            'ddfda7c170fe386fa340440178096260ae72b5cbab23f2566634b7c54f812a07'
-+            'b7d6b9a50e61b49f36e62f9a875930ae280f95e8c27baacc3ac10db8b19e6d78'
              'a522514edb264374c8cce08998c5586ffc832091c5db1be7bf8b21078223e2a6'
              '39d7843dfe1e10ead912a81be370813b8621794a7967b3cc5e4d4188b5bf7264'
              '4cae03685c238a60169f1134165ff010faebddb5b3218d92d32e0b6729b27656'
-@@ -153,10 +153,11 @@ prepare() {
- 	echo "Patch to export $PATH"
- 	patch -Np1 -i "${srcdir}/grub-export-path.patch"
- 
-+
+             '01264c247283b7bbdef65d7646541c022440ddaf54f8eaf5aeb3a02eb98b4dd8'
+-            'c9a22df3e437599851e3c3e5725b853e8cd36728ae8fce8af5e693f4ce7c8e44'
++            '4a7634e543f83d8a766800f63e9cdfa25a25c34dcbbb536880299f087cdca85c'
+             '89bbfe11cec0a07f5b0f170cde35abcc4cbf16d8db7b4920435525f71527fc10'
+             '7fc95d49c0febe98a76e56b606a280565cb736580adecf163bc6b5aca8e7cbd8'
+             'a6a3e6a7c2380aff66b6096d478aed790c927ceed551ce52c0c454191eb4e3aa'
+             '2eb199f510340cf8d190ba2fa80d5bdcf1e2e7ca53e8011af2ee62ea3b8dd03b'
++            '4591d90bacf3493f6c42493aacef28afd3ba1947305308100bd637f222e7b8f8'
+             'a97ddf6694fa5070463a2d3f997205436a63fbe125071dd1bef0d59999adff70')
+             
+ _backports=(
+@@ -156,9 +159,6 @@ prepare() {
  	echo "Patch to include Manjaro Linux Modifications"
  	patch -Np1 -i "${srcdir}/grub-manjaro-modifications.patch"
  
 -	echo "fgrep is obsolescent using grep -F"
-+	echo "Patch to fgrep is obsolescent using grep -F"
- 	patch -Np1 -i "${srcdir}/fgrep-is-obsolescent-using-grep-F.patch"
- 
- 	echo "Add Ubuntu patches"
-diff --git a/fgrep-is-obsolescent-using-grep-F.patch b/fgrep-is-obsolescent-using-grep-F.patch
-index 8fff90c..b5c93f6 100644
---- a/fgrep-is-obsolescent-using-grep-F.patch
-+++ b/fgrep-is-obsolescent-using-grep-F.patch
-@@ -33,64 +33,3 @@ index c052638cd..84f3b26df 100644
-             tmp="$tmp $i"
-         fi
-      done
--diff --git a/util/grub.d/10_hurd.in b/util/grub.d/10_hurd.in
--index 2fafa4e59..b26c2567d 100644
----- a/util/grub.d/10_hurd.in
--+++ b/util/grub.d/10_hurd.in
--@@ -222,7 +222,7 @@ while [ "x$kernels" != "x" ] ; do
--   hurd_entry "$kernel" advanced
--   hurd_entry "$kernel" recovery
-- 
---  kernels=`echo $kernels | tr ' ' '\n' | fgrep -vx "$kernel" | tr '\n' ' '`
--+  kernels=`echo $kernels | tr ' ' '\n' | grep -F -vx "$kernel" | tr '\n' ' '`
-- done
-- 
-- # If at least one kernel was found, then we need to
--diff --git a/util/grub.d/10_kfreebsd.in b/util/grub.d/10_kfreebsd.in
--index 199b20e16..0ed082f05 100644
----- a/util/grub.d/10_kfreebsd.in
--+++ b/util/grub.d/10_kfreebsd.in
--@@ -239,7 +239,7 @@ while [ "x$list" != "x" ] ; do
--     kfreebsd_entry "${OS}" "${version}" recovery "-s"
--   fi
-- 
---  list=`echo $list | tr ' ' '\n' | fgrep -vx "$kfreebsd" | tr '\n' ' '`
--+  list=`echo $list | tr ' ' '\n' | grep -F -vx "$kfreebsd" | tr '\n' ' '`
-- done
-- 
-- # If at least one kernel was found, then we need to
--diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
--index b4a4d6900..4b22eeadc 100644
----- a/util/grub.d/10_linux.in
--+++ b/util/grub.d/10_linux.in
--@@ -296,7 +296,7 @@ while [ "x$list" != "x" ] ; do
--                 "${GRUB_CMDLINE_LINUX_RECOVERY} ${GRUB_CMDLINE_LINUX}"
--   fi
-- 
---  list=`echo $list | tr ' ' '\n' | fgrep -vx "$linux" | tr '\n' ' '`
--+  list=`echo $list | tr ' ' '\n' | grep -F -vx "$linux" | tr '\n' ' '`
-- done
-- 
-- # If at least one kernel was found, then we need to
--diff --git a/util/grub.d/20_linux_xen.in b/util/grub.d/20_linux_xen.in
--index 51a983926..d6e299b99 100644
----- a/util/grub.d/20_linux_xen.in
--+++ b/util/grub.d/20_linux_xen.in
--@@ -352,12 +352,12 @@ while [ "x${xen_list}" != "x" ] ; do
-- 		"${GRUB_CMDLINE_LINUX_RECOVERY} ${GRUB_CMDLINE_LINUX}" "${GRUB_CMDLINE_XEN}"
-- 	fi
-- 
---	list=`echo $list | tr ' ' '\n' | fgrep -vx "$linux" | tr '\n' ' '`
--+	list=`echo $list | tr ' ' '\n' | grep -F -vx "$linux" | tr '\n' ' '`
--     done
--     if [ x"$is_top_level" != xtrue ]; then
-- 	echo '	}'
--     fi
---    xen_list=`echo $xen_list | tr ' ' '\n' | fgrep -vx "$current_xen" | tr '\n' ' '`
--+    xen_list=`echo $xen_list | tr ' ' '\n' | grep -F -vx "$current_xen" | tr '\n' ' '`
-- done
-- 
-- # If at least one kernel was found, then we need to
---- 
--2.37.3
+-	patch -Np1 -i "${srcdir}/fgrep-is-obsolescent-using-grep-F.patch"
 -
+ 	echo "Add Ubuntu patches"
+ 	echo "0001"
+ 	patch -Np1 -i "${srcdir}/0001-grub-maybe_quiet.patch"
+@@ -356,12 +356,31 @@ _package_grub-emu() {
+ 	rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/{kernel.exec,gdb_grub,gmodule.pl} || true
+ }
+ 
++_package_secure_boot() {
++	cd "${srcdir}/grub"
++
++    mkdir -p ./secureboot
++    cd secureboot
++    # MOKの作成
++    openssl req -newkey rsa:4096 -nodes -keyout MOK.key -new -x509 -sha256 -days 3650 -subj "/CN=my Machine Owner Key/" -out MOK.crt
++    openssl x509 -outform DER -in MOK.crt -out MOK.cer
++
++    sbsign --key ./MOK.key --cert ./MOK.crt --output grubx64.efi grubx64.efi
++    mkdir -p ${pkgdir}/etc/secureboot/
++    install -D -m0644 "${srcdir}/grub/secureboot/MOK.cer" "${pkgdir}/etc/secureboot/MOK.cer"
++    install -D -m0644 "${srcdir}/grub/secureboot/MOK.crt" "${pkgdir}/etc/secureboot/MOK.crt"
++    install -D -m0600 "${srcdir}/grub/secureboot/MOK.key" "${pkgdir}/etc/secureboot/MOK.key"
++    install -D -m644 "${srcdir}/99-secureboot-kernel.hook" "${pkgdir}/usr/share/libalpm/hooks/99-secureboot-kernel.hook"
++}
++
+ package() {
+ 	cd "${srcdir}/grub/"
+ 
+ 	echo "Package grub ${_EFI_ARCH} efi stuff..."
+ 	_package_grub-efi
+ 
++        [[ $(which mokutil) ]] && [[ $(which sbsign) ]] && _package_secure_boot
++
+ 	if [[ "${CARCH}" == "x86_64" ]] && [[ "${_IA32_EFI_IN_ARCH_X64}" == "1" ]]; then
+ 		echo "Package grub i386 efi stuff..."
+ 		_EFI_ARCH="i386" _package_grub-efi
 diff --git a/grub-manjaro-modifications.patch b/grub-manjaro-modifications.patch
 index 48cb0f5..5076b5e 100644
 --- a/grub-manjaro-modifications.patch
@@ -136,3 +151,15 @@ index 48cb0f5..5076b5e 100644
  diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
  index e8b01c0d0..c3dd34a59 100644
  --- a/util/grub.d/10_linux.in
+diff --git a/grub.default b/grub.default
+index 9e0f376..bb5dfd2 100755
+--- a/grub.default
++++ b/grub.default
+@@ -1,6 +1,6 @@
+ GRUB_DEFAULT=saved
+ GRUB_TIMEOUT=5
+-GRUB_TIMEOUT_STYLE=hidden
++GRUB_TIMEOUT_STYLE=menu
+ GRUB_DISTRIBUTOR="Manjaro"
+ GRUB_CMDLINE_LINUX_DEFAULT="quiet udev.log_priority=3"
+ GRUB_CMDLINE_LINUX=""
