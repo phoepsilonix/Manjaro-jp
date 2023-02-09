@@ -24,6 +24,7 @@ eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 ./md2html.sh
 cd $repo_dir
 rsync -avPLz ./*.css ./*.js ./index.html ./index.en.html ./index.ja.html ./README.ja.html ./README.en.html phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/
+rsync -avPL manjaro-jp/ phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/manjaro-jp/
 
 exit 0;
 

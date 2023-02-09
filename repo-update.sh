@@ -86,13 +86,24 @@ sudo rsync -avP --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to loc
 #eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 #rsync -avPL --size-only --no-perms ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 
-eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 #rsync -avPL --size-only --no-perms --delete --exclude=\.* ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
-jf rt u ./ manjaro-jp --quiet 
-jf rt u ./manjaro-jp.db manjaro-jp --quiet 
-jf rt u ./manjaro-jp.db.sig manjaro-jp --quiet 
-jf rt u ./manjaro-jp.files manjaro-jp --quiet 
-jf rt u ./manjaro-jp.files.sig manjaro-jp --quiet 
+#jfrog
+#jf rt u ./ manjaro-jp --quiet 
+#jf rt u ./manjaro-jp.db manjaro-jp --quiet 
+#jf rt u ./manjaro-jp.db.sig manjaro-jp --quiet 
+#jf rt u ./manjaro-jp.files manjaro-jp --quiet 
+#jf rt u ./manjaro-jp.files.sig manjaro-jp --quiet 
+
+#OSDN 
+#OK:symlink
+eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
+rsync -avP manjaro-jp/ phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs/manjaro-jp/
+
+#sourceforge 
+#X:symlink rsync -L
+eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
+rsync -avPL manjaro-jp/ phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/manjaro-jp/
+
 
 exit 0;
 
