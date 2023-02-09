@@ -1,4 +1,4 @@
-# [Manjaro Linux JP](https://osdn.net/projects/manjaro-jp/)
+# [Manjaro Linux JP](https://sourceforge.net/projects/manjaro-jp/)
 
 ## Japanese language support for [Manjaro Linux](https://manjaro.org/)
 　Supports Japanese input and display by default, including live environment.  
@@ -313,12 +313,10 @@ In the ArchLinux family, which features rolling releases, [Garuda Linux](https:/
 SigLevel = Optional TrustAll
 Server = https://manjaro-jp.sourceforge.io/manjaro-jp/
 ```
-[manjaro-jp pkgs](https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/)
-
-[Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)
-[Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)
-[Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)
-[Manjaro-JP at sf web](https://manjaro-jp.sourceforge.io/)  
+[Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)  
+[Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
+[Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)  
+[manjaro-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 (GPG signing public key:536487F1470D7187) <phoepsilonix at gmail dot com>  
 [Patreon](https://patreon.com/user?u=87853674&utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=creatorshare_creator&utm_content=join_link)  
 [revolut](https://revolut.me/phoepsilonix)  
