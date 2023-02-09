@@ -1,7 +1,7 @@
 # Maintainer: Masato Toyoshima <phoepsilonix@gmail.com>
 
 pkgname=nginx-quic-mod-brotli
-epoch=1
+#epoch=1
 pkgver=1.0.9
 pkgrel=7
 
