@@ -311,7 +311,7 @@ In the ArchLinux family, which features rolling releases, [Garuda Linux](https:/
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
-Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
+Server = https://manjaro-jp.sourceforge.io/manjaro-jp/
 ```
 [manjaro-jp pkgs](https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/)
 

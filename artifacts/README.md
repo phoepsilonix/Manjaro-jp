@@ -309,7 +309,7 @@ LinuxをインストールしたPCがあれば、非公式？な(公式サポー
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
-Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
+Server = https://manjaro-jp.sourceforge.io/manjaro-jp/
 ```
 [manjaro-jp pkgs](https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/)
 
