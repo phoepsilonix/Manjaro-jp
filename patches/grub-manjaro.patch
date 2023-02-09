@@ -1,6 +1,6 @@
 diff --git a/99-secureboot-kernel.hook b/99-secureboot-kernel.hook
 new file mode 100644
-index 0000000..2051694
+index 0000000..3d37247
 --- /dev/null
 +++ b/99-secureboot-kernel.hook
 @@ -0,0 +1,11 @@
@@ -13,13 +13,13 @@ index 0000000..2051694
 +[Action]
 +Description = Signing Kenel for Secureboot
 +When = PostTransaction
-+Exec = /bin/sh -c 'while read -r f; do f=$(cat "$f"); f="/boot/vmlinuz-${f%.*}-x86_64" ; if ! /usr/bin/sbverify --list "$f" 2>/dev/null | /usr/bin/grep -q "signature certificates" - ;then /usr/bin/sbsign --key /etc/secureboot/MOK.key --cert /etc/secureboot/MOK.crt --output "$f" "$f" ;fi done'
++Exec = /bin/sh -c 'while read -r f; do f=$(cat "$f"); f="/boot/vmlinuz-${f%.*}-x86_64" ; if ! /usr/bin/sbverify --cert /etc/secureboot/MOK.crt "$f" >/dev/null 2>&1;then /usr/bin/sbsign --key /etc/secureboot/MOK.key --cert /etc/secureboot/MOK.crt --output "$f" "$f" ;fi done'
 +NeedsTargets
 diff --git a/PKGBUILD b/PKGBUILD
-index bd6b773..8ac2b99 100644
+index bd6b773..dcd5afe 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -25,11 +25,11 @@ _GRUB_EMU_BUILD="1"
+@@ -25,9 +25,9 @@ _GRUB_EMU_BUILD="1"
  
  pkgname=grub
  pkgdesc="GNU GRand Unified Bootloader (2)"
@@ -29,11 +29,8 @@ index bd6b773..8ac2b99 100644
 -_pkgver=2.06.r261.g2f4430cc0
 +_pkgver=2.06.r456.g65bc45963
  pkgver=${_pkgver/-/}
--pkgrel=3
-+pkgrel=2
+ pkgrel=3
  arch=('x86_64' 'i686' 'aarch64')
- url='https://www.gnu.org/software/grub/'
- license=('GPL3')
 @@ -51,7 +51,10 @@ optdepends=('freetype2: For grub-mkfont usage'
              'efibootmgr: For grub-install EFI support'
              'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
@@ -94,7 +91,7 @@ index bd6b773..8ac2b99 100644
  	echo "Add Ubuntu patches"
  	echo "0001"
  	patch -Np1 -i "${srcdir}/0001-grub-maybe_quiet.patch"
-@@ -356,12 +356,31 @@ _package_grub-emu() {
+@@ -356,12 +356,30 @@ _package_grub-emu() {
  	rm -f "${pkgdir}/usr/lib/grub/${_EMU_ARCH}-emu"/{kernel.exec,gdb_grub,gmodule.pl} || true
  }
  
@@ -107,7 +104,6 @@ index bd6b773..8ac2b99 100644
 +    openssl req -newkey rsa:4096 -nodes -keyout MOK.key -new -x509 -sha256 -days 3650 -subj "/CN=my Machine Owner Key/" -out MOK.crt
 +    openssl x509 -outform DER -in MOK.crt -out MOK.cer
 +
-+    sbsign --key ./MOK.key --cert ./MOK.crt --output grubx64.efi grubx64.efi
 +    mkdir -p ${pkgdir}/etc/secureboot/
 +    install -D -m0644 "${srcdir}/grub/secureboot/MOK.cer" "${pkgdir}/etc/secureboot/MOK.cer"
 +    install -D -m0644 "${srcdir}/grub/secureboot/MOK.crt" "${pkgdir}/etc/secureboot/MOK.crt"
