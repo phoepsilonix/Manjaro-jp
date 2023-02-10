@@ -1,4 +1,4 @@
-# [Manjaro Linux JP](https://osdn.net/projects/manjaro-jp/)
+# [Manjaro Linux JP](https://sourceforge.net/projects/manjaro-jp/)
 
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
@@ -296,6 +296,8 @@ nvidia-utils 525.85.05
 manjaro-release 22.0.2  
 kernel-6.1.9
 
+##### 20230210
+kernel-6.1.11
 
 ---
 参考までに、追記。  
@@ -309,15 +311,14 @@ LinuxをインストールしたPCがあれば、非公式？な(公式サポー
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
-Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
+Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 ```
-[manjaro-jp pkgs](https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/)
-
-[Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)
-[Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)
-[Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)
-[Manjaro-JP at sf web](https://manjaro-jp.sourceforge.io/)  
+[Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)  
+[Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
+[Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)  
+[manjaro-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 (GPG signing public key:536487F1470D7187) <phoepsilonix あっと gmail どっと com>  
+
 [Patreon](https://patreon.com/user?u=87853674&utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=creatorshare_creator&utm_content=join_link)  
 [revolut](https://revolut.me/phoepsilonix)  
 [Paypal](https://paypal.me/phoepsilonix)  
