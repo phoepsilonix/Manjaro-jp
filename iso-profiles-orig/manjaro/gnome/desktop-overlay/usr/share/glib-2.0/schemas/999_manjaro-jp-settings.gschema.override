@@ -42,12 +42,3 @@ button-layout='appmenu:minimize,maximize,close'
 focus-mode='click'
 titlebar-font="Noto Sans CJK JP Bold 11"
 
-[org.gnome.settings-daemon.plugins.power]
-sleep-inactive-battery-type='nothing'
-sleep-inactive-ac-type='nothing'
-power-saver-profile-on-low-battery=false
-idle-dim=false
-
-[org.gnome.desktop.session]
-idle-delay=0
-
