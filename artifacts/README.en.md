@@ -303,7 +303,7 @@ kernel-6.1.11
 nvidia-utils 525.89.02  
 The repository URL for Manjaro-jp has been changed (from OSDN to OSDN Web, which may be temporary).  
 Calamares installer has been slightly modified (to reduce the cases where the installer terminates forcibly during high load).  
-The MOK (Machine Owner KEY) is now registered during installation.
+The MOK (Machine Owner KEY) is now registered during installation.  
 The password is the same as the user's password set by the installer. Grub and kernel are signed.  
 
 
