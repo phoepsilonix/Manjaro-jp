@@ -104,6 +104,5 @@ rsync -avP --delete ./ phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 rsync -avPL --delete ./ phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/manjaro-jp/
 
-
 exit 0;
 
