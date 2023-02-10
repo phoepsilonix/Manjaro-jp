@@ -36,6 +36,7 @@ sudo swapon /dev/sdX
 The following command should also be used to specify that the OOM killer (forced termination) is not applicable.
 ```
 pidof -xw Xwayland calamares_polkit|xargs -n1 sudo choom -n -1000 -p
+pidof -xw Xwayland gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
 

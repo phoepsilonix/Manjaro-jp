@@ -35,7 +35,8 @@ sudo swapon /dev/sdX
 
 また次のコマンドで、OOM killer（強制終了）の対象外を指定しておきましょう。
 ```
-pidof -xw Xwayland calamares_polkit|xargs -n1 sudo choom -n -1000 -p
+pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
+pidof -xw Xwayland gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
 
