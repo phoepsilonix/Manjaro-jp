@@ -1,6 +1,11 @@
 #!/bin/bash
-NO_OOM_KILLER="`pidof -xw Xwayland gnome-shell gdm gdm-wayland-session` $$"
+
+#swap
+[[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
+
+NO_OOM_KILLER="`pidof -xw Xwayland gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd` $$"
 echo $NO_OOM_KILLER | xargs -n1 sudo choom -n -1000 -p 
+
 if [ $(which pkexec) ]; then
 	pkexec --disable-internal-agent "/usr/bin/calamares" "-D6" "$@"
 else
