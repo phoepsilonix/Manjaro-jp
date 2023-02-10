@@ -298,6 +298,8 @@ nvidia-utils 525.85.05
 manjaro-release 22.0.2  
 kernel-6.1.9
 
+##### 20230210
+kernel-6.1.11
 
 ---
 Addendum for your reference.  
@@ -311,7 +313,7 @@ In the ArchLinux family, which features rolling releases, [Garuda Linux](https:/
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
-Server = https://manjaro-jp.sourceforge.io/manjaro-jp/
+Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 ```
 [Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
