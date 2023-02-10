@@ -16,10 +16,10 @@ index 0000000..3d37247
 +Exec = /bin/sh -c 'while read -r f; do f=$(cat "$f"); f="/boot/vmlinuz-${f%.*}-x86_64" ; if ! /usr/bin/sbverify --cert /etc/secureboot/MOK.crt "$f" >/dev/null 2>&1;then /usr/bin/sbsign --key /etc/secureboot/MOK.key --cert /etc/secureboot/MOK.crt --output "$f" "$f" ;fi done'
 +NeedsTargets
 diff --git a/PKGBUILD b/PKGBUILD
-index bd6b773..dcd5afe 100644
+index bd6b773..6a3bdf5 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -25,9 +25,9 @@ _GRUB_EMU_BUILD="1"
+@@ -25,11 +25,11 @@ _GRUB_EMU_BUILD="1"
  
  pkgname=grub
  pkgdesc="GNU GRand Unified Bootloader (2)"
@@ -29,8 +29,11 @@ index bd6b773..dcd5afe 100644
 -_pkgver=2.06.r261.g2f4430cc0
 +_pkgver=2.06.r456.g65bc45963
  pkgver=${_pkgver/-/}
- pkgrel=3
+-pkgrel=3
++pkgrel=4
  arch=('x86_64' 'i686' 'aarch64')
+ url='https://www.gnu.org/software/grub/'
+ license=('GPL3')
 @@ -51,7 +51,10 @@ optdepends=('freetype2: For grub-mkfont usage'
              'efibootmgr: For grub-install EFI support'
              'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
@@ -77,7 +80,7 @@ index bd6b773..dcd5afe 100644
              '7fc95d49c0febe98a76e56b606a280565cb736580adecf163bc6b5aca8e7cbd8'
              'a6a3e6a7c2380aff66b6096d478aed790c927ceed551ce52c0c454191eb4e3aa'
              '2eb199f510340cf8d190ba2fa80d5bdcf1e2e7ca53e8011af2ee62ea3b8dd03b'
-+            '4591d90bacf3493f6c42493aacef28afd3ba1947305308100bd637f222e7b8f8'
++            '2def011eb1ecea96877a56c69a0548bab031109eada4654abf52a09318b9a305'
              'a97ddf6694fa5070463a2d3f997205436a63fbe125071dd1bef0d59999adff70')
              
  _backports=(

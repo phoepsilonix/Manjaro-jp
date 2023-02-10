@@ -60,8 +60,8 @@ do
         echo $f
 	mktorrent -t0 -a udp://tracker.opentrackr.org:1337/announce \
 		-a udp://tracker.torrent.eu.org:451 \
-		-w "https://sourceforge.net/projects/manjaro-jp/files/$f/download" \
-		-w "https://osdn.net/projects/manjaro-jp/storage/$f" $f
+		-w "https://sourceforge.net/projects/manjaro-jp/files/$f/download"
+#		-w "https://osdn.net/projects/manjaro-jp/storage/$f" $f \
         fi
 done
 
