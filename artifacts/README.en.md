@@ -300,6 +300,14 @@ kernel-6.1.9
 
 ##### 20230210
 kernel-6.1.11
+nvidia-utils 525.89.02  
+Repository URL for Manjaro-jp changed.  
+(From OSDN to OSDN Web. Might be temporary).  
+Some modifications to the Calamares installer.  
+(Reduces cases where the installer is forced to terminate under high load.) 
+MOK (Machine Owner Key) is registered during installation.
+The password is the same as the password of your user set in the installer.
+The grub and kernel are signed.
 
 ---
 Addendum for your reference.  
