@@ -97,12 +97,12 @@ sudo rsync -avP --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to loc
 #OSDN 
 #OK:symlink
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
-rsync -avP manjaro-jp/ phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs/manjaro-jp/
+rsync -avP --delete ./ phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs/manjaro-jp/
 
 #sourceforge 
 #X:symlink rsync -L
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
-rsync -avPL manjaro-jp/ phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/manjaro-jp/
+rsync -avPL --delete ./ phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/manjaro-jp/
 
 
 exit 0;
