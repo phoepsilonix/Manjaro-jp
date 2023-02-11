@@ -1,33 +1,33 @@
 # [Manjaro Linux JP](https://sourceforge.net/projects/manjaro-jp/)
 
 ## Japanese language support for [Manjaro Linux](https://manjaro.org/)
-　Supports Japanese input and display by default, including live environment.  
-[kernel-6.1 series](https://kernel.org/).
+　The default includes support for Japanese input and display, including the live environment.  
+[kernel-6.1 series](https://kernel.org/).  
 
-KDE, Xfce and GNOME will be available for official use.  
-The distribution files are ISO and some package files.  
-Please boot from a USB memory stick, etc.  
-It may be easier to use [Ventoy](https://ventoy.net/) to boot from USB memory.  
-It is recommended to reformat the first partition with ext4 when installing Ventoy.
+We plan to provide three types of official environments: KDE, Xfce, and GNOME.  
+The distribution files include ISO and some package files.  
+Please start from a USB memory or SSD disk, etc.  
+Starting from a USB memory may be easier with [Ventoy](https://ventoy.net/).  
+It is recommended to format the first partition as ext4 during the introduction of Ventoy.  
 
 ### Main Features
-The Linux kernel is as up-to-date as possible.  
-The kernel is built using clang.  
-Japanese input (fcitx5-mozc) and Japanese fonts are installed as standard.  
-The flatpak version [Firefox](https://www.mozilla.org/ja/firefox/browsers/) or [Floorp](https://floorp.ablaze.one/) is used as the standard browser.  
-Standard installation of the flatpak version [LibreOffice](https://www.libreoffice.org) as office software.  
+The Linux kernel is adopted with the latest version as much as possible.  
+Clang is used for kernel building.  
+Japanese input (fcitx5-mozc) and Japanese font are standardly installed.  
+The standard browser is either the flatpak version of [Firefox](https://www.mozilla.org/ja/firefox/browsers/) or [Floorp](https://floorp.ablaze.one/).  
+Flatpak version of [LibreOffice](https://www.libreoffice.org) is standardly installed as an office software.
 
-ISOs for live environment & installation are available at the following distribution sites.  
-Please try it if you like.
+The live environment & installation ISO is published at the following distribution site.  
+Please feel free to try it out.
 
 ##### Notes
-1. secure boot is not supported.  
-Please disable Secure Boot in your BIOS settings.
-(If you want secure boot support, Ubuntu is a fast option, and [Ubuntu flavours](https://ubuntu.com/desktop/flavours) offers several desktop environments). 
+1. Does not support Secure Boot  
+It is not supported, so please disable Secure Boot in BIOS settings.  
+(If you want secure boot support, Ubuntu is faster. There are multiple desktop environments provided in [Ubuntu flavours](https://ubuntu.com/desktop/flavours).)
 
-2. if the installer screen disappears during installation  
-It can often be avoided by manually setting the swap partition.  
-If the swap partition is /dev/sdX, try enabling swap manually with the following command.
+2. If the installer screen disappears during installation  
+In many cases, it can be avoided by setting the swap partition manually.  
+If the swap partition is /dev/sdX, try to manually enable swap with the following command.  
 ```
 sudo mkswap /dev/sdX
 sudo swapon /dev/sdX
@@ -37,15 +37,16 @@ sudo swapon /dev/sdX
 [[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
 ```
 
-The following command should also be used to specify that the OOM killer (forced termination) is not applicable.
+Also, specify the target that is excluded from OOM killer (force termination) with the following command.
 ```
 pidof -xw Xwayland calamares_polkit|xargs -n1 sudo choom -n -1000 -p
 pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
-##### Added: 2023-02-11  
-In the latest version (from 2023-02-11) of [Manjaro-JP](https://manjaro-jp.sourceforge.io/), the above measures have been added.  
-Also, the installer has been modified to add a process to enable the swap partition during installation.
+##### Addition: 2023-02-11
+
+In the latest version (2023-02-11~) of [Manjaro-JP](https://manjaro-jp.sourceforge.io), the above measures have been added.
+Additionally, the installer has been modified to add a process to enable the swap partition during installation.
 
 ---
 ### Place of distribution
@@ -54,18 +55,22 @@ Also, the installer has been modified to add a process to enable the swap partit
 [![SourceForge](https://sourceforge.net/sflogo.php?group_id=66882&type=5)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
 [![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
 
-Thank you for the valuable storage space.
-Distributed at the above 3 locations.
+Thank you for the valuable storage.  
+It is distributed in the above three places.
 
-[MEGA Storage](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A") is recommended because it can upload file sizes of 4G or more.
+[MEGA Storage](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A") is recommended as you can upload files larger than 4G.
 
 ---
-### Memorandum
-##### manjaro-tools-iso changes
-1. the first line of the mirrorlist is used as standard for where to get the packages used for buildiso.  
-By default, the mirrorlist is not loaded and the EU server is used.
-2. to prioritize the order of repositories specified in user-repos.conf in order to include the packages I have prepared in the ISO.  
-This is mainly to include the latest version of the kernel.
+### Memo
+##### Changes in manjaro-tools-iso
+1. The source of the packages used in buildiso is set to the first line of the mirrorlist as the standard.  
+By default, the mirrorlist is not loaded and the EU server is used.  
+2. To prioritize inclusion of packages that I have prepared, the priority of the repository specified in user-repos.conf has been given priority.  
+Mainly to include the latest version of the kernel.  
+3. Calamares Installer Adjustments
+At the time of starting the installer, if a swap partition exists, the swap has been enabled.  
+Because the mount may be removed during installation, the process to re-enable the swap partition has been added before the copying of the installation files begins.  
+In addition, by specifying programs that are not subject to OOM killer, which is a function to forcibly terminate a program by the kernel under high loads, the installation has been adjusted so that it does not forcibly terminate.
 
 ### Update History
 <details>
@@ -309,20 +314,21 @@ kernel-6.1.9
 ##### 20230211
 kernel-6.1.11
 nvidia-utils 525.89.02  
-The repository URL for Manjaro-jp has been changed (from OSDN to OSDN Web, which may be temporary).  
+The URL of Manjaro-jp repository has been changed from OSDN to OSDN Web. (It may be temporary.)  
 The ISO files are distributed on [SourceForge](https://sourceforge.net/projects/manjaro-jp/).  
-Calamares installer has been slightly modified (to reduce the cases where the installer terminates forcibly during high load).  
-The MOK (Machine Owner Key) is now registered during installation.  
-The MOK password is the same as the user's password set by the installer. Grub and kernel are signed.  
+A few modifications have been made to the Calamares installer. (Reducing the cases where the installer is forcibly terminated during high loads.)  
+Also, the Machine Owner Key (MOK) is now registered during installation.  
+The MOK password is the same as the password set by the user during the installer.  
+Both the grub and kernel are signed.
 
 
 ---
-Addendum for your reference.  
-If you have a PC with Linux installed, you can use an unofficial (no official support) dual boot environment with ChromeOS. If you have a PC with Linux installed, you can create a dual-boot environment with ChromeOS, which is unofficial (no official support). This is for those who have some knowledge.  
-If you are interested, please refer to [here](https://github.com/sebanc/brunch/blob/master/install-with-linux.md).
+Note: As a reference, an additional note.  
+If you have a PC with Linux installed, you can also create a dual-boot environment with (no official support) ChromeOS, as long as you have some knowledge.  
+This is for those who are interested. Please refer to [this link](https://github.com/sebanc/brunch/blob/master/install-with-linux.md) for reference.
 
 ---
-In the ArchLinux family, which features rolling releases, [Garuda Linux](https://garudalinux.org) also looks good.
+It is also worth checking out [Garuda Linux](https://garudalinux.org), which is also a good choice among the Arch Linux family, known for its rolling release.
 
 ---
 ```
