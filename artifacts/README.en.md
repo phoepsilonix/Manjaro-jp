@@ -306,7 +306,7 @@ nvidia-utils 525.85.05
 manjaro-release 22.0.2  
 kernel-6.1.9
 
-##### 20230210
+##### 20230211
 kernel-6.1.11
 nvidia-utils 525.89.02  
 The repository URL for Manjaro-jp has been changed (from OSDN to OSDN Web, which may be temporary).  
