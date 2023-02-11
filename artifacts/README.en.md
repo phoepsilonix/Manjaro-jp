@@ -66,7 +66,7 @@ It is distributed in the above three places.
 By default, the mirrorlist is not loaded and the EU server is used.  
 2. To prioritize inclusion of packages that I have prepared, the priority of the repository specified in user-repos.conf has been given priority.  
 Mainly to include the latest version of the kernel.  
-3. Calamares Installer Adjustments
+3. Calamares Installer Adjustments  
 At the time of starting the installer, if a swap partition exists, the swap has been enabled.  
 Because the mount may be removed during installation, the process to re-enable the swap partition has been added before the copying of the installation files begins.  
 In addition, by specifying programs that are not subject to OOM killer, which is a function to forcibly terminate a program by the kernel under high loads, the installation has been adjusted so that it does not forcibly terminate.
