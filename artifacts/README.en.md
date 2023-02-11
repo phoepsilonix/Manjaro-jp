@@ -45,7 +45,7 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 
 ##### Addition: 2023-02-11
 
-In the latest version (2023-02-11~) of [Manjaro-JP](https://manjaro-jp.sourceforge.io), the above measures have been added.
+In the latest version (2023-02-11~) of [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), the above measures have been added.
 Additionally, the installer has been modified to add a process to enable the swap partition during installation.
 
 ---

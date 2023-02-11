@@ -44,7 +44,7 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 ```
 
 ##### 追記: 2023-02-11  
-[Manjaro-JP](https://manjaro-jp.sourceforge.io/)の最新版(2023-02-11〜)では、上記の対策が追加されています。  
+[Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/)の最新版(2023-02-11〜)では、上記の対策が追加されています。  
 またインストーラーに手を加えて、インストール時にswapパーティションを有効にする処理を追加しました。
 
 ---
