@@ -1,1 +1,1 @@
-artifacts/README.ja.md
+README.md
