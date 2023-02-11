@@ -32,13 +32,20 @@ swapパーティションを/dev/sdXとした場合、次のようなコマン�
 sudo mkswap /dev/sdX
 sudo swapon /dev/sdX
 ```
+```
+# swapが有効ではない場合、lsblkでデバイスを調べて、swapパーティションを有効にします。
+[[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
+```
 
 また次のコマンドで、OOM killer（強制終了）の対象外を指定しておきましょう。
 ```
 pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
-pidof -xw Xwayland gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
+pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
+##### 追記: 2023-02-11  
+[Manjaro-JP](https://manjaro-jp.sourceforge.io/)の最新版(2023-02-11〜)では、上記の対策が追加されています。  
+またインストーラーに手を加えて、インストール時にswapパーティションを有効にする処理を追加しました。
 
 ---
 ### 配布場所
@@ -302,10 +309,11 @@ kernel-6.1.11
 nvidia-utils 525.89.02  
 Manjaro-jpのレポジトリURLを変更しました。  
 （OSDNからOSDN Webへ。一時的なものになるかもしれません。）  
+ISOファイルは、[SourceForge](https://sourceforge.net/projects/manjaro-jp/)で配布します。  
 Calamaresインストーラーに若干手を加えました。  
 （高負荷時にインストーラーが強制終了するケースを減らします。）   
-またMOK（Machine Owner KEY)をインストール時に登録するようにしています。  
-パスワードはインストーラーで設定した自身のユーザーのパスワードと同じです。  
+またMOK（Machine Owner Key)をインストール時に登録するようにしています。  
+MOKパスワードはインストーラーで設定した自身のユーザーのパスワードと同じです。  
 grubおよびkernelは署名済みです。
 
 

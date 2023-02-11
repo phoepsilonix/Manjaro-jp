@@ -32,13 +32,20 @@ If the swap partition is /dev/sdX, try enabling swap manually with the following
 sudo mkswap /dev/sdX
 sudo swapon /dev/sdX
 ```
+```
+# If swap is not enabled, use lsblk to examine the device and enable the swap partition.
+[[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
+```
 
 The following command should also be used to specify that the OOM killer (forced termination) is not applicable.
 ```
 pidof -xw Xwayland calamares_polkit|xargs -n1 sudo choom -n -1000 -p
-pidof -xw Xwayland gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
+pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
+##### Added: 2023-02-11  
+In the latest version (from 2023-02-11) of [Manjaro-JP](https://manjaro-jp.sourceforge.io/), the above measures have been added.  
+Also, the installer has been modified to add a process to enable the swap partition during installation.
 
 ---
 ### Place of distribution
@@ -303,9 +310,10 @@ kernel-6.1.9
 kernel-6.1.11
 nvidia-utils 525.89.02  
 The repository URL for Manjaro-jp has been changed (from OSDN to OSDN Web, which may be temporary).  
+The ISO files are distributed on [SourceForge](https://sourceforge.net/projects/manjaro-jp/).  
 Calamares installer has been slightly modified (to reduce the cases where the installer terminates forcibly during high load).  
-The MOK (Machine Owner KEY) is now registered during installation.  
-The password is the same as the user's password set by the installer. Grub and kernel are signed.  
+The MOK (Machine Owner Key) is now registered during installation.  
+The MOK password is the same as the user's password set by the installer. Grub and kernel are signed.  
 
 
 ---
