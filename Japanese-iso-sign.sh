@@ -52,15 +52,17 @@ done
 sort -k2 -u SHA256SUMS > tmp && mv tmp SHA256SUMS
 #cp SHA256SUMS $usb/artifacts
 
+trackers=$(sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/,/g' trackers_all.txt |sed -e 's/,$//')
 echo "torrent"
 # torrentファイル作成
 for f in *.iso
 do
 	if [[ ! -e $f.torrent ]] ;then
         echo $f
-	mktorrent -t0 -a udp://tracker.opentrackr.org:1337/announce \
-        -a udp://tracker.torrent.eu.org:451/announce \
+	mktorrent -t0 \
+        --announce=udp://tracker.opentrackr.org:1337/announce,udp://tracker.torrent.eu.org:451/announce,$trackers \
 		-w "https://sourceforge.net/projects/manjaro-jp/files/$f/download" \
+		-w "https://manjaro.phoepsilonix.love/artifacts/$f" \
                 $f
 #		-w "https://osdn.net/projects/manjaro-jp/storage/$f" \
         fi
