@@ -8,7 +8,7 @@ usb=/run/media/phoepsilonix/Ventoy
 # GPG署名、SHA256SUMS、torrent
 cd $artifacts
 
-sh rename.sh
+#sh rename.sh
 echo "gpg sign"
 # gpg署名
 for f in *.iso

@@ -1,7 +1,6 @@
 #/usr/bin/env sh
 
-#cd artifacts;
-browser=
+cd artifacts
 browser=firefox
 browser=floorp
 
@@ -19,4 +18,4 @@ do
         mv $f $f2;
 done
 
-exit 0;
+cd ..

@@ -320,6 +320,9 @@ Also, the Machine Owner Key (MOK) is now registered during installation.
 The MOK password is the same as the password set by the user during the installer.  
 Both the grub and kernel are signed.
 
+##### 20230214
+manjaro-release 22.0.3  
+
 
 ---
 Note: As a reference, an additional note.  
