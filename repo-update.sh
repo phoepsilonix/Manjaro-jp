@@ -97,6 +97,10 @@ sudo rsync -avP --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to loc
 #OSDN 
 #OK:symlink
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
+rsync -avPLc --no-perms ./manjaro-jp.* phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
+rsync -avPL --size-only --no-perms ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
+rsync -avPL --size-only --no-perms --delete --exclude=\.* ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
+#osdn web
 rsync -avP --delete ./ phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs/manjaro-jp/
 
 #sourceforge 

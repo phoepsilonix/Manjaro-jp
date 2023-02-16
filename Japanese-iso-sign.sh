@@ -52,7 +52,7 @@ done
 sort -k2 -u SHA256SUMS > tmp && mv tmp SHA256SUMS
 #cp SHA256SUMS $usb/artifacts
 
-trackers=$(sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/,/g' trackers_all.txt |sed -e 's/,$//')
+trackers=$(sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/,/g' ../trackers_all.txt |sed -e 's/,$//')
 echo "torrent"
 # torrentファイル作成
 for f in *.iso

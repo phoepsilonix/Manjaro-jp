@@ -15,8 +15,8 @@ eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 # OSDNへアップデート
 echo "OSDN"
 eval `keychain --agents ssh --eval id_ed25519`
-#rsync -avPL --size-only --no-perms --delete ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
-#rsync -avPLc --no-perms --delete ./*.sig phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
+rsync -avPL --size-only --no-perms --delete ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
+rsync -avPLc --no-perms --delete ./*.sig phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
 rsync -avPLz --no-perms ./*.css ./*.js ./*.md index.html index.ja.html index.en.html README.ja.html README.en.html phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs
 #OSDN web
 #OK:symlink

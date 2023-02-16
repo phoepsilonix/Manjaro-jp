@@ -316,9 +316,6 @@ nvidia-utils 525.89.02
 The URL of Manjaro-jp repository has been changed from OSDN to OSDN Web. (It may be temporary.)  
 The ISO files are distributed on [SourceForge](https://sourceforge.net/projects/manjaro-jp/).  
 A few modifications have been made to the Calamares installer. (Reducing the cases where the installer is forcibly terminated during high loads.)  
-Also, the Machine Owner Key (MOK) is now registered during installation.  
-The MOK password is the same as the password set by the user during the installer.  
-Both the grub and kernel are signed.
 
 ##### 20230214
 manjaro-release 22.0.3  
@@ -333,6 +330,11 @@ This is for those who are interested. Please refer to [this link](https://github
 It is also worth checking out [Garuda Linux](https://garudalinux.org), which is also a good choice among the Arch Linux family, known for its rolling release.
 
 ---
+```
+[manjaro-jp]
+SigLevel = Optional TrustAll
+Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
+```
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll

@@ -311,9 +311,6 @@ Manjaro-jpのレポジトリURLを変更しました。
 ISOファイルは、[SourceForge](https://sourceforge.net/projects/manjaro-jp/)で配布します。  
 Calamaresインストーラーに若干手を加えました。  
 （高負荷時にインストーラーが強制終了するケースを減らします。）   
-またMOK（Machine Owner Key)をインストール時に登録するようにしています。  
-MOKパスワードはインストーラーで設定した自身のユーザーのパスワードと同じです。  
-grubおよびkernelは署名済みです。
 
 ##### 20230214
 manjaro-release 22.0.3  
@@ -328,6 +325,11 @@ LinuxをインストールしたPCがあれば、非公式？な(公式サポー
 ローリングリリースが特徴のArchLinux系では、[Garuda Linux](https://garudalinux.org)も良さそうです。
 
 ---
+```
+[manjaro-jp]
+SigLevel = Optional TrustAll
+Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
+```
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
