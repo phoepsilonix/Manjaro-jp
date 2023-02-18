@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+NO_OOM_KILLER="$$"
+echo $NO_OOM_KILLER | xargs -n1 sudo choom -n -1000 -p 
 
 # 参照するiso-profilesはカレントディレクトリが優先される。
 pkgs=`pwd`/Japanese-pkgs.txt
