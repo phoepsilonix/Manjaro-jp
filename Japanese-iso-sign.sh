@@ -63,7 +63,7 @@ do
         --announce=udp://tracker.opentrackr.org:1337/announce,udp://tracker.torrent.eu.org:451/announce,$trackers \
 		-w "https://osdn.net/projects/manjaro-jp/storage/$f" \
 		-w "https://sourceforge.net/projects/manjaro-jp/files/$f/download" \
-		-w "https://manjaro.phoepsilonix.love/artifacts/$f" \
+		-w "https://manjaro.phoepsilonix.love/$f" \
                 $f
         fi
 done

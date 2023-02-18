@@ -324,7 +324,7 @@ kernel-6.1.12
 ---
 Zusätzliche Informationen als Referenz.  
 Wenn Sie einen PC mit installiertem Linux haben, können Sie eine inoffizielle? Wenn Sie einen PC mit installiertem Linux haben, können Sie eine Dual-Boot-Umgebung mit inoffiziellem (keine offizielle Unterstützung) ChromeOS erstellen. Dies ist für Leute mit einigen Kenntnissen.  
-Wenn Sie interessiert sind, lesen Sie bitte [hier](https://github.com/sebanc/brunch/blob/master/install-with-linux.md). ([Japanese translation](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E 7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82-0))
+Wenn Sie interessiert sind, lesen Sie bitte [hier](https://github.com/sebanc/brunch/blob/master/install-with-linux.md). ([Japanisch](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82))
 
 ---
 In der ArchLinux-Familie, die rollierende Veröffentlichungen anbietet, sieht [Garuda Linux] (https://garudalinux.org) ebenfalls gut aus.

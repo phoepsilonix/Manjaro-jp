@@ -327,7 +327,7 @@ kernel-6.1.12
 ---
 Note: As a reference, an additional note.  
 If you have a PC with Linux installed, you can also create a dual-boot environment with (no official support) ChromeOS, as long as you have some knowledge.  
-This is for those who are interested. Please refer to [this link](https://github.com/sebanc/brunch/blob/master/install-with-linux.md) for reference.([Japanese](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82-0))
+This is for those who are interested. Please refer to [this link](https://github.com/sebanc/brunch/blob/master/install-with-linux.md) for reference.([Japanese](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82))
 
 ---
 It is also worth checking out [Garuda Linux](https://garudalinux.org), which is also a good choice among the Arch Linux family, known for its rolling release.
