@@ -1,1 +1,115 @@
-index.ja.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Manjaro-JP</title>
+    <link
+      rel="icon"
+      href="https://manjaro.phoepsilonix.love/favicon.png"
+      type="image/png"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://phoepsilonix.love/bl-themes/phoep/css/sport.css?version=3.14.1"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://phoepsilonix.love/bl-kernel/css/bootstrap.min.css?version=3.14.1"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://phoepsilonix.love/bl-themes/phoep/css/bootstrap.min.css?version=3.14.1"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://phoepsilonix.love/sunburst.min.css"
+    />
+    <script src="https://phoepsilonix.love/highlight.min.js"></script>
+    <script src="https://phoepsilonix.love/print-code.js"></script>
+  </head>
+  <body>
+    <header></header>
+    <label for="language-select">言語:</label>
+    <select id="language-select" name="language-select"></select>
+    <div id="readme"></div>
+    <footer></footer>
+    <script>
+      function readme() {
+        fetch(source_file)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("File not found");
+            }
+            return response.text();
+          })
+          .then((data) => {
+            output(data);
+          })
+          .catch((error) => {
+            source_file = "./README.ja.html";
+            fetch(source_file)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Fallback file not found");
+                }
+                return response.text();
+              })
+              .then((data) => {
+                output(data);
+              })
+              .catch((error) => {
+                console.error("File not found", error);
+              });
+          });
+      }
+
+      function output(data) {
+        let el = document.getElementById("readme");
+        let text = document.createTextNode(data);
+        el.innerHTML = text.data;
+        addCopyBtn();
+      }
+      function changeLanguage() {
+        const selectedLanguage = languageSelect.value;
+        if (selectedLanguage !== browserLanguage) {
+          document.documentElement.lang = selectedLanguage;
+        } else {
+          document.documentElement.lang = browserLanguage;
+        }
+        source_file = "./README." + document.documentElement.lang + ".html";
+        readme();
+      }
+      const browserLanguage = (
+        navigator.language || navigator.userLanguage
+      ).split("-")[0];
+      const languageSelect = document.getElementById("language-select");
+
+      // 選択肢の配列
+      const languageOptions = [
+        { value: "ja", text: "日本語" },
+        { value: "en", text: "English" },
+        <!--
+        { value: "fr", text: "Français" },
+        -->
+      ];
+
+      for (let i = 0; i < languageOptions.length; i++) {
+        const option = document.createElement("option");
+        option.value = languageOptions[i].value;
+        option.textContent = languageOptions[i].text;
+        if (languageOptions[i].value === browserLanguage) {
+          option.selected = true;
+        }
+        languageSelect.appendChild(option);
+        languageSelect.addEventListener("change", function () {
+          changeLanguage();
+        });
+      }
+      window.addEventListener("DOMContentLoaded", changeLanguage());
+    </script>
+  </body>
+</html>

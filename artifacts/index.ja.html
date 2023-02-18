@@ -16,15 +16,16 @@
 <link rel="stylesheet" href="https://phoepsilonix.love/sunburst.min.css">
 <script src="https://phoepsilonix.love/highlight.min.js"></script>
 <script src="https://phoepsilonix.love/print-code.js"></script>
-<style>
-svg.bi-clipboard{
-   fill: currentColor;
-}
-</style>
+</head>
+<body>
+<header></header>
+<div id="readme"></div>
+<footer></footer>
 <script>
-var source_file = './README.ja.html';
-
-window.onload=function() {
+var source_file = './README.' + document.documentElement.lang + '.html';
+//window.addEventListener('DOMContentLoaded', readme())
+readme()
+function readme() {
     	fetch(source_file)
        	.then(response => response.text())
         .then(data => {
@@ -33,12 +34,9 @@ window.onload=function() {
         el.innerHTML = text.data;
         addCopyBtn();
         });
+const userLang = navigator.language || navigator.userLanguage;
+console.log(userLang);
 }
 </script>
-</head>
-<body>
-<header></header>
-<div id="readme"></div>
-<footer></footer>
 </body>
 </html>
