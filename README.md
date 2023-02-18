@@ -292,7 +292,6 @@ kernel-6.1.6
 ##### 20230120
 kernel-6.1.7  
 nvidia-utils 525.85.05
-</details>
 
 ##### 20230127
 manjaro-release 22.0.1  
@@ -302,6 +301,7 @@ nvidia-utils 525.85.05
 ##### 20230204
 manjaro-release 22.0.2  
 kernel-6.1.9
+</details>
 
 ##### 20230210
 kernel-6.1.11  
@@ -315,6 +315,9 @@ Calamaresインストーラーに若干手を加えました。
 ##### 20230214
 manjaro-release 22.0.3  
 
+##### 20230217
+kernel-6.1.12
+
 
 ---
 参考までに、追記。  
@@ -323,6 +326,12 @@ LinuxをインストールしたPCがあれば、非公式？な(公式サポー
 
 ---
 ローリングリリースが特徴のArchLinux系では、[Garuda Linux](https://garudalinux.org)も良さそうです。
+
+---
+その他のおすすめOS  
+[Fedora Kinoite](https://kinoite.fedoraproject.org/ja/)  
+[Fedora Silverblue](https://getfedora.org/ja/silverblue/)  
+[Endless OS | Endless Computers](https://endlessos.com/)  
 
 ---
 ```

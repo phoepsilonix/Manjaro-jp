@@ -299,7 +299,6 @@ kernel-6.1.6
 ##### 20230120
 kernel-6.1.7  
 nvidia-utils 525.85.05
-</details>
 
 ##### 20230127
 manjaro-release 22.0.1  
@@ -309,6 +308,7 @@ nvidia-utils 525.85.05
 ##### 20230204
 manjaro-release 22.0.2  
 kernel-6.1.9
+</details>
 
 ##### 20230211
 kernel-6.1.11
@@ -320,6 +320,8 @@ A few modifications have been made to the Calamares installer. (Reducing the cas
 ##### 20230214
 manjaro-release 22.0.3  
 
+##### 20230217
+kernel-6.1.12
 
 ---
 Note: As a reference, an additional note.  
@@ -328,6 +330,12 @@ This is for those who are interested. Please refer to [this link](https://github
 
 ---
 It is also worth checking out [Garuda Linux](https://garudalinux.org), which is also a good choice among the Arch Linux family, known for its rolling release.
+
+---
+Other recommended OS  
+[Fedora Kinoite](https://kinoite.fedoraproject.org/ja/)  
+[Fedora Silverblue](https://getfedora.org/ja/silverblue/)  
+[Endless OS | Endless Computers](https://endlessos.com/)  
 
 ---
 ```
