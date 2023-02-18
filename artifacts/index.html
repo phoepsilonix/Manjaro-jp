@@ -36,6 +36,7 @@
     <footer></footer>
     <script>
         function readme() {
+            var source_file = "./README." + document.documentElement.lang + ".html";
             fetch(source_file)
                 .then((response) => {
                     if (!response.ok) {
@@ -78,7 +79,6 @@
             } else {
                 document.documentElement.lang = browserLanguage;
             }
-            source_file = "./README." + document.documentElement.lang + ".html";
             readme();
         }
         const browserLanguage = (navigator.language || navigator.userLanguage).split("-")[0];
@@ -93,12 +93,10 @@
                 value: "en",
                 text: "English"
             },
-            <!--
             {
                 value: "fr",
                 text: "Français"
             },
-            -->
         ];
 
         for (let i = 0; i < languageOptions.length; i++) {
