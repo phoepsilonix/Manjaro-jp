@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo pacman -Sy nginx-quic nginx-quic-mod-brotli git-lfs base-devel neovim clang lld llvm aria2 manjaro-tools-iso-git rsync sox --needed
+gpg -dq ~/.ssh/pass.gpg|sudo -S pacman -Sy nginx-quic nginx-quic-mod-brotli git-lfs base-devel neovim clang lld llvm aria2 manjaro-tools-iso-git rsync sox --needed
 sudo pacman -Sy --needed paru fuse-overlayfs keychain expect 
 
 mkdir -p ~/gitlab

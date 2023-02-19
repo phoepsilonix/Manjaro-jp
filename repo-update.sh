@@ -10,7 +10,7 @@ ssh_pass=~/.ssh/ssh-passphrase.gpg
 
 cd $repo_dir; 
 
-sudo -S pwd < $gpg_pass > /dev/null
+gpg -dq $gpg_pass.gpg | sudo -S pwd > /dev/null
 # usb
 # 古いパッケージをバックアップ
 #sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
@@ -73,7 +73,7 @@ expect << EOF
 EOF
 
 # localhost
-cat $gpg_pass |sudo -S pwd > /dev/null
+gpg -dq $gpg_pass.gpg | sudo -S pwd > /dev/null
 sudo rsync -avP --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # usb

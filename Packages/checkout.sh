@@ -12,7 +12,7 @@ elif [[ "$ver" == "5.10" ]] ;then ver=6.1
 else ver=6.1
 fi
 
-sudo -S pwd < ~/.ssh/gpg-passphrase >/dev/null
+gpg -dq ~/.ssh/pass.gpg | sudo -S pwd >/dev/null
 sudo chown -R phoepsilonix:phoepsilonix $exdir
 #cd r8168
 #git diff | patch -R -i -

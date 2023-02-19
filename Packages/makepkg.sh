@@ -9,7 +9,7 @@ curdir=${PWD##*/}
 exdir=$(cat /usr/lib/modules/${curdir}-MANJARO/version)
 exdir=/usr/lib/modules/${exdir}/build
 echo $exdir
-sudo -S pwd < ~/.ssh/gpg-passphrase >/dev/null
+gpg -dq ~/.ssh/pass.gpg | sudo -S pwd >/dev/null
 sudo chown -R phoepsilonix:phoepsilonix $exdir
 #for m in $(grep nvidia ../extramodules.txt)
 for m in $(cat ../extramodules.txt)

@@ -77,7 +77,7 @@ do
         echo "build iso"
         echo "buildiso -d xz -k $kernel -p $ed $gkey"
         sync
-        cat ~/.ssh/gpg-passphrase|sudo -S pwd >/dev/null 2>&1
+        gpg -dq ~/.ssh/pass.gpg|sudo -S pwd >/dev/null 2>&1
         sync
         touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback -b INFO
         buildiso  -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
