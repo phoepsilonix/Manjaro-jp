@@ -19,10 +19,35 @@
         }
 
         #language-select {
-            position: absolute;
+            position: relative;
             top: 100%;
             left: 0;
             margin-top: 5px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100vh;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            min-height: 100vh;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 100vh;
         }
     </style>
 </head>
@@ -84,7 +109,6 @@
         const browserLanguage = (navigator.language || navigator.userLanguage).split("-")[0];
         const languageSelect = document.getElementById("language-select");
 
-        // 選択肢の配列
         const languageOptions = [{
                 value: "ja",
                 text: "日本語"
@@ -111,12 +135,18 @@
                 option.selected = true;
             }
             languageSelect.appendChild(option);
-            languageSelect.addEventListener("change", function() {
+            languageSelect.addEventListener("change", function () {
                 changeLanguage();
             });
         }
         window.addEventListener("DOMContentLoaded", changeLanguage());
     </script>
+    <noscript>
+        <div class="container">
+            <iframe src="./README.ja.html"></iframe>
+        </div>
+        <a href="./README.ja.html">Manjaro JP(Japanese)</a>
+    </noscript>
 </body>
 
 </html>
