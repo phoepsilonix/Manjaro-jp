@@ -323,7 +323,7 @@ kernel-6.1.12
 ---
 Informação adicional para referência.  
 Se tiver um PC com Linux instalado, pode criar um não-oficial? Se tiver um PC com Linux instalado, pode criar um ambiente de boot duplo com ChromeOS não-oficial (sem suporte oficial). Isto é para pessoas com algum conhecimento.  
-Se estiver interessado, por favor consulte [aqui](https://github.com/sebanc/brunch/blob/master/install-with-linux.md). ([Japanese translation](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E 7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82-0))
+Se estiver interessado, por favor consulte [aqui](https://github.com/sebanc/brunch/blob/master/install-with-linux.md). ([Japonês](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E 7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82-0))
 
 ---
 Na família ArchLinux, que apresenta lançamentos rolantes, [Garuda Linux](https://garudalinux.org) também tem bom aspecto.
