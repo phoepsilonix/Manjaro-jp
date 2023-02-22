@@ -325,6 +325,11 @@ manjaro-release 22.0.3
 ##### 20230217
 kernel-6.1.12
 
+##### 20230223
+manjaro-release 22.0.4  
+kernel-6.2
+
+
 ---
 Note: As a reference, an additional note.  
 If you have a PC with Linux installed, you can also create a dual-boot environment with (no official support) ChromeOS, as long as you have some knowledge.  

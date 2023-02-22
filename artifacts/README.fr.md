@@ -319,6 +319,10 @@ manjaro-release 22.0.3
 ##### 20230217
 kernel-6.1.12
 
+##### 20230223
+manjaro-release 22.0.4  
+kernel-6.2
+
 
 ---
 Informations supplémentaires pour référence.  

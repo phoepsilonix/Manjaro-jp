@@ -37,6 +37,7 @@ const getYtThumbnail = async (vid) => {
           for (var i = 0; i < movies.length; i++) {
               movies[i].id="ytVideo"+i;
               var vid = movies[i].attributes['data'].value;
+              movies[i]['state']=0;
               var thumbnail;
               thumbnail = await getThumbnail(vid);
               movies[i].innerHTML = '<img class="embed-responsive embed-responsive-16by9" id="yt-thumb' + i + '" src="' + thumbnail + '">';
@@ -47,24 +48,71 @@ const getYtThumbnail = async (vid) => {
  
 async function embedYoutube(num) {
     let i = document.getElementById('yt-thumb' + num);
-    i.addEventListener('click', function() {
+    i.addEventListener('pointerdown', function() {
         var movie = document.getElementById("ytVideo"+num);
         if (movie.childNodes.length == 1) {
             let myhost = "https%3A%2F%2Fphoepsilonix.love";
             let frame = document.createElement('iframe');
             movie.className = "embed-responsive embed-responsive-16by9";
+            frame.id = "ytVideoFrame"+num;
             frame.frameBorder = "0";
             frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
 //            frame.sandbox = "allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation";
             frame.allowFullscreen = true;
             frame.className = "embed-responsive rounded";
             frame.src = "https://www.youtube.com/embed/" + movie.attributes['data'].value + "?controls=1&amp;disablekb=1&amp;enablejsapi=1&amp;iv_load_policy=3&amp;playsinline=1&amp;rel=0&amp;autohide=0&amp;origin=" + myhost + "&amp;widgetid=1";
+            frame.setAttribute("state", '1');
             frame.addEventListener('load', function (event) {
                 let arg = null;
                 let action = "playVideo";
                 this.contentWindow.postMessage('{"event":"command", "func":"' + action + '", "args":' + arg + '}', '*');
+            })
+/*
+            frame.addEventListener('pointerdown', function(event) {
+                onPlayerStateChange(event, num);
             });
+            movie.addEventListener('pointerdown', function(event) {
+                onPlayerStateChange(event, num);
+            });
+            */
             movie.childNodes[0].replaceWith(frame);
         }
     });
 }
+var ytPlaying=-1;
+var ytPlay=-1;
+var ytStop=-1;
+/*
+function onPlayerStateChange(event, num) {
+        let movie = document.getElementById("ytVideoFrame"+num);
+        var thisState = movie.getAttribute('state');
+        if( thisState == '1' && ytPlaying == -1) {
+            ytPlaying = num;
+        } else if(thisState == '1' && ytPlaying != num) {
+            ytStop = ytPlaying;
+            ytPlay = num;
+        } else {
+            check(event, num);
+        }
+    if(ytStop != -1) {
+        let arg = null;
+        let action = "pauseVideo";
+        let stop_movie = document.getElementById("ytVideoFrame"+ytStop);
+        stop_movie['contentWindow'].postMessage('{"event":"command", "func":"' + action + '", "args":' + arg + '}', '*');
+        ytStop = -1;
+        //movie.firstChild.setAttribute('state', '0');
+    }
+    if(ytPlay != -1) {
+        ytPlaying = ytPlay;
+        ytPlay = -1;
+    }
+}
+*/
+/*
+    player.playVideo():Void
+    player.pauseVideo():Void
+    player.stopVideo():Void
+    player.seekTo(seconds:Number, allowSeekAhead:Boolean):Void
+    player.clearVideo():Void
+*/
+
