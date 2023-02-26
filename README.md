@@ -2,7 +2,7 @@
 
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
-[kernel-6.1系](https://kernel.org/)。
+[kernel-6.2系](https://kernel.org/)。
 
 公式に合わせて、KDE、Xfce、GNOMEの３種類を用意する予定です。  
 配布ファイルはISOと一部パッケージファイルです。  
@@ -47,6 +47,10 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/)の最新版(2023-02-11〜)では、上記の対策が追加されています。  
 またインストーラーに手を加えて、インストール時にswapパーティションを有効にする処理を追加しました。
 Calamaresにも、[フィードバック済み](https://github.com/calamares/calamares/pull/2102/commits/79d796a437ad039745147c62a652035d4cd882fe)です。
+
+##### 追記: 2023-02-27  
+上記のフィードバックでは、パーティションの構成方法によって、swapが有効化されない場合があります。  
+そのため追加の対策として、zram-generatorの活用を追加しました。
 
 ---
 ### 配布場所
@@ -324,6 +328,10 @@ kernel-6.1.12
 manjaro-release 22.0.4  
 kernel-6.2
 
+##### 20230227
+kernel-6.2.1  
+zram-generator
+
 
 ---
 参考までに、追記。  
@@ -335,9 +343,9 @@ LinuxをインストールしたPCがあれば、非公式？な(公式サポー
 
 ---
 その他のおすすめOS  
+[Endless OS | Endless Computers](https://endlessos.com/)  
 [Fedora Kinoite](https://kinoite.fedoraproject.org/ja/)  
 [Fedora Silverblue](https://getfedora.org/ja/silverblue/)  
-[Endless OS | Endless Computers](https://endlessos.com/)  
 
 ---
 ```

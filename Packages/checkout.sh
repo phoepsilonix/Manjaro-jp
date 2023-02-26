@@ -36,7 +36,7 @@ do
         git switch -f master
         git checkout master;
         git pull origin master
-        for patch in ~/gitlab/Manjaro-jp/patches/${m}*\.patch ~/gitlab/Manjaro-jp/patches/*${m}\.patch
+        for patch in ~/gitlab/Manjaro-jp/patches/${m}*\.patch ~/gitlab/Manjaro-jp/patches/*${m}\.patch ~/gitlab/Manjaro-jp/patches/*${m}*${ver}.patch
         do
                 if [[ -e $patch ]];then
                         echo "$patch Applying"

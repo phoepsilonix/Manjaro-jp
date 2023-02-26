@@ -1,6 +1,7 @@
 #!/bin/sh
 #
 NO_OOM_KILLER="$$"
+gpg -dq ~/.ssh/pass.gpg|sudo -S pwd
 echo $NO_OOM_KILLER | xargs -n1 sudo choom -n -1000 -p 
 
 # 参照するiso-profilesはカレントディレクトリが優先される。
@@ -25,11 +26,11 @@ pkg3=Packages-Root
 editions=(
         "manjaro gnome"
         "manjaro kde"
-        "manjaro xfce"
+#        "manjaro xfce"
         "community cinnamon" 
-        "community mate"
-        "community openbox"
-        "manjaro architect"
+#        "community mate"
+#        "community openbox"
+#        "manjaro architect"
 #	"community lxqt"
 #	"community lxqt-kwin"
 #	"community sway"

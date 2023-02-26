@@ -2,7 +2,7 @@
 
 ## Prise en charge de la langue japonaise pour [Manjaro Linux](https://manjaro.org/)
 　Prise en charge de la saisie et de l'affichage en japonais par défaut, y compris dans les environnements dynamiques.  
-[série kernel-6.1](https://kernel.org/).
+[série kernel-6.2](https://kernel.org/).
 
 KDE, Xfce et GNOME seront disponibles selon la version officielle.  
 Les fichiers de distribution sont des ISO et quelques fichiers de paquets.  
@@ -47,6 +47,10 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 Dans la dernière version (du 2023-02-11) de [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), les mesures ci-dessus ont été ajoutées.  
 De plus, l'installateur a été modifié pour ajouter un processus permettant d'activer la partition d'échange pendant l'installation.
 Le feedback a déjà été fourni à [Calamares](https://github.com/calamares/calamares/pull/2102/commits/79d796a437ad039745147c62a652035d4cd882fe).
+
+##### Ajouté : 2023-02-17  
+Les commentaires ci-dessus indiquent que le swap peut ne pas être activé selon la façon dont la partition est configurée.  
+Par conséquent, comme mesure supplémentaire, l'utilisation de zram-generator a été ajoutée.
 
 ### Lieu de distribution.
 [![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
@@ -323,6 +327,10 @@ kernel-6.1.12
 manjaro-release 22.0.4  
 kernel-6.2
 
+##### 20230227
+kernel-6.2.1  
+zram-generator
+
 
 ---
 Informations supplémentaires pour référence.  
@@ -334,9 +342,9 @@ Dans la famille ArchLinux, qui se caractérise par des mises à jour régulière
 
 ---
 Autres systèmes d'exploitation recommandés  
+[Endless OS | Endless Computers](https://endlessos.com/)  
 [Fedora Kinoite](https://kinoite.fedoraproject.org/ja/)  
 [Fedora Silverblue](https://getfedora.org/ja/silverblue/)  
-[Endless OS | Endless Computers](https://endlessos.com/)  
 
 ---
 ```

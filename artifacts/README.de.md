@@ -2,7 +2,7 @@
 
 ## Unterstützung der japanischen Sprache für [Manjaro Linux](https://manjaro.org/)
 　Unterstützt standardmäßig japanische Eingabe und Anzeige, einschließlich Live-Umgebungen.  
-[Kernel-6.1-Serie](https://kernel.org/).
+[Kernel-6.2-Serie](https://kernel.org/).
 
 KDE, Xfce und GNOME werden für den offiziellen Gebrauch verfügbar sein.  
 Die Distributionsdateien sind ISO und einige Paketdateien.  
@@ -47,6 +47,10 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 In der neuesten Version (vom 2023-02-11) von [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/) sind die oben genannten Maßnahmen hinzugefügt worden.  
 Außerdem wurde das Installationsprogramm geändert, um einen Prozess zur Aktivierung der Swap-Partition während der Installation hinzuzufügen.
 [Calamares](https://github.com/calamares/calamares/pull/2102/commits/79d796a437ad039745147c62a652035d4cd882fe) hat bereits eine Rückmeldung erhalten.
+
+##### Hinzugefügt: 2023-02-27  
+Die obigen Rückmeldungen deuten darauf hin, dass Swap je nach Konfiguration der Partition möglicherweise nicht aktiviert ist.  
+Daher wurde als zusätzliche Maßnahme die Verwendung von zram-generator hinzugefügt.
 
 ---
 ### Vertriebsort.
@@ -325,6 +329,9 @@ kernel-6.1.12
 manjaro-release 22.0.4  
 kernel-6.2
 
+##### 20230227
+kernel-6.2.1  
+zram-generator
 
 ---
 Zusätzliche Informationen als Referenz.  
@@ -336,9 +343,9 @@ In der ArchLinux-Familie, die rollierende Veröffentlichungen anbietet, sieht [G
 
 ---
 Andere empfohlene Betriebssysteme  
+[Endless OS | Endless Computers](https://endlessos.com/)  
 [Fedora Kinoite](https://kinoite.fedoraproject.org/ja/)  
 [Fedora Silverblue](https://getfedora.org/ja/silverblue/)  
-[Endless OS | Endless Computers](https://endlessos.com/)  
 
 ---
 ```

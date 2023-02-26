@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+NO_OOM_KILLER="$$"
+echo $NO_OOM_KILLER | xargs -n1 sudo choom -n -1000 -p 
 
 # 参照するiso-profilesはカレントディレクトリが優先される。
 pkgs=`pwd`/Japanese-pkgs.txt
@@ -8,7 +11,7 @@ usb=/run/media/phoepsilonix/Ventoy
 gkey="-g $(cat ~/.gnupg/sign.txt)"
 #gkey=""
 
-kernel=linux61
+kernel=linux62
 
 # 保存先フォルダ
 artifacts=`pwd`/artifacts
@@ -21,11 +24,12 @@ pkg3=Packages-Root
 # エディション指定
 editions=(
 #        "manjaro gnome"
-#	"manjaro kde"
-#	"manjaro xfce"
+        "manjaro kde"
+#        "manjaro xfce"
 #        "community cinnamon" 
-        "community mate"
-#	"community openbox"
+#        "community mate"
+#        "community openbox"
+#        "manjaro architect"
 #	"community lxqt"
 #	"community lxqt-kwin"
 #	"community sway"
@@ -36,21 +40,28 @@ editions=(
 #mkdir -p $artifacts
 #rm -rf $pkgdir
 #mkdir -p $pkgdir
+#cp -r iso-profiles-orig/* $pkgdir/
+#sync
 
 # profiles.confを微修正
 # user-repos.confを追加したiso-profilesを用意する
-#cp -r iso-profiles-orig/* $pkgdir
 
 # add Japanese pkgs and vivaldi
 for edition in "${editions[@]}"
 do
 	data=(${edition[@]})
 	path=${data[0]}/${data[1]}
+        mkdir -p $pkgdir/$path/
+        echo cp -r iso-profiles-orig/$path $pkgdir/${data[0]}/
+        cp -r iso-profiles-orig/$path $pkgdir/${data[0]}/
 	#cat $pkgs >> $pkgdir/$edition[0]/$edition[1]/$pkg1
 	# Desktopパッケージに加える。ライブは不要みたい。
-	cat $pkgs >> $pkgdir/$path/$pkg2
+        if [[ "${data[1]}" != "architect" ]] ;then
+            cat $pkgs >> $pkgdir/$path/$pkg2
         # Packages-Rootに追加
-	cat $pkgs2 >> $pkgdir/$path/$pkg3
+            cat $pkgs2 >> $pkgdir/$path/$pkg3
+        fi
+        sync
 done
 
 # buildiso prepare image
@@ -64,12 +75,16 @@ do
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso 
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build
         echo "build iso"
-        echo "buildiso -d xz -k $kernel -p $ed $gkey" 
-        cat ~/.ssh/gpg-passphrase|sudo -S pwd >/dev/null 2>&1
+        echo "buildiso -d xz -k $kernel -p $ed $gkey"
+        sync
+        gpg -dq ~/.ssh/pass.gpg|sudo -S pwd >/dev/null 2>&1
+        sync
         touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback -b INFO
         buildiso  -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
+        #buildiso  -zc -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
         sync
         find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
+        . artifacts/rename.sh
 #        buildiso -x -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
 #        buildiso -zc -d xz -f -k $kernel -p $ed $gkey
         #buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build

@@ -82,3 +82,4 @@ libinput-gestures
 mokutil
 sbsigntools
 shim-signed
+zram-generator

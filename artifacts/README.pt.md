@@ -2,7 +2,7 @@
 
 ## Suporte em língua japonesa para [Manjaro Linux](https://manjaro.org/)
 　Suporta a entrada e exibição japonesa por defeito, incluindo ambientes ao vivo.  
-[kernel-6.1 series](https://kernel.org/).
+[kernel-6.2 series](https://kernel.org/).
 
 KDE, Xfce e GNOME estarão disponíveis de acordo com a versão oficial.  
 Os ficheiros de distribuição são ISO e alguns ficheiros de pacotes.  
@@ -47,6 +47,10 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 Na última versão (de 2023-02-11) de [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), as medidas acima foram acrescentadas.  
 O instalador também foi modificado para adicionar um processo para permitir a partição swap durante a instalação.
 O feedback já foi fornecido a [Calamares](https://github.com/calamares/calamares/pull/2102/commits/79d796a437ad039745147c62a652035d4cd882fe).
+
+##### Adicionado: 2023-02-27  
+O feedback acima indicado indica que a troca pode não ser activada dependendo de como a partição está configurada.  
+Portanto, como medida adicional, foi adicionado o uso de zram-generador.
 
 ---
 ### Localização de distribuição.
@@ -322,6 +326,10 @@ kernel-6.1.12
 ##### 20230223
 manjaro-release 22.0.4  
 kernel-6.2
+
+##### 20230227
+kernel-6.2.1  
+zram-generator
 
 
 ---
