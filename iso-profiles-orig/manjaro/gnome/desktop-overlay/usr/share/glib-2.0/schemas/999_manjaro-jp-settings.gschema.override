@@ -23,7 +23,7 @@ autorun-x-content-start-app=['x-content/ostree-repository']
 
 [org.gnome.desktop.peripherals.keyboard]
 numlock-state=true
-remember-numlock-state=false
+remember-numlock-state=true
 
 [org.gnome.desktop.interface]
 color-scheme='prefer-dark'
