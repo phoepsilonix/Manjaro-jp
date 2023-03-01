@@ -368,7 +368,7 @@ Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 [manjaro-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 (GPG signing public key:536487F1470D7187) <phoepsilonix あっと gmail どっと com>  
 
-[give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)
+[give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
 [Patreon](https://patreon.com/user?u=87853674&utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=creatorshare_creator&utm_content=join_link)  
 [revolut](https://revolut.me/phoepsilonix)  
 [Paypal](https://paypal.me/phoepsilonix)  
