@@ -7,6 +7,7 @@ exdir=$(cat /usr/lib/modules/${curdir}-MANJARO/version)
 exdir=/usr/lib/modules/${exdir}/build
 echo $exdir
 ver=${curdir/extramodules-}
+kver=${curdir/extramodules-}
 if [[ "$ver" == "6.1" ]] ;then ver=5.15
 elif [[ "$ver" == "5.10" ]] ;then ver=6.1
 else ver=6.1
@@ -36,7 +37,7 @@ do
         git switch -f master
         git checkout master;
         git pull origin master
-        for patch in ~/gitlab/Manjaro-jp/patches/${m}*\.patch ~/gitlab/Manjaro-jp/patches/*${m}\.patch ~/gitlab/Manjaro-jp/patches/*${m}*${ver}.patch
+        for patch in ~/gitlab/Manjaro-jp/patches/${m}*\.patch ~/gitlab/Manjaro-jp/patches/*${m}\.patch ~/gitlab/Manjaro-jp/patches/*${m}*${kver}.patch
         do
                 if [[ -e $patch ]];then
                         echo "$patch Applying"
