@@ -1,7 +1,7 @@
 #!/bin/sh
 
 trackers=$(sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/,/g' trackers_all.txt |sed -e 's/,$//')
-sudo choom -n -1000 -p $$
+gpg -d ~/.ssh/pass.gpg | sudo -S choom -n -1000 -p $$
 #--bt-seed-unverified=true \
 aria2c -V --seed-ratio=0.0 artifacts/*.torrent -dartifacts/ --enable-dht6 --enable-dht -j200 \
     --bt-seed-unverified=true \
