@@ -13,5 +13,7 @@ do
         #echo $f ${f%\.*}-$ver.${f##*\.}
         echo cp $f ${f2%\.*}-$ver.${f2##*\.}
         cp $f ${f2%\.*}-$ver.${f2##*\.}
+        echo sudo cp -a $f /var/lib/dkms/${f2%\.*}-$ver.${f2##*\.}
+        sudo cp -a $f /var/lib/dkms/${f2%\.*}-$ver.${f2##*\.}
 done
 
