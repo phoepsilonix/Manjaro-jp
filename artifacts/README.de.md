@@ -333,6 +333,10 @@ kernel-6.2
 kernel-6.2.1  
 zram-generator
 
+##### 20230304
+kernel-6.2.2  
+
+
 ---
 Zusätzliche Informationen als Referenz.  
 Wenn Sie einen PC mit installiertem Linux haben, können Sie eine inoffizielle? Wenn Sie einen PC mit installiertem Linux haben, können Sie eine Dual-Boot-Umgebung mit inoffiziellem (keine offizielle Unterstützung) ChromeOS erstellen. Dies ist für Leute mit einigen Kenntnissen.  

@@ -336,6 +336,9 @@ kernel-6.2
 kernel-6.2.1  
 zram-generator
 
+##### 20230304
+kernel-6.2.2  
+
 
 ---
 Note: As a reference, an additional note.  
