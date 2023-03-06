@@ -339,6 +339,9 @@ zram-generator
 ##### 20230304
 kernel-6.2.2  
 
+##### 20230306
+sway
+
 
 ---
 Note: As a reference, an additional note.  
