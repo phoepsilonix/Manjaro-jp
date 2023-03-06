@@ -30,10 +30,6 @@
         "battery",
         "temperature",
 
-        // connecting
-        "network",
-        "bluetooth",
-
         // media
         "custom/playerctl",
         "idle_inhibitor",
@@ -45,6 +41,9 @@
         "custom/adaptive-light",
         "custom/sunset",
         "custom/pacman",
+
+        // connecting
+        "bluetooth",
 
         "tray",
         "clock"
@@ -92,15 +91,6 @@
             "critical": 90
         },
         "on-click": "swaymsg exec \\$term_float htop"
-    },
-
-    "network": {
-        "interval": 5,
-        "format-wifi": " ",
-        "format-ethernet": "",
-        "format-disconnected": "睊",
-        "tooltip-format": "{ifname} ({essid}): {ipaddr}",
-        "on-click": "swaymsg exec \\$term_float nmtui"
     },
 
     "sway/mode": {
