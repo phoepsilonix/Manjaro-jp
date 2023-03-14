@@ -1,8 +1,12 @@
 # For Japanese
 fcitx5-im
-fcitx5-mozc
-manjaro-asian-input-support-fcitx5
+#fcitx5-mozc
+manjaro-jp/mozc-with-jp-dict-common
+manjaro-jp/fcitx5-mozc-with-jp-dict
+
 # AUR fcitx5-input-support
+manjaro-asian-input-support-fcitx5
+
 
 # for asian?
 #fcitx-table-other

@@ -29,11 +29,11 @@ editions=(
         "manjaro xfce"
         "community cinnamon" 
         "community mate"
-        "community openbox"
+       # "community openbox"
         "manjaro architect"
 #	"community lxqt"
 #	"community lxqt-kwin"
-#	"community sway"
+	"community sway"
 )
 
 # 初期化
