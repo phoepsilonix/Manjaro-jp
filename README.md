@@ -336,11 +336,11 @@ kernel-6.2.2
 
 ##### 20230306
 sway
-
 </details>
+
 ##### 20230315
-kernel-6.2.6
-[fcitx5-mozc-with-jp-dict](https://aur.archlinux.org/packages/fcitx5-mozc-with-jp-dict)
+kernel-6.2.6  
+[fcitx5-mozc-with-jp-dict](https://aur.archlinux.org/packages/fcitx5-mozc-with-jp-dict)  
 
 
 
