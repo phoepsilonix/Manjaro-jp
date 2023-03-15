@@ -313,7 +313,6 @@ nvidia-utils 525.85.05
 ##### 20230204
 manjaro-release 22.0.2  
 kernel-6.1.9
-</details>
 
 ##### 20230211
 kernel-6.1.11
@@ -341,6 +340,11 @@ kernel-6.2.2
 
 ##### 20230306
 sway
+
+</Details>
+##### 20230315
+kernel-6.2.6
+[fcitx5-mozc-with-jp-dict](https://aur.archlinux.org/packages/fcitx5-mozc-with-jp-dict)
 
 
 ---
