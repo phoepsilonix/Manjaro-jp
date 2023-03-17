@@ -32,11 +32,12 @@ do
 
         # masterブランチをchekoutして、pullでリモートの最新版を取得する
         cd $m;
-        git diff --binary HEAD | git apply --check --stat --apply --allow-empty -R -
+        #git diff --binary HEAD | git apply --check --stat --apply --allow-empty -R -
         git clean -d -f -e .*\.patch
-        git switch -f master
-        git checkout master;
-        git pull origin master
+        git reset --hard master
+        #git checkout master;
+        #git switch -f master
+        #git pull origin master
         for patch in ~/gitlab/Manjaro-jp/patches/${m}*\.patch ~/gitlab/Manjaro-jp/patches/*${m}\.patch ~/gitlab/Manjaro-jp/patches/*${m}*${kver}.patch
         do
                 if [[ -e $patch ]];then

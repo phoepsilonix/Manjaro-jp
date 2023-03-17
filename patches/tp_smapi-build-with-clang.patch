@@ -1,5 +1,5 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 138fdea..a135362 100644
+index 861b1f9..7880b59 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -27,8 +27,16 @@ makedepends=('git' "$_linuxprefix-headers")
