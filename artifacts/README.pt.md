@@ -342,8 +342,9 @@ sway
 kernel-6.2.6  
 [fcitx5-mozc-with-jp-dict](https://aur.archlinux.org/packages/fcitx5-mozc-with-jp-dict)
 
-
----
+##### 20230318
+manjaro-release 22.0.5  
+kernel-6.2.7  
 
 
 ---
