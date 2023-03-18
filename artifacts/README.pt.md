@@ -346,6 +346,12 @@ kernel-6.2.6
 manjaro-release 22.0.5  
 kernel-6.2.7  
 
+* Lançámos temporariamente um pacote que não foi totalmente testado para funcionar.  
+Por favor, tente reinstalar o pacote distribuído pela distribuição oficial Manjaro com o seguinte comando.
+```
+sudo pacman-static -S core/curl
+```
+
 
 ---
 Informação adicional para referência.  
