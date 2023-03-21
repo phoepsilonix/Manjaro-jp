@@ -35,6 +35,7 @@ do
         #git diff --binary HEAD | git apply --check --stat --apply --allow-empty -R -
         git clean -d -f -e .*\.patch
         git reset --hard master
+        git pull
         #git checkout master;
         #git switch -f master
         #git pull origin master
