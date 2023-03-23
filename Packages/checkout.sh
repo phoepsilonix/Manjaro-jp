@@ -39,7 +39,12 @@ do
         #git checkout master;
         #git switch -f master
         #git pull origin master
-        for patch in ~/gitlab/Manjaro-jp/patches/${m}*\.patch ~/gitlab/Manjaro-jp/patches/*${m}\.patch ~/gitlab/Manjaro-jp/patches/*${m}*${kver}.patch
+        if [[ "$kver" == "6.2" && ${m} =~ nvidia-[0-9]+xx ]];then
+            patches="patch-*${m}-linux6.2\.patch"
+        else
+            patches="patch-*${m}\.patch"
+        fi
+        for patch in ~/gitlab/Manjaro-jp/patches/kmod-*${m}\.patch ~/gitlab/Manjaro-jp/patches/${patches}
         do
                 if [[ -e $patch ]];then
                         echo "$patch Applying"
