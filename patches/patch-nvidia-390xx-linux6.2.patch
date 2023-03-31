@@ -241,7 +241,7 @@ index 0d8b00e..17f0fac 100644
  
      cd "${_pkg}/kernel"
      patch -Np1 -i ${srcdir}/kernel-6.2.patch
-+    patch -p1 -i ../001-fix-function-declaration.patch
++    patch -p2 -i ${srcdir}/001-fix-function-declaration.patch
  }
  
  build() {

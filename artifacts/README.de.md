@@ -2,7 +2,7 @@
 
 ## Unterstützung der japanischen Sprache für [Manjaro Linux](https://manjaro.org/)
 　Unterstützt standardmäßig japanische Eingabe und Anzeige, einschließlich Live-Umgebungen.  
-[Kernel-6.2-Serie(mainline)](https://kernel.org/).
+[Kernel-6.2-Serie(stable)](https://kernel.org/).
 
 KDE, Xfce und GNOME werden für den offiziellen Gebrauch verfügbar sein.  
 Die Distributionsdateien sind ISO und einige Paketdateien.  
@@ -352,6 +352,9 @@ Bitte versuchen Sie, das von der offiziellen Manjaro-Distribution verteilte Pake
 ```
 sudo pacman-static -S core/curl
 ```
+
+##### 20230324
+kernel-6.2.8
 
 
 ---

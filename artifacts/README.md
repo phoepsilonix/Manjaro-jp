@@ -2,7 +2,7 @@
 
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
-[kernel-6.2系(mainline)](https://kernel.org/)。
+[kernel-6.2系(stable)](https://kernel.org/)。
 
 公式に合わせて、KDE、Xfce、GNOMEの３種類を用意する予定です。  
 配布ファイルはISOと一部パッケージファイルです。  
@@ -351,6 +351,10 @@ kernel-6.2.7
 ```
 sudo pacman-static -S core/curl
 ```
+
+##### 20230324
+kernel-6.2.8
+
 
 ---
 参考までに、追記。  

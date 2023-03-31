@@ -2,7 +2,7 @@
 
 ## Prise en charge de la langue japonaise pour [Manjaro Linux](https://manjaro.org/)
 　Prise en charge de la saisie et de l'affichage en japonais par défaut, y compris dans les environnements dynamiques.  
-[série kernel-6.2(mainline)](https://kernel.org/).
+[série kernel-6.2(stable)](https://kernel.org/).
 
 KDE, Xfce et GNOME seront disponibles selon la version officielle.  
 Les fichiers de distribution sont des ISO et quelques fichiers de paquets.  
@@ -351,6 +351,10 @@ Veuillez essayer de réinstaller le paquet distribué par la distribution offici
 ```
 sudo pacman-static -S core/curl
 ```
+
+##### 20230324
+kernel-6.2.8
+
 
 
 ---
