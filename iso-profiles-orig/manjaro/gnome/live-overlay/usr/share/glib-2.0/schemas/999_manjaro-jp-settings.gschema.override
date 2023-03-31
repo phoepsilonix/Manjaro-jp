@@ -51,3 +51,5 @@ idle-dim=false
 [org.gnome.desktop.session]
 idle-delay=0
 
+[org.gnome.desktop.a11y]
+always-show-universal-access-status=true
