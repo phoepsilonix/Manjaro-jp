@@ -355,6 +355,9 @@ sudo pacman-static -S core/curl
 ##### 20230324
 kernel-6.2.8
 
+##### 20230401
+kernel-6.2.9
+
 
 ---
 参考までに、追記。  

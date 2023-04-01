@@ -70,7 +70,7 @@ manjaro-pipewire
 #pipewire-media-session
 #pipewire-media-session-docs
 wireplumber
-wireplumber-docs
+#wireplumber-docs
 pipewire-v4l2
 pipewire-jack
 pipewire-x11-bell

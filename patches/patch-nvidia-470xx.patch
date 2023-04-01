@@ -266,24 +266,24 @@ index 0000000..fda2cea
 +     if (!g_uvm_perf_prefetch_enable)
 +         return;
 diff --git a/PKGBUILD b/PKGBUILD
-index 90cfe31..7e9bb8a 100644
+index 7566483..ddb6683 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -24,8 +24,11 @@ provides=("nvidia=$pkgver" 'NVIDIA-MODULE')
+@@ -20,8 +20,11 @@ provides=("nvidia=$pkgver" 'NVIDIA-MODULE')
  options=(!strip)
  install=nvidia.install
  _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
 -source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
--sha256sums=('b318c15d519898fd60c64ef73fdd331045884a1d97d811a25fbced544b5be6ad')
+-sha256sums=('0a02d9341b9b4206df1401a812e8dfed2406bc1f3d7a1055260149cde858aa8c')
 +source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
 +001-fix-function-declaration.patch
 +)
-+sha256sums=('b318c15d519898fd60c64ef73fdd331045884a1d97d811a25fbced544b5be6ad'
++sha256sums=('0a02d9341b9b4206df1401a812e8dfed2406bc1f3d7a1055260149cde858aa8c'
 +            '8e9bcc9c3f68771de87da73b0837095f84e2f2abb6dd0bdaa2117c95ae118c3a')
  
  _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
  
-@@ -33,6 +36,7 @@ prepare() {
+@@ -29,6 +32,7 @@ prepare() {
      sh "${_pkg}.run" --extract-only
  
      cd "${_pkg}"

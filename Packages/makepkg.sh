@@ -17,6 +17,9 @@ for m in $(cat ../extramodules.txt)
 do
         cd $m;
 #        cat ~/.ssh/gpg-passphrase|sudo -S pwd > /dev/null
+
+[[ "$m" == "nvidia-390xx" ]] && pacman -R nvidia-settings --noconfirm
+
 expect -c "
   set timeout -1
   spawn makepkg -sCc
