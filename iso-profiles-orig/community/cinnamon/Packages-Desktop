@@ -106,7 +106,6 @@ papirus-maia-icon-theme
 patch
 >extra patchutils
 pavucontrol
->extra pidgin-libnotify
 >extra pix
 pkg-config
 >extra poppler-data

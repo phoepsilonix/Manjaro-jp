@@ -1,5 +1,6 @@
 # Maintainer: Philip Müller <philm[at]manjaro[dot]org>
-# Maintainer: Helmut Stult <helmut[at]manjaro[dot]org>
+# Maintainer: Mark Wagie <mark at manjaro dot org>
+# Contributor: Helmut Stult
 
 # Arch credits:
 # Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org>
@@ -8,14 +9,15 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=mkinitcpio
-pkgver=34
-pkgrel=4
+pkgver=35.2
+pkgrel=2
 pkgdesc="Modular initramfs image creation utility"
 arch=('any')
 url='https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio'
 license=('GPL')
 depends=('awk' 'mkinitcpio-busybox>=1.19.4-2' 'kmod' 'util-linux>=2.23' 'libarchive' 'coreutils'
          'bash' 'binutils' 'diffutils' 'findutils' 'grep' 'filesystem>=2011.10-1' 'gzip' 'systemd')
+makedepends=('asciidoc')
 checkdepends=('bash-bats' 'bash-bats-assert' 'lzop')
 optdepends=('zstd: Use zstd compression for the initramfs image'
             'xz: Use lzma or xz compression for the initramfs image'
@@ -23,24 +25,21 @@ optdepends=('zstd: Use zstd compression for the initramfs image'
             'lzop: Use lzo compression for the initramfs image'
             'lz4: Use lz4 compression for the initramfs image'
             'mkinitcpio-nfs-utils: Support for root filesystem on NFS')
-makedepends=('asciidoc')
 provides=('initramfs')
 backup=('etc/mkinitcpio.conf')
 source=("https://sources.archlinux.org/other/$pkgname/$pkgname-$pkgver.tar.gz"{,.sig}
-        '0001-functions-fix-overwriting-of-symlinks-with-regular-f.patch'
         # Manjaro patches
         'manjaro.patch'
         'revert-ab6bad7.patch'
-        "001-default-compression.patch"
-        "002-remove-shutdown-hooks.patch"
+        '001-default-compression.patch'
+        '002-remove-shutdown-hooks.patch'
         )
 install=mkinitcpio.install
-sha256sums=('181a5915fc4e7db4fcfb38fb5fa022ba5a782f6904d6d6455c6b5a0617109bd0'
+sha256sums=('1627dd3de027e9497db054d04799db8e1bf2adcf59a4f36b0c04613b58758c99'
             'SKIP'
-            '82a34a48154c384980aa4e61d49bd447c568d5d60676f27c14a2a12a5ea63b4d'
-            'a555133e778901a3c5948d32162a48904705cb5fda82b9cd78e7246d66926534'
-            'dc57b5d5c09fb32d9cd87dd939ed867cd1fe78088fe5aa6d33c5512c86806e24'
-            '9f3d023c0051465c47c5b879aa590dbfc760b71fb2740dd7204e67ef99e07c6b'
+            'f77e902240f810d3502431796ab41adf9a508cbcc64a272397570c1dd84233d0'
+            '30987bf803a371e6d0b9d9d1fa364906777cc8bcf100feb9aaa054301922e45c'
+            'cb8cca879a55ab9119c09abde45ae8f4d1f62f9fc3c7df6a4afbe271f11f268f'
             '8609e20bdac0109039120b26df0026c1798e4ea05d615558d0e1565a7d1d7519')
 validpgpkeys=('ECCAC84C1BA08A6CC8E63FBBF22FB1D78A77AEAB'    # Giancarlo Razzolini
               'C100346676634E80C940FB9E9C02FF419FECBE16')   # Morten Linderud

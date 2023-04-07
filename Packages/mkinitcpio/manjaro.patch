@@ -1,6 +1,6 @@
 diff --unified --recursive --text a/libalpm/scripts/mkinitcpio b/libalpm/scripts/mkinitcpio
---- a/libalpm/scripts/mkinitcpio	2022-12-07 13:58:22.000000000 -0700
-+++ b/libalpm/scripts/mkinitcpio	2022-12-09 16:42:35.885529416 -0700
+--- a/libalpm/scripts/mkinitcpio	2023-03-19 08:24:59.000000000 -0600
++++ b/libalpm/scripts/mkinitcpio	2023-03-23 10:25:32.608441928 -0600
 @@ -8,7 +8,7 @@
  
  process_preset() {
@@ -10,38 +10,16 @@ diff --unified --recursive --text a/libalpm/scripts/mkinitcpio b/libalpm/scripts
              if [[ ! -e "$preset.pacsave" ]]; then
                  # save the preset as pacsave
                  mv -- "$preset" "$preset.pacsave" && return 0
-@@ -28,13 +28,13 @@
+@@ -76,7 +76,7 @@
              mv -- "${preset}.pacsave" "$preset"
          else
              # create the preset from the template
--            sed "s|%PKGBASE%|${1}|g" /usr/share/mkinitcpio/hook.preset \
+-            sed "s|%PKGBASE%|${pkgbase}|g" /usr/share/mkinitcpio/hook.preset \
 +            sed "s|%KERNELBASE%|${kernelbase}|g" /usr/share/mkinitcpio/hook.preset \
                  | install -Dm644 /dev/stdin "$preset"
          fi
      fi
- 
-     # always install the kernel
--    install -Dm644 "$line" "/boot/vmlinuz-${1}"
-+    install -Dm644 "${line}" "/boot/vmlinuz-${kernelbase}"
- 
-     # compound args for each kernel
-     args+=(-p "$1")
-@@ -42,10 +42,10 @@
- 
- remove_kernel() {
-     # remove the actual kernel and images for the package being removed
--    kernel="/boot/vmlinuz-${1}"
--    preset="/etc/mkinitcpio.d/${1}.preset"
--    initramfs="/boot/initramfs-${1}.img"
--    fallback_initramfs="/boot/initramfs-${1}-fallback.img"
-+    kernel="/boot/vmlinuz-${kernelbase}"
-+    preset="/etc/mkinitcpio.d/${kernelbase}.preset"
-+    initramfs="/boot/initramfs-${kernelbase}.img"
-+    fallback_initramfs="/boot/initramfs-${kernelbase}-fallback.img"
-     # remove the installed kernel
-     rm -f -- "$kernel"
- 
-@@ -67,6 +67,11 @@
+@@ -130,6 +130,11 @@
          continue
      fi
  
@@ -53,10 +31,9 @@ diff --unified --recursive --text a/libalpm/scripts/mkinitcpio b/libalpm/scripts
      case "$1" in
          install) install_kernel "$pkgbase";;
          remove) remove_kernel "$pkgbase";;
-Only in b/libalpm/scripts: mkinitcpio.orig
 diff --unified --recursive --text a/mkinitcpio.d/example.preset b/mkinitcpio.d/example.preset
---- a/mkinitcpio.d/example.preset	2022-12-07 13:58:22.000000000 -0700
-+++ b/mkinitcpio.d/example.preset	2022-12-09 16:36:33.058367648 -0700
+--- a/mkinitcpio.d/example.preset	2023-03-19 08:24:59.000000000 -0600
++++ b/mkinitcpio.d/example.preset	2023-03-23 10:29:50.223969082 -0600
 @@ -15,14 +15,14 @@
  # presetname_image   - the filename of generated image
  # presetname_options - any extra options
@@ -79,24 +56,27 @@ diff --unified --recursive --text a/mkinitcpio.d/example.preset b/mkinitcpio.d/e
 +fallback_uki="/efi/EFI/Manjaro/grubx64-fallback.efi"
  fallback_options="-S autodetect"
 diff --unified --recursive --text a/mkinitcpio.d/hook.preset b/mkinitcpio.d/hook.preset
---- a/mkinitcpio.d/hook.preset	2022-12-07 13:58:22.000000000 -0700
-+++ b/mkinitcpio.d/hook.preset	2022-12-09 16:38:59.665822735 -0700
-@@ -1,14 +1,14 @@
+--- a/mkinitcpio.d/hook.preset	2023-03-19 08:24:59.000000000 -0600
++++ b/mkinitcpio.d/hook.preset	2023-03-23 10:27:58.544463061 -0600
+@@ -1,17 +1,17 @@
 -# mkinitcpio preset file for the '%PKGBASE%' package
 +# mkinitcpio preset file for the '%KERNELBASE%' package
  
  ALL_config="/etc/mkinitcpio.conf"
 -ALL_kver="/boot/vmlinuz-%PKGBASE%"
 +ALL_kver="/boot/vmlinuz-%KERNELBASE%"
+ ALL_microcode=(/boot/*-ucode.img)
  
  PRESETS=('default' 'fallback')
  
  #default_config="/etc/mkinitcpio.conf"
 -default_image="/boot/initramfs-%PKGBASE%.img"
 +default_image="/boot/initramfs-%KERNELBASE%.img"
- #default_options=""
+ #default_uki="/efi/EFI/Linux/arch-%PKGBASE%.efi"
+ #default_options="--splash /usr/share/systemd/bootctl/splash-arch.bmp"
  
  #fallback_config="/etc/mkinitcpio.conf"
 -fallback_image="/boot/initramfs-%PKGBASE%-fallback.img"
 +fallback_image="/boot/initramfs-%KERNELBASE%-fallback.img"
+ #fallback_uki="/efi/EFI/Linux/arch-%PKGBASE%-fallback.efi"
  fallback_options="-S autodetect"
