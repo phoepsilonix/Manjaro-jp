@@ -8,5 +8,7 @@
   ],
   "module": "wasm_markdown.js",
   "types": "wasm_markdown.d.ts",
-  "sideEffects": false
+  "sideEffects": [
+    "./snippets/*"
+  ]
 }
