@@ -18,7 +18,7 @@ do
         cd $m;
         cat ~/.ssh/gpg-passphrase|sudo -S pwd > /dev/null
 
-[[ "$m" == "nvidia-390xx" ]] && sudo pacman -R nvidia-settings --noconfirm
+[[ "$m" == "nvidia-390xx" ]] && sudo pacman -R nvidia-settings nvidia-utils --noconfirm && sync
 
 expect -c "
   set timeout -1

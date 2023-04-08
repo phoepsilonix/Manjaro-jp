@@ -86,7 +86,6 @@ spectre-meltdown-checker
 sudo
 sysfsutils
 systemd
-systemd-fsck-silent
 texinfo
 usbutils
 vi
