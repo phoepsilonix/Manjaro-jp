@@ -1,0 +1,270 @@
+diff --git a/001-fix-function-declaration.patch b/001-fix-function-declaration.patch
+new file mode 100644
+index 0000000..7e32ad4
+--- /dev/null
++++ b/001-fix-function-declaration.patch
+@@ -0,0 +1,218 @@
++diff --git a/kernel/nvidia/os-interface.c b/kernel/nvidia/os-interface.c
++index 262171f..d1b7093 100644
++--- a/kernel/nvidia/os-interface.c
+++++ b/kernel/nvidia/os-interface.c
++@@ -876,14 +876,14 @@ void NV_API_CALL os_unmap_kernel_numa(
++ }
++ 
++ // flush the cpu's cache, uni-processor version
++-NV_STATUS NV_API_CALL os_flush_cpu_cache()
+++NV_STATUS NV_API_CALL os_flush_cpu_cache(void)
++ {
++     CACHE_FLUSH();
++     return NV_OK;
++ }
++ 
++ // flush the cache of all cpus
++-NV_STATUS NV_API_CALL os_flush_cpu_cache_all()
+++NV_STATUS NV_API_CALL os_flush_cpu_cache_all(void)
++ {
++ #if defined(NVCPU_FAMILY_ARM)
++     CACHE_FLUSH_ALL();
++@@ -941,7 +941,7 @@ NV_STATUS NV_API_CALL os_flush_user_cache(NvU64 start, NvU64 end,
++ #endif
++ }
++ 
++-void NV_API_CALL os_flush_cpu_write_combine_buffer()
+++void NV_API_CALL os_flush_cpu_write_combine_buffer(void)
++ {
++     WRITE_COMBINE_FLUSH();
++ }
++@@ -1070,14 +1070,14 @@ void NV_API_CALL os_dbg_breakpoint(void)
++ #endif // DEBUG
++ }
++ 
++-NvU32 NV_API_CALL os_get_cpu_number()
+++NvU32 NV_API_CALL os_get_cpu_number(void)
++ {
++     NvU32 cpu_id = get_cpu();
++     put_cpu();
++     return cpu_id;
++ }
++ 
++-NvU32 NV_API_CALL os_get_cpu_count()
+++NvU32 NV_API_CALL os_get_cpu_count(void)
++ {
++     return NV_NUM_CPUS();
++ }
++@@ -1152,7 +1152,7 @@ void NV_API_CALL os_get_screen_info(
++ #endif
++ }
++ 
++-void NV_API_CALL os_dump_stack()
+++void NV_API_CALL os_dump_stack(void)
++ {
++ #if defined(DEBUG)
++     dump_stack();
++diff --git a/kernel/nvidia/nvlink_linux.c b/kernel/nvidia/nvlink_linux.c
++index ba57b86..961540c 100644
++--- a/kernel/nvidia/nvlink_linux.c
+++++ b/kernel/nvidia/nvlink_linux.c
++@@ -636,7 +636,7 @@ void NVLINK_API_CALL nvlink_assert(int cond)
++     }
++ }
++ 
++-void * NVLINK_API_CALL nvlink_allocLock()
+++void * NVLINK_API_CALL nvlink_allocLock(void)
++ {
++     struct semaphore *sema;
++ 
++diff --git a/kernel/nvidia-uvm/uvm_common.c b/kernel/nvidia-uvm/uvm_common.c
++index 0f4516a..f8dfafd 100644
++--- a/kernel/nvidia-uvm/uvm_common.c
+++++ b/kernel/nvidia-uvm/uvm_common.c
++@@ -60,7 +60,7 @@ static int uvm_debug_prints = UVM_IS_DEBUG() || UVM_IS_DEVELOP();
++ module_param(uvm_debug_prints, int, S_IRUGO|S_IWUSR);
++ MODULE_PARM_DESC(uvm_debug_prints, "Enable uvm debug prints.");
++ 
++-bool uvm_debug_prints_enabled()
+++bool uvm_debug_prints_enabled(void)
++ {
++     return uvm_debug_prints != 0;
++ }
++diff --git a/kernel/nvidia-uvm/uvm8_procfs.c b/kernel/nvidia-uvm/uvm8_procfs.c
++index f179127..480e1ae 100644
++--- a/kernel/nvidia-uvm/uvm8_procfs.c
+++++ b/kernel/nvidia-uvm/uvm8_procfs.c
++@@ -58,7 +58,7 @@ bool uvm_procfs_is_debug_enabled(void)
++     return uvm_enable_debug_procfs != 0;
++ }
++ 
++-NV_STATUS uvm_procfs_init()
+++NV_STATUS uvm_procfs_init(void)
++ {
++     if (!uvm_procfs_is_enabled())
++         return NV_OK;
++@@ -74,7 +74,7 @@ NV_STATUS uvm_procfs_init()
++     return NV_OK;
++ }
++ 
++-void uvm_procfs_exit()
+++void uvm_procfs_exit(void)
++ {
++     uvm_procfs_destroy_entry(uvm_proc_dir);
++ }
++@@ -103,7 +103,7 @@ void uvm_procfs_destroy_entry(struct proc_dir_entry *entry)
++     procfs_destroy_entry_with_root(entry, entry);
++ }
++ 
++-struct proc_dir_entry *uvm_procfs_get_gpu_base_dir()
+++struct proc_dir_entry *uvm_procfs_get_gpu_base_dir(void)
++ {
++     return uvm_proc_gpus;
++ }
++diff --git a/kernel/nvidia-uvm/uvm8_tools.c b/kernel/nvidia-uvm/uvm8_tools.c
++index 1dc7c97..db722b5 100644
++--- a/kernel/nvidia-uvm/uvm8_tools.c
+++++ b/kernel/nvidia-uvm/uvm8_tools.c
++@@ -2038,7 +2038,7 @@ NV_STATUS uvm_api_tools_get_processor_uuid_table(UVM_TOOLS_GET_PROCESSOR_UUID_TA
++     return NV_OK;
++ }
++ 
++-void uvm_tools_flush_events()
+++void uvm_tools_flush_events(void)
++ {
++     tools_schedule_completed_events();
++ 
++diff --git a/kernel/nvidia-uvm/uvm8_lock.c b/kernel/nvidia-uvm/uvm8_lock.c
++index 593d9d0..fde2cbc 100644
++--- a/kernel/nvidia-uvm/uvm8_lock.c
+++++ b/kernel/nvidia-uvm/uvm8_lock.c
++@@ -309,7 +309,7 @@ bool __uvm_check_all_unlocked(uvm_thread_context_t *uvm_context)
++     return false;
++ }
++ 
++-bool __uvm_thread_check_all_unlocked()
+++bool __uvm_thread_check_all_unlocked(void)
++ {
++     return __uvm_check_all_unlocked(uvm_thread_context());
++ }
++diff --git a/kernel/nvidia-uvm/uvm8_push.c b/kernel/nvidia-uvm/uvm8_push.c
++index 732073a..3a0b0e4 100644
++--- a/kernel/nvidia-uvm/uvm8_push.c
+++++ b/kernel/nvidia-uvm/uvm8_push.c
++@@ -100,7 +100,7 @@ NV_STATUS __uvm_push_begin_acquire(uvm_channel_manager_t *manager,
++     return NV_OK;
++ }
++ 
++-bool uvm_push_info_is_tracking_descriptions()
+++bool uvm_push_info_is_tracking_descriptions(void)
++ {
++     return uvm_debug_enable_push_desc != 0;
++ }
++diff --git a/kernel/nvidia-uvm/uvm8_perf_heuristics.c b/kernel/nvidia-uvm/uvm8_perf_heuristics.c
++index 531531a..8d6cb6f 100644
++--- a/kernel/nvidia-uvm/uvm8_perf_heuristics.c
+++++ b/kernel/nvidia-uvm/uvm8_perf_heuristics.c
++@@ -26,7 +26,7 @@
++ #include "uvm8_perf_thrashing.h"
++ #include "uvm8_perf_prefetch.h"
++ 
++-NV_STATUS uvm_perf_heuristics_init()
+++NV_STATUS uvm_perf_heuristics_init(void)
++ {
++     NV_STATUS status;
++ 
++@@ -41,7 +41,7 @@ NV_STATUS uvm_perf_heuristics_init()
++     return NV_OK;
++ }
++ 
++-void uvm_perf_heuristics_exit()
+++void uvm_perf_heuristics_exit(void)
++ {
++     uvm_perf_prefetch_exit();
++     uvm_perf_thrashing_exit();
++diff --git a/kernel/nvidia-uvm/uvm8_perf_thrashing.c b/kernel/nvidia-uvm/uvm8_perf_thrashing.c
++index 0ed3b18..8fd6b21 100644
++--- a/kernel/nvidia-uvm/uvm8_perf_thrashing.c
+++++ b/kernel/nvidia-uvm/uvm8_perf_thrashing.c
++@@ -1321,7 +1321,7 @@ void uvm_perf_thrashing_unload(uvm_va_space_t *va_space)
++     uvm_perf_module_unload(&g_module_thrashing, va_space);
++ }
++ 
++-NV_STATUS uvm_perf_thrashing_init()
+++NV_STATUS uvm_perf_thrashing_init(void)
++ {
++     NV_STATUS status;
++     g_uvm_perf_thrashing_enable = uvm_perf_thrashing_enable != 0;
++@@ -1398,7 +1398,7 @@ error:
++     return status;
++ }
++ 
++-void uvm_perf_thrashing_exit()
+++void uvm_perf_thrashing_exit(void)
++ {
++     kmem_cache_destroy_safe(&g_va_block_thrashing_info_cache);
++ }
++diff --git a/kernel/nvidia-uvm/uvm8_perf_prefetch.c b/kernel/nvidia-uvm/uvm8_perf_prefetch.c
++index 4f390ee..1e19626 100644
++--- a/kernel/nvidia-uvm/uvm8_perf_prefetch.c
+++++ b/kernel/nvidia-uvm/uvm8_perf_prefetch.c
++@@ -459,7 +459,7 @@ void uvm_perf_prefetch_unload(uvm_va_space_t *va_space)
++     uvm_perf_module_unload(&g_module_prefetch, va_space);
++ }
++ 
++-NV_STATUS uvm_perf_prefetch_init()
+++NV_STATUS uvm_perf_prefetch_init(void)
++ {
++     g_uvm_perf_prefetch_enable = uvm_perf_prefetch_enable != 0;
++ 
++@@ -497,7 +497,7 @@ NV_STATUS uvm_perf_prefetch_init()
++     return NV_OK;
++ }
++ 
++-void uvm_perf_prefetch_exit()
+++void uvm_perf_prefetch_exit(void)
++ {
++     if (!g_uvm_perf_prefetch_enable)
++         return;
+diff --git a/002-Kbuild-clang-options.patch b/002-Kbuild-clang-options.patch
+new file mode 100644
+index 0000000..b9c2f8a
+--- /dev/null
++++ b/002-Kbuild-clang-options.patch
+@@ -0,0 +1,13 @@
++diff --git a/kernel/Kbuild b/kernel/Kbuild
++index 85aa267..0922557 100644
++--- a/kernel/Kbuild
+++++ b/kernel/Kbuild
++@@ -63,7 +63,7 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
++ 
++ EXTRA_CFLAGS += -I$(src)/common/inc
++ EXTRA_CFLAGS += -I$(src)
++-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error
+++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error
++ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"390.157\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE -Wno-sign-compare -Wno-format-extra-args
++ EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
++ EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
+diff --git a/PKGBUILD b/PKGBUILD
+index f0bd25c..693371a 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -30,9 +30,13 @@ install=nvidia.install
+ _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
+ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+         'kernel-6.2.patch'
++        '001-fix-function-declaration.patch'
++        '002-Kbuild-clang-options.patch'
+         'https://gitlab.com/herecura/packages/nvidia-390xx-dkms/-/raw/36af321ae3f3a1e177dd36c92ccd8f7ae3c8f1aa/kernel-6.3.patch')
+ sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
+             '3501f0bbd9603543da74873905448ff58f5095948a7375617bba74f122d575aa'
++            'e480e7bd77d7e0e3d5b48282bd2d5ce387564c61c04cfd2287ceb591d191f3cc'
++            '2da853724551ae20fcfd0026ccd2ebeae5b0602b113eec5c5e7e84e91fd6b10d'
+             '4284f95f808df4e43afc4632e3fc1f87da1a805f0f6f9af1f6b519c7cf7562b4')
+ 
+ _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
+@@ -43,6 +47,8 @@ prepare() {
+     cd "${_pkg}/kernel"
+     patch -Np1 -i ${srcdir}/kernel-6.2.patch
+     patch -Np1 -i ${srcdir}/kernel-6.3.patch
++    patch -p2 -i ${srcdir}/001-fix-function-declaration.patch
++    patch -p2 -i ${srcdir}/002-Kbuild-clang-options.patch
+ }
+ 
+ build() {
