@@ -12,7 +12,7 @@ manjaro-jp/KERNEL-rtl8723bu
 
 manjaro-jp/KERNEL-bbswitch
 manjaro-jp/KERNEL-broadcom-wl
-#manjaro-jp/KERNEL-r8168
+manjaro-jp/KERNEL-r8168
 manjaro-jp/KERNEL-zfs
 zfs-utils
 #manjaro-jp/KERNEL-rt3562sta

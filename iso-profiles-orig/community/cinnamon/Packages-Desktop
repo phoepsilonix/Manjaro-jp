@@ -38,7 +38,7 @@ gnome-themes-standard
 gnu-free-fonts
 >extra gparted
 >extra gprename
-grub-theme-manjaro-dev
+grub-theme-manjaro
 >extra gst-libav
 >extra gst-plugins-bad
 >extra gst-plugins-base
@@ -76,6 +76,7 @@ manjaro-hotfixes
 manjaro-settings-manager-notifier
 >extra mesa-demos
 >basic midori
+mintstick
 >extra mobile-broadband-provider-info
 >extra modemmanager
 >extra mousetweaks
@@ -100,6 +101,7 @@ openssh
 >extra openvpn
 >extra p7zip
 pamac
+pamac-gtk
 libpamac-flatpak-plugin
 papirus-maia-icon-theme
 >extra parcellite
@@ -109,7 +111,6 @@ pavucontrol
 >extra pix
 pkg-config
 >extra poppler-data
->extra popsicle
 >extra powertop
 #>extra pragha
 python-ptyprocess

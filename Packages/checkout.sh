@@ -40,11 +40,14 @@ do
         #git checkout master;
         #git switch -f master
         #git pull origin master
-        if [[ "$kver" == "6.2" && ${m} =~ nvidia-[0-9]+xx ]];then
-            patches="patch-*${m}-linux6.2\.patch"
-        else
-            patches="patch-*${m}\.patch"
-        fi
+        case "$kver" in
+            "6.3" ) patches="patch-*${m}-linux6.3\.patch" ;;
+            "6.2" ) patches="patch-*${m}-linux6.2\.patch" ;;
+            "*" ) patches="patch-*${m}\.patch" ;;
+        esac
+        case "$m" in
+            "tp_smapi" ) patches="patch-*${m}\.patch" ;;
+        esac
         for patch in ~/gitlab/Manjaro-jp/patches/kmod-*${m}\.patch ~/gitlab/Manjaro-jp/patches/${patches}
         do
                 if [[ -e $patch ]];then

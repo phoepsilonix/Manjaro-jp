@@ -11,6 +11,9 @@ pkgdir=`pwd`/iso-profiles
 usb=/run/media/phoepsilonix/Ventoy
 gkey="-g $(cat ~/.gnupg/sign.txt)"
 #gkey=""
+cat iso-profiles-orig/manjaro/{architect,gnome,kde,xfce}/Packages-*|sed 's|#.*||'|sed 's|KERNEL|linux62|'|sed 's|^>[^ ]* ||'|xargs paru -Sw --noconfirm
+cat iso-profiles-orig/community/{mate,cinnamon,sway}/Packages-*|sed 's|#.*||'|sed 's|KERNEL|linux62|'|sed 's|^>[^ ]* ||'|xargs paru -Sw --noconfirm
+
 
 kernel=linux62
 

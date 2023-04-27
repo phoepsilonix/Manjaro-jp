@@ -19,6 +19,7 @@ do
         cat ~/.ssh/gpg-passphrase|sudo -S pwd > /dev/null
 
 [[ "$m" == "nvidia-390xx" ]] && sudo pacman -R nvidia-settings nvidia-utils --noconfirm && sync
+[[ "$m" == "zfs" ]] && sudo pacman -S zfs-dkms zfs-utils --noconfirm && sync
 
 expect -c "
   set timeout -1
