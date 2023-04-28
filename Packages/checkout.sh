@@ -24,7 +24,8 @@ sudo chown -R phoepsilonix:phoepsilonix $exdir
 #rm tp_smapi-clang.patch
 #cd ..
 
-for m in $(cat ../extramodules.txt)
+#for m in $(cat ../extramodules.txt)
+for m in "nvidia-390xx" "nvidia-470xx"
 do
         # $mがなかったら、追加する。
         echo $m;
@@ -43,7 +44,7 @@ do
         case "$kver" in
             "6.3" ) patches="patch-*${m}-linux6.3\.patch" ;;
             "6.2" ) patches="patch-*${m}-linux6.2\.patch" ;;
-            "*" ) patches="patch-*${m}\.patch" ;;
+            * ) patches="patch-*${m}\.patch" ;;
         esac
         case "$m" in
             "tp_smapi" ) patches="patch-*${m}\.patch" ;;
