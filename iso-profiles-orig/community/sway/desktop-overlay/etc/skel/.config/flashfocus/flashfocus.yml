@@ -58,11 +58,11 @@ flash-lone-windows: 'always'
 #
 # I also would prefer that floorp windows are not flashed on focus:
 #
-rules:
-  - window-class: floorp
-    flash-on-focus: False
-  - window-class: Termite
-    default-opacity: 0.8
+# rules:
+#   - window-class: floorp
+#     flash-on-focus: False
+#   - window-class: Termite
+#     default-opacity: 0.8
 #
 #
 # For more complicated rules, you can use (python-style) regexes:
@@ -81,12 +81,12 @@ rules:
 # Given that termite is wayland native and floorp is not, the rules above 
 # could instead be written:
 #
-rules:
-  - window-class: floorp
-    flash-on-focus: False
-  - app-id: termite
-    default-opacity: 0.8
+# rules:
+#   - window-class: floorp
+#     flash-on-focus: False
+#   - app-id: termite
+#     default-opacity: 0.8
 #
-rules:
-  - window-name: ^(?!termite)$
-    default-opacity: 0.8
+# rules:
+#   - window-name: ^(?!termite)$
+#     default-opacity: 0.8
