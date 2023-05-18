@@ -8,7 +8,7 @@ networkmanager
 >extra networkmanager-vpnc
 >extra modemmanager                # optional for networkmanager
 >extra nss-mdns                    # optional for avahi; avahi required by gvfs
-ntp
+#ntp
 openresolv                         # optional for networkmanager
 >extra openssh                     # optional for gnome-control-center
 #usb_modeswitch                    # required by manjaro-modem; optional for modemmanager
@@ -50,11 +50,12 @@ pamac-gtk
 
 ## Printing
 >extra manjaro-printer
+>extra system-config-printer       # optional for gnome-control-center
 
 ## GNOME group
 >extra baobab
 >extra cheese
-#eog                               # gthumb included instead
+>basic eog                               # gthumb included instead
 #epiphany                          # Firefox included as default browser
 evince
 file-roller
@@ -63,7 +64,7 @@ gnome-backgrounds
 gnome-calculator
 gnome-calendar
 >extra gnome-characters
->extra gnome-clocks
+gnome-clocks
 #gnome-color-manager               # required by gnome-control-center
 #gnome-console                     # gnome-terminal included instead
 >extra gnome-contacts
@@ -72,11 +73,11 @@ gnome-disk-utility
 >extra gnome-font-viewer
 gnome-keyring
 gnome-logs
-#>extra gnome-maps
+>extra gnome-maps
 #gnome-menus                       # required by alacarte; optional for gnome-shell-extensions
 #gnome-music                       # lollypop included instead
 #gnome-photos
-#>extra gnome-remote-desktop       # optional for gnome-control-center
+>extra gnome-remote-desktop       # optional for gnome-control-center
 gnome-session
 gnome-settings-daemon
 #gnome-shell                       # custom gnome-shell-maia used
@@ -88,7 +89,7 @@ gnome-user-docs
 >extra gnome-user-share            # optional for gnome-control-center
 #gnome-video-effects               # required by cheese
 gnome-weather
-grilo-plugins
+>extra grilo-plugins
 gvfs
 >extra gvfs-afc
 #>extra gvfs-goa                   # required by gvfs-google; optional for gnome-control-center
@@ -98,41 +99,48 @@ gvfs
 >extra gvfs-nfs
 >extra gvfs-smb
 >extra malcontent
-mutter
 nautilus
 #orca
 >extra rygel                       # optional for gnome-control-center
->extra simple-scan
 sushi
 totem
 tracker3-miners
 xdg-user-dirs-gtk
+xdg-desktop-portal-gnome
 #yelp                              # required by gnome-user-docs
 
 
 ## GNOME Extra applications
 #accerciser
->extra dconf-editor
-#devhelp
+#d-spy                             # developer tools
+#>extra dconf-editor               # developer tools
+#devhelp                           # developer tools
 >extra endeavour
 #evolution                         # geary included instead
+file-roller
 >extra geary
 #gedit
 #ghex
+#gitg
 #glade
->extra gnome-boxes
+#>extra gnome-boxes
 #gnome-builder
 #gnome-connections
 #gnome-devel-docs
+#gnome-dictionary
 #gnome-games
 #gnome-multi-writer
 #gnome-nettool
+#gnome-notes
 #gnome-recipes
 #gnome-sound-recorder
 gnome-terminal-fedora
 gnome-tweaks
 #gnome-usage
 #polari
+>extra seahorse
+>extra simple-scan
+#sysprof                           # developer tools
 
 
 ## GNOME Extra games
@@ -142,6 +150,7 @@ gnome-tweaks
 #gnome-klotski
 #gnome-mahjongg
 >extra gnome-mines
+#gnome-2048
 #gnome-nibbles
 #gnome-robots
 #gnome-sudoku
@@ -193,18 +202,20 @@ qt6ct
 >extra alacarte
 >extra apparmor
 >extra caffeine-ng
+>extra collision
 >extra deja-dup
 >extra ffmpegthumbnailer
 >extra ffmpeg-audio-thumbnailer
 #firefox
 fprintd                            # needed for fingerprint reader
+#fwupd                             # required by gnome-firmware, optional for gnome-control-center
 >extra fragments
 gnome-browser-connector
 gnome-firmware
 >extra gnome-layout-switcher
 gnome-tour
 >extra gnuchess                    # optional for gnome-chess to play against computer
-gthumb
+>extra gthumb                      # eog in minimal edition
 #>extra gtkhash-nautilus           # not compatible with Nautilus 43
 >extra gtksourceview-pkgbuild      # syntax highlighting for PKGBUILDs
 >extra gufw
@@ -217,13 +228,14 @@ lollypop
 #manjaro-gnome-vanilla
 manjaro-hello
 >extra manjaro-log-helper
+manjaro-settings-manager
 manjaro-settings-manager-notifier
 #manjaro-starter
 #mousetweaks
-nautilus-admin
+>extra nautilus-admin
 nautilus-empty-file
 #>extra onlyoffice-desktopeditors
-polkit-gnome
+#polkit-gnome
 >extra power-profiles-daemon       # optional for gnome-control-center
 >extra seahorse
 >extra timeshift
@@ -247,7 +259,7 @@ mesa-utils
 #manjaro-documentation-en
 
 ## Settings packages
->extra lighter-gnome
+#>extra lighter-gnome
 manjaro-base-skel
 manjaro-browser-settings
 >extra manjaro-gnome-extension-settings
@@ -258,14 +270,14 @@ manjaro-gnome-settings
 
 ## Xorg Server
 numlockl
-xorg-mkfontscale
+#xorg-mkfontscale
 xorg-server
-xorg-twm
+#xorg-twm
 xorg-xinit
 
 ## Matti's corner
 >extra bmenu
-manjaro-ranger-settings
+>extra manjaro-ranger-settings
 >extra pacui
 
 # For Japanese

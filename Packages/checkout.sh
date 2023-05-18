@@ -23,9 +23,9 @@ sudo chown -R phoepsilonix:phoepsilonix $exdir
 #cd tp_smapi
 #rm tp_smapi-clang.patch
 #cd ..
-
-#for m in $(cat ../extramodules.txt)
-for m in "nvidia-390xx" "nvidia-470xx"
+#
+#for m in "nvidia-390xx" "nvidia-470xx"
+for m in $(cat ../extramodules.txt)
 do
         # $mがなかったら、追加する。
         echo $m;
@@ -35,8 +35,8 @@ do
         cd $m;
         #git diff --binary HEAD | git apply --check --stat --apply --allow-empty -R -
         git clean -d -f -e .*\.patch
-        git switch master
         git reset --hard master
+        git switch master
         git pull
         #git checkout master;
         #git switch -f master

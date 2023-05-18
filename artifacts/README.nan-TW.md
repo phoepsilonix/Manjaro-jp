@@ -314,6 +314,15 @@ kernel-6.2.11
 ##### 20230422
 kernel-6.2.12
 
+##### 20230427
+kernel-6.2.13
+
+##### 20230503
+kernel-6.2.14
+
+##### 20230513
+kernel-6.2.15
+
 
 ---
 供參考，後記。  
@@ -352,11 +361,7 @@ Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 [Paypal](https://paypal.me/phoepsilonix)  
 
 BTC  
-```15wwyVLTCtd1i4tuArwAcsCYPb2YBFH1CB```
+```3B6u3pzaeyB2YrDcXWDfGE7pHxx2xuu9KQ```
 
 ETH(main net)  
-```0x6d814317881ee2ea617fa6989f255f19b949eb60```
-
-USDT(ERC20)  
-```0x7e92844d51094eb164a7f4444524b55c31748546```
-
+```0xba50bb991196151b0870e4ea00a518552134c47d```

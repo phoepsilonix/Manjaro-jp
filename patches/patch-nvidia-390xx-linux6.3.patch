@@ -251,7 +251,7 @@ index f0bd25c..693371a 100644
          'kernel-6.2.patch'
 +        '001-fix-function-declaration.patch'
 +        '002-Kbuild-clang-options.patch'
-         'https://gitlab.com/herecura/packages/nvidia-390xx-dkms/-/raw/36af321ae3f3a1e177dd36c92ccd8f7ae3c8f1aa/kernel-6.3.patch')
+         'kernel-6.3.patch')
  sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
              '3501f0bbd9603543da74873905448ff58f5095948a7375617bba74f122d575aa'
 +            'e480e7bd77d7e0e3d5b48282bd2d5ce387564c61c04cfd2287ceb591d191f3cc'
