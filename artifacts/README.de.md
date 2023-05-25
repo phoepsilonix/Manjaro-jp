@@ -377,6 +377,12 @@ kernel-6.2.14
 ##### 20230513
 kernel-6.2.15
 
+##### 20230518
+kernel-6.2.16
+
+##### 20230525
+kernel-6.1.30
+
 
 ---
 Zusätzliche Informationen als Referenz.  

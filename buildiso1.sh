@@ -16,7 +16,7 @@ cat iso-profiles-orig/manjaro/{architect,gnome,kde,xfce}/Packages-*|sed 's|#.*||
 cat iso-profiles-orig/community/{mate,cinnamon,sway}/Packages-*|sed 's|#.*||'|sed 's|KERNEL|linux62|'|sed 's|^>[^ ]* ||'|xargs paru -Sw --noconfirm
 
 
-kernel=linux62
+kernel=linux61
 
 # 保存先フォルダ
 artifacts=`pwd`/artifacts

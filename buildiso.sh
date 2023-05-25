@@ -6,7 +6,7 @@ pkgdir=`pwd`/iso-profiles
 usb=/run/media/phoepsilonix/Ventoy
 gkey="-g $(cat ~/.gnupg/sign.txt)"
 
-kernel=linux518
+kernel=linux61
 
 # 保存先フォルダ
 artifacts=`pwd`/artifacts
