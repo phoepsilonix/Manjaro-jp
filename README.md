@@ -74,6 +74,10 @@ megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/ND9Qzb7
 ```
 
 ---
+## 参考：導入ガイド
+[Manjaro Linux 最初の一歩](https://zenn.dev/phoepsilonix/articles/5be4f3e3d78af7)
+
+---
 ### 備忘録
 ##### manjaro-tools-isoの変更箇所
 1. buildisoに用いるパッケージの取得先をmirrorlistの先頭行を標準にしています。  
