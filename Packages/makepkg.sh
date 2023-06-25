@@ -18,12 +18,12 @@ do
         cd $m;
         cat ~/.ssh/gpg-passphrase|sudo -S pwd > /dev/null
 
-[[ "$m" == "nvidia-390xx" ]] && sudo pacman -R nvidia-settings nvidia-utils --noconfirm && sync
-[[ "$m" == "zfs" ]] && sudo pacman -S zfs-dkms zfs-utils --noconfirm && sync
+#[[ "$m" == "nvidia-390xx" ]] && sudo pacman -R nvidia-settings nvidia-utils --noconfirm && sync
+#[[ "$m" == "zfs" ]] && sudo pacman -S zfs-dkms zfs-utils --noconfirm && sync
 
 expect -c "
   set timeout -1
-  spawn makepkg -sCc
+  spawn makepkg -s
   expect {
         eof { exit 0 }
         -gl {\[sudo\] password for } {

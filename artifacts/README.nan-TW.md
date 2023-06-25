@@ -3,7 +3,7 @@
 ## [Manjaro Linux](https://manjaro.org/) 日語支援
 
 默認支援日語輸入和日語顯示，包括實時環境。  
-kernel-6.2.x（穩定）。
+kernel-6.3.x（穩定）。
 
 按照公式，我們計劃準備三種類型：KDE、Xfce、GNOME。  
 分發檔是 ISO 和一些包檔。  
@@ -60,7 +60,16 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 感謝您的寶貴存儲空間。  
 分佈於以上三地。
 
-[超級存儲](https://mega.nz/storage/aff=gVLIePn4Hy0) 建議使用 ，因為它也可以上傳大於 4G 的檔。
+[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0) 建議使用 ，因為它也可以上傳大於 4G 的檔。
+
+如果你想用命令列從MEGA Storage下載，megatools很方便。
+```
+sudo pacman -S megatools
+```
+這是一個用下載URL下載20230622的gnome ISO的範例命令。
+```
+megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/ND9Qzb7C
+```
 
 ---
 ### 註釋
@@ -283,7 +292,6 @@ kernel-6.2.2
 
 ##### 20230306
 sway
-</details>
 
 ##### 20230315
 kernel-6.2.6  
@@ -329,14 +337,25 @@ kernel-6.2.16
 ##### 20230525
 kernel-6.1.30
 
+##### 20230607
+kernel-6.1.32
+</details>
+
+##### 20230611
+kernel-6.3.7
+
+##### 20230615
+kernel-6.3.8  
+nvidia-utils-535.54.03
+
+##### 20230622
+kernel-6.3.9  
+
 
 ---
 供參考，後記。  
 如果你有一台安裝了Linux的PC，非官方的？ 似乎您還可以使用ChromeOS（沒有官方支援）創建雙啟動環境。 它是為那些有一定知識的人準備的。  
 如果您有興趣，請參閱[這裡](https://github.com/sebanc/brunch/blob/master/install-with-linux.md)。（[日文翻譯](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82)）
-
----
-在具有滾動版本的Arch Linux系列中，[Garuda Linux](https://garudalinux.org) 看起來也不錯。
 
 ---
 其他推薦的操作系統  

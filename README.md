@@ -2,7 +2,7 @@
 
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
-[kernel-6.1系(longterm)](https://kernel.org/)。
+[kernel-6.3系(stable)](https://kernel.org/)。
 
 公式に合わせて、KDE、Xfce、GNOMEの３種類を用意する予定です。  
 配布ファイルはISOと一部パッケージファイルです。  
@@ -63,6 +63,15 @@ Calamaresにも、[フィードバック済み](https://github.com/calamares/cal
 上記、3箇所にて配布しています。
 
 [MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0)は、ファイルサイズ4G以上のものもアップロードできるので、お勧めです。
+
+コマンドラインで、MEGA Storageからダウンロードする場合、megatoolsが便利です。
+```
+sudo pacman -S megatools
+```
+20230622のgnomeのISOのダウンロードURLでのコマンド例です。
+```
+megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/ND9Qzb7C
+```
 
 ---
 ### 備忘録
@@ -336,7 +345,6 @@ kernel-6.2.2
 
 ##### 20230306
 sway
-</details>
 
 ##### 20230315
 kernel-6.2.6  
@@ -382,14 +390,25 @@ kernel-6.2.16
 ##### 20230525
 kernel-6.1.30
 
+##### 20230607
+kernel-6.1.32
+</details>
+
+##### 20230611
+kernel-6.3.7
+
+##### 20230615
+kernel-6.3.8  
+nvidia-utils-535.54.03
+
+##### 20230622
+kernel-6.3.9  
+
 
 ---
 参考までに、追記。  
 LinuxをインストールしたPCがあれば、非公式？な(公式サポートがない)ChromeOSとのデュアルブート環境も作れるみたいです。ある程度知識のある方向けです。  
 興味がある方は、[こちら](https://github.com/sebanc/brunch/blob/master/install-with-linux.md)をご参考にしてください。([日本語訳](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82))
-
----
-ローリングリリースが特徴のArchLinux系では、[Garuda Linux](https://garudalinux.org)も良さそうです。
 
 ---
 その他のおすすめOS  

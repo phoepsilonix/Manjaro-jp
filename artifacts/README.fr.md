@@ -2,7 +2,7 @@
 
 ## Prise en charge de la langue japonaise pour [Manjaro Linux](https://manjaro.org/)
 　Prise en charge de la saisie et de l'affichage en japonais par défaut, y compris dans les environnements dynamiques.  
-[série kernel-6.2(stable)](https://kernel.org/).
+[série kernel-6.3(stable)](https://kernel.org/).
 
 KDE, Xfce et GNOME seront disponibles selon la version officielle.  
 Les fichiers de distribution sont des ISO et quelques fichiers de paquets.  
@@ -62,6 +62,15 @@ Merci pour ce précieux stockage.
 Il est distribué dans les trois emplacements ci-dessus.
 
 [MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0), où vous pouvez télécharger des fichiers d'une taille de 4G ou plus.
+
+Si vous voulez télécharger depuis MEGA Storage en utilisant la ligne de commande, megatools est utile.
+```
+sudo pacman -S megatools
+```
+Voici un exemple de commande pour télécharger l’ISO gnome du 20230622 avec l’URL de téléchargement.
+```
+megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/ND9Qzb7C
+```
 
 ---
 ### Memorandum
@@ -336,8 +345,6 @@ kernel-6.2.2
 ##### 20230306
 sway
 
-</Details>
-
 ##### 20230315
 kernel-6.2.6  
 [fcitx5-mozc-with-jp-dict](https://aur.archlinux.org/packages/fcitx5-mozc-with-jp-dict)
@@ -382,14 +389,25 @@ kernel-6.2.16
 ##### 20230525
 kernel-6.1.30
 
+##### 20230607
+kernel-6.1.32
+</details>
+
+##### 20230611
+kernel-6.3.7
+
+##### 20230615
+kernel-6.3.8  
+nvidia-utils-535.54.03
+
+##### 20230622
+kernel-6.3.9  
+
 
 ---
 Informations supplémentaires pour référence.  
 Si vous disposez d'un PC avec Linux installé, vous pouvez créer un environnement non officiel ? Si vous avez un PC avec Linux installé, vous pouvez créer un environnement dual-boot avec ChromeOS non officiel (pas de support officiel). Ceci s'adresse aux personnes ayant quelques connaissances.  
 Si vous êtes intéressé, veuillez vous reporter à [ici](https://github.com/sebanc/brunch/blob/master/install-with-linux.md). ([Japonais](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82))
-
----
-Dans la famille ArchLinux, qui se caractérise par des mises à jour régulières, [Garuda Linux](https://garudalinux.org) a également bonne mine.
 
 ---
 Autres systèmes d'exploitation recommandés  

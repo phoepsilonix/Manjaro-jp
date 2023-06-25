@@ -87,3 +87,7 @@ mokutil
 sbsigntools
 shim-signed
 zram-generator
+
+# MEGA storage
+megatools
+

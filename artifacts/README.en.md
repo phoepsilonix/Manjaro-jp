@@ -2,7 +2,7 @@
 
 ## Japanese language support for [Manjaro Linux](https://manjaro.org/)
 　The default includes support for Japanese input and display, including the live environment.  
-[kernel-6.2 series(stable)](https://kernel.org/).  
+[kernel-6.3 series(stable)](https://kernel.org/).  
 
 We plan to provide three types of official environments: KDE, Xfce, and GNOME.  
 The distribution files include ISO and some package files.  
@@ -63,6 +63,15 @@ Thank you for the valuable storage.
 It is distributed in the above three places.
 
 [MEGA Storage](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A") is recommended as you can upload files larger than 4G.
+
+If you want to download from MEGA Storage using the command line, megatools is useful.
+```
+sudo pacman -S megatools
+```
+This is an example command for downloading the gnome ISO of 20230622 with the download URL.
+```
+megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/ND9Qzb7C
+```
 
 ---
 ### Memo
@@ -340,7 +349,6 @@ kernel-6.2.2
 
 ##### 20230306
 sway
-</Details>
 
 ##### 20230315
 kernel-6.2.6  
@@ -386,14 +394,25 @@ kernel-6.2.16
 ##### 20230525
 kernel-6.1.30
 
+##### 20230607
+kernel-6.1.32
+</details>
+
+##### 20230611
+kernel-6.3.7
+
+##### 20230615
+kernel-6.3.8  
+nvidia-utils-535.54.03
+
+##### 20230622
+kernel-6.3.9  
+
 
 ---
 Note: As a reference, an additional note.  
 If you have a PC with Linux installed, you can also create a dual-boot environment with (no official support) ChromeOS, as long as you have some knowledge.  
 This is for those who are interested. Please refer to [this link](https://github.com/sebanc/brunch/blob/master/install-with-linux.md) for reference.([Japanese](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82))
-
----
-It is also worth checking out [Garuda Linux](https://garudalinux.org), which is also a good choice among the Arch Linux family, known for its rolling release.
 
 ---
 Other recommended OS  

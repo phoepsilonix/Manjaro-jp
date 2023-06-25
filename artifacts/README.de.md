@@ -2,7 +2,7 @@
 
 ## Unterstützung der japanischen Sprache für [Manjaro Linux](https://manjaro.org/)
 　Unterstützt standardmäßig japanische Eingabe und Anzeige, einschließlich Live-Umgebungen.  
-[Kernel-6.2-Serie(stable)](https://kernel.org/).
+[Kernel-6.3-Serie(stable)](https://kernel.org/).
 
 KDE, Xfce und GNOME werden für den offiziellen Gebrauch verfügbar sein.  
 Die Distributionsdateien sind ISO und einige Paketdateien.  
@@ -63,6 +63,15 @@ Vielen Dank für die wertvolle Speicherung.
 Er wird an den drei oben genannten Orten verteilt.
 
 [MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0), wo Sie Dateien mit einer Größe von 4G oder mehr hochladen können.
+
+Wenn Sie von MEGA Storage mit der Befehlszeile herunterladen möchten, ist megatools nützlich.
+```
+sudo pacman -S megatools
+```
+Dies ist ein Beispielbefehl zum Herunterladen der gnome ISO vom 20230622 mit der Download-URL.
+```
+megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/ND9Qzb7C
+```
 
 ---
 ### Memorandum
@@ -337,7 +346,6 @@ kernel-6.2.2
 
 ##### 20230306
 sway
-</Details>
 
 ##### 20230315
 kernel-6.2.6  
@@ -383,14 +391,25 @@ kernel-6.2.16
 ##### 20230525
 kernel-6.1.30
 
+##### 20230607
+kernel-6.1.32
+</details>
+
+##### 20230611
+kernel-6.3.7
+
+##### 20230615
+kernel-6.3.8  
+nvidia-utils-535.54.03
+
+##### 20230622
+kernel-6.3.9  
+
 
 ---
 Zusätzliche Informationen als Referenz.  
 Wenn Sie einen PC mit installiertem Linux haben, können Sie eine inoffizielle? Wenn Sie einen PC mit installiertem Linux haben, können Sie eine Dual-Boot-Umgebung mit inoffiziellem (keine offizielle Unterstützung) ChromeOS erstellen. Dies ist für Leute mit einigen Kenntnissen.  
 Wenn Sie interessiert sind, lesen Sie bitte [hier](https://github.com/sebanc/brunch/blob/master/install-with-linux.md). ([Japanisch](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82))
-
----
-In der ArchLinux-Familie, die rollierende Veröffentlichungen anbietet, sieht [Garuda Linux](https://garudalinux.org) ebenfalls gut aus.
 
 ---
 Andere empfohlene Betriebssysteme  

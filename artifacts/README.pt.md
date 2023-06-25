@@ -2,7 +2,7 @@
 
 ## Suporte em língua japonesa para [Manjaro Linux](https://manjaro.org/)
 　Suporta a entrada e exibição japonesa por defeito, incluindo ambientes ao vivo.  
-[kernel-6.2 series(stable)](https://kernel.org/).
+[kernel-6.3 series(stable)](https://kernel.org/).
 
 KDE, Xfce e GNOME estarão disponíveis de acordo com a versão oficial.  
 Os ficheiros de distribuição são ISO e alguns ficheiros de pacotes.  
@@ -63,6 +63,15 @@ Obrigado pelo valioso armazenamento.
 É distribuído nos três locais acima referidos.
 
 [MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0), onde pode carregar ficheiros de 4G ou mais em tamanho.
+
+Se você quiser baixar do MEGA Storage usando a linha de comando, o megatools é útil.
+```
+sudo pacman -S megatools
+```
+Este é um exemplo de comando para baixar o ISO gnome de 20230622 com a URL de download.
+```
+megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/ND9Qzb7C
+```
 
 ### Memorando
 ##### manjaro-tools-iso mudanças
@@ -336,8 +345,6 @@ kernel-6.2.2
 ##### 20230306
 sway
 
-</Details>
-
 ##### 20230315
 kernel-6.2.6  
 [fcitx5-mozc-with-jp-dict](https://aur.archlinux.org/packages/fcitx5-mozc-with-jp-dict)
@@ -382,14 +389,25 @@ kernel-6.2.16
 ##### 20230525
 kernel-6.1.30
 
+##### 20230607
+kernel-6.1.32
+</details>
+
+##### 20230611
+kernel-6.3.7
+
+##### 20230615
+kernel-6.3.8  
+nvidia-utils-535.54.03
+
+##### 20230622
+kernel-6.3.9  
+
 
 ---
 Informação adicional para referência.  
 Se tiver um PC com Linux instalado, pode criar um não-oficial? Se tiver um PC com Linux instalado, pode criar um ambiente de boot duplo com ChromeOS não-oficial (sem suporte oficial). Isto é para pessoas com algum conhecimento.  
 Se estiver interessado, por favor consulte [aqui](https://github.com/sebanc/brunch/blob/master/install-with-linux.md). ([Japonês](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82))
-
----
-Na família ArchLinux, que apresenta lançamentos rolantes, [Garuda Linux](https://garudalinux.org) também tem bom aspecto.
 
 ---
 Outros sistemas operativos recomendados.  
