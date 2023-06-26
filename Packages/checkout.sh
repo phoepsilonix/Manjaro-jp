@@ -42,12 +42,16 @@ do
         #git switch -f master
         #git pull origin master
         case "$kver" in
+            "6.4" ) patches="patch-*${m}-linux6.4\.patch" ;;
             "6.3" ) patches="patch-*${m}-linux6.3\.patch" ;;
             "6.2" ) patches="patch-*${m}-linux6.2\.patch" ;;
             * ) patches="patch-*${m}\.patch" ;;
         esac
         case "$m" in
-            "tp_smapi" ) patches="patch-*${m}\.patch" ;;
+            "tp_smapi" ) patches="patch-*${m}\.patch"
+                case "$kver" in
+                    "6.4" ) patches="patch-*${m}-linux6.4\.patch" ;;
+                esac
         esac
         for patch in ~/gitlab/Manjaro-jp/patches/kmod-*${m}\.patch ~/gitlab/Manjaro-jp/patches/${patches}
         do
