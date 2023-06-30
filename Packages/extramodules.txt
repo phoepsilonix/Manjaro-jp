@@ -9,4 +9,5 @@ rtl8723bu
 tp_smapi
 vhba-module
 virtualbox
+virtualbox-modules
 zfs

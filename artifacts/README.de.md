@@ -1,8 +1,7 @@
-# [Manjaro Linux JP](https://sourceforge.net/projects/manjaro-jp/)
 
 ## Unterstützung der japanischen Sprache für [Manjaro Linux](https://manjaro.org/)
 　Unterstützt standardmäßig japanische Eingabe und Anzeige, einschließlich Live-Umgebungen.  
-[Kernel-6.3-Serie(stable)](https://kernel.org/).
+[Kernel-6.4-Serie(stable)](https://kernel.org/).
 
 KDE, Xfce und GNOME werden für den offiziellen Gebrauch verfügbar sein.  
 Die Distributionsdateien sind ISO und einige Paketdateien.  
@@ -68,9 +67,9 @@ Wenn Sie von MEGA Storage mit der Befehlszeile herunterladen möchten, ist megat
 ```
 sudo pacman -S megatools
 ```
-Dies ist ein Beispielbefehl zum Herunterladen der gnome ISO vom 20230622 mit der Download-URL.
+Dies ist ein Beispielbefehl zum Herunterladen der gnome ISO vom 20230627 mit der Download-URL.
 ```
-megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/ND9Qzb7C
+megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/8PlBkZzR
 ```
 
 ---
@@ -405,6 +404,12 @@ nvidia-utils-535.54.03
 ##### 20230622
 kernel-6.3.9  
 
+##### 20230627
+kernel-6.4.0  
+
+##### 203230629
+nvidia-470xx-utils-470.199.02-2
+
 
 ---
 Zusätzliche Informationen als Referenz.  
@@ -414,8 +419,6 @@ Wenn Sie interessiert sind, lesen Sie bitte [hier](https://github.com/sebanc/bru
 ---
 Andere empfohlene Betriebssysteme  
 [Endless OS | Endless Computers](https://endlessos.com/)  
-[Fedora Kinoite](https://kinoite.fedoraproject.org/ja/)  
-[Fedora Silverblue](https://getfedora.org/ja/silverblue/)  
 
 ---
 ```

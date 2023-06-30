@@ -29,12 +29,13 @@ for m in $(cat ../extramodules.txt)
 do
         # $mがなかったら、追加する。
         echo $m;
-        [[ ! -e ./$m/ ]] && (git submodule update --init $m || git submodule add ssh://git@gitlab.manjaro.org:22277/packages/extra/$curdir/$m $m;)
+        [[ ! -e ./$m/ ]] && (git submodule update --init $m || git submodule add ssh://git@gitlab.manjaro.org:22277/packages/extra/$curdir/$m $m || continue;)
 
         # masterブランチをchekoutして、pullでリモートの最新版を取得する
-        cd $m;
-        #git diff --binary HEAD | git apply --check --stat --apply --allow-empty -R -
+        cd $m || continue
+        
         git clean -d -f -e .*\.patch
+        #git diff --binary HEAD | git apply --check --stat --apply --allow-empty -R -
         git reset --hard master
         git switch master
         git pull

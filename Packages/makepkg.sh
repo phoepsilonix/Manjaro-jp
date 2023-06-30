@@ -15,7 +15,7 @@ sudo chown -R phoepsilonix:phoepsilonix $exdir
 #for m in $(grep nvidia ../extramodules.txt)
 for m in $(cat ../extramodules.txt)
 do
-        cd $m;
+        cd $m || continue
         cat ~/.ssh/gpg-passphrase|sudo -S pwd > /dev/null
 
 #[[ "$m" == "nvidia-390xx" ]] && sudo pacman -R nvidia-settings nvidia-utils --noconfirm && sync
@@ -23,7 +23,7 @@ do
 
 expect -c "
   set timeout -1
-  spawn makepkg -s
+  spawn makepkg -sC
   expect {
         eof { exit 0 }
         -gl {\[sudo\] password for } {

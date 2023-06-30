@@ -4,7 +4,7 @@ repo_key=$(cat ~/.gnupg/sign.txt)
 curdir=${PWD##*/}
 for m in $(cat ../extramodules.txt)
 do
-        cd $m;
+        cd $m || continue;
 # 署名がないパッケージに署名をする
 for f in *.zst 
 do
@@ -17,6 +17,7 @@ do
 	echo "$f ${f%.*} gpg verify"
 	gpg -v --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback --default-key $repo_key --verify $f ${f%.*} || { echo "pkg verify error" ; exit 1; }
 done
+echo $PWD
         cd ..;
 done
  

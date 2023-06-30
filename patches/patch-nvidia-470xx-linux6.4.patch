@@ -267,7 +267,7 @@ index 0000000..8a2736a
 +         return;
 diff --git a/002-Kbuild-clang-options.patch b/002-Kbuild-clang-options.patch
 new file mode 100644
-index 0000000..1b81d7b
+index 0000000..f3b118a
 --- /dev/null
 +++ b/002-Kbuild-clang-options.patch
 @@ -0,0 +1,13 @@
@@ -281,31 +281,30 @@ index 0000000..1b81d7b
 + EXTRA_CFLAGS += -I$(src)
 +-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
 ++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
-+ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.182.03\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
++ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.199.02\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index 19ecd57..c0bd719 100644
+index 9e2df67..73d31ba 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -23,9 +23,13 @@ install=nvidia.install
+@@ -22,8 +22,12 @@ options=(!strip)
+ install=nvidia.install
  _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
  source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-         'nvidia-470xx-fix-linux-6.3.patch'
 +        '001-fix-function-declaration.patch'
 +        '002-Kbuild-clang-options.patch'
-         'nvidia-470xx-fix-linux-6.4.patch')
- sha256sums=('0a02d9341b9b4206df1401a812e8dfed2406bc1f3d7a1055260149cde858aa8c'
-             'ed6d19f5da021d71079dacdd85de65338457be71d178df374170ba43fa95600b'
+         'kernel-6.4.patch')
+ sha256sums=('9c86f9ef6aceaf2b292407aa161b98d817b2eb10a615f971d29a20c2a748ad09'
 +            'b8971052d71cfafc80ce2e13d4c3d09ffe6e82864b3bdfb6daf5de26e51d7ff7'
-+            '95dfeeee4310babc06950f4d3408a7c9d21e295650161a362bbcc2c6dd31bb47'
-             '3c4fb091be74f5b730f7ffc1e0abb1e51d09ffddea8c7a842c5af222f3574341')
++            'd75c572230b68d5d0663805ac7a22dce95ec193e14bed9229cc26b790bc33d4e'
+             '9fbab269f00beb78b44e4693ea44b399e4122a3dfba00322af3e5e3485a1eed3')
  
  _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
-@@ -37,6 +41,8 @@ prepare() {
+@@ -34,6 +38,8 @@ prepare() {
+     cd "${_pkg}/kernel"
      # patches here
-     patch -p1 -i ../../nvidia-470xx-fix-linux-6.3.patch
-     patch -p1 -i ../../nvidia-470xx-fix-linux-6.4.patch
+     patch -Np1 -i ../../kernel-6.4.patch
 +    patch -p2 -i ${srcdir}/001-fix-function-declaration.patch
 +    patch -p2 -i ${srcdir}/002-Kbuild-clang-options.patch
  }

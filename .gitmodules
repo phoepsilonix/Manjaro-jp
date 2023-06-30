@@ -223,42 +223,6 @@
 [submodule "Packages/grub-theme-live-dev"]
 	path = Packages/grub-theme-live-dev
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/grub-theme-live-dev.git
-[submodule "Packages/extramodules-6.2/acpi_call"]
-	path = Packages/extramodules-6.2/acpi_call
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux62-extramodules/acpi_call
-[submodule "Packages/extramodules-6.2/bbswitch"]
-	path = Packages/extramodules-6.2/bbswitch
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux62-extramodules/bbswitch
-[submodule "Packages/extramodules-6.2/broadcom-wl"]
-	path = Packages/extramodules-6.2/broadcom-wl
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux62-extramodules/broadcom-wl
-[submodule "Packages/extramodules-6.2/nvidia"]
-	path = Packages/extramodules-6.2/nvidia
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux62-extramodules/nvidia
-[submodule "Packages/extramodules-6.2/nvidia-390xx"]
-	path = Packages/extramodules-6.2/nvidia-390xx
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux62-extramodules/nvidia-390xx
-[submodule "Packages/extramodules-6.2/nvidia-470xx"]
-	path = Packages/extramodules-6.2/nvidia-470xx
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux62-extramodules/nvidia-470xx
-[submodule "Packages/extramodules-6.2/r8168"]
-	path = Packages/extramodules-6.2/r8168
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux62-extramodules/r8168
-[submodule "Packages/extramodules-6.2/rtl8723bu"]
-	path = Packages/extramodules-6.2/rtl8723bu
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux62-extramodules/rtl8723bu
-[submodule "Packages/extramodules-6.2/tp_smapi"]
-	path = Packages/extramodules-6.2/tp_smapi
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux62-extramodules/tp_smapi
-[submodule "Packages/extramodules-6.2/vhba-module"]
-	path = Packages/extramodules-6.2/vhba-module
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux62-extramodules/vhba-module
-[submodule "Packages/extramodules-6.2/virtualbox-modules"]
-	path = Packages/extramodules-6.2/virtualbox-modules
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux62-extramodules/virtualbox-modules
-[submodule "Packages/extramodules-6.2/zfs"]
-	path = Packages/extramodules-6.2/zfs
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux62-extramodules/zfs
 [submodule "Packages/extramodules-6.3/acpi_call"]
 	path = Packages/extramodules-6.3/acpi_call
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux63-extramodules/acpi_call

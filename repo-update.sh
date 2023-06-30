@@ -10,19 +10,20 @@ ssh_pass=~/.ssh/ssh-passphrase.gpg
 
 cd $repo_dir; 
 
+
 gpg -dq $gpg_pass.gpg | sudo -S pwd > /dev/null
 # usb
 # 古いパッケージをバックアップ
 #sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # 署名がないパッケージに署名をする
-for f in *.zst
+for f in *.pkg.tar.zst *.pkg.tar.xz
 do
 	[[ ! -f "$f.sig" ]] && { echo "gpg sign: $f" ; gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback --default-key $repo_key -v -b $f; }
 done
 
 # パッケージの署名の検証
-for f in *.zst.sig
+for f in *.pkg.tar.zst.sig *.pkg.tar.xz.sig
 do
 	echo "$f ${f%.*} gpg verify"
 	gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -v --default-key $repo_key --verify $f ${f%.*} || { echo "pkg verify error" ; exit 1; }
@@ -31,13 +32,28 @@ done
 # レポジトリデータベースの更新
 rm $repo.db.* $repo.files.*
 
-# バージョンでsortしておく。repo-addは、あとから追加されたものが優先されるため。
-pkgfiles=$(ls -v ./*.zst ./*.xz)
-
 # repo-add
 #-n 新しいパッケージのみ追加
 #-R 古いパッケージを削除
+#nvidia unstable stable
+SRC=rsync://ftp.tsukuba.wide.ad.jp/manjaro/
+rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/unstable/extra/x86_64/{libxnvctrl,nvidia-*{utils,dkms,settings}}* ./
+rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/unstable/multilib/x86_64/lib32-nvidia-*utils* ./
+rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/stable/extra/x86_64/{libxnvctrl,nvidia-*{utils,dkms,settings}}* ./
+rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/stable/multilib/x86_64/lib32-nvidia-*utils* ./
+
+
+#nvidia以外のパッケージの登録。古いものを削除。
+# バージョンでsortしておく。repo-addは、あとから追加されたものが優先されるため。
+pkgfiles=$(ls -v --ignore={manjaro-jp.,nvidia-,lib32-nvidia,libxnvctrl}* --ignore=*.sig)
+echo $pkgfiles
 LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -R --sign --key $repo_key ${pkgfiles}
+#nvidia関連のパッケージの追加
+# nvidia stable unstable ともに残す
+pkgfiles=$(ls -v {nvidia,lib32-nvidia,libxnvctrl}*.zst)
+echo $pkgfiles
+LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz --sign --key $repo_key ${pkgfiles}
+
 #repo-add $repo.db.tar.xz -n --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -R --sign --key $repo_key ./*.zst 
 #repo-add $repo.db.tar.xz -n -R --sign --key $repo_key ./*.zst
@@ -47,6 +63,13 @@ for f in *.{db,files}.tar.xz.sig
 do
 	echo "${f%.*} gpg verify"
 	gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -v --default-key $repo_key --verify $f ${f%.*} || { echo "repo db verify error" ; exit 1; }
+done
+
+# パッケージの署名の検証
+for f in *.pkg.tar.zst.sig *.pkg.tar.xz.sig
+do
+	echo "$f ${f%.*} gpg verify"
+	gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -v --default-key $repo_key --verify $f ${f%.*} || { echo "pkg verify error" ; exit 1; }
 done
 
 ###### expectによる、履歴を残さない
@@ -87,12 +110,6 @@ sudo rsync -avP --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to loc
 #rsync -avPL --size-only --no-perms ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 
 #rsync -avPL --size-only --no-perms --delete --exclude=\.* ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
-#jfrog
-#jf rt u ./ manjaro-jp --quiet 
-#jf rt u ./manjaro-jp.db manjaro-jp --quiet 
-#jf rt u ./manjaro-jp.db.sig manjaro-jp --quiet 
-#jf rt u ./manjaro-jp.files manjaro-jp --quiet 
-#jf rt u ./manjaro-jp.files.sig manjaro-jp --quiet 
 
 #OSDN 
 #OK:symlink

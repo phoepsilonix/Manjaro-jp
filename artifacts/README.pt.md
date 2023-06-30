@@ -2,7 +2,7 @@
 
 ## Suporte em língua japonesa para [Manjaro Linux](https://manjaro.org/)
 　Suporta a entrada e exibição japonesa por defeito, incluindo ambientes ao vivo.  
-[kernel-6.3 series(stable)](https://kernel.org/).
+[kernel-6.4 series(stable)](https://kernel.org/).
 
 KDE, Xfce e GNOME estarão disponíveis de acordo com a versão oficial.  
 Os ficheiros de distribuição são ISO e alguns ficheiros de pacotes.  
@@ -68,9 +68,9 @@ Se você quiser baixar do MEGA Storage usando a linha de comando, o megatools é
 ```
 sudo pacman -S megatools
 ```
-Este é um exemplo de comando para baixar o ISO gnome de 20230622 com a URL de download.
+Este é um exemplo de comando para baixar o ISO gnome de 20230627 com a URL de download.
 ```
-megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/ND9Qzb7C
+megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/8PlBkZzR
 ```
 
 ### Memorando
@@ -403,6 +403,12 @@ nvidia-utils-535.54.03
 ##### 20230622
 kernel-6.3.9  
 
+##### 20230627
+kernel-6.4.0  
+
+##### 203230629
+nvidia-470xx-utils-470.199.02-2
+
 
 ---
 Informação adicional para referência.  
@@ -412,8 +418,6 @@ Se estiver interessado, por favor consulte [aqui](https://github.com/sebanc/brun
 ---
 Outros sistemas operativos recomendados.  
 [Fedora Kinoite](https://kinoite.fedoraproject.org/ja/)  
-[Fedora Silverblue](https://getfedora.org/ja/silverblue/)  
-[Endless OS | Endless Computers](https://endlessos.com/)  
 
 ---
 ```

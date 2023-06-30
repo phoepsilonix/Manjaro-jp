@@ -1,11 +1,11 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 0b81865..0d03148 100644
+index d104a6c..f053b6b 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -27,8 +27,10 @@ makedepends=('git' "$_linuxprefix-headers")
  groups=("$_linuxprefix-extramodules")
  install="${_pkgname}.install"
- _commit=a63729ab30d85430048f65c37f29188ab484cd52  # tags/tp-smapi/0.43
+ _commit=0c3398b1acf2a2cabd9cee91dc3fe3d35805fa8b  # tags/tp-smapi/0.43
 -source=("git+https://github.com/evgeni/tp_smapi#commit=$_commit")
 -sha256sums=('SKIP')
 +source=("git+https://github.com/evgeni/tp_smapi#commit=$_commit"
@@ -13,23 +13,13 @@ index 0b81865..0d03148 100644
 +sha256sums=('SKIP'
 +            'cb5d682450af8ac8436e1645d4fdaa32382ae83cc03c03b0c2f878f78e017be5')
  
- pkgver() {
-   cd $_pkgname
-@@ -39,14 +41,14 @@ pkgver() {
+ #pkgver() {
+ #  cd $_pkgname
+@@ -38,6 +40,7 @@ sha256sums=('SKIP')
  prepare() {
    cd $_pkgname
  
-+  # fix 6.4 build (to avoid pkgver bump)
-+  git cherry-pick 0c3398b1acf2a2cabd9cee91dc3fe3d35805fa8b
 +  patch -p1 -i ../tp_smapi-clang.patch
  }
  
  build() {
-   cd $_pkgname
- 
--  # fix 6.4 build (to avoid pkgver bump)
--  git cherry-pick 0c3398b1acf2a2cabd9cee91dc3fe3d35805fa8b
--
-   # https://bugs.archlinux.org/task/54975 (kernel has no _GLOBAL_OFFSET_TABLE_):
-   # Clear EXTRA_CFLAGS since it defaults to injecting CFLAGS and -fno-plt breaks the modules
-   make HDAPS=1 KVER="$(</usr/lib/modules/${_extraver}/version)" EXTRA_CFLAGS=

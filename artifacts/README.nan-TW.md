@@ -3,7 +3,7 @@
 ## [Manjaro Linux](https://manjaro.org/) 日語支援
 
 默認支援日語輸入和日語顯示，包括實時環境。  
-kernel-6.3.x（穩定）。
+kernel-6.4.x（穩定）。
 
 按照公式，我們計劃準備三種類型：KDE、Xfce、GNOME。  
 分發檔是 ISO 和一些包檔。  
@@ -66,9 +66,9 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 ```
 sudo pacman -S megatools
 ```
-這是一個用下載URL下載20230622的gnome ISO的範例命令。
+這是一個用下載URL下載20230627的gnome ISO的範例命令。
 ```
-megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/ND9Qzb7C
+megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/8PlBkZzR
 ```
 
 ---
@@ -351,6 +351,12 @@ nvidia-utils-535.54.03
 ##### 20230622
 kernel-6.3.9  
 
+##### 20230627
+kernel-6.4.0  
+
+##### 203230629
+nvidia-470xx-utils-470.199.02-2
+
 
 ---
 供參考，後記。  
@@ -360,8 +366,6 @@ kernel-6.3.9
 ---
 其他推薦的操作系統  
 [Endless OS | Endless Computers](https://endlessos.com/)  
-[Fedora Kinoite](https://kinoite.fedoraproject.org/ja/)  
-[Fedora Silverblue](https://getfedora.org/ja/silverblue/)  
 
 ---
 ```

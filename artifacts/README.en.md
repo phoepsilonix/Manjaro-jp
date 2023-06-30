@@ -68,9 +68,9 @@ If you want to download from MEGA Storage using the command line, megatools is u
 ```
 sudo pacman -S megatools
 ```
-This is an example command for downloading the gnome ISO of 20230622 with the download URL.
+This is an example command for downloading the gnome ISO of 20230627 with the download URL.
 ```
-megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/ND9Qzb7C
+megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/8PlBkZzR
 ```
 
 ---
@@ -408,6 +408,12 @@ nvidia-utils-535.54.03
 ##### 20230622
 kernel-6.3.9  
 
+##### 20230627
+kernel-6.4.0  
+
+##### 203230629
+nvidia-470xx-utils-470.199.02-2
+
 
 ---
 Note: As a reference, an additional note.  
@@ -417,8 +423,6 @@ This is for those who are interested. Please refer to [this link](https://github
 ---
 Other recommended OS  
 [Endless OS | Endless Computers](https://endlessos.com/)  
-[Fedora Kinoite](https://kinoite.fedoraproject.org/ja/)  
-[Fedora Silverblue](https://getfedora.org/ja/silverblue/)  
 
 ---
 ```
