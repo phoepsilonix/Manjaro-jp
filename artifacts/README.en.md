@@ -68,9 +68,9 @@ If you want to download from MEGA Storage using the command line, megatools is u
 ```
 sudo pacman -S megatools
 ```
-This is an example command for downloading the gnome ISO of 20230627 with the download URL.
+
 ```
-megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/8PlBkZzR
+megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
 ```
 
 ---
@@ -411,8 +411,17 @@ kernel-6.3.9
 ##### 20230627
 kernel-6.4.0  
 
-##### 203230629
+##### 20230629
 nvidia-470xx-utils-470.199.02-2
+
+##### 20230703
+kernel-6.4.1  
+
+##### 20230707
+kernel-6.4.2
+
+##### 20230712
+kernel-6.4.3  
 
 
 ---
@@ -441,10 +450,10 @@ Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 [manjaro-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 (GPG signing public key:536487F1470D7187) <phoepsilonix あっと gmail どっと com>  
 
+[ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
 [Patreon](https://patreon.com/user?u=87853674&utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=creatorshare_creator&utm_content=join_link)  
-[revolut](https://revolut.me/phoepsilonix)  
-[Paypal](https://paypal.me/phoepsilonix)  
+
 
 BTC  
 ```15wwyVLTCtd1i4tuArwAcsCYPb2YBFH1CB```

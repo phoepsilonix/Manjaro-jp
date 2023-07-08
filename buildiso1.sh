@@ -12,11 +12,9 @@ pkgdir=`pwd`/iso-profiles
 usb=/run/media/phoepsilonix/Ventoy
 gkey="-g $(cat ~/.gnupg/sign.txt)"
 #gkey=""
-cat iso-profiles-orig/manjaro/{architect,gnome,kde,xfce}/Packages-*|sed 's|#.*||'|sed 's|KERNEL|linux62|'|sed 's|^>[^ ]* ||'|xargs paru -Sw --noconfirm
-cat iso-profiles-orig/community/{mate,cinnamon,sway}/Packages-*|sed 's|#.*||'|sed 's|KERNEL|linux62|'|sed 's|^>[^ ]* ||'|xargs paru -Sw --noconfirm
 
 
-kernel=linux61
+kernel=linux64
 
 # 保存先フォルダ
 artifacts=`pwd`/artifacts
@@ -31,7 +29,7 @@ editions=(
         "manjaro gnome"
         "manjaro kde"
         "manjaro xfce"
-        "community cinnamon" 
+        "community cinnamon"
         "community mate"
        # "community openbox"
         "manjaro architect"
@@ -69,6 +67,10 @@ do
         sync
 done
 
+gpg -dq ~/.ssh/pass.gpg|sudo -S pwd
+        sudo rm /var/lib/manjaro-tools/buildiso/* -rf
+        sync
+
 # buildiso prepare image
 echo "build image"
 for edition in "${editions[@]}"
@@ -93,6 +95,9 @@ do
 #        buildiso -x -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
 #        buildiso -zc -d xz -f -k $kernel -p $ed $gkey
         #buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build
+        gpg -dq ~/.ssh/pass.gpg|sudo -S pwd >/dev/null 2>&1
+        sudo rm /var/lib/manjaro-tools/buildiso/* -rf
+        sync
 done
 
 echo "Move iso files to Artifacts folder"
@@ -100,7 +105,9 @@ echo "Move iso files to Artifacts folder"
 sync
 find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
 #rsync -avn $usb/artifacts/*.iso $artifacts/ && sync
-sync
+        gpg -dq ~/.ssh/pass.gpg|sudo -S pwd >/dev/null 2>&1
+        sudo rm /var/lib/manjaro-tools/buildiso/* -rf
+        sync
 
 # 終了
 echo "Done"

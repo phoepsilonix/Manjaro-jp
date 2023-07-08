@@ -66,9 +66,9 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 ```
 sudo pacman -S megatools
 ```
-這是一個用下載URL下載20230627的gnome ISO的範例命令。
+
 ```
-megatools dl https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/file/8PlBkZzR
+megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
 ```
 
 ---
@@ -354,8 +354,17 @@ kernel-6.3.9
 ##### 20230627
 kernel-6.4.0  
 
-##### 203230629
+##### 20230629
 nvidia-470xx-utils-470.199.02-2
+
+##### 20230703
+kernel-6.4.1
+
+##### 20230707
+kernel-6.4.2
+
+##### 20230712
+kernel-6.4.3  
 
 
 ---
@@ -384,10 +393,9 @@ Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 [manjaro-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 (GPG signing public key:536487F1470D7187) <phoepsilonix あっと gmail どっと com>  
 
+[ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
 [Patreon](https://patreon.com/user?u=87853674&utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=creatorshare_creator&utm_content=join_link)  
-[revolut](https://revolut.me/phoepsilonix)  
-[Paypal](https://paypal.me/phoepsilonix)  
 
 BTC  
 ```3B6u3pzaeyB2YrDcXWDfGE7pHxx2xuu9KQ```

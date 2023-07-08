@@ -37,11 +37,11 @@ rm $repo.db.* $repo.files.*
 #-R 古いパッケージを削除
 #nvidia unstable stable
 SRC=rsync://ftp.tsukuba.wide.ad.jp/manjaro/
+SRC=/var/www/manjaro/
 rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/unstable/extra/x86_64/{libxnvctrl,nvidia-*{utils,dkms,settings}}* ./
 rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/unstable/multilib/x86_64/lib32-nvidia-*utils* ./
 rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/stable/extra/x86_64/{libxnvctrl,nvidia-*{utils,dkms,settings}}* ./
 rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/stable/multilib/x86_64/lib32-nvidia-*utils* ./
-
 
 #nvidia以外のパッケージの登録。古いものを削除。
 # バージョンでsortしておく。repo-addは、あとから追加されたものが優先されるため。
