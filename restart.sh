@@ -1,6 +1,6 @@
 #!/bin/sh
 
-gpg -dq ~/.ssh/pass.gpg|sudo -S pacman -Sy git-lfs base-devel neovim clang lld llvm aria2 manjaro-tools-iso-git rsync sox paru fuse-overlayfs keychain expect h2o-git ruby-rbenv ruby-bundler --needed
+gpg -dq ~/.ssh/pass.gpg|sudo -S pacman -Sy git-lfs git-delta base-devel neovim clang lld llvm aria2 manjaro-tools-iso-git rsync sox paru fuse-overlayfs keychain expect h2o-git ruby-rbenv ruby-bundler --needed
 paru -Sy rbenv ruby-build --needed --noconfirm
 rbenv install 3.2.2
 rbenv install mruby
