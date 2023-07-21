@@ -202,11 +202,11 @@ make_iso() {
                 msg2 "Removing '/etc/pacman.d/gnupg' folder from ${sfs_dir}"
                 rm -rf "${sfs_dir}"/etc/pacman.d/gnupg
             fi
-            if [[ "$(basename ${sfs_dir})" == "rootfs" ]]; then
-                gpg --homedir /etc/pacman.d/gnupg --list-keys
-                gpg --homedir /etc/pacman.d/gnupg --armor --export 4DC505BB1FBD8202E725BECC57B49CC5AA4F00FC | sudo tee -a "${sfs_dir}"/usr/share/pacman/keyrings/manjaro.gpg
-                echo "4DC505BB1FBD8202E725BECC57B49CC5AA4F00FC:4:" | sudo tee -a "${sfs_dir}"/usr/share/pacman/keyrings/manjaro-trusted
-            fi
+            #if [[ "$(basename ${sfs_dir})" == "rootfs" ]]; then
+                #gpg --homedir /etc/pacman.d/gnupg --list-keys
+                #gpg --homedir /etc/pacman.d/gnupg --armor --export 4DC505BB1FBD8202E725BECC57B49CC5AA4F00FC | sudo tee -a "${sfs_dir}"/usr/share/pacman/keyrings/manjaro.gpg
+                #echo "4DC505BB1FBD8202E725BECC57B49CC5AA4F00FC:4:" | sudo tee -a "${sfs_dir}"/usr/share/pacman/keyrings/manjaro-trusted
+            #fi
             make_sfs "${sfs_dir}"
         fi
     done

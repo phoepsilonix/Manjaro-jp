@@ -3,6 +3,7 @@ fcitx5-im
 #fcitx5-mozc
 manjaro-jp/mozc-with-jp-dict-common
 manjaro-jp/fcitx5-mozc-with-jp-dict
+manjaro-jp/manjaro_jp-keyring
 
 # AUR fcitx5-input-support
 manjaro-asian-input-support-fcitx5
