@@ -6,7 +6,7 @@
 
 pkgname=manjaro_jp-keyring
 pkgver=20230721
-pkgrel=1
+pkgrel=3
 pkgdesc="Manjaro JP PGP keyring"
 arch=('any')
 url="https://manjaro-jp.phoepsilonix.love"
