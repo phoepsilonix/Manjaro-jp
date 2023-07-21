@@ -6,7 +6,7 @@ ver2=$(grep "pkgrel=" PKGBUILD)
 ver=${ver1##pkgver=}-${ver2##pkgrel=}-MANJARO
 base=${base##_basekernel=}
 dir=src/linux-${base}/certs
-
+[[ -e $dir ]] || dir=src/linux-${ver1##pkgver=}/certs
 gpg -dq ~/.ssh/pass.gpg | sudo -S pwd
 for f in $dir/signing_key.*
 do

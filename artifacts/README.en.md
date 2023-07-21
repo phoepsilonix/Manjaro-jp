@@ -448,7 +448,7 @@ Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)  
 [manjaro-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
-(GPG signing public key:536487F1470D7187) <phoepsilonix あっと gmail どっと com>  
+(GPG signing public key:57B49CC5AA4F00FC) <phoepsilonix at phoepsilonix dot love>  
 
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
