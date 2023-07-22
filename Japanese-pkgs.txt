@@ -31,8 +31,7 @@ unicode-emoji
 # nodejs-emojione
 
 # browser
-#vivaldi
-#vivaldi-ffmpeg-codecs
+# flatpak floorp or firefox
 
 # vivaldi option pkg
 libnotify
@@ -55,26 +54,25 @@ lld
 #snap-pac
 
 #office 
+# flatpak 
 #libreoffice-fresh
 #libreoffice-fresh-ja
-
-#aur helper
-yay
-paru
 
 # 
 #kernel-modules-hook
 systemd-swap
 
 #audio
+manjaro-alsa
 manjaro-pipewire
-#pipewire-media-session
-#pipewire-media-session-docs
+pipewire-alsa
 wireplumber
-#wireplumber-docs
 pipewire-v4l2
 pipewire-jack
 pipewire-x11-bell
+#pipewire-media-session
+#pipewire-media-session-docs
+#wireplumber-docs
 
 #network printer and usb
 ipp-usb
@@ -92,3 +90,4 @@ zram-generator
 # MEGA storage
 megatools
 
+numlockl

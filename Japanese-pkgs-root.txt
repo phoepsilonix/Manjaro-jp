@@ -4,3 +4,8 @@
 #tzdata
 linux-api-headers
 neofetch
+openssl
+openssl-1.1
+pacman-static
+yay
+paru

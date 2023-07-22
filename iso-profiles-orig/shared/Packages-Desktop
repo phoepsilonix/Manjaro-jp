@@ -11,7 +11,7 @@ mobile-broadband-provider-info
 modemmanager
 >multilib lib32-mesa-utils
 nss-mdns
-numlockx
+numlockl
 powertop
 alsa-utils
 avahi

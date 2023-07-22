@@ -1,5 +1,6 @@
 ## Network
-networkmanager
+
+networkmanager                     # optional for gnome-control-center
 >extra networkmanager-openconnect
 >extra networkmanager-openvpn
 >extra networkmanager-pptp
@@ -13,16 +14,20 @@ openresolv                         # optional for networkmanager
 >extra openssh                     # optional for gnome-control-center
 #usb_modeswitch                    # required by manjaro-modem; optional for modemmanager
 
+
 ## Btrfs
+
 btrfsmaintenance
 grub-btrfs
 >extra timeshift-autosnap-manjaro
 
+
 ## Libraries for Sound/Audio/Video
+
 >extra libdvdcss
 >extra manjaro-alsa
 >extra manjaro-gstreamer
-#>extra manjaro-modem
+>extra manjaro-modem
 #>extra manjaro-pulse
 
 
@@ -41,25 +46,28 @@ adobe-source-han-sans-jp-fonts
 adobe-source-han-sans-kr-fonts
 adobe-source-han-sans-cn-fonts
 
-## Games
 
 ## Package management
+
 pamac-gnome-integration
->extra libpamac-flatpak-plugin
-pamac-gtk
+>extra pamac-flatpak-plugin
+pamac-gtk3
 #>extra pamac-snap-plugin
 
+
 ## Printing
+
 >extra manjaro-printer
 >extra system-config-printer       # optional for gnome-control-center
 
+
 ## GNOME group
+
 >extra baobab
 >extra cheese
->basic eog                               # gthumb included instead
+>basic eog                         # gthumb in full edition
 #epiphany                          # Firefox included as default browser
 evince
-file-roller
 gdm
 gnome-backgrounds
 gnome-calculator
@@ -76,31 +84,31 @@ gnome-disk-utility
 gnome-keyring
 gnome-logs
 >extra gnome-maps
-#gnome-menus                       # required by alacarte; optional for gnome-shell-extensions
+#gnome-menus                       # optional for gnome-shell-extension-arc-menu
 #gnome-music                       # lollypop included instead
 #gnome-photos
->extra gnome-remote-desktop       # optional for gnome-control-center
-#gnome-session
-#gnome-settings-daemon
+>extra gnome-remote-desktop        # optional for gnome-control-center
+#gnome-session                     # required by gdm & gnome-shell
+#gnome-settings-daemon             # required by gnome-control-center, gnome-shell & mutter
 #gnome-shell                       # custom gnome-shell-maia used
 gnome-shell-extensions
 #gnome-software                    # pamac-gtk used instead
 gnome-system-monitor
-gnome-text-editor                  # gedit included instead
+#gnome-text-editor                 # gedit included instead
+gnome-tour
 gnome-user-docs
 >extra gnome-user-share            # optional for gnome-control-center
-#gnome-video-effects               # required by cheese
 gnome-weather
->extra grilo-plugins
+>extra grilo-plugins               # optional for totem
 gvfs
 >extra gvfs-afc
-#>extra gvfs-goa                   # required by gvfs-google; optional for gnome-control-center
+#>extra gvfs-goa                   # required by gvfs-google
 >extra gvfs-google                 # optional for gnome-online-accounts
 >extra gvfs-gphoto2
 >extra gvfs-mtp
 >extra gvfs-nfs
 >extra gvfs-smb
->extra malcontent
+>extra malcontent                  # optional for gnome-control-center
 nautilus
 #orca
 >extra rygel                       # optional for gnome-control-center
@@ -108,12 +116,13 @@ nautilus
 sushi
 totem
 tracker3-miners
-xdg-user-dirs-gtk
 xdg-desktop-portal-gnome
+xdg-user-dirs-gtk
 #yelp                              # required by gnome-user-docs
 
 
 ## GNOME Extra applications
+
 #accerciser
 #d-spy                             # developer tools
 #>extra dconf-editor               # developer tools
@@ -122,13 +131,12 @@ xdg-desktop-portal-gnome
 #evolution                         # geary included instead
 file-roller
 >extra geary
-#gedit
+gedit
 #ghex
 #gitg
 #glade
-#>extra gnome-boxes
-#gnome-builder
-#gnome-connections
+#>extra gnome-boxes                # developer tools
+#gnome-builder                     # developer tools
 #gnome-devel-docs
 #gnome-dictionary
 #gnome-games
@@ -138,7 +146,6 @@ file-roller
 #gnome-recipes
 #gnome-sound-recorder
 gnome-terminal-fedora
-gnome-tour
 gnome-tweaks
 #gnome-usage
 #polari
@@ -147,6 +154,7 @@ gnome-tweaks
 
 
 ## GNOME Extra games
+
 #five-or-more
 #four-in-a-row
 >extra gnome-chess
@@ -166,9 +174,11 @@ gnome-tweaks
 #swell-foop
 #tali
 
+
 ## GNOME Shell Extensions
+
 >extra gnome-shell-extension-appindicator
->extra gnome-shell-extension-arcmenu
+>extra gnome-shell-extension-arc-menu
 >extra gnome-shell-extension-custom-accent-colors
 >extra gnome-shell-extension-dash-to-dock
 >extra gnome-shell-extension-dash-to-panel
@@ -180,11 +190,13 @@ gnome-tweaks
 >extra gnome-shell-extension-space-bar
 >extra gnome-shell-extension-x11gestures
 
+
 ## Themes
+
 adw-gtk-theme
 bibata-cursor-theme
 gnome-shell-maia
-gnome-themes-extra
+gnome-themes-extra                 # optional for gtk2
 #gnome-wallpapers
 grub-theme-manjaro
 kvantum-manjaro
@@ -202,8 +214,9 @@ qt6ct
 #>extra wallpapers-2018
 #>extra wallpapers-juhraya
 
+
 ## Applications
->extra alacarte
+
 >extra apparmor
 >extra caffeine-ng
 >extra collision
@@ -211,7 +224,7 @@ qt6ct
 >extra ffmpegthumbnailer
 >extra ffmpeg-audio-thumbnailer
 #firefox
-fprintd                            # needed for fingerprint reader
+fprintd                            # needed for fingerprint reader, optional for gdm
 #fwupd                             # required by gnome-firmware, optional for gnome-control-center
 >extra fragments
 gnome-browser-connector
@@ -219,7 +232,7 @@ gnome-firmware
 >extra gnome-layout-switcher
 >extra gnuchess                    # optional for gnome-chess to play against computer
 >extra gthumb                      # eog in minimal edition
-#>extra gtkhash-nautilus           # not compatible with Nautilus 43
+#>extra gtkhash-nautilus           # not compatible with Nautilus 43, collision included instead
 >extra gtksourceview-pkgbuild      # syntax highlighting for PKGBUILDs
 >extra gufw
 htop
@@ -228,21 +241,20 @@ inxi
 #>extra libappindicator-gtk3       # required by gnome-shell-extension-appindicator & caffeine-ng
 lollypop
 #manjaro-application-utility       # required by manjaro-hello, no need to be explicitly installed
-#manjaro-gnome-vanilla
+#manjaro-gnome-vanilla             # unmaintained, needs updating
 manjaro-hello
 >extra manjaro-log-helper
 manjaro-settings-manager
 manjaro-settings-manager-notifier
-#manjaro-starter
+#manjaro-starter                    # Currently in testing for 23.0 in gnome-next
 #mousetweaks
 >extra nautilus-admin
 nautilus-empty-file
-#>extra onlyoffice-desktopeditors
-#polkit-gnome
+#>extra onlyoffice-desktopeditors  # office program is chosen during install
+#polkit-gnome                      # deprecated
 >extra power-profiles-daemon       # optional for gnome-control-center
->extra seahorse
 >extra timeshift
-#tlp
+#tlp                               # conflicts with power-profiles-daemon
 >extra touche
 >extra webapp-manager
 xdg-utils
@@ -272,89 +284,13 @@ manjaro-gnome-settings
 >extra manjaro-input
 
 ## Xorg Server
-numlockl
-#xorg-mkfontscale
+#numlockx                          # not used and not needed
+#xorg-mkfontscale                  # not needed by anything
 xorg-server
-#xorg-twm
+#xorg-twm                          # antiquated; optional for xorg-xinit
 xorg-xinit
 
 ## Matti's corner
 >extra bmenu
 >extra manjaro-ranger-settings
 >extra pacui
-
-# For Japanese
-fcitx5-im
-fcitx5-mozc
-manjaro-asian-input-support-fcitx5
-# AUR fcitx5-input-support
-
-# for asian?
-#fcitx-table-other
-#fcitx-table-extra
-
-# Japanese Fonts
-ipa-fonts
-ttf-sazanami
-noto-fonts-cjk
-noto-fonts-extra
-adobe-source-han-sans-jp-fonts
-adobe-source-han-serif-jp-fonts
-morisawa-biz-ud-mincho-fonts
-morisawa-biz-ud-gothic-fonts
-ttf-firge
-ttf-hackgen
-
-# Emoji Fonts
-noto-fonts-emoji
-unicode-emoji
-# nodejs-emojione
-
-# browser
-#vivaldi
-#vivaldi-ffmpeg-codecs
-
-# vivaldi option pkg
-libnotify
-
-# mail
-#thunderbird
-# thunderbird option pkg
-#libotr
-
-# kernel clang build.
-# dkms clang lld
-clang 
-llvm
-lld
-
-#timeshift or snapper
-#timeshift-autosnap-manjaro
-#snapper
-#snapper-gui
-#snap-pac
-
-#office 
-#libreoffice-fresh
-#libreoffice-fresh-ja
-
-#aur helper
-yay
-paru
-
-# 
-#kernel-modules-hook
-systemd-swap
-
-#audio
-manjaro-pipewire
-#pipewire-media-session
-#pipewire-media-session-docs
-wireplumber
-#wireplumber-docs
-pipewire-v4l2
-pipewire-jack
-pipewire-x11-bell
-
-#network printer and usb
-ipp-usb

@@ -1,4 +1,6 @@
 adapta-maia-theme
+alsa-firmware
+alsa-utils
 >extra apparmor
 autoconf
 automake
@@ -100,14 +102,14 @@ openresolv
 openssh
 >extra openvpn
 >extra p7zip
-pamac
-pamac-gtk
+pamac-gtk3
 libpamac-flatpak-plugin
 papirus-maia-icon-theme
 >extra parcellite
 patch
 >extra patchutils
 pavucontrol
+>extra pidgin
 >extra pix
 pkg-config
 >extra poppler-data
@@ -122,6 +124,7 @@ screenfetch
 >extra terminus-font
 >extra thunderbird
 >extra timeshift
+touchegg
 tree
 ttf-dejavu
 >extra ttf-droid

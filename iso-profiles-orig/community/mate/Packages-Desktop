@@ -79,7 +79,7 @@ networkmanager-vpnc
 nss-mdns
 numlockl
 openresolv
-pamac
+pamac-gtk3
 libpamac-flatpak-plugin
 powertop
 avahi
