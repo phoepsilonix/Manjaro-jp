@@ -2,7 +2,7 @@
 
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
-[kernel-6.4系(mainline)](https://kernel.org/)。
+[kernel-6.4系](https://kernel.org/)。
 
 公式に合わせて、KDE、Xfce、GNOMEの３種類を用意する予定です。  
 配布ファイルはISOと一部パッケージファイルです。  
@@ -427,6 +427,11 @@ kernel-6.4.3
 ##### 20230720
 kernel-6.4.4
 
+##### 20230721
+manjaro-jpの署名鍵をインストールするパッケージを用意しました。  
+またpacman-init.serviceで、manjaro-jpの署名を読み込むようにしました。  
+pamac(ソフトウェアの追加と削除)で、manjaro-jpの署名が原因のエラーが発生しなくなります。  
+
 
 ---
 参考までに、追記。  
@@ -448,13 +453,10 @@ Server = https://mirror.phoepsilonix.love/manjaro/stable/$repo/$arch
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
-Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
-```
-```
-[manjaro-jp]
-SigLevel = Optional TrustAll
 Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 ```
+
+---
 [Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)  
@@ -463,7 +465,6 @@ Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
-[Patreon](https://patreon.com/user?u=87853674&utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=creatorshare_creator&utm_content=join_link)  
 
 BTC  
 ```3B6u3pzaeyB2YrDcXWDfGE7pHxx2xuu9KQ```

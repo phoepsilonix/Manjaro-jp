@@ -2,7 +2,7 @@
 
 ## Prise en charge de la langue japonaise pour [Manjaro Linux](https://manjaro.org/)
 　Prise en charge de la saisie et de l'affichage en japonais par défaut, y compris dans les environnements dynamiques.  
-[série kernel-6.4(stable)](https://kernel.org/).
+[série kernel-6.4](https://kernel.org/).
 
 KDE, Xfce et GNOME seront disponibles selon la version officielle.  
 Les fichiers de distribution sont des ISO et quelques fichiers de paquets.  
@@ -421,6 +421,11 @@ kernel-6.4.3
 ##### 20230720
 kernel-6.4.4
 
+##### 20230721
+Un paquet a été préparé pour installer la clé de la signature manjaro-jp.  
+De plus, pacman-init.service inclut désormais la signature manjaro-jp.  
+Dans pamac (ajouter/supprimer un logiciel), les erreurs causées par les signatures ne se produiront plus.  
+
 
 ---
 Informations supplémentaires pour référence.  
@@ -435,13 +440,10 @@ Autres systèmes d'exploitation recommandés
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
-Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
-```
-```
-[manjaro-jp]
-SigLevel = Optional TrustAll
 Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 ```
+
+---
 [Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)  
@@ -450,7 +452,6 @@ Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
-[Patreon](https://patreon.com/user?u=87853674&utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=creatorshare_creator&utm_content=join_link)  
 
 BTC  
 ```3B6u3pzaeyB2YrDcXWDfGE7pHxx2xuu9KQ```

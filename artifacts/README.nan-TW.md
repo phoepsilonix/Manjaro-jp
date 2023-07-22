@@ -3,7 +3,7 @@
 ## [Manjaro Linux](https://manjaro.org/) 日語支援
 
 默認支援日語輸入和日語顯示，包括實時環境。  
-kernel-6.4.x（穩定）。
+[kernel-6.4.x](https://kernel.org/).
 
 按照公式，我們計劃準備三種類型：KDE、Xfce、GNOME。  
 分發檔是 ISO 和一些包檔。  
@@ -369,6 +369,11 @@ kernel-6.4.3
 ##### 20230720
 kernel-6.4.4
 
+##### 20230721
+我們提供了一個安裝 manjaro-jp 簽名密鑰的軟件包。  
+此外，我們已經在 pacman-init.service 中加入了 我們已經修正了，可以讀取 manjaro-jp 的簽名。  
+這樣您就不會在 pamac（添加和刪除軟件）中遇到由於簽名而引起的錯誤了。  
+
 
 ---
 供參考，後記。  
@@ -383,13 +388,10 @@ kernel-6.4.4
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
-Server = https://osdn.net/projects/manjaro-jp/storage/manjaro-jp/
-```
-```
-[manjaro-jp]
-SigLevel = Optional TrustAll
 Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 ```
+
+---
 [Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)  
@@ -398,7 +400,6 @@ Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
-[Patreon](https://patreon.com/user?u=87853674&utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=creatorshare_creator&utm_content=join_link)  
 
 BTC  
 ```3B6u3pzaeyB2YrDcXWDfGE7pHxx2xuu9KQ```
