@@ -1,38 +1,31 @@
-#!/bin/bash
+#!/bin/sh
+# This is a sample mirroring script.
+HOME="/var/www/"
+TARGET="${HOME}/manjaro"
+TMP="${HOME}/.tmp/manjaro"
+LOCK="${HOME}/.tmp/rsync-manjaro.lock"
 
-# This script should be a cronjob and should be run a few times a day. (example for /etc/crontab: "0  *  *  *  * root /usr/bin/manjaroreposync").
-# However you can also move this script to "/etc/cron.hourly".
-# To be an official Manjaro Linux mirror and to get access to our rsync server, you have to tell us your static ip of your synchronization server.
+# NOTE: You'll probably want to change this or remove the --bwlimit setting in
+# the rsync call below
+BWLIMIT=10000
 
-SRC=rsync://ftp.tsukuba.wide.ad.jp/manjaro/
-DESTPATH="/home/phoepsilonix/work/manjaro/"
-RSYNC=/usr/bin/rsync
-LOCKFILE=/tmp/rsync-manjaro.lock
+SOURCE="rsync://mirrorservice.org/repo.manjaro.org/repos/"
 
+[ ! -d "${TARGET}" ] && mkdir -p "${TARGET}"
+[ ! -d "${TMP}" ] && mkdir -p "${TMP}"
 
+exec 9>"${LOCK}"
+flock -n 9 || exit
 
-synchronize() {
-    $RSYNC -rtlvH --delete-after --delay-updates --safe-links "$SRC" "$DESTPATH" --exclude=arm-*/ --exclude=sync-arm/* --exclude=overlay-arm/*
-
-}
-
-
-
-if [ ! -e "$LOCKFILE" ]
-then
-    echo $$ >"$LOCKFILE"
-    synchronize
-else
-    PID=$(cat "$LOCKFILE")
-    if kill -0 "$PID" >&/dev/null
-    then
-        echo "Rsync - Synchronization still running"
-        exit 0
-    else
-        echo $$ >"$LOCKFILE"
-        echo "Warning: previous synchronization appears not to have finished correctly"
-        synchronize
-    fi
+if ! stty &>/dev/null; then
+    QUIET="-q"
 fi
 
-rm -f "$LOCKFILE"
+rsync -rtlvH --safe-links \
+    --bwlimit=${BWLIMIT} \
+    --delete-after --progress \
+    -h ${QUIET} --timeout=600 --contimeout=120 -p \
+    --delay-updates --no-motd \
+    --temp-dir="${TMP}" \
+    ${SOURCE} \
+    "${TARGET}"
