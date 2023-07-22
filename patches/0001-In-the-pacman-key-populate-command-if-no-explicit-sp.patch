@@ -1,0 +1,27 @@
+From b5cb8ba0a238774cba5c653a79a0471bbe101368 Mon Sep 17 00:00:00 2001
+From: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
+Date: Sat, 22 Jul 2023 20:12:28 +0900
+Subject: [PATCH] In the 'pacman-key --populate' command, if no explicit
+ specification is made, meaning no keyring name is provided, all keys present
+ in the 'keyrings' folder will be loaded.
+
+---
+ pacman-init.service | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pacman-init.service b/pacman-init.service
+index 45485a5..5c6f90d 100644
+--- a/pacman-init.service
++++ b/pacman-init.service
+@@ -9,7 +9,7 @@ After=etc-pacman.d-gnupg.mount
+ Type=oneshot
+ RemainAfterExit=yes
+ ExecStart=/usr/bin/pacman-key --init
+-ExecStart=/usr/bin/pacman-key --populate archlinux manjaro
++ExecStart=/usr/bin/pacman-key --populate
+ 
+ [Install]
+ WantedBy=multi-user.target
+-- 
+2.41.0
+

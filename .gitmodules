@@ -223,3 +223,6 @@
 [submodule "Packages/extramodules-6.4/virtualbox"]
 	path = Packages/extramodules-6.4/virtualbox
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux64-extramodules/virtualbox
+[submodule "Packages/pacman"]
+	path = Packages/pacman
+	url = https://gitlab.manjaro.org/packages/core/pacman.git
