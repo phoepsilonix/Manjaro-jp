@@ -1,5 +1,5 @@
 # [Manjaro Linux JP](https://sourceforge.net/projects/manjaro-jp/)
-
+### 
 ## Japanese language support for [Manjaro Linux](https://manjaro.org/)
 　The default includes support for Japanese input and display, including the live environment.  
 [kernel-6.4 series](https://kernel.org/).  
@@ -445,7 +445,9 @@ Other recommended OS
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
-Server = https://manjaro-jp.osdn.jp/manjaro-jp/
+Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
+#Server = https://manjaro-jp.osdn.jp/manjaro-jp/
+#Server = https://manjaro-jp.sourceforge.io/manjaro-jp/
 ```
 
 ---
@@ -455,6 +457,8 @@ Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 [manjaro-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 (GPG signing public key:57B49CC5AA4F00FC) <phoepsilonix at phoepsilonix dot love>  
 
+---
+### Your support for this activity is very welcome.  
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
 

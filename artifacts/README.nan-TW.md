@@ -388,7 +388,9 @@ kernel-6.4.4
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
-Server = https://manjaro-jp.osdn.jp/manjaro-jp/
+Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
+#Server = https://manjaro-jp.osdn.jp/manjaro-jp/
+#Server = https://manjaro-jp.sourceforge.io/manjaro-jp/
 ```
 
 ---
@@ -398,6 +400,8 @@ Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 [manjaro-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 (GPG signing public key:57B49CC5AA4F00FC) <phoepsilonix at phoepsilonix dot love>  
 
+---
+### 對於這個活動的支持，我們非常歡迎。
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
 
