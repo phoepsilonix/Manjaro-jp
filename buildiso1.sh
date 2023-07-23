@@ -13,7 +13,6 @@ usb=/run/media/phoepsilonix/Ventoy
 gkey="-g $(cat ~/.gnupg/sign.txt)"
 #gkey=""
 
-
 kernel=linux64
 
 # 保存先フォルダ
@@ -67,9 +66,6 @@ do
         sync
 done
 
-gpg -dq ~/.ssh/pass.gpg|sudo -S pwd
-        sudo rm /var/lib/manjaro-tools/buildiso/* -rf
-        sync
 
 # buildiso prepare image
 echo "build image"
@@ -77,6 +73,9 @@ for edition in "${editions[@]}"
 do
 	data=(${edition[@]})
 	ed=${data[1]}
+        gpg -dq ~/.ssh/pass.gpg|sudo -S pwd >/dev/null 2>&1
+        sudo rm /var/lib/manjaro-tools/buildiso/$ed -rf
+        sync
 #        echo "build pre-image"
 #        echo "buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build"
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso 
@@ -96,7 +95,7 @@ do
 #        buildiso -zc -d xz -f -k $kernel -p $ed $gkey
         #buildiso -d xz -f -k $kernel -p $ed -zc $gkey -t $usb/tmp/iso -r $usb/tmp/build
         gpg -dq ~/.ssh/pass.gpg|sudo -S pwd >/dev/null 2>&1
-        sudo rm /var/lib/manjaro-tools/buildiso/* -rf
+        sudo rm /var/lib/manjaro-tools/buildiso/$ed -rf
         sync
 done
 
@@ -105,8 +104,6 @@ echo "Move iso files to Artifacts folder"
 sync
 find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
 #rsync -avn $usb/artifacts/*.iso $artifacts/ && sync
-        gpg -dq ~/.ssh/pass.gpg|sudo -S pwd >/dev/null 2>&1
-        sudo rm /var/lib/manjaro-tools/buildiso/* -rf
         sync
 
 # 終了

@@ -106,9 +106,6 @@
 [submodule "Packages/nvidia-390xx"]
 	path = Packages/nvidia-390xx
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/nvidia-390xx
-[submodule "Packages/nginx-quic"]
-	path = Packages/nginx-quic
-	url = https://aur.archlinux.org/nginx-quic.git
 [submodule "Packages/morisawa-biz-ud-fonts"]
 	path = Packages/morisawa-biz-ud-fonts
 	url = https://aur.archlinux.org/morisawa-biz-ud-fonts.git
@@ -193,3 +190,6 @@
 [submodule "Packages/manjaro-live"]
 	path = Packages/manjaro-live
 	url = https://gitlab.manjaro.org/packages/extra/manjaro-live.git
+[submodule "Packages/libressl"]
+	path = Packages/libressl
+	url = https://gitlab.archlinux.org/phoepsilonix/libressl.git
