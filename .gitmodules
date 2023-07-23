@@ -1,189 +1,153 @@
 [submodule "Packages/linux515"]
 	path = Packages/linux515
-	url = ssh://git@gitlab.manjaro.org:22277/packages/core/linux515.git
+	url = https://gitlab.manjaro.org/packages/core/linux515.git
 [submodule "Packages/linux517"]
 	path = Packages/linux517
-	url = ssh://git@gitlab.manjaro.org:22277/packages/core/linux517.git
+	url = https://gitlab.manjaro.org/packages/core/linux517.git
 [submodule "Packages/linux518"]
 	path = Packages/linux518
-	url = ssh://git@gitlab.manjaro.org:22277/packages/core/linux518.git
+	url = https://gitlab.manjaro.org/packages/core/linux518.git
 [submodule "Packages/linux517-zfs"]
 	path = Packages/linux517-extramodules/zfs
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/zfs.git
+	url = https://gitlab.manjaro.org/packages/extra/linux517-extramodules/zfs.git
 [submodule "Packages/linux518-zfs"]
 	path = Packages/linux518-extramodules/zfs
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/zfs.git
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/zfs.git
 [submodule "Packages/linux518-bbswitch"]
 	path = Packages/linux518-extramodules/bbswitch
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/bbswitch
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/bbswitch
 [submodule "Packages/linux517-bbswitch"]
 	path = Packages/linux517-extramodules/bbswitch
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/bbswitch
+	url = https://gitlab.manjaro.org/packages/extra/linux517-extramodules/bbswitch
 [submodule "Packages/linux517-acpi_call"]
 	path = Packages/linux517-extramodules/acpi_call
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/acpi_call
+	url = https://gitlab.manjaro.org/packages/extra/linux517-extramodules/acpi_call
 [submodule "Packages/linux518-acpi_call"]
 	path = Packages/linux518-extramodules/acpi_call
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/acpi_call
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/acpi_call
 [submodule "Packages/linux517-nvidia"]
 	path = Packages/linux517-extramodules/nvidia
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/nvidia
+	url = https://gitlab.manjaro.org/packages/extra/linux517-extramodules/nvidia
 [submodule "Packages/linux517-nvidia-470xx"]
 	path = Packages/linux517-extramodules/nvidia-470xx
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/nvidia-470xx
+	url = https://gitlab.manjaro.org/packages/extra/linux517-extramodules/nvidia-470xx
 [submodule "Packages/linux517-r8168"]
 	path = Packages/linux517-extramodules/r8168
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/r8168
+	url = https://gitlab.manjaro.org/packages/extra/linux517-extramodules/r8168
 [submodule "Packages/linux517-rtl8723bu"]
 	path = Packages/linux517-extramodules/rtl8723bu
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/rtl8723bu
+	url = https://gitlab.manjaro.org/packages/extra/linux517-extramodules/rtl8723bu
 [submodule "Packages/linux517-tp_smapi"]
 	path = Packages/linux517-extramodules/tp_smapi
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/tp_smapi
+	url = https://gitlab.manjaro.org/packages/extra/linux517-extramodules/tp_smapi
 [submodule "Packages/linux517-vhba-module"]
 	path = Packages/linux517-extramodules/vhba-module
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/vhba-module
+	url = https://gitlab.manjaro.org/packages/extra/linux517-extramodules/vhba-module
 [submodule "Packages/linux517-virtualbox-modules"]
 	path = Packages/linux517-extramodules/virtualbox-modules
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/virtualbox-modules
+	url = https://gitlab.manjaro.org/packages/extra/linux517-extramodules/virtualbox-modules
 [submodule "Packages/linux518-nvidia"]
 	path = Packages/linux518-extramodules/nvidia
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/nvidia
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/nvidia
 [submodule "Packages/linux518-nvidia-470xx"]
 	path = Packages/linux518-extramodules/nvidia-470xx
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/nvidia-470xx
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/nvidia-470xx
 [submodule "Packages/linux518-broadcom-wl"]
 	path = Packages/linux518-extramodules/broadcom-wl
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/broadcom-wl
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/broadcom-wl
 [submodule "Packages/nvidia-utils"]
 	path = Packages/nvidia-utils
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/nvidia-utils.git
+	url = https://gitlab.manjaro.org/packages/extra/nvidia-utils.git
 [submodule "Packages/linux517-broadcom-wl"]
 	path = Packages/linux517-extramodules/broadcom-wl
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/broadcom-wl.git
+	url = https://gitlab.manjaro.org/packages/extra/linux517-extramodules/broadcom-wl.git
 [submodule "Packages/linux517-nvidia-390xx"]
 	path = Packages/linux517-extramodules/nvidia-390xx
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux517-extramodules/nvidia-390xx
+	url = https://gitlab.manjaro.org/packages/extra/linux517-extramodules/nvidia-390xx
 [submodule "Packages/linux518-nvidia-390xx"]
 	path = Packages/linux518-extramodules/nvidia-390xx
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/nvidia-390xx
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/nvidia-390xx
 [submodule "Packages/application-utility"]
 	path = Packages/application-utility
-	url = ssh://git@gitlab.manjaro.org:22277/packages/community/application-utility.git
+	url = https://gitlab.manjaro.org/packages/community/application-utility.git
 [submodule "Packages/mkinitcpio"]
 	path = Packages/mkinitcpio
-	url = ssh://git@gitlab.manjaro.org:22277/packages/core/mkinitcpio.git
+	url = https://gitlab.manjaro.org/packages/core/mkinitcpio.git
 [submodule "Packages/grub"]
 	path = Packages/grub
-	url = ssh://git@gitlab.manjaro.org:22277/packages/core/grub.git
+	url = https://gitlab.manjaro.org/packages/core/grub.git
 [submodule "Packages/linux518-r8168"]
 	path = Packages/linux518-extramodules/r8168
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/r8168.git
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/r8168.git
 [submodule "Packages/linux518-rtl8723bu"]
 	path = Packages/linux518-extramodules/rtl8723bu
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/rtl8723bu.git
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/rtl8723bu.git
 [submodule "Packages/linux518-tp_smapi"]
 	path = Packages/linux518-extramodules/tp_smapi
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/tp_smapi
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/tp_smapi
 [submodule "Packages/linux518-vhba-module"]
 	path = Packages/linux518-extramodules/vhba-module
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/vhba-module
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/vhba-module
 [submodule "Packages/manjaro-xfce-settings"]
 	path = Packages/manjaro-xfce-settings
-	url = ssh://git@gitlab.manjaro.org:22277/packages/community/xfce/manjaro-xfce-settings.git
+	url = https://gitlab.manjaro.org/packages/community/xfce/manjaro-xfce-settings.git
 [submodule "Packages/gnome-settings"]
 	path = Packages/gnome-settings
-	url = ssh://git@gitlab.manjaro.org:22277/packages/community/gnome/gnome-settings.git
+	url = https://gitlab.manjaro.org/packages/community/gnome/gnome-settings.git
 [submodule "Packages/bbswitch"]
 	path = Packages/bbswitch
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/bbswitch
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/bbswitch
 [submodule "Packages/broadcom-wl"]
 	path = Packages/broadcom-wl
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/broadcom-wl
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/broadcom-wl
 [submodule "Packages/nvidia"]
 	path = Packages/nvidia
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/nvidia
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/nvidia
 [submodule "Packages/nvidia-390xx"]
 	path = Packages/nvidia-390xx
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux518-extramodules/nvidia-390xx
+	url = https://gitlab.manjaro.org/packages/extra/linux518-extramodules/nvidia-390xx
 [submodule "Packages/morisawa-biz-ud-fonts"]
 	path = Packages/morisawa-biz-ud-fonts
 	url = https://aur.archlinux.org/morisawa-biz-ud-fonts.git
 [submodule "Packages/extramodules-6.1/acpi_call"]
 	path = Packages/extramodules-6.1/acpi_call
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/acpi_call
+	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/acpi_call
 [submodule "Packages/extramodules-6.1/bbswitch"]
 	path = Packages/extramodules-6.1/bbswitch
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/bbswitch
+	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/bbswitch
 [submodule "Packages/extramodules-6.1/broadcom-wl"]
 	path = Packages/extramodules-6.1/broadcom-wl
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/broadcom-wl
+	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/broadcom-wl
 [submodule "Packages/extramodules-6.1/nvidia"]
 	path = Packages/extramodules-6.1/nvidia
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/nvidia
+	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/nvidia
 [submodule "Packages/extramodules-6.1/nvidia-390xx"]
 	path = Packages/extramodules-6.1/nvidia-390xx
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/nvidia-390xx
+	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/nvidia-390xx
 [submodule "Packages/extramodules-6.1/nvidia-470xx"]
 	path = Packages/extramodules-6.1/nvidia-470xx
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/nvidia-470xx
+	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/nvidia-470xx
 [submodule "Packages/extramodules-6.1/r8168"]
 	path = Packages/extramodules-6.1/r8168
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/r8168
+	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/r8168
 [submodule "Packages/extramodules-6.1/rtl8723bu"]
 	path = Packages/extramodules-6.1/rtl8723bu
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/rtl8723bu
+	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/rtl8723bu
 [submodule "Packages/extramodules-6.1/tp_smapi"]
 	path = Packages/extramodules-6.1/tp_smapi
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/tp_smapi
+	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/tp_smapi
 [submodule "Packages/extramodules-6.1/vhba-module"]
 	path = Packages/extramodules-6.1/vhba-module
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/vhba-module
+	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/vhba-module
 [submodule "Packages/extramodules-6.1/virtualbox-modules"]
 	path = Packages/extramodules-6.1/virtualbox-modules
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/virtualbox-modules
+	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/virtualbox-modules
 [submodule "Packages/extramodules-6.1/zfs"]
 	path = Packages/extramodules-6.1/zfs
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux61-extramodules/zfs
+	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/zfs
 [submodule "Packages/grub-theme-live-dev"]
 	path = Packages/grub-theme-live-dev
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/grub-theme-live-dev.git
-[submodule "Packages/extramodules-6.4/acpi_call"]
-	path = Packages/extramodules-6.4/acpi_call
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux64-extramodules/acpi_call
-[submodule "Packages/extramodules-6.4/bbswitch"]
-	path = Packages/extramodules-6.4/bbswitch
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux64-extramodules/bbswitch
-[submodule "Packages/extramodules-6.4/broadcom-wl"]
-	path = Packages/extramodules-6.4/broadcom-wl
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux64-extramodules/broadcom-wl
-[submodule "Packages/extramodules-6.4/nvidia"]
-	path = Packages/extramodules-6.4/nvidia
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux64-extramodules/nvidia
-[submodule "Packages/extramodules-6.4/nvidia-390xx"]
-	path = Packages/extramodules-6.4/nvidia-390xx
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux64-extramodules/nvidia-390xx
-[submodule "Packages/extramodules-6.4/nvidia-470xx"]
-	path = Packages/extramodules-6.4/nvidia-470xx
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux64-extramodules/nvidia-470xx
-[submodule "Packages/extramodules-6.4/r8168"]
-	path = Packages/extramodules-6.4/r8168
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux64-extramodules/r8168
-[submodule "Packages/extramodules-6.4/rtl8723bu"]
-	path = Packages/extramodules-6.4/rtl8723bu
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux64-extramodules/rtl8723bu
-[submodule "Packages/extramodules-6.4/tp_smapi"]
-	path = Packages/extramodules-6.4/tp_smapi
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux64-extramodules/tp_smapi
-[submodule "Packages/extramodules-6.4/vhba-module"]
-	path = Packages/extramodules-6.4/vhba-module
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux64-extramodules/vhba-module
-[submodule "Packages/extramodules-6.4/zfs"]
-	path = Packages/extramodules-6.4/zfs
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux64-extramodules/zfs
-[submodule "Packages/extramodules-6.4/virtualbox"]
-	path = Packages/extramodules-6.4/virtualbox
-	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux64-extramodules/virtualbox
+	url = https://gitlab.manjaro.org/packages/extra/grub-theme-live-dev.git
 [submodule "Packages/pacman"]
 	path = Packages/pacman
 	url = https://gitlab.manjaro.org/packages/core/pacman.git
@@ -193,3 +157,39 @@
 [submodule "Packages/libressl"]
 	path = Packages/libressl
 	url = https://gitlab.archlinux.org/phoepsilonix/libressl.git
+[submodule "Packages/extramodules-6.4/broadcom-wl"]
+	path = Packages/extramodules-6.4/broadcom-wl
+	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/broadcom-wl
+[submodule "Packages/extramodules-6.4/acpi_call"]
+	path = Packages/extramodules-6.4/acpi_call
+	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/acpi_call
+[submodule "Packages/extramodules-6.4/bbswitch"]
+	path = Packages/extramodules-6.4/bbswitch
+	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/bbswitch
+[submodule "Packages/extramodules-6.4/nvidia"]
+	path = Packages/extramodules-6.4/nvidia
+	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/nvidia
+[submodule "Packages/extramodules-6.4/nvidia-390xx"]
+	path = Packages/extramodules-6.4/nvidia-390xx
+	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/nvidia-390xx
+[submodule "Packages/extramodules-6.4/nvidia-470xx"]
+	path = Packages/extramodules-6.4/nvidia-470xx
+	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/nvidia-470xx
+[submodule "Packages/extramodules-6.4/r8168"]
+	path = Packages/extramodules-6.4/r8168
+	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/r8168
+[submodule "Packages/extramodules-6.4/rtl8723bu"]
+	path = Packages/extramodules-6.4/rtl8723bu
+	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/rtl8723bu
+[submodule "Packages/extramodules-6.4/tp_smapi"]
+	path = Packages/extramodules-6.4/tp_smapi
+	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/tp_smapi
+[submodule "Packages/extramodules-6.4/vhba-module"]
+	path = Packages/extramodules-6.4/vhba-module
+	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/vhba-module
+[submodule "Packages/extramodules-6.4/virtualbox"]
+	path = Packages/extramodules-6.4/virtualbox
+	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/virtualbox
+[submodule "Packages/extramodules-6.4/zfs"]
+	path = Packages/extramodules-6.4/zfs
+	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/zfs

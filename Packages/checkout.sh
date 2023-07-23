@@ -38,27 +38,38 @@ do
         #git diff --binary HEAD | git apply --check --stat --apply --allow-empty -R -
         git reset --hard master
         git switch master
+        git reset --hard HEAD~
         git pull
         #git checkout master;
         #git switch -f master
         #git pull origin master
         case "$kver" in
-            "6.4" ) patches="patch-*${m}-linux6.4\.patch" ;;
-            "6.3" ) patches="patch-*${m}-linux6.3\.patch" ;;
-            "6.2" ) patches="patch-*${m}-linux6.2\.patch" ;;
-            * ) patches="patch-*${m}\.patch" ;;
+            "6.4" ) 
+                patches="patch-*${m}-linux6.4\.patch" ;;
+            "6.3" ) 
+                patches="patch-*${m}-linux6.3\.patch" ;;
+            "6.2" ) 
+                patches="patch-*${m}-linux6.2\.patch" ;;
+            * ) 
+                patches="patch-*${m}\.patch" ;;
         esac
         case "$m" in
             "tp_smapi" ) patches="patch-*${m}\.patch"
                 case "$kver" in
-                    "6.4" ) patches="patch-*${m}-linux6.4\.patch" ;;
+                    "6.4" ) 
+                        patches="patch-*${m}-linux6.4\.patch" ;;
                 esac
         esac
+        #if [[ ! -e $patches ]];then
+        #    patches="patch-*${m}\.patch"
+        #fi
         for patch in ~/gitlab/Manjaro-jp/patches/kmod-*${m}\.patch ~/gitlab/Manjaro-jp/patches/${patches}
         do
+            echo $patch
+            echo
                 if [[ -e $patch ]];then
                         echo "$patch Applying"
-                        git apply --check --stat --apply $patch
+                        git apply -3 --check --stat --apply $patch
                 fi
         done
         files=$(ls ../../extramodules-$ver/$m/*.{gz,zip,asc,xz,run,bz2} 2>/dev/null)

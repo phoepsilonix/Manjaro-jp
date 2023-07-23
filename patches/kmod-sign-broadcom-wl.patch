@@ -1,5 +1,14 @@
+From 3c5749c8590e9fff36637381e35c50a31a13f918 Mon Sep 17 00:00:00 2001
+From: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
+Date: Sun, 23 Jul 2023 21:54:44 +0900
+Subject: [PATCH] kmod
+
+---
+ PKGBUILD | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+
 diff --git a/PKGBUILD b/PKGBUILD
-index a6c7b5c..71bbe82 100644
+index af64706..a828e61 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -36,6 +36,13 @@ build() {
@@ -37,3 +46,6 @@ index a6c7b5c..71bbe82 100644
    sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/$_pkgname.install"
    install -D -m 644 "${srcdir}/broadcom-wl-dkms.conf" "${pkgdir}/etc/modprobe.d/${_linuxprefix}-broadcom-wl.conf"
  }
+-- 
+2.41.0
+
