@@ -5,7 +5,7 @@
 
 pkgname=ttf-firge
 pkgver=0.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A Japanese monospace font for programming"
 url="https://github.com/yuru7/Firge"
 license=('custom:SIL')

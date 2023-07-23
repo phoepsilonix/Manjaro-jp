@@ -4,8 +4,8 @@
 # Author: https://github.com/yuru7/HackGen
 
 pkgname=ttf-hackgen
-pkgver=2.7.1
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc="A Japanese monospace font for programming"
 url="https://github.com/yuru7/HackGen"
 license=('custom:SIL')
@@ -15,8 +15,8 @@ ${url}/releases/download/v${pkgver}/HackGen_v${pkgver}.zip
 ${url}/releases/download/v${pkgver}/HackGen_NF_v${pkgver}.zip
 ${url}/raw/master/LICENSE
 )
-sha256sums=('ec492a85dae77ff81818e75f775ec03bc391a96cf97c816fed1d221375b7be32'
-            '3c1949682567f8b4d4984c30b1439f051f2062a3138ddbf2262c12d087f60d92'
+sha256sums=('123b2179866f5a291c15cf34a83fdce6ac202e2fe6ad27fbd9ddd4f5bff23c65'
+            '277cb874bbcf8a884e512bb2a01d62341d57286d8947057d652fab6488fc941c'
             '9bfc3b3826a9c71042b87fda90a19cda4918894cdbd449cab163b7a7c93c5aa7')
 package() {
   cd ${srcdir}
