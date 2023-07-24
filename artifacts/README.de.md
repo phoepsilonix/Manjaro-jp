@@ -428,6 +428,9 @@ Es wurde ein Paket vorbereitet, um den Schlüssel für die manjaro-jp-Signatur z
 Darüber hinaus enthält pacman-init.service jetzt die manjaro-jp-Signatur.  
 In pamac (Software hinzufügen/entfernen) treten keine durch Signaturen verursachten Fehler mehr auf.  
 
+##### 20230724
+kernel-6.4.5
+
 
 ---
 Zusätzliche Informationen als Referenz.  

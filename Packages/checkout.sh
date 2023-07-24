@@ -46,10 +46,8 @@ do
         case "$kver" in
             "6.4" ) 
                 patches="patch-*${m}-linux6.4\.patch" ;;
-            "6.3" ) 
-                patches="patch-*${m}-linux6.3\.patch" ;;
-            "6.2" ) 
-                patches="patch-*${m}-linux6.2\.patch" ;;
+            "6.1" ) 
+                patches="patch-*${m}-linux6.1\.patch" ;;
             * ) 
                 patches="patch-*${m}\.patch" ;;
         esac
@@ -69,7 +67,7 @@ do
             echo
                 if [[ -e $patch ]];then
                         echo "$patch Applying"
-                        git apply -3 --check --stat --apply $patch
+                        git apply --check --stat --apply $patch
                 fi
         done
         files=$(ls ../../extramodules-$ver/$m/*.{gz,zip,asc,xz,run,bz2} 2>/dev/null)

@@ -92,3 +92,7 @@ megatools
 megasync-bin
 
 numlockl
+
+vlc
+streamlink
+yt-dlp

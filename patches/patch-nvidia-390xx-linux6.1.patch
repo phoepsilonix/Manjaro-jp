@@ -223,25 +223,27 @@ index 0000000..7e32ad4
 +     if (!g_uvm_perf_prefetch_enable)
 +         return;
 diff --git a/PKGBUILD b/PKGBUILD
-index 0d8b00e..17f0fac 100644
+index 9d6a942..2b181bd 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -29,8 +29,10 @@ options=(!strip)
+@@ -28,8 +28,10 @@ provides=("nvidia=$pkgver" 'NVIDIA-MODULE')
+ options=(!strip)
  install=nvidia.install
  _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
- source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-+        001-fix-function-declaration.patch
-         'kernel-6.2.patch')
- sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
-+            'e480e7bd77d7e0e3d5b48282bd2d5ce387564c61c04cfd2287ceb591d191f3cc'
-             '3501f0bbd9603543da74873905448ff58f5095948a7375617bba74f122d575aa')
+-source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+-sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581')
++source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
++        001-fix-function-declaration.patch)
++sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
++            'e480e7bd77d7e0e3d5b48282bd2d5ce387564c61c04cfd2287ceb591d191f3cc')
  
  _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
-@@ -40,6 +42,7 @@ prepare() {
  
-     cd "${_pkg}/kernel"
-     patch -Np1 -i ${srcdir}/kernel-6.2.patch
-+    patch -p2 -i ${srcdir}/001-fix-function-declaration.patch
+@@ -38,6 +40,7 @@ prepare() {
+ 
+     cd "${_pkg}"
+     # patches here
++    patch -p1 -i ${srcdir}/001-fix-function-declaration.patch
  }
  
  build() {

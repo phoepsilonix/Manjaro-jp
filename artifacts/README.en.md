@@ -431,6 +431,9 @@ A package is available to install the key for the manjaro-jp signature.
 Also, pacman-init.service now includes the manjaro-jp signature.  
 In pamac (add/remove software), errors caused by signatures will no longer occur.  
 
+##### 20230724
+kernel-6.4.5
+
 
 ---
 Note: As a reference, an additional note.  
