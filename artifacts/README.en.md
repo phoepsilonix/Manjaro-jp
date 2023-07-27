@@ -15,7 +15,8 @@ The Linux kernel is adopted with the latest version as much as possible.
 Clang is used for kernel building.  
 Japanese input (fcitx5-mozc) and Japanese font are standardly installed.  
 The standard browser is either the flatpak version of [Firefox](https://www.mozilla.org/ja/firefox/browsers/) or [Floorp](https://floorp.ablaze.one/).  
-Flatpak version of [LibreOffice](https://www.libreoffice.org) is standardly installed as an office software.
+Flatpak version of [LibreOffice](https://www.libreoffice.org) is standardly installed as an office software.  
+We have installed the pacman-static package as standard. Please use this if package updates become difficult due to library inconsistencies.  
 
 The live environment & installation ISO is published at the following distribution site.  
 Please feel free to try it out.
@@ -54,10 +55,10 @@ Therefore, as an additional measure, the use of zram-generator has been added.
 
 ---
 ### Place of distribution
-[![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
+[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
 ---|---  
 [![SourceForge](https://sourceforge.net/sflogo.php?group_id=66882&type=5)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
-[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
+[![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 
 Thank you for the valuable storage.  
 It is distributed in the above three places.
@@ -433,6 +434,9 @@ In pamac (add/remove software), errors caused by signatures will no longer occur
 
 ##### 20230724
 kernel-6.4.5
+
+##### 20230725
+kernel-6.4.6
 
 
 ---

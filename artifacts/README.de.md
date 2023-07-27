@@ -15,7 +15,8 @@ Der Linux-Kernel ist so aktuell wie möglich.
 Der Kernel wird mit clang gebaut.  
 Japanische Eingabe (fcitx5-mozc) und japanische Schriftarten sind standardmäßig installiert.  
 Flatpak-Versionen von [Firefox](https://www.mozilla.org/ja/firefox/browsers/) oder [Floorp](https://floorp.ablaze.one/) werden als Standardbrowser verwendet.  
-Die Flatpak-Version [LibreOffice](https://ja.libreoffice.org) wird als Standard-Office-Software installiert.
+Die Flatpak-Version [LibreOffice](https://ja.libreoffice.org) wird als Standard-Office-Software installiert.  
+Wir haben das Paket pacman-static standardmäßig installiert. Bitte verwenden Sie dieses, wenn Paketaktualisierungen aufgrund von Bibliotheksinkonsistenzen schwierig werden.  
 
 Live-Umgebung & Installations-ISOs sind auf den folgenden Distributionsseiten verfügbar.  
 Sie können sie ausprobieren, wenn Sie möchten.
@@ -54,10 +55,10 @@ Daher wurde als zusätzliche Maßnahme die Verwendung von zram-generator hinzuge
 
 ---
 ### Vertriebsort.
-[![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
+[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
 ---|---  
 [![SourceForge](https://sourceforge.net/sflogo.php?group_id=66882&type=5)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
-[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
+[![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 
 Vielen Dank für die wertvolle Speicherung.  
 Er wird an den drei oben genannten Orten verteilt.
@@ -430,6 +431,9 @@ In pamac (Software hinzufügen/entfernen) treten keine durch Signaturen verursac
 
 ##### 20230724
 kernel-6.4.5
+
+##### 20230725
+kernel-6.4.6
 
 
 ---

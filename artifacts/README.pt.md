@@ -15,7 +15,8 @@ O kernel Linux está tão actualizado quanto possível.
 Além disso, o clang é utilizado para construir o kernel.  
 A entrada japonesa (fcitx5-mozc) e as fontes japonesas são instaladas como padrão.  
 As versões Flatpak de [Firefox](https://www.mozilla.org/ja/firefox/browsers/) ou [Floorp](https://floorp.ablaze.one/) serão utilizadas como o navegador padrão.  
-A versão flatpak [LibreOffice](https://ja.libreoffice.org) será instalada como software de escritório standard.
+A versão flatpak [LibreOffice](https://ja.libreoffice.org) será instalada como software de escritório standard.  
+Instalamos o pacote pacman-static por padrão. Por favor, use-o se as atualizações de pacotes se tornarem difíceis devido a inconsistências da biblioteca.  
 
 Os ISOs para ambiente vivo e instalação estão disponíveis nos seguintes locais de distribuição.  
 Se desejar, pode experimentá-lo.
@@ -54,10 +55,10 @@ Portanto, como medida adicional, foi adicionado o uso de zram-generador.
 
 ---
 ### Localização de distribuição.
-[![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
+[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
 ---|---  
 [![SourceForge](https://sourceforge.net/sflogo.php?group_id=66882&type=5)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
-[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
+[![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 
 Obrigado pelo valioso armazenamento.  
 É distribuído nos três locais acima referidos.
@@ -428,6 +429,9 @@ No pamac (adicionar/remover software), os erros causados pelas assinaturas já n
 
 ##### 20230724
 kernel-6.4.5
+
+##### 20230725
+kernel-6.4.6
 
 
 ---

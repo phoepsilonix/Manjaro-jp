@@ -18,6 +18,7 @@ Linux kernel應該盡可能是最新的。
 日語輸入(fcitx5-mozc)，日語字體作為標準安裝。  
 採用flatpak Firefox或Floorp作為標準瀏覽器。  
 將LibreOffice的flatpak版本作為辦公軟體作為標準安裝。  
+我們已預設安裝了pacman-static套件。如果因為函式庫的不合一致，導致套件更新變得困難，請使用它。
 
 實時環境和安裝 ISO 可在以下分發目標獲得。  
 如果您願意，請嘗試一下。  
@@ -52,10 +53,10 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 
 ---
 ### 分發位置
-[![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
+[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
 ---|---  
 [![SourceForge](https://sourceforge.net/sflogo.php?group_id=66882&type=5)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
-[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
+[![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 
 感謝您的寶貴存儲空間。  
 分佈於以上三地。
@@ -376,6 +377,9 @@ kernel-6.4.4
 
 ##### 20230724
 kernel-6.4.5
+
+##### 20230725
+kernel-6.4.6
 
 
 ---

@@ -15,7 +15,8 @@ Le noyau Linux est aussi à jour que possible.
 Le noyau est construit à l'aide de clang.  
 L'entrée japonaise (fcitx5-mozc) et les polices japonaises sont installées en standard.  
 Les versions Flatpak de [Firefox](https://www.mozilla.org/ja/firefox/browsers/) ou [Floorp](https://floorp.ablaze.one/) seront utilisées comme navigateur standard.  
-La version flatpak de [LibreOffice](https://ja.libreoffice.org) sera installée comme logiciel de bureautique standard.
+La version flatpak de [LibreOffice](https://ja.libreoffice.org) sera installée comme logiciel de bureautique standard.  
+Nous avons installé le paquet pacman-static par défaut. Veuillez l'utiliser si les mises à jour des paquets deviennent difficiles en raison d'incohérences de bibliothèque.  
 
 L'environnement réel et les ISO d'installation sont disponibles sur les sites de distribution suivants.  
 Vous pouvez l'essayer si vous le souhaitez.
@@ -53,10 +54,10 @@ Les commentaires ci-dessus indiquent que le swap peut ne pas être activé selon
 Par conséquent, comme mesure supplémentaire, l'utilisation de zram-generator a été ajoutée.
 
 ### Lieu de distribution.
-[![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
+[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
 ---|---  
 [![SourceForge](https://sourceforge.net/sflogo.php?group_id=66882&type=5)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
-[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
+[![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 
 Merci pour ce précieux stockage.  
 Il est distribué dans les trois emplacements ci-dessus.
@@ -428,6 +429,9 @@ Dans pamac (ajouter/supprimer un logiciel), les erreurs causées par les signatu
 
 ##### 20230724
 kernel-6.4.5
+
+##### 20230725
+kernel-6.4.6
 
 
 ---

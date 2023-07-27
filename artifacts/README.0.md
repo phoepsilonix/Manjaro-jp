@@ -15,7 +15,8 @@ Linuxカーネルは、なるべく最新のものを採用します。
 またカーネルのビルドにはclangを用います。  
 日本語入力(fcitx5-mozc)、日本語フォントを標準インストールします。  
 標準ブラウザとして、flatpak版[Firefox](https://www.mozilla.org/ja/firefox/browsers/)または[Floorp](https://floorp.ablaze.one/)を採用します。  
-オフィスソフトとしてflatpak版[LibreOffice](https://ja.libreoffice.org)を標準インストールします。
+オフィスソフトとしてflatpak版[LibreOffice](https://ja.libreoffice.org)を標準インストールします。  
+pacman-staticパッケージを標準導入しています。ライブラリの不整合によって、パッケージ更新が困難になった場合に、ご利用ください
 
 ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
 よかったら、お試しください。
@@ -54,10 +55,10 @@ Calamaresにも、[フィードバック済み](https://github.com/calamares/cal
 
 ---
 ### 配布場所
-[![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
+[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
 ---|---  
 [![SourceForge](https://sourceforge.net/sflogo.php?group_id=66882&type=5)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
-[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
+[![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
 
 貴重な、ストレージをありがとうございます。  
 上記、3箇所にて配布しています。
@@ -434,6 +435,9 @@ pamac(ソフトウェアの追加と削除)で、manjaro-jpの署名が原因の
 
 ##### 20230724
 kernel-6.4.5
+
+##### 20230725
+kernel-6.4.6
 
 
 ---
