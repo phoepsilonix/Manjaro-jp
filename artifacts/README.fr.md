@@ -433,6 +433,9 @@ kernel-6.4.5
 ##### 20230725
 kernel-6.4.6
 
+##### 20230728
+kernel-6.4.7
+
 
 ---
 Informations supplémentaires pour référence.  
@@ -448,8 +451,8 @@ Autres systèmes d'exploitation recommandés
 [manjaro-jp]
 SigLevel = Optional TrustAll
 Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
-#Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 #Server = https://manjaro-jp.sourceforge.io/manjaro-jp/
+#Server = https://manjaro-jp.osdn.jp/manjaro-jp/
 ```
 
 ---
