@@ -2,7 +2,7 @@
 
 ## [Manjaro Linux](https://manjaro.org/) 日語支援
 
-默認支援日語輸入和日語顯示，包括實時環境。  
+默認支援日語輸入和日語顯示，包括即時ISO(現場ISO)。  
 [kernel-6.4.x](https://kernel.org/).
 
 按照公式，我們計劃準備三種類型：KDE、Xfce、GNOME。  

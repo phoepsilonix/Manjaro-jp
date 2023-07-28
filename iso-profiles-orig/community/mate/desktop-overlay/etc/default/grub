@@ -1,13 +1,16 @@
 GRUB_DEFAULT=saved
 GRUB_TIMEOUT=5
-GRUB_TIMEOUT_STYLE=hidden
+GRUB_TIMEOUT_STYLE=menu
 GRUB_DISTRIBUTOR="Manjaro"
-GRUB_CMDLINE_LINUX_DEFAULT="quiet udev.log_priority=3"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet udev.log_priority=3 apparmor=1 security=apparmor lsm=landlock,yama,integrity,apparmor"
 GRUB_CMDLINE_LINUX=""
 
 # If you want to enable the save default function, uncomment the following
 # line, and set GRUB_DEFAULT to saved.
-GRUB_SAVEDEFAULT=true
+#GRUB_SAVEDEFAULT=true
+
+# Uncomment to disable submenus in boot menu
+#GRUB_DISABLE_SUBMENU=y
 
 # Preload both GPT and MBR modules so that they are not missed
 GRUB_PRELOAD_MODULES="part_gpt part_msdos"
@@ -37,7 +40,7 @@ GRUB_GFXPAYLOAD_LINUX=keep
 GRUB_DISABLE_RECOVERY=true
 
 # Uncomment this option to enable os-prober execution in the grub-mkconfig command
-GRUB_DISABLE_OS_PROBER=false
+#GRUB_DISABLE_OS_PROBER=false
 
 # Uncomment and set to the desired menu colors.  Used by normal and wallpaper 
 # modes only.  Entries specified as foreground/background.
@@ -46,7 +49,7 @@ GRUB_COLOR_HIGHLIGHT="green/black"
 
 # Uncomment one of them for the gfx desired, a image background or a gfxtheme
 #GRUB_BACKGROUND="/usr/share/grub/background.png"
-#GRUB_THEME="/path/to/gfxtheme"
+GRUB_THEME="/usr/share/grub/themes/manjaro/theme.txt"
 
 # Uncomment to get a beep at GRUB start
 #GRUB_INIT_TUNE="480 440 1"

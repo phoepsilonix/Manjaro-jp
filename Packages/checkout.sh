@@ -8,7 +8,7 @@ exdir=/usr/lib/modules/${exdir}/build
 echo $exdir
 ver=${curdir/extramodules-}
 kver=${curdir/extramodules-}
-if [[ "$ver" == "6.1" ]] ;then ver=5.15
+if [[ "$ver" == "6.1" ]] ;then ver=6.4
 elif [[ "$ver" == "5.10" ]] ;then ver=6.1
 else ver=6.1
 fi
