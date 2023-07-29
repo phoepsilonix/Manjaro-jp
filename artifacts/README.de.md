@@ -425,9 +425,12 @@ kernel-6.4.3
 kernel-6.4.4
 
 ##### 20230721
-Es wurde ein Paket vorbereitet, um den Schlüssel für die manjaro-jp-Signatur zu installieren.  
-Darüber hinaus enthält pacman-init.service jetzt die manjaro-jp-Signatur.  
-In pamac (Software hinzufügen/entfernen) treten keine durch Signaturen verursachten Fehler mehr auf.  
+Ich habe ein Paket vorbereitet, um den manjaro-jp Signaturschlüssel zu installieren.  
+Wenn ein Fehler aufgrund des manjaro-jp Signaturschlüssels auftritt, versuchen Sie bitte den folgenden Befehl zur Behebung.  
+```
+sudo pacman-key --populate manjaro_jp
+sudo pacman -Sy
+```
 
 ##### 20230724
 kernel-6.4.5
@@ -437,6 +440,10 @@ kernel-6.4.6
 
 ##### 20230728
 kernel-6.4.7
+
+##### 20230729
+Wenn Software hinzugefügt und entfernt wird (pamac update), tritt ein Problem auf, während die Signaturdatei im Repository der signierten Datenbank aktualisiert wird.  
+Um dieses Problem zu lösen, habe ich das pacman-Paket fein abgestimmt.  
 
 
 ---

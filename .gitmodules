@@ -112,9 +112,6 @@
 [submodule "Packages/grub-theme-live-dev"]
 	path = Packages/grub-theme-live-dev
 	url = https://gitlab.manjaro.org/packages/extra/grub-theme-live-dev.git
-[submodule "Packages/pacman"]
-	path = Packages/pacman
-	url = https://gitlab.manjaro.org/packages/core/pacman.git
 [submodule "Packages/manjaro-live"]
 	path = Packages/manjaro-live
 	url = https://gitlab.manjaro.org/packages/extra/manjaro-live.git

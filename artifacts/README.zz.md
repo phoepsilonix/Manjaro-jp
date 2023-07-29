@@ -162,7 +162,6 @@ kernel-5.17.14
 kernel-5.18.3  
 nvidiaドライバのバージョンを515.48.07に更新。  
 virtualbox-host-dkmsをlinux518でビルドできるように修正。  
-ISOには含まれませんが、nginx-quicパッケージなどをmanjaro-jpリポジトリに追加しました。  
 manjaro-jpリポジトリをpacman.confに含めました。
 
 ##### 20220614
@@ -430,8 +429,11 @@ kernel-6.4.4
 
 ##### 20230721
 manjaro-jpの署名鍵をインストールするパッケージを用意しました。  
-またpacman-init.serviceで、manjaro-jpの署名を読み込むようにしました。  
-pamac(ソフトウェアの追加と削除)で、manjaro-jpの署名が原因のエラーが発生しなくなります。  
+manjaro-jpの署名鍵が原因のエラーが発生した場合には、次のコマンドで対処してみてください。  
+```
+sudo pacman-key --populate manjaro_jp
+sudo pacman -Sy
+```
 
 ##### 20230724
 kernel-6.4.5
@@ -442,6 +444,9 @@ kernel-6.4.6
 ##### 20230728
 kernel-6.4.7
 
+##### 20230729
+ソフトウェアの追加と削除(pamac update)を実行すると、署名付きのデータベースを提供しているレポジトリで、署名ファイルの更新がうまく動作しない問題がありました。  
+その解決のためpacmanパッケージを微調整しました。
 
 ---
 参考までに、追記。  
@@ -462,7 +467,7 @@ Server = https://mirror.phoepsilonix.love/manjaro/stable/$repo/$arch
 ---
 ```
 [manjaro-jp]
-SigLevel = Optional TrustAll
+SigLevel = Required
 Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 #Server = https://manjaro-jp.sourceforge.io/manjaro-jp/
 #Server = https://manjaro-jp.osdn.jp/manjaro-jp/

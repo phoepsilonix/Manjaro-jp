@@ -371,9 +371,12 @@ kernel-6.4.3
 kernel-6.4.4
 
 ##### 20230721
-我們提供了一個安裝 manjaro-jp 簽名密鑰的軟件包。  
-此外，我們已經在 pacman-init.service 中加入了 我們已經修正了，可以讀取 manjaro-jp 的簽名。  
-這樣您就不會在 pamac（添加和刪除軟件）中遇到由於簽名而引起的錯誤了。  
+我已經準備了一個安裝manjaro-jp簽名鑰匙的包。  
+如果因為manjaro-jp簽名鑰匙出現錯誤，請嘗試以下的命令來修復它。  
+```
+sudo pacman-key --populate manjaro_jp
+sudo pacman -Sy
+```
 
 ##### 20230724
 kernel-6.4.5
@@ -383,6 +386,10 @@ kernel-6.4.6
 
 ##### 20230728
 kernel-6.4.7
+
+##### 20230729
+當執行軟體的新增和刪除（pamac update）時，在已簽名數據庫的存儲庫中更新簽名文件時會出現問題。  
+為了解決這個問題，我已對pacman包進行了微調。  
 
 
 ---

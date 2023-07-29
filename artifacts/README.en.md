@@ -428,9 +428,12 @@ kernel-6.4.3
 kernel-6.4.4
 
 ##### 20230721
-A package is available to install the key for the manjaro-jp signature.  
-Also, pacman-init.service now includes the manjaro-jp signature.  
-In pamac (add/remove software), errors caused by signatures will no longer occur.  
+I have prepared a package to install the manjaro-jp signature key.  
+If an error occurs due to the manjaro-jp signature key, please try the following command to fix it.  
+```
+sudo pacman-key --populate manjaro_jp
+sudo pacman -Sy
+```
 
 ##### 20230724
 kernel-6.4.5
@@ -440,6 +443,10 @@ kernel-6.4.6
 
 ##### 20230728
 kernel-6.4.7
+
+##### 20230729
+When adding and removing software (pamac update), an issue occurs while updating the signature file in the repository of the signed database.  
+To solve this problem, I have fine-tuned the pacman package.  
 
 
 ---
