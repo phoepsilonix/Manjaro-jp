@@ -8,6 +8,7 @@ rbenv shell 3.2.2
 rbenv exec gem install bundler
 rbenv exec gem install rake
 rbenv exec gem update
+rustup install stable
 rustup component add rust-src
 cargo install bindgen
 
@@ -15,7 +16,7 @@ mkdir -p ~/gitlab
 cd ~/gitlab
 [[ ! -e Manjaro-jp ]] && git clone git@gitlab.com:phoepsilonix/Manjaro-jp.git
 cd ~/gitlab/Manjaro-jp
-git submodule update --init
+git submodule update --init --remote
 
 sudo cp makepkg.conf /etc/
 cp makepkg.conf ~/.makepkg.conf
