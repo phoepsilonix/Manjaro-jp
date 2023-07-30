@@ -1,6 +1,6 @@
 #!/bin/sh
 
-gpg -dq ~/.ssh/pass.gpg|sudo -S pacman -Sy git-lfs git-delta base-devel neovim clang lld llvm aria2 manjaro-tools-iso-git rsync sox paru fuse-overlayfs keychain expect h2o-git ruby-rbenv ruby-bundler rustup --needed
+gpg -dq ~/.ssh/pass.gpg|sudo -S pacman -Sy git-lfs git-delta base-devel neovim clang lld llvm aria2 manjaro-tools-iso-git rsync sox paru fuse-overlayfs keychain expect h2o-git ruby-bundler rustup --needed
 paru -Sy rbenv ruby-build --needed --noconfirm
 rbenv install 3.2.2
 rbenv install mruby
@@ -17,7 +17,7 @@ mkdir -p ~/gitlab
 cd ~/gitlab
 [[ ! -e Manjaro-jp ]] && git clone git@gitlab.com:phoepsilonix/Manjaro-jp.git
 cd ~/gitlab/Manjaro-jp
-git submodule update --init --recursive --remote
+git submodule update --init --recursive
 
 sudo cp makepkg.conf /etc/
 cp makepkg.conf ~/.makepkg.conf
