@@ -51,7 +51,7 @@ adobe-source-han-sans-cn-fonts
 
 pamac-gnome-integration
 >extra pamac-flatpak-plugin
-pamac-gtk3
+pamac-gtk
 #>extra pamac-snap-plugin
 
 

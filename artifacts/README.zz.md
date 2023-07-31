@@ -55,7 +55,7 @@ Calamaresにも、[フィードバック済み](https://github.com/calamares/cal
 
 ---
 ### 配布場所
-[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A)
+[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)
 ---|---  
 [![SourceForge](https://sourceforge.net/sflogo.php?group_id=66882&type=5)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
 [![OSDN](https://osdn.net/sflogo.php?group_id=14185&type=1)](https://osdn.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at OSDN](https://osdn.net/projects/manjaro-jp/)  
@@ -447,6 +447,26 @@ kernel-6.4.7
 ##### 20230729
 ソフトウェアの追加と削除(pamac update)を実行すると、署名付きのデータベースを提供しているレポジトリで、署名ファイルの更新がうまく動作しない問題がありました。  
 その解決のためpacmanパッケージを微調整しました。
+
+##### 20230731
+* ソフトウェアの追加と削除において、アップデートチェックのあと、パッケージ情報が壊れて不正終了するケースがあるのを修正しました。(libpamac) 
+* インストール先の環境に、manjaro_jpの署名鍵ファイルを読み込むようにしました。(calamares)  
+
+先に行ったpacmanパッケージの修正とあわせて、署名鍵の不整合によるエラーが起きるケースがなくなったのでは、と思います。  
+それでも、もしもエラーが起きる場合には、次の手順を試してみてください。  
+
+署名鍵データベースの初期化
+```
+sudo pacman-key --init
+sudo pacman-key --populate
+```
+
+パッケージ情報を再読込
+```
+sudo pacman -Syy
+sudo pacman -Fyy
+```
+
 
 ---
 参考までに、追記。  

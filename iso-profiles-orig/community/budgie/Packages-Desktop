@@ -24,16 +24,12 @@ dconf-editor
 hexchat
 evince
 gnome-calculator
-gnome-control-center
 gnome-calendar
 gnome-disk-utility
 gnome-font-viewer
-gnome-themes-standard
 gnome-keyring
-gnome-settings-daemon
 gnome-system-monitor
 gnome-terminal
-budgie-screensaver
 gnome-screenshot
 >extra gnome-backgrounds
 grilo-plugins
@@ -42,7 +38,7 @@ mousetweaks
 file-roller
 sushi
 gedit
-firefox
+#firefox
 gparted
 grilo-plugins
 gst-libav
@@ -66,17 +62,16 @@ manjaro-alsa
 manjaro-artwork
 manjaro-browser-settings
 manjaro-hotfixes
-manjaro-pulse
+#manjaro-pulse
 manjaro-settings-manager-notifier
 manjaro-hello
 manjaro-application-utility
 >extra snapd
-mesa-demos
+mesa-utils
 mobile-broadband-provider-info
 modemmanager
 mousetweaks
->multilib lib32-mesa-demos
-mutter
+>multilib lib32-mesa-utils
 nautilus
 nautilus-admin
 nautilus-empty-file
@@ -87,15 +82,15 @@ networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
 nss-mdns
-numlockl
+numlockx
 openresolv
 pamac-gtk
-pamac-snap-plugin
+>extra pamac-flatpak-plugin
 polkit-gnome
 powertop
-pulseaudio-bluetooth
-pulseaudio-ctl
-pulseaudio-zeroconf
+#pulseaudio-bluetooth
+#pulseaudio-ctl
+#pulseaudio-zeroconf
 sushi
 xdg-user-dirs
 xorg-server
@@ -107,7 +102,6 @@ ntp
 openssh
 terminus-font
 totem
-tracker
 ttf-bitstream-vera
 ttf-dejavu
 ttf-droid
@@ -130,14 +124,14 @@ yelp
 >extra unrar
 >extra unace
 >extra lrzip
->extra onlyoffice
+#>extra onlyoffice
 >extra thunderbird
 >extra lollypop
 >extra pidgin
 >extra uget
 >extra transmission-gtk
 >extra brasero
->extra manjaro-documentation-en
+#>extra manjaro-documentation-en
 >extra jre8-openjdk
 >extra jre8-openjdk-headless
 timeshift
@@ -146,17 +140,6 @@ timeshift
 >extra manjaro-printer
 >extra blueman
 >extra ffmpegthumbnailer
-#AUR complete support ( base devel )
-#>extra autoconf
-#>extra automake
-#>extra binutils
-#>extra bison
-#>extra fakeroot
-#>extra flex
-#>extra gcc
-#>extra libtool
-#>extra m4
-#>extra make
-#>extra patch
-#>extra subversion
+#AUR complete support
+#>extra base-devel
 manjaro-aur-support

@@ -102,7 +102,7 @@ openresolv
 openssh
 >extra openvpn
 >extra p7zip
-pamac-gtk3
+pamac-gtk
 libpamac-flatpak-plugin
 papirus-maia-icon-theme
 >extra parcellite

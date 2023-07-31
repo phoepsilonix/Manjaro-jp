@@ -57,7 +57,7 @@ terminus-font
 
 ## Package management
 #>extra appimagelauncher
-pamac-gtk3
+pamac-gtk
 pamac-tray-icon-plasma
 pamac-cli
 #>extra apparmor

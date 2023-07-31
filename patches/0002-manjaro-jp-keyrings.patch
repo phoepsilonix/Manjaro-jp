@@ -1,0 +1,18 @@
+diff --git a/src/modules/chrootcfg/chrootcfg.conf.orig b/src/modules/chrootcfg/chrootcfg.conf
+index 1f900c2..f20328b 100644
+--- a/src/modules/chrootcfg/chrootcfg.conf.orig
++++ b/src/modules/chrootcfg/chrootcfg.conf
+@@ -12,3 +12,4 @@ isRank: true
+ keyrings:
+     - archlinux
+     - manjaro
++    - manjaro_jp
+diff --git a/src/modules/postcfg/postcfg.conf.orig b/src/modules/postcfg/postcfg.conf
+index 1c8651d..313ec25 100644
+--- a/src/modules/postcfg/postcfg.conf.orig
++++ b/src/modules/postcfg/postcfg.conf
+@@ -2,3 +2,4 @@
+ keyrings:
+     - archlinux
+     - manjaro
++    - manjaro_jp

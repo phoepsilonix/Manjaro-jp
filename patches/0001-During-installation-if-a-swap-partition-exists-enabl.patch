@@ -1,0 +1,28 @@
+diff --git a/src/modules/mount/main.py b/src/modules/mount/main.py
+index a3318d1a0..ba917e694 100644
+--- a/src/modules/mount/main.py
++++ b/src/modules/mount/main.py
+@@ -216,6 +216,12 @@ def mount_partition(root_mount_point, partition, partitions):
+                                         ",".join([mount_option, partition.get("options", "")])) != 0:
+                 libcalamares.utils.warning("Cannot mount {}".format(device))
+ 
++def enable_swap_partition(swap_device):
++    try:
++        for d in swap_device:
++            libcalamares.utils.host_env_process_output(["swapon", d])
++    except subprocess.CalledProcessError:
++        raise Exception(_("Failed to swapon " + swap_device))
+ 
+ def run():
+     """
+@@ -229,6 +235,10 @@ def run():
+         return (_("Configuration Error"),
+                 _("No partitions are defined for <pre>{!s}</pre> to use.").format("mount"))
+ 
++    swap_partitions = [p['device'] for p in partitions if ( p['fs'] == 'linuxswap' and p['claimed'] ) ]
++    if swap_partitions != [] :
++    	enable_swap_partition(swap_partitions)
++
+     root_mount_point = tempfile.mkdtemp(prefix="calamares-root-")
+ 
+     # Guard against missing keys (generally a sign that the config file is bad)
