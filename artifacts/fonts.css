@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "BIZ-UDPMincho-Medium";
+  src: 
+       url("/fonts/BIZ-UDPMincho-Medium.woff2") format("woff2"),
+       url("/fonts/BIZ-UDPMincho-Medium.woff") format("woff");
+  font-family: "BIZ-UDPGothic";
+  src: 
+       url("/fonts/BIZ-UDPGothic.woff2") format("woff2"),
+       url("/fonts/BIZ-UDPGothic.woff") format("woff");
+}
+body {
+  font-family: "BIZ-UDPMincho-Medium";
+}

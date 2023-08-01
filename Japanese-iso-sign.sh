@@ -60,7 +60,7 @@ do
 	if [[ ! -e $f.torrent ]] ;then
         echo $f
 	mktorrent -t0 \
-        --announce=udp://tracker.opentrackr.org:1337/announce,udp://tracker.torrent.eu.org:451/announce,$trackers \
+        --announce=udp://tracker.opentrackr.org:1337/announce,udp://tracker.torrent.eu.org:451/announce,udp://tracker.openbittorrent.com:80/announce,udp://tracker.publicbt.com:80/announce,$trackers \
 		-w "https://sourceforge.net/projects/manjaro-jp/files/$f/download" \
 		-w "https://manjaro-jp.phoepsilonix.love/$f" \
                 $f

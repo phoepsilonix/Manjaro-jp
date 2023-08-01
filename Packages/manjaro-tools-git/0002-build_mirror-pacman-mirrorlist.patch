@@ -7,7 +7,7 @@ index 985194d..2bb4a8f 100644
      [[ -z ${log_dir} ]] && log_dir='/var/log/manjaro-tools'
  
 +    # build_mirror using mirrorlist
-+    [[ -e "/etc/pacman.d/mirrorlist" ]] && build_mirror=`grep Server "/etc/pacman.d/mirrorlist" | head -n1 | sed -e 's|^.*Server = \(.*\)/stable.*$|\1|' | sed -e 's|http:|https:|'`
++    [[ -e "/etc/pacman.d/mirrorlist" ]] && build_mirror=`grep -E "^Server" "/etc/pacman.d/mirrorlist" | head -n1 | sed -e 's|^.*Server = \(.*\)/stable.*$|\1|' | sed -e 's|http:|https:|'`
 +
      [[ -z ${build_mirror} ]] && build_mirror='https://mirror.alpix.eu/manjaro'
  
