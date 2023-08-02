@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="https://phoepsilonix.love/sunburst.min.css">
 <script src="https://phoepsilonix.love/highlight.min.js"></script>
 <script src="https://phoepsilonix.love/print-code.js"></script>
+<link rel="stylesheet" type="text/css" href="https://manjaro-jp.phoepsilonix.love/fonts.css" />
 <style>
 .main-section {
   display: flex;
@@ -38,6 +39,18 @@
  padding:20px;
  text-align:left
 }
+#output-html table {
+    border-collapse: separate;
+    border-spacing: 16px 0px;
+}
+#output-html th {
+    text-align:center; vertical-align:middle;
+}
+#output-html td {
+    text-align:center; vertical-align:middle;
+}
+img[alt=SourceForge] { width: 200px; }
+img[alt=Terabox] { width: 200px; }
 </style>
 <script type="module">
 import init, { pulldown_cmark as wasm } from './wasm-markdown/wasm_markdown.js';
