@@ -1,0 +1,63 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index c421dae..0224540 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -17,6 +17,7 @@ license=('GPL2')
+ makedepends=(bc docbook-xsl libelf pahole python-sphinx git inetutils kmod xmlto cpio perl tar xz)
+ options=('!strip')
+ source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz"
++        "https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.sign"
+         "https://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
+         'config'
+         # Upstream Patches
+@@ -44,6 +45,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.x
+ )
+ 
+ sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
++            'SKIP'
+             '38779bbab667e412d7d53a2ec2cd695d1840d233655a3db7abf31ea6cdd4f596'
+             '5ed41f646ffb52a0f4596991bd0c08e5d78b9ea8b4f8bb250f38739f334280a3'
+             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
+@@ -63,6 +65,8 @@ sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
+             'b9298bde48a9f6c5d028150d627c05c71880e2693933ef2fe070f090e80876a5'
+             '4d53a6853b63c0f01b60b408bee61fa729656f925e50fa55ae3cba309668242a')
+ 
++validpgpkeys=(647F28654894E3BD457199BE38DBBDC86092693E)
++
+ prepare() {
+   cd "linux-${_basekernel}"
+ 
+@@ -74,9 +78,13 @@ prepare() {
+   for src in "${source[@]}"; do
+       src="${src%%::*}"
+       src="${src##*/}"
+-      [[ $src = *.patch ]] || continue
+-      msg2 "Applying patch: $src..."
+-      patch -Np1 < "../$src"
++      if [[ $src =~ .*\.patch ]]; then
++              msg2 "Applying patch: $src..."
++              patch -Np1 < "../$src"
++      elif [[ $src =~ .*\.gitpatch ]]; then
++              msg2 "Applying gitpatch: $src..."
++              git --git-dir= apply -p1 --stat --apply "../$src"
++      fi
+   done
+ 
+   msg2 "add config"
+@@ -97,6 +105,8 @@ prepare() {
+   msg "get kernel version"
+   make prepare
+ 
++  make menuconfig
++
+   msg "rewrite configuration"
+   yes "" | make config >/dev/null
+ }
+@@ -104,6 +114,7 @@ prepare() {
+ build() {
+   cd "linux-${_basekernel}"
+ 
++  sudo choom -n -1000 -p $$
+   msg "build"
+   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+ }
