@@ -1,0 +1,70 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 5c7d479..efb5e1e 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -16,7 +16,7 @@ url="https://www.kernel.org/"
+ license=('GPL2')
+ makedepends=(bc docbook-xsl libelf pahole python-sphinx git inetutils kmod xmlto cpio perl tar xz)
+ options=('!strip')
+-source=("https://git.kernel.org/torvalds/t/linux-${_basekernel}.tar.gz"
++source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz"
+         "https://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
+         'config'
+         # ARCH Patches
+@@ -47,7 +47,7 @@ source=("https://git.kernel.org/torvalds/t/linux-${_basekernel}.tar.gz"
+         '0999-acs.gitpatch'
+ )
+ 
+-sha256sums=('6246ee76209fb1ff46ffcd67d0cc8029dec2ef929de32ef5460a7a5649583103'
++sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
+             'd6d84b8d0fb8d4181e27ccce1e2bed7b2d1257142f49d0ce8a77104413ac328f'
+             '41a10c5c62b2dc3d3b453b6b11457429d1ff36e8a7591afbc0ab3f55f9d58f31'
+             'de35604b1337f3d7cd7ce8dc02a741bfdde05709f22f4dfd29d065b20b517e4c'
+@@ -71,6 +71,8 @@ sha256sums=('6246ee76209fb1ff46ffcd67d0cc8029dec2ef929de32ef5460a7a5649583103'
+             '035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef'
+             '5f2d2c4ab326830df11d5bc985feab2988ee929bbf249f85453536e1998951bd')
+ 
++validpgpkeys=(647F28654894E3BD457199BE38DBBDC86092693E)
++
+ prepare() {
+   cd "linux-${_basekernel}"
+ 
+@@ -82,14 +84,15 @@ prepare() {
+   for src in "${source[@]}"; do
+       src="${src%%::*}"
+       src="${src##*/}"
+-      [[ $src = *.patch ]] || continue
+-      msg2 "Applying patch: $src..."
+-      patch -Np1 < "../$src"
++      if [[ $src =~ .*\.patch ]]; then
++              msg2 "Applying patch: $src..."
++              patch -Np1 < "../$src"
++      elif [[ $src =~ .*\.gitpatch ]]; then
++              msg2 "Applying gitpatch: $src..."
++              git --git-dir= apply -p1 --stat --apply "../$src"
++      fi
+   done
+ 
+-  msg2 "Applying 0999-acs.gitpatch"
+-  patch --ignore-whitespace --fuzz 3 -p1 < "../0999-acs.gitpatch"
+-
+   msg2 "add config"
+   cat "../config" > ./.config
+ 
+@@ -108,6 +111,8 @@ prepare() {
+   msg "get kernel version"
+   make prepare
+ 
++  make menuconfig
++
+   msg "rewrite configuration"
+   yes "" | make config >/dev/null
+ }
+@@ -115,6 +120,7 @@ prepare() {
+ build() {
+   cd "linux-${_basekernel}"
+ 
++  sudo choom -n -1000 -p $$
+   msg "build"
+   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+ }
