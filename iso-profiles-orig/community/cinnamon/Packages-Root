@@ -40,7 +40,7 @@ iproute2
 iptables
 iputils
 jfsutils
-KERNEL
+manjaro-jp/KERNEL
 less
 licenses
 linux-firmware

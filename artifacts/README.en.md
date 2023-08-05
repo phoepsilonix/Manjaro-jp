@@ -448,11 +448,30 @@ kernel-6.4.7
 When adding and removing software (pamac update), an issue occurs while updating the signature file in the repository of the signed database.  
 To solve this problem, I have fine-tuned the pacman package.  
 
+##### 20230731
+* I have set it up to load the manjaro_jp signature key file in the installation environment.(calamares)
 
----
-Note: As a reference, an additional note.  
-If you have a PC with Linux installed, you can also create a dual-boot environment with (no official support) ChromeOS, as long as you have some knowledge.  
-This is for those who are interested. Please refer to [this link](https://github.com/sebanc/brunch/blob/master/install-with-linux.md) for reference.([Japanese](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82))
+I think that with the correction of the pacman package that I made earlier and the elimination of inconsistencies in the signature keys, cases of errors occurring should have been eliminated.  
+However, if an error does occur, please try the following steps.  
+
+Initialize the signature key database.
+```
+sudo pacman-key --init
+sudo pacman-key --populate
+```
+
+Reload package information.
+```
+sudo pacman -Syy
+sudo pacman -Fyy
+```
+
+##### 20230805
+* Fixed an issue where after the [Add/Remove Software] update check resulted in corrupted package information and unexpected termination. (pamac)  
+* When searching for installed packages in [Add/Remove Software], flatpak and snap applications are now included in the search (libpamac).   
+
+kernel-6.4.8
+
 
 ---
 Other recommended OS  

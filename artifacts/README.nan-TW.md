@@ -391,11 +391,30 @@ kernel-6.4.7
 當執行軟體的新增和刪除（pamac update）時，在已簽名數據庫的存儲庫中更新簽名文件時會出現問題。  
 為了解決這個問題，我已對pacman包進行了微調。  
 
+##### 20230731
+* 我在安裝環境中設定了讀取manjaro_jp的簽名金鑰檔案。(calamares)
 
----
-供參考，後記。  
-如果你有一台安裝了Linux的PC，非官方的？ 似乎您還可以使用ChromeOS（沒有官方支援）創建雙啟動環境。 它是為那些有一定知識的人準備的。  
-如果您有興趣，請參閱[這裡](https://github.com/sebanc/brunch/blob/master/install-with-linux.md)。（[日文翻譯](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82)）
+我认为，通过我先前对pacman包的修正以及消除签名键中的不一致，应该已经消除了错误发生的情况。  
+然而，如果出现错误，请尝试以下步骤。  
+
+初始化签名键数据库。
+```
+sudo pacman-key --init
+sudo pacman-key --populate
+```
+
+重新加载包信息。
+```
+sudo pacman -Syy
+sudo pacman -Fyy
+```
+
+##### 20230805
+* 修复了以下问题：在[添加/删除软件]更新检查后导致包信息损坏和意外终止。(pamac)。
+* 在[添加/删除软件]中搜索已安装的软件包时，flatpak和snap应用程序现在包含在搜索中（libpamac）。   
+
+kernel-6.4.8
+
 
 ---
 其他推薦的操作系統  

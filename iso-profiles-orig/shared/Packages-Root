@@ -29,7 +29,7 @@ haveged
 inetutils
 intel-ucode
 jfsutils
-KERNEL
+manjaro-jp/KERNEL
 less
 logrotate
 lvm2

@@ -445,11 +445,30 @@ kernel-6.4.7
 Wenn Software hinzugefügt und entfernt wird (pamac update), tritt ein Problem auf, während die Signaturdatei im Repository der signierten Datenbank aktualisiert wird.  
 Um dieses Problem zu lösen, habe ich das pacman-Paket fein abgestimmt.  
 
+##### 20230731
+* Ich habe es so eingerichtet, dass die Signaturschlüsseldatei von manjaro_jp in der Installationsumgebung geladen wird.(calamares)
 
----
-Zusätzliche Informationen als Referenz.  
-Wenn Sie einen PC mit installiertem Linux haben, können Sie eine inoffizielle? Wenn Sie einen PC mit installiertem Linux haben, können Sie eine Dual-Boot-Umgebung mit inoffiziellem (keine offizielle Unterstützung) ChromeOS erstellen. Dies ist für Leute mit einigen Kenntnissen.  
-Wenn Sie interessiert sind, lesen Sie bitte [hier](https://github.com/sebanc/brunch/blob/master/install-with-linux.md). ([Japanisch](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82))
+Ich glaube, dass durch die Korrektur des pacman-Pakets, die ich zuvor vorgenommen habe, und die Beseitigung der Unstimmigkeiten bei den Signaturschlüsseln, die Fehler vermutlich nicht mehr auftreten werden.  
+Sollten dennoch Fehler auftreten, versuchen Sie bitte die folgenden Schritte.  
+
+Initialisieren Sie die Signaturschlüsseldatenbank.
+```
+sudo pacman-key --init
+sudo pacman-key --populate
+```
+
+Paketinformationen werden neu geladen.
+```
+sudo pacman -Syy
+sudo pacman -Fyy
+```
+
+##### 20230805
+* Es wurde ein Problem in [Software hinzufügen/entfernen] behoben, bei dem Paketinformationen beschädigt waren und nach einer Update-Prüfung falsch beendet wurden. (pamac)  
+* Bei der Suche nach installierten Paketen in [Software hinzufügen/entfernen] werden nun Flatpak- und Snap-Anwendungen in die Suche einbezogen. (libpamac)  
+
+kernel-6.4.8
+
 
 ---
 Andere empfohlene Betriebssysteme  

@@ -134,6 +134,8 @@ function embedYoutube(num) {
                     var frame = document.createElement('iframe');
                     movie.className = "embed-responsive embed-responsive-16by9";
                     frame.id = "ytVideoFrame" + num;
+                    frame.width = i.width.toString();
+                    frame.height = i.height.toString();
                     frame.frameBorder = "0";
                     frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
                     //            frame.sandbox = "allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation";

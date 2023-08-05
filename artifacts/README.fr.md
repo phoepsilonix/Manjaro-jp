@@ -443,11 +443,30 @@ kernel-6.4.7
 Lors de l'ajout et de la suppression de logiciels (pamac update), un problème se produit lors de la mise à jour du fichier de signature dans le référentiel de la base de données signée.  
 Pour résoudre ce problème, j'ai affiné le paquet pacman.  
 
+##### 20230731
+* J'ai configuré pour charger le fichier de clé de signature manjaro_jp dans l'environnement d'installation.(calamares)
 
----
-Informations supplémentaires pour référence.  
-Si vous disposez d'un PC avec Linux installé, vous pouvez créer un environnement non officiel ? Si vous avez un PC avec Linux installé, vous pouvez créer un environnement dual-boot avec ChromeOS non officiel (pas de support officiel). Ceci s'adresse aux personnes ayant quelques connaissances.  
-Si vous êtes intéressé, veuillez vous reporter à [ici](https://github.com/sebanc/brunch/blob/master/install-with-linux.md). ([Japonais](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82))
+Je pense qu'avec la correction du paquet pacman que j'ai effectuée précédemment et l'élimination des incohérences dans les clés de signature, les cas d'erreurs devraient avoir été éliminés.  
+Cependant, si une erreur se produit, veuillez essayer les étapes suivantes.  
+
+Initialisez la base de données de clés de signature.
+```
+sudo pacman-key --init
+sudo pacman-key --populate
+```
+
+Recharger les informations sur le paquet.
+```
+sudo pacman -Syy
+sudo pacman -Fyy
+```
+
+##### 20230805
+* Correction d’un problème dans [Ajout/Suppression de logiciel] où les informations du package sont corrompues et se terminent de manière incorrecte après une vérification de mise à jour. (pamac)  
+* Lors de la recherche de paquets installés dans [Ajout/Suppression de logiciels], les applications flatpak et snap sont maintenant incluses dans la recherche. (libpamac)  
+
+kernel-6.4.8
+
 
 ---
 Autres systèmes d'exploitation recommandés  

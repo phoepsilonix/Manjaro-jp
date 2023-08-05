@@ -47,7 +47,7 @@ const getYtThumbnail = async (vid) => {
       })();
  
 async function embedYoutube(num) {
-    let i = document.getElementById('yt-thumb' + num);
+    let i = <HTMLCanvasElement>document.getElementById('yt-thumb' + num);
     i.addEventListener('pointerdown', function() {
         var movie = document.getElementById("ytVideo"+num);
         if (movie.childNodes.length == 1) {
@@ -55,6 +55,8 @@ async function embedYoutube(num) {
             let frame = document.createElement('iframe');
             movie.className = "embed-responsive embed-responsive-16by9";
             frame.id = "ytVideoFrame"+num;
+            frame.width = i.width.toString();
+            frame.height = i.height.toString();
             frame.frameBorder = "0";
             frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
 //            frame.sandbox = "allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-storage-access-by-user-activation";

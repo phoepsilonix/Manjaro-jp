@@ -443,15 +443,34 @@ kernel-6.4.7
 Ao adicionar e remover software (pamac update), ocorre um problema ao atualizar o arquivo de assinatura no repositório do banco de dados assinado.  
 Para resolver este problema, eu ajustei o pacote pacman.  
 
+##### 20230731
+* Configurei para carregar o arquivo de chave de assinatura do manjaro_jp no ambiente de instalação.(calamares)
 
----
-Informação adicional para referência.  
-Se tiver um PC com Linux instalado, pode criar um não-oficial? Se tiver um PC com Linux instalado, pode criar um ambiente de boot duplo com ChromeOS não-oficial (sem suporte oficial). Isto é para pessoas com algum conhecimento.  
-Se estiver interessado, por favor consulte [aqui](https://github.com/sebanc/brunch/blob/master/install-with-linux.md). ([Japonês](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82))
+Acredito que, com a correção do pacote pacman que fiz anteriormente e a eliminação de inconsistências nas chaves de assinatura, os casos de ocorrência de erros devem ter sido eliminados.  
+No entanto, se ocorrer um erro, por favor, tente os seguintes passos.  
+
+Inicialize o banco de dados de chave de assinatura.
+```
+sudo pacman-key --init
+sudo pacman-key --populate
+```
+
+Recarregar as informações do pacote.
+```
+sudo pacman -Syy
+sudo pacman -Fyy
+```
+
+##### 20230805
+* Corrigido um problema em [Adicionar/Remover Software] em que as informações do pacote estavam corrompidas e terminavam incorretamente após uma verificação de atualização. (pamac)   
+* Ao procurar pacotes instalados em [Adicionar/Remover Software], as aplicações flatpak e snap estão agora incluídas na pesquisa. (libpamac)   
+
+kernel-6.4.8
+
 
 ---
 Outros sistemas operativos recomendados.  
-[Fedora Kinoite](https://kinoite.fedoraproject.org/ja/)  
+[Endless OS | Endless Computers](https://endlessos.com/)  
 
 ---
 ```
