@@ -35,14 +35,16 @@ editions=(
 #	"community lxqt"
 #	"community lxqt-kwin"
 	"community sway"
+	"community budgie"
+	"manjaro netinstall"
 )
 
 # 初期化
 #rm -rf $artifacts
 #mkdir -p $artifacts
-rm -rf $pkgdir
-mkdir -p $pkgdir
-cp -r iso-profiles-orig/* $pkgdir/
+#rm -rf $pkgdir
+#mkdir -p $pkgdir
+#cp -r iso-profiles-orig/* $pkgdir/
 sync
 
 # profiles.confを微修正
