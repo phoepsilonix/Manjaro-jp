@@ -18,7 +18,7 @@ echo "SourceForge"
 eval `keychain --agents ssh --eval id_ed25519`
 rsync -aLvPc --delete --delete-after --exclude=manjaro-jp/* --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./*.sig ./*.md phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
 rsync -aLvP --size-only --delete --delete-after --exclude=manjaro-jp/* --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
-rsync -avPLz ./*.css ./*.js ./*.md ./*.html phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/
+rsync -avPLz ./img ./*.css ./*.js ./*.md ./*.html phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/
 #sourceforge web
 #X:symlink rsync -L
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
@@ -35,7 +35,7 @@ echo "OSDN"
 #OSDN web
 #OK:symlink
 eval `keychain --agents ssh --eval id_ed25519`
-rsync -avPLz --no-perms ./*.css ./*.js ./*.md ./*.html phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs
+rsync -avPLz --no-perms ./img ./*.css ./*.js ./*.md ./*.html phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 rsync -avP --delete-after --delete manjaro-jp/ phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs/manjaro-jp/
 
