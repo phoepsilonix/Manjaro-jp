@@ -477,6 +477,13 @@ kernel-6.4.8
 
 
 ---
+###### おすすめ映像編集ソフト  
+Linux系OSで動きます。  
+[DaVinci Resolve 18 | Blackmagic Design](https://www.blackmagicdesign.com/products/davinciresolve)
+無料版でも十分、使えます。  
+有料版のStudioだと、より便利な機能が使えます。  
+
+---
 その他のおすすめOS  
 [Endless OS | Endless Computers](https://endlessos.com/)  
 
