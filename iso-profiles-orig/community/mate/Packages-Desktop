@@ -65,6 +65,7 @@ manjaro-hotfixes
 manjaro-settings-manager-notifier
 manjaro-hello
 >extra snapd
+>extra snapd-glib
 mesa-demos
 mobile-broadband-provider-info
 modemmanager
@@ -81,6 +82,7 @@ numlockl
 openresolv
 pamac-gtk
 libpamac-flatpak-plugin
+libpamac-snap-plugin
 powertop
 avahi
 networkmanager

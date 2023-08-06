@@ -104,6 +104,7 @@ openssh
 >extra p7zip
 pamac-gtk
 libpamac-flatpak-plugin
+libpamac-snap-plugin
 papirus-maia-icon-theme
 >extra parcellite
 patch
@@ -118,6 +119,7 @@ pkg-config
 python-ptyprocess
 screenfetch
 >extra snapd
+>extra snapd-glib
 >basic squashfs-tools
 >extra subversion
 >extra system-config-printer

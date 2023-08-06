@@ -61,9 +61,9 @@ pamac-gtk
 pamac-tray-icon-plasma
 pamac-cli
 #>extra apparmor
-#>extra snapd
-#>extra snapd-glib
-#>extra pamac-snap-plugin
+>extra snapd
+>extra snapd-glib
+>extra libpamac-snap-plugin
 >extra libpamac-flatpak-plugin
 #discover-snap
 #discover

@@ -98,7 +98,7 @@ EOF
 
 # localhost
 gpg -dq $gpg_pass.gpg | sudo -S pwd > /dev/null
-sudo rsync -avP --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
+sudo rsync -avP --progress --delete --delete-after ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
 # usb
 #sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
@@ -120,12 +120,12 @@ sudo rsync -avP --progress --delete ./ /root/manjaro-jp/ || { echo "rsync to loc
 #rsync -avPL --size-only --no-perms --delete --exclude=\.* ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 #osdn web
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
-rsync -avP --delete ./ phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs/manjaro-jp/
+rsync -avP --delete --delete-after ./ phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs/manjaro-jp/
 
 #sourceforge 
 #X:symlink rsync -L
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
-rsync -avPL --delete ./ phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/manjaro-jp/
+rsync -avPL --delete --delete-after ./ phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/manjaro-jp/
 
 exit 0;
 

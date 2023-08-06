@@ -69,7 +69,7 @@ terminus-font
 pamac-gtk
 >extra snapd
 >extra snapd-glib
-#>extra pamac-snap-plugin
+>extra libpamac-snap-plugin
 >extra libpamac-flatpak-plugin
 
 ## Printing

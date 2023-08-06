@@ -110,3 +110,6 @@ wl-clipboard # wayland clipboard application
 cliphist # clipboard history application
 flatpak
 libpamac-flatpak-plugin
+libpamac-snap-plugin
+snapd
+snapd-glib

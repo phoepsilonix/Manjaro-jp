@@ -52,7 +52,9 @@ adobe-source-han-sans-cn-fonts
 pamac-gnome-integration
 >extra pamac-flatpak-plugin
 pamac-gtk
-#>extra pamac-snap-plugin
+>extra pamac-snap-plugin
+snapd
+snapd-glib
 
 
 ## Printing

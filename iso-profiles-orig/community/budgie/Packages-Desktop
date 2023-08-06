@@ -67,6 +67,7 @@ manjaro-settings-manager-notifier
 manjaro-hello
 manjaro-application-utility
 >extra snapd
+>extra snapd-glib
 mesa-utils
 mobile-broadband-provider-info
 modemmanager
@@ -85,7 +86,8 @@ nss-mdns
 numlockx
 openresolv
 pamac-gtk
->extra pamac-flatpak-plugin
+>extra libpamac-flatpak-plugin
+>extra libpamac-snap-plugin
 polkit-gnome
 powertop
 #pulseaudio-bluetooth

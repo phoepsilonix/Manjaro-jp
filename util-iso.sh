@@ -368,7 +368,7 @@ make_image_desktop() {
         
         [[ -e ${profile_dir}/desktop-overlay ]] && copy_overlay "${profile_dir}/desktop-overlay" "${path}"
         
-        if [[ "${profile}" != "architect" ]];then
+        if [[ "${profile}" != "architect" && "${profile}" != "netinstall" ]]; then
                 systemd-nspawn -D ${path} flatpak remote-add  --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	        # Browser 
 	        systemd-nspawn -D ${path} flatpak install -y one.ablaze.floorp
@@ -388,7 +388,7 @@ make_image_desktop() {
 
         seed_snaps ${path}
 
-        if [[ "${profile}" != "architect" ]];then
+        if [[ "${profile}" != "architect" && "${profile}" != "netinstall" ]]; then
 	        systemd-nspawn -D ${path} glib-compile-schemas /usr/share/glib-2.0/schemas/
 	        systemd-nspawn -D ${path} update-desktop-database /usr/share/applications/ /var/lib/flatpak/exports/share/applications/
 	        [[ -e ${path}/usr/share/xfce4/helpers ]] && systemd-nspawn -D ${path} update-desktop-database /usr/share/xfce4/helpers/
@@ -439,7 +439,7 @@ make_image_live() {
 
         reset_pac_conf "${path}"
 	
-        if [[ "${profile}" != "architect" ]];then
+        if [[ "${profile}" != "architect" && "${profile}" != "netinstall" ]]; then
 	        systemd-nspawn -D ${path} glib-compile-schemas /usr/share/glib-2.0/schemas/
 	        systemd-nspawn -D ${path} update-desktop-database /usr/share/applications/ /var/lib/flatpak/exports/share/applications/
 	        [[ -e ${path}/usr/share/xfce4/helpers ]] && systemd-nspawn -D ${path} update-desktop-database /usr/share/xfce4/helpers/
