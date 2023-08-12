@@ -10,6 +10,28 @@ Please start from a USB memory or SSD disk, etc.
 Starting from a USB memory may be easier with [Ventoy](https://ventoy.net/).  
 It is recommended to format the first partition as ext4 during the introduction of Ventoy.  
 
+---
+### About installing Ventoy
+Steps to install ventoy on a USB drive using Manjaro Linux  
+```
+sudo pacman -S ventoy
+ventoygui
+```
+
+General Linux  
+Example of download command using aria2  
+```
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.94/ventoy-1.0.94-linux.tar.gz
+tar xf ventoy-1.0.94-linux.tar.gz
+cd ventoy-1.0.94
+./VentoyGUI.x86_64
+```
+
+Windows  
+Download [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.94/ventoy-1.0.94-windows.zip) using a browser or something.  
+Open the downloaded zip file and run ventoy2disk.exe.
+
+---
 ### Main Features
 The Linux kernel is adopted with the latest version as much as possible.  
 Clang is used for kernel building.  
@@ -17,9 +39,6 @@ Japanese input (fcitx5-mozc) and Japanese font are standardly installed.
 The standard browser is either the flatpak version of [Firefox](https://www.mozilla.org/ja/firefox/browsers/) or [Floorp](https://floorp.ablaze.one/).  
 Flatpak version of [LibreOffice](https://www.libreoffice.org) is standardly installed as an office software.  
 We have installed the pacman-static package as standard. Please use this if package updates become difficult due to library inconsistencies.  
-
-The live environment & installation ISO is published at the following distribution site.  
-Please feel free to try it out.
 
 ##### Notes
 1. Does not support Secure Boot  
@@ -55,6 +74,9 @@ Therefore, as an additional measure, the use of zram-generator has been added.
 
 ---
 ### Place of distribution
+he live environment & installation ISO is published at the following distribution site.  
+Please feel free to try it out.
+
 [![MEGA](./img/mega-icon.svg)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="48" y="48" xlink:href = "./img/mega-icon.svg"/></svg>](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)   
 ---|---|---  
 [![SourceForge](./img/sf_logo.png)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="48" y="48" xlink:href = "./img/sourceforge-icon.svg"/></svg>](https://sourceforge.net/projects/manjaro-jp/)

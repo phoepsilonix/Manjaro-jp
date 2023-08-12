@@ -11,6 +11,27 @@
 使用 Ventoy 從 U 盤啟動可能更容易。  
 建議在部署 Ventoy 時用 ext4 重新格式化第一個分區。  
 
+---
+### 關於安裝Ventoy
+使用Manjaro Linux將ventoy安裝到USB驅動器的步驟
+```
+sudo pacman -S ventoy
+ventoygui
+```
+一般Linux  
+使用aria2的下載命令示例  
+```
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.94/ventoy-1.0.94-linux.tar.gz
+tar xf ventoy-1.0.94-linux.tar.gz
+cd ventoy-1.0.94
+./VentoyGUI.x86_64 
+```
+
+Windows  
+使用瀏覽器或其他方式下載[Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.94/ventoy-1.0.94-windows.zip)。  
+打開下載的zip文件並運行ventoy2disk.exe
+
+---
 ### 主要特點
 
 Linux kernel應該盡可能是最新的。  
@@ -19,9 +40,6 @@ Linux kernel應該盡可能是最新的。
 採用flatpak Firefox或Floorp作為標準瀏覽器。  
 將LibreOffice的flatpak版本作為辦公軟體作為標準安裝。  
 我們已預設安裝了pacman-static套件。如果因為函式庫的不合一致，導致套件更新變得困難，請使用它。
-
-實時環境和安裝 ISO 可在以下分發目標獲得。  
-如果您願意，請嘗試一下。  
 
 ##### 注意事項
 1. 不支援安全啟動  
@@ -53,6 +71,9 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 
 ---
 ### 分發位置
+實時環境和安裝 ISO 可在以下分發目標獲得。  
+如果您願意，請嘗試一下。  
+
 [![MEGA](./img/mega-icon.svg)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="48" y="48" xlink:href = "./img/mega-icon.svg"/></svg>](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)   
 ---|---|---  
 [![SourceForge](./img/sf_logo.png)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="48" y="48" xlink:href = "./img/sourceforge-icon.svg"/></svg>](https://sourceforge.net/projects/manjaro-jp/)

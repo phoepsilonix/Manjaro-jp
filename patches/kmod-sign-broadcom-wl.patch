@@ -1,14 +1,5 @@
-From 3c5749c8590e9fff36637381e35c50a31a13f918 Mon Sep 17 00:00:00 2001
-From: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
-Date: Sun, 23 Jul 2023 21:54:44 +0900
-Subject: [PATCH] kmod
-
----
- PKGBUILD | 20 +++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
-
 diff --git a/PKGBUILD b/PKGBUILD
-index af64706..a828e61 100644
+index 17ea580..0dfa51e 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -36,6 +36,13 @@ build() {
@@ -44,8 +35,5 @@ index af64706..a828e61 100644
 -  find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 +  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
    sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/$_pkgname.install"
-   install -D -m 644 "${srcdir}/broadcom-wl-dkms.conf" "${pkgdir}/etc/modprobe.d/${_linuxprefix}-broadcom-wl.conf"
- }
--- 
-2.41.0
-
+   install -Dm644 "${srcdir}/broadcom-wl-dkms.conf" "${pkgdir}/etc/modprobe.d/${_linuxprefix}-broadcom-wl.conf"
+   install -Dm644 /usr/share/licenses/broadcom-wl-dkms/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

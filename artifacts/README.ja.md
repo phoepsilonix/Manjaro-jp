@@ -10,16 +10,37 @@ USBメモリなどから起動してください。
 USBメモリからの起動は、[Ventoy](https://ventoy.net/)を使うと楽かもしれません。  
 Ventoyの導入時に最初のパーティションをext4でフォーマットし直すのがお勧めです。
 
-### 主な特徴
+---
+### Ventoyのインストールについて
+Manjaro LinuxでventoyをUSBにインストールする場合の手順
+```
+sudo pacman -S ventoy
+ventoygui
+```
+Linux全般  
+ダウンロードコマンドがaria2の場合の例
+```
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.94/ventoy-1.0.94-linux.tar.gz
+tar xf ventoy-1.0.94-linux.tar.gz
+cd ventoy-1.0.94
+./VentoyGUI.x86_64 
+```
+
+Windowsの場合  
+ブラウザなどで[Ventoy](https://github.com/ventoy/Ventoy/releases/)を[ダウンロード](https://github.com/ventoy/Ventoy/releases/download/v1.0.94/ventoy-1.0.94-windows.zip)します。
+ダウンロードしたzipファイルを開いて、ventoy2disk.exeを実行しましょう。
+
+---
+### Manjaro-JPの主な特徴
 Linuxカーネルは、なるべく最新のものを採用します。  
 またカーネルのビルドにはclangを用います。  
 日本語入力(fcitx5-mozc)、日本語フォントを標準インストールします。  
 標準ブラウザとして、flatpak版[Firefox](https://www.mozilla.org/ja/firefox/browsers/)または[Floorp](https://floorp.ablaze.one/)を採用します。  
 オフィスソフトとしてflatpak版[LibreOffice](https://ja.libreoffice.org)を標準インストールします。  
 pacman-staticパッケージを標準導入しています。ライブラリの不整合によって、パッケージ更新が困難になった場合に、ご利用ください
-
-ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
-よかったら、お試しください。
+```
+sudo pacman-static -Syyu
+```
 
 ##### 注意事項
 1. セキュアブートには非対応  
@@ -55,6 +76,9 @@ Calamaresにも、[フィードバック済み](https://github.com/calamares/cal
 
 ---
 ### 配布場所
+ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
+よかったら、お試しください。
+
 [![MEGA](./img/mega-icon.svg)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="48" y="48" xlink:href = "./img/mega-icon.svg"/></svg>](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)   
 ---|---|---  
 [![SourceForge](./img/sf_logo.png)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="48" y="48" xlink:href = "./img/sourceforge-icon.svg"/></svg>](https://sourceforge.net/projects/manjaro-jp/)

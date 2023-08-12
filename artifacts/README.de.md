@@ -10,6 +10,26 @@ Booten Sie von einem USB-Speicherstick oder ähnlichem.
 Das Booten von einem USB-Speicherstick kann mit [Ventoy](https://ventoy.net/) einfacher sein.  
 Es wird empfohlen, die erste Partition bei der Installation von Ventoy mit ext4 neu zu formatieren.
 
+---
+### Über die Installation von Ventoy
+Schritte zur Installation von ventoy auf einem USB-Laufwerk mit Manjaro Linux  
+```
+sudo pacman -S ventoy
+ventoygui
+```
+Allgemeines Linux  
+Beispiel für einen Download-Befehl mit aria2  
+```
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.94/ventoy-1.0.94-linux.tar.gz
+tar xf ventoy-1.0.94-linux.tar.gz
+cd ventoy-1.0.94
+./VentoyGUI.x86_64 
+```
+Windows  
+Laden Sie [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.94/ventoy-1.0.94-windows.zip) mit einem Browser oder etwas herunter.  
+Öffnen Sie die heruntergeladene Zip-Datei und führen Sie ventoy2disk.exe aus.
+
+---
 ### Hauptmerkmale.
 Der Linux-Kernel ist so aktuell wie möglich.  
 Der Kernel wird mit clang gebaut.  
@@ -17,9 +37,6 @@ Japanische Eingabe (fcitx5-mozc) und japanische Schriftarten sind standardmäßi
 Flatpak-Versionen von [Firefox](https://www.mozilla.org/ja/firefox/browsers/) oder [Floorp](https://floorp.ablaze.one/) werden als Standardbrowser verwendet.  
 Die Flatpak-Version [LibreOffice](https://ja.libreoffice.org) wird als Standard-Office-Software installiert.  
 Wir haben das Paket pacman-static standardmäßig installiert. Bitte verwenden Sie dieses, wenn Paketaktualisierungen aufgrund von Bibliotheksinkonsistenzen schwierig werden.  
-
-Live-Umgebung & Installations-ISOs sind auf den folgenden Distributionsseiten verfügbar.  
-Sie können sie ausprobieren, wenn Sie möchten.
 
 ##### Hinweise.
 1. Secure Boot nicht unterstützt  
@@ -55,6 +72,9 @@ Daher wurde als zusätzliche Maßnahme die Verwendung von zram-generator hinzuge
 
 ---
 ### Vertriebsort.
+Live-Umgebung & Installations-ISOs sind auf den folgenden Distributionsseiten verfügbar.  
+Sie können sie ausprobieren, wenn Sie möchten.
+
 [![MEGA](./img/mega-icon.svg)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="48" y="48" xlink:href = "./img/mega-icon.svg"/></svg>](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)   
 ---|---|---  
 [![SourceForge](./img/sf_logo.png)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="48" y="48" xlink:href = "./img/sourceforge-icon.svg"/></svg>](https://sourceforge.net/projects/manjaro-jp/)

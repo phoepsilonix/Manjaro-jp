@@ -10,6 +10,27 @@ Démarrez à partir d'une clé USB ou similaire.
 Le démarrage à partir d'une clé USB peut être plus facile avec [Ventoy](https://ventoy.net/).  
 Il est recommandé de reformater la première partition avec ext4 lors de l'installation de Ventoy.
 
+---
+### À propos de l’installation de Ventoy
+Étapes pour installer ventoy sur une clé USB en utilisant Manjaro Linux
+```
+sudo pacman -S ventoy
+ventoygui
+```
+Linux général  
+Exemple de commande de téléchargement en utilisant aria2  
+```
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.94/ventoy-1.0.94-linux.tar.gz
+tar xf ventoy-1.0.94-linux.tar.gz
+cd ventoy-1.0.94
+./VentoyGUI.x86_64 
+```
+
+Windows  
+Téléchargez [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.94/ventoy-1.0.94-windows.zip) à l’aide d’un navigateur ou autre chose.  
+Ouvrez le fichier zip téléchargé et exécutez ventoy2disk.exe.
+
+---
 ### Caractéristiques principales.
 Le noyau Linux est aussi à jour que possible.  
 Le noyau est construit à l'aide de clang.  
@@ -17,9 +38,6 @@ L'entrée japonaise (fcitx5-mozc) et les polices japonaises sont installées en 
 Les versions Flatpak de [Firefox](https://www.mozilla.org/ja/firefox/browsers/) ou [Floorp](https://floorp.ablaze.one/) seront utilisées comme navigateur standard.  
 La version flatpak de [LibreOffice](https://ja.libreoffice.org) sera installée comme logiciel de bureautique standard.  
 Nous avons installé le paquet pacman-static par défaut. Veuillez l'utiliser si les mises à jour des paquets deviennent difficiles en raison d'incohérences de bibliothèque.  
-
-L'environnement réel et les ISO d'installation sont disponibles sur les sites de distribution suivants.  
-Vous pouvez l'essayer si vous le souhaitez.
 
 ##### Notes.
 1. secure boot non pris en charge  
@@ -54,6 +72,9 @@ Les commentaires ci-dessus indiquent que le swap peut ne pas être activé selon
 Par conséquent, comme mesure supplémentaire, l'utilisation de zram-generator a été ajoutée.
 
 ### Lieu de distribution.
+L'environnement réel et les ISO d'installation sont disponibles sur les sites de distribution suivants.  
+Vous pouvez l'essayer si vous le souhaitez.
+
 [![MEGA](./img/mega-icon.svg)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="48" y="48" xlink:href = "./img/mega-icon.svg"/></svg>](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)   
 ---|---|---  
 [![SourceForge](./img/sf_logo.png)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="48" y="48" xlink:href = "./img/sourceforge-icon.svg"/></svg>](https://sourceforge.net/projects/manjaro-jp/)
