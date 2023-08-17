@@ -65,7 +65,7 @@ manjaro-hotfixes
 #manjaro-pulse
 manjaro-settings-manager-notifier
 manjaro-hello
-manjaro-application-utility
+#manjaro-application-utility
 >extra snapd
 >extra snapd-glib
 mesa-utils

@@ -44,8 +44,11 @@ sudo pacman-static -Syyu
 
 ##### 注意事項
 1. セキュアブートには非対応  
-対応していませんので、BIOSの設定でセキュアブートを無効にしてご利用ください。  
-（セキュアブート対応を望む場合、Ubuntuが早いと思います。[Ubuntu flavours](https://ubuntu.com/desktop/flavours)でデスクトップ環境も複数提供されています。）
+インストーラーが対応していませんので、BIOSの設定でセキュアブートを無効にしてご利用ください。  
+インストール後、対応することは可能です。  
+[Manjaro Linuxでセキュアブート(secure boot)(shim-singed)](https://zenn.dev/phoepsilonix/articles/90ad66114a4982)  
+[Manjaro Linuxでセキュアブート(secure boot)(efitools)](https://zenn.dev/phoepsilonix/articles/5e6488bb46f37e)  
+（セキュアブート対応を望む場合、Ubuntuなどは簡単です。[Ubuntu flavours](https://ubuntu.com/desktop/flavours)でデスクトップ環境も複数提供されています。）
 
 2. インストール途中でインストーラー画面が消える場合には  
 swapパーティションを手動で設定することで、回避できる場合が多いです。  
@@ -496,8 +499,10 @@ sudo pacman -Fyy
 ##### 20230805
 * [ソフトウェアの追加と削除]において、更新チェックのあと、パッケージ情報が壊れて不正終了する問題を修正しました。(pamac) 
 * [ソフトウェアの追加と削除]において、インストール済みのパッケージを検索する場合に、flatpak、snapアプリケーションも検索対象に含めるようにしました(libpamac) 
+* kernel-6.4.8
 
-kernel-6.4.8
+##### 20230813
+kernel-6.4.10
 
 
 ---
