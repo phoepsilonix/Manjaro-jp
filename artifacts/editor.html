@@ -3,20 +3,13 @@
 <head>
 <meta charset=utf-8>
 <title>Manjaro-JP</title>
-<link rel="icon" href="https://manjaro.phoepsilonix.love/favicon.png" type="image/png">
-<link rel="stylesheet" type="text/css" href="https://phoepsilonix.love/bl-themes/phoep/css/sport.css?version=3.14.1">
-<link rel="stylesheet" type="text/css" href="https://phoepsilonix.love/bl-kernel/css/bootstrap.min.css?version=3.14.1">
-<link rel="stylesheet" type="text/css" href="https://phoepsilonix.love/bl-themes/phoep/css/bootstrap.min.css?version=3.14.1">
-<!--
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/99398214e6.js" crossorigin="anonymous"></script>
--->
-<link rel="stylesheet" href="https://phoepsilonix.love/sunburst.min.css">
-<script src="https://phoepsilonix.love/highlight.min.js"></script>
-<script src="https://phoepsilonix.love/print-code.js"></script>
-<link rel="stylesheet" type="text/css" href="https://manjaro-jp.phoepsilonix.love/fonts.css" />
+    <link rel="icon" href="./img/favicon.png" type="image/png" />
+    <link rel="stylesheet" type="text/css" href="./sport.css" />
+    <link rel="stylesheet" type="text/css" href="./bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./sunburst.min.css" />
+    <script src="./highlight.min.js"></script>
+    <script src="./print-code.js"></script>
+    <link rel="stylesheet" type="text/css" href="./fonts.css" />
 <style>
 .main-section {
   display: flex;
@@ -49,9 +42,14 @@
 #output-html td {
     text-align:center; vertical-align:middle;
 }
-img[alt=SourceForge] { width: 200px; }
-img[alt=Terabox] { width: 200px; }
-</style>
+        img[alt=SourceForge] { width: 200px; }
+        img[alt=Terabox] { height: 80px; }
+        img[alt=MEGA] { height: 80px; }
+        img[alt="Google Drive"] { height: 80px; }
+        svg#MANJARO-QR { width: 180px; height: 180px; }
+        image#MANJARO-QR { width: 180px; height: 180px; }
+        image#MANJARO-ICON { width: 32px; height: 32px; }
+    </style>
 <script type="module">
 import init, { pulldown_cmark as wasm } from './wasm-markdown/wasm_markdown.js';
 

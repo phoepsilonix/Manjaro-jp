@@ -488,6 +488,12 @@ sudo pacman -Fyy
 
 kernel-6.4.8
 
+##### 20230813
+kernel-6.4.10
+
+##### 20230817
+kernel-6.4.11
+
 
 ---
 Outros sistemas operativos recomendados.  
