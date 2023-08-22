@@ -447,6 +447,7 @@ kernel-6.4.11
 ---
 其他推薦的操作系統  
 [Endless OS | Endless Computers](https://endlessos.com/)  
+[Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)
 
 ---
 ```

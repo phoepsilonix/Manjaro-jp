@@ -111,6 +111,10 @@
             let el = document.getElementById("readme");
             let text = document.createTextNode(data);
             el.innerHTML = text.data;
+            const links = el.querySelectorAll("a[href^='http']:not([href*='" + location.hostname + "'])");
+            for (let i = 0; i < links.length; ++i) {
+                links[i].setAttribute('target', '_blank');
+            }
             addCopyBtn();
         }
 
@@ -173,5 +177,4 @@
         <a href="./README.ja.html">Manjaro JP(Japanese)</a>
     </noscript>
 </body>
-
 </html>

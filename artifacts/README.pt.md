@@ -498,6 +498,7 @@ kernel-6.4.11
 ---
 Outros sistemas operativos recomendados.  
 [Endless OS | Endless Computers](https://endlessos.com/)  
+[Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)
 
 ---
 ```
