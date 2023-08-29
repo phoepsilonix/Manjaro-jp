@@ -45,23 +45,31 @@ do
         #git pull origin master
         case "$kver" in
             "6.4" ) 
-                patches="patch-*${m}-linux6.4\.patch" ;;
+                patch1="patch-${m}-linux6.4.patch" 
+                patch2="kmod-sign-${m}-linux6.4.patch" ;;
             "6.1" ) 
-                patches="patch-*${m}-linux6.1\.patch" ;;
+                patch1="patch-${m}-linux6.1.patch" 
+                patch2="kmod-sign-${m}-linux6.1.patch" ;;
             * ) 
-                patches="patch-*${m}\.patch" ;;
+                patch1="patch-${m}.patch" 
+                patch2="kmod-sign-${m}.patch" ;;
         esac
         case "$m" in
-            "tp_smapi" ) patches="patch-*${m}\.patch"
+            "tp_smapi" ) patch1="patch-${m}.patch"
                 case "$kver" in
                     "6.4" ) 
-                        patches="patch-*${m}-linux6.4\.patch" ;;
+                        patch1="patch-${m}-linux6.4.patch" ;;
                 esac
         esac
-        #if [[ ! -e $patches ]];then
-        #    patches="patch-*${m}\.patch"
-        #fi
-        for patch in ~/gitlab/Manjaro-jp/patches/kmod-*${m}\.patch ~/gitlab/Manjaro-jp/patches/${patches}
+            echo $patch1
+            echo $patch2
+        if [[ ! -e ~/gitlab/Manjaro-jp/patches/$patch1 ]];then
+            patch1="patch-*${m}\.patch"
+        fi
+        if [[ ! -e ~/gitlab/Manjaro-jp/patches/$patch2 ]];then
+            patch2="kmod-sign-*${m}\.patch"
+        fi
+        for patch in ~/gitlab/Manjaro-jp/patches/$patch1 ~/gitlab/Manjaro-jp/patches/$patch2
         do
             echo $patch
             echo

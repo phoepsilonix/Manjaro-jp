@@ -21,14 +21,14 @@ ventoygui
 一般Linux  
 使用aria2的下載命令示例  
 ```
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.94/ventoy-1.0.94-linux.tar.gz
-tar xf ventoy-1.0.94-linux.tar.gz
-cd ventoy-1.0.94
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.95/ventoy-1.0.95-linux.tar.gz
+tar xf ventoy-1.0.95-linux.tar.gz
+cd ventoy-1.0.95
 ./VentoyGUI.x86_64 
 ```
 
 Windows  
-使用瀏覽器或其他方式下載[Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.94/ventoy-1.0.94-windows.zip)。  
+使用瀏覽器或其他方式下載[Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.95/ventoy-1.0.95-windows.zip)。  
 打開下載的zip文件並運行ventoy2disk.exe
 
 ---
@@ -442,6 +442,12 @@ kernel-6.4.10
 
 ##### 20230817
 kernel-6.4.11
+
+##### 20230824
+kernel-6.4.12
+
+##### 20230825
+LibreOffie 7.6.0
 
 
 ---

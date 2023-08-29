@@ -1,5 +1,23 @@
 # [Manjaro Linux JP](https://sourceforge.net/projects/manjaro-jp/)
 
+## [Manjaro Linux](https://manjaro.org/) とは
+[Manjaro Linux](https://manjaro.org)はx86_64系またはarm系プロセッサーのパソコンで動くLinux OSです。  
+
+インターネットのサイトを閲覧するためのブラウザや表計算などのオフィス向けソフト、映像編集ソフトなど、いろんなソフトが動きます。  
+
+Manjaro-jpは、標準で日本語環境を整えることを目指して、いろいろと調整しています。  
+USBディスクなどから、起動するライブISO環境兼インストーラーを用意しています。  
+もしよかったら、お試しください。  
+
+Linuxには、いろんなディストリビューションといわれるものがありますが、プログラムのソースが公開されているものが多く、また互換性を保つ努力が継続されています。  
+またディストリビューションを超えて、アプリケーションを配布する仕組みとして、[Flatpak](https://flatpak.org/)と[Snap](https://snapcraft.io/about)といった仕組みが作られてきました。Manjaro LinuxもFlatpakとSnapにも対応していますので、他のLinuxディストリビューションと同じように、いろんなアプリケーションが動作可能です。  
+多くのディストリビューションが存在するのは、デスクトップ環境の差異だったり、OSの更新作業のための保守部分やセキュリティ対策をどうするか、といった部分で、ポリシーだったり、やり方が異なるからです。  
+ただ、基本的には同じアプリケーションが動作する場合がほとんどなので、一般のユーザーには、あまり関係ないことです。自分が使いやすい、ユーザーが多そうなものを選べば大丈夫だと思います。  
+
+なおManjaro LinuxはArm系プロセッサーにも対応していますが、その日本語対応は、サーバーもパソコンも手元に持っていないため、検証が難しいので、未対応です。x86_64系のパソコンでご利用ください。  
+
+---
+
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
 [kernel-6.4系](https://kernel.org/)。
@@ -10,23 +28,53 @@ USBメモリなどから起動してください。
 USBメモリからの起動は、[Ventoy](https://ventoy.net/)を使うと楽かもしれません。  
 Ventoyの導入時に最初のパーティションをext4でフォーマットし直すのがお勧めです。
 
-### 主な特徴
+---
+### Ventoyのインストールについて
+Manjaro LinuxでventoyをUSBにインストールする場合の手順
+```
+sudo pacman -S ventoy
+ventoygui
+```
+Linux全般  
+ダウンロードコマンドがaria2の場合の例
+```
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.95/ventoy-1.0.95-linux.tar.gz
+tar xf ventoy-1.0.95-linux.tar.gz
+cd ventoy-1.0.95
+./VentoyGUI.x86_64 
+```
+
+Windowsの場合  
+ブラウザなどで[Ventoy](https://github.com/ventoy/Ventoy/releases/)を[ダウンロード](https://github.com/ventoy/Ventoy/releases/download/v1.0.95/ventoy-1.0.95-windows.zip)します。
+ダウンロードしたzipファイルを開いて、ventoy2disk.exeを実行しましょう。
+
+---
+### Manjaro-JPの主な特徴
 Linuxカーネルは、なるべく最新のものを採用します。  
 またカーネルのビルドにはclangを用います。  
 日本語入力(fcitx5-mozc)、日本語フォントを標準インストールします。  
 標準ブラウザとして、flatpak版[Firefox](https://www.mozilla.org/ja/firefox/browsers/)または[Floorp](https://floorp.ablaze.one/)を採用します。  
 オフィスソフトとしてflatpak版[LibreOffice](https://ja.libreoffice.org)を標準インストールします。  
 pacman-staticパッケージを標準導入しています。ライブラリの不整合によって、パッケージ更新が困難になった場合に、ご利用ください
-
-ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
-よかったら、お試しください。
+```
+sudo pacman-static -Syyu
+```
 
 ##### 注意事項
 1. セキュアブートには非対応  
-対応していませんので、BIOSの設定でセキュアブートを無効にしてご利用ください。  
-（セキュアブート対応を望む場合、Ubuntuが早いと思います。[Ubuntu flavours](https://ubuntu.com/desktop/flavours)でデスクトップ環境も複数提供されています。）
+インストーラーが対応していませんので、BIOSの設定でセキュアブートを無効にしてご利用ください。  
+インストール後、対応することは可能です。  
+[Manjaro Linuxでセキュアブート(secure boot)(shim-singed)](https://zenn.dev/phoepsilonix/articles/90ad66114a4982)  
+[Manjaro Linuxでセキュアブート(secure boot)(efitools)](https://zenn.dev/phoepsilonix/articles/5e6488bb46f37e)  
+（セキュアブート対応を望む場合、Ubuntuなどは簡単です。[Ubuntu flavours](https://ubuntu.com/desktop/flavours)でデスクトップ環境も複数提供されています。）
 
-2. インストール途中でインストーラー画面が消える場合には  
+2. ISOから起動したライブ環境ではsnapアプリケーションのインストールは停止されています。  
+インストール後の環境では有効になりますが、どうしても試したい場合には手動で有効化できます。
+```
+sudo systemctl start snapd.service
+```
+
+3. インストール途中でインストーラー画面が消える場合には  
 swapパーティションを手動で設定することで、回避できる場合が多いです。  
 swapパーティションを/dev/sdXとした場合、次のようなコマンドで手動でswapを有効にしてみてください。
 ```
@@ -55,10 +103,14 @@ Calamaresにも、[フィードバック済み](https://github.com/calamares/cal
 
 ---
 ### 配布場所
-[![MEGA](https://mega.nz/favicon.ico)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [Manjaro-Linux-jp at MEGA](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)
+ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
+よかったら、お試しください。
+
+[![MEGA](./img/mega-icon.svg)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)   
 ---|---  
-[![SourceForge](https://sourceforge.net/sflogo.php?group_id=66882&type=5)](https://sourceforge.net/projects/manjaro-jp/) | [Manjaro-Linux-jp at SourceForge](https://sourceforge.net/projects/manjaro-jp/)  
-[![Terabox](data:image/png;base64,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)](https://teraboxapp.com/s/1FdwBohvbmNkXNSEK6eBSAg) | [Manjaro-Linux-jp at Terabox](https://teraboxapp.com/s/1FdwBohvbmNkXNSEK6eBSAg) 
+[![SourceForge](./img/sf_logo.png)](https://sourceforge.net/projects/manjaro-jp/) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>](https://sourceforge.net/projects/manjaro-jp/)
+[![Google Drive](./img/Google_Drive_icon.svg)](https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-google.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/Google_Drive_icon.svg"/></svg>](https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing)
+[![Terabox](./img/terabox_logo.svg)](https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>](https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag)
 
 貴重な、ストレージをありがとうございます。  
 上記にて配布しています。
@@ -78,7 +130,8 @@ megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD
 
 ---
 ## 参考：導入ガイド
-[Manjaro Linux 最初の一歩](https://zenn.dev/phoepsilonix/articles/5be4f3e3d78af7)
+[Manjaro Linux 最初の一歩](https://zenn.dev/phoepsilonix/articles/5be4f3e3d78af7)  
+[Manjaro Linux 日本語ライブ環境](https://zenn.dev/phoepsilonix/articles/a48758b4812127)  
 
 ---
 ### 備忘録
@@ -398,7 +451,6 @@ kernel-6.1.30
 
 ##### 20230607
 kernel-6.1.32
-</details>
 
 ##### 20230611
 kernel-6.3.7
@@ -445,13 +497,13 @@ kernel-6.4.6
 
 ##### 20230728
 kernel-6.4.7
+</details>
 
 ##### 20230729
 ソフトウェアの追加と削除(pamac update)を実行すると、署名付きのデータベースを提供しているレポジトリで、署名ファイルの更新がうまく動作しない問題がありました。  
 その解決のためpacmanパッケージを微調整しました。
 
 ##### 20230731
-* ソフトウェアの追加と削除において、アップデートチェックのあと、パッケージ情報が壊れて不正終了するケースがあるのを修正しました。(libpamac) 
 * インストール先の環境に、manjaro_jpの署名鍵ファイルを読み込むようにしました。(calamares)  
 
 先に行ったpacmanパッケージの修正とあわせて、署名鍵の不整合によるエラーが起きるケースがなくなったのでは、と思います。  
@@ -469,15 +521,35 @@ sudo pacman -Syy
 sudo pacman -Fyy
 ```
 
+##### 20230805
+* [ソフトウェアの追加と削除]において、更新チェックのあと、パッケージ情報が壊れて不正終了する問題を修正しました。(pamac) 
+* [ソフトウェアの追加と削除]において、インストール済みのパッケージを検索する場合に、flatpak、snapアプリケーションも検索対象に含めるようにしました(libpamac) 
+* kernel-6.4.8
+
+##### 20230813
+kernel-6.4.10
+
+##### 20230817
+kernel-6.4.11
+
+##### 20230824
+kernel-6.4.12
+
+##### 20230825
+LibreOffie 7.6.0
+
 
 ---
-参考までに、追記。  
-LinuxをインストールしたPCがあれば、非公式？な(公式サポートがない)ChromeOSとのデュアルブート環境も作れるみたいです。ある程度知識のある方向けです。  
-興味がある方は、[こちら](https://github.com/sebanc/brunch/blob/master/install-with-linux.md)をご参考にしてください。([日本語訳](https://phoepsilonix.love/linux%E3%81%A8chromeos%E3%81%AE%E3%83%87%E3%83%A5%E3%82%A2%E3%83%AB%E3%83%96%E3%83%BC%E3%83%88%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82))
+###### おすすめ映像編集ソフト  
+Linux系OSで動きます。  
+[DaVinci Resolve 18 | Blackmagic Design](https://www.blackmagicdesign.com/products/davinciresolve)  
+無料版でも十分、使えます。  
+有料版のStudioだと、より便利な機能が使えます。  
 
 ---
 その他のおすすめOS  
 [Endless OS | Endless Computers](https://endlessos.com/)  
+[Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)
 
 ---
 [Manjaroレポジトリミラー試験稼働中](https://mirror.phoepsilonix.love/manjaro/)
