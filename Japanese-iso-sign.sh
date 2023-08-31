@@ -38,14 +38,14 @@ files=(${files[@]/#manjaro*})
 file=(${files[@]/#+*})
 for f in ${file[@]}
 do
-        echo ${f:1}
+        echo - ${f:1}
         sed -i -e "/${f:1}/d" SHA256SUMS
 done
 
 file=(${files[@]/#-*})
 for f in ${file[@]}
 do
-        echo ${f:1}
+        echo + ${f:1}
         sha256sum ${f:1} >> SHA256SUMS
 done
 

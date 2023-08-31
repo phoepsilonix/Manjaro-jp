@@ -44,6 +44,9 @@ do
         #git switch -f master
         #git pull origin master
         case "$kver" in
+            "6.5" ) 
+                patch1="patch-${m}-linux6.5.patch" 
+                patch2="kmod-sign-${m}-linux6.5.patch" ;;
             "6.4" ) 
                 patch1="patch-${m}-linux6.4.patch" 
                 patch2="kmod-sign-${m}-linux6.4.patch" ;;
@@ -53,13 +56,6 @@ do
             * ) 
                 patch1="patch-${m}.patch" 
                 patch2="kmod-sign-${m}.patch" ;;
-        esac
-        case "$m" in
-            "tp_smapi" ) patch1="patch-${m}.patch"
-                case "$kver" in
-                    "6.4" ) 
-                        patch1="patch-${m}-linux6.4.patch" ;;
-                esac
         esac
             echo $patch1
             echo $patch2
@@ -75,7 +71,8 @@ do
             echo
                 if [[ -e $patch ]];then
                         echo "$patch Applying"
-                        git apply --check --stat --apply $patch
+                        git apply -v --check --stat --apply $patch
+                        #patch -p1 -i $patch
                 fi
         done
         files=$(ls ../../extramodules-$ver/$m/*.{gz,zip,asc,xz,run,bz2} 2>/dev/null)
