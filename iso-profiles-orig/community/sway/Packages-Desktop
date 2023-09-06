@@ -113,3 +113,6 @@ libpamac-flatpak-plugin
 libpamac-snap-plugin
 snapd
 snapd-glib
+
+manjaro-hello
+manjaro-application-utility

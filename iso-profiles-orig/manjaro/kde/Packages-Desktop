@@ -74,7 +74,6 @@ packagekit-qt5
 #octopi-repoeditor
 #octopi-notifier-frameworks
 #pamac-qt
-#manjaro-application-utility
 
 ## Printing
 >extra manjaro-printer
@@ -208,7 +207,7 @@ inxi
 #>extra krita
 #ms-office-online
 manjaro-hello
-#manjaro-application-utility
+manjaro-application-utility
 manjaro-settings-manager-kcm
 manjaro-settings-manager-knotifier
 plasma-systemmonitor

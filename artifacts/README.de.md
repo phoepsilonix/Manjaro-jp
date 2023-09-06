@@ -505,6 +505,9 @@ LibreOffie 7.6.0
 ##### 20230831
 kernel-6.4.13
 
+##### 20230903
+kernel-6.4.14
+
 
 ---
 Andere empfohlene Betriebssysteme  

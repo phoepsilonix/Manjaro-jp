@@ -1,4 +1,4 @@
- cat artifacts/README.*.md > jyouyou.txt
+ cat jyouyou_.txt artifacts/README.*.md > jyouyou.txt
 
   pyftsubset  /usr/share/fonts/OTF/BIZ-UDPMincho-Medium.otf \
                --text-file=jyouyou.txt \
