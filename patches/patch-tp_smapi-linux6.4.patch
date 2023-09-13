@@ -1,50 +1,37 @@
-From c1048acf7310732ddbd85708b1b8471c2a06c401 Mon Sep 17 00:00:00 2001
-From: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
-Date: Mon, 24 Jul 2023 09:09:41 +0900
-Subject: [PATCH] clang
-
----
- PKGBUILD             |  7 +++++--
- tp_smapi-clang.patch | 13 +++++++++++++
- 2 files changed, 18 insertions(+), 2 deletions(-)
- create mode 100644 tp_smapi-clang.patch
-
 diff --git a/PKGBUILD b/PKGBUILD
-index 79e431a..e581b8b 100644
+index ee205aa..f589e59 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -27,8 +27,10 @@ makedepends=('git' "$_linuxprefix-headers")
- groups=("$_linuxprefix-extramodules")
+@@ -28,8 +28,16 @@ makedepends=('git' "$_linuxprefix-headers")
+ provides=("${_pkgname}=$pkgver")
  install="${_pkgname}.install"
- _commit=35be4ab60d2330e4f806dfcbb616629f47e0e7f7  # master
+ _commit=6e80bb1752280bcd142d86ecd0739661bd0e8312  # tags/tp-smapi/0.44
 -source=("git+https://github.com/evgeni/tp_smapi#commit=$_commit")
 -sha256sums=('SKIP')
 +source=("git+https://github.com/evgeni/tp_smapi#commit=$_commit"
 +        'tp_smapi-clang.patch')
 +sha256sums=('SKIP'
-+            'cb5d682450af8ac8436e1645d4fdaa32382ae83cc03c03b0c2f878f78e017be5')
- 
- #pkgver() {
- #  cd $_pkgname
-@@ -38,6 +40,7 @@ sha256sums=('SKIP')
- prepare() {
-   cd $_pkgname
- 
++            '1be3a832360eab9f3bd7c7aec86b019d951271923fe2ff08de347a6dedea941d')
++
++prepare() {
++  cd $_pkgname
++
 +  patch -p1 -i ../tp_smapi-clang.patch
- }
++}
  
- build() {
+ pkgver() {
+   cd $_pkgname
 diff --git a/tp_smapi-clang.patch b/tp_smapi-clang.patch
 new file mode 100644
-index 0000000..fb37d7d
+index 0000000..a2e5325
 --- /dev/null
 +++ b/tp_smapi-clang.patch
 @@ -0,0 +1,13 @@
 +diff --git a/tp_smapi.c b/tp_smapi.c
-+index 6346287..1e54da2 100644
++index de7391e..5be638b 100644
 +--- a/tp_smapi.c
 ++++ b/tp_smapi.c
-+@@ -199,7 +199,7 @@
++@@ -201,7 +201,7 @@ static int smapi_request(u32 inEBX, u32 inECX,
 + 			 "=m"(tmpEDI),
 + 			 "=m"(tmpESI)
 + 			:"m"(inEBX), "m"(inECX), "m"(inEDI), "m"(inESI),
@@ -53,6 +40,3 @@ index 0000000..fb37d7d
 + 			:"%eax", "%ebx", "%ecx", "%edx", "%edi",
 + 			 "%esi");
 + 
--- 
-2.41.0
-

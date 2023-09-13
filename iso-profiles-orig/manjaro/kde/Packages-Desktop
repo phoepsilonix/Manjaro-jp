@@ -31,7 +31,8 @@ manjaro-alsa
 phonon-qt5-gstreamer
 ## Btrfs
 grub-btrfs
-timeshift-autosnap-manjaro
+>extra timeshift-autosnap-manjaro
+
 
 ## Connect Packages
 kamera

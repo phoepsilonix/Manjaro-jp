@@ -56,10 +56,6 @@ lld
 #libreoffice-fresh
 #libreoffice-fresh-ja
 
-# 
-#kernel-modules-hook
-systemd-swap
-
 #audio
 manjaro-alsa
 manjaro-pipewire

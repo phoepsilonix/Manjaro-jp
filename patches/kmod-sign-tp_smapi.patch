@@ -1,17 +1,8 @@
-From a8865e2cecb7dfd52cfce5b95888f3a34548ff05 Mon Sep 17 00:00:00 2001
-From: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
-Date: Mon, 24 Jul 2023 09:07:12 +0900
-Subject: [PATCH 2/2] kmod
-
----
- PKGBUILD | 15 +++++++++++++--
- 1 file changed, 13 insertions(+), 2 deletions(-)
-
 diff --git a/PKGBUILD b/PKGBUILD
-index e581b8b..71a89ef 100644
+index 6658a1a..759bede 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -49,14 +49,25 @@ build() {
+@@ -50,6 +50,7 @@ build() {
    # https://bugs.archlinux.org/task/54975 (kernel has no _GLOBAL_OFFSET_TABLE_):
    # Clear EXTRA_CFLAGS since it defaults to injecting CFLAGS and -fno-plt breaks the modules
    make HDAPS=1 KVER="$(</usr/lib/modules/${_extraver}/version)" EXTRA_CFLAGS=
@@ -19,11 +10,12 @@ index e581b8b..71a89ef 100644
  }
  
  package() {
-   # install kernel modules
+@@ -57,8 +58,19 @@ package() {
    find . -name "*.ko" -exec install -Dt "$pkgdir$_extramodules" {} +
  
--  # compress kernel modules
--  find "${pkgdir}" -name "*.ko" -exec gzip -9 {} +
+   # compress kernel modules
+-  find "$pkgdir" -name "*.ko" -exec strip {} +
+-  find "$pkgdir" -name "*.ko" -exec xz {} +
 +  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
 +  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
 +  COMPRESS=${COMPRESS% 1}
@@ -35,10 +27,8 @@ index e581b8b..71a89ef 100644
 +    COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
 +    ;;
 +  esac
++  find "${pkgdir}" -name "*.ko" -exec strip {} +
 +  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
  
    # load module on startup
    echo tp_smapi > "../${_pkgname}.conf"
--- 
-2.41.0
-

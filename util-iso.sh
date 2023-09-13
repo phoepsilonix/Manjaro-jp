@@ -373,9 +373,15 @@ make_image_desktop() {
 	        # Browser 
 	        systemd-nspawn -D ${path} flatpak install -y one.ablaze.floorp
                 #systemd-nspawn -D ${path} flatpak install -y org.mozilla.firefox
+                # Office Soft
                 systemd-nspawn -D ${path} flatpak install -y org.libreoffice.LibreOffice
         fi
         
+        if [[ "${profile}" == "xfce" ]]; then
+                # Mailer org.mozilla.Thunderbird
+                systemd-nspawn -D ${path} flatpak install -y org.mozilla.Thunderbird
+        fi
+
         if [[ -e "${path}/usr/share/calamares/branding/manjaro/calamares-sidebar.qml" ]]; then
             configure_branding "${path}"
             msg "Done [Distribution: Release ${dist_release} Codename ${dist_codename}]"

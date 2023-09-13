@@ -16,7 +16,8 @@ usb_modeswitch
 
 ## Btrfs
 grub-btrfs
-timeshift-autosnap-manjaro
+>extra timeshift-autosnap-manjaro
+
 
 ## Libraries for Sound/Audio/Video
 alsa-firmware
@@ -189,7 +190,7 @@ screenfetch
 evince
 >extra poppler-data  # CKJ support for pdf
 #>basic sylpheed # mail client
->extra thunderbird
+#>extra thunderbird
 >extra vlc
 >extra viewnior
 >extra xfburn
