@@ -375,6 +375,8 @@ make_image_desktop() {
                 #systemd-nspawn -D ${path} flatpak install -y org.mozilla.firefox
                 # Office Soft
                 systemd-nspawn -D ${path} flatpak install -y org.libreoffice.LibreOffice
+                # 
+                systemd-nspawn -D ${path} flatpak install -y io.missioncenter.MissionCenter
         fi
         
         if [[ "${profile}" == "xfce" ]]; then
