@@ -66,11 +66,11 @@ manjaro-settings-manager-notifier
 manjaro-hello
 >extra snapd
 >extra snapd-glib
-mesa-demos
+mesa-utils
 mobile-broadband-provider-info
 modemmanager
 usb_modeswitch
->multilib lib32-mesa-demos
+>multilib lib32-mesa-utils
 netctl
 network-manager-applet
 networkmanager-openconnect

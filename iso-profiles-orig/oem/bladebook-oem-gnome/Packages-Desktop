@@ -87,9 +87,9 @@ manjaro-hotfixes
 manjaro-pulse
 manjaro-hello
 manjaro-application-utility
-mesa-demos
+mesa-utils
 mousetweaks
->multilib lib32-mesa-demos
+>multilib lib32-mesa-utils
 mutter
 nautilus
 nautilus-admin

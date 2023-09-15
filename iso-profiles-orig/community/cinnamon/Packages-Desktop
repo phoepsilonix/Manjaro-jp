@@ -76,7 +76,7 @@ manjaro-hello
 manjaro-hotfixes
 >extra manjaro-printer
 manjaro-settings-manager-notifier
->extra mesa-demos
+>extra mesa-utils
 >basic midori
 mintstick
 >extra mobile-broadband-provider-info
@@ -84,7 +84,7 @@ mintstick
 >extra mousetweaks
 #>extra microsoft-office-web-jak
 >extra mugshot
->multilib lib32-mesa-demos
+>multilib lib32-mesa-utils
 # >extra nemo-bulk-rename
 >extra nemo-fileroller
 >extra nemo-preview
