@@ -226,3 +226,6 @@
 [submodule "Packages/extramodules-6.5/zfs"]
 	path = Packages/extramodules-6.5/zfs
 	url = https://gitlab.manjaro.org/packages/extra/linux65-extramodules/zfs
+[submodule "Packages/calamares"]
+	path = Packages/calamares
+	url = https://gitlab.manjaro.org/packages/extra/calamares.git
