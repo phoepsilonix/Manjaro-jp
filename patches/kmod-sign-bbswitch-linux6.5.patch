@@ -1,0 +1,31 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 39525da..670ae21 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -34,12 +34,24 @@ build() {
+   cd ${_pkgname}-${pkgver}
+   # KDIR is necessary even when cleaning
+   make KDIR=/usr/lib/modules/${_kernver}/build
++  /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 ${_pkgname}.ko
+ }
+ 
+ package() {
++  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+   cd ${_pkgname}-${pkgver}
+   install -D -m 644 bbswitch.ko $pkgdir/usr/lib/modules/${_extramodules}/bbswitch.ko
+-  # gzip -9 modules
+-  find "$pkgdir" -name '*.ko' -exec gzip -9 {} \;
++  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
++  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
++  COMPRESS=${COMPRESS% 1}
++  case $COMPRESS in
++  ZSTD)
++    COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
++    ;;
++  XZ)
++    COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
++    ;;
++  esac
++  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
+   sed -i -e "s/EXTRAMODULES=.*/EXTRAMODULES=${_extramodules}/g" $startdir/*.install
+ }
