@@ -1,0 +1,66 @@
+From 66068061ff4d97597a18558a3c7dd259bd641488 Mon Sep 17 00:00:00 2001
+From: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
+Date: Fri, 22 Sep 2023 02:44:59 +0900
+Subject: [PATCH] zfs-2.2.0
+
+---
+ PKGBUILD | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/PKGBUILD b/PKGBUILD
+index 9358a24..9bb9f45 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -3,10 +3,11 @@
+ 
+ _linuxprefix=linux65
+ _extramodules=extramodules-6.5-MANJARO
++_commit=b53077a9e75133e245344f5d6f5805b16f4512d1
+ 
+ pkgname="$_linuxprefix-zfs"
+-pkgver=2.1.12
+-pkgrel=0
++pkgver=2.2.0
++pkgrel=1
+ pkgdesc='Kernel modules for the Zettabyte File System.'
+ arch=('x86_64')
+ url="http://zfsonlinux.org/"
+@@ -16,14 +17,13 @@ depends=("$_linuxprefix" "kmod" "zfs-utils=${pkgver}")
+ makedepends=("$_linuxprefix-headers")
+ provides=("zfs=${pkgver}")
+ install=zfs.install
+-source=("https://github.com/openzfs/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc})
+-sha256sums=('64daa26aed3e12c931f6f4413d7527c4ebdb8da35416b356152b5f9fdd4c6e6d'
+-            'SKIP')
++source=(git+https://github.com/openzfs/zfs.git?#commit=$_commit)
++sha256sums=('SKIP')
+ validpgpkeys=('4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027'  # Tony Hutter (GPG key for signing ZFS releases) <hutter2@llnl.gov>
+               'C33DF142657ED1F7C328A2960AB9E991C6AF658B') # Brian Behlendorf <behlendorf1@llnl.gov>
+ 
+ prepare() {
+-    cd "zfs-${pkgver}"
++    cd "zfs"
+ 
+     ./autogen.sh
+     sed -i "s|\$(uname -r)|${_kernver}|g" configure
+@@ -32,7 +32,7 @@ prepare() {
+ build() {
+     _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+ 
+-    cd "zfs-${pkgver}"
++    cd "zfs"
+     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
+                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
+                 --libexecdir=/usr/lib/zfs-${pkgver} --with-config=kernel \
+@@ -41,7 +41,7 @@ build() {
+ }
+ 
+ package(){
+-    cd "zfs-${pkgver}"
++    cd "zfs"
+     install -Dm 644 module/*/*.ko -t "$pkgdir/usr/lib/modules/$_extramodules/"
+ 
+     # compress each module individually
+-- 
+2.42.0
+

@@ -1,18 +1,19 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 01f802e..37ee563 100644
+index b1415dd..bd03921 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -49,14 +49,27 @@ build() {
-       M="$srcdir/$_pkgname-$pkgver/src" \
-       EXTRA_CFLAGS="-DCONFIG_R8168_NAPI -DCONFIG_R8168_VLAN -DCONFIG_ASPM -DENABLE_S5WOL -DENABLE_EEE" \
-       modules
+@@ -51,13 +51,27 @@ build() {
+     ENABLE_S5WOL=y \
+     ENABLE_EEE=y \
+     modules
 +    /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 src/${_pkgname}.ko
  }
  
  package() {
-     cd "$_pkgname-$pkgver/src"
-     install -D -m 644 $_pkgname.ko "$pkgdir/usr/lib/modules/$_extramodules/$_pkgname.ko"
- 
+   cd "$_pkgname-$pkgver"
+   install -Dm644 src/*.ko -t "$pkgdir/usr/lib/modules/$_extramodules/"
+-  find "$pkgdir" -name '*.ko' -exec strip --strip-debug {} +
+-  find "$pkgdir" -name '*.ko' -exec xz {} +
 +    _kernver="$(cat /usr/lib/modules/$_extramodules/version || true)"
 +    COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
 +    COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
@@ -25,9 +26,9 @@ index 01f802e..37ee563 100644
 +        COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
 +        ;;
 +    esac
-     # set the kernel we've built for inside the install script
-     sed -i -e "s/EXTRAMODULES=.*/EXTRAMODULES=${_extramodules}/g" "${startdir}/${_pkgname}.install"
- 
--    find "$pkgdir" -name '*.ko' -exec gzip -9 {} \;
++     # set the kernel we've built for inside the install script
++    find "$pkgdir" -name '*.ko' -exec strip --strip-debug {} +
 +    find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
- }
+ 
+ # We'll let mhwd-db handle blacklisting for now
+ #  echo "blacklist r8169" | \
