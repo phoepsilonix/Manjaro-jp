@@ -9,19 +9,37 @@ Subject: [PATCH] In the 'pacman-key --populate' command, if no explicit
  pacman-init.service | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/pacman-init.service b/pacman-init.service
-index 45485a5..5c6f90d 100644
---- a/pacman-init.service
-+++ b/pacman-init.service
-@@ -9,7 +9,7 @@ After=etc-pacman.d-gnupg.mount
- Type=oneshot
- RemainAfterExit=yes
- ExecStart=/usr/bin/pacman-key --init
--ExecStart=/usr/bin/pacman-key --populate archlinux manjaro
+diff --git a/data/sd/pacman-init.service b/data/sd/pacman-init.service
+new file mode 100644
+index 0000000..f9fb4a1
+--- /dev/null
++++ b/data/sd/pacman-init.service
+@@ -0,0 +1,16 @@
++[Unit]
++Description=Initialize Pacman keyring
++Wants=haveged.service
++After=haveged.service
++Requires=etc-pacman.d-gnupg.mount
++After=etc-pacman.d-gnupg.mount
++
++[Service]
++Type=oneshot
++RemainAfterExit=yes
++ExecStart=/usr/bin/pacman-key --init
 +ExecStart=/usr/bin/pacman-key --populate
- 
- [Install]
- WantedBy=multi-user.target
--- 
-2.41.0
-
++
++[Install]
++WantedBy=multi-user.target
++
+diff --git a/data/rc/pacman-init.in b/data/rc/pacman-init.in
+index 3459cf6..cef6521 100755
+--- a/data/rc/pacman-init.in
++++ b/data/rc/pacman-init.in
+@@ -12,6 +12,6 @@ depend() {
+ start() {
+ 	ebegin "Running pacman initialization"
+ 	/usr/bin/pacman-key --init &> /dev/null
+-	/usr/bin/pacman-key --populate archlinux manjaro &> /dev/null
++	/usr/bin/pacman-key --populate &> /dev/null
+ 	eend $?
+ }
