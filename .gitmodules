@@ -229,3 +229,6 @@
 [submodule "Packages/calamares"]
 	path = Packages/calamares
 	url = https://gitlab.manjaro.org/packages/extra/calamares.git
+[submodule "Packages/pacman"]
+	path = Packages/pacman
+	url = https://gitlab.manjaro.org/packages/core/pacman.git

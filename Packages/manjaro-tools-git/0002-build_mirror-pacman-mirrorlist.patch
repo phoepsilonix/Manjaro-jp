@@ -1,5 +1,5 @@
 diff --git a/lib/util.sh b/lib/util.sh
-index 985194d..2bb4a8f 100644
+index 51c3be7..f6fef81 100644
 --- a/lib/util.sh
 +++ b/lib/util.sh
 @@ -213,6 +213,9 @@ init_common(){
@@ -9,6 +9,6 @@ index 985194d..2bb4a8f 100644
 +    # build_mirror using mirrorlist
 +    [[ -e "/etc/pacman.d/mirrorlist" ]] && build_mirror=`grep -E "^Server" "/etc/pacman.d/mirrorlist" | head -n1 | sed -e 's|^.*Server = \(.*\)/stable.*$|\1|' | sed -e 's|http:|https:|'`
 +
-     [[ -z ${build_mirror} ]] && build_mirror='https://mirror.alpix.eu/manjaro'
+     [[ -z ${build_mirror} ]] && build_mirror='https://mirror.easyname.at/manjaro'
  
      [[ -z ${tmp_dir} ]] && tmp_dir='/tmp/manjaro-tools'

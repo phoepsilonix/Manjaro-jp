@@ -12,8 +12,8 @@ pkgname=('manjaro-tools-base-git'
         'manjaro-tools-pkg-git'
         'manjaro-tools-iso-git'
         'manjaro-tools-yaml-git')
-pkgver=r3017.65a8487
-pkgrel=3
+pkgver=r3020.0bb4097
+pkgrel=1
 arch=('x86_64')
 pkgdesc='Development tools for Manjaro Linux'
 license=('GPL')
@@ -32,7 +32,7 @@ source=("manjaro-tools::git+$url.git#branch=$_branch"
 sha256sums=('SKIP'
             '634debacab926f662471d2b268860e56ae96dc72ab0a76f55cc7e75b5b8572f0'
             'a7ee7cdae70f771e3186e8b5050c333eb69b708fc08ec4df6ff23e0000fed50b'
-            '99ec88b4ca521aeade37b95629ced35c73d800e7cb9af270a8647020d11cada0'
+            '42ccf47ccc7f7ed59c82cf1a1363802fcc4352b7f21bd90d20cfec09aa20f49b'
             '798a1e72e49e08b0f0a9d9f58c1da3080e65d6c6ce5f27740602f1cde23d76eb'
             'ebfde8111af60871838bfa2fd5e981258881df9596615d36bedc003108dd0694'
             '8220c2915d24dea5deb1ea6d2213844a35f5638fcfcfb813e6f6ac3524cf47a2'

@@ -13,7 +13,7 @@ usb=/run/media/phoepsilonix/Ventoy
 gkey="-g $(cat ~/.gnupg/sign.txt)"
 #gkey=""
 
-kernel=linux64
+kernel=linux65
 
 # 保存先フォルダ
 artifacts=`pwd`/artifacts
@@ -36,7 +36,7 @@ editions=(
 #	"community lxqt-kwin"
 	"community sway"
 	"community budgie"
-	"manjaro netinstall"
+#	"manjaro netinstall"
 )
 
 # 初期化
