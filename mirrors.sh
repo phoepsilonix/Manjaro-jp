@@ -22,7 +22,8 @@ rsync -aLvP --size-only --delete --delete-after --exclude=manjaro-jp/* --exclude
 #sourceforge web
 #X:symlink rsync -L
 eval `keychain --agents ssh --eval id_ed25519`
-rsync -avPL ./img ./*.css ./*.js ./*.md ./*.html phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/
+rsync -avPL ./img ./*.css ./*.js ./*.md ./*.html --exclude=./*\.ja\.* phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/
+rsync -avPL ./*.ja.md ./*.ja.html phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 rsync -avPL --delete --delete-after manjaro-jp/ phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/manjaro-jp/
 

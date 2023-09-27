@@ -1,14 +1,5 @@
-From 66068061ff4d97597a18558a3c7dd259bd641488 Mon Sep 17 00:00:00 2001
-From: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
-Date: Fri, 22 Sep 2023 02:44:59 +0900
-Subject: [PATCH] zfs-2.2.0
-
----
- PKGBUILD | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
 diff --git a/PKGBUILD b/PKGBUILD
-index 9358a24..9bb9f45 100644
+index 9358a24..0434619 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -3,10 +3,11 @@
@@ -52,15 +43,14 @@ index 9358a24..9bb9f45 100644
      ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                  --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
                  --libexecdir=/usr/lib/zfs-${pkgver} --with-config=kernel \
-@@ -41,7 +41,7 @@ build() {
+@@ -41,8 +41,8 @@ build() {
  }
  
  package(){
 -    cd "zfs-${pkgver}"
+-    install -Dm 644 module/*/*.ko -t "$pkgdir/usr/lib/modules/$_extramodules/"
 +    cd "zfs"
-     install -Dm 644 module/*/*.ko -t "$pkgdir/usr/lib/modules/$_extramodules/"
++    install -Dm 644 module/*.ko -t "$pkgdir/usr/lib/modules/$_extramodules/"
  
      # compress each module individually
--- 
-2.42.0
-
+     find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
