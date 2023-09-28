@@ -2,7 +2,7 @@
 
 ## Suporte em língua japonesa para [Manjaro Linux](https://manjaro.org/)
 　Suporta a entrada e exibição japonesa por defeito, incluindo ambientes ao vivo.  
-[kernel-6.4 series](https://kernel.org/).
+[kernel-6.5 series](https://kernel.org/).
 
 KDE, Xfce e GNOME estarão disponíveis de acordo com a versão oficial.  
 Os ficheiros de distribuição são ISO e alguns ficheiros de pacotes.  
@@ -514,6 +514,9 @@ kernel-6.4.16
 
 ##### 20230925
 kernel-6.5.5
+
+##### 20230928
+libreoffice 7.6.2.1(flatpak)
 
 
 ---

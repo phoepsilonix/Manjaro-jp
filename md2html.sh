@@ -7,4 +7,4 @@ do
     pulldown-cmark -TFSLPH < $f > $f2
     #pulldown-cmark $f > $f2
 done
-
+touch *.ja.md *.ja.html

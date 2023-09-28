@@ -20,7 +20,7 @@ Linuxには、いろんなディストリビューションといわれるもの
 
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
-[kernel-6.4系](https://kernel.org/)。
+[kernel-6.5系](https://kernel.org/)。
 
 公式に合わせて、KDE、Xfce、GNOMEの３種類を用意する予定です。  
 配布ファイルはISOと一部パッケージファイルです。  
@@ -552,6 +552,9 @@ kernel-6.4.16
 
 ##### 20230925
 kernel-6.5.5
+
+##### 20230928
+libreoffice 7.6.2.1(flatpak)
 
 
 ---

@@ -3,7 +3,7 @@
 ## [Manjaro Linux](https://manjaro.org/) 日語支援
 
 默認支援日語輸入和日語顯示，包括即時ISO(現場ISO)。  
-[kernel-6.4.x](https://kernel.org/).
+[kernel-6.5.x](https://kernel.org/).
 
 按照公式，我們計劃準備三種類型：KDE、Xfce、GNOME。  
 分發檔是 ISO 和一些包檔。  
@@ -463,6 +463,9 @@ kernel-6.4.16
 
 ##### 20230925
 kernel-6.5.5
+
+##### 20230928
+libreoffice 7.6.2.1(flatpak)
 
 
 ---
