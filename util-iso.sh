@@ -376,6 +376,8 @@ make_image_desktop() {
                 # Office Soft
                 systemd-nspawn -D ${path} flatpak install -y org.libreoffice.LibreOffice
                 # 
+                systemd-nspawn -D ${path} flatpak install -y io.github.vikdevelop.SaveDesktop
+                # 
                 systemd-nspawn -D ${path} flatpak install -y io.missioncenter.MissionCenter
         fi
         
