@@ -1,12 +1,14 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 89e8ee4..b6be638 100644
+index 35b4031..600698b 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -27,14 +27,27 @@ build() {
+@@ -27,14 +27,29 @@ build() {
    _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
    cd "${_pkgname}-${pkgver}"
    make KVER="${_kernver}"
-+  /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 ${_pkgname}.ko
++  SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
++  SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
++  /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 ${_pkgname}.ko
  }
  
  package() {

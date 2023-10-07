@@ -1,12 +1,14 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 10d1f35..2869f8b 100644
+index 3f1388e..572273a 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -49,13 +49,26 @@ build() {
+@@ -46,13 +46,28 @@ build() {
      ENABLE_S5WOL=y \
      ENABLE_EEE=y \
      modules
-+    /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 src/${_pkgname}.ko
++    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
++    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
++    /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 src/${_pkgname}.ko
  }
  
  package() {

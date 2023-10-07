@@ -20,14 +20,14 @@ ventoygui
 Linux général  
 Exemple de commande de téléchargement en utilisant aria2  
 ```
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.95/ventoy-1.0.95-linux.tar.gz
-tar xf ventoy-1.0.95-linux.tar.gz
-cd ventoy-1.0.95
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ventoy-1.0.96-linux.tar.gz
+tar xf ventoy-1.0.96-linux.tar.gz
+cd ventoy-1.0.96
 ./VentoyGUI.x86_64 
 ```
 
 Windows  
-Téléchargez [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.95/ventoy-1.0.95-windows.zip) à l’aide d’un navigateur ou autre chose.  
+Téléchargez [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ventoy-1.0.96-windows.zip) à l’aide d’un navigateur ou autre chose.  
 Ouvrez le fichier zip téléchargé et exécutez ventoy2disk.exe.
 
 ---
@@ -459,7 +459,6 @@ kernel-6.4.6
 
 ##### 20230728
 kernel-6.4.7
-</details>
 
 ##### 20230729
 Lors de l'ajout et de la suppression de logiciels (pamac update), un problème se produit lors de la mise à jour du fichier de signature dans le référentiel de la base de données signée.  
@@ -512,6 +511,7 @@ kernel-6.4.15
 
 ##### 20230914
 kernel-6.4.16
+</details>
 
 ##### 20230925
 kernel-6.5.5

@@ -1,14 +1,16 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index bc50e9d..f09c8ae 100644
+index c6a616f..1bf70ff 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -37,12 +37,27 @@ build() {
+@@ -38,12 +38,29 @@ build() {
                  --libexecdir=/usr/lib/zfs-${pkgver} --with-config=kernel \
                  --with-linux=/usr/lib/modules/${_kernver}/build
      make
++    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
++    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
 +    for file in module/*/*.ko
 +    do
-+        /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $file
++        /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $file
 +    done
  }
  

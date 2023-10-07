@@ -21,14 +21,14 @@ ventoygui
 General Linux  
 Example of download command using aria2  
 ```
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.95/ventoy-1.0.95-linux.tar.gz
-tar xf ventoy-1.0.95-linux.tar.gz
-cd ventoy-1.0.95
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ventoy-1.0.96-linux.tar.gz
+tar xf ventoy-1.0.96-linux.tar.gz
+cd ventoy-1.0.96
 ./VentoyGUI.x86_64
 ```
 
 Windows  
-Download [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.95/ventoy-1.0.95-windows.zip) using a browser or something.  
+Download [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ventoy-1.0.96-windows.zip) using a browser or something.  
 Open the downloaded zip file and run ventoy2disk.exe.
 
 ---
@@ -110,8 +110,7 @@ Because the mount may be removed during installation, the process to re-enable t
 In addition, by specifying programs that are not subject to OOM killer, which is a function to forcibly terminate a program by the kernel under high loads, the installation has been adjusted so that it does not forcibly terminate.
 
 ### Update History
-<details>
-<summary>Our History</summary>
+<details><summary>Our History</summary>
 
 ##### 20220401
 kernel-5.17.1 (clang build)  
@@ -465,7 +464,6 @@ kernel-6.4.6
 
 ##### 20230728
 kernel-6.4.7
-</details>
 
 ##### 20230729
 When adding and removing software (pamac update), an issue occurs while updating the signature file in the repository of the signed database.  
@@ -518,6 +516,7 @@ kernel-6.4.15
 
 ##### 20230914
 kernel-6.4.16
+</details>
 
 ##### 20230925
 kernel-6.5.5

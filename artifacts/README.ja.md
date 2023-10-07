@@ -38,14 +38,14 @@ ventoygui
 Linux全般  
 ダウンロードコマンドがaria2の場合の例
 ```
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.95/ventoy-1.0.95-linux.tar.gz
-tar xf ventoy-1.0.95-linux.tar.gz
-cd ventoy-1.0.95
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ventoy-1.0.96-linux.tar.gz
+tar xf ventoy-1.0.96-linux.tar.gz
+cd ventoy-1.0.96
 ./VentoyGUI.x86_64 
 ```
 
 Windowsの場合  
-ブラウザなどで[Ventoy](https://github.com/ventoy/Ventoy/releases/)を[ダウンロード](https://github.com/ventoy/Ventoy/releases/download/v1.0.95/ventoy-1.0.95-windows.zip)します。
+ブラウザなどで[Ventoy](https://github.com/ventoy/Ventoy/releases/)を[ダウンロード](https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ventoy-1.0.96-windows.zip)します。
 ダウンロードしたzipファイルを開いて、ventoy2disk.exeを実行しましょう。
 
 ---
@@ -497,7 +497,6 @@ kernel-6.4.6
 
 ##### 20230728
 kernel-6.4.7
-</details>
 
 ##### 20230729
 ソフトウェアの追加と削除(pamac update)を実行すると、署名付きのデータベースを提供しているレポジトリで、署名ファイルの更新がうまく動作しない問題がありました。  
@@ -549,6 +548,7 @@ kernel-6.4.15
 
 ##### 20230914
 kernel-6.4.16
+</details>
 
 ##### 20230925
 kernel-6.5.5

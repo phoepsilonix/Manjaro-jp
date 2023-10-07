@@ -21,14 +21,14 @@ ventoygui
 一般Linux  
 使用aria2的下載命令示例  
 ```
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.95/ventoy-1.0.95-linux.tar.gz
-tar xf ventoy-1.0.95-linux.tar.gz
-cd ventoy-1.0.95
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ventoy-1.0.96-linux.tar.gz
+tar xf ventoy-1.0.96-linux.tar.gz
+cd ventoy-1.0.96
 ./VentoyGUI.x86_64 
 ```
 
 Windows  
-使用瀏覽器或其他方式下載[Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.95/ventoy-1.0.95-windows.zip)。  
+使用瀏覽器或其他方式下載[Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ventoy-1.0.96-windows.zip)。  
 打開下載的zip文件並運行ventoy2disk.exe
 
 ---
@@ -407,7 +407,6 @@ kernel-6.4.6
 
 ##### 20230728
 kernel-6.4.7
-</details>
 
 ##### 20230729
 當執行軟體的新增和刪除（pamac update）時，在已簽名數據庫的存儲庫中更新簽名文件時會出現問題。  
@@ -460,6 +459,7 @@ kernel-6.4.15
 
 ##### 20230914
 kernel-6.4.16
+</details>
 
 ##### 20230925
 kernel-6.5.5

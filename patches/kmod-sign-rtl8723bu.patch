@@ -1,16 +1,18 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 6e84256..9753ee9 100644
+index 2fb600b..8d9f9f5 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -38,6 +38,7 @@ build() {
+@@ -44,6 +44,9 @@ build() {
      # any kernel but the current.
      make clean
      make -C /usr/lib/modules/$_kernver/build M="$srcdir/$_pkgname-$_commit" modules
-+    /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 ${_libname}.ko
++    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
++    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
++    /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 ${_libname}.ko
  }
  
  package() {
-@@ -47,6 +48,17 @@ package() {
+@@ -53,6 +56,17 @@ package() {
  
      # set the kernel we've built for inside the install script
      sed -i -e "s/EXTRAMODULES=.*/EXTRAMODULES=${_extramodules}/g" "${startdir}/${install}"

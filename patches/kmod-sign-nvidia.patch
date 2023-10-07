@@ -1,14 +1,16 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index d32160e..1b3d563 100644
+index 508b3aa..7825e07 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -36,14 +36,29 @@ build() {
+@@ -36,14 +36,31 @@ build() {
  
      cd "${_pkg}"
      make -C kernel SYSSRC=/usr/lib/modules/"${_kernver}/build" module
++    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
++    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
 +    for file in kernel/*.ko
 +    do
-+        /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $file
++        /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $file
 +    done
  }
  

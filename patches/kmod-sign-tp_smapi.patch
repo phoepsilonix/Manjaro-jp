@@ -1,16 +1,18 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 6658a1a..759bede 100644
+index fe86aac..a79a5b5 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -50,6 +50,7 @@ build() {
+@@ -42,6 +42,9 @@ build() {
    # https://bugs.archlinux.org/task/54975 (kernel has no _GLOBAL_OFFSET_TABLE_):
    # Clear EXTRA_CFLAGS since it defaults to injecting CFLAGS and -fno-plt breaks the modules
    make HDAPS=1 KVER="$(</usr/lib/modules/${_extraver}/version)" EXTRA_CFLAGS=
-+  /usr/lib/modules/${_kernver}/build/scripts/sign-file sha512 /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 ${_pkgname}.ko
++  SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
++  SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
++  /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 ${_pkgname}.ko
  }
  
  package() {
-@@ -57,8 +58,19 @@ package() {
+@@ -49,8 +52,19 @@ package() {
    find . -name "*.ko" -exec install -Dt "$pkgdir$_extramodules" {} +
  
    # compress kernel modules
