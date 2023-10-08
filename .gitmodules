@@ -118,42 +118,6 @@
 [submodule "Packages/libressl"]
 	path = Packages/libressl
 	url = https://gitlab.archlinux.org/phoepsilonix/libressl.git
-[submodule "Packages/extramodules-6.4/broadcom-wl"]
-	path = Packages/extramodules-6.4/broadcom-wl
-	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/broadcom-wl
-[submodule "Packages/extramodules-6.4/acpi_call"]
-	path = Packages/extramodules-6.4/acpi_call
-	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/acpi_call
-[submodule "Packages/extramodules-6.4/bbswitch"]
-	path = Packages/extramodules-6.4/bbswitch
-	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/bbswitch
-[submodule "Packages/extramodules-6.4/nvidia"]
-	path = Packages/extramodules-6.4/nvidia
-	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/nvidia
-[submodule "Packages/extramodules-6.4/nvidia-390xx"]
-	path = Packages/extramodules-6.4/nvidia-390xx
-	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/nvidia-390xx
-[submodule "Packages/extramodules-6.4/nvidia-470xx"]
-	path = Packages/extramodules-6.4/nvidia-470xx
-	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/nvidia-470xx
-[submodule "Packages/extramodules-6.4/r8168"]
-	path = Packages/extramodules-6.4/r8168
-	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/r8168
-[submodule "Packages/extramodules-6.4/rtl8723bu"]
-	path = Packages/extramodules-6.4/rtl8723bu
-	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/rtl8723bu
-[submodule "Packages/extramodules-6.4/tp_smapi"]
-	path = Packages/extramodules-6.4/tp_smapi
-	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/tp_smapi
-[submodule "Packages/extramodules-6.4/vhba-module"]
-	path = Packages/extramodules-6.4/vhba-module
-	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/vhba-module
-[submodule "Packages/extramodules-6.4/virtualbox"]
-	path = Packages/extramodules-6.4/virtualbox
-	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/virtualbox
-[submodule "Packages/extramodules-6.4/zfs"]
-	path = Packages/extramodules-6.4/zfs
-	url = https://gitlab.manjaro.org/packages/extra/linux64-extramodules/zfs
 [submodule "Packages/extramodules-6.1/acpi_call"]
 	path = Packages/extramodules-6.1/acpi_call
 	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/acpi_call

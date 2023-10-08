@@ -16,15 +16,13 @@ eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 echo "SourceForge"
 
 eval `keychain --agents ssh --eval id_ed25519`
-rsync -aLvPc --delete --delete-after --exclude=manjaro-jp/* --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} --exclude=./*\.ja.\.* ./*.sig ./*.md phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
-rsync -aLvPc --delete --delete-after --exclude=manjaro-jp/* --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./*.ja.md phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
+rsync -aLvPc --delete --delete-after --exclude=manjaro-jp/* --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./*.sig ./*.md phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
 eval `keychain --agents ssh --eval id_ed25519`
 rsync -aLvP --size-only --delete --delete-after --exclude=manjaro-jp/* --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
 #sourceforge web
 #X:symlink rsync -L
 eval `keychain --agents ssh --eval id_ed25519`
-rsync -avPL ./img ./*.css ./*.js ./*.md ./*.html --exclude=./*\.ja\.* phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/
-rsync -avPL ./*.ja.md ./*.ja.html phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/
+rsync -avPL ./img ./*.css ./*.js ./*.md ./*.html phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/
 eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 rsync -avPL --delete --delete-after manjaro-jp/ phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/manjaro-jp/
 

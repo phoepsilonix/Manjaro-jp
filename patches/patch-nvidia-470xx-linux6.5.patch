@@ -280,7 +280,7 @@ index 0000000..f3b118a
 + EXTRA_CFLAGS += -I$(src)/common/inc
 + EXTRA_CFLAGS += -I$(src)
 +-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
-++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
+++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args -Wno-error=implicit-function-declaration
 + EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.199.02\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
@@ -298,7 +298,7 @@ index cbc38e4..4527ce9 100644
          'kernel-6.5.patch')
  sha256sums=('9c86f9ef6aceaf2b292407aa161b98d817b2eb10a615f971d29a20c2a748ad09'
 +            'b8971052d71cfafc80ce2e13d4c3d09ffe6e82864b3bdfb6daf5de26e51d7ff7'
-+            'd75c572230b68d5d0663805ac7a22dce95ec193e14bed9229cc26b790bc33d4e'
++            '32318fff83e5a989ba163e40be7e5491a7ca01a609650782021c61fbfd1d2622'
              '9fbab269f00beb78b44e4693ea44b399e4122a3dfba00322af3e5e3485a1eed3'
              '8688f9d70b34e8111722c0231f773050a62a5d1c1b56c88aa3bab8ebf502902a')
  

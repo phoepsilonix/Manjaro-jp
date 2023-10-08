@@ -8,7 +8,7 @@ index 22af19e..7d863d1 100644
      modules
 +    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
 +    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
-+    /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 ${_pkgname}.ko
++    /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 src/${_pkgname}.ko
  }
  
  package() {
