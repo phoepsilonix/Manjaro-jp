@@ -525,8 +525,8 @@ glibc 2.38-5
 
 ---
 Outros sistemas operativos recomendados.  
+[Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
 [Endless OS | Endless Computers](https://endlessos.com/)  
-[Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)
 
 ---
 ```

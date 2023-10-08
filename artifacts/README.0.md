@@ -570,7 +570,7 @@ Linux系OSで動きます。
 ---
 その他のおすすめOS  
 [Endless OS | Endless Computers](https://endlessos.com/)  
-[Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)
+[Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
 
 ---
 [Manjaroレポジトリミラー試験稼働中](https://mirror.phoepsilonix.love/manjaro/)
