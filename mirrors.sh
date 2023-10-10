@@ -16,7 +16,7 @@ eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
 echo "SourceForge"
 
 eval `keychain --agents ssh --eval id_ed25519`
-rsync -aLvPc --delete --delete-after --exclude=manjaro-jp/* --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./*.sig ./*.md phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
+rsync -aLvPc --delete --delete-after --exclude=manjaro-jp/* --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./*.sig ./*.md phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ #|| { echo "SF rsync error" ; exit 1 ; }
 eval `keychain --agents ssh --eval id_ed25519`
 rsync -aLvP --size-only --delete --delete-after --exclude=manjaro-jp/* --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./ phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
 #sourceforge web

@@ -14,6 +14,15 @@ echo "gpg sign"
 for f in *.iso
 do
 	[[ ! -e $f.sig ]] &&  { echo "gpg sign: $f" ; gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback --default-key $repo_key -v -b $f; }
+	if [[ ! -e $f.torrent ]] ;then
+        echo "torrent"
+	mktorrent -t0 \
+        --announce=udp://tracker.opentrackr.org:1337/announce,udp://tracker.torrent.eu.org:451/announce,udp://tracker.openbittorrent.com:80/announce,udp://tracker.publicbt.com:80/announce \
+		-w "https://sourceforge.net/projects/manjaro-jp/files/$f/download" \
+		-w "https://manjaro-jp.phoepsilonix.love/$f" \
+                $f
+		#-w "https://osdn.net/projects/manjaro-jp/storage/$f" \
+        fi
 done
 
 echo "sha256sums"
@@ -52,21 +61,23 @@ done
 sort -k2 -u SHA256SUMS > tmp && mv tmp SHA256SUMS
 #cp SHA256SUMS $usb/artifacts
 
-trackers=$(sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/,/g' ../trackers_all.txt |sed -e 's/,$//')
-echo "torrent"
+#trackers=$(sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/,/g' ../trackers_all.txt |sed -e 's/,$//')
+#echo "torrent"
 # torrentファイル作成
-for f in *.iso
-do
-	if [[ ! -e $f.torrent ]] ;then
-        echo $f
-	mktorrent -t0 \
-        --announce=udp://tracker.opentrackr.org:1337/announce,udp://tracker.torrent.eu.org:451/announce,udp://tracker.openbittorrent.com:80/announce,udp://tracker.publicbt.com:80/announce,$trackers \
-		-w "https://sourceforge.net/projects/manjaro-jp/files/$f/download" \
-		-w "https://manjaro-jp.phoepsilonix.love/$f" \
-                $f
+#for f in *.iso
+#do
+#	if [[ ! -e $f.torrent ]] ;then
+#        echo $f
+#	mktorrent -t0 \
+#        --announce=udp://tracker.opentrackr.org:1337/announce,udp://tracker.torrent.eu.org:451/announce,udp://tracker.openbittorrent.com:80/announce,udp://tracker.publicbt.com:80/announce \
+#		-w "https://sourceforge.net/projects/manjaro-jp/files/$f/download" \
+#		-w "https://manjaro-jp.phoepsilonix.love/$f" \
+ #               $f
 		#-w "https://osdn.net/projects/manjaro-jp/storage/$f" \
-        fi
-done
+#        fi
+#done
+
+        #--announce=udp://tracker.opentrackr.org:1337/announce,udp://tracker.torrent.eu.org:451/announce,udp://tracker.openbittorrent.com:80/announce,udp://tracker.publicbt.com:80/announce,$trackers \
 
 # 終了
 echo "Done"

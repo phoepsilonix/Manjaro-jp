@@ -524,6 +524,9 @@ libreoffice 7.6.2.1(flatpak)
 kernel-6.5.6  
 glibc 2.38-5
 
+##### 20231010
+glibc 2.38-7
+
 
 ---
 Andere empfohlene Betriebssysteme  

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+NO_OOM_KILLER="`pidof -xw Xwayland` $$"
+echo $NO_OOM_KILLER | xargs -n1 sudo choom -n -1000 -p 
+
+if [ $(which pkexec) ]; then
+	pkexec --disable-internal-agent "/usr/bin/calamares" "-D6" "$@"
+else
+	/usr/bin/calamares "-D6" "$@"
+fi

@@ -199,3 +199,6 @@
 [submodule "torrent2magnet"]
 	path = torrent2magnet
 	url = https://github.com/repolho/torrent2magnet.git
+[submodule "Packages/pacman-static"]
+	path = Packages/pacman-static
+	url = https://gitlab.manjaro.org/packages/core/pacman-static.git
