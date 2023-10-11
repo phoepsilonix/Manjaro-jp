@@ -526,6 +526,9 @@ glibc 2.38-5
 ##### 20231010
 glibc 2.38-7
 
+##### 20231012
+kernel-6.5.7  
+
 
 ---
 Autres systèmes d'exploitation recommandés  
