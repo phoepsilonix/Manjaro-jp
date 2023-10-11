@@ -159,12 +159,12 @@
     "pinned-apps": {
         "type": "generic",
         "default": [
-            "one.ablaze.floorp.desktop:flatpak",
+            "org.mozilla.firefox.desktop:flatpak",
             "org.gnome.Terminal.desktop",
             "nemo.desktop"
         ],
         "value": [
-            "one.ablaze.floorp.desktop:flatpak",
+            "org.mozilla.firefox.desktop:flatpak",
             "vivaldi-stable.desktop",
             "org.gnome.Terminal.desktop",
             "nemo.desktop"

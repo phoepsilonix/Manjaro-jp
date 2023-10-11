@@ -1,4 +1,4 @@
-Web browser,/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=floorp one.ablaze.floorp about:blank,web-browser-symbolic
+Web browser,/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=firefox org.mozilla.firefox about:blank,web-browser-symbolic
 File manager,pcmanfm,system-file-manager-symbolic
 Terminal,alacritty,utilities-terminal-symbolic
 ^sep()

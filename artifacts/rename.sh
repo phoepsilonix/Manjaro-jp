@@ -2,7 +2,7 @@
 
 cd artifacts
 browser=firefox
-browser=floorp
+#browser=floorp
 
 for f in manjaro-*.iso ;
 do
