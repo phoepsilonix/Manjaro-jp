@@ -91,7 +91,8 @@ do
         buildiso  -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
         #buildiso  -zc -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
         sync
-        find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
+        echo "Move iso files to Artifacts folder"
+        find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts/firefox/ && sync
         . artifacts/rename.sh
 #        buildiso -x -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
 #        buildiso -zc -d xz -f -k $kernel -p $ed $gkey
@@ -101,12 +102,8 @@ do
         sync
 done
 
-echo "Move iso files to Artifacts folder"
 #sudo chown -R phoepsilonix:phoepsilonix $usb/tmp/iso/
-sync
-find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts/firefox/ && sync
 #rsync -avn $usb/artifacts/*.iso $artifacts/ && sync
-        sync
 
 # 終了
 echo "Done"
