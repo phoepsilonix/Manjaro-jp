@@ -25,17 +25,17 @@ pkg3=Packages-Root
 
 # エディション指定
 editions=(
-        "manjaro gnome"
-        "manjaro kde"
+#        "manjaro gnome"
+#        "manjaro kde"
         "manjaro xfce"
-        "community cinnamon"
-        "community mate"
+#        "community cinnamon"
+#        "community mate"
        # "community openbox"
-        "manjaro architect"
+#        "manjaro architect"
 #	"community lxqt"
 #	"community lxqt-kwin"
-	"community sway"
-	"community budgie"
+#	"community sway"
+#	"community budgie"
 #	"manjaro netinstall"
 )
 
@@ -104,7 +104,7 @@ done
 echo "Move iso files to Artifacts folder"
 #sudo chown -R phoepsilonix:phoepsilonix $usb/tmp/iso/
 sync
-find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
+find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts/firefox/ && sync
 #rsync -avn $usb/artifacts/*.iso $artifacts/ && sync
         sync
 

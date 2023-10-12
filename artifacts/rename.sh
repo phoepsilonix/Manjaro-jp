@@ -1,6 +1,6 @@
 #/usr/bin/env sh
 
-cd artifacts
+cd artifacts/firefox
 browser=firefox
 #browser=floorp
 
