@@ -29,6 +29,7 @@ USBメモリからの起動は、[Ventoy](https://ventoy.net/)を使うと楽か
 Ventoyの導入時に最初のパーティションをext4でフォーマットし直すのがお勧めです。
 
 ---
+
 ### Ventoyのインストールについて
 Manjaro LinuxでventoyをUSBにインストールする場合の手順
 ```
@@ -49,6 +50,7 @@ Windowsの場合
 ダウンロードしたzipファイルを開いて、ventoy2disk.exeを実行しましょう。
 
 ---
+
 ### Manjaro-JPの主な特徴
 Linuxカーネルは、なるべく最新のものを採用します。  
 またカーネルのビルドにはclangを用います。  
@@ -102,6 +104,7 @@ Calamaresにも、[フィードバック済み](https://github.com/calamares/cal
 そのため追加の対策として、zram-generatorの活用を追加しました。
 
 ---
+
 ### 配布場所
 ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
 よかったら、お試しください。
@@ -129,11 +132,13 @@ megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD
 ```
 
 ---
+
 ## 参考：導入ガイド
 [Manjaro Linux 最初の一歩](https://zenn.dev/phoepsilonix/articles/5be4f3e3d78af7)  
 [Manjaro Linux 日本語ライブ環境](https://zenn.dev/phoepsilonix/articles/a48758b4812127)  
 
 ---
+
 ### 備忘録
 ##### manjaro-tools-isoの変更箇所
 1. buildisoに用いるパッケージの取得先をmirrorlistの先頭行を標準にしています。  
@@ -568,6 +573,7 @@ kernel-6.5.7
 
 
 ---
+
 ###### おすすめ映像編集ソフト  
 Linux系OSで動きます。  
 [DaVinci Resolve 18 | Blackmagic Design](https://www.blackmagicdesign.com/products/davinciresolve)  
@@ -575,11 +581,13 @@ Linux系OSで動きます。
 有料版のStudioだと、より便利な機能が使えます。  
 
 ---
+
 その他のおすすめOS  
 [Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
 [Endless OS | Endless Computers](https://endlessos.com/)  
 
 ---
+
 [Manjaroレポジトリミラー試験稼働中](https://mirror.phoepsilonix.love/manjaro/)
 ```
 ## Country : Japan
@@ -587,6 +595,7 @@ Server = https://mirror.phoepsilonix.love/manjaro/stable/$repo/$arch
 ```
 
 ---
+
 ```
 [manjaro-jp]
 SigLevel = Required
@@ -595,12 +604,14 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 ```
 
 ---
+
 [Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)  
 (GPG signing public key:57B49CC5AA4F00FC) <phoepsilonix あっと phoepsilonix どっと love>  
 
 ---
+
 ### この活動へのご支援を歓迎します。  
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  

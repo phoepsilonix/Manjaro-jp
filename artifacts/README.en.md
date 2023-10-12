@@ -11,6 +11,7 @@ Starting from a USB memory may be easier with [Ventoy](https://ventoy.net/).
 It is recommended to format the first partition as ext4 during the introduction of Ventoy.  
 
 ---
+
 ### About installing Ventoy
 Steps to install ventoy on a USB drive using Manjaro Linux  
 ```
@@ -32,6 +33,7 @@ Download [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ven
 Open the downloaded zip file and run ventoy2disk.exe.
 
 ---
+
 ### Main Features
 The Linux kernel is adopted with the latest version as much as possible.  
 Clang is used for kernel building.  
@@ -73,6 +75,7 @@ The above feedback indicates that swap may not be enabled depending on how the p
 Therefore, as an additional measure, the use of zram-generator has been added.
 
 ---
+
 ### Place of distribution
 he live environment & installation ISO is published at the following distribution site.  
 Please feel free to try it out.
@@ -98,6 +101,7 @@ megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD
 ```
 
 ---
+
 ### Memo
 ##### Changes in manjaro-tools-iso
 1. The source of the packages used in buildiso is set to the first line of the mirrorlist as the standard.  
@@ -536,11 +540,13 @@ kernel-6.5.7
 
 
 ---
+
 Other recommended OS  
 [Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
 [Endless OS | Endless Computers](https://endlessos.com/)  
 
 ---
+
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
@@ -549,12 +555,14 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 ```
 
 ---
+
 [Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)  
 (GPG signing public key:57B49CC5AA4F00FC) <phoepsilonix at phoepsilonix dot love>  
 
 ---
+
 ### Your support for this activity is very welcome.  
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
