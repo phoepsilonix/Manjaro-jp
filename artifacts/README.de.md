@@ -11,6 +11,7 @@ Das Booten von einem USB-Speicherstick kann mit [Ventoy](https://ventoy.net/) ei
 Es wird empfohlen, die erste Partition bei der Installation von Ventoy mit ext4 neu zu formatieren.
 
 ---
+
 ### Über die Installation von Ventoy
 Schritte zur Installation von ventoy auf einem USB-Laufwerk mit Manjaro Linux  
 ```
@@ -30,6 +31,7 @@ Laden Sie [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ve
 Öffnen Sie die heruntergeladene Zip-Datei und führen Sie ventoy2disk.exe aus.
 
 ---
+
 ### Hauptmerkmale.
 Der Linux-Kernel ist so aktuell wie möglich.  
 Der Kernel wird mit clang gebaut.  
@@ -71,6 +73,7 @@ Die obigen Rückmeldungen deuten darauf hin, dass Swap je nach Konfiguration der
 Daher wurde als zusätzliche Maßnahme die Verwendung von zram-generator hinzugefügt.
 
 ---
+
 ### Vertriebsort.
 Live-Umgebung & Installations-ISOs sind auf den folgenden Distributionsseiten verfügbar.  
 Sie können sie ausprobieren, wenn Sie möchten.
@@ -96,6 +99,7 @@ megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD
 ```
 
 ---
+
 ### Memorandum
 ##### manjaro-tools-iso Änderungen
 1. Die erste Zeile der Mirrorliste wird als Standard verwendet, um die für buildiso verwendeten Pakete zu erhalten.  
@@ -532,11 +536,13 @@ kernel-6.5.7
 
 
 ---
+
 Andere empfohlene Betriebssysteme  
 [Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
 [Endless OS | Endless Computers](https://endlessos.com/)  
 
 ---
+
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
@@ -545,12 +551,14 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 ```
 
 ---
+
 [Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)  
 (GPG signing public key:57B49CC5AA4F00FC) <phoepsilonix at phoepsilonix dot love>  
 
 ---
+
 ### Ihre Unterstützung für diese Aktivität ist sehr willkommen.  
 [ofuse](https://ofuse.me/phoepsilonix)
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  

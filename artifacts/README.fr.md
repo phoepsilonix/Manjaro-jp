@@ -11,6 +11,7 @@ Le démarrage à partir d'une clé USB peut être plus facile avec [Ventoy](http
 Il est recommandé de reformater la première partition avec ext4 lors de l'installation de Ventoy.
 
 ---
+
 ### À propos de l’installation de Ventoy
 Étapes pour installer ventoy sur une clé USB en utilisant Manjaro Linux
 ```
@@ -31,6 +32,7 @@ Téléchargez [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.9
 Ouvrez le fichier zip téléchargé et exécutez ventoy2disk.exe.
 
 ---
+
 ### Caractéristiques principales.
 Le noyau Linux est aussi à jour que possible.  
 Le noyau est construit à l'aide de clang.  
@@ -96,6 +98,7 @@ megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD
 ```
 
 ---
+
 ### Memorandum
 ##### modifications de manjaro-tools-iso
 1. la première ligne de la liste des miroirs est utilisée comme standard pour savoir où obtenir les paquets utilisés pour buildiso.  
@@ -531,11 +534,13 @@ kernel-6.5.7
 
 
 ---
+
 Autres systèmes d'exploitation recommandés  
 [Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
 [Endless OS | Endless Computers](https://endlessos.com/)  
 
 ---
+
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
@@ -544,12 +549,14 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 ```
 
 ---
+
 [Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)  
 (GPG signing public key:57B49CC5AA4F00FC) <phoepsilonix at phoepsilonix dot love>  
 
 ---
+
 ### Votre soutien pour cette activité est très bienvenu.  
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  

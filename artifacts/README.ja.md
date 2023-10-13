@@ -29,6 +29,7 @@ USBメモリからの起動は、[Ventoy](https://ventoy.net/)を使うと楽か
 Ventoyの導入時に最初のパーティションをext4でフォーマットし直すのがお勧めです。
 
 ---
+
 ### Ventoyのインストールについて
 Manjaro LinuxでventoyをUSBにインストールする場合の手順
 ```
@@ -49,6 +50,7 @@ Windowsの場合
 ダウンロードしたzipファイルを開いて、ventoy2disk.exeを実行しましょう。
 
 ---
+
 ### Manjaro-JPの主な特徴
 Linuxカーネルは、なるべく最新のものを採用します。  
 またカーネルのビルドにはclangを用います。  
@@ -102,12 +104,13 @@ Calamaresにも、[フィードバック済み](https://github.com/calamares/cal
 そのため追加の対策として、zram-generatorの活用を追加しました。
 
 ---
+
 ### 配布場所
 ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
 よかったら、お試しください。
 
-[![MEGA](./img/mega-icon.svg)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)   
----|---  
+[![MEGA](./img/mega-icon.svg)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)
+---|---
 [![SourceForge](./img/sf_logo.png)](https://sourceforge.net/projects/manjaro-jp/) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>](https://sourceforge.net/projects/manjaro-jp/)
 [![Google Drive](./img/Google_Drive_icon.svg)](https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-google.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/Google_Drive_icon.svg"/></svg>](https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing)
 [![Terabox](./img/terabox_logo.svg)](https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>](https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag)
@@ -115,7 +118,8 @@ Calamaresにも、[フィードバック済み](https://github.com/calamares/cal
 貴重な、ストレージをありがとうございます。  
 上記にて配布しています。
 
-Teraboxでは、ファイルサイズ4G以上は、コストがかかるので、分割形式でアップロードしています。ダウンロードした後に、一つのファイルにまとめてから、ご利用ください。  
+Teraboxでは、ファイルサイズ4G以上は、コストがかかるので、分割形式でアップロードしています。ダウンロードした後に、一つのファイルにまとめてから、ご利用ください。Mac,iosではkeka,Windowsでは7-zipが操作がわかりやすいようです。  
+
 
 [MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0)は、ファイルサイズ4G以上のものもアップロードできるので、お勧めです。
 
@@ -129,11 +133,13 @@ megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD
 ```
 
 ---
+
 ## 参考：導入ガイド
 [Manjaro Linux 最初の一歩](https://zenn.dev/phoepsilonix/articles/5be4f3e3d78af7)  
 [Manjaro Linux 日本語ライブ環境](https://zenn.dev/phoepsilonix/articles/a48758b4812127)  
 
 ---
+
 ### 備忘録
 ##### manjaro-tools-isoの変更箇所
 1. buildisoに用いるパッケージの取得先をmirrorlistの先頭行を標準にしています。  
@@ -568,6 +574,7 @@ kernel-6.5.7
 
 
 ---
+
 ###### おすすめ映像編集ソフト  
 Linux系OSで動きます。  
 [DaVinci Resolve 18 | Blackmagic Design](https://www.blackmagicdesign.com/products/davinciresolve)  
@@ -575,11 +582,13 @@ Linux系OSで動きます。
 有料版のStudioだと、より便利な機能が使えます。  
 
 ---
+
 その他のおすすめOS  
 [Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
 [Endless OS | Endless Computers](https://endlessos.com/)  
 
 ---
+
 [Manjaroレポジトリミラー試験稼働中](https://mirror.phoepsilonix.love/manjaro/)
 ```
 ## Country : Japan
@@ -587,6 +596,7 @@ Server = https://mirror.phoepsilonix.love/manjaro/stable/$repo/$arch
 ```
 
 ---
+
 ```
 [manjaro-jp]
 SigLevel = Required
@@ -595,12 +605,14 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 ```
 
 ---
+
 [Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)  
 (GPG signing public key:57B49CC5AA4F00FC) <phoepsilonix あっと phoepsilonix どっと love>  
 
 ---
+
 ### この活動へのご支援を歓迎します。  
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
