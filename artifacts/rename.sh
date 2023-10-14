@@ -6,7 +6,7 @@ browser=firefox
 
 for f in manjaro-*.iso ;
 do
-        if [[ "$f" == *-jp* ]]; then
+        if [[ $f =~ .*-jp* ]]; then
                 continue;
         else
                 f2=$(echo $f|sed s/^manjaro/manjaro-jp/);
@@ -18,4 +18,4 @@ do
         mv $f $f2;
 done
 
-cd ..
+cd ../..
