@@ -11,8 +11,7 @@
 使用 Ventoy 從 U 盤啟動可能更容易。  
 建議在部署 Ventoy 時用 ext4 重新格式化第一個分區。  
 
----
-
+----
 ### 關於安裝Ventoy
 使用Manjaro Linux將ventoy安裝到USB驅動器的步驟
 ```
@@ -32,8 +31,7 @@ Windows
 使用瀏覽器或其他方式下載[Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ventoy-1.0.96-windows.zip)。  
 打開下載的zip文件並運行ventoy2disk.exe
 
----
-
+----
 ### 主要特點
 
 Linux kernel應該盡可能是最新的。  
@@ -71,8 +69,7 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 我們還修改了安裝程式，以添加一個進程，以便在安裝期間啟用交換分區。
 魷魚也有[反饋](https://github.com/calamares/calamares/pull/2102/commits/79d796a437ad039745147c62a652035d4cd882fe)。
 
----
-
+----
 ### 分發位置
 實時環境和安裝 ISO 可在以下分發目標獲得。  
 如果您願意，請嘗試一下。  
@@ -97,8 +94,7 @@ sudo pacman -S megatools
 megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
 ```
 
----
-
+----
 ### 註釋
 ##### 對 manjaro-tools-iso 的更改
 1. 鏡像清單的第一行是用於構建的套件的標準目的地。  
@@ -482,14 +478,12 @@ glibc 2.38-7
 kernel-6.5.7  
 
 
----
-
+----
 其他推薦的操作系統  
 [Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
 [Endless OS | Endless Computers](https://endlessos.com/)  
 
----
-
+----
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
@@ -497,15 +491,13 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 #Server = https://manjaro-jp.sourceforge.io/manjaro-jp/
 ```
 
----
-
+----
 [Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)  
 (GPG signing public key:57B49CC5AA4F00FC) <phoepsilonix at phoepsilonix dot love>  
 
----
-
+----
 ### 對於這個活動的支持，我們非常歡迎。
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  

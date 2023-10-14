@@ -34,10 +34,14 @@ cat SHA256SUMS | awk '{print $2}' > ~/.cache/mytmp2
 files=($(diff -u ~/.cache/mytmp2 ~/.cache/mytmp1 | tail +4))
 rm ~/.cache/mytmp1 ~/.cache/mytmp2
 
-files=(${files[@]/#@@})
+#files=(${files[@]/#@@?*})
+#files=(${files[@]/#manjaro*})
+#echo ${files[@]}
+#files=(${files[@]/#firefox\/manjaro*})
+#echo ${files[@]}
+files=(${files[@]/#[!+-]*})
 files=(${files[@]/#[+-][0-9]*})
-files=(${files[@]/#manjaro*})
-
+files=(${files[@]/\//\\/})
 # check
 #for f in ${files[@]}
 #do

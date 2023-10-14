@@ -29,8 +29,7 @@ Windows
 Baixe o [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ventoy-1.0.96-windows.zip) usando um navegador ou algo assim.  
 Abra o arquivo zip baixado e execute o ventoy2disk.exe.
 
----
-
+----
 ### Características principais.
 O kernel Linux está tão actualizado quanto possível.  
 Além disso, o clang é utilizado para construir o kernel.  
@@ -530,14 +529,12 @@ glibc 2.38-7
 kernel-6.5.7  
 
 
----
-
+----
 Outros sistemas operativos recomendados.  
 [Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
 [Endless OS | Endless Computers](https://endlessos.com/)  
 
----
-
+----
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
@@ -545,15 +542,13 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 #Server = https://manjaro-jp.sourceforge.io/manjaro-jp/
 ```
 
----
-
+----
 [Manjaro-JP at gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at github](https://github.com/phoepsilonix/Manjaro-jp/)  
 [Manjaro-JP at sf](https://sourceforge.net/projects/manjaro-jp/)  
 (GPG signing public key:57B49CC5AA4F00FC) <phoepsilonix at phoepsilonix dot love>  
 
----
-
+----
 ### O apoio a esta atividade é muito bem-vindo.
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
