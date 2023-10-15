@@ -16,7 +16,7 @@ gkey="-g $(cat ~/.gnupg/sign.txt)"
 kernel=linux65
 
 # 保存先フォルダ
-artifacts=`pwd`/artifacts
+artifacts=`pwd`/artifacts/firefox
 
 # 日本語パッケージを加えるファイル
 #pkg1=Packages-Live
@@ -25,17 +25,17 @@ pkg3=Packages-Root
 
 # エディション指定
 editions=(
-#        "manjaro gnome"
-#        "manjaro kde"
+        "manjaro gnome"
+        "manjaro kde"
         "manjaro xfce"
-#        "community cinnamon"
-#        "community mate"
+        "community cinnamon"
+        "community mate"
        # "community openbox"
 #        "manjaro architect"
 #	"community lxqt"
 #	"community lxqt-kwin"
-#	"community sway"
-#	"community budgie"
+	"community sway"
+	"community budgie"
 #	"manjaro netinstall"
 )
 
@@ -92,7 +92,7 @@ do
         #buildiso  -zc -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
         sync
         echo "Move iso files to Artifacts folder"
-        find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts/firefox/ && sync
+        find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
         . artifacts/rename.sh
 #        buildiso -x -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
 #        buildiso -zc -d xz -f -k $kernel -p $ed $gkey

@@ -41,7 +41,7 @@ rm ~/.cache/mytmp1 ~/.cache/mytmp2
 #echo ${files[@]}
 files=(${files[@]/#[!+-]*})
 files=(${files[@]/#[+-][0-9]*})
-files=(${files[@]/\//\\/})
+#files=(${files[@]/\//\\/})
 # check
 #for f in ${files[@]}
 #do
@@ -51,7 +51,9 @@ files=(${files[@]/\//\\/})
 file=(${files[@]/#+*})
 for f in ${file[@]}
 do
-        echo - ${f:1}
+        f=${f:1}
+        echo - ${f}
+        f=(${f/\//\\/})
         sed -i -e "/${f:1}/d" SHA256SUMS
 done
 
