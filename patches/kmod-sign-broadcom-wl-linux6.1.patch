@@ -38,4 +38,4 @@ index 5a6c1f9..2d3a15b 100644
 +  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
    sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/$_pkgname.install"
    install -D -m 644 "${srcdir}/broadcom-wl-dkms.conf" "${pkgdir}/etc/modprobe.d/${_linuxprefix}-broadcom-wl.conf"
-   install -D -m 644 "/usr/share/licenses/broadcom-wl-dkms/LICENSE" "${pkgdir}/usr/share/licenses/linux64-broadcom-wl/LICENSE"
+   install -D -m 644 "/usr/share/licenses/broadcom-wl-dkms/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
