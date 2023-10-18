@@ -10,3 +10,5 @@ pacman-static
 yay
 paru
 manjaro-jp/manjaro_jp-keyring
+#dracut
+#dracut-hook

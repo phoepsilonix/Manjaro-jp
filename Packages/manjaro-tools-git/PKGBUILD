@@ -103,7 +103,7 @@ package_manjaro-tools-iso-git() {
     pkgdesc='Development tools for Manjaro Linux (ISO tools)'
 	provides=("manjaro-tools-iso=$_ver")
     depends=('dosfstools' 'libisoburn' 'squashfs-tools' 'manjaro-tools-yaml-git'
-            'mkinitcpio' 'mktorrent' 'grub' 'snapd' 'git')
+            'mktorrent' 'grub' 'snapd' 'git')
 	conflicts=('manjaro-tools-iso')
     optdepends=('virtualbox: quickly test isos')
 
