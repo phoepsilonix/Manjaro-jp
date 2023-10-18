@@ -42,9 +42,9 @@ editions=(
 # 初期化
 #rm -rf $artifacts
 #mkdir -p $artifacts
-#rm -rf $pkgdir
-#mkdir -p $pkgdir
-#cp -r iso-profiles-orig/* $pkgdir/
+rm -rf $pkgdir
+mkdir -p $pkgdir
+cp -r iso-profiles-orig/* $pkgdir/
 sync
 
 # profiles.confを微修正
@@ -91,7 +91,10 @@ do
         buildiso  -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
         #buildiso  -zc -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
         sync
-        find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
+        echo "Move iso files to Artifacts folder"
+        find /var/cache/manjaro-tools/iso -type f -name "*.iso" -exec mv -t $artifacts {} + && sync
+        #find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
+        #fd -tf -g "*.txt" /var/cache/manjaro-tool/iso -X mv {} $artifacts/ && sync
         . artifacts/rename.sh
 #        buildiso -x -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
 #        buildiso -zc -d xz -f -k $kernel -p $ed $gkey
@@ -101,12 +104,12 @@ do
         sync
 done
 
-echo "Move iso files to Artifacts folder"
+#echo "Move iso files to Artifacts folder"
 #sudo chown -R phoepsilonix:phoepsilonix $usb/tmp/iso/
-sync
-find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
+#sync
+#find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
 #rsync -avn $usb/artifacts/*.iso $artifacts/ && sync
-        sync
+#        sync
 
 # 終了
 echo "Done"
