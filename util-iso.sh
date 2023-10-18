@@ -202,12 +202,6 @@ make_iso() {
                 msg2 "Removing '/etc/pacman.d/gnupg' folder from ${sfs_dir}"
                 rm -rf "${sfs_dir}"/etc/pacman.d/gnupg
             fi
-            #if [[ "$(basename ${sfs_dir})" == "rootfs" ]]; then
-            #    pacman-key --populate manjaro_jp
-                #gpg --homedir /etc/pacman.d/gnupg --list-keys
-                #gpg --homedir /etc/pacman.d/gnupg --armor --export 4DC505BB1FBD8202E725BECC57B49CC5AA4F00FC | sudo tee -a "${sfs_dir}"/usr/share/pacman/keyrings/manjaro.gpg
-                #echo "4DC505BB1FBD8202E725BECC57B49CC5AA4F00FC:4:" | sudo tee -a "${sfs_dir}"/usr/share/pacman/keyrings/manjaro-trusted
-            #fi
             make_sfs "${sfs_dir}"
         fi
     done
@@ -437,6 +431,13 @@ make_image_live() {
         copy_overlay "${profile_dir}/live-overlay" "${path}"
         configure_live_image "${path}"
 
+	# mask some systemd targets on live-session
+	mkdir -p "${path}"/etc/systemd/system
+	ln -sfv /dev/null "${path}"/etc/systemd/system/sleep.target
+	ln -sfv /dev/null "${path}"/etc/systemd/system/suspend.target
+	ln -sfv /dev/null "${path}"/etc/systemd/system/hibernate.target
+	ln -sfv /dev/null "${path}"/etc/systemd/system/hybrid-sleep.target
+
         if [[ -e "${path}/usr/share/calamares/branding/manjaro/calamares-sidebar.qml" ]]; then
             configure_branding "${path}"
             msg "Done [Distribution: Release ${dist_release} Codename ${dist_codename}]"
@@ -454,8 +455,6 @@ make_image_live() {
 	        systemd-nspawn -D ${path} update-desktop-database /usr/share/applications/ /var/lib/flatpak/exports/share/applications/
 	        [[ -e ${path}/usr/share/xfce4/helpers ]] && systemd-nspawn -D ${path} update-desktop-database /usr/share/xfce4/helpers/
         fi
-
-        echo "Enable os-prober"
 
 	umount_fs
 
