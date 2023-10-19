@@ -55,6 +55,7 @@ for edition in "${editions[@]}"
 do
 	data=(${edition[@]})
 	path=${data[0]}/${data[1]}
+        rm -rf $pkgdir/$path/
         mkdir -p $pkgdir/$path/
         echo cp -r iso-profiles-orig/$path $pkgdir/${data[0]}/
         cp -r iso-profiles-orig/$path $pkgdir/${data[0]}/
@@ -92,7 +93,8 @@ do
         #buildiso  -zc -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
         sync
         echo "Move iso files to Artifacts folder"
-        find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
+        find /var/cache/manjaro-tools/iso -type f -name "*.iso" -exec mv -t $artifacts {} + && sync
+        #find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
         . artifacts/rename.sh
 #        buildiso -x -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
 #        buildiso -zc -d xz -f -k $kernel -p $ed $gkey
