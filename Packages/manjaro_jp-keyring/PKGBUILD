@@ -5,8 +5,8 @@
 # Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=manjaro_jp-keyring
-pkgver=20230721
-pkgrel=3
+pkgver=20231019
+pkgrel=1
 pkgdesc="Manjaro JP PGP keyring"
 arch=('any')
 url="https://manjaro-jp.phoepsilonix.love"
@@ -16,15 +16,21 @@ install="${pkgname}.install"
 source=('Makefile'
         'manjaro_jp.gpg'
         'manjaro_jp-revoked'
-        'manjaro_jp-trusted')
+        'manjaro_jp-trusted'
+        'pacman-init.service')
 sha256sums=('2043f3526237cdc7c8262b2a63b80318bfd16da547457edecebaf1e41fd56440'
             'd3164be787681dc2c966ce3fc756790185acee56c5026279c408a3c9a95b2750'
             'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-            '9a24ad1449d765efb9fa5407a1ce34a3917736cb5877c1d3d1ea1b781e1fafbb')
+            '9a24ad1449d765efb9fa5407a1ce34a3917736cb5877c1d3d1ea1b781e1fafbb'
+            '0e938040636dd3a085f2f9d43c62332517142ca865513099e17bfe1c49f45ccd')
 pkgver() {
   date +%Y%m%d
 }
 
 package() {
   make DESTDIR="${pkgdir}" install
+
+  # install pacman-init
+  install -dm755 $pkgdir/usr/lib/systemd/system/
+  install -m644 $srcdir/pacman-init.service $pkgdir/usr/lib/systemd/system/pacman-init.service
 }
