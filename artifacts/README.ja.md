@@ -577,7 +577,11 @@ Linux系OSで動きます。
 ----
 その他のおすすめOS  
 [Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
-[Endless OS | Endless Computers](https://endlessos.com/)  
+[Linux Mint](https://linuxmint.com/)  
+[MX Linux](https://mxlinux.org/)  
+
+[EndeavourOS](https://endeavouros.com/)  
+[Calam-Arch-Installer.iso](https://sourceforge.net/projects/blue-arch-installer/)  
 
 ----
 [Manjaroレポジトリミラー試験稼働中](https://mirror.phoepsilonix.love/manjaro/)
