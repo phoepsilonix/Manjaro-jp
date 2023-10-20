@@ -82,15 +82,15 @@ function getStringFromWasm0(ptr, len) {
     return cachedTextDecoder.decode(getUint8Memory0().subarray(ptr, ptr + len));
 }
 /**
-* @param {string} source_text
+* @param {string} text
 * @returns {string}
 */
-export function pulldown_cmark(source_text) {
+export function pulldown_cmark(text) {
     let deferred2_0;
     let deferred2_1;
     try {
         const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
-        const ptr0 = passStringToWasm0(source_text, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const ptr0 = passStringToWasm0(text, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
         const len0 = WASM_VECTOR_LEN;
         wasm.pulldown_cmark(retptr, ptr0, len0);
         var r0 = getInt32Memory0()[retptr / 4 + 0];

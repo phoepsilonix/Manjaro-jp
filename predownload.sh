@@ -3,4 +3,3 @@
 gpg -dq ~/.ssh/pass.gpg|sudo -S pwd
 cat Japanese-pkgs.txt Japanese-pkgs-root.txt iso-profiles-orig/manjaro/{gnome,kde,xfce,architect}/Packages-* iso-profiles-orig/community/{cinnamon,mate,sway}/Packages-*|sed 's|KERNEL|linux65|'|sed -e 's|#.*||' |sed -e 's|^>.* ||'| sort -u | xargs sudo pacman -Syyw --noconfirm lib32-nvidia-utils lib32-nvidia-390xx-utils lib32-nvidia-470xx-utils systemd-libs polkit xorg-server-common
 
-

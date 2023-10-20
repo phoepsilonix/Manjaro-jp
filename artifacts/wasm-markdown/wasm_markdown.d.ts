@@ -1,10 +1,10 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
-* @param {string} source_text
+* @param {string} text
 * @returns {string}
 */
-export function pulldown_cmark(source_text: string): string;
+export function pulldown_cmark(text: string): string;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
