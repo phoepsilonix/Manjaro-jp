@@ -52,9 +52,9 @@ Windowsの場合
 Linuxカーネルは、なるべく最新のものを採用します。  
 またカーネルのビルドにはclangを用います。  
 日本語入力(fcitx5-mozc)、日本語フォントを標準インストールします。  
-標準ブラウザとして、flatpak版[Firefox](https://www.mozilla.org/ja/firefox/browsers/)または[Floorp](https://floorp.ablaze.one/)を採用します。  
-オフィスソフトとしてflatpak版[LibreOffice](https://ja.libreoffice.org)を標準インストールします。  
-pacman-staticパッケージを標準導入しています。ライブラリの不整合によって、パッケージ更新が困難になった場合に、ご利用ください
+標準ブラウザとして、[Floorp](https://floorp.ablaze.one/)を採用します。  
+オフィスソフトとして[LibreOffice](https://ja.libreoffice.org)を標準インストールします。  
+pacman-staticパッケージを標準導入しています。ライブラリの不整合によって、パッケージ更新が困難になった場合に、ご利用ください。  
 ```
 sudo pacman-static -Syyu
 ```
@@ -65,7 +65,10 @@ sudo pacman-static -Syyu
 インストール後、対応することは可能です。  
 [Manjaro Linuxでセキュアブート(secure boot)(shim-singed)](https://zenn.dev/phoepsilonix/articles/90ad66114a4982)  
 [Manjaro Linuxでセキュアブート(secure boot)(efitools)](https://zenn.dev/phoepsilonix/articles/5e6488bb46f37e)  
-（セキュアブート対応を望む場合、Ubuntuなどは簡単です。[Ubuntu flavours](https://ubuntu.com/desktop/flavours)でデスクトップ環境も複数提供されています。）
+（セキュアブート対応を望む場合、[Ubuntu][Ubuntu]は簡単です。[Ubuntu flavours][Ubuntu flavours]でデスクトップ環境も複数提供されています。日本語対応も簡単です。）  
+
+[Ubuntu]: https://ubuntu.com/download/desktop
+[Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
 2. ISOから起動したライブ環境ではsnapアプリケーションのインストールは停止されています。  
 インストール後の環境では有効になりますが、どうしても試したい場合には手動で有効化できます。
@@ -87,29 +90,28 @@ sudo swapon /dev/sdX
 
 また次のコマンドで、OOM killer（強制終了）の対象外を指定しておきましょう。
 ```
-pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
-pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
+pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 ```
-
-##### 追記: 2023-02-11  
-[Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/)の最新版(2023-02-11〜)では、上記の対策が追加されています。  
-またインストーラーに手を加えて、インストール時にswapパーティションを有効にする処理を追加しました。
-Calamaresにも、[フィードバック済み](https://github.com/calamares/calamares/pull/2102/commits/79d796a437ad039745147c62a652035d4cd882fe)です。
-
-##### 追記: 2023-02-27  
-上記のフィードバックでは、パーティションの構成方法によって、swapが有効化されない場合があります。  
-そのため追加の対策として、zram-generatorの活用を追加しました。
 
 ----
 ### 配布場所
 ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
 よかったら、お試しください。
 
-[![MEGA](./img/mega-icon.svg)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)
+[![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
 ---|---
-[![SourceForge](./img/sf_logo.png)](https://sourceforge.net/projects/manjaro-jp/) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>](https://sourceforge.net/projects/manjaro-jp/)
-[![Google Drive](./img/Google_Drive_icon.svg)](https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-google.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/Google_Drive_icon.svg"/></svg>](https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing)
-[![Terabox](./img/terabox_logo.svg)](https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>](https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag)
+[![SourceForge][SF-ICON]][SOURCEFORGE-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>][SOURCEFORGE-folder]
+[![Google Drive][GD-ICON]][GOOGLE-DRIVE-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-google.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/Google_Drive_icon.svg"/></svg>][GOOGLE-DRIVE-folder]
+[![Terabox][TERA-ICON]][TERABOX-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>][TERABOX-folder]
+
+[MEGA-folder]: https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0 "MEGA"
+[SOURCEFORGE-folder]: https://sourceforge.net/projects/manjaro-jp/ "SourceForge"
+[GOOGLE-DRIVE-folder]: https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing "Google Drive"
+[TERABOX-folder]: https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag "TeraBox"
+[MEGA-ICON]: ./img/mega-icon.svg
+[SF-ICON]: ./img/sf_logo.png
+[GD-ICON]: ./img/Google_Drive_icon.svg
+[TERA-ICON]: ./img/terabox_logo.svg
 
 貴重な、ストレージをありがとうございます。  
 上記にて配布しています。
@@ -566,6 +568,9 @@ glibc 2.38-7
 ##### 20231012
 kernel-6.5.7  
 
+##### 20231023
+kernel-6.5.8  
+
 
 ----
 ###### おすすめ映像編集ソフト  
@@ -576,7 +581,8 @@ Linux系OSで動きます。
 
 ----
 その他のおすすめOS  
-[Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
+[Ubuntu][Ubuntu]  
+[Ubuntu flavours | Ubuntu][Ubuntu flavours]  
 [Linux Mint](https://linuxmint.com/)  
 [MX Linux](https://mxlinux.org/)  
 

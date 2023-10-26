@@ -87,7 +87,7 @@ password=$(gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -dq 
 
 ###### expectでパスフレーズ入力を自動化
 expect << EOF
-  spawn keychain --agents ssh --eval id_ed25519
+  spawn keychain --agents ssh --eval id_ed25519_3
   expect "* passphrase *:" {
         stty -echo
         send "$password\r"
@@ -119,12 +119,12 @@ sudo rsync -avP --progress --delete --delete-after ./ /root/manjaro-jp/ || { ech
 #rsync -avPL --size-only --no-perms ./*.zst phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 #rsync -avPL --size-only --no-perms --delete --exclude=\.* ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/manjaro-jp/ || { echo "rsync error"; exit 1; }
 #osdn web
-eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
+eval `keychain --agents ssh --eval id_ed25519_3 2>/dev/null`
 rsync -avP --delete --delete-after ./ phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs/manjaro-jp/
 
 #sourceforge 
 #X:symlink rsync -L
-eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
+eval `keychain --agents ssh --eval id_ed25519_3 2>/dev/null`
 rsync -avPL --delete --delete-after ./ phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/manjaro-jp/
 
 exit 0;

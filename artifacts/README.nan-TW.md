@@ -37,14 +37,17 @@ Windows
 Linux kernel應該盡可能是最新的。  
 此外，clang 用於構建kernel。  
 日語輸入(fcitx5-mozc)，日語字體作為標準安裝。  
-採用flatpak Firefox或Floorp作為標準瀏覽器。  
-將LibreOffice的flatpak版本作為辦公軟體作為標準安裝。  
+採用[floorp](https://floorp.ablaze.one)作為標準瀏覽器。  
+LibreOffice作為辦公軟體作為標準安裝。  
 我們已預設安裝了pacman-static套件。如果因為函式庫的不合一致，導致套件更新變得困難，請使用它。
 
 ##### 注意事項
 1. 不支援安全啟動  
 它不受支援，因此請在BIOS設置中禁用安全啟動。  
-（如果你想要安全啟動支援，Ubuntu 更快。 [烏班圖口味](https://ubuntu.com/desktop/flavours) 還提供多個桌面環境。）
+（如果你想要安全啟動支援，[Ubuntu][Ubuntu] 更快。 [Ubuntu flavours][Ubuntu flavours] 還提供多個桌面環境。）
+
+[Ubuntu]: https://ubuntu.com/download/desktop
+[Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
 2. 如果安裝程式螢幕在安裝過程中消失  
 通常可以通過手動設置交換分區來避免它。  
@@ -74,11 +77,20 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 實時環境和安裝 ISO 可在以下分發目標獲得。  
 如果您願意，請嘗試一下。  
 
-[![MEGA](./img/mega-icon.svg)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)   
----|---  
-[![SourceForge](./img/sf_logo.png)](https://sourceforge.net/projects/manjaro-jp/) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>](https://sourceforge.net/projects/manjaro-jp/)
-[![Google Drive](./img/Google_Drive_icon.svg)](https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-google.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/Google_Drive_icon.svg"/></svg>](https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing)
-[![Terabox](./img/terabox_logo.svg)](https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>](https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag)
+[![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
+---|---
+[![SourceForge][SF-ICON]][SOURCEFORGE-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>][SOURCEFORGE-folder]
+[![Google Drive][GD-ICON]][GOOGLE-DRIVE-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-google.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/Google_Drive_icon.svg"/></svg>][GOOGLE-DRIVE-folder]
+[![Terabox][TERA-ICON]][TERABOX-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>][TERABOX-folder]
+
+[MEGA-folder]: https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0 "MEGA"
+[SOURCEFORGE-folder]: https://sourceforge.net/projects/manjaro-jp/ "SourceForge"
+[GOOGLE-DRIVE-folder]: https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing "Google Drive"
+[TERABOX-folder]: https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag "TeraBox"
+[MEGA-ICON]: ./img/mega-icon.svg
+[SF-ICON]: ./img/sf_logo.png
+[GD-ICON]: ./img/Google_Drive_icon.svg
+[TERA-ICON]: ./img/terabox_logo.svg
 
 感謝您的寶貴存儲空間。  
 分佈於以上三地。
@@ -477,10 +489,14 @@ glibc 2.38-7
 ##### 20231012
 kernel-6.5.7  
 
+##### 20231023
+kernel-6.5.8  
+
 
 ----
 其他推薦的操作系統  
-[Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
+[Ubuntu][Ubuntu]  
+[Ubuntu flavours][Ubuntu flavours]  
 [Linux Mint](https://linuxmint.com/)  
 [MX Linux](https://mxlinux.org/)  
 

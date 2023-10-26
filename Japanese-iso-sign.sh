@@ -11,17 +11,18 @@ cd $artifacts
 #sh rename.sh
 echo "gpg sign"
 # gpg署名
-for f in *.iso firefox/*.iso
+for f in *.iso #firefox/*.iso
 do
 	[[ ! -e $f.sig ]] &&  { echo "gpg sign: $f" ; gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback --default-key $repo_key -v -b $f; }
 	if [[ ! -e $f.torrent ]] ;then
         echo "torrent"
+        #trackers=$(sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/,/g' ../trackers_best.txt ../trackers_all.txt|sed -e 's/,$//')
 	mktorrent -t0 \
-        --announce=udp://tracker.opentrackr.org:1337/announce,udp://tracker.torrent.eu.org:451/announce,udp://tracker.openbittorrent.com:80/announce,udp://tracker.publicbt.com:80/announce \
+                --announce=udp://tracker.opentrackr.org:1337,udp://tracker.openbittorrent.com:80/announce \
 		-w "https://sourceforge.net/projects/manjaro-jp/files/$f/download" \
-		-w "https://manjaro-jp.phoepsilonix.love/$f" \
                 $f -o $f.torrent
 		#-w "https://osdn.net/projects/manjaro-jp/storage/$f" \
+#		-w "https://manjaro-jp.phoepsilonix.love/$f" \
         fi
 done
 
@@ -29,7 +30,8 @@ echo "sha256sums"
 # チェック用ハッシュファイル
 #find . -maxdepth 1 \( -name '*.iso' -or -name "*.sig" \) -type f -mmin -400 -printf '%f\n' \
 #| xargs -I{} sha256sum {} >> SHA256SUMS
-ls -1 *.iso *.sig firefox/*.iso firefox/*.sig > ~/.cache/mytmp1
+ls -1 *.iso *.sig > ~/.cache/mytmp1
+#ls -1 *.iso *.sig firefox/*.iso firefox/*.sig > ~/.cache/mytmp1
 cat SHA256SUMS | awk '{print $2}' > ~/.cache/mytmp2
 files=($(diff -u ~/.cache/mytmp2 ~/.cache/mytmp1 | tail +4))
 rm ~/.cache/mytmp1 ~/.cache/mytmp2

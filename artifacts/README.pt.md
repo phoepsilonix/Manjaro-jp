@@ -34,14 +34,17 @@ Abra o arquivo zip baixado e execute o ventoy2disk.exe.
 O kernel Linux está tão actualizado quanto possível.  
 Além disso, o clang é utilizado para construir o kernel.  
 A entrada japonesa (fcitx5-mozc) e as fontes japonesas são instaladas como padrão.  
-As versões Flatpak de [Firefox](https://www.mozilla.org/ja/firefox/browsers/) ou [Floorp](https://floorp.ablaze.one/) serão utilizadas como o navegador padrão.  
-A versão flatpak [LibreOffice](https://ja.libreoffice.org) será instalada como software de escritório standard.  
+As versões [Floorp](https://floorp.ablaze.one/) serão utilizadas como o navegador padrão.  
+A versão [LibreOffice](https://ja.libreoffice.org) será instalada como software de escritório standard.  
 Instalamos o pacote pacman-static por padrão. Por favor, use-o se as atualizações de pacotes se tornarem difíceis devido a inconsistências da biblioteca.  
 
 ##### Notas.
 1. bota segura não suportada  
 Não suportado, por isso, por favor, desactivar o Secure Boot nas definições da BIOS.  
-(Se quiser suporte de arranque seguro, o Ubuntu é a forma mais rápida. Vários ambientes de trabalho estão também disponíveis em [Ubuntu flavours](https://ubuntu.com/desktop/flavours)).
+(Se quiser suporte de arranque seguro, o [Ubuntu][Ubuntu] é a forma mais rápida. Vários ambientes de trabalho estão também disponíveis em [Ubuntu flavours][Ubuntu flavours]).
+
+[Ubuntu]: https://ubuntu.com/download/desktop
+[Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
 2. Se o ecrã do instalador desaparecer durante a instalação  
 É muitas vezes possível evitar isto, definindo manualmente a partição swap.  
@@ -75,11 +78,20 @@ Portanto, como medida adicional, foi adicionado o uso de zram-generador.
 Os ISOs para ambiente vivo e instalação estão disponíveis nos seguintes locais de distribuição.  
 Se desejar, pode experimentá-lo.
 
-[![MEGA](./img/mega-icon.svg)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)   
----|---  
-[![SourceForge](./img/sf_logo.png)](https://sourceforge.net/projects/manjaro-jp/) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>](https://sourceforge.net/projects/manjaro-jp/)
-[![Google Drive](./img/Google_Drive_icon.svg)](https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-google.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/Google_Drive_icon.svg"/></svg>](https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing)
-[![Terabox](./img/terabox_logo.svg)](https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>](https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag)
+[![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
+---|---
+[![SourceForge][SF-ICON]][SOURCEFORGE-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>][SOURCEFORGE-folder]
+[![Google Drive][GD-ICON]][GOOGLE-DRIVE-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-google.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/Google_Drive_icon.svg"/></svg>][GOOGLE-DRIVE-folder]
+[![Terabox][TERA-ICON]][TERABOX-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>][TERABOX-folder]
+
+[MEGA-folder]: https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0 "MEGA"
+[SOURCEFORGE-folder]: https://sourceforge.net/projects/manjaro-jp/ "SourceForge"
+[GOOGLE-DRIVE-folder]: https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing "Google Drive"
+[TERABOX-folder]: https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag "TeraBox"
+[MEGA-ICON]: ./img/mega-icon.svg
+[SF-ICON]: ./img/sf_logo.png
+[GD-ICON]: ./img/Google_Drive_icon.svg
+[TERA-ICON]: ./img/terabox_logo.svg
 
 Obrigado pelo valioso armazenamento.  
 É distribuído nos três locais acima referidos.
@@ -528,10 +540,15 @@ glibc 2.38-7
 ##### 20231012
 kernel-6.5.7  
 
+##### 20231023
+kernel-6.5.8  
+
+
 
 ----
 Outros sistemas operativos recomendados.  
-[Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
+[Ubuntu][Ubuntu]  
+[Ubuntu flavours][Ubuntu flavours]  
 [Linux Mint](https://linuxmint.com/)  
 [MX Linux](https://mxlinux.org/)  
 

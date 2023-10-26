@@ -96,7 +96,7 @@ gnome-logs
 gnome-shell-extensions
 #gnome-software                    # pamac-gtk used instead
 gnome-system-monitor
-#gnome-text-editor                 # gedit included instead
+gnome-text-editor                 # gedit included instead
 gnome-tour
 gnome-user-docs
 >extra gnome-user-share            # optional for gnome-control-center

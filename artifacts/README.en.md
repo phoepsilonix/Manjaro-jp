@@ -43,7 +43,10 @@ We have installed the pacman-static package as standard. Please use this if pack
 ##### Notes
 1. Does not support Secure Boot  
 It is not supported, so please disable Secure Boot in BIOS settings.  
-(If you want secure boot support, Ubuntu is faster. There are multiple desktop environments provided in [Ubuntu flavours](https://ubuntu.com/desktop/flavours).)
+(If you want secure boot support, [Ubuntu][Ubuntu] is faster. There are multiple desktop environments provided in [Ubuntu flavours][Ubuntu flavours].)
+
+[Ubuntu]: https://ubuntu.com/download/desktop
+[Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
 2. If the installer screen disappears during installation  
 In many cases, it can be avoided by setting the swap partition manually.  
@@ -77,11 +80,20 @@ Therefore, as an additional measure, the use of zram-generator has been added.
 he live environment & installation ISO is published at the following distribution site.  
 Please feel free to try it out.
 
-[![MEGA](./img/mega-icon.svg)](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0)   
----|---  
-[![SourceForge](./img/sf_logo.png)](https://sourceforge.net/projects/manjaro-jp/) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>](https://sourceforge.net/projects/manjaro-jp/)
-[![Google Drive](./img/Google_Drive_icon.svg)](https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-google.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/Google_Drive_icon.svg"/></svg>](https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing)
-[![Terabox](./img/terabox_logo.svg)](https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag) | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>](https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag)
+[![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
+---|---
+[![SourceForge][SF-ICON]][SOURCEFORGE-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>][SOURCEFORGE-folder]
+[![Google Drive][GD-ICON]][GOOGLE-DRIVE-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-google.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/Google_Drive_icon.svg"/></svg>][GOOGLE-DRIVE-folder]
+[![Terabox][TERA-ICON]][TERABOX-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>][TERABOX-folder]
+
+[MEGA-folder]: https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0 "MEGA"
+[SOURCEFORGE-folder]: https://sourceforge.net/projects/manjaro-jp/ "SourceForge"
+[GOOGLE-DRIVE-folder]: https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing "Google Drive"
+[TERABOX-folder]: https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag "TeraBox"
+[MEGA-ICON]: ./img/mega-icon.svg
+[SF-ICON]: ./img/sf_logo.png
+[GD-ICON]: ./img/Google_Drive_icon.svg
+[TERA-ICON]: ./img/terabox_logo.svg
 
 Thank you for the valuable storage.  
 It is distributed in the above three places.
@@ -534,10 +546,14 @@ glibc 2.38-7
 ##### 20231012
 kernel-6.5.7  
 
+##### 20231023
+kernel-6.5.8  
+
 
 ----
 Other recommended OS  
-[Ubuntu flavours | Ubuntu](https://ubuntu.com/desktop/flavours)  
+[Ubuntu][Ubuntu]  
+[Ubuntu flavours][Ubuntu flavours]  
 [Linux Mint](https://linuxmint.com/)  
 [MX Linux](https://mxlinux.org/)  
 
