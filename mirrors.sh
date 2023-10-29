@@ -16,9 +16,9 @@ eval `keychain --agents ssh --eval id_ed25519_3 2>/dev/null`
 echo "SourceForge"
 
 eval `keychain --agents ssh --eval id_ed25519_3`
-rsync -aLvPc --delete --delete-after --exclude=manjaro-jp/* --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./*gnome*.sig ./*.md -e "ssh -i ~/.ssh/id_ed25519_3" phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ #|| { echo "SF rsync error" ; exit 1 ; }
+rsync -aLvPc --delete --delete-after --exclude=manjaro-jp/* --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./*.sig ./*.md -e "ssh -i ~/.ssh/id_ed25519_3" phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ #|| { echo "SF rsync error" ; exit 1 ; }
 eval `keychain --agents ssh --eval id_ed25519_3`
-rsync -aLvP --size-only --delete --delete-after --exclude=manjaro-jp/* --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./*gnome* -e "ssh -i ~/.ssh/id_ed25519_3" phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
+rsync -aLvP --size-only --delete --delete-after --exclude=manjaro-jp/* --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./ -e "ssh -i ~/.ssh/id_ed25519_3" phoepsilonix@frs.sourceforge.net:/home/pfs/project/manjaro-jp/ || { echo "SF rsync error" ; exit 1 ; }
 #sourceforge web
 #X:symlink rsync -L
 eval `keychain --agents ssh --eval id_ed25519_3`
@@ -27,7 +27,7 @@ eval `keychain --agents ssh --eval id_ed25519_3 2>/dev/null`
 rsync -avPL --delete --delete-after manjaro-jp/ phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/manjaro-jp/ -e "ssh -i ~/.ssh/id_ed25519_3"
 
 
-echo "OSDN"
+#echo "OSDN"
 # OSDNへアップデート
 #eval `keychain --agents ssh --eval id_ed25519`
 #rsync -avPL --delete-after --delay-updates --safe-links --size-only --no-perms --delete --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
@@ -36,10 +36,10 @@ echo "OSDN"
 
 #OSDN web
 #OK:symlink
-eval `keychain --agents ssh --eval id_ed25519_3`
-rsync -avPL --no-perms ./img ./*.css ./*.js ./*.md ./*.html phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs
-eval `keychain --agents ssh --eval id_ed25519_3 2>/dev/null`
-rsync -avP --delete-after --delete manjaro-jp/ phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs/manjaro-jp/
+#eval `keychain --agents ssh --eval id_ed25519`
+#rsync -avPL --no-perms ./img ./*.css ./*.js ./*.md ./*.html phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs
+#eval `keychain --agents ssh --eval id_ed25519 2>/dev/null`
+#rsync -avP --delete-after --delete manjaro-jp/ phoepsilonix@shell.osdn.net:/home/groups/m/ma/manjaro-jp/htdocs/manjaro-jp/
 
 #rsync -avPL --size-only --no-perms --delete ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
 

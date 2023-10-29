@@ -554,11 +554,11 @@ kernel-6.5.8
 Other recommended OS  
 [Ubuntu][Ubuntu]  
 [Ubuntu flavours][Ubuntu flavours]  
+
 [Linux Mint](https://linuxmint.com/)  
 [MX Linux](https://mxlinux.org/)  
 
 [EndeavourOS](https://endeavouros.com/)  
-[Calam-Arch-Installer.iso](https://sourceforge.net/projects/blue-arch-installer/)  
 
 ----
 ```

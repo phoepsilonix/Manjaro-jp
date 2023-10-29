@@ -17,7 +17,7 @@ PASSPHRASE=$(gpg --passphrase-file $gpg_passphrase --batch --pinentry-mode=loopb
 
 ###### expectでパスフレーズ入力を自動化
 expect << EOF
-  spawn keychain --agents ssh --eval id_ed25519_3
+  spawn keychain --agents ssh --eval id_ed25519_3 id_ed25519
   expect "* passphrase *:" {
         send "$PASSPHRASE\r"
   }
@@ -28,5 +28,5 @@ expect << EOF
 EOF
 
 ###### このスクリプト内で、有効化させる。
-eval `keychain --agents ssh --eval id_ed25519_3 2>/dev/null`
+eval `keychain --agents ssh --eval id_ed25519_3 id_ed25519 2>/dev/null`
 

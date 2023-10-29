@@ -544,16 +544,19 @@ kernel-6.5.7
 ##### 20231023
 kernel-6.5.8  
 
+##### 20231027
+kernel-6.5.9  
+
 
 ----
 Autres systèmes d'exploitation recommandés  
 [Ubuntu][Ubuntu]  
 [Ubuntu flavours][Ubuntu flavours]  
+
 [Linux Mint](https://linuxmint.com/)  
 [MX Linux](https://mxlinux.org/)  
 
 [EndeavourOS](https://endeavouros.com/)  
-[Calam-Arch-Installer.iso](https://sourceforge.net/projects/blue-arch-installer/)  
 
 ----
 ```
