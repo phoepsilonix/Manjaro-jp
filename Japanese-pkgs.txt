@@ -31,7 +31,7 @@ unicode-emoji
 # browser
 # flatpak floorp or firefox
 # aur floorp
-floorp
+#floorp
 
 # vivaldi option pkg
 libnotify

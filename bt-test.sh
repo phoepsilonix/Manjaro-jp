@@ -5,9 +5,9 @@ trackers=$(sed -e '/^$/d' trackers_all.txt trackers_all_ip.txt trackers_best.txt
 #MAGNET=""
 #TORRENT=$(ls artifacts/*.torrent |xargs -n1 echo -n " -T ")
 TORRENT=$(ls $(pwd)/artifacts/*.torrent)
-TORRENT2=$(ls artifacts/firefox/*.torrent)
+#TORRENT2=$(ls artifacts/firefox/*.torrent)
 PARALLEL=$(($(ls artifacts/*.torrent |wc -l)*4))
-PARALLEL2=$(($(ls artifacts/firefox/*.torrent |wc -l)*4))
+#PARALLEL2=$(($(ls artifacts/firefox/*.torrent |wc -l)*4))
 ARTIFACTS=$(pwd)/artifacts/
 #for f in $TORRENT
 #do

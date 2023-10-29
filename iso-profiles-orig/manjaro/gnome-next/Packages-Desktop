@@ -114,7 +114,7 @@ nautilus
 #orca
 >extra rygel                       # optional for gnome-control-center
 >extra simple-scan
->extra snapshot
+#>extra snapshot
 sushi
 #tecla                             # required by gnome-control-center
 totem

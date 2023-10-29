@@ -365,10 +365,10 @@ make_image_desktop() {
         if [[ "${profile}" != "architect" && "${profile}" != "netinstall" ]]; then
                 systemd-nspawn -D ${path} flatpak remote-add  --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	        # Browser 
-	        systemd-nspawn -D ${path} flatpak install -y one.ablaze.floorp
+	        systemd-nspawn -D ${path} flatpak install one.ablaze.floorp/x86_64/stable -y
                 #systemd-nspawn -D ${path} flatpak install -y org.mozilla.firefox
                 # Office Soft
-                systemd-nspawn -D ${path} flatpak install -y org.libreoffice.LibreOffice
+                #systemd-nspawn -D ${path} flatpak install -y org.libreoffice.LibreOffice
                 # 
                 #systemd-nspawn -D ${path} flatpak install -y com.github.tchx84.Flatseal
                 #systemd-nspawn -D ${path} flatpak install -y io.github.vikdevelop.SaveDesktop

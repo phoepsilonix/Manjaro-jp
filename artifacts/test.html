@@ -12,13 +12,13 @@
     <link rel="stylesheet" type="text/css" href="./fonts.css" />
 <script type="module">
 import init, { pulldown_cmark as wasm } from './wasm-markdown/wasm_markdown.js';
-var markdown_file = './README.ja.md';
+let markdown_file = './README.ja.md';
 
 window.onload=function() {
 init()
 .then(() => {
-    	fetch(markdown_file)
-       	.then(response => response.text())
+        fetch(markdown_file)
+        .then(response => response.text())
         .then(data => {
         let el = document.getElementById( "readme" );
         let text = document.createTextNode(wasm(data));

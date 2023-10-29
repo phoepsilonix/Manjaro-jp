@@ -56,6 +56,7 @@ do
 	data=(${edition[@]})
 	path=${data[0]}/${data[1]}
         mkdir -p $pkgdir/$path/
+        rm -r $pkgdir/$path/*
         echo cp -r iso-profiles-orig/$path $pkgdir/${data[0]}/
         cp -r iso-profiles-orig/$path $pkgdir/${data[0]}/
 	#cat $pkgs >> $pkgdir/$edition[0]/$edition[1]/$pkg1

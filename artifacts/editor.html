@@ -22,13 +22,13 @@
  border:1px solid #ddd;
  overflow-y:scroll
 }
-.source-markdown {
+#source-markdown {
  width:100%;
  height:100%;
  padding:20px;
  border:none
 }
-.output-htmlarea {
+#output-html {
  padding:20px;
  text-align:left
 }
@@ -52,14 +52,15 @@
     </style>
 <script type="module">
 import init, { pulldown_cmark as wasm } from './wasm-markdown/wasm_markdown.js';
-
-var markdown_file = './README.ja.md';
+let markdown_file = './README.ja.md';
+let md = document.getElementById( "source-markdown" );
+let output = document.getElementById("output-html");
 
 window.onload=function() {
 init()
 .then(() => {
-    	fetch(markdown_file)
-       	.then(response => response.text())
+        fetch(markdown_file)
+        .then(response => response.text())
         .then(data => {
         let text = document.createTextNode(data);
         let source = document.getElementById("source-markdown");
@@ -68,14 +69,21 @@ init()
         });
 });
 
-let md = document.getElementById( "source-markdown" );
 md.addEventListener('input', () => {
     md2html(md.value);
 });
+
+md.addEventListener("scroll", () => {
+  output.scrollTop = md.scrollTop;
+});
+
+output.addEventListener("scroll", () => {
+  md.scrollTop = output.scrollTop;
+});
+
 };
 
 function md2html(data) {
-        let output = document.getElementById("output-html");
         let text = document.createTextNode(wasm(data));
         output.innerHTML = text.data;
         const links = output.querySelectorAll("a[href^='http']:not([href*='" + location.hostname + "'])");
@@ -84,17 +92,17 @@ function md2html(data) {
         }
         addCopyBtn();
 }
+
 </script>
 </head>
 <body>
 <header></header>
 <section class="main-section">
 <div class="columnLeft">
-<textarea id="source-markdown" class="source-markdown">
+<textarea id="source-markdown">
 </textarea>
 </div>
-<div class="columnRight">
-<section id="output-html" class="output-htmlarea"></section>
+<div id="output-html" class="columnRight">
 </div>
 </section>
 <footer></footer>
