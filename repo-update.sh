@@ -100,6 +100,8 @@ EOF
 gpg -dq $gpg_pass.gpg | sudo -S pwd > /dev/null
 sudo rsync -avP --progress --delete --delete-after ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
+# h2oサーバーの生成するindex.htmlを取得。sf,osdnへアップロードするため。
+aria2c -c https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 # usb
 #sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
