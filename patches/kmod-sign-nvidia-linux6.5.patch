@@ -1,10 +1,12 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 87dde44..f9b2749 100644
+index 0435335..96151be 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -36,6 +36,12 @@ build() {
+@@ -35,7 +35,14 @@ build() {
+     _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
  
      cd "${_pkg}"
++    LD=ld.lld \
      make -C kernel SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 +    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
 +    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
@@ -15,7 +17,7 @@ index 87dde44..f9b2749 100644
  }
  
  package() {
-@@ -43,7 +49,19 @@ package() {
+@@ -43,7 +50,19 @@ package() {
      install -Dm 644 kernel/*.ko -t "${pkgdir}/usr/lib/modules/${_extramodules}/"
  
      # compress each module individually

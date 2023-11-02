@@ -1,22 +1,41 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index d67b37a..9bbca57 100644
+index fcd249a..74a8126 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -38,6 +38,12 @@ build() {
+@@ -5,7 +5,7 @@ _linuxprefix=linux65
+ _extramodules=extramodules-6.5-MANJARO
+ 
+ pkgname="$_linuxprefix-zfs"
+-pkgver=2.1.13
++pkgver=2.2.0
+ pkgrel=4
+ pkgdesc='Kernel modules for the Zettabyte File System.'
+ arch=('x86_64')
+@@ -17,7 +17,7 @@ makedepends=("$_linuxprefix-headers")
+ provides=("zfs=${pkgver}")
+ install=zfs.install
+ source=("https://github.com/openzfs/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc})
+-sha256sums=('06b24cbb3cbc1554e2edf2fcd71d1f8bec4febf4412aeac17070877c44302abd'
++sha256sums=('42035fd059faa25a09cd511b24a57b8ad1285cb69127f2a0043b98562c5ec690'
+             'SKIP')
+ validpgpkeys=('4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027'  # Tony Hutter (GPG key for signing ZFS releases) <hutter2@llnl.gov>
+               'C33DF142657ED1F7C328A2960AB9E991C6AF658B') # Brian Behlendorf <behlendorf1@llnl.gov>
+@@ -38,12 +38,30 @@ build() {
                  --libexecdir=/usr/lib/zfs-${pkgver} --with-config=kernel \
                  --with-linux=/usr/lib/modules/${_kernver}/build
      make
 +    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
 +    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
-+    for file in module/*/*.ko
++    for file in module/*.ko
 +    do
 +        /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $file
 +    done
  }
  
  package(){
-@@ -45,5 +51,17 @@ package(){
-     install -Dm 644 module/*/*.ko -t "$pkgdir/usr/lib/modules/$_extramodules/"
+     cd "zfs-${pkgver}"
+-    install -Dm 644 module/*/*.ko -t "$pkgdir/usr/lib/modules/$_extramodules/"
++    install -Dm 644 module/*.ko -t "$pkgdir/usr/lib/modules/$_extramodules/"
  
      # compress each module individually
 -    find "$pkgdir" -name '*.ko' -exec xz -T1 {} +

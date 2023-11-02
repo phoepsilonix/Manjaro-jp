@@ -51,7 +51,7 @@ Windowsの場合
 ### Manjaro-JPの主な特徴
 Linuxカーネルは、なるべく最新のものを採用します。  
 またカーネルのビルドにはclangを用います。  
-日本語入力(fcitx5-mozc)、日本語フォントを標準インストールします。  
+日本語入力(Mozc)、日本語フォントを標準インストールします。  
 標準ブラウザとして、[Floorp](https://floorp.ablaze.one/)を採用します。  
 オフィスソフトとして[LibreOffice](https://ja.libreoffice.org)を標準インストールします。  
 pacman-staticパッケージを標準導入しています。ライブラリの不整合によって、パッケージ更新が困難になった場合に、ご利用ください。  
@@ -573,6 +573,10 @@ kernel-6.5.8
 
 ##### 20231027
 kernel-6.5.9  
+
+##### 20231103
+kernel-6.5.10
+[ibus-mozc-with-jp-dict](https://aur.archlinux.org/packages/ibus-mozc-with-jp-dict)  
 
 
 ----

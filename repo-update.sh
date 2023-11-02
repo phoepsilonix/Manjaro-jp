@@ -30,7 +30,7 @@ do
 done
 
 # レポジトリデータベースの更新
-rm $repo.db.* $repo.files.*
+#rm $repo.db.* $repo.files.*
 
 # repo-add
 #-n 新しいパッケージのみ追加
@@ -46,7 +46,7 @@ rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/stable/multilib/x8
 
 #nvidia以外のパッケージの登録。古いものを削除。
 # バージョンでsortしておく。repo-addは、あとから追加されたものが優先されるため。
-pkgfiles=$(ls -v --ignore={manjaro-jp.,nvidia-,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}* --ignore=*.sig)
+pkgfiles=$(ls -v --ignore={manjaro-jp.,nvidia-,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}* --ignore=*.sig --ignore=*.html)
 echo $pkgfiles
 LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -R --sign --key $repo_key ${pkgfiles}
 #nvidia関連のパッケージの追加
@@ -100,6 +100,9 @@ EOF
 gpg -dq $gpg_pass.gpg | sudo -S pwd > /dev/null
 sudo rsync -avP --progress --delete --delete-after ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
+# h2oサーバーの生成するindex.htmlを取得。sf,osdnへアップロードするため。
+rm index.html
+aria2c -c https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 # usb
 #sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 
