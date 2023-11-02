@@ -11,7 +11,7 @@ do
         else
                 f2=$(echo $f|sed s/^manjaro/manjaro-jp/);
                 if [[ ! $f =~ .*-architect-.* ]]; then
-                    [[ "$browser" != "" ]] && f2=$(echo $f2|sed s/\.iso/-${browser}.iso/);
+                    [[ "$browser" != "" ]] && f2=$(echo $f2|sed s/\.iso/-${browser}-selinux-test.iso/);
                 fi
         fi
         echo $f $f2;
