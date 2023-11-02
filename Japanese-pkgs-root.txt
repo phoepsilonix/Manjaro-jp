@@ -6,3 +6,4 @@ pacman-static
 yay
 paru
 manjaro-jp/manjaro_jp-keyring
+selinux
