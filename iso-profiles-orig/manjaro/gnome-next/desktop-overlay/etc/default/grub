@@ -2,8 +2,8 @@ GRUB_DEFAULT=saved
 GRUB_TIMEOUT=5
 GRUB_TIMEOUT_STYLE=menu
 GRUB_DISTRIBUTOR="Manjaro"
-GRUB_CMDLINE_LINUX_DEFAULT="quiet udev.log_priority=3 apparmor=1 security=apparmor"
-#GRUB_CMDLINE_LINUX_DEFAULT="quiet udev.log_priority=3 apparmor=1 security=apparmor lsm=landlock,yama,integrity,apparmor"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet udev.log_priority=3 selinux=1 security=selinux"
+#GRUB_CMDLINE_LINUX_DEFAULT="quiet udev.log_priority=3 selinux=1 security=selinux lsm=landlock,yama,integrity,selinux"
 GRUB_CMDLINE_LINUX=""
 
 # If you want to enable the save default function, uncomment the following
