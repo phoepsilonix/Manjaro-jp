@@ -131,5 +131,8 @@ rsync -avP --delete --delete-after ./ phoepsilonix@shell.osdn.net:/home/groups/m
 eval `keychain --agents ssh --eval id_ed25519_3 id_ed25519 2>/dev/null`
 rsync -avPL --delete --delete-after ./ phoepsilonix@web.sourceforge.net:/home/project-web/manjaro-jp/htdocs/manjaro-jp/
 
+rm ~/www/artifacts -rf
+for f in $(find artifacts/ -type d);do mkdir -p ~/www/$f; files=$(ls -Fd $f/* | grep -v "/$"| sed 's/[*@]$//');ln $files ~/www/$f/ ;done
+
 exit 0;
 
