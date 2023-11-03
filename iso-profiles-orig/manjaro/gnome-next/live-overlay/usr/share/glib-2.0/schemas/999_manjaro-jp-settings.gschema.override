@@ -14,10 +14,6 @@ always-show-log-out=true
 favorite-apps=['one.ablaze.floorp.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'gnome-terminal.desktop', 'org.manjaro.pamac.manager.desktop', 'calamares.desktop', 'manjaro-architect.desktop']
 enabled-extensions=['pamac-updates@manjaro.org', 'dash-to-dock@micxgx.gmail.com', 'appindicatorsupport@rgcjonas.gmail.com', 'gnome-ui-tune@itstime.tech', 'legacyschemeautoswitcher@joshimukul29.gmail.com', 'x11gestures@joseexposito.github.io', 'custom-accent-colors@demiskp', 'space-bar@luchrioh']
 
-[org.gnome.desktop.input-sources]
-sources=[('xkb', 'jp+kana86')]
-xkb-options=['lv3:ralt_switch']
-
 [org.gnome.desktop.media-handling]
 autorun-x-content-start-app=['x-content/ostree-repository']
 
@@ -31,7 +27,7 @@ cursor-theme='Bibata-Modern-Classic'
 document-font-name='Noto Sans CJK JP 12'
 enable-animations=true
 font-name='Noto Sans CJK JP 11'
-gtk-im-module='gtk-im-context-simple'
+gtk-im-module=''
 gtk-theme='Adw-dark'
 icon-theme='Papirus-Dark-Maia'
 monospace-font-name='FirgeNerd Console 11'
@@ -44,4 +40,11 @@ titlebar-font="Noto Sans CJK JP Bold 11"
 
 [org.gnome.desktop.a11y]
 always-show-universal-access-status=true
+
+[org.gnome.desktop.input-sources]
+sources=[('ibus', 'mozc-jp'), ('xkb', 'jp+kana86')]
+mru-sources=[('ibus', 'mozc-jp'), ('xkb', 'jp+kana86')]
+per-window=false
+show-all-sources=false
+xkb-options=['']
 
