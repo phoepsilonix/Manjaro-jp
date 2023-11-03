@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset=utf-8>
+<title>Manjaro-JP</title>
+    <link rel="icon" href="./img/favicon.png" type="image/png" />
+    <link rel="stylesheet" type="text/css" href="./sport.css" />
+    <link rel="stylesheet" type="text/css" href="./bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./sunburst.min.css" />
+    <script src="./highlight.min.js"></script>
+    <script src="./print-code.js"></script>
+    <link rel="stylesheet" type="text/css" href="./fonts.css" />
+<script src="./wasm/wasm_markdown.js"></script>
+<script type="module">
+window.onload=function() {
+async function md2html(data) {
+        const { pulldown_cmark: wasm } = wasm_bindgen;
+        await wasm_bindgen("./wasm/wasm_markdown_bg.wasm");
+        let text = document.createTextNode(wasm(data));
+        let el = document.getElementById( "readme" );
+        el.innerHTML = text.data;
+        const links = el.querySelectorAll("a[href^='http']:not([href*='" + location.hostname + "'])");
+        for (let i = 0; i < links.length; ++i) {
+            links[i].setAttribute('target', '_blank');
+        }
+        addCopyBtn();
+}
+
+var markdown_file = './README.ja.md';
+fetch(markdown_file)
+    .then(response => response.text())
+    .then(data => {
+        md2html(data);
+    });
+};
+</script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100vh;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            min-height: 100vh;
+        }
+
+        iframe {
+            width: 100%;
+            min-height: 100vh;
+        }
+        #readme table {
+            border-collapse: separate;
+            border-spacing: 16px 0px;
+        }
+        #readme th {
+            text-align:center; vertical-align:middle;
+        }
+        #readme td {
+            text-align:center; vertical-align:middle;
+        }
+        img[alt=SourceForge] { width: 200px; }
+        img[alt=Terabox] { height: 80px; }
+        img[alt=MEGA] { height: 80px; }
+        img[alt="Google Drive"] { height: 80px; }
+        svg#MANJARO-QR { width: 180px; height: 180px; }
+        image#MANJARO-QR { width: 180px; height: 180px; }
+        image#MANJARO-ICON { width: 32px; height: 32px; }
+    </style>
+</head>
+<body>
+<header></header>
+<div id="readme"></div>
+<footer></footer>
+</body>
+</html>
