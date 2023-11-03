@@ -102,6 +102,7 @@ sudo rsync -avP --progress --delete --delete-after ./ /root/manjaro-jp/ || { ech
 
 # h2oサーバーの生成するindex.htmlを取得。sf,osdnへアップロードするため。
 rm index.html
+rm ~/artifacts/manjaro-jp/index.html
 aria2c -c https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 # usb
 #sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }

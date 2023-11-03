@@ -267,12 +267,12 @@ index 0000000..fda2cea
 +         return;
 diff --git a/002-Kbuild-clang-options.patch b/002-Kbuild-clang-options.patch
 new file mode 100644
-index 0000000..a94f392
+index 0000000..39e7f58
 --- /dev/null
 +++ b/002-Kbuild-clang-options.patch
 @@ -0,0 +1,13 @@
 +diff --git a/kernel/Kbuild b/kernel/Kbuild
-+index e160e3a..9a9419d 100644
++index 4dc1203..e4f987b 100644
 +--- a/kernel/Kbuild
 ++++ b/kernel/Kbuild
 +@@ -68,7 +68,7 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
@@ -280,12 +280,12 @@ index 0000000..a94f392
 + EXTRA_CFLAGS += -I$(src)/common/inc
 + EXTRA_CFLAGS += -I$(src)
 +-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
-++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args -Wno-error=implicit-function-declaration
-+ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.199.02\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
+++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
++ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.223.02\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index 51b6aa1..39863a4 100644
+index 37f2566..f5382b9 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -20,16 +20,25 @@ provides=("nvidia=$pkgver" 'NVIDIA-MODULE')
@@ -293,14 +293,14 @@ index 51b6aa1..39863a4 100644
  install=nvidia.install
  _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
 -source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
--sha256sums=('9c86f9ef6aceaf2b292407aa161b98d817b2eb10a615f971d29a20c2a748ad09')
+-sha256sums=('fcffc3defb36eb3a6cf003638efefd9159469c5b2ce90de77dcab642aad03d98')
 +source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
 +        '001-fix-function-declaration.patch'
 +        '002-Kbuild-clang-options.patch'
 +        'nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch')
-+sha256sums=('9c86f9ef6aceaf2b292407aa161b98d817b2eb10a615f971d29a20c2a748ad09'
++sha256sums=('fcffc3defb36eb3a6cf003638efefd9159469c5b2ce90de77dcab642aad03d98'
 +            '8e9bcc9c3f68771de87da73b0837095f84e2f2abb6dd0bdaa2117c95ae118c3a'
-+            '32318fff83e5a989ba163e40be7e5491a7ca01a609650782021c61fbfd1d2622'
++            'd1470dc4c2e2d49573ac2900f3bf6214d60678ae42871aceef3ebdbb8febdb76'
 +            '702af56eef8bba8c3137f98c298ee204e391c6fcffc960631481c3f1e87ed6a8')
  
  _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
@@ -309,8 +309,9 @@ index 51b6aa1..39863a4 100644
      sh "${_pkg}.run" --extract-only
  
 -    cd "${_pkg}"
+-    # patches here
 +    cd "${_pkg}/kernel"
-     # patches here
++     # patches here
 +    patch -p2 -i ${srcdir}/001-fix-function-declaration.patch
 +    patch -p2 -i ${srcdir}/002-Kbuild-clang-options.patch
 +    patch -p1 -i ${srcdir}/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
