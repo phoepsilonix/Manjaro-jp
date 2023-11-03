@@ -67,6 +67,16 @@ sudo swapon /dev/sdX
 pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
+3. 在某些应用程序中无法输入日文时  
+如果仍保留旧设置并在 gtk-im-module 中进行了某些设置，可能会出现在某些应用程序中无法输入日语的情况。
+```
+gsettings get org.gnome.desktop.interface gtk-im-module
+```
+如果该命令显示 "gtk-im-context-simple "或类似设置，请使用以下命令删除该设置。
+```
+gsettings set org.gnome.desktop.interface gtk-im-module ''
+```
+
 ##### 附加說明： 2023-02-11  
 [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/) 在最新版本的（2023-02-11-）中，增加了上述措施。  
 我們還修改了安裝程式，以添加一個進程，以便在安裝期間啟用交換分區。

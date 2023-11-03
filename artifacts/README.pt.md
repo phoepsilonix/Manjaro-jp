@@ -64,6 +64,16 @@ pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
+3. Quando não é possível introduzir a língua japonesa em algumas aplicações  
+Se as definições antigas se mantiverem e algo tiver sido definido no módulo gtk-im, pode haver casos em que não seja possível introduzir japonês em algumas aplicações.
+```
+gsettings get org.gnome.desktop.interface gtk-im-module
+```
+Se este comando mostrar 'gtk-im-context-simple' ou similar, remova a configuração com o seguinte comando.
+```
+gsettings set org.gnome.desktop.interface gtk-im-module ''
+```
+
 ##### Adicionado: 2023-02-11  
 Na última versão (de 2023-02-11) de [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), as medidas acima foram acrescentadas.  
 O instalador também foi modificado para adicionar um processo para permitir a partição swap durante a instalação.

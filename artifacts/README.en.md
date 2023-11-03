@@ -66,6 +66,16 @@ pidof -xw Xwayland calamares_polkit|xargs -n1 sudo choom -n -1000 -p
 pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
+3. When Japanese input is not possible in some apps  
+If old settings remain and something has been set in gtk-im-module, there may be cases where you cannot input Japanese in some apps.
+```
+gsettings get org.gnome.desktop.interface gtk-im-module
+```
+If this command shows 'gtk-im-context-simple' or similar, remove the setting with the following command.
+```
+gsettings set org.gnome.desktop.interface gtk-im-module ''
+```
+
 ##### Addition: 2023-02-11
 In the latest version (2023-02-11~) of [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), the above measures have been added.
 Additionally, the installer has been modified to add a process to enable the swap partition during installation.

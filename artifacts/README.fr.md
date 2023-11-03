@@ -65,6 +65,16 @@ pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
+3. Lorsque la saisie du japonais n'est pas possible dans certaines applications  
+Si d'anciens réglages subsistent et que quelque chose a été défini dans gtk-im-module, il peut y avoir des cas où vous ne pouvez pas saisir le japonais dans certaines applications.
+```
+gsettings get org.gnome.desktop.interface gtk-im-module
+```
+Si cette commande affiche 'gtk-im-context-simple' ou similaire, supprimez le paramètre avec la commande suivante.
+```
+gsettings set org.gnome.desktop.interface gtk-im-module ''
+```
+
 ##### Ajouté : 2023-02-11  
 Dans la dernière version (du 2023-02-11) de [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), les mesures ci-dessus ont été ajoutées.  
 De plus, l'installateur a été modifié pour ajouter un processus permettant d'activer la partition d'échange pendant l'installation.

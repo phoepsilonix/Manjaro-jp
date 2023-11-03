@@ -93,6 +93,16 @@ sudo swapon /dev/sdX
 pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 ```
 
+4. 一部アプリで日本語入力ができない場合  
+古い設定が残っていて、gtk-im-moduleになにか設定されている場合、一部アプリで入力できないケースがあるようです。
+```
+gsettings get org.gnome.desktop.interface gtk-im-module
+```
+このコマンドで'gtk-im-context-simple'などが表示されたら、次のコマンドで設定を消しましょう。
+```
+gsettings set org.gnome.desktop.interface gtk-im-module ''
+```
+
 ----
 ### 配布場所
 ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
