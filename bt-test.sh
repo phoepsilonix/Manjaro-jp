@@ -22,8 +22,13 @@ gpg -d ~/.ssh/pass.gpg | sudo -S choom -n -1000 -p $$
 #nohup qbittorrent-nox -d $TORRENT --torrenting-port=6881 >/dev/null 2>&1 &
 
 #<< COMMENT
-aria2c -V --seed-ratio=0.0 -j$PARALLEL -x2 -s2 -Z -P -c $TORRENT -d$ARTIFACTS --enable-dht6 --enable-dht \
-    --bt-seed-unverified=true -D
+aria2c -V --seed-ratio=0.0 -j$PARALLEL -x2 -s2 -P -c $TORRENT -d$ARTIFACTS --enable-dht6 --enable-dht \
+    --bt-seed-unverified=true \
+    --dht-listen-port=6881 --dht-message-timeout=10 \
+    --listen-port=6889 \
+    -D \
+
+#    --bt-seed-unverified=true -D
 
 #   --conf $(pwd)/aria2.conf
 #COMMENT
