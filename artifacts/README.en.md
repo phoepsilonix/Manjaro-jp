@@ -570,6 +570,8 @@ Other recommended OS
 
 [EndeavourOS](https://endeavouros.com/)  
 
+[openSUSE MicroOS](https://get.opensuse.org/microos/)  
+
 ----
 ```
 [manjaro-jp]

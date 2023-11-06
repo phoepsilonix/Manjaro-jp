@@ -567,6 +567,8 @@ Outros sistemas operativos recomendados.
 
 [EndeavourOS](https://endeavouros.com/)  
 
+[openSUSE MicroOS](https://get.opensuse.org/pt/microos/)  
+
 ----
 ```
 [manjaro-jp]

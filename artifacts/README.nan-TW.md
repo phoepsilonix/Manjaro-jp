@@ -516,6 +516,8 @@ kernel-6.5.9
 
 [EndeavourOS](https://endeavouros.com/)  
 
+[openSUSE MicroOS](https://get.opensuse.org/zh-CN/microos/)  
+
 ----
 ```
 [manjaro-jp]

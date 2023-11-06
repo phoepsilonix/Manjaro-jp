@@ -606,6 +606,8 @@ Linux系OSで動きます。
 
 [EndeavourOS](https://endeavouros.com/)  
 
+[openSUSE MicroOS](https://get.opensuse.org/ja/microos/)  
+
 ----
 [Manjaroレポジトリミラー試験稼働中](https://mirror.phoepsilonix.love/manjaro/)
 ```
