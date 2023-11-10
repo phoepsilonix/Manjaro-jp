@@ -1,10 +1,12 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 508b3aa..7825e07 100644
+index f6601bc..e0acfc0 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -36,14 +36,31 @@ build() {
+@@ -35,15 +35,33 @@ build() {
+     _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
  
      cd "${_pkg}"
++    LD=ld.lld \
      make -C kernel SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 +    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
 +    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}

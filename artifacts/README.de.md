@@ -558,6 +558,13 @@ kernel-6.5.8
 ##### 20231027
 kernel-6.5.9  
 
+##### 20231103
+kernel-6.5.10  
+[ibus-mozc-with-jp-dict](https://aur.archlinux.org/packages/ibus-mozc-with-jp-dict)  
+
+##### 20231110
+kernel-6.6.1  
+
 
 ----
 Andere empfohlene Betriebssysteme  

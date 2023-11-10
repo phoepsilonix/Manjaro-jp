@@ -202,3 +202,39 @@
 [submodule "Packages/pacman-static"]
 	path = Packages/pacman-static
 	url = https://gitlab.manjaro.org/packages/core/pacman-static.git
+[submodule "Packages/extramodules-6.6/acpi_call"]
+	path = Packages/extramodules-6.6/acpi_call
+	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/acpi_call
+[submodule "Packages/extramodules-6.6/bbswitch"]
+	path = Packages/extramodules-6.6/bbswitch
+	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/bbswitch
+[submodule "Packages/extramodules-6.6/broadcom-wl"]
+	path = Packages/extramodules-6.6/broadcom-wl
+	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/broadcom-wl
+[submodule "Packages/extramodules-6.6/nvidia"]
+	path = Packages/extramodules-6.6/nvidia
+	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/nvidia
+[submodule "Packages/extramodules-6.6/nvidia-390xx"]
+	path = Packages/extramodules-6.6/nvidia-390xx
+	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/nvidia-390xx
+[submodule "Packages/extramodules-6.6/nvidia-470xx"]
+	path = Packages/extramodules-6.6/nvidia-470xx
+	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/nvidia-470xx
+[submodule "Packages/extramodules-6.6/r8168"]
+	path = Packages/extramodules-6.6/r8168
+	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/r8168
+[submodule "Packages/extramodules-6.6/rtl8723bu"]
+	path = Packages/extramodules-6.6/rtl8723bu
+	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/rtl8723bu
+[submodule "Packages/extramodules-6.6/tp_smapi"]
+	path = Packages/extramodules-6.6/tp_smapi
+	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/tp_smapi
+[submodule "Packages/extramodules-6.6/vhba-module"]
+	path = Packages/extramodules-6.6/vhba-module
+	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/vhba-module
+[submodule "Packages/extramodules-6.6/zfs"]
+	path = Packages/extramodules-6.6/zfs
+	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/zfs
+[submodule "Packages/extramodules-6.6/virtualbox"]
+	path = Packages/extramodules-6.6/virtualbox
+	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/virtualbox

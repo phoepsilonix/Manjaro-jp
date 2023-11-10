@@ -588,6 +588,9 @@ kernel-6.5.9
 kernel-6.5.10  
 [ibus-mozc-with-jp-dict](https://aur.archlinux.org/packages/ibus-mozc-with-jp-dict)  
 
+##### 20231110
+kernel-6.6.1  
+
 
 ----
 ###### おすすめ映像編集ソフト  
