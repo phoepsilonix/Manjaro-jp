@@ -2,7 +2,7 @@
 ### 
 ## Japanese language support for [Manjaro Linux](https://manjaro.org/)
 　The default includes support for Japanese input and display, including the live environment.  
-[kernel-6.5 series](https://kernel.org/).  
+[kernel-6.6 series](https://kernel.org/).  
 
 We plan to provide three types of official environments: KDE, Xfce, and GNOME.  
 The distribution files include ISO and some package files.  

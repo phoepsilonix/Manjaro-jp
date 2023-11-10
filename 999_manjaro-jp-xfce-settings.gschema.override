@@ -1,0 +1,3 @@
+[org.freedesktop.ibus.general]
+preload-engines=['xkb:jp::jpn', 'mozc-jp']
+

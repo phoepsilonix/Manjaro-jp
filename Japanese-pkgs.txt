@@ -8,6 +8,7 @@
 
 #ibus-mozc no need asian-input-support
 manjaro-jp/ibus-mozc-with-jp-dict
+#manjaro-asian-input-support-ibus
 
 # for asian?
 #fcitx-table-other
