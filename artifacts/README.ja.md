@@ -591,6 +591,17 @@ kernel-6.5.10
 ##### 20231110
 kernel-6.6.1  
 
+##### 20231121
+manjaro-jpのデータベースの署名をなくしました。パッケージのみ署名ありにします。  
+pamacで署名のエラーが発生する場合には、次のコマンドを試してください。
+
+```
+sudo rm /var/tmp/pamac/dbs/sync/manjaro-jp*sig
+sudo rm /var/lib/pacman/sync/manjaro-jp*sig
+sudo pacman-key --populate
+sudo pacman -Syy
+```
+
 
 ----
 ###### おすすめ映像編集ソフト  

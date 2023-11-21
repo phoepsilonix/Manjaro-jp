@@ -59,11 +59,13 @@ LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz --sign --key $repo_key ${pkgfi
 #repo-add $repo.db.tar.xz -R --sign --key $repo_key ./*.zst 
 #repo-add $repo.db.tar.xz -n -R --sign --key $repo_key ./*.zst
 
-# レポジトリデータベースの署名の検証
+# レポジトリデータベースの署名を削除する
+# pamacとの整合性のため、パッケージのみ署名を残す
 for f in *.{db,files}.tar.xz.sig
 do
-	echo "${f%.*} gpg verify"
-	gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -v --default-key $repo_key --verify $f ${f%.*} || { echo "repo db verify error" ; exit 1; }
+	#echo "${f%.*} gpg verify"
+	#gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -v --default-key $repo_key --verify $f ${f%.*} || { echo "repo db verify error" ; exit 1; }
+        rm $f
 done
 
 # パッケージの署名の検証

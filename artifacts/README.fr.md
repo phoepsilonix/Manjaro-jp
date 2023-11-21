@@ -564,6 +564,16 @@ kernel-6.5.10
 ##### 20231110
 kernel-6.6.1  
 
+##### 20231121
+manjaro-jp database signatures have been removed. Only the package will be signed.  
+If you get a signature error with pamac, try the following command.
+```
+sudo rm /var/tmp/pamac/dbs/sync/manjaro-jp*sig
+sudo rm /var/lib/pacman/sync/manjaro-jp*sig
+sudo pacman-key --populate
+sudo pacman -Syy
+```
+
 
 ----
 Autres systèmes d'exploitation recommandés  

@@ -38,12 +38,16 @@ do
         #git diff --binary HEAD | git apply --check --stat --apply --allow-empty -R -
         git reset --hard master
         git switch master
-        git reset --hard HEAD~
-        git pull
-        #git checkout master;
+        git clean ./ -f
+        #git reset --hard HEAD~
+        #git pull
+        git checkout master
         #git switch -f master
         #git pull origin master
         case "$kver" in
+            "6.6" ) 
+                patch1="patch-${m}-linux6.6.patch" 
+                patch2="kmod-sign-${m}-linux6.6.patch" ;;
             "6.5" ) 
                 patch1="patch-${m}-linux6.5.patch" 
                 patch2="kmod-sign-${m}-linux6.5.patch" ;;
