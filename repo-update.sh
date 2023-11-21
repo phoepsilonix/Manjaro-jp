@@ -67,6 +67,7 @@ do
 	#gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -v --default-key $repo_key --verify $f ${f%.*} || { echo "repo db verify error" ; exit 1; }
         rm $f
 done
+rm manjaro-jp.db.sig manjaro-jp.files.sig
 
 # パッケージの署名の検証
 for f in *.pkg.tar.*.sig
