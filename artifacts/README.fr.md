@@ -565,6 +565,8 @@ kernel-6.5.10
 kernel-6.6.1  
 
 ##### 20231121
+kernel-6.6.2  
+
 manjaro-jp database signatures have been removed. Only the package will be signed.  
 If you get a signature error with pamac, try the following command.
 ```
