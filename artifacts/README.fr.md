@@ -533,7 +533,6 @@ kernel-6.4.15
 
 ##### 20230914
 kernel-6.4.16
-</details>
 
 ##### 20230925
 kernel-6.5.5
@@ -563,6 +562,7 @@ kernel-6.5.10
 
 ##### 20231110
 kernel-6.6.1  
+</details>
 
 ##### 20231121
 kernel-6.6.2  
@@ -575,6 +575,9 @@ sudo rm /var/lib/pacman/sync/manjaro-jp*sig
 sudo pacman-key --populate
 sudo pacman -Syy
 ```
+
+##### 20231201
+kernel-6.6.3  
 
 
 ----
