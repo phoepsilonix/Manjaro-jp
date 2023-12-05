@@ -43,7 +43,6 @@ rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/unstable/multilib/
 rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/stable/extra/x86_64/{libxnvctrl,nvidia-*{utils,dkms,settings},virtualbox-host-dkms,zfs-utils,zfs-dkms}* ./
 rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/stable/multilib/x86_64/lib32-nvidia-*utils* ./
 
-
 #nvidia以外のパッケージの登録。古いものを削除。
 # バージョンでsortしておく。repo-addは、あとから追加されたものが優先されるため。
 pkgfiles=$(ls -v --ignore={manjaro-jp.,nvidia-,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}* --ignore=*.sig --ignore=*.html)

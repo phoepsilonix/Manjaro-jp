@@ -28,6 +28,9 @@ libcanberra
 >multilib lib32-libcanberra
 libdvdcss
 manjaro-alsa
+manjaro-gstreamer
+>extra manjaro-modem
+manjaro-pipewire
 phonon-qt5-gstreamer
 ## Btrfs
 grub-btrfs

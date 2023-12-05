@@ -40,7 +40,7 @@ do
         git switch master
         git clean ./ -f
         #git reset --hard HEAD~
-        #git pull
+        git pull
         git checkout master
         #git switch -f master
         #git pull origin master

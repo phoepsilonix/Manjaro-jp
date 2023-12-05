@@ -584,6 +584,9 @@ sudo pacman -Syy
 ##### 20231201
 kernel-6.6.3  
 
+##### 20231204
+kernel-6.6.4  
+
 
 ----
 Other recommended OS  
