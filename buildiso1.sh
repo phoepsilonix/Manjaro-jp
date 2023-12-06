@@ -13,7 +13,7 @@ usb=/run/media/phoepsilonix/Ventoy
 gkey="-g $(cat ~/.gnupg/sign.txt)"
 #gkey=""
 
-kernel=linux65
+kernel=linux66
 
 # 保存先フォルダ
 artifacts=`pwd`/artifacts
@@ -25,50 +25,62 @@ pkg3=Packages-Root
 
 # エディション指定
 editions=(
-        "manjaro gnome"
-        "manjaro kde"
-        "manjaro xfce"
-        "community cinnamon"
-        "community mate"
+       "manjaro gnome"
+       "manjaro kde"
+#        "manjaro gnome-next"
+       "manjaro xfce"
+       "manjaro architect"
+#        "community cinnamon"
+#        "community mate"
        # "community openbox"
-        "manjaro architect"
 #	"community lxqt"
 #	"community lxqt-kwin"
-	"community sway"
-	"community budgie"
+#	"community sway"
+#	"community budgie"
 #	"manjaro netinstall"
 )
 
 # 初期化
 #rm -rf $artifacts
 #mkdir -p $artifacts
-rm -rf $pkgdir
-mkdir -p $pkgdir
-cp -r iso-profiles-orig/* $pkgdir/
+#rm -rf $pkgdir
+#mkdir -p $pkgdir
+#cp -a iso-profiles-orig $pkgdir
+#cp -r iso-profiles-orig/shared $pkgdir/
 sync
 
 # profiles.confを微修正
 # user-repos.confを追加したiso-profilesを用意する
 
+rm -r "$pkgdir/shared/"
+cp -r iso-profiles-orig/shared "$pkgdir/"
 # add Japanese pkgs and vivaldi
 for edition in "${editions[@]}"
 do
 	data=(${edition[@]})
 	path=${data[0]}/${data[1]}
         mkdir -p $pkgdir/$path/
-        rm -r $pkgdir/$path/*
-        echo cp -r iso-profiles-orig/$path $pkgdir/${data[0]}/
-        cp -r iso-profiles-orig/$path $pkgdir/${data[0]}/
+        rm -r "$pkgdir/${data[0]}/${data[1]}"
+        #echo rm -rf "$pkgdir/$path/*"
+        #rm -rf "$pkgdir/$path/*"
+        sync
+        echo cp -r iso-profiles-orig/$path "$pkgdir/${data[0]}/"
+        cp -r iso-profiles-orig/$path "$pkgdir/${data[0]}/"
 	#cat $pkgs >> $pkgdir/$edition[0]/$edition[1]/$pkg1
 	# Desktopパッケージに加える。ライブは不要みたい。
         if [[ "${data[1]}" != "architect" ]] ;then
+            echo ${data[1]}
+            echo "cat $pkgs >> $pkgdir/$path/$pkg2"
             cat $pkgs >> $pkgdir/$path/$pkg2
         # Packages-Rootに追加
+            echo "cat $pkgs2 >> $pkgdir/$path/$pkg3"
             cat $pkgs2 >> $pkgdir/$path/$pkg3
+            if [[ "${data[1]}" != "gnome" ]] ;then
+                echo "manjaro-asian-input-support-ibus" >> $pkgdir/$path/$pkg2
+            fi
         fi
         sync
 done
-
 
 # buildiso prepare image
 echo "build image"
@@ -76,6 +88,8 @@ for edition in "${editions[@]}"
 do
 	data=(${edition[@]})
 	ed=${data[1]}
+        echo $data
+        echo $ed
         gpg -dq ~/.ssh/pass.gpg|sudo -S pwd >/dev/null 2>&1
         sudo rm /var/lib/manjaro-tools/buildiso/$ed -rf
         sync
@@ -85,17 +99,14 @@ do
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build
         echo "build iso"
         echo "buildiso -d xz -k $kernel -p $ed $gkey"
-        sync
         gpg -dq ~/.ssh/pass.gpg|sudo -S pwd >/dev/null 2>&1
-        sync
         touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback -b INFO
-        buildiso  -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
+        sync
+        echo buildiso -o -d xz -f -k $kernel -p $ed $gkey
+        buildiso -o -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
         #buildiso  -zc -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
         sync
-        echo "Move iso files to Artifacts folder"
-        find /var/cache/manjaro-tools/iso -type f -name "*.iso" -exec mv -t $artifacts {} + && sync
-        #find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
-        #fd -tf -g "*.txt" /var/cache/manjaro-tool/iso -X mv {} $artifacts/ && sync
+        find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
         . artifacts/rename.sh
 #        buildiso -x -d xz -f -k $kernel -p $ed $gkey -t $usb/tmp/iso 
 #        buildiso -zc -d xz -f -k $kernel -p $ed $gkey
@@ -105,12 +116,12 @@ do
         sync
 done
 
-#echo "Move iso files to Artifacts folder"
+echo "Move iso files to Artifacts folder"
 #sudo chown -R phoepsilonix:phoepsilonix $usb/tmp/iso/
-#sync
-#find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
+sync
+find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
 #rsync -avn $usb/artifacts/*.iso $artifacts/ && sync
-#        sync
+        sync
 
 # 終了
 echo "Done"

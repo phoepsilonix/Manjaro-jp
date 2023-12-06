@@ -25,11 +25,11 @@ pkg3=Packages-Root
 
 # エディション指定
 editions=(
-#       "manjaro gnome"
-#       "manjaro architect"
-        "manjaro kde"
+       "manjaro gnome"
+       "manjaro kde"
 #        "manjaro gnome-next"
-        "manjaro xfce"
+       "manjaro xfce"
+       "manjaro architect"
 #        "community cinnamon"
 #        "community mate"
        # "community openbox"
@@ -45,24 +45,22 @@ editions=(
 #mkdir -p $artifacts
 #rm -rf $pkgdir
 #mkdir -p $pkgdir
+#cp -a iso-profiles-orig $pkgdir
 #cp -r iso-profiles-orig/shared $pkgdir/
-#sync
+sync
 
 # profiles.confを微修正
 # user-repos.confを追加したiso-profilesを用意する
 
+rm -r "$pkgdir/shared/"
+cp -r iso-profiles-orig/shared "$pkgdir/"
 # add Japanese pkgs and vivaldi
 for edition in "${editions[@]}"
 do
 	data=(${edition[@]})
 	path=${data[0]}/${data[1]}
         mkdir -p $pkgdir/$path/
-        echo rm -r "$pkgdir/shared/*"
-        rm -r "$pkgdir/shared/*"
-        echo cp -r iso-profiles-orig/shared "$pkgdir/"
-        cp -r iso-profiles-orig/shared "$pkgdir/"
-        echo rm -r "$pkgdir/${data[0]}/${data[1]}"
-        rm -v "$pkgdir/${data[0]}/${data[1]}"
+        rm -r "$pkgdir/${data[0]}/${data[1]}"
         #echo rm -rf "$pkgdir/$path/*"
         #rm -rf "$pkgdir/$path/*"
         sync
@@ -71,8 +69,11 @@ do
 	#cat $pkgs >> $pkgdir/$edition[0]/$edition[1]/$pkg1
 	# Desktopパッケージに加える。ライブは不要みたい。
         if [[ "${data[1]}" != "architect" ]] ;then
+            echo ${data[1]}
+            echo "cat $pkgs >> $pkgdir/$path/$pkg2"
             cat $pkgs >> $pkgdir/$path/$pkg2
         # Packages-Rootに追加
+            echo "cat $pkgs2 >> $pkgdir/$path/$pkg3"
             cat $pkgs2 >> $pkgdir/$path/$pkg3
             if [[ "${data[1]}" != "gnome" ]] ;then
                 echo "manjaro-asian-input-support-ibus" >> $pkgdir/$path/$pkg2
@@ -80,7 +81,6 @@ do
         fi
         sync
 done
-
 
 # buildiso prepare image
 echo "build image"
