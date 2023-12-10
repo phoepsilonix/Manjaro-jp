@@ -15,7 +15,7 @@ ARTIFACTS=$(pwd)/artifacts/
 #done
 gpg -d ~/.ssh/pass.gpg | sudo -S choom -n -1000 -p $$
 pid=$(pgrep aria2c)
-[[ -n "$pid" ]] && echo $pid && kill $pid && sleep 3
+[[ -n "$pid" ]] && echo "kill" $pid && kill $pid && sleep 3
 #--bt-seed-unverified=true \
 #aria2c -V --seed-ratio=0.0 -c $MAGNET -T artifacts/*.torrent -dartifacts --enable-dht6 --enable-dht -j2 -x2 -s2 \
 #aria2c -V --seed-ratio=0.0 -T artifacts/*.torrent -dartifacts --enable-dht6 --enable-dht -j2 -x2 -s2 \
