@@ -582,6 +582,9 @@ kernel-6.6.3
 ##### 20231204
 kernel-6.6.4  
 
+##### 20231215
+kernel-6.6.7
+
 
 ----
 Autres systèmes d'exploitation recommandés  
