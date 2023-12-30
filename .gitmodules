@@ -115,9 +115,6 @@
 [submodule "Packages/manjaro-live"]
 	path = Packages/manjaro-live
 	url = https://gitlab.manjaro.org/packages/extra/manjaro-live.git
-[submodule "Packages/libressl"]
-	path = Packages/libressl
-	url = https://gitlab.archlinux.org/phoepsilonix/libressl.git
 [submodule "Packages/extramodules-6.1/acpi_call"]
 	path = Packages/extramodules-6.1/acpi_call
 	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/acpi_call
@@ -157,12 +154,6 @@
 [submodule "Packages/calamares"]
 	path = Packages/calamares
 	url = https://gitlab.manjaro.org/packages/extra/calamares.git
-[submodule "Packages/pacman"]
-	path = Packages/pacman
-	url = https://gitlab.manjaro.org/packages/core/pacman.git
-[submodule "Packages/pacman-static"]
-	path = Packages/pacman-static
-	url = https://gitlab.manjaro.org/packages/core/pacman-static.git
 [submodule "Packages/extramodules-6.6/acpi_call"]
 	path = Packages/extramodules-6.6/acpi_call
 	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/acpi_call
