@@ -100,3 +100,5 @@ yt-dlp
 #gpg openpgp libreoffice
 seahorse
 
+intel-ucode
+amd-ucode
