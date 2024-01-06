@@ -146,7 +146,7 @@
 	path = Packages/extramodules-6.1/vhba-module
 	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/vhba-module
 [submodule "Packages/extramodules-6.1/virtualbox-modules"]
-	path = Packages/extramodules-6.1/virtualbox-modules
+	path = Packages/extramodules-6.1/virtualbox
 	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/virtualbox-modules
 [submodule "Packages/extramodules-6.1/zfs"]
 	path = Packages/extramodules-6.1/zfs
