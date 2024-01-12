@@ -29,7 +29,7 @@ rsync -avPL --delete --delete-after manjaro-jp/ phoepsilonix@web.sourceforge.net
 
 #echo "OSDN"
 # OSDNへアップデート
-#eval `keychain --agents ssh --eval id_ed25519`
+eval `keychain --agents ssh --eval id_ed25519`
 #rsync -avPL --delete-after --delay-updates --safe-links --size-only --no-perms --delete --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
 #rsync -avPL --delete-after --delay-updates --safe-links --size-only --no-perms --delete --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./ phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }
 #rsync -avPLc --delete-after --delay-updates --safe-links --no-perms --delete --exclude={*\.html,*\.css,*\.ts,*\.js,*\.ts,*\.sh} ./*.sig ./*.md phoepsilonix@storage.osdn.net:/storage/groups/m/ma/manjaro-jp/ || { echo "OSDN rsync error" ; exit 1 ; }

@@ -590,6 +590,9 @@ kernel-6.6.4
 ##### 20231215
 kernel-6.6.7
 
+##### 20240107
+kernel-6.6.10
+
 
 ----
 Other recommended OS  
