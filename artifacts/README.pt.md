@@ -2,7 +2,7 @@
 
 ## Suporte em língua japonesa para [Manjaro Linux](https://manjaro.org/)
 　Suporta a entrada e exibição japonesa por defeito, incluindo ambientes ao vivo.  
-[kernel-6.6 series](https://kernel.org/).
+[kernel-6.7 series](https://kernel.org/).
 
 KDE, Xfce e GNOME estarão disponíveis de acordo com a versão oficial.  
 Os ficheiros de distribuição são ISO e alguns ficheiros de pacotes.  
@@ -586,6 +586,9 @@ kernel-6.6.7
 
 ##### 20240107
 kernel-6.6.10
+
+##### 20240113
+kernel-6.7
 
 
 ----
