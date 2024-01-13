@@ -4,8 +4,8 @@
 # Author: https://github.com/yuru7/Firge
 
 pkgname=ttf-firge
-pkgver=0.2.0
-pkgrel=5
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A Japanese monospace font for programming"
 url="https://github.com/yuru7/Firge"
 license=('custom:SIL')
@@ -15,8 +15,8 @@ source=(
         ${url}/releases/download/v${pkgver}/FirgeNerd_v${pkgver}.zip
         ${url}/raw/master/LICENSE
 )
-sha256sums=('18ccd0d5c7689a02af4a7217912c0112db9f24071e8b36a716baef3b446c32e7'
-            'da3dd6437aeb3b68cf57c868602f1e7135b0eed7a91e4682f28a5efd7716afc9'
+sha256sums=('c986f621000a6598064c7e2078322ed02040af4f7804d258033df949b35b0527'
+            '54cd76378fbc5025f42d441d95ca6ec1d3ecc4270e6107558840fed7c04cfe4f'
             'b72891ba4f9947243d786d5d88b655fc48434d35f669bab1fa4d34b575c07601')
 package() {
   cd ${srcdir}
