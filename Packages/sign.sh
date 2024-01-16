@@ -2,7 +2,7 @@
 
 repo_key=$(cat ~/.gnupg/sign.txt)
 curdir=${PWD##*/}
-for m in $(cat ../extramodules.txt)
+for m in $(cat ./extramodules.txt)
 do
         cd $m || continue;
 # 署名がないパッケージに署名をする

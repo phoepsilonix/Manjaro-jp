@@ -1,0 +1,36 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index d688e8a..01c7065 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -27,8 +27,10 @@ makedepends=('git' "$_linuxprefix-headers")
+ groups=("$_linuxprefix-extramodules")
+ install="${_pkgname}.install"
+ _commit=6e80bb1752280bcd142d86ecd0739661bd0e8312  # tags/tp-smapi/0.44
+-source=("git+https://github.com/evgeni/tp_smapi#commit=$_commit")
+-sha256sums=('SKIP')
++source=("git+https://github.com/evgeni/tp_smapi#commit=$_commit"
++        'tp_smapi-clang.patch')
++sha256sums=('SKIP'
++            'cb5d682450af8ac8436e1645d4fdaa32382ae83cc03c03b0c2f878f78e017be5')
+ 
+ pkgver() {
+   cd $_pkgname
+diff --git a/tp_smapi-clang.patch b/tp_smapi-clang.patch
+new file mode 100644
+index 0000000..fb37d7d
+--- /dev/null
++++ b/tp_smapi-clang.patch
+@@ -0,0 +1,13 @@
++diff --git a/tp_smapi.c b/tp_smapi.c
++index 6346287..1e54da2 100644
++--- a/tp_smapi.c
+++++ b/tp_smapi.c
++@@ -199,7 +199,7 @@
++ 			 "=m"(tmpEDI),
++ 			 "=m"(tmpESI)
++ 			:"m"(inEBX), "m"(inECX), "m"(inEDI), "m"(inESI),
++-			 "m"((u16)smapi_port)
+++			 "m"(smapi_port)
++ 			:"%eax", "%ebx", "%ecx", "%edx", "%edi",
++ 			 "%esi");
++ 

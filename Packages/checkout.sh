@@ -25,7 +25,7 @@ sudo chown -R phoepsilonix:phoepsilonix $exdir
 #cd ..
 #
 #for m in "nvidia-390xx" "nvidia-470xx"
-for m in $(cat ../extramodules.txt)
+for m in $(cat ./extramodules.txt)
 do
         # $mがなかったら、追加する。
         echo $m;
@@ -45,6 +45,9 @@ do
         #git switch -f master
         #git pull origin master
         case "$kver" in
+            "6.7" ) 
+                patch1="patch-${m}-linux6.7.patch" 
+                patch2="kmod-sign-${m}-linux6.7.patch" ;;
             "6.6" ) 
                 patch1="patch-${m}-linux6.6.patch" 
                 patch2="kmod-sign-${m}-linux6.6.patch" ;;

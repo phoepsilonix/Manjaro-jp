@@ -1,0 +1,42 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 0fbf171..a4ef7e0 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -36,6 +36,15 @@ build() {
+   msg2 "$CFLAGS, ${CXXFLAGS}"
+ 
+   fakeroot dkms build --dkmstree "$srcdir" -m "broadcom-wl/$pkgver" -k "$_kernver"
++  cd "$srcdir/$_pkgname/$pkgver/$_kernver/$CARCH/module"
++  if [ -f *.ko.zst ] ;then
++          zstd --rm -q -d *.zst
++  elif [ -f *.ko.xz ] ;then
++          xz -q -d *.xz
++  fi
++  SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
++  SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
++  /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 *.ko
+ }
+ 
+ package(){
+@@ -43,8 +52,20 @@ package(){
+ 
+   install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
+   cd "broadcom-wl/$pkgver/$_kernver/$CARCH/module"
++  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
++  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
++  COMPRESS=${COMPRESS% 1}
++  case $COMPRESS in
++  ZSTD)
++    COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
++    ;;
++  XZ)
++    COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
++    ;;
++  esac
+   install -m 644 * "$pkgdir/usr/lib/modules/$_extramodules"
+-  find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
++  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
+   sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/$_pkgname.install"
+   install -D -m 644 "${srcdir}/broadcom-wl-dkms.conf" "${pkgdir}/etc/modprobe.d/${_linuxprefix}-broadcom-wl.conf"
++  install -Dm644 /usr/share/licenses/broadcom-wl-dkms/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+ }

@@ -13,7 +13,7 @@ gpg -dq ~/.ssh/pass.gpg | sudo -S pwd >/dev/null
 sudo choom -n -1000 -p $$
 sudo chown -R phoepsilonix:phoepsilonix $exdir
 #for m in $(grep nvidia ../extramodules.txt)
-for m in $(cat ../extramodules.txt)
+for m in $(cat ./extramodules.txt)
 do
         cd $m || continue
         cat ~/.ssh/gpg-passphrase|sudo -S pwd > /dev/null

@@ -1,0 +1,47 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index daed54d..883d672 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -20,13 +20,16 @@ depends=('glibc' "$_linuxprefix")
+ makedepends=("$_linuxprefix-headers")
+ provides=("$_pkgname=$pkgver")
+ source=("https://github.com/mtorromeo/r8168/archive/$pkgver/$_pkgname-$pkgver.tar.gz"
+-        "https://github.com/mtorromeo/r8168/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz.asc")
++        "https://github.com/mtorromeo/r8168/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz.asc"
++        linux64.patch)
+ sha256sums=('cd8ee58a260e9b654080d39e3a42e3a3fb821041ee79e631b4647d84120aa999'
+-            'SKIP')
++            'SKIP'
++            '46b3b404d20b0fc2b46028fca4e9a328134c14f7d2d595b432f9c4bb1f7a93a8')
+ validpgpkeys=('0CADAACF70F64C654E131B3111675C743429DDEF') # Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+ 
+ prepare() {
+   cd "$_pkgname-$pkgver"
++    patch -p1 -i ../linux64.patch
+ }
+ 
+ build() {
+diff --git a/linux64.patch b/linux64.patch
+new file mode 100644
+index 0000000..f44a857
+--- /dev/null
++++ b/linux64.patch
+@@ -0,0 +1,18 @@
++diff --git a/src/r8168_n.c b/src/r8168_n.c
++index 7e9e2ea..8716c69 100755
++--- a/src/r8168_n.c
+++++ b/src/r8168_n.c
++@@ -81,6 +81,10 @@
++ #include <linux/mdio.h>
++ #endif
++ 
+++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6,4,10)
+++#include <net/gso.h>
+++#endif
+++
++ #include <asm/io.h>
++ #include <asm/irq.h>
++ 
++-- 
++2.40.1
++
