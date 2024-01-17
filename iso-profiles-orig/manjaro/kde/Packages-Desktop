@@ -119,7 +119,7 @@ plasma-desktop
 plasma-nm
 plasma-pa
 plasma-simplemenu
-#plasma-wayland-session # seems to need sddm-git
+plasma-wayland-session
 plasma-workspace
 >extra plasma-workspace-wallpapers
 powerdevil
