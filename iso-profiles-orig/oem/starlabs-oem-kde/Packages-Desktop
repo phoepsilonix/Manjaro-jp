@@ -270,7 +270,6 @@ xdg-utils
 #>extra kernel-alive
 
 ## Misc
-manjaro-hotfixes
 >basic squashfs-tools
 
 ## OEM
