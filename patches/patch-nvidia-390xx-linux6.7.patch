@@ -242,10 +242,10 @@ index 0000000..898e21d
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index 1104a93..c09acaa 100644
+index cbac21f..1207ef9 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -33,6 +33,9 @@ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+@@ -32,6 +32,9 @@ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
          'kernel-6.3.patch'
          'kernel-6.4.patch'
          'kernel-6.6.patch'
@@ -255,7 +255,7 @@ index 1104a93..c09acaa 100644
          'buildfix_kernel_6.5-garbage-collect-all-references-to-get_user.patch'
          'buildfix_kernel_6.5-handle-get_user_pages-vmas-argument-remova.patch')
  sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
-@@ -40,6 +43,9 @@ sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
+@@ -39,6 +42,9 @@ sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
              '4284f95f808df4e43afc4632e3fc1f87da1a805f0f6f9af1f6b519c7cf7562b4'
              '6a73ba0760c278a835ec5dcc6f3a9e0f8f0787fde95e832c38e8038152242708'
              '070879076eb75801ecf42819ccf89f09556db421475cb883413b10876a306f87'

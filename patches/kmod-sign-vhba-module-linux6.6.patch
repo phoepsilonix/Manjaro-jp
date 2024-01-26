@@ -1,8 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 181c28e..857df8e 100644
+index c326427..d9ef731 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -34,16 +34,31 @@ build() {
+@@ -32,12 +32,27 @@ build() {
  
    cd "$_pkgname-$pkgver"
    make -j1 KDIR=/usr/lib/modules/${_kernver}/build
@@ -13,8 +13,8 @@ index 181c28e..857df8e 100644
  
  package() {
    cd "$_pkgname-$pkgver"
-   install -D vhba.ko "$pkgdir/usr/lib/modules/$_extramodules/vhba.ko"
-+  _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
+   install -D vhba.ko "$pkgdir/usr/lib/modules/${_kernver}/extramodules/vhba.ko"
+-  find "$pkgdir" -name '*.ko' -exec gzip -9 {} \;
 +  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
 +  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
 +  COMPRESS=${COMPRESS% 1}
@@ -26,12 +26,8 @@ index 181c28e..857df8e 100644
 +    COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
 +    ;;
 +  esac
- 
-   sed -i "s/EXTRAMODULES=.*/EXTRAMODULES=$_extramodules/" \
-     "$startdir/vhba-module.install"
- 
--  find "$pkgdir" -name '*.ko' -exec gzip -9 {} \;
++ 
 +  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
- 
    install -Dm 644 "../60-vhba.rules" \
      "$pkgdir/usr/lib/udev/rules.d/60-$_linuxprefix-vhba.rules"
+ }

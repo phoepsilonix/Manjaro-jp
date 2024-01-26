@@ -2,13 +2,18 @@
 
 . ../../keychain.sh
 
-curdir=${PWD##*/}
-exdir=$(cat /usr/lib/modules/${curdir}-MANJARO/version)
+#curdir=${PWD##*/}
+curdir=${PWD/*extramodules-/}
+ver=$curdir
+kver=$curdir
+curdir=$(echo $curdir|sed "s|\.||")
+curdir=$(cat /usr/src/linux${curdir}/version)
+exdir=$(cat /usr/lib/modules/${curdir}/build/version)
+#exdir=$(cat /usr/lib/modules/${curdir}-MANJARO/version)
 exdir=/usr/lib/modules/${exdir}/build
 echo $exdir
-ver=${curdir/extramodules-}
-kver=${curdir/extramodules-}
-if [[ "$ver" == "6.1" ]] ;then ver=6.5
+echo "kver" $kver
+if [[ "$ver" == "6.1" ]] ;then ver=6.6
 elif [[ "$ver" == "5.10" ]] ;then ver=6.1
 else ver=6.1
 fi

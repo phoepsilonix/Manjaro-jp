@@ -1,9 +1,9 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index ea76ea4..325a212 100644
+index f6e5f56..92eb113 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -35,6 +35,7 @@ build() {
-     _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+@@ -33,6 +33,7 @@ prepare() {
+ build() {
  
      cd "${_pkg}"
 +    LD=ld.lld \

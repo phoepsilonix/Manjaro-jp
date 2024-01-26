@@ -1,17 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 952104c..ad3b9a6 100644
+index f98b998..5da5569 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -16,7 +16,7 @@ makedepends=("$_linuxprefix-headers")
- provides=("$_pkgname=$pkgver")
- groups=("$_linuxprefix-extramodules")
- install=bbswitch.install
--source=("$pkgname-$pkgver.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz"
-+source=("$_pkgname-$pkgver.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz"
-         'kernel57.patch' 'kernel518.patch')
- sha256sums=('76cabd3f734fb4fe6ebfe3ec9814138d0d6f47d47238521ecbd6a986b60d1477'
-             '3b8039f3cd32d2aa8ad0b2426f28faac218eacd134c1e39454c9feca9d612789'
-@@ -34,12 +34,26 @@ build() {
+@@ -39,11 +39,25 @@ build() {
    cd ${_pkgname}-${pkgver}
    # KDIR is necessary even when cleaning
    make KDIR=/usr/lib/modules/${_kernver}/build
@@ -21,10 +12,9 @@ index 952104c..ad3b9a6 100644
  }
  
  package() {
-+  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
    cd ${_pkgname}-${pkgver}
-   install -D -m 644 bbswitch.ko $pkgdir/usr/lib/modules/${_extramodules}/bbswitch.ko
--  # gzip -9 modules
+   install -D -m 644 bbswitch.ko $pkgdir/usr/lib/modules/${_kernver}/extramodules/bbswitch.ko
+   # gzip -9 modules
 -  find "$pkgdir" -name '*.ko' -exec gzip -9 {} \;
 +  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
 +  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
@@ -38,5 +28,4 @@ index 952104c..ad3b9a6 100644
 +    ;;
 +  esac
 +  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
-   sed -i -e "s/EXTRAMODULES=.*/EXTRAMODULES=${_extramodules}/g" $startdir/*.install
  }

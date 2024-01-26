@@ -1,8 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index ef87bc5..c0cad64 100644
+index 0147398..c8b53b9 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -30,6 +30,27 @@ build() {
+@@ -28,6 +28,27 @@ build() {
    # build host modules
    echo 'Host modules'
    fakeroot dkms build --dkmstree "$srcdir" -m vboxhost/${pkgver}_OSE -k ${_kernver}
@@ -30,9 +30,9 @@ index ef87bc5..c0cad64 100644
  }
  
  package(){
-@@ -38,8 +59,18 @@ package(){
+@@ -35,8 +56,18 @@ package(){
    cd "vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
-   install -Dm 644 * -t "$pkgdir/usr/lib/modules/$_extramodules/"
+   install -Dm 644 * -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
  
 -  # compress each module individually
 -  find "$pkgdir" -name '*.ko' -exec xz -T1 {} +

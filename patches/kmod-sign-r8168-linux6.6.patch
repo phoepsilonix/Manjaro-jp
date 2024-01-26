@@ -1,8 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index daed54d..6e29ee9 100644
+index 32f8016..0ae7edb 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -45,13 +45,29 @@ build() {
+@@ -44,13 +44,28 @@ build() {
      ENABLE_S5WOL=y \
      ENABLE_EEE=y \
      modules
@@ -13,24 +13,22 @@ index daed54d..6e29ee9 100644
  
  package() {
    cd "$_pkgname-$pkgver"
-   install -Dm644 src/*.ko -t "$pkgdir/usr/lib/modules/$_extramodules/"
--  find "$pkgdir" -name '*.ko' -exec strip --strip-debug {} +
+   install -Dm644 src/*.ko -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
++  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
++  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
++  COMPRESS=${COMPRESS% 1}
++  case $COMPRESS in
++  ZSTD)
++      COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
++      ;;
++  XZ)
++      COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
++      ;;
++  esac
++   # set the kernel we've built for inside the install script
+   find "$pkgdir" -name '*.ko' -exec strip --strip-debug {} +
 -  find "$pkgdir" -name '*.ko' -exec xz {} +
-+    _kernver="$(cat /usr/lib/modules/$_extramodules/version || true)"
-+    COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
-+    COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
-+    COMPRESS=${COMPRESS% 1}
-+    case $COMPRESS in
-+    ZSTD)
-+        COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
-+        ;;
-+    XZ)
-+        COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
-+        ;;
-+    esac
-+     # set the kernel we've built for inside the install script
-+    find "$pkgdir" -name '*.ko' -exec strip --strip-debug {} +
-+    find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
++  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
  
  # We'll let mhwd-db handle blacklisting for now
  #  echo "blacklist r8169" | \

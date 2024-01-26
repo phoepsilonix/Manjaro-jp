@@ -5,8 +5,11 @@ export IGNORE_CC_MISMATCH=1
 export LC_ALL=C
 password=$(cat ~/.ssh/gpg-passphrase)
 
-curdir=${PWD##*/}
-exdir=$(cat /usr/lib/modules/${curdir}-MANJARO/version)
+#curdir=${PWD##*/}
+curdir=${PWD/*extramodules-/}
+curdir=$(echo $curdir|sed "s|\.||")
+curdir=$(cat /usr/src/linux${curdir}/version)
+exdir=$(cat /usr/lib/modules/${curdir}/build/version)
 exdir=/usr/lib/modules/${exdir}/build
 echo $exdir
 gpg -dq ~/.ssh/pass.gpg | sudo -S pwd >/dev/null

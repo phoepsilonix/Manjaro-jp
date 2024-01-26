@@ -1,8 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 4f79ced..14445df 100644
+index 92d8d61..88e823b 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -59,6 +59,12 @@ build() {
+@@ -60,6 +60,12 @@ build() {
  
      cd "${_pkg}"
      make -C kernel SYSSRC=/usr/lib/modules/"${_kernver}/build" module
@@ -15,12 +15,11 @@ index 4f79ced..14445df 100644
  }
  
  package() {
-@@ -66,7 +72,19 @@ package() {
-     install -Dm 644 kernel/*.ko -t "${pkgdir}/usr/lib/modules/${_extramodules}/"
+@@ -67,7 +73,18 @@ package() {
+     install -Dm 644 kernel/*.ko -t "${pkgdir}/usr/lib/modules/${_kernver}/extramodules/"
  
      # compress each module individually
 -    find "${pkgdir}" -name '*.ko' -exec xz -T1 {} +
-+    _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 +    COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
 +    COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
 +    COMPRESS=${COMPRESS% 1}

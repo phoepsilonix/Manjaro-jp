@@ -1,22 +1,21 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 629562c..38bd41d 100644
+index 40a30d8..ada9277 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -24,10 +24,28 @@ build() {
+@@ -22,10 +22,27 @@ build() {
+ }
  
  package() {
-     _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
 +    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
 +    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
 +    for file in $(find "${pkgdir}" -type f -name '*.ko')
 +    do
 +        /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $file
 +    done
-     install -Dt "${pkgdir}/usr/lib/modules/${_extramodules}" -m644 zfs/${pkgver}/${_kernver}/${CARCH}/module/*
+     install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/extramodules" -m644 zfs/${pkgver}/${_kernver}/${CARCH}/module/*
  
      # compress each module individually
 -    find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
-+    _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 +    COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
 +    COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
 +    COMPRESS=${COMPRESS% 1}

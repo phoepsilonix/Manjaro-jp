@@ -1,9 +1,9 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 35b4031..600698b 100644
+index eb91fc1..3714784 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -27,14 +27,29 @@ build() {
-   _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+@@ -25,6 +25,9 @@ sha256sums=('8b1902a94395c2fa5a97f81c94868a9cbc46a48e12309ad01626439bde96f1d9')
+ build() {
    cd "${_pkgname}-${pkgver}"
    make KVER="${_kernver}"
 +  SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
@@ -12,12 +12,11 @@ index 35b4031..600698b 100644
  }
  
  package() {
-   cd "${_pkgname}-${pkgver}"
+@@ -32,7 +35,18 @@ package() {
  
-+  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
-   install -dm 755 "${pkgdir}"/usr/lib/{modules/${_extramodules},modules-load.d}
-   install -m 644 acpi_call.ko "${pkgdir}"/usr/lib/modules/${_extramodules}/
--  gzip "${pkgdir}"/usr/lib/modules/${_extramodules}/acpi_call.ko
+   install -dm 755 "${pkgdir}"/usr/lib/{modules/${_kernver}/extramodules,modules-load.d}
+   install -m 644 acpi_call.ko "${pkgdir}"/usr/lib/modules/${_kernver}/extramodules/
+-  gzip "${pkgdir}"/usr/lib/modules/${_kernver}/extramodules/acpi_call.ko
 +  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
 +  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
 +  COMPRESS=${COMPRESS% 1}
