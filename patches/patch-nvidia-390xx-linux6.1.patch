@@ -242,12 +242,12 @@ index 0000000..b9c2f8a
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index 240991e..9909ca4 100644
+index c1f9a7e..1b9913a 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -28,16 +28,25 @@ provides=("nvidia=$pkgver" 'NVIDIA-MODULE')
+@@ -27,16 +27,25 @@ makedepends=("$_linuxprefix-headers")
+ provides=("nvidia=$pkgver" 'NVIDIA-MODULE')
  options=(!strip)
- install=nvidia.install
  _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
 -source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 -sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581')

@@ -5,5 +5,5 @@ openssl-1.1
 pacman-static
 yay
 paru
-paru-static
+#paru-static
 manjaro-jp/manjaro_jp-keyring

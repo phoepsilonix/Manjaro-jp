@@ -17,7 +17,7 @@ manjaro-jp/KERNEL-zfs
 zfs-utils
 #manjaro-jp/KERNEL-rt3562sta
 #manjaro-jp/KERNEL-virtualbox-guest-modules
-manjaro-jp/KERNEL-headers
+#manjaro-jp/KERNEL-headers
 zfs-dkms
 libva-intel-driver
 libva-mesa-driver

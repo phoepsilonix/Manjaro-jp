@@ -284,46 +284,122 @@ index 0000000..194560a
 + EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.223.02\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
+diff --git a/GPL-workaround.patch b/GPL-workaround.patch
+new file mode 100644
+index 0000000..e0da3fc
+--- /dev/null
++++ b/GPL-workaround.patch
+@@ -0,0 +1,62 @@
++linux-6.1.76, 6.6.15, and 6.7.3 have modified the non-ARCH-specific
++pfn_valid() to use __rcu_read_lock/unlock[1] that is marked GPL and
++cannot be used here[2][3][4] unless use the open source variant.
++
++As a workaround, reuse the old implementation until NVIDIA makes
++a fixed release (due to no longer be using pfn_valid[5], likely
++with its own implementation similarly to this patch).
++
++Safe to use with kernel >=5.15 or so but older ones had a different
++pfn_valid implementation. However 5.15 and older branches are
++"currently" not affected, so simply limit to >=6.1.76.
++
++[1] https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/include/linux/mmzone.h?h=v6.7.3&id=3a01daace71b521563c38bbbf874e14c3e58adb7
++[2] https://bugs.gentoo.org/923456
++[3] https://forums.developer.nvidia.com/t/280908
++[4] https://github.com/NVIDIA/open-gpu-kernel-modules/issues/594
++[5] https://github.com/NVIDIA/open-gpu-kernel-modules/issues/594#issuecomment-1916197641
++--- a/kernel/common/inc/nv-linux.h
+++++ b/kernel/common/inc/nv-linux.h
++@@ -1990,2 +1990,23 @@
++ 
+++#if defined(CONFIG_HAVE_ARCH_PFN_VALID) || LINUX_VERSION_CODE < KERNEL_VERSION(6,1,76)
+++#  define nv_pfn_valid pfn_valid
+++#else
+++/* pre-6.1.76 kernel pfn_valid version without GPL rcu_read_lock/unlock() */
+++static inline int nv_pfn_valid(unsigned long pfn)
+++{
+++        struct mem_section *ms;
+++
+++        if (PHYS_PFN(PFN_PHYS(pfn)) != pfn)
+++                return 0;
+++
+++        if (pfn_to_section_nr(pfn) >= NR_MEM_SECTIONS)
+++                return 0;
+++
+++        ms = __pfn_to_section(pfn);
+++        if (!valid_section(ms))
+++                return 0;
+++
+++        return early_section(ms) || pfn_section_valid(ms, pfn);
+++}
+++#endif
++ #endif  /* _NV_LINUX_H_ */
++--- a/kernel/nvidia/nv-mmap.c
+++++ b/kernel/nvidia/nv-mmap.c
++@@ -576,3 +576,3 @@
++             if (!IS_REG_OFFSET(nv, access_start, access_len) &&
++-                (pfn_valid(PFN_DOWN(mmap_start))))
+++                (nv_pfn_valid(PFN_DOWN(mmap_start))))
++             {
++--- a/kernel/nvidia/os-mlock.c
+++++ b/kernel/nvidia/os-mlock.c
++@@ -102,3 +102,3 @@
++         if ((nv_follow_pfn(vma, (start + (i * PAGE_SIZE)), &pfn) < 0) ||
++-            (!pfn_valid(pfn)))
+++            (!nv_pfn_valid(pfn)))
++         {
++@@ -176,3 +176,3 @@
++ 
++-    if (pfn_valid(pfn))
+++    if (nv_pfn_valid(pfn))
++     {
 diff --git a/PKGBUILD b/PKGBUILD
-index 5363f0e..042c97e 100644
+index bd70665..e638655 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -20,8 +20,14 @@ makedepends=("$_linuxprefix-headers")
+@@ -20,16 +20,30 @@ makedepends=("$_linuxprefix-headers")
  provides=("nvidia=$pkgver" 'NVIDIA-MODULE')
  options=(!strip)
  _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
 -source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 -sha256sums=('fcffc3defb36eb3a6cf003638efefd9159469c5b2ce90de77dcab642aad03d98')
-+source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
++source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run" 'GPL-workaround.patch'
 +        '001-fix-function-declaration.patch'
 +        '002-Kbuild-clang-options.patch'
 +        'nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch')
 +sha256sums=('fcffc3defb36eb3a6cf003638efefd9159469c5b2ce90de77dcab642aad03d98'
++            '59958c134261a53edb641ba3c96b13e397d1903ec3637c8be8d61141356292de'
 +            'b8971052d71cfafc80ce2e13d4c3d09ffe6e82864b3bdfb6daf5de26e51d7ff7'
 +            '0117904703059f868938d8d5ba09e44f969709df898d4e5d169ed0917a4ad69b'
-+            '702af56eef8bba8c3137f98c298ee204e391c6fcffc960631481c3f1e87ed6a8')
++            '8a42b7c50717db4d00f718a52754b220b196c6da7429ab8fe3c3b8cac72716a1')
  
  _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
  
-@@ -29,6 +35,9 @@ prepare() {
+ prepare() {
      sh "${_pkg}.run" --extract-only
  
-     cd "${_pkg}/kernel"
-+    patch -p2 -i ${srcdir}/001-fix-function-declaration.patch
-+    patch -p2 -i ${srcdir}/002-Kbuild-clang-options.patch
-+    patch -p1 -i ${srcdir}/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
-     # patches here
+-    cd "${_pkg}/kernel"
+-    # patches here
++    cd "${_pkg}"
++    local src
++    for src in "${source[@]}"; do
++        src="${src%%::*}"
++        src="${src##*/}"
++        [[ $src = *.patch ]] || continue
++        msg2 "Applying patch: $src..."
++        patch -Np1 < "../$src"
++    done
  }
  
+ build() {
 diff --git a/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 new file mode 100644
-index 0000000..8e33ba5
+index 0000000..6f57c79
 --- /dev/null
 +++ b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 @@ -0,0 +1,56 @@
-+diff -ur a/conftest.sh b/conftest.sh
-+--- a/conftest.sh	2023-06-01 20:00:46.719933661 +0800
-++++ b/conftest.sh	2023-06-01 21:26:23.218584390 +0800
++diff -ur a/kernel/conftest.sh b/kernel/conftest.sh
++--- a/kernel/conftest.sh	2023-06-01 20:00:46.719933661 +0800
+++++ b/kernel/conftest.sh	2023-06-01 21:26:23.218584390 +0800
 +@@ -255,6 +255,9 @@
 +             CFLAGS="$CFLAGS -mfentry -DCC_USING_FENTRY"
 +         fi
@@ -366,9 +442,9 @@ index 0000000..8e33ba5
 +         fi
 +     ;;
 +
-+diff -ur a/Kbuild b/Kbuild
-+--- a/Kbuild	2023-06-01 20:00:46.716600311 +0800
-++++ b/Kbuild	2023-06-01 21:37:31.631878921 +0800
++diff -ur a/kernel/Kbuild b/kernel/Kbuild
++--- a/kernel/Kbuild	2023-06-01 20:00:46.716600311 +0800
+++++ b/kernel/Kbuild	2023-06-01 21:37:31.631878921 +0800
 +@@ -68,6 +68,7 @@
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)

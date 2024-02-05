@@ -31,6 +31,7 @@ inetutils
 intel-ucode
 jfsutils
 manjaro-jp/KERNEL
+manjaro-jp/KERNEL-headers
 less
 logrotate
 lvm2

@@ -1,8 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 5a6c1f9..2d3a15b 100644
+index 1b61e2a..0afe112 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -36,6 +36,15 @@ build() {
+@@ -34,6 +34,15 @@ build() {
    msg2 "$CFLAGS, ${CXXFLAGS}"
  
    fakeroot dkms build --dkmstree "$srcdir" -m "broadcom-wl/$pkgver" -k "$_kernver"
@@ -18,10 +18,11 @@ index 5a6c1f9..2d3a15b 100644
  }
  
  package(){
-@@ -43,8 +52,19 @@ package(){
- 
-   install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
+@@ -41,6 +50,21 @@ package(){
+   install -dm755 "$pkgdir/usr/lib/modules/${_kernver}/extramodules"
    cd "broadcom-wl/$pkgver/$_kernver/$CARCH/module"
+   install -m644 * "$pkgdir/usr/lib/modules/${_kernver}/extramodules"
+-  find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 +  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
 +  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
 +  COMPRESS=${COMPRESS% 1}
@@ -32,10 +33,11 @@ index 5a6c1f9..2d3a15b 100644
 +  XZ)
 +    COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
 +    ;;
++  GZIP)
++    COMP_CMD="gzip -9"
++    ;;
 +  esac
-   install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
--  find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 +  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
-   sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/$_pkgname.install"
    install -D -m 644 "${srcdir}/broadcom-wl-dkms.conf" "${pkgdir}/etc/modprobe.d/${_linuxprefix}-broadcom-wl.conf"
-   install -D -m 644 "/usr/share/licenses/broadcom-wl-dkms/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
++  install -Dm644 /usr/share/licenses/broadcom-wl-dkms/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+ }

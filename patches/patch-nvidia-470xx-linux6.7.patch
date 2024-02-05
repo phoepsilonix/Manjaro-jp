@@ -1,13 +1,13 @@
 diff --git a/001-fix-function-declaration.patch b/001-fix-function-declaration.patch
 new file mode 100644
-index 0000000..821ddf6
+index 0000000..8a2736a
 --- /dev/null
 +++ b/001-fix-function-declaration.patch
 @@ -0,0 +1,261 @@
-+diff --git a/nvidia/os-interface.c b/nvidia/os-interface.c
++diff --git a/kernel/nvidia/os-interface.c b/kernel/nvidia/os-interface.c
 +index 285cd5d..1d0a519 100644
-+--- a/nvidia/os-interface.c
-++++ b/nvidia/os-interface.c
++--- a/kernel/nvidia/os-interface.c
+++++ b/kernel/nvidia/os-interface.c
 +@@ -1073,14 +1073,14 @@ void NV_API_CALL os_dbg_breakpoint(void)
 + #endif // DEBUG
 + }
@@ -34,10 +34,10 @@ index 0000000..821ddf6
 + {
 +     dump_stack();
 + }
-+diff --git a/nvidia/nvlink_linux.c b/nvidia/nvlink_linux.c
++diff --git a/kernel/nvidia/nvlink_linux.c b/kernel/nvidia/nvlink_linux.c
 +index 16dafad..b4c6242 100644
-+--- a/nvidia/nvlink_linux.c
-++++ b/nvidia/nvlink_linux.c
++--- a/kernel/nvidia/nvlink_linux.c
+++++ b/kernel/nvidia/nvlink_linux.c
 +@@ -571,7 +571,7 @@ void nvlink_assert(int cond)
 +     }
 + }
@@ -47,10 +47,10 @@ index 0000000..821ddf6
 + {
 +     struct semaphore *sema;
 + 
-+diff --git a/nvidia-uvm/uvm_common.c b/nvidia-uvm/uvm_common.c
++diff --git a/kernel/nvidia-uvm/uvm_common.c b/kernel/nvidia-uvm/uvm_common.c
 +index 36e6280..b357304 100644
-+--- a/nvidia-uvm/uvm_common.c
-++++ b/nvidia-uvm/uvm_common.c
++--- a/kernel/nvidia-uvm/uvm_common.c
+++++ b/kernel/nvidia-uvm/uvm_common.c
 +@@ -34,7 +34,7 @@ static int uvm_debug_prints = UVM_IS_DEBUG() || UVM_IS_DEVELOP();
 + module_param(uvm_debug_prints, int, S_IRUGO|S_IWUSR);
 + MODULE_PARM_DESC(uvm_debug_prints, "Enable uvm debug prints.");
@@ -60,10 +60,10 @@ index 0000000..821ddf6
 + {
 +     return uvm_debug_prints != 0;
 + }
-+diff --git a/nvidia-uvm/uvm_tools.c b/nvidia-uvm/uvm_tools.c
++diff --git a/kernel/nvidia-uvm/uvm_tools.c b/kernel/nvidia-uvm/uvm_tools.c
 +index 5e4d112..a5a8d8c 100644
-+--- a/nvidia-uvm/uvm_tools.c
-++++ b/nvidia-uvm/uvm_tools.c
++--- a/kernel/nvidia-uvm/uvm_tools.c
+++++ b/kernel/nvidia-uvm/uvm_tools.c
 +@@ -2141,7 +2141,7 @@ NV_STATUS uvm_api_tools_get_processor_uuid_table(UVM_TOOLS_GET_PROCESSOR_UUID_TA
 +     return NV_OK;
 + }
@@ -73,10 +73,10 @@ index 0000000..821ddf6
 + {
 +     tools_schedule_completed_events();
 + 
-+diff --git a/nvidia-uvm/uvm_procfs.c b/nvidia-uvm/uvm_procfs.c
++diff --git a/kernel/nvidia-uvm/uvm_procfs.c b/kernel/nvidia-uvm/uvm_procfs.c
 +index 8932d14..e2a6203 100644
-+--- a/nvidia-uvm/uvm_procfs.c
-++++ b/nvidia-uvm/uvm_procfs.c
++--- a/kernel/nvidia-uvm/uvm_procfs.c
+++++ b/kernel/nvidia-uvm/uvm_procfs.c
 +@@ -46,7 +46,7 @@ static struct proc_dir_entry *uvm_proc_dir;
 + static struct proc_dir_entry *uvm_proc_gpus;
 + static struct proc_dir_entry *uvm_proc_cpu;
@@ -110,10 +110,10 @@ index 0000000..821ddf6
 + {
 +     return uvm_proc_cpu;
 + }
-+diff --git a/nvidia-uvm/uvm_lock.c b/nvidia-uvm/uvm_lock.c
++diff --git a/kernel/nvidia-uvm/uvm_lock.c b/kernel/nvidia-uvm/uvm_lock.c
 +index b77a22e..fc0b802 100644
-+--- a/nvidia-uvm/uvm_lock.c
-++++ b/nvidia-uvm/uvm_lock.c
++--- a/kernel/nvidia-uvm/uvm_lock.c
+++++ b/kernel/nvidia-uvm/uvm_lock.c
 +@@ -334,7 +334,7 @@ bool __uvm_check_all_unlocked(uvm_thread_context_lock_t *uvm_context)
 +     return false;
 + }
@@ -123,10 +123,10 @@ index 0000000..821ddf6
 + {
 +     return __uvm_check_all_unlocked(uvm_thread_context_lock_get());
 + }
-+diff --git a/nvidia-uvm/uvm_gpu_access_counters.c b/nvidia-uvm/uvm_gpu_access_counters.c
++diff --git a/kernel/nvidia-uvm/uvm_gpu_access_counters.c b/kernel/nvidia-uvm/uvm_gpu_access_counters.c
 +index 25891b4..b55a8c7 100644
-+--- a/nvidia-uvm/uvm_gpu_access_counters.c
-++++ b/nvidia-uvm/uvm_gpu_access_counters.c
++--- a/kernel/nvidia-uvm/uvm_gpu_access_counters.c
+++++ b/kernel/nvidia-uvm/uvm_gpu_access_counters.c
 +@@ -1524,7 +1524,7 @@ bool uvm_va_space_has_access_counter_migrations(uvm_va_space_t *va_space)
 +     return atomic_read(&va_space_access_counters->params.enable_mimc_migrations);
 + }
@@ -145,10 +145,10 @@ index 0000000..821ddf6
 + {
 + }
 + 
-+diff --git a/nvidia-uvm/uvm_push.c b/nvidia-uvm/uvm_push.c
++diff --git a/kernel/nvidia-uvm/uvm_push.c b/kernel/nvidia-uvm/uvm_push.c
 +index c1d7cb7..8b04e7f 100644
-+--- a/nvidia-uvm/uvm_push.c
-++++ b/nvidia-uvm/uvm_push.c
++--- a/kernel/nvidia-uvm/uvm_push.c
+++++ b/kernel/nvidia-uvm/uvm_push.c
 +@@ -242,12 +242,12 @@ NV_STATUS __uvm_push_begin_acquire_on_channel_with_info(uvm_channel_t *channel,
 +     return status;
 + }
@@ -164,10 +164,10 @@ index 0000000..821ddf6
 + {
 +     return uvm_debug_enable_push_acquire_info != 0;
 + }
-+diff --git a/nvidia-uvm/uvm_thread_context.c b/nvidia-uvm/uvm_thread_context.c
++diff --git a/kernel/nvidia-uvm/uvm_thread_context.c b/kernel/nvidia-uvm/uvm_thread_context.c
 +index 93103be..5fc9687 100644
-+--- a/nvidia-uvm/uvm_thread_context.c
-++++ b/nvidia-uvm/uvm_thread_context.c
++--- a/kernel/nvidia-uvm/uvm_thread_context.c
+++++ b/kernel/nvidia-uvm/uvm_thread_context.c
 +@@ -101,7 +101,7 @@ static DEFINE_PER_CPU(uvm_thread_context_lock_acquired_t, interrupt_thread_conte
 + static void thread_context_non_interrupt_remove(uvm_thread_context_t *thread_context,
 +                                                 uvm_thread_context_table_entry_t *thread_context_entry);
@@ -177,10 +177,10 @@ index 0000000..821ddf6
 + {
 +     // The wrapper contains lock information. While uvm_record_lock_X
 +     // routines are a no-op outside of debug mode, unit tests do invoke their
-+diff --git a/nvidia-uvm/uvm_migrate.c b/nvidia-uvm/uvm_migrate.c
++diff --git a/kernel/nvidia-uvm/uvm_migrate.c b/kernel/nvidia-uvm/uvm_migrate.c
 +index 1da7d1d..023eb77 100644
-+--- a/nvidia-uvm/uvm_migrate.c
-++++ b/nvidia-uvm/uvm_migrate.c
++--- a/kernel/nvidia-uvm/uvm_migrate.c
+++++ b/kernel/nvidia-uvm/uvm_migrate.c
 +@@ -792,7 +792,7 @@ static NV_STATUS uvm_migrate_release_user_sem(const UVM_MIGRATE_PARAMS *params,
 +     return NV_OK;
 + }
@@ -199,10 +199,10 @@ index 0000000..821ddf6
 + {
 +     uvm_migrate_pageable_exit();
 + }
-+diff --git a/nvidia-uvm/uvm_perf_heuristics.c b/nvidia-uvm/uvm_perf_heuristics.c
++diff --git a/kernel/nvidia-uvm/uvm_perf_heuristics.c b/kernel/nvidia-uvm/uvm_perf_heuristics.c
 +index 392f914..ffb96ea 100644
-+--- a/nvidia-uvm/uvm_perf_heuristics.c
-++++ b/nvidia-uvm/uvm_perf_heuristics.c
++--- a/kernel/nvidia-uvm/uvm_perf_heuristics.c
+++++ b/kernel/nvidia-uvm/uvm_perf_heuristics.c
 +@@ -28,7 +28,7 @@
 + #include "uvm_gpu_access_counters.h"
 + #include "uvm_va_space.h"
@@ -221,10 +221,10 @@ index 0000000..821ddf6
 + {
 +     uvm_perf_access_counters_exit();
 +     uvm_perf_prefetch_exit();
-+diff --git a/nvidia-uvm/uvm_perf_thrashing.c b/nvidia-uvm/uvm_perf_thrashing.c
++diff --git a/kernel/nvidia-uvm/uvm_perf_thrashing.c b/kernel/nvidia-uvm/uvm_perf_thrashing.c
 +index 00add34..f4dac45 100644
-+--- a/nvidia-uvm/uvm_perf_thrashing.c
-++++ b/nvidia-uvm/uvm_perf_thrashing.c
++--- a/kernel/nvidia-uvm/uvm_perf_thrashing.c
+++++ b/kernel/nvidia-uvm/uvm_perf_thrashing.c
 +@@ -1952,7 +1952,7 @@ NV_STATUS uvm_perf_thrashing_register_gpu(uvm_va_space_t *va_space, uvm_gpu_t *g
 +     return NV_OK;
 + }
@@ -243,10 +243,10 @@ index 0000000..821ddf6
 + {
 +     cpu_thrashing_stats_exit();
 + 
-+diff --git a/nvidia-uvm/uvm_perf_prefetch.c b/nvidia-uvm/uvm_perf_prefetch.c
++diff --git a/kernel/nvidia-uvm/uvm_perf_prefetch.c b/kernel/nvidia-uvm/uvm_perf_prefetch.c
 +index ec41239..bba948f 100644
-+--- a/nvidia-uvm/uvm_perf_prefetch.c
-++++ b/nvidia-uvm/uvm_perf_prefetch.c
++--- a/kernel/nvidia-uvm/uvm_perf_prefetch.c
+++++ b/kernel/nvidia-uvm/uvm_perf_prefetch.c
 +@@ -460,7 +460,7 @@ void uvm_perf_prefetch_unload(uvm_va_space_t *va_space)
 +     uvm_perf_module_unload(&g_module_prefetch, va_space);
 + }
@@ -267,14 +267,14 @@ index 0000000..821ddf6
 +         return;
 diff --git a/002-Kbuild-clang-options.patch b/002-Kbuild-clang-options.patch
 new file mode 100644
-index 0000000..b934adb
+index 0000000..194560a
 --- /dev/null
 +++ b/002-Kbuild-clang-options.patch
 @@ -0,0 +1,13 @@
-+diff --git a/Kbuild b/Kbuild
++diff --git a/kernel/Kbuild b/kernel/Kbuild
 +index e160e3a..9a9419d 100644
-+--- a/Kbuild
-++++ b/Kbuild
++--- a/kernel/Kbuild
+++++ b/kernel/Kbuild
 +@@ -68,7 +68,7 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
 + 
 + EXTRA_CFLAGS += -I$(src)/common/inc
@@ -285,44 +285,36 @@ index 0000000..b934adb
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index 4eefea5..a6140cc 100644
+index 0227466..b5aba5b 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -20,8 +20,14 @@ makedepends=("$_linuxprefix-headers")
+@@ -20,9 +20,15 @@ makedepends=("$_linuxprefix-headers")
  provides=("nvidia=$pkgver" 'NVIDIA-MODULE')
  options=(!strip)
  _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
--source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
--sha256sums=('fcffc3defb36eb3a6cf003638efefd9159469c5b2ce90de77dcab642aad03d98')
-+source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+-source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run" 'GPL-workaround.patch')
++source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run" 'GPL-workaround.patch'
 +        '001-fix-function-declaration.patch'
 +        '002-Kbuild-clang-options.patch'
 +        'nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch')
-+sha256sums=('fcffc3defb36eb3a6cf003638efefd9159469c5b2ce90de77dcab642aad03d98'
-+            '21dfe8ac31e7f13837a624c3891367c1a29dec74e63cfd24eb18e3eb4de59777'
-+            '21b02484dc36991ff3238e8a7ddccc73f1d6fccf67d2c0a0324f8b44b08dbc04'
-+            '702af56eef8bba8c3137f98c298ee204e391c6fcffc960631481c3f1e87ed6a8')
+ sha256sums=('fcffc3defb36eb3a6cf003638efefd9159469c5b2ce90de77dcab642aad03d98'
+-            '59958c134261a53edb641ba3c96b13e397d1903ec3637c8be8d61141356292de')
++            '59958c134261a53edb641ba3c96b13e397d1903ec3637c8be8d61141356292de'
++            'b8971052d71cfafc80ce2e13d4c3d09ffe6e82864b3bdfb6daf5de26e51d7ff7'
++            '0117904703059f868938d8d5ba09e44f969709df898d4e5d169ed0917a4ad69b'
++            '8a42b7c50717db4d00f718a52754b220b196c6da7429ab8fe3c3b8cac72716a1')
  
  _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
  
-@@ -35,7 +41,7 @@ prepare() {
-         src="${src##*/}"
-         [[ $src = *.patch ]] || continue
-         msg2 "Applying patch: $src..."
--        patch -Np1 < "../$src"
-+        patch -Np1 < "../../$src"
-     done
- }
- 
 diff --git a/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 new file mode 100644
-index 0000000..8e33ba5
+index 0000000..6f57c79
 --- /dev/null
 +++ b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 @@ -0,0 +1,56 @@
-+diff -ur a/conftest.sh b/conftest.sh
-+--- a/conftest.sh	2023-06-01 20:00:46.719933661 +0800
-++++ b/conftest.sh	2023-06-01 21:26:23.218584390 +0800
++diff -ur a/kernel/conftest.sh b/kernel/conftest.sh
++--- a/kernel/conftest.sh	2023-06-01 20:00:46.719933661 +0800
+++++ b/kernel/conftest.sh	2023-06-01 21:26:23.218584390 +0800
 +@@ -255,6 +255,9 @@
 +             CFLAGS="$CFLAGS -mfentry -DCC_USING_FENTRY"
 +         fi
@@ -365,9 +357,9 @@ index 0000000..8e33ba5
 +         fi
 +     ;;
 +
-+diff -ur a/Kbuild b/Kbuild
-+--- a/Kbuild	2023-06-01 20:00:46.716600311 +0800
-++++ b/Kbuild	2023-06-01 21:37:31.631878921 +0800
++diff -ur a/kernel/Kbuild b/kernel/Kbuild
++--- a/kernel/Kbuild	2023-06-01 20:00:46.716600311 +0800
+++++ b/kernel/Kbuild	2023-06-01 21:37:31.631878921 +0800
 +@@ -68,6 +68,7 @@
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)

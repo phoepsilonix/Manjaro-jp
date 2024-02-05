@@ -88,7 +88,7 @@ zram-generator
 
 # MEGA storage
 megatools
-megasync-bin
+#megasync-bin
 
 numlockl
 
