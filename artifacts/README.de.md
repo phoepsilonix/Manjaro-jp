@@ -595,6 +595,9 @@ kernel-6.7
 ##### 20240127
 kernel-6.7.2
 
+##### 20240206
+kernel-6.7.4
+
 
 ----
 Andere empfohlene Betriebssysteme  

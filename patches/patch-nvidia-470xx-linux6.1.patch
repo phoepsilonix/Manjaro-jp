@@ -285,48 +285,46 @@ index 0000000..39e7f58
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index 71df53e..68afd64 100644
+index 19a5f78..5539cc3 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -19,16 +19,25 @@ makedepends=("$_linuxprefix-headers")
+@@ -19,9 +19,15 @@ makedepends=("$_linuxprefix-headers")
  provides=("nvidia=$pkgver" 'NVIDIA-MODULE')
  options=(!strip)
  _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
--source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
--sha256sums=('fcffc3defb36eb3a6cf003638efefd9159469c5b2ce90de77dcab642aad03d98')
-+source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+-source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run" 'GPL-workaround.patch')
++source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run" 'GPL-workaround.patch'
 +        '001-fix-function-declaration.patch'
 +        '002-Kbuild-clang-options.patch'
 +        'nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch')
-+sha256sums=('fcffc3defb36eb3a6cf003638efefd9159469c5b2ce90de77dcab642aad03d98'
+ sha256sums=('fcffc3defb36eb3a6cf003638efefd9159469c5b2ce90de77dcab642aad03d98'
+-            '59958c134261a53edb641ba3c96b13e397d1903ec3637c8be8d61141356292de')
++            '59958c134261a53edb641ba3c96b13e397d1903ec3637c8be8d61141356292de'
 +            '8e9bcc9c3f68771de87da73b0837095f84e2f2abb6dd0bdaa2117c95ae118c3a'
 +            'd1470dc4c2e2d49573ac2900f3bf6214d60678ae42871aceef3ebdbb8febdb76'
-+            '702af56eef8bba8c3137f98c298ee204e391c6fcffc960631481c3f1e87ed6a8')
++            '8a42b7c50717db4d00f718a52754b220b196c6da7429ab8fe3c3b8cac72716a1')
  
  _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
  
- prepare() {
-     sh "${_pkg}.run" --extract-only
+@@ -30,6 +36,9 @@ prepare() {
  
--    cd "${_pkg}"
--    # patches here
-+    cd "${_pkg}/kernel"
-+     # patches here
-+    patch -p2 -i ${srcdir}/001-fix-function-declaration.patch
-+    patch -p2 -i ${srcdir}/002-Kbuild-clang-options.patch
+     cd "${_pkg}"
+     patch -p1 -i ../GPL-workaround.patch
++    patch -p1 -i ${srcdir}/001-fix-function-declaration.patch
++    patch -p1 -i ${srcdir}/002-Kbuild-clang-options.patch
 +    patch -p1 -i ${srcdir}/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
  }
  
  build() {
 diff --git a/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 new file mode 100644
-index 0000000..8e33ba5
+index 0000000..6f57c79
 --- /dev/null
 +++ b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 @@ -0,0 +1,56 @@
-+diff -ur a/conftest.sh b/conftest.sh
-+--- a/conftest.sh	2023-06-01 20:00:46.719933661 +0800
-++++ b/conftest.sh	2023-06-01 21:26:23.218584390 +0800
++diff -ur a/kernel/conftest.sh b/kernel/conftest.sh
++--- a/kernel/conftest.sh	2023-06-01 20:00:46.719933661 +0800
+++++ b/kernel/conftest.sh	2023-06-01 21:26:23.218584390 +0800
 +@@ -255,6 +255,9 @@
 +             CFLAGS="$CFLAGS -mfentry -DCC_USING_FENTRY"
 +         fi
@@ -369,9 +367,9 @@ index 0000000..8e33ba5
 +         fi
 +     ;;
 +
-+diff -ur a/Kbuild b/Kbuild
-+--- a/Kbuild	2023-06-01 20:00:46.716600311 +0800
-++++ b/Kbuild	2023-06-01 21:37:31.631878921 +0800
++diff -ur a/kernel/Kbuild b/kernel/Kbuild
++--- a/kernel/Kbuild	2023-06-01 20:00:46.716600311 +0800
+++++ b/kernel/Kbuild	2023-06-01 21:37:31.631878921 +0800
 +@@ -68,6 +68,7 @@
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
