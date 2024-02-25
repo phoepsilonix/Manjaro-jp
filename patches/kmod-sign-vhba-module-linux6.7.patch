@@ -1,20 +1,22 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 6a8834a..08ebd3c 100644
+index d1f9327..f9be9d4 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -41,10 +41,25 @@ build() {
+@@ -28,6 +28,9 @@ build() {
  
-   cd "$_pkgname-$pkgver"
-   make -j1 KDIR=/usr/lib/modules/${_kernver}/build
+   cd "${_module}-$pkgver"
+   make KERNELRELEASE="${_kernver}"
 +  SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
 +  SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
 +  /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 vhba.ko
  }
  
  package() {
-   cd "$_pkgname-$pkgver"
-   install -D vhba.ko "$pkgdir/usr/lib/modules/${_kernver}/extramodules/vhba.ko"
--  find "$pkgdir" -name '*.ko' -exec gzip -9 {} \;
+@@ -35,7 +38,18 @@ package() {
+ 
+   cd "${_module}-$pkgver"
+   install -Dm644 *.ko -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
+-
 +  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
 +  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
 +  COMPRESS=${COMPRESS% 1}
@@ -27,5 +29,7 @@ index 6a8834a..08ebd3c 100644
 +    ;;
 +  esac
 + 
+   find "$pkgdir" -name '*.ko' -exec strip --strip-debug {} +
+-  find "$pkgdir" -name '*.ko' -exec xz {} +
 +  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
  }

@@ -45,8 +45,6 @@ mesa-vdpau
 >nonfree_multilib lib32-nvidia-470xx-utils
 >nonfree_multilib lib32-nvidia-390xx-utils
 >nonfree_multilib lib32-nvidia-utils
-opencl-clover-mesa
-opencl-rusticl-mesa
 open-vm-tools
 primus
 qemu-guest-agent
@@ -69,7 +67,6 @@ xf86-video-dummy
 xf86-video-fbdev
 xf86-video-intel
 xf86-video-nouveau
-xf86-video-openchrome
 xf86-video-sisusb
 xf86-video-vesa
 xf86-video-vmware

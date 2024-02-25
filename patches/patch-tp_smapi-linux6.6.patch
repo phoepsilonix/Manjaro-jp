@@ -1,29 +1,25 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 73cb9c5..e8080ba 100644
+index 38d4c8f..0a89214 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -26,8 +26,10 @@ depends=("$_linuxprefix")
- makedepends=('git' "$_linuxprefix-headers")
- groups=("$_linuxprefix-extramodules")
- _commit=6e80bb1752280bcd142d86ecd0739661bd0e8312  # tags/tp-smapi/0.44
+@@ -26,8 +26,15 @@ depends=("${_linuxprefix}")
+ makedepends=('git' "${_linuxprefix}-headers")
+ provides=("${_module}=$pkgver")
+ _commit=6e80bb1752280bcd142d86ecd0739661bd0e8312  # tags/tp-smapi/0.44^0
 -source=("git+https://github.com/evgeni/tp_smapi#commit=$_commit")
 -sha256sums=('SKIP')
 +source=("git+https://github.com/evgeni/tp_smapi#commit=$_commit"
 +        'tp_smapi-clang.patch')
 +sha256sums=('SKIP'
 +            'cb5d682450af8ac8436e1645d4fdaa32382ae83cc03c03b0c2f878f78e017be5')
++
++prepare() {
++  cd "${_module}"
++  patch -p1 -i ../tp_smapi-clang.patch
++}
  
  pkgver() {
-   cd $_pkgname
-@@ -36,7 +38,7 @@ pkgver() {
- 
- prepare() {
-   cd $_pkgname
--
-+  patch -p1 -i ../tp_smapi-clang.patch
- }
- 
- build() {
+   cd "${_module}"
 diff --git a/tp_smapi-clang.patch b/tp_smapi-clang.patch
 new file mode 100644
 index 0000000..fb37d7d

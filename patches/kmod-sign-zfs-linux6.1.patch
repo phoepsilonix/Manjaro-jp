@@ -1,17 +1,21 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index e47d521..203e5ab 100644
+index f268c2d..11cd12e 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -22,10 +22,30 @@ build() {
- }
+@@ -20,6 +20,12 @@ build() {
+     _kernver="$(cat /usr/src/${_linuxprefix}/version)"
  
- package() {
+     fakeroot dkms build --dkmstree "${srcdir}" -m zfs/${pkgver} -k ${_kernver}
 +    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
 +    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
 +    for file in $(find "${pkgdir}" -type f -name '*.ko')
 +    do
 +        /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $file
 +    done
+ }
+ 
+ package() {
+@@ -28,7 +34,18 @@ package() {
      install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/extramodules" -m644 zfs/${pkgver}/${_kernver}/${CARCH}/module/*
  
      # compress each module individually
@@ -25,9 +29,6 @@ index e47d521..203e5ab 100644
 +        ;;
 +    XZ)
 +        COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
-+        ;;
-+    GZIP)
-+        COMP_CMD="gzip -9"
 +        ;;
 +    esac
 +    find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +

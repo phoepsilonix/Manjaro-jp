@@ -1,18 +1,20 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 32f8016..0ae7edb 100644
+index 338fc0c..a15ad8a 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -44,13 +44,28 @@ build() {
+@@ -46,6 +46,9 @@ build() {
      ENABLE_S5WOL=y \
      ENABLE_EEE=y \
      modules
 +    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
 +    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
-+    /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 src/${_pkgname}.ko
++    /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 src/${_module}.ko
  }
  
  package() {
-   cd "$_pkgname-$pkgver"
+@@ -53,8 +56,20 @@ package() {
+ 
+   cd "${_module}-$pkgver"
    install -Dm644 src/*.ko -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
 +  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
 +  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}

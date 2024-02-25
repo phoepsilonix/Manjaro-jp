@@ -20,14 +20,14 @@ ventoygui
 Linux général  
 Exemple de commande de téléchargement en utilisant aria2  
 ```
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ventoy-1.0.96-linux.tar.gz
-tar xf ventoy-1.0.96-linux.tar.gz
-cd ventoy-1.0.96
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.97/ventoy-1.0.97-linux.tar.gz
+tar xf ventoy-1.0.97-linux.tar.gz
+cd ventoy-1.0.97
 ./VentoyGUI.x86_64 
 ```
 
 Windows  
-Téléchargez [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.96/ventoy-1.0.96-windows.zip) à l’aide d’un navigateur ou autre chose.  
+Téléchargez [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.97/ventoy-1.0.97-windows.zip) à l’aide d’un navigateur ou autre chose.  
 Ouvrez le fichier zip téléchargé et exécutez ventoy2disk.exe.
 
 ----
@@ -596,6 +596,9 @@ kernel-6.7.2
 
 ##### 20240206
 kernel-6.7.4
+
+##### 20240218
+kernel-6.7.5
 
 
 ----

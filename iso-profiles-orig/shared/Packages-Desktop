@@ -5,7 +5,7 @@
 alsa-firmware
 dmidecode
 inxi
-manjaro-hotfixes
+manjaro-log-helper
 mesa-utils
 mobile-broadband-provider-info
 modemmanager
@@ -27,7 +27,6 @@ ttf-droid
 ttf-inconsolata
 ttf-indic-otf
 ttf-liberation
-xdg-su
 xdg-utils
 xf86-input-elographics
 xf86-input-evdev
