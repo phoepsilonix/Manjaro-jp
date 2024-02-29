@@ -600,6 +600,9 @@ kernel-6.7.4
 ##### 20240218
 kernel-6.7.5
 
+##### 20240225
+kernel-6.7.6
+
 
 ----
 Autres systèmes d'exploitation recommandés  
