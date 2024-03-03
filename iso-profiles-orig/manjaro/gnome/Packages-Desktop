@@ -281,7 +281,7 @@ mesa-utils
 ## Settings packages
 #>extra lighter-gnome
 manjaro-base-skel
-manjaro-browser-settings
+extra/manjaro-browser-settings
 >extra manjaro-gnome-extension-settings
 manjaro-gnome-settings
 

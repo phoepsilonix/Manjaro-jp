@@ -229,7 +229,7 @@ yakuake
 
 ## Settings packages
 manjaro-kde-settings
-manjaro-browser-settings
+extra/manjaro-browser-settings
 
 ## Xorg Input Drivers
 xf86-input-elographics
