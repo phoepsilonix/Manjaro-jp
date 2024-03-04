@@ -1,13 +1,27 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 642782b..db7e7c0 100644
+index 0811328..7c9b49d 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -26,9 +26,26 @@ package() {
+@@ -26,9 +26,40 @@ package() {
      _kernver="$(cat /usr/src/${_linuxprefix}/version)"
  
      install -Dt "${pkgdir}/usr/lib/modules/${_kernver}/extramodules" -m644 zfs/${pkgver}/${_kernver}/${CARCH}/module/*
 +    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
 +    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
++    files=$(find ${pkgdir} -type f -name '*.ko.*')
++    for f in $files
++    do
++          case "$f" in
++          *.zst)
++                zstd -d $f
++                COMPRESS=zstd
++                ;;
++          *.xz)
++                xz -d $f
++                COMPRESS=xz
++                ;;
++          esac
++    done
 +    for file in $(find "${pkgdir}" -type f -name '*.ko')
 +    do
 +        /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $file
