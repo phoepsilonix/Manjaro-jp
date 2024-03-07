@@ -1,8 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 0d4cae1..5a104ee 100644
+index 0d4cae1..0c07883 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -27,6 +27,16 @@ build() {
+@@ -27,6 +27,15 @@ build() {
    _kernver="$(cat /usr/src/${_linuxprefix}/version)"
  
    fakeroot dkms build --dkmstree "$srcdir" -m "${_module}/$pkgver" -k "${_kernver}"
@@ -12,14 +12,13 @@ index 0d4cae1..5a104ee 100644
 +  elif [ -f *.ko.xz ] ;then
 +          xz -q -d *.xz
 +  fi
-+  echo $CFLAGS
 +  SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
 +  SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
 +  /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $_module.*
  }
  
  package() {
-@@ -36,7 +46,19 @@ package() {
+@@ -36,7 +45,19 @@ package() {
      "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
  
    # compress each module individually

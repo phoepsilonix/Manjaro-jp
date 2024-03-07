@@ -603,6 +603,9 @@ kernel-6.7.5
 ##### 20240225
 kernel-6.7.6
 
+##### 20240303
+kernel-6.7.8
+
 
 ----
 Autres systèmes d'exploitation recommandés  

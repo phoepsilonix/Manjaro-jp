@@ -1,0 +1,85 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 84b99b0..e514825 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -16,7 +16,8 @@ url="https://www.kernel.org/"
+ license=('GPL2')
+ makedepends=(bc docbook-xsl libelf pahole python-sphinx git inetutils kmod xmlto cpio perl tar xz)
+ options=('!strip')
+-source=(https://git.kernel.org/torvalds/t/linux-${_basekernel}.tar.gz
++source=(#https://git.kernel.org/torvalds/t/linux-${_basekernel}.tar.gz
++        https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz
+         https://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz
+         config
+         # Upstream Patches
+@@ -51,9 +52,9 @@ else
+   _srcdir="linux-${_basekernel}-${_rc}"
+ fi
+ 
+-sha256sums=('c067d5b885194bd77cd3d2bc41bc2fa766bae37a70e90f031cb9ea4da5c84100'
++sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
+             '88583f9969ac0473be017ccd75bf0c9980886b1be0d06fce33e59e94eaeeeb42'
+-            'da8766dd6119b897102619fb9c01a28c6676b12f8fc6af821e63e126f62bc755'
++            '8fa154d67b9efcda65924ea7e74a7a9cbc31355135b21d3bc542bcf705e7d1c3'
+             '888a89ec67433ddfd71ba187a7356ca60270dbe51d6df7211e3930f13121ba8c'
+             'e1d17690dd21e8d5482b63ca66bfe6b478d39e8e8b59eedd53adb0a55ebc308d'
+             '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
+@@ -72,9 +73,14 @@ sha256sums=('c067d5b885194bd77cd3d2bc41bc2fa766bae37a70e90f031cb9ea4da5c84100'
+             '7c948773d758418d8a436067265d678c444827562c46b9fced2ff31ced108481'
+             'aa2ff6edca0177b864868fdc2752d3a0eaaf5b801bd17e5c59dfd78999226d83')
+ 
++validpgpkeys=(647F28654894E3BD457199BE38DBBDC86092693E)
++
+ prepare() {
+   cd "$_srcdir"
+ 
++  unset RUSTC
++  cp ~/.cargo/bin/bindgen{-0.69.4,}
++
+   # add upstream patch
+   if [[ -z "$_rc" ]] && [[ -e "../patch-${pkgver}" ]]; then
+     msg "add upstream patch"
+@@ -85,9 +91,13 @@ prepare() {
+   for src in "${source[@]}"; do
+       src="${src%%::*}"
+       src="${src##*/}"
+-      [[ $src = *.patch ]] || continue
+-      msg2 "Applying patch: $src..."
+-      patch -Np1 < "../$src"
++      if [[ $src =~ .*\.patch ]]; then
++              msg2 "Applying patch: $src..."
++              patch -Np1 < "../$src"
++      elif [[ $src =~ .*\.gitpatch ]]; then
++              msg2 "Applying gitpatch: $src..."
++              git --git-dir= apply -p1 --stat --apply "../$src"
++      fi
+   done
+ 
+   msg2 "add config"
+@@ -108,6 +118,8 @@ prepare() {
+   msg "get kernel version"
+   make prepare
+ 
++  make menuconfig
++
+   msg "rewrite configuration"
+   yes "" | make config >/dev/null
+ }
+@@ -115,6 +127,8 @@ prepare() {
+ build() {
+   cd "$_srcdir"
+ 
++  unset RUSTC
++  sudo choom -n -1000 -p $$
+   msg "build"
+   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+ }
+@@ -154,7 +168,7 @@ package_linux67() {
+ 
+ package_linux67-headers() {
+   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+-  depends=('gawk' 'python' 'libelf' 'pahole')
++  depends=('gawk' 'python' 'libelf' 'pahole' 'python-ply' 'perl')
+   provides=("linux-headers=$pkgver")
+ 
+   cd "$_srcdir"
