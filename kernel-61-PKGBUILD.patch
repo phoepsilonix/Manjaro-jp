@@ -1,35 +1,34 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 5c7d479..efb5e1e 100644
+index bbde3c4..2f45677 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -16,7 +16,7 @@ url="https://www.kernel.org/"
- license=('GPL2')
+@@ -17,7 +17,7 @@ license=('GPL2')
  makedepends=(bc docbook-xsl libelf pahole python-sphinx git inetutils kmod xmlto cpio perl tar xz)
  options=('!strip')
--source=("https://git.kernel.org/torvalds/t/linux-${_basekernel}.tar.gz"
-+source=("https://www.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz"
-         "https://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
+ source=("https://git.kernel.org/torvalds/t/linux-${_basekernel}.tar.gz"
+-        "https://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
++        "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz"
          'config'
          # ARCH Patches
-@@ -47,7 +47,7 @@ source=("https://git.kernel.org/torvalds/t/linux-${_basekernel}.tar.gz"
-         '0999-acs.gitpatch'
- )
- 
--sha256sums=('6246ee76209fb1ff46ffcd67d0cc8029dec2ef929de32ef5460a7a5649583103'
-+sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
-             'd6d84b8d0fb8d4181e27ccce1e2bed7b2d1257142f49d0ce8a77104413ac328f'
-             '41a10c5c62b2dc3d3b453b6b11457429d1ff36e8a7591afbc0ab3f55f9d58f31'
-             'de35604b1337f3d7cd7ce8dc02a741bfdde05709f22f4dfd29d065b20b517e4c'
-@@ -71,6 +71,8 @@ sha256sums=('6246ee76209fb1ff46ffcd67d0cc8029dec2ef929de32ef5460a7a5649583103'
+         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
+@@ -69,11 +69,15 @@ sha256sums=('6246ee76209fb1ff46ffcd67d0cc8029dec2ef929de32ef5460a7a5649583103'
+             '27471eee564ca3149dd271b0817719b5565a9594dc4d884fe3dc51a5f03832bc'
+             'b6e695edbe349505a89c98054a54443acd90830a312cd035393c5c0a624e45c0'
              '035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef'
-             '5f2d2c4ab326830df11d5bc985feab2988ee929bbf249f85453536e1998951bd')
- 
-+validpgpkeys=(647F28654894E3BD457199BE38DBBDC86092693E)
+-            '5f2d2c4ab326830df11d5bc985feab2988ee929bbf249f85453536e1998951bd')
++            '60fc3f22d49c6aedf614af07582328ad0119166484e6d5042bcd3b40e7745479')
 +
++validpgpkeys=(647F28654894E3BD457199BE38DBBDC86092693E)
+ 
  prepare() {
    cd "linux-${_basekernel}"
  
-@@ -82,14 +84,15 @@ prepare() {
++  unset RUSTC
++  cp ~/.cargo/bin/bindgen{-0.62.0,}
+   # add upstream patch
+   msg "add upstream patch"
+   patch -p1 -i "../patch-${pkgver}"
+@@ -82,14 +86,15 @@ prepare() {
    for src in "${source[@]}"; do
        src="${src%%::*}"
        src="${src##*/}"
@@ -41,7 +40,7 @@ index 5c7d479..efb5e1e 100644
 +              patch -Np1 < "../$src"
 +      elif [[ $src =~ .*\.gitpatch ]]; then
 +              msg2 "Applying gitpatch: $src..."
-+              git --git-dir= apply -p1 --stat --apply "../$src"
++              git --git-dir= apply -p1 --stat --ignore-whitespace --apply "../$src"
 +      fi
    done
  
@@ -51,7 +50,7 @@ index 5c7d479..efb5e1e 100644
    msg2 "add config"
    cat "../config" > ./.config
  
-@@ -108,6 +111,8 @@ prepare() {
+@@ -108,6 +113,8 @@ prepare() {
    msg "get kernel version"
    make prepare
  
@@ -60,11 +59,24 @@ index 5c7d479..efb5e1e 100644
    msg "rewrite configuration"
    yes "" | make config >/dev/null
  }
-@@ -115,6 +120,7 @@ prepare() {
+@@ -115,8 +122,10 @@ prepare() {
  build() {
    cd "linux-${_basekernel}"
  
++  unset RUSTC
 +  sudo choom -n -1000 -p $$
    msg "build"
-   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
++  make LLVM=1 ${MAKEFLAGS} LOCALVERSION= bzImage modules
  }
+ 
+ package_linux61() {
+@@ -153,7 +162,7 @@ package_linux61() {
+ 
+ package_linux61-headers() {
+   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+-  depends=('gawk' 'python' 'libelf' 'pahole')
++  depends=('gawk' 'python' 'libelf' 'pahole' 'python-ply' 'perl')
+   provides=("linux-headers=$pkgver")
+ 
+   cd "linux-${_basekernel}"
