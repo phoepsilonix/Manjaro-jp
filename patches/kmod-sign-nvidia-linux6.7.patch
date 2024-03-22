@@ -1,18 +1,19 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 945cb0c..003e1dd 100644
+index 4ffa5f4..b3c886e 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -47,8 +47,26 @@ package() {
-     cd "${_pkg}"
-     install -Dm 644 kernel/*.ko -t "${pkgdir}/usr/lib/modules/${_kernver}/extramodules/"
+@@ -47,10 +47,27 @@ package() {
+     _kernver="$(cat /usr/src/${_linuxprefix}/version)"
  
+     cd "${_pkg}"
 +    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
 +    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
 +    for file in kernel/*.ko
 +    do
 +        /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $file
 +    done
-+
+     install -Dm 644 kernel/*.ko -t "${pkgdir}/usr/lib/modules/${_kernver}/extramodules/"
+ 
      # compress each module individually
 -    find "${pkgdir}" -name '*.ko' -exec xz -T1 {} +
 +    COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)

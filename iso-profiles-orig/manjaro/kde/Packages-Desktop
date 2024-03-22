@@ -31,7 +31,7 @@ manjaro-alsa
 manjaro-gstreamer
 >extra manjaro-modem
 manjaro-pipewire
-phonon-qt6-vlc
+phonon-qt5-vlc
 ## Btrfs
 grub-btrfs
 >extra timeshift-autosnap-manjaro
@@ -45,7 +45,7 @@ udisks2
 
 ## Fonts
 ttf-dejavu
-# cantarell-fonts        # Installed as gnome-themes-standard dependency
+#cantarell-fonts          # required by gnome-themes-extra
 noto-fonts               # default font
 #noto-fonts-cjk           # asian fonts - needed big package, ~76 mb compressed
 adobe-source-sans-pro-fonts
@@ -71,7 +71,7 @@ pamac-cli
 >extra libpamac-flatpak-plugin
 #discover-snap
 #discover
-packagekit-qt6
+packagekit-qt5
 >extra fwupd 
 #octopi
 #octopi-cachecleaner
@@ -108,17 +108,19 @@ kmenuedit
 kscreen
 kscreenlocker
 ksshaskpass
+ksysguard
 kwallet-pam
 kwayland-integration
 kwin
-qt6-virtualkeyboard                # required by plasma-workspace
+qt5-virtualkeyboard                # required by plasma-workspace
 kwrited
 milou
 plasma-desktop
 plasma-nm
 plasma-pa
-plasma-systemmonitor               # plasma-meta, replaces ksysguard
-plasma-workspace                   # required by plasma-desktop, etc., replaces plasma-wayland-session
+plasma-simplemenu
+plasma-wayland-session
+plasma-workspace
 >extra plasma-workspace-wallpapers
 powerdevil
 systemsettings
@@ -155,6 +157,8 @@ okular
 kdenetwork-filesharing
 #>extra kdenlive
 khelpcenter
+khotkeys
+kinit # for "Open in Terminal" action
 kio-extras
 #>extra kleopatra
 konsole
@@ -179,8 +183,8 @@ kdegraphics-thumbnailers  # PDF and PS thumbnails
 ffmpegthumbs              # video thumbnails
 
 ## Optional dependencies for gwenview
-kimageformats                      # support for dds, xcf, exr, psd, and more image formats
-qt6-imageformats                   # support for tiff, webp, and more image formats
+kimageformats5                      # support for dds, xcf, exr, psd, and more image formats
+qt5-imageformats                   # support for tiff, webp, and more image formats
 
 ## Optional dependencies for kdeconnect
 sshfs  # remote filesystem browser
@@ -201,7 +205,6 @@ poppler-data  # encoding data to display PDF documents containing CJK characters
 dmidecode # for inxi -m output
 htop
 inxi
-kaccounts-providers                # required by kio-gdrive
 #>extra krita
 #ms-office-online
 manjaro-hello
@@ -212,7 +215,6 @@ plasma-systemmonitor
 powertop
 #>extra qbittorrent
 neofetch
-systemd-kcm
 plymouth-kcm
 #>extra thunderbird
 >extra vlc
