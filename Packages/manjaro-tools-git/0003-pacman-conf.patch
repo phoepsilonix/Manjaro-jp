@@ -11,15 +11,6 @@ index 8d33b12..5167a11 100644
  #XferCommand = /usr/bin/curl -L -C - -f -o %o %u
  #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
  #CleanMethod = KeepInstalled
-@@ -38,7 +38,7 @@ Architecture = auto
- # We cannot check disk space from within a chroot environment
- #CheckSpace
- #VerbosePkgLists
--#ParallelDownloads = 5
-+ParallelDownloads = 5
- 
- # By default, pacman accepts packages signed by keys that its local keyring
- # trusts (see pacman-key and its man page), as well as unsigned packages.
 diff --git a/data/pacman-multilib.conf b/data/pacman-multilib.conf
 index 1b0e339..331dfd1 100644
 --- a/data/pacman-multilib.conf
@@ -33,12 +24,3 @@ index 1b0e339..331dfd1 100644
  #XferCommand = /usr/bin/curl -L -C - -f -o %o %u
  #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
  #CleanMethod = KeepInstalled
-@@ -38,7 +38,7 @@ Architecture = auto
- # We cannot check disk space from within a chroot environment
- #CheckSpace
- #VerbosePkgLists
--#ParallelDownloads = 5
-+ParallelDownloads = 5
- 
- # By default, pacman accepts packages signed by keys that its local keyring
- # trusts (see pacman-key and its man page), as well as unsigned packages.

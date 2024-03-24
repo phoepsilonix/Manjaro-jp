@@ -20,7 +20,7 @@ prepare_initramfs(){
     cp ${DATADIR}/mkinitcpio.conf $1/etc/mkinitcpio-${iso_name}.conf
     local _kernver=$(cat $1/boot/*.kver|awk '{print $1}')
     if [[ -n ${gpgkey} ]]; then
-        su ${OWNER} -c "gpg --export ${gpgkey} >${USERCONFDIR}/gpgkey"
+        su ${OWNER} -c "gpg --no-tty --yes --passphrase-file /home/phoepsilonix/.ssh/gpg-passphrase --batch --pinentry-mode=loopback --export ${gpgkey} >${USERCONFDIR}/gpgkey"
         exec 17<>${USERCONFDIR}/gpgkey
     fi
     MISO_GNUPG_FD=${gpgkey:+17} chroot-run $1 \
