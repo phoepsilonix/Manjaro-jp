@@ -50,6 +50,9 @@ do
         #git switch -f master
         #git pull origin master
         case "$kver" in
+            "6.8" ) 
+                patch1="patch-${m}-linux6.8.patch" 
+                patch2="kmod-sign-${m}-linux6.8.patch" ;;
             "6.7" ) 
                 patch1="patch-${m}-linux6.7.patch" 
                 patch2="kmod-sign-${m}-linux6.7.patch" ;;
@@ -104,5 +107,6 @@ done
 #cd ../tp_smapi
 #rm tp_smapi-clang.patch
 #patch -i /home/phoepsilonix/gitlab/Manjaro-jp/patches/tp_smapi-build-with-clang.patch
+[[ "$kver" == "6.8" ]] && sed 's/_linuxprefix=linux67/_linuxprefix=linux68/' ./*/PKGBUILD -i
 
 exit 0

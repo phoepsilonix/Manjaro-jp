@@ -1,0 +1,36 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 338fc0c..a15ad8a 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -46,6 +46,9 @@ build() {
+     ENABLE_S5WOL=y \
+     ENABLE_EEE=y \
+     modules
++    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
++    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
++    /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 src/${_module}.ko
+ }
+ 
+ package() {
+@@ -53,8 +56,20 @@ package() {
+ 
+   cd "${_module}-$pkgver"
+   install -Dm644 src/*.ko -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
++  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h)
++  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
++  COMPRESS=${COMPRESS% 1}
++  case $COMPRESS in
++  ZSTD)
++      COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
++      ;;
++  XZ)
++      COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
++      ;;
++  esac
++   # set the kernel we've built for inside the install script
+   find "$pkgdir" -name '*.ko' -exec strip --strip-debug {} +
+-  find "$pkgdir" -name '*.ko' -exec xz {} +
++  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
+ 
+ # We'll let mhwd-db handle blacklisting for now
+ #  echo "blacklist r8169" | \
