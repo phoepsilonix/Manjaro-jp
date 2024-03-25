@@ -421,6 +421,8 @@ make_image_live() {
         msg "Prepare [Live installation] (livefs)"
         local path="${work_dir}/livefs"
         mkdir -p ${path}
+        echo "make_image_live: ${profile}"
+        echo "make_image_live: ${path}"
 
         mount_fs_select "${path}"
 
