@@ -2,7 +2,7 @@
 
 ## Prise en charge de la langue japonaise pour [Manjaro Linux](https://manjaro.org/)
 　Prise en charge de la saisie et de l'affichage en japonais par défaut, y compris dans les environnements dynamiques.  
-[série kernel-6.7](https://kernel.org/).
+[série kernel-6.8](https://kernel.org/).
 
 KDE, Xfce et GNOME seront disponibles selon la version officielle.  
 Les fichiers de distribution sont des ISO et quelques fichiers de paquets.  
