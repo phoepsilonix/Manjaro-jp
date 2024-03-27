@@ -12,8 +12,8 @@ pkgname=('manjaro-tools-base-git'
         'manjaro-tools-pkg-git'
         'manjaro-tools-iso-git'
         'manjaro-tools-yaml-git')
-pkgver=r3035.3a5c25c
-pkgrel=4
+pkgver=r3036.0df2fff
+pkgrel=1
 arch=('x86_64')
 pkgdesc='Development tools for Manjaro Linux'
 license=('GPL')
@@ -27,8 +27,7 @@ source=("manjaro-tools::git+$url.git#branch=$_branch"
         '0003-pacman-conf.patch'
         '0004-sync.patch'
         '0005-mkchroot-locales.patch'
-        '0006-losetup.patch'
-        '0007-remove-nss-add_symlink.patch'
+        '0006-remove-nss-add_symlink.patch'
         )
 
 sha256sums=('SKIP'
@@ -36,9 +35,8 @@ sha256sums=('SKIP'
             'a7ee7cdae70f771e3186e8b5050c333eb69b708fc08ec4df6ff23e0000fed50b'
             '42ccf47ccc7f7ed59c82cf1a1363802fcc4352b7f21bd90d20cfec09aa20f49b'
             'ddfb00a0da0c20bdb69e55130f9704f3940cabb4ae0bebfac60f06bde85be6e6'
-            'c31298dec58a71b675fe9c364f2c44717aadf843f3ddfc9d3199d55d8daec672'
+            'ebfde8111af60871838bfa2fd5e981258881df9596615d36bedc003108dd0694'
             '8220c2915d24dea5deb1ea6d2213844a35f5638fcfcfb813e6f6ac3524cf47a2'
-            '2504b7b0e57792acde7e6083576a3450dcf3f846637fb8185723f9ad18413c12'
             'dff412cffc2efda9526cd1c935a609172ead0bb712a6078345a9079686d889af')
 
 

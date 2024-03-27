@@ -1,5 +1,5 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 981061e..8ea750d 100644
+index 4adb4b3..6a30a13 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -10,7 +10,7 @@ _linuxprefix=linux67
@@ -8,7 +8,7 @@ index 981061e..8ea750d 100644
  pkgname="${_linuxprefix}-${_module}"
 -pkgver=20211218
 +pkgver=20240202
- pkgrel=17
+ pkgrel=18
  pkgdesc="Kernel module that emulates SCSI devices"
  arch=('x86_64')
 @@ -21,7 +21,7 @@ makedepends=("${_linuxprefix}-headers")
