@@ -12,7 +12,6 @@
 track_img() {
     info "mount: [%s]" "$2"
     LOOPBACK=$(losetup --show -f "$1")
-    echo "mount" $LOOPBACK "$2"
     mount $LOOPBACK "$2" && IMG_ACTIVE_MOUNTS=("$2" "${IMG_ACTIVE_MOUNTS[@]}")
 }
 

@@ -75,6 +75,15 @@ Si cette commande affiche 'gtk-im-context-simple' ou similaire, supprimez le par
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
+4. différences entre le noyau et le noyau officiel de Manjaro
+La série kererl-6.6 est utilisée dans l'iso officielle de Manjaro, mais l'iso distribuée ici utilise le noyau le plus récent possible. Actuellement, il s'agit de la série kernel-6.8.  
+Nous utilisons clang au lieu de gcc pour compiler le noyau et les modules du noyau.  
+Nous activons également le support rust du noyau.  
+Si vous souhaitez utiliser le noyau officiel de Manjaro, installez-le en spécifiant le dépôt `core` comme dans la commande suivante.
+```
+sudo pacman -S core/linux66 core/linux66-headers
+```
+
 ##### Ajouté : 2023-02-11  
 Dans la dernière version (du 2023-02-11) de [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), les mesures ci-dessus ont été ajoutées.  
 De plus, l'installateur a été modifié pour ajouter un processus permettant d'activer la partition d'échange pendant l'installation.

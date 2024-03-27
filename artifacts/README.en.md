@@ -76,6 +76,15 @@ If this command shows 'gtk-im-context-simple' or similar, remove the setting wit
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
+4. kernel differences from the official Manjaro kernel
+The kererl-6.6 series is used in the official Manjaro iso, but the iso distributed here uses the newest kernel possible. Currently, it is kernel-6.8 series.  
+We use clang instead of gcc to build the kernel and kernel modules.  
+We also enable the kernel's rust support.  
+If you want to use the official Manjaro kernel, install it by specifying the repository `core` as in the following command.
+```
+sudo pacman -S core/linux66 core/linux66-headers
+```
+
 ##### Addition: 2023-02-11
 In the latest version (2023-02-11~) of [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), the above measures have been added.
 Additionally, the installer has been modified to add a process to enable the swap partition during installation.

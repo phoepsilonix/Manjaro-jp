@@ -77,6 +77,15 @@ gsettings get org.gnome.desktop.interface gtk-im-module
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
+4. Manjaro官方和我們的kernel的區別
+Manjaro官方的iso採用了kererl-6.6系，但我們這裡發布的iso儘可能採用新的kernel。目前是kernel-6.8系。
+我們使用clang而不是gcc來構建kernel和kernel模組。
+此外，我們也啟用了kernel的rust支持。
+如果你想使用Manjaro官方的kernel，可以指定存儲庫core並使用以下命令進行安裝：
+```
+sudo pacman -S core/kernel66 core/kernel66-headers
+```
+
 ##### 附加說明： 2023-02-11  
 [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/) 在最新版本的（2023-02-11-）中，增加了上述措施。  
 我們還修改了安裝程式，以添加一個進程，以便在安裝期間啟用交換分區。

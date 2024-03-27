@@ -103,6 +103,15 @@ gsettings get org.gnome.desktop.interface gtk-im-module
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
+5. Manjaro公式とのkernelの違い
+kererl-6.6系がManjaro公式のisoでは採用されていますが、ここで配布しているisoはなるべく新しいkernelを採用しています。現在はkernel-6.8系です。  
+kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
+またkernelのrust対応も有効にしています。  
+Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
+```
+sudo pacman -S core/linux66 core/linux66-headers
+```
+
 ----
 ### 配布場所
 ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
