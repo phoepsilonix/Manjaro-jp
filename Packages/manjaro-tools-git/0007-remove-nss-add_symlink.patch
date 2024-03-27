@@ -1,6 +1,6 @@
-diff --git a/initcpio/install/miso_pxe_common.orig b/initcpio/install/miso_pxe_common
+diff --git a/initcpio/install/miso_pxe_common b/initcpio/install/miso_pxe_common
 index eec9a7e..3d935f1 100644
---- a/initcpio/install/miso_pxe_common.orig
+--- a/initcpio/install/miso_pxe_common
 +++ b/initcpio/install/miso_pxe_common
 @@ -8,9 +8,9 @@ build() {
      add_binary /usr/lib/initcpio/ipconfig /bin/ipconfig
