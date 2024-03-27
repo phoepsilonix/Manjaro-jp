@@ -27,9 +27,8 @@ source=("manjaro-tools::git+$url.git#branch=$_branch"
         '0003-pacman-conf.patch'
         '0004-sync.patch'
         '0005-mkchroot-locales.patch'
-        #'0006-remove-hook-miso_shutdown.patch'
-        '0007-losetup.patch'
-        '0008-remove-nss-add_symlink.patch'
+        '0006-losetup.patch'
+        '0007-remove-nss-add_symlink.patch'
         )
 
 sha256sums=('SKIP'
