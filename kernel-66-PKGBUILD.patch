@@ -1,8 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index dd494bb..66546a3 100644
+index bd88cc1..5af569d 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -13,10 +13,11 @@ pkgver=6.7.11
+@@ -13,7 +13,7 @@ pkgver=6.6.23
  pkgrel=1
  arch=('x86_64')
  url="https://www.kernel.org/"
@@ -10,27 +10,19 @@ index dd494bb..66546a3 100644
 +license=('GPL-2.0-or-later')
  makedepends=(bc docbook-xsl libelf pahole python-sphinx git inetutils kmod xmlto cpio perl tar xz)
  options=('!strip')
--source=(https://git.kernel.org/torvalds/t/linux-${_basekernel}.tar.gz
-+source=(#https://git.kernel.org/torvalds/t/linux-${_basekernel}.tar.gz
-+        https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_basekernel}.tar.xz
-         https://www.kernel.org/pub/linux/kernel/v6.x/patch-${pkgver}.xz
-         config
-         # Upstream Patches
-@@ -58,9 +59,9 @@ else
-   _srcdir="linux-${_basekernel}-${_rc}"
- fi
+ source=(https://git.kernel.org/torvalds/t/linux-${_basekernel}.tar.gz
+@@ -61,7 +61,7 @@ fi
  
--sha256sums=('c067d5b885194bd77cd3d2bc41bc2fa766bae37a70e90f031cb9ea4da5c84100'
-+sha256sums=('ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
-             'a3a0c4b0633b1ac22bfe73bf078e18bb2f17208f0c28c8539010df3a2d2bb760'
--            '28c3fc1f646cbb3bf4420a25d121360dcee80cdf50e818e623ebd8267cb46180'
-+            'da34f398b3f8423f4cc601f20422756c55d60da6607494abd44710cd28251d57'
-             '888a89ec67433ddfd71ba187a7356ca60270dbe51d6df7211e3930f13121ba8c'
+ sha256sums=('9a72c005a62f109f96ee00552502d16c4f06c248e6baba1629506627396ac0a7'
+             'a40130b4f55fb0b5e2c968a39a0bfa44e76b0110e62139d5fa82c02422ef31c9'
+-            'ec8f06b5670f2fc28bdc249b693bcea5b9209554b7f0c0673049b11e737f92d4'
++            '83f1dcdc82110baadf4be96c41c7eb7ac19a49ce1ab6f3578d93aab1794cdefc'
+             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
              'e1d17690dd21e8d5482b63ca66bfe6b478d39e8e8b59eedd53adb0a55ebc308d'
-             '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
-@@ -85,9 +86,14 @@ sha256sums=('c067d5b885194bd77cd3d2bc41bc2fa766bae37a70e90f031cb9ea4da5c84100'
-             'f71b714d58aa8f70a941278abb3ffb777df497c2a67858ae58c2d2d98471f24b'
-             '6ced45c693fd2d3d4fb8f27aca05bcfc64aa4809ab42431e5b6dcce21f3197bd')
+             'a99b684fe5bc7fdacc6f5b1f2b6593672fc5d1e676c4de03ec29723747fc574b'
+@@ -85,9 +85,14 @@ sha256sums=('9a72c005a62f109f96ee00552502d16c4f06c248e6baba1629506627396ac0a7'
+             '7c948773d758418d8a436067265d678c444827562c46b9fced2ff31ced108481'
+             'aa2ff6edca0177b864868fdc2752d3a0eaaf5b801bd17e5c59dfd78999226d83')
  
 +validpgpkeys=(647F28654894E3BD457199BE38DBBDC86092693E)
 +
@@ -41,9 +33,9 @@ index dd494bb..66546a3 100644
 +  cp ~/.cargo/bin/bindgen{-0.69.4,}
 +
    # add upstream patch
-   if [[ -z "$_rc" ]] && [[ -e "../patch-${pkgver}" ]]; then
-     msg "add upstream patch"
-@@ -98,9 +104,13 @@ prepare() {
+   msg "add upstream patch"
+   patch -p1 -i "../patch-${pkgver}"
+@@ -96,9 +101,13 @@ prepare() {
    for src in "${source[@]}"; do
        src="${src%%::*}"
        src="${src##*/}"
@@ -60,7 +52,7 @@ index dd494bb..66546a3 100644
    done
  
    msg2 "add config"
-@@ -121,6 +131,8 @@ prepare() {
+@@ -119,6 +128,8 @@ prepare() {
    msg "get kernel version"
    make prepare
  
@@ -69,21 +61,18 @@ index dd494bb..66546a3 100644
    msg "rewrite configuration"
    yes "" | make config >/dev/null
  }
-@@ -128,8 +140,10 @@ prepare() {
+@@ -126,6 +137,8 @@ prepare() {
  build() {
    cd "$_srcdir"
  
 +  unset RUSTC
 +  sudo choom -n -1000 -p $$
    msg "build"
--  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
-+  make LLVM=1 ${MAKEFLAGS} LOCALVERSION= bzImage modules
+   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
  }
+@@ -165,7 +178,7 @@ package_linux66() {
  
- package_linux67() {
-@@ -167,7 +181,7 @@ package_linux67() {
- 
- package_linux67-headers() {
+ package_linux66-headers() {
    pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 -  depends=('gawk' 'python' 'libelf' 'pahole')
 +  depends=('gawk' 'python' 'libelf' 'pahole' 'python-ply' 'perl')
@@ -91,13 +80,13 @@ index dd494bb..66546a3 100644
  
    cd "$_srcdir"
 diff --git a/config b/config
-index 23257e9..e635898 100644
+index 4177335..eb0ef00 100644
 --- a/config
 +++ b/config
-@@ -1,25 +1,26 @@
+@@ -1,21 +1,21 @@
  #
  # Automatically generated file; DO NOT EDIT.
--# Linux/x86 6.7.11-1 Kernel Configuration
+-# Linux/x86 6.6.23-1 Kernel Configuration
 -#
 -CONFIG_CC_VERSION_TEXT="gcc (GCC) 13.2.1 20230801"
 -CONFIG_CC_IS_GCC=y
@@ -108,7 +97,7 @@ index 23257e9..e635898 100644
 -CONFIG_LD_IS_BFD=y
 -CONFIG_LD_VERSION=24200
 -CONFIG_LLD_VERSION=0
-+# Linux/x86 6.7.10-1 Kernel Configuration
++# Linux/x86 6.6.22-1 Kernel Configuration
 +#
 +CONFIG_CC_VERSION_TEXT="clang version 16.0.6"
 +CONFIG_GCC_VERSION=0
@@ -128,12 +117,7 @@ index 23257e9..e635898 100644
  CONFIG_TOOLS_SUPPORT_RELR=y
  CONFIG_CC_HAS_ASM_INLINE=y
  CONFIG_CC_HAS_NO_PROFILE_FN_ATTR=y
- CONFIG_PAHOLE_VERSION=126
-+CONFIG_CONSTRUCTORS=y
- CONFIG_IRQ_WORK=y
- CONFIG_BUILDTIME_TABLE_SORT=y
- CONFIG_THREAD_INFO_IN_TASK=y
-@@ -203,9 +204,8 @@ CONFIG_UCLAMP_BUCKETS_COUNT=5
+@@ -205,9 +205,8 @@ CONFIG_UCLAMP_BUCKETS_COUNT=5
  CONFIG_ARCH_SUPPORTS_NUMA_BALANCING=y
  CONFIG_ARCH_WANT_BATCHED_UNMAP_TLB_FLUSH=y
  CONFIG_CC_HAS_INT128=y
@@ -144,7 +128,7 @@ index 23257e9..e635898 100644
  CONFIG_ARCH_SUPPORTS_INT128=y
  CONFIG_NUMA_BALANCING=y
  CONFIG_NUMA_BALANCING_DEFAULT_ENABLED=y
-@@ -311,6 +311,9 @@ CONFIG_PERF_EVENTS=y
+@@ -313,6 +312,9 @@ CONFIG_PERF_EVENTS=y
  
  CONFIG_SYSTEM_DATA_VERIFICATION=y
  CONFIG_PROFILING=y
@@ -154,15 +138,15 @@ index 23257e9..e635898 100644
  CONFIG_TRACEPOINTS=y
  
  #
-@@ -738,7 +741,6 @@ CONFIG_AMD_NB=y
+@@ -737,7 +739,6 @@ CONFIG_AMD_NB=y
+ # Binary Emulations
  #
  CONFIG_IA32_EMULATION=y
- # CONFIG_IA32_EMULATION_DEFAULT_DISABLED is not set
 -# CONFIG_X86_X32_ABI is not set
  CONFIG_COMPAT_32=y
  CONFIG_COMPAT=y
  CONFIG_COMPAT_FOR_U64_ALIGNMENT=y
-@@ -860,8 +862,12 @@ CONFIG_STACKPROTECTOR=y
+@@ -858,8 +859,12 @@ CONFIG_STACKPROTECTOR=y
  CONFIG_STACKPROTECTOR_STRONG=y
  CONFIG_ARCH_SUPPORTS_LTO_CLANG=y
  CONFIG_ARCH_SUPPORTS_LTO_CLANG_THIN=y
@@ -175,7 +159,7 @@ index 23257e9..e635898 100644
  CONFIG_HAVE_ARCH_WITHIN_STACK_FRAMES=y
  CONFIG_HAVE_CONTEXT_TRACKING_USER=y
  CONFIG_HAVE_CONTEXT_TRACKING_USER_OFFSTACK=y
-@@ -936,8 +942,6 @@ CONFIG_ARCH_HAS_GCOV_PROFILE_ALL=y
+@@ -934,8 +939,6 @@ CONFIG_ARCH_HAS_GCOV_PROFILE_ALL=y
  # end of GCOV-based kernel profiling
  
  CONFIG_HAVE_GCC_PLUGINS=y
@@ -184,7 +168,7 @@ index 23257e9..e635898 100644
  CONFIG_FUNCTION_ALIGNMENT_4B=y
  CONFIG_FUNCTION_ALIGNMENT_16B=y
  CONFIG_FUNCTION_ALIGNMENT=16
-@@ -1078,16 +1082,16 @@ CONFIG_ZSWAP=y
+@@ -1075,16 +1078,16 @@ CONFIG_ZSWAP=y
  CONFIG_ZSWAP_DEFAULT_ON=y
  # CONFIG_ZSWAP_EXCLUSIVE_LOADS_DEFAULT_ON is not set
  # CONFIG_ZSWAP_COMPRESSOR_DEFAULT_DEFLATE is not set
@@ -207,7 +191,7 @@ index 23257e9..e635898 100644
  CONFIG_ZBUD=y
  CONFIG_Z3FOLD=y
  CONFIG_ZSMALLOC=y
-@@ -1990,6 +1994,7 @@ CONFIG_BT_BNEP_MC_FILTER=y
+@@ -1987,6 +1990,7 @@ CONFIG_BT_BNEP_MC_FILTER=y
  CONFIG_BT_BNEP_PROTO_FILTER=y
  CONFIG_BT_CMTP=m
  CONFIG_BT_HIDP=m
@@ -215,15 +199,7 @@ index 23257e9..e635898 100644
  CONFIG_BT_LE=y
  CONFIG_BT_LE_L2CAP_ECRED=y
  CONFIG_BT_6LOWPAN=m
-@@ -5771,7 +5776,6 @@ CONFIG_REGULATOR_AW37503=m
- CONFIG_REGULATOR_AXP20X=m
- CONFIG_REGULATOR_BCM590XX=m
- CONFIG_REGULATOR_BD9571MWV=m
--CONFIG_REGULATOR_DA903X=m
- CONFIG_REGULATOR_DA9052=m
- CONFIG_REGULATOR_DA9055=m
- CONFIG_REGULATOR_DA9062=m
-@@ -10815,7 +10819,6 @@ CONFIG_CC_HAS_AUTO_VAR_INIT_ZERO=y
+@@ -10737,7 +10741,6 @@ CONFIG_CC_HAS_AUTO_VAR_INIT_ZERO=y
  # CONFIG_INIT_STACK_NONE is not set
  # CONFIG_INIT_STACK_ALL_PATTERN is not set
  CONFIG_INIT_STACK_ALL_ZERO=y
@@ -231,7 +207,7 @@ index 23257e9..e635898 100644
  CONFIG_INIT_ON_ALLOC_DEFAULT_ON=y
  # CONFIG_INIT_ON_FREE_DEFAULT_ON is not set
  CONFIG_CC_HAS_ZERO_CALL_USED_REGS=y
-@@ -10829,9 +10832,9 @@ CONFIG_LIST_HARDENED=y
+@@ -10751,9 +10754,9 @@ CONFIG_LIST_HARDENED=y
  # CONFIG_BUG_ON_DATA_CORRUPTION is not set
  # end of Hardening of kernel data structures
  
@@ -242,7 +218,7 @@ index 23257e9..e635898 100644
  # end of Kernel hardening options
  # end of Security options
  
-@@ -10984,7 +10987,7 @@ CONFIG_CRYPTO_CRC64_ROCKSOFT=y
+@@ -10906,7 +10909,7 @@ CONFIG_CRYPTO_CRC64_ROCKSOFT=y
  # Compression
  #
  CONFIG_CRYPTO_DEFLATE=m
@@ -251,7 +227,7 @@ index 23257e9..e635898 100644
  CONFIG_CRYPTO_842=m
  CONFIG_CRYPTO_LZ4=m
  CONFIG_CRYPTO_LZ4HC=m
-@@ -11343,15 +11346,14 @@ CONFIG_DEBUG_INFO_COMPRESSED_NONE=y
+@@ -11260,15 +11263,14 @@ CONFIG_DEBUG_INFO_COMPRESSED_NONE=y
  # CONFIG_DEBUG_INFO_SPLIT is not set
  CONFIG_DEBUG_INFO_BTF=y
  CONFIG_PAHOLE_HAS_SPLIT_BTF=y
@@ -268,7 +244,7 @@ index 23257e9..e635898 100644
  CONFIG_SECTION_MISMATCH_WARN_ONLY=y
  CONFIG_OBJTOOL=y
  # CONFIG_DEBUG_FORCE_WEAK_PER_CPU is not set
-@@ -11421,6 +11423,7 @@ CONFIG_ARCH_SUPPORTS_KMAP_LOCAL_FORCE_MAP=y
+@@ -11338,6 +11340,7 @@ CONFIG_ARCH_SUPPORTS_KMAP_LOCAL_FORCE_MAP=y
  CONFIG_HAVE_ARCH_KASAN=y
  CONFIG_HAVE_ARCH_KASAN_VMALLOC=y
  CONFIG_CC_HAS_KASAN_GENERIC=y
@@ -276,7 +252,7 @@ index 23257e9..e635898 100644
  CONFIG_CC_HAS_WORKING_NOSANITIZE_ADDRESS=y
  # CONFIG_KASAN is not set
  CONFIG_HAVE_ARCH_KFENCE=y
-@@ -11430,6 +11433,8 @@ CONFIG_KFENCE_NUM_OBJECTS=255
+@@ -11347,6 +11350,8 @@ CONFIG_KFENCE_NUM_OBJECTS=255
  CONFIG_KFENCE_DEFERRABLE=y
  CONFIG_KFENCE_STRESS_TEST_FAULTS=0
  CONFIG_HAVE_ARCH_KMSAN=y
@@ -285,7 +261,7 @@ index 23257e9..e635898 100644
  # end of Memory Debugging
  
  CONFIG_DEBUG_SHIRQ=y
-@@ -11589,7 +11594,7 @@ CONFIG_DYNAMIC_EVENTS=y
+@@ -11504,7 +11509,7 @@ CONFIG_DYNAMIC_EVENTS=y
  CONFIG_PROBE_EVENTS=y
  CONFIG_BPF_KPROBE_OVERRIDE=y
  CONFIG_FTRACE_MCOUNT_RECORD=y
@@ -294,7 +270,7 @@ index 23257e9..e635898 100644
  CONFIG_TRACING_MAP=y
  CONFIG_SYNTH_EVENTS=y
  CONFIG_USER_EVENTS=y
-@@ -11708,5 +11713,8 @@ CONFIG_MEMTEST=y
+@@ -11622,5 +11627,8 @@ CONFIG_MEMTEST=y
  #
  # Rust hacking
  #

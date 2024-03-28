@@ -1,0 +1,522 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 263a34a..6299f0f 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -13,7 +13,7 @@ pkgver=6.8.2
+ pkgrel=1
+ arch=('x86_64')
+ url="https://www.kernel.org/"
+-license=('GPL2')
++license=('GPL-2.0-or-later')
+ makedepends=(bc docbook-xsl libelf pahole python-sphinx git inetutils kmod xmlto cpio perl tar xz)
+ options=('!strip')
+ source=(#linux-${_commit}.zip::https://codeload.github.com/torvalds/linux/zip/${_commit}
+@@ -46,6 +46,9 @@ source=(#linux-${_commit}.zip::https://codeload.github.com/torvalds/linux/zip/${
+         0002-oxp-sensors-hwmon-Add-OneXPlayer-2-and-OneXFly.patch
+         0003-oxp-sensors-hwmon-Add-new-AYANEO-models.patch
+         0004-oxp-sensors-hwmon-Add-GPD-Devices.patch
++        # Avoid malformed lines error If Rust is enabled.
++        # b4 am 20231119180145.157455-1-sergio.collado@gmail.com
++        v2_20231119_sergio_collado_kunit_to_check_the_longest_symbol_length.patch
+ )
+ 
+ if [[ ! -z "$_commit" ]]; then
+@@ -58,7 +61,7 @@ fi
+ 
+ sha256sums=('87eebb4c5d35b5c71e2b1dbdd106be6e6ccc0ee3c3ba0602a3fc4d9d169a6b93'
+             '1d190147d8eee0313f0ea1e565070fc4f88db9c20e9d85dc0c6b9ad62a69b3fa'
+-            'edb487e6a16bd86588df007c57ff76f21b18d3f6e2aef79d6a12422f53369364'
++            '695a34429f0e182677056ec0eb7e46589d89249f575eeec05af0c2ba1f7c3c12'
+             '888a89ec67433ddfd71ba187a7356ca60270dbe51d6df7211e3930f13121ba8c'
+             'e1d17690dd21e8d5482b63ca66bfe6b478d39e8e8b59eedd53adb0a55ebc308d'
+             '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
+@@ -77,11 +80,17 @@ sha256sums=('87eebb4c5d35b5c71e2b1dbdd106be6e6ccc0ee3c3ba0602a3fc4d9d169a6b93'
+             '0d45a3cbd182a3b35ec65170e8cd6d1b36ce681936a9886b2f1159e323645c82'
+             'b9790b05ede9e967eef63d8b3e2dfaa9140eb29c8791ed7a0ae4652ea18db5e3'
+             '8a3e1e3f132c8962f6ff93916f5fe25003df0346b1e5671bc00f54fb72368fbb'
+-            'f71b714d58aa8f70a941278abb3ffb777df497c2a67858ae58c2d2d98471f24b')
++            'f71b714d58aa8f70a941278abb3ffb777df497c2a67858ae58c2d2d98471f24b'
++            '12dfd9174e680628e47f27861806e763a53b3a598d0211b1a59e98b51fda0bd6')
++
++validpgpkeys=(647F28654894E3BD457199BE38DBBDC86092693E)
+ 
+ prepare() {
+   cd "$_srcdir"
+ 
++  unset RUSTC
++  cp ~/.cargo/bin/bindgen{-0.69.4,}
++
+   # add upstream patch
+   if [[ -z "$_rc" ]] && [[ -e "../patch-${pkgver}" ]]; then
+     msg "add upstream patch"
+@@ -92,9 +101,13 @@ prepare() {
+   for src in "${source[@]}"; do
+       src="${src%%::*}"
+       src="${src##*/}"
+-      [[ $src = *.patch ]] || continue
+-      msg2 "Applying patch: $src..."
+-      patch -Np1 < "../$src"
++      if [[ $src =~ .*\.patch ]]; then
++              msg2 "Applying patch: $src..."
++              patch -Np1 < "../$src"
++      elif [[ $src =~ .*\.gitpatch ]]; then
++              msg2 "Applying gitpatch: $src..."
++              git --git-dir= apply -p1 --stat --apply "../$src"
++      fi
+   done
+ 
+   msg2 "add config"
+@@ -118,6 +131,8 @@ prepare() {
+   msg "get kernel version"
+   make prepare
+ 
++  make menuconfig
++
+   msg "rewrite configuration"
+   yes "" | make config >/dev/null
+ }
+@@ -125,6 +140,8 @@ prepare() {
+ build() {
+   cd "$_srcdir"
+ 
++  unset RUSTC
++  sudo choom -n -1000 -p $$
+   msg "build"
+   make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+ }
+@@ -164,7 +181,7 @@ package_linux68() {
+ 
+ package_linux68-headers() {
+   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+-  depends=('gawk' 'python' 'libelf' 'pahole')
++  depends=('gawk' 'python' 'libelf' 'pahole' 'python-ply' 'perl')
+   provides=("linux-headers=$pkgver")
+ 
+   cd "$_srcdir"
+diff --git a/config b/config
+index 3c94fb2..6a357e0 100644
+--- a/config
++++ b/config
+@@ -2,24 +2,25 @@
+ # Automatically generated file; DO NOT EDIT.
+ # Linux/x86 6.8.2-1 Kernel Configuration
+ #
+-CONFIG_CC_VERSION_TEXT="gcc (GCC) 13.2.1 20230801"
+-CONFIG_CC_IS_GCC=y
+-CONFIG_GCC_VERSION=130201
+-CONFIG_CLANG_VERSION=0
+-CONFIG_AS_IS_GNU=y
+-CONFIG_AS_VERSION=24200
+-CONFIG_LD_IS_BFD=y
+-CONFIG_LD_VERSION=24200
+-CONFIG_LLD_VERSION=0
++CONFIG_CC_VERSION_TEXT="clang version 16.0.6"
++CONFIG_GCC_VERSION=0
++CONFIG_CC_IS_CLANG=y
++CONFIG_CLANG_VERSION=160006
++CONFIG_AS_IS_LLVM=y
++CONFIG_AS_VERSION=160006
++CONFIG_LD_VERSION=0
++CONFIG_LD_IS_LLD=y
++CONFIG_LLD_VERSION=160006
++CONFIG_RUST_IS_AVAILABLE=y
+ CONFIG_CC_CAN_LINK=y
+ CONFIG_CC_CAN_LINK_STATIC=y
+ CONFIG_CC_HAS_ASM_GOTO_OUTPUT=y
+ CONFIG_CC_HAS_ASM_GOTO_TIED_OUTPUT=y
+-CONFIG_GCC_ASM_GOTO_OUTPUT_WORKAROUND=y
+ CONFIG_TOOLS_SUPPORT_RELR=y
+ CONFIG_CC_HAS_ASM_INLINE=y
+ CONFIG_CC_HAS_NO_PROFILE_FN_ATTR=y
+ CONFIG_PAHOLE_VERSION=126
++CONFIG_CONSTRUCTORS=y
+ CONFIG_IRQ_WORK=y
+ CONFIG_BUILDTIME_TABLE_SORT=y
+ CONFIG_THREAD_INFO_IN_TASK=y
+@@ -203,11 +204,9 @@ CONFIG_UCLAMP_BUCKETS_COUNT=5
+ CONFIG_ARCH_SUPPORTS_NUMA_BALANCING=y
+ CONFIG_ARCH_WANT_BATCHED_UNMAP_TLB_FLUSH=y
+ CONFIG_CC_HAS_INT128=y
+-CONFIG_CC_IMPLICIT_FALLTHROUGH="-Wimplicit-fallthrough=5"
++CONFIG_CC_IMPLICIT_FALLTHROUGH="-Wimplicit-fallthrough"
+ CONFIG_GCC10_NO_ARRAY_BOUNDS=y
+-CONFIG_CC_NO_ARRAY_BOUNDS=y
+ CONFIG_GCC_NO_STRINGOP_OVERFLOW=y
+-CONFIG_CC_NO_STRINGOP_OVERFLOW=y
+ CONFIG_ARCH_SUPPORTS_INT128=y
+ CONFIG_NUMA_BALANCING=y
+ CONFIG_NUMA_BALANCING_DEFAULT_ENABLED=y
+@@ -313,6 +312,9 @@ CONFIG_PERF_EVENTS=y
+ 
+ CONFIG_SYSTEM_DATA_VERIFICATION=y
+ CONFIG_PROFILING=y
++CONFIG_RUST=y
++CONFIG_RUSTC_VERSION_TEXT="rustc 1.74.1 (a28077b28 2023-12-04)"
++CONFIG_BINDGEN_VERSION_TEXT="bindgen 0.69.4"
+ CONFIG_TRACEPOINTS=y
+ 
+ #
+@@ -741,7 +743,6 @@ CONFIG_AMD_NB=y
+ #
+ CONFIG_IA32_EMULATION=y
+ # CONFIG_IA32_EMULATION_DEFAULT_DISABLED is not set
+-# CONFIG_X86_X32_ABI is not set
+ CONFIG_COMPAT_32=y
+ CONFIG_COMPAT=y
+ CONFIG_COMPAT_FOR_U64_ALIGNMENT=y
+@@ -865,8 +866,12 @@ CONFIG_STACKPROTECTOR=y
+ CONFIG_STACKPROTECTOR_STRONG=y
+ CONFIG_ARCH_SUPPORTS_LTO_CLANG=y
+ CONFIG_ARCH_SUPPORTS_LTO_CLANG_THIN=y
++CONFIG_HAS_LTO_CLANG=y
+ CONFIG_LTO_NONE=y
++# CONFIG_LTO_CLANG_FULL is not set
++# CONFIG_LTO_CLANG_THIN is not set
+ CONFIG_ARCH_SUPPORTS_CFI_CLANG=y
++# CONFIG_CFI_CLANG is not set
+ CONFIG_HAVE_ARCH_WITHIN_STACK_FRAMES=y
+ CONFIG_HAVE_CONTEXT_TRACKING_USER=y
+ CONFIG_HAVE_CONTEXT_TRACKING_USER_OFFSTACK=y
+@@ -942,8 +947,6 @@ CONFIG_ARCH_HAS_GCOV_PROFILE_ALL=y
+ # end of GCOV-based kernel profiling
+ 
+ CONFIG_HAVE_GCC_PLUGINS=y
+-CONFIG_GCC_PLUGINS=y
+-# CONFIG_GCC_PLUGIN_LATENT_ENTROPY is not set
+ CONFIG_FUNCTION_ALIGNMENT_4B=y
+ CONFIG_FUNCTION_ALIGNMENT_16B=y
+ CONFIG_FUNCTION_ALIGNMENT=16
+@@ -1086,16 +1089,16 @@ CONFIG_ZSWAP_DEFAULT_ON=y
+ # CONFIG_ZSWAP_EXCLUSIVE_LOADS_DEFAULT_ON is not set
+ CONFIG_ZSWAP_SHRINKER_DEFAULT_ON=y
+ # CONFIG_ZSWAP_COMPRESSOR_DEFAULT_DEFLATE is not set
+-# CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZO is not set
++CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZO=y
+ # CONFIG_ZSWAP_COMPRESSOR_DEFAULT_842 is not set
+ # CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4 is not set
+ # CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4HC is not set
+-CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD=y
+-CONFIG_ZSWAP_COMPRESSOR_DEFAULT="zstd"
+-# CONFIG_ZSWAP_ZPOOL_DEFAULT_ZBUD is not set
++# CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD is not set
++CONFIG_ZSWAP_COMPRESSOR_DEFAULT="lzo"
++CONFIG_ZSWAP_ZPOOL_DEFAULT_ZBUD=y
+ # CONFIG_ZSWAP_ZPOOL_DEFAULT_Z3FOLD is not set
+-CONFIG_ZSWAP_ZPOOL_DEFAULT_ZSMALLOC=y
+-CONFIG_ZSWAP_ZPOOL_DEFAULT="zsmalloc"
++# CONFIG_ZSWAP_ZPOOL_DEFAULT_ZSMALLOC is not set
++CONFIG_ZSWAP_ZPOOL_DEFAULT="zbud"
+ CONFIG_ZBUD=y
+ CONFIG_Z3FOLD=y
+ CONFIG_ZSMALLOC=y
+@@ -5767,7 +5770,6 @@ CONFIG_REGULATOR_AW37503=m
+ CONFIG_REGULATOR_AXP20X=m
+ CONFIG_REGULATOR_BCM590XX=m
+ CONFIG_REGULATOR_BD9571MWV=m
+-CONFIG_REGULATOR_DA903X=m
+ CONFIG_REGULATOR_DA9052=m
+ CONFIG_REGULATOR_DA9055=m
+ CONFIG_REGULATOR_DA9062=m
+@@ -10856,7 +10858,6 @@ CONFIG_CC_HAS_AUTO_VAR_INIT_ZERO=y
+ # CONFIG_INIT_STACK_NONE is not set
+ # CONFIG_INIT_STACK_ALL_PATTERN is not set
+ CONFIG_INIT_STACK_ALL_ZERO=y
+-# CONFIG_GCC_PLUGIN_STACKLEAK is not set
+ CONFIG_INIT_ON_ALLOC_DEFAULT_ON=y
+ # CONFIG_INIT_ON_FREE_DEFAULT_ON is not set
+ CONFIG_CC_HAS_ZERO_CALL_USED_REGS=y
+@@ -10870,9 +10871,9 @@ CONFIG_LIST_HARDENED=y
+ # CONFIG_BUG_ON_DATA_CORRUPTION is not set
+ # end of Hardening of kernel data structures
+ 
++CONFIG_CC_HAS_RANDSTRUCT=y
+ CONFIG_RANDSTRUCT_NONE=y
+ # CONFIG_RANDSTRUCT_FULL is not set
+-# CONFIG_RANDSTRUCT_PERFORMANCE is not set
+ # end of Kernel hardening options
+ # end of Security options
+ 
+@@ -11023,7 +11024,7 @@ CONFIG_CRYPTO_CRC64_ROCKSOFT=y
+ # Compression
+ #
+ CONFIG_CRYPTO_DEFLATE=m
+-CONFIG_CRYPTO_LZO=m
++CONFIG_CRYPTO_LZO=y
+ CONFIG_CRYPTO_842=m
+ CONFIG_CRYPTO_LZ4=m
+ CONFIG_CRYPTO_LZ4HC=m
+@@ -11386,15 +11387,14 @@ CONFIG_DEBUG_INFO_COMPRESSED_NONE=y
+ # CONFIG_DEBUG_INFO_SPLIT is not set
+ CONFIG_DEBUG_INFO_BTF=y
+ CONFIG_PAHOLE_HAS_SPLIT_BTF=y
++CONFIG_PAHOLE_HAS_BTF_TAG=y
+ CONFIG_PAHOLE_HAS_LANG_EXCLUDE=y
+ CONFIG_DEBUG_INFO_BTF_MODULES=y
+ # CONFIG_MODULE_ALLOW_BTF_MISMATCH is not set
+ # CONFIG_GDB_SCRIPTS is not set
+ CONFIG_FRAME_WARN=2048
+ CONFIG_STRIP_ASM_SYMS=y
+-# CONFIG_READABLE_ASM is not set
+ # CONFIG_HEADERS_INSTALL is not set
+-# CONFIG_DEBUG_SECTION_MISMATCH is not set
+ CONFIG_SECTION_MISMATCH_WARN_ONLY=y
+ CONFIG_OBJTOOL=y
+ # CONFIG_DEBUG_FORCE_WEAK_PER_CPU is not set
+@@ -11464,6 +11464,7 @@ CONFIG_ARCH_SUPPORTS_KMAP_LOCAL_FORCE_MAP=y
+ CONFIG_HAVE_ARCH_KASAN=y
+ CONFIG_HAVE_ARCH_KASAN_VMALLOC=y
+ CONFIG_CC_HAS_KASAN_GENERIC=y
++CONFIG_CC_HAS_KASAN_SW_TAGS=y
+ CONFIG_CC_HAS_WORKING_NOSANITIZE_ADDRESS=y
+ # CONFIG_KASAN is not set
+ CONFIG_HAVE_ARCH_KFENCE=y
+@@ -11473,6 +11474,8 @@ CONFIG_KFENCE_NUM_OBJECTS=255
+ CONFIG_KFENCE_DEFERRABLE=y
+ CONFIG_KFENCE_STRESS_TEST_FAULTS=0
+ CONFIG_HAVE_ARCH_KMSAN=y
++CONFIG_HAVE_KMSAN_COMPILER=y
++# CONFIG_KMSAN is not set
+ # end of Memory Debugging
+ 
+ CONFIG_DEBUG_SHIRQ=y
+@@ -11632,7 +11635,7 @@ CONFIG_DYNAMIC_EVENTS=y
+ CONFIG_PROBE_EVENTS=y
+ CONFIG_BPF_KPROBE_OVERRIDE=y
+ CONFIG_FTRACE_MCOUNT_RECORD=y
+-CONFIG_FTRACE_MCOUNT_USE_CC=y
++CONFIG_FTRACE_MCOUNT_USE_OBJTOOL=y
+ CONFIG_TRACING_MAP=y
+ CONFIG_SYNTH_EVENTS=y
+ CONFIG_USER_EVENTS=y
+@@ -11751,5 +11754,8 @@ CONFIG_MEMTEST=y
+ #
+ # Rust hacking
+ #
++# CONFIG_RUST_DEBUG_ASSERTIONS is not set
++CONFIG_RUST_OVERFLOW_CHECKS=y
++# CONFIG_RUST_BUILD_ASSERT_ALLOW is not set
+ # end of Rust hacking
+ # end of Kernel hacking
+diff --git a/v2_20231119_sergio_collado_kunit_to_check_the_longest_symbol_length.patch b/v2_20231119_sergio_collado_kunit_to_check_the_longest_symbol_length.patch
+new file mode 100644
+index 0000000..60898a2
+--- /dev/null
++++ b/v2_20231119_sergio_collado_kunit_to_check_the_longest_symbol_length.patch
+@@ -0,0 +1,217 @@
++From git@z Thu Jan  1 00:00:00 1970
++Subject: [PATCH v2] Kunit to check the longest symbol length
++From: Sergio González Collado <sergio.collado@gmail.com>
++Date: Sun, 19 Nov 2023 19:01:45 +0100
++Message-Id: <20231119180145.157455-1-sergio.collado@gmail.com>
++MIME-Version: 1.0
++Content-Type: text/plain; charset="utf-8"
++Content-Transfer-Encoding: 8bit
++
++The longest length of a symbol (KSYM_NAME_LEN) was increased to 512
++in the reference [1]. This patch adds a kunit test to check the longest
++symbol length.
++
++[1] https://lore.kernel.org/lkml/20220802015052.10452-6-ojeda@kernel.org/
++
++Tested-by: Martin Rodriguez Reboredo <yakoyoku@gmail.com>
++Signed-off-by: Sergio González Collado <sergio.collado@gmail.com>
++- - -
++V1 -> V2: corrected CI tests. Added fix proposed at [2]
++
++[2] https://lore.kernel.org/lkml/Y9ES4UKl%2F+DtvAVS@gmail.com/T/#m3ef0e12bb834d01ed1ebdcae12ef5f2add342077
++
++---
++ arch/x86/tools/insn_decoder_test.c |   3 +-
++ lib/Kconfig.debug                  |   9 +++
++ lib/Makefile                       |   2 +
++ lib/longest_symbol_kunit.c         | 122 +++++++++++++++++++++++++++++
++ 4 files changed, 135 insertions(+), 1 deletion(-)
++ create mode 100644 lib/longest_symbol_kunit.c
++
++diff --git a/arch/x86/tools/insn_decoder_test.c b/arch/x86/tools/insn_decoder_test.c
++index 472540aeabc2..6c2986d2ad11 100644
++--- a/arch/x86/tools/insn_decoder_test.c
+++++ b/arch/x86/tools/insn_decoder_test.c
++@@ -10,6 +10,7 @@
++ #include <assert.h>
++ #include <unistd.h>
++ #include <stdarg.h>
+++#include <linux/kallsyms.h>
++ 
++ #define unlikely(cond) (cond)
++ 
++@@ -106,7 +107,7 @@ static void parse_args(int argc, char **argv)
++ 	}
++ }
++ 
++-#define BUFSIZE 256
+++#define BUFSIZE (256 + KSYM_NAME_LEN)
++ 
++ int main(int argc, char **argv)
++ {
++diff --git a/lib/Kconfig.debug b/lib/Kconfig.debug
++index cc7d53d9dc01..a531abece0a7 100644
++--- a/lib/Kconfig.debug
+++++ b/lib/Kconfig.debug
++@@ -2769,6 +2769,15 @@ config FORTIFY_KUNIT_TEST
++ 	  by the str*() and mem*() family of functions. For testing runtime
++ 	  traps of FORTIFY_SOURCE, see LKDTM's "FORTIFY_*" tests.
++ 
+++config LONGEST_SYM_KUNIT_TEST
+++	tristate "Test the longest symbol possible" if !KUNIT_ALL_TESTS
+++	depends on KUNIT && KPROBES
+++	default KUNIT_ALL_TESTS
+++	help
+++	  Tests the longest symbol possible
+++
+++	  If unsure, say N.
+++
++ config HW_BREAKPOINT_KUNIT_TEST
++ 	bool "Test hw_breakpoint constraints accounting" if !KUNIT_ALL_TESTS
++ 	depends on HAVE_HW_BREAKPOINT
++diff --git a/lib/Makefile b/lib/Makefile
++index 6b09731d8e61..f72003d5869b 100644
++--- a/lib/Makefile
+++++ b/lib/Makefile
++@@ -406,6 +406,8 @@ obj-$(CONFIG_FORTIFY_KUNIT_TEST) += fortify_kunit.o
++ obj-$(CONFIG_STRCAT_KUNIT_TEST) += strcat_kunit.o
++ obj-$(CONFIG_STRSCPY_KUNIT_TEST) += strscpy_kunit.o
++ obj-$(CONFIG_SIPHASH_KUNIT_TEST) += siphash_kunit.o
+++obj-$(CONFIG_LONGEST_SYM_KUNIT_TEST) += longest_symbol_kunit.o
+++CFLAGS_longest_symbol_kunit.o += $(call cc-disable-warning, missing-prototypes)
++ 
++ obj-$(CONFIG_GENERIC_LIB_DEVMEM_IS_ALLOWED) += devmem_is_allowed.o
++ 
++diff --git a/lib/longest_symbol_kunit.c b/lib/longest_symbol_kunit.c
++new file mode 100644
++index 000000000000..998563018f7a
++--- /dev/null
+++++ b/lib/longest_symbol_kunit.c
++@@ -0,0 +1,122 @@
+++// SPDX-License-Identifier: GPL-2.0
+++/*
+++ * Test the longest symbol length. Execute with:
+++ *  ./tools/testing/kunit/kunit.py run longest-symbol
+++ *  --arch=x86_64 --kconfig_add CONFIG_KPROBES=y --kconfig_add CONFIG_MODULES=y
+++ *  --kconfig_add CONFIG_RETPOLINE=n
+++ */
+++
+++#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+++
+++#include <kunit/test.h>
+++#include <linux/stringify.h>
+++#include <linux/kprobes.h>
+++#include <linux/kallsyms.h>
+++
+++#define DI(name) s##name##name
+++#define DDI(name) DI(n##name##name)
+++#define DDDI(name) DDI(n##name##name)
+++#define DDDDI(name) DDDI(n##name##name)
+++#define DDDDDI(name) DDDDI(n##name##name)
+++
+++#define PLUS1(name) __PASTE(name, e)
+++
+++/*Generate a symbol whose name length is 511 */
+++#define LONGEST_SYM_NAME  DDDDDI(g1h2i3j4k5l6m7n)
+++
+++/*Generate a symbol whose name length is 512 */
+++#define LONGEST_SYM_NAME_PLUS1 PLUS1(LONGEST_SYM_NAME)
+++
+++#define RETURN_LONGEST_SYM 0xAAAAA
+++#define RETURN_LONGEST_SYM_PLUS1 0x55555
+++
+++noinline int LONGEST_SYM_NAME(void);
+++noinline int LONGEST_SYM_NAME(void)
+++{
+++	return RETURN_LONGEST_SYM;
+++}
+++
+++noinline int LONGEST_SYM_NAME_PLUS1(void);
+++noinline int LONGEST_SYM_NAME_PLUS1(void)
+++{
+++	return RETURN_LONGEST_SYM_PLUS1;
+++}
+++
+++_Static_assert(sizeof(__stringify(LONGEST_SYM_NAME)) == KSYM_NAME_LEN,
+++"Incorrect symbol length found. Expected KSYM_NAME_LEN: "
+++__stringify(KSYM_NAME) ", but found: "
+++__stringify(sizeof(LONGEST_SYM_NAME)));
+++
+++static void test_longest_symbol(struct kunit *test)
+++{
+++	KUNIT_EXPECT_EQ(test, RETURN_LONGEST_SYM, LONGEST_SYM_NAME());
+++};
+++
+++static void test_longest_symbol_kallsyms(struct kunit *test)
+++{
+++	unsigned long (*kallsyms_lookup_name)(const char *name);
+++	static int (*longest_sym)(void);
+++
+++	struct kprobe kp = {
+++		.symbol_name = "kallsyms_lookup_name",
+++	};
+++
+++	if (register_kprobe(&kp) < 0) {
+++		pr_info("%s: kprobe not registered\n", __func__);
+++		KUNIT_FAIL(test, "test_longest_symbol kallsysms: kprobe not registered\n");
+++		return;
+++	}
+++
+++	kunit_warn(test, "test_longest_symbol kallsyms: kprobe registered\n");
+++	kallsyms_lookup_name = (unsigned long (*)(const char *name))kp.addr;
+++	unregister_kprobe(&kp);
+++
+++	longest_sym =
+++	    (void *) kallsyms_lookup_name(__stringify(LONGEST_SYM_NAME));
+++	KUNIT_EXPECT_EQ(test, RETURN_LONGEST_SYM, longest_sym());
+++};
+++
+++static void test_longest_symbol_plus1(struct kunit *test)
+++{
+++	KUNIT_EXPECT_EQ(test, RETURN_LONGEST_SYM_PLUS1, LONGEST_SYM_NAME_PLUS1());
+++};
+++
+++static void test_longest_symbol_plus1_kallsyms(struct kunit *test)
+++{
+++	unsigned long (*kallsyms_lookup_name)(const char *name);
+++	static int (*longest_sym_plus1)(void);
+++
+++	struct kprobe kp = {
+++		.symbol_name = "kallsyms_lookup_name",
+++	};
+++
+++	if (register_kprobe(&kp) < 0) {
+++		pr_info("%s: kprobe not registered\n", __func__);
+++		KUNIT_FAIL(test, "test_longest_symbol kallsysms: kprobe not registered\n");
+++		return;
+++	}
+++
+++	kunit_warn(test, "test_longest_symbol_plus1 kallsyms: kprobe registered\n");
+++	kallsyms_lookup_name = (unsigned long (*)(const char *name))kp.addr;
+++	unregister_kprobe(&kp);
+++
+++	longest_sym_plus1 =
+++	    (void *) kallsyms_lookup_name(__stringify(LONGEST_SYM_NAME_PLUS1));
+++	KUNIT_EXPECT_NULL(test, longest_sym_plus1);
+++};
+++
+++static struct kunit_case longest_symbol_test_cases[] = {
+++	KUNIT_CASE(test_longest_symbol),
+++	KUNIT_CASE(test_longest_symbol_kallsyms),
+++	KUNIT_CASE(test_longest_symbol_plus1),
+++	KUNIT_CASE(test_longest_symbol_plus1_kallsyms),
+++	{}
+++};
+++
+++static struct kunit_suite longest_symbol_test_suite = {
+++	.name = "longest-symbol",
+++	.test_cases = longest_symbol_test_cases,
+++};
+++kunit_test_suite(longest_symbol_test_suite);
+++
+++MODULE_LICENSE("GPL");
++
++base-commit: 037266a5f7239ead1530266f7d7af153d2a867fa
++-- 
++2.39.2
++
