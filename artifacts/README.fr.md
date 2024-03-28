@@ -624,6 +624,9 @@ kernel-6.7.10
 ##### 20240325
 kernel-6.8.1
 
+##### 20240328
+kernel-6.8.2
+
 
 ----
 Autres systèmes d'exploitation recommandés  
