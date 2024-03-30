@@ -112,7 +112,7 @@ Please feel free to try it out.
 [TERABOX-folder]: https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag "TeraBox"
 [pCloud-folder]: https://u.pcloud.link/publink/show?code=kZVuHNVZ0ljg4O7Ja2j8YN9KNwFVnfsnoCnX
 [MEGA-ICON]: ./img/mega-icon.svg
-[SF-ICON]: ./img/sf_logo.png
+[SF-ICON]: ./img/sourceforge-icon.svg
 [GD-ICON]: ./img/Google_Drive_icon.svg
 [TERA-ICON]: ./img/terabox_logo.svg
 [pCloud-ICON]: ./img/pcloud_icon.svg
@@ -634,6 +634,9 @@ kernel-6.8.1
 
 ##### 20240328
 kernel-6.8.2
+
+##### 20240330
+xz 5.6.1-2
 
 
 ----
