@@ -82,7 +82,7 @@ mintstick
 >extra modemmanager
 >extra mousetweaks
 #>extra microsoft-office-web-jak
->extra mugshot
+#>extra mugshot
 >multilib lib32-mesa-utils
 # >extra nemo-bulk-rename
 >extra nemo-fileroller
