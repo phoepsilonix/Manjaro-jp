@@ -109,7 +109,7 @@ Please feel free to try it out.
 [MEGA-folder]: https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0 "MEGA"
 [SOURCEFORGE-folder]: https://sourceforge.net/projects/manjaro-jp/ "SourceForge"
 [GOOGLE-DRIVE-folder]: https://drive.google.com/drive/folders/1sEACfS24Mci6FnC5jyca9muoiVABCBlv?usp=sharing "Google Drive"
-[TERABOX-folder]: https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag "TeraBox"
+[TERABOX-folder]: https://www.terabox.com/japanese/sharing/link?surl=L_8shPr6AMixSgdsDljFag&path=%2Fmanjaro-jp "TeraBox"
 [pCloud-folder]: https://u.pcloud.link/publink/show?code=kZVuHNVZ0ljg4O7Ja2j8YN9KNwFVnfsnoCnX
 [MEGA-ICON]: ./img/mega-icon.svg
 [SF-ICON]: ./img/sourceforge-icon.svg
@@ -637,6 +637,9 @@ kernel-6.8.2
 
 ##### 20240330
 xz 5.6.1-2
+
+##### 20240404
+kernel-6.8.3
 
 
 ----

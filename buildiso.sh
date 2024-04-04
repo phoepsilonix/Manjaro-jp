@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 NO_OOM_KILLER="$$"
-gpg -dq ~/.ssh/pass.gpg|sudo -S pwd
+source ./keychain.sh
 echo $NO_OOM_KILLER | xargs -n1 sudo choom -n -1000 -p 
 #sudo rm /var/lib/manjaro-tools/buildiso/* -rf
 
@@ -13,7 +13,7 @@ usb=/run/media/phoepsilonix/Ventoy
 gkey="-g $(cat ~/.gnupg/sign.txt)"
 #gkey=""
 
-kernel=linux66
+kernel=linux68
 
 # 保存先フォルダ
 artifacts=`pwd`/artifacts
@@ -98,13 +98,17 @@ do
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso 
 #        buildiso -d xz -f -k $kernel -p $ed -x $gkey -t $usb/tmp/iso -r $usb/tmp/build
         echo "build iso"
-        echo "buildiso -d xz -k $kernel -p $ed $gkey"
-        gpg -dq ~/.ssh/pass.gpg|sudo -S pwd >/dev/null 2>&1
+        gpg -dq ~/.ssh/pass.gpg|sudo -S pwd >/dev/null
         touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback -b INFO
         sync
         echo buildiso -o -d xz -f -k $kernel -p $ed $gkey
         buildiso -o -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
         #buildiso  -zc -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
+        sync
+        #gpg -dq ~/.ssh/pass.gpg|sudo -S pwd >/dev/null
+        #touch INFO.sig && rm -f INFO.sig && gpg --passphrase-file ~/.ssh/gpg-passphrase --batch --pinentry-mode=loopback -b INFO
+        #echo buildiso -zc -o -d xz -f -k $kernel -p $ed $gkey
+        #buildiso -zc -o -d xz -f -k $kernel -p $ed $gkey && ./line-notify.sh "$ed done" || ./line-notify.sh "$ed error" 
         sync
         find /var/cache/manjaro-tools/iso -type f -name "*.iso" | xargs -I{} mv {} $artifacts && sync
         . artifacts/rename.sh
