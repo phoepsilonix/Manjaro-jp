@@ -94,7 +94,7 @@ pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 ```
 
 4. 一部アプリで日本語入力ができない場合  
-古い設定が残っていて、'gtk-im-module'になにか設定されている場合、一部アプリで入力できないケースがあるようです。
+古い設定が残っていて、`gtk-im-module`になにか設定されている場合、一部アプリで入力できないケースがあるようです。
 ```
 gsettings get org.gnome.desktop.interface gtk-im-module
 ```
