@@ -81,12 +81,14 @@ fetch(markdown_file)
         svg#MANJARO-QR { width: 180px; height: 180px; }
         image#MANJARO-QR { width: 180px; height: 180px; }
         image#MANJARO-ICON { width: 32px; height: 32px; }
-				/*
-        code {
-            margin-right: 240px;
-            margin-left: 24px;
+        code:not([class]) {
+            margin-right: 0px;
+            margin-left: 0px;
         }
-				*/
+				.language-bash {
+            margin-right: 15%;
+            margin-left: 0px;
+				}
     </style>
 </head>
 <body>
