@@ -242,28 +242,26 @@ index 0000000..898e21d
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index 052c701..03612ea 100644
+index 92c04b1..0d9d8cc 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -31,6 +31,10 @@ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-         'kernel-6.3.patch'
+@@ -32,6 +32,9 @@ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
          'kernel-6.4.patch'
          'kernel-6.6.patch'
+         'kernel-6.8.patch'
 +        '001-fix-function-declaration.patch'
 +        '002-Kbuild-clang-options.patch'
 +        'nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch'
-+        'remove-drm-unlocked-kernel-6.8.patch'
          'buildfix_kernel_6.5-garbage-collect-all-references-to-get_user.patch'
          'buildfix_kernel_6.5-handle-get_user_pages-vmas-argument-remova.patch')
  sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
-@@ -38,6 +42,10 @@ sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
-             '4284f95f808df4e43afc4632e3fc1f87da1a805f0f6f9af1f6b519c7cf7562b4'
+@@ -40,6 +43,9 @@ sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
              '6a73ba0760c278a835ec5dcc6f3a9e0f8f0787fde95e832c38e8038152242708'
              '070879076eb75801ecf42819ccf89f09556db421475cb883413b10876a306f87'
+             'fa82f41f0d2d12d3dcf983996683c8576d9f41407b052244a57ad3778031ec0f'
 +            '2eabd0df9d0049781ac82a83d4b52a5c0bd38a4a64039a47315b6e765d1aab4d'
 +            '5b5e72012c09d6545d9dc379170b61fea036256866e153895734a7667f9b1436'
 +            '80549d160b8273e2bbe81d50764161f72d496c677db10364f6d38234105e44f0'
-+            '336d3074ac3fb31df63a1914041756b64ce76cac5b0eac61458c718ca0187b17'
              'b50bfc1f45c706fed3429bf2a876d127405a8a0c7617042ef088ca5493b0814f'
              'dbb15bb863a74513946738be1ae223f26eab0e631b8ecb05b0f9c52549fdb847')
  
@@ -366,22 +364,3 @@ index 0000000..3ef5996
 + #include <drm/drm_crtc_helper.h>
 + 
 + static void nv_drm_framebuffer_destroy(struct drm_framebuffer *fb)
-diff --git a/remove-drm-unlocked-kernel-6.8.patch b/remove-drm-unlocked-kernel-6.8.patch
-new file mode 100644
-index 0000000..481f35f
---- /dev/null
-+++ b/remove-drm-unlocked-kernel-6.8.patch
-@@ -0,0 +1,13 @@
-+diff --git a/nvidia-drm/nvidia-drm-helper.h b/nvidia-drm/nvidia-drm-helper.h
-+index 831737d..5be62d5 100644
-+--- a/nvidia-drm/nvidia-drm-helper.h
-++++ b/nvidia-drm/nvidia-drm-helper.h
-+@@ -434,6 +434,8 @@ void nv_drm_connector_list_iter_end(struct drm_connector_list_iter *iter)
-+ }
-+ #endif
-+ 
-++#define DRM_UNLOCKED 0
-++
-+ #endif /* defined(NV_DRM_ATOMIC_MODESET_AVAILABLE) */
-+ 
-+ #endif /* defined(NV_DRM_AVAILABLE) */
