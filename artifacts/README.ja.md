@@ -98,7 +98,7 @@ pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 ```
 gsettings get org.gnome.desktop.interface gtk-im-module
 ```
-このコマンドで'gtk-im-context-simple'などが表示されたら、次のコマンドで設定を消しましょう。
+このコマンドで`gtk-im-context-simple`などが表示されたら、次のコマンドで設定を消しましょう。
 ```
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```

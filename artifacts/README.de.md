@@ -65,11 +65,11 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 ```
 
 3. Wenn die japanische Eingabe in einigen Anwendungen nicht möglich ist  
-Wenn alte Einstellungen beibehalten werden und etwas im gtk-im-Modul eingestellt wurde, kann es vorkommen, dass die japanische Eingabe in einigen Anwendungen nicht möglich ist.
+Wenn alte Einstellungen beibehalten werden und etwas im `gtk-im-module` eingestellt wurde, kann es vorkommen, dass die japanische Eingabe in einigen Anwendungen nicht möglich ist.
 ```
 gsettings get org.gnome.desktop.interface gtk-im-module
 ```
-Wenn dieser Befehl 'gtk-im-context-simple' oder ähnliches anzeigt, entfernen Sie die Einstellung mit dem folgenden Befehl.
+Wenn dieser Befehl `gtk-im-context-simple` oder ähnliches anzeigt, entfernen Sie die Einstellung mit dem folgenden Befehl.
 ```
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```

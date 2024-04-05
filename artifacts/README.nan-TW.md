@@ -66,11 +66,11 @@ pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 ```
 
 4. 部分應用程式無法輸入日文
-如果有古老的設定猶原存在,而且 'gtk-im-module' 有設定,會導致部分應用程式無法輸入日文。
+如果有古老的設定猶原存在,而且 `gtk-im-module` 有設定,會導致部分應用程式無法輸入日文。
 ```
 gsettings get org.gnome.desktop.interface gtk-im-module
 ```
-如果這個指令會顯示 'gtk-im-context-simple' 之類的結果,代表有設定值存在。這時就需要用下面的指令來清除設定:
+如果這個指令會顯示 `gtk-im-context-simple` 之類的結果,代表有設定值存在。這時就需要用下面的指令來清除設定:
 ```
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```

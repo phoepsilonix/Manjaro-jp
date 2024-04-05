@@ -65,11 +65,11 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 ```
 
 3. Quando não é possível introduzir a língua japonesa em algumas aplicações  
-Se as definições antigas se mantiverem e algo tiver sido definido no módulo gtk-im, pode haver casos em que não seja possível introduzir japonês em algumas aplicações.
+Algumas aplicações podem não ser capazes de introduzir o japonês se a configuração antiga ainda estiver em vigor e algo tiver sido definido no `gtk-im-module`.
 ```
 gsettings get org.gnome.desktop.interface gtk-im-module
 ```
-Se este comando mostrar 'gtk-im-context-simple' ou similar, remova a configuração com o seguinte comando.
+Se este comando mostrar `gtk-im-context-simple` ou similar, remova a configuração com o seguinte comando.
 ```
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```

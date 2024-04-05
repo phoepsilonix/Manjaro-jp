@@ -66,11 +66,11 @@ pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfs
 ```
 
 3. Lorsque la saisie du japonais n'est pas possible dans certaines applications  
-Si d'anciens réglages subsistent et que quelque chose a été défini dans gtk-im-module, il peut y avoir des cas où vous ne pouvez pas saisir le japonais dans certaines applications.
+Si d'anciens réglages subsistent et que quelque chose a été défini dans `gtk-im-module`, il peut y avoir des cas où vous ne pouvez pas saisir le japonais dans certaines applications.
 ```
 gsettings get org.gnome.desktop.interface gtk-im-module
 ```
-Si cette commande affiche 'gtk-im-context-simple' ou similaire, supprimez le paramètre avec la commande suivante.
+Si cette commande affiche `gtk-im-context-simple` ou similaire, supprimez le paramètre avec la commande suivante.
 ```
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
