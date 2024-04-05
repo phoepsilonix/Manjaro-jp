@@ -13,13 +13,13 @@ Il est recommandé de reformater la première partition avec ext4 lors de l'inst
 ----
 ### À propos de l’installation de Ventoy
 Étapes pour installer ventoy sur une clé USB en utilisant Manjaro Linux
-```
+```bash
 sudo pacman -S ventoy
 ventoygui
 ```
 Linux général  
 Exemple de commande de téléchargement en utilisant aria2  
-```
+```bash
 aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.97/ventoy-1.0.97-linux.tar.gz
 tar xf ventoy-1.0.97-linux.tar.gz
 cd ventoy-1.0.97
@@ -51,27 +51,27 @@ Non pris en charge, veuillez donc désactiver Secure Boot dans les paramètres d
 Ce problème peut souvent être évité en activant manuellement la partition swap.  
 Si la partition swap est /dev/sdX, essayez d'activer le swap manuellement avec la commande suivante.
 
-```
+```bash
 sudo mkswap /dev/sdX
 sudo swapon /dev/sdX
 ```
-```
+```bash
 # Si le swap n'est pas activé, utilisez lsblk pour examiner le périphérique et activer la partition swap.
 [[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
 ```
 La commande suivante doit également être utilisée pour spécifier que le tueur OOM (terminaison forcée) n'est pas applicable.
-```
+```bash
 pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
 3. Lorsque la saisie du japonais n'est pas possible dans certaines applications  
 Si d'anciens réglages subsistent et que quelque chose a été défini dans `gtk-im-module`, il peut y avoir des cas où vous ne pouvez pas saisir le japonais dans certaines applications.
-```
+```bash
 gsettings get org.gnome.desktop.interface gtk-im-module
 ```
 Si cette commande affiche `gtk-im-context-simple` ou similaire, supprimez le paramètre avec la commande suivante.
-```
+```bash
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
@@ -80,7 +80,7 @@ La série kererl-6.6 est utilisée dans l'iso officielle de Manjaro, mais l'iso 
 Nous utilisons clang au lieu de gcc pour compiler le noyau et les modules du noyau.  
 Nous activons également le support rust du noyau.  
 Si vous souhaitez utiliser le noyau officiel de Manjaro, installez-le en spécifiant le dépôt 'core' comme dans la commande suivante.
-```
+```bash
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 
@@ -122,11 +122,11 @@ Il est distribué dans les trois emplacements ci-dessus.
 [pCloud] (https://partner.pcloud.com/r/119318), les tailles supérieures à 4G ne posent pas de problème. Il s'agit d'un stockage en nuage avec un plan de rachat à vie.
 
 Si vous voulez télécharger depuis MEGA Storage en utilisant la ligne de commande, megatools est utile.
-```
+```bash
 sudo pacman -S megatools
 ```
 
-```
+```bash
 megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
 ```
 
@@ -413,7 +413,7 @@ kernel-6.2.7
 
 * Nous avons temporairement publié un paquetage dont le fonctionnement n'a pas été entièrement testé.  
 Veuillez essayer de réinstaller le paquet distribué par la distribution officielle de Manjaro avec la commande suivante.
-```
+```bash
 sudo pacman-static -S core/curl
 ```
 
@@ -481,7 +481,7 @@ kernel-6.4.4
 ##### 20230721
 J'ai préparé un paquet pour installer la clé de signature manjaro-jp.  
 Si une erreur se produit en raison de la clé de signature manjaro-jp, veuillez essayer la commande suivante pour la corriger.
-```
+```bash
 sudo pacman-key --populate manjaro_jp
 sudo pacman -Sy
 ```
@@ -506,13 +506,13 @@ Je pense qu'avec la correction du paquet pacman que j'ai effectuée précédemme
 Cependant, si une erreur se produit, veuillez essayer les étapes suivantes.  
 
 Initialisez la base de données de clés de signature.
-```
+```bash
 sudo pacman-key --init
 sudo pacman-key --populate
 ```
 
 Recharger les informations sur le paquet.
-```
+```bash
 sudo pacman -Syy
 sudo pacman -Fyy
 ```
@@ -581,7 +581,7 @@ kernel-6.6.2
 
 manjaro-jp database signatures have been removed. Only the package will be signed.  
 If you get a signature error with pamac, try the following command.
-```
+```bash
 sudo rm /var/tmp/pamac/dbs/sync/manjaro-jp*sig
 sudo rm /var/lib/pacman/sync/manjaro-jp*sig
 sudo pacman-key --populate

@@ -30,13 +30,13 @@ Ventoyの導入時に最初のパーティションをext4でフォーマット�
 ----
 ### Ventoyのインストールについて
 Manjaro LinuxでventoyをUSBにインストールする場合の手順
-```
+```bash
 sudo pacman -S ventoy
 ventoygui
 ```
 Linux全般  
 ダウンロードコマンドがaria2の場合の例
-```
+```bash
 aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.97/ventoy-1.0.97-linux.tar.gz
 tar xf ventoy-1.0.97-linux.tar.gz
 cd ventoy-1.0.97
@@ -55,7 +55,7 @@ Linuxカーネルは、なるべく最新のものを採用します。
 標準ブラウザとして、[Floorp](https://floorp.ablaze.one/)を採用します。  
 オフィスソフトとして[LibreOffice](https://ja.libreoffice.org)を標準インストールします。  
 pacman-staticパッケージを標準導入しています。ライブラリの不整合によって、パッケージ更新が困難になった場合に、ご利用ください。  
-```
+```bash
 sudo pacman-static -Syyu
 ```
 
@@ -72,34 +72,34 @@ sudo pacman-static -Syyu
 
 2. ISOから起動したライブ環境ではsnapアプリケーションのインストールは停止されています。  
 インストール後の環境では有効になりますが、どうしても試したい場合には手動で有効化できます。
-```
+```bash
 sudo systemctl start snapd.service
 ```
 
 3. インストール途中でインストーラー画面が消える場合には  
 swapパーティションを手動で設定することで、回避できる場合が多いです。  
 swapパーティションを/dev/sdXとした場合、次のようなコマンドで手動でswapを有効にしてみてください。
-```
+```bash
 sudo mkswap /dev/sdX
 sudo swapon /dev/sdX
 ```
-```
+```bash
 # swapが有効ではない場合、lsblkでデバイスを調べて、swapパーティションを有効にします。
 [[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
 ```
 
 また次のコマンドで、OOM killer（強制終了）の対象外を指定しておきましょう。
-```
+```bash
 pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 ```
 
 4. 一部アプリで日本語入力ができない場合  
 古い設定が残っていて、`gtk-im-module`になにか設定されている場合、一部アプリで入力できないケースがあるようです。
-```
+```bash
 gsettings get org.gnome.desktop.interface gtk-im-module
 ```
 このコマンドで`gtk-im-context-simple`などが表示されたら、次のコマンドで設定を消しましょう。
-```
+```bash
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
@@ -108,7 +108,7 @@ kererl-6.6系がManjaro公式のisoでは採用されていますが、ここで
 kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
 またkernelのrust対応も有効にしています。  
 Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
-```
+```bash
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 
@@ -144,11 +144,11 @@ Teraboxでは、ファイルサイズ4G以上は、コストがかかるので�
 [pCloud](https://partner.pcloud.com/r/119318)も4G以上のサイズも大丈夫です。生涯買い切りタイプのプランがあるクラウドストレージです。
 
 コマンドラインで、MEGA Storageからダウンロードする場合、megatoolsが便利です。
-```
+```bash
 sudo pacman -S megatools
 ```
 
-```
+```bash
 megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
 ```
 
@@ -439,7 +439,7 @@ kernel-6.2.7
 
 * 一時的に動作検証が不十分なパッケージを公開してしまいました。  
 お手数ですが、次のコマンドでManjaro公式が配布しているパッケージをインストールしなおしてみてください。
-```
+```bash
 sudo pacman-static -S core/curl
 ```
 
@@ -508,7 +508,7 @@ kernel-6.4.4
 ##### 20230721
 manjaro-jpの署名鍵をインストールするパッケージを用意しました。  
 manjaro-jpの署名鍵が原因のエラーが発生した場合には、次のコマンドで対処してみてください。  
-```
+```bash
 sudo pacman-key --populate manjaro_jp
 sudo pacman -Sy
 ```
@@ -533,13 +533,13 @@ kernel-6.4.7
 それでも、もしもエラーが起きる場合には、次の手順を試してみてください。  
 
 署名鍵データベースの初期化
-```
+```bash
 sudo pacman-key --init
 sudo pacman-key --populate
 ```
 
 パッケージ情報を再読込
-```
+```bash
 sudo pacman -Syy
 sudo pacman -Fyy
 ```
@@ -608,7 +608,7 @@ kernel-6.6.2
 manjaro-jpのデータベースの署名をなくしました。パッケージのみ署名ありにします。  
 pamacで署名のエラーが発生する場合には、次のコマンドを試してください。
 
-```
+```bash
 sudo rm /var/tmp/pamac/dbs/sync/manjaro-jp*sig
 sudo rm /var/lib/pacman/sync/manjaro-jp*sig
 sudo pacman-key --populate

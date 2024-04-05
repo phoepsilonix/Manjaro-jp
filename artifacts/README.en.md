@@ -13,14 +13,14 @@ It is recommended to format the first partition as ext4 during the introduction 
 ----
 ### About installing Ventoy
 Steps to install ventoy on a USB drive using Manjaro Linux  
-```
+```bash
 sudo pacman -S ventoy
 ventoygui
 ```
 
 General Linux  
 Example of download command using aria2  
-```
+```bash
 aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.97/ventoy-1.0.97-linux.tar.gz
 tar xf ventoy-1.0.97-linux.tar.gz
 cd ventoy-1.0.97
@@ -51,28 +51,28 @@ It is not supported, so please disable Secure Boot in BIOS settings.
 2. If the installer screen disappears during installation  
 In many cases, it can be avoided by setting the swap partition manually.  
 If the swap partition is /dev/sdX, try to manually enable swap with the following command.  
-```
+```bash
 sudo mkswap /dev/sdX
 sudo swapon /dev/sdX
 ```
-```
+```bash
 # If swap is not enabled, use lsblk to examine the device and enable the swap partition.
 [[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
 ```
 
 Also, specify the target that is excluded from OOM killer (force termination) with the following command.
-```
+```bash
 pidof -xw Xwayland calamares_polkit|xargs -n1 sudo choom -n -1000 -p
 pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
 3. When Japanese input is not possible in some apps  
 If old settings remain and something has been set in `gtk-im-module`, there may be cases where you cannot input Japanese in some apps.
-```
+```bash
 gsettings get org.gnome.desktop.interface gtk-im-module
 ```
 If this command shows `gtk-im-context-simple` or similar, remove the setting with the following command.
-```
+```bash
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
@@ -81,7 +81,7 @@ The kererl-6.6 series is used in the official Manjaro iso, but the iso distribut
 We use clang instead of gcc to build the kernel and kernel modules.  
 We also enable the kernel's rust support.  
 If you want to use the official Manjaro kernel, install it by specifying the repository 'core' as in the following command.
-```
+```bash
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 
@@ -124,11 +124,11 @@ It is distributed in the above three places.
 [pCloud](https://partner.pcloud.com/r/119318) and sizes larger than 4G are no problem. This cloud storage system has a lifetime buy-out plan.
 
 If you want to download from MEGA Storage using the command line, megatools is useful.
-```
+```bash
 sudo pacman -S megatools
 ```
 
-```
+```bash
 megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
 ```
 
@@ -418,7 +418,7 @@ kernel-6.2.7
 
 * We have temporarily released a package that has not been fully tested to work.  
 Please try to reinstall the package distributed by the Manjaro official distribution with the following command.
-```
+```bash
 sudo pacman-static -S core/curl
 ```
 
@@ -486,7 +486,7 @@ kernel-6.4.4
 ##### 20230721
 I have prepared a package to install the manjaro-jp signature key.  
 If an error occurs due to the manjaro-jp signature key, please try the following command to fix it.  
-```
+```bash
 sudo pacman-key --populate manjaro_jp
 sudo pacman -Sy
 ```
@@ -511,13 +511,13 @@ I think that with the correction of the pacman package that I made earlier and t
 However, if an error does occur, please try the following steps.  
 
 Initialize the signature key database.
-```
+```bash
 sudo pacman-key --init
 sudo pacman-key --populate
 ```
 
 Reload package information.
-```
+```bash
 sudo pacman -Syy
 sudo pacman -Fyy
 ```
@@ -586,7 +586,7 @@ kernel-6.6.2
 
 manjaro-jp database signatures have been removed. Only the package will be signed.  
 If you get a signature error with pamac, try the following command.
-```
+```bash
 sudo rm /var/tmp/pamac/dbs/sync/manjaro-jp*sig
 sudo rm /var/lib/pacman/sync/manjaro-jp*sig
 sudo pacman-key --populate

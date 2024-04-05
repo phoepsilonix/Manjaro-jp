@@ -12,13 +12,13 @@ Recomenda-se reformatar a primeira partição com ext4 ao instalar Ventoy.
 
 ### Sobre a instalação do Ventoy
 Passos para instalar o ventoy em um pen drive usando o Manjaro Linux
-```
+```bash
 sudo pacman -S ventoy
 ventoygui
 ```
 Linux geral  
 Exemplo de comando de download usando aria2
-```
+```bash
 aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.97/ventoy-1.0.97-linux.tar.gz
 tar xf ventoy-1.0.97-linux.tar.gz
 cd ventoy-1.0.97
@@ -49,28 +49,28 @@ Não suportado, por isso, por favor, desactivar o Secure Boot nas definições d
 2. Se o ecrã do instalador desaparecer durante a instalação  
 É muitas vezes possível evitar isto, definindo manualmente a partição swap.  
 Se a partição swap for /dev/sdX, tente activar a partição swap manualmente com o seguinte comando.
-```
+```bash
 sudo mkswap /dev/sdX
 sudo swapon /dev/sdX
 ```
-```
+```bash
 # Se a swap não estiver activada, utilizar lsblk para examinar o dispositivo e activar a partição swap.
 [[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
 ```
 
 O seguinte comando deve também ser utilizado para especificar que o assassino OOM (terminação forçada) não é aplicável.
-```
+```bash
 pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
 3. Quando não é possível introduzir a língua japonesa em algumas aplicações  
 Algumas aplicações podem não ser capazes de introduzir o japonês se a configuração antiga ainda estiver em vigor e algo tiver sido definido no `gtk-im-module`.
-```
+```bash
 gsettings get org.gnome.desktop.interface gtk-im-module
 ```
 Se este comando mostrar `gtk-im-context-simple` ou similar, remova a configuração com o seguinte comando.
-```
+```bash
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
@@ -79,7 +79,7 @@ A iso oficial do Manjaro usa a série kererl-6.6, mas a iso distribuída aqui us
 O kernel e os módulos do kernel são construídos usando clang em vez de gcc.  
 Nós também habilitamos o suporte a Rust no kernel.  
 Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repositório 'core', como no seguinte comando.
-```
+```bash
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 
@@ -122,11 +122,11 @@ Obrigado pelo valioso armazenamento.
 [pCloud] (https://partner.pcloud.com/r/119318), tamanhos maiores que 4G não são problema. Este sistema de armazenamento na nuvem também tem um plano de compra vitalício.
 
 Se você quiser baixar do MEGA Storage usando a linha de comando, o megatools é útil.
-```
+```bash
 sudo pacman -S megatools
 ```
 
-```
+```bash
 megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
 ```
 
@@ -412,7 +412,7 @@ kernel-6.2.7
 
 * Lançámos temporariamente um pacote que não foi totalmente testado para funcionar.  
 Por favor, tente reinstalar o pacote distribuído pela distribuição oficial Manjaro com o seguinte comando.
-```
+```bash
 sudo pacman-static -S core/curl
 ```
 
@@ -480,7 +480,7 @@ kernel-6.4.4
 ##### 20230721
 Preparei um pacote para instalar a chave de assinatura manjaro-jp.  
 Se ocorrer um erro devido à chave de assinatura manjaro-jp, tente o seguinte comando para corrigi-lo.  
-```
+```bash
 sudo pacman-key --populate manjaro_jp
 sudo pacman -Sy
 ```
@@ -505,13 +505,13 @@ Acredito que, com a correção do pacote pacman que fiz anteriormente e a elimin
 No entanto, se ocorrer um erro, por favor, tente os seguintes passos.  
 
 Inicialize o banco de dados de chave de assinatura.
-```
+```bash
 sudo pacman-key --init
 sudo pacman-key --populate
 ```
 
 Recarregar as informações do pacote.
-```
+```bash
 sudo pacman -Syy
 sudo pacman -Fyy
 ```
@@ -580,7 +580,7 @@ kernel-6.6.2
 
 manjaro-jp database signatures have been removed. Only the package will be signed.  
 If you get a signature error with pamac, try the following command.
-```
+```bash
 sudo rm /var/tmp/pamac/dbs/sync/manjaro-jp*sig
 sudo rm /var/lib/pacman/sync/manjaro-jp*sig
 sudo pacman-key --populate

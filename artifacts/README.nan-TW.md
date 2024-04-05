@@ -13,12 +13,12 @@
 ----
 ### Ventoy的安裝
 若係Manjaro Linux,可以按呢種作法:
-```
+```bash
 sudo pacman -S ventoy
 ventoygui
 ```
 如果係Linux全般,而且下載用的是aria2,作法係:
-```
+```bash
 aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.97/ventoy-1.0.97-linux.tar.gz
 tar xf ventoy-1.0.97-linux.tar.gz
 cd ventoy-1.0.97
@@ -45,33 +45,33 @@ cd ventoy-1.0.97
 
 2. 即時環境無法安裝snap應用程式
 安裝後就會啟用,但若真係一定想試,也可以手動啟用。
-```
+```bash
 sudo systemctl start snapd.service
 ```
 
 3. 如果安裝的時陣畫面消失
 可以手動設定swap分區來解決。
 如果swap分區是/dev/sdX,可以用下面的指令手動啟用swap:
-```
+```bash
 sudo mkswap /dev/sdX
 sudo swapon /dev/sdX
 ```
 如果swap沒啟用,可以用lsblk來檢查裝置,接著啟用swap分區:
-```
+```bash
 [[ $(swapon --show) == "" ]] && SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
 ```
 另外,可以用下面的指令來設定OOM killer(強制終止程序)的例外對象:
-```
+```bash
 pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 ```
 
 4. 部分應用程式無法輸入日文
 如果有古老的設定猶原存在,而且 `gtk-im-module` 有設定,會導致部分應用程式無法輸入日文。
-```
+```bash
 gsettings get org.gnome.desktop.interface gtk-im-module
 ```
 如果這個指令會顯示 `gtk-im-context-simple` 之類的結果,代表有設定值存在。這時就需要用下面的指令來清除設定:
-```
+```bash
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
@@ -82,7 +82,7 @@ kernel同kernel模組的編譯是用clang,而不是gcc。
 另外kernel也有支援rust。
 
 如果需要Manjaro官方的kernel,可以指定core repository來裝:
-```
+```bash
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 
@@ -124,10 +124,10 @@ Terabox會分割上傳大於4GB的檔案,因為會產生費用。下載之後請
 
 如果用指令佇MEGA Storage下載,megatools會較方便。
 
-```
+```bash
 sudo pacman -S megatools
 ```
-```
+```bash
 megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
 ```
 
@@ -414,7 +414,7 @@ kernel-6.2.7
 
 * 我們一時性予發佈無夠檢查就緒的套件。
 不好意思攏予你帶來麻煩,請用下面的指令重新裝一下Manjaro官方發佈的套件。
-```
+```bash
 sudo pacman-static -S core/curl
 ```
 
@@ -482,7 +482,7 @@ kernel-6.4.4
 ##### 20230721
 我們有一个安裝manjaro-jp簽名鍵的套件。  
 如果發生因為manjaro-jp簽名鍵的錯誤,請用下面的指令來處理:
-```
+```bash
 sudo pacman-key --populate manjaro_jp
 sudo pacman -Sy
 ```
@@ -506,13 +506,13 @@ kernel-6.4.7
 但若果真有錯誤發生,請試試下面的步驟:
 
 初始化簽名鍵資料庫
-```
+```bash
 sudo pacman-key --init
 sudo pacman-key --populate
 ```
 
 重新載入套件資訊
-```
+```bash
 sudo pacman -Syy
 sudo pacman -Fyy
 ```
@@ -580,7 +580,7 @@ kernel-6.6.2
 
 我們予manjaro-jp的資料庫拄無簽名,只有套件會有簽名。
 如果佇pamac出現簽名的錯誤,請試試下面的指令:
-```
+```bash
 sudo rm /var/tmp/pamac/dbs/sync/manjaro-jp*sig
 sudo rm /var/lib/pacman/sync/manjaro-jp*sig
 sudo pacman-key --populate
