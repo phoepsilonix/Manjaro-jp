@@ -1,0 +1,92 @@
+From cfc4d48f583c31476c402b321e403b7703fdef62 Mon Sep 17 00:00:00 2001
+From: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
+Date: Fri, 5 Apr 2024 15:26:23 +0900
+Subject: [PATCH] swap device is enabled.
+
+If fdisk is used, sudo is required due to permissions.
+It is also better to specify LC_ALL=C for internationalisation.
+With lsblk, neither is necessary.
+Pre-mounting swap could cause the calamares installer to fail when erasing disks or resizing partitions during installation,
+but this is no longer the case with the calamares fix.
+Therefore, in the live environment, automounting of swap is again enabled.
+---
+ PKGBUILD                  | 14 +++++++++++---
+ swap-device-enabled.patch | 30 ++++++++++++++++++++++++++++++
+ 2 files changed, 41 insertions(+), 3 deletions(-)
+ create mode 100644 swap-device-enabled.patch
+
+diff --git a/PKGBUILD b/PKGBUILD
+index bcd57a6..3d8ead7 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -10,20 +10,28 @@ pkgname=('manjaro-live-base'
+ 	'manjaro-live-systemd'
+ 	'manjaro-live-skel'
+ 	'manjaro-live-portable-efi')
+-pkgver=20240214
++pkgver=20240405
+ pkgrel=1
+ pkgdesc='Manjaro Linux live session'
+ arch=('any')
+ url="https://gitlab.manjaro.org/tools/development-tools/manjaro-tools-livecd"
+ license=('GPL')
+ makedepends=('git')
+-source=("git+$url.git")
+-sha256sums=('SKIP')
++source=("git+$url.git"
++        swap-device-enabled.patch
++)
++sha256sums=('SKIP'
++            'efa5cf73fed4f0cb69900d60aefb4eca60d14e9234aa8cc06b3b7b4f5d88a840')
+ 
+ pkgver() {
+ 	date +%Y%m%d
+ }
+ 
++prepare() {
++	cd ${srcdir}/${_repo} #-${pkgver}
++	patch -p1 -i ../swap-device-enabled.patch
++}
++
+ build() {
+ 	cd ${srcdir}/${_repo} #-${pkgver}
+ 	make PREFIX=/usr SYSCONFDIR=/etc
+diff --git a/swap-device-enabled.patch b/swap-device-enabled.patch
+new file mode 100644
+index 0000000..b4e6d38
+--- /dev/null
++++ b/swap-device-enabled.patch
+@@ -0,0 +1,30 @@
++diff --git a/bin/manjaro-live.in b/bin/manjaro-live.in
++index 45e6f91..cf68871 100755
++--- a/bin/manjaro-live.in
+++++ b/bin/manjaro-live.in
++@@ -27,9 +27,9 @@ echo "Got consolefont and arch $arch: $(elapsed_time_ms ${livetimer})ms" >> /var
++ ### DECIDE IF WE DON'T NEED IT ###
++ # see also https://github.com/calamares/calamares/issues/860
++ # Activate swap
++-#livetimer=$(get_timer_ms)
++-#configure_swap
++-#echo "Activated swap and added to fstab: $(elapsed_time_ms ${livetimer})ms" >> /var/log/manjaro-live.log
+++livetimer=$(get_timer_ms)
+++configure_swap
+++echo "Activated swap and added to fstab: $(elapsed_time_ms ${livetimer})ms" >> /var/log/manjaro-live.log
++ 
++ livetimer=$(get_timer_ms)
++ configure_language
++diff --git a/lib/util-live.sh b/lib/util-live.sh
++index 8b05554..3a5313a 100644
++--- a/lib/util-live.sh
+++++ b/lib/util-live.sh
++@@ -309,7 +309,7 @@ configure_sudoers_d(){
++ }
++ 
++ configure_swap(){
++-	local swapdev="$(fdisk -l 2>/dev/null | grep swap | cut -d' ' -f1)"
+++	local swapdev="$(lsblk -l -f -n -p | grep '\[SWAP\]' | cut -d' ' -f1)"
++ 	if [ -e "${swapdev}" ]; then
++ 		swapon ${swapdev}
++ 	fi
+-- 
+2.44.0
+

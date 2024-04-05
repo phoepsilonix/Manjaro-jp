@@ -14,6 +14,7 @@ keychain --clear
 
 ###### sshのパスフレーズを復号化する
 PASSPHRASE=$(gpg --passphrase-file $gpg_passphrase --batch --pinentry-mode=loopback -dq $ssh_passphrase)
+gpg -dq ~/.ssh/pass.gpg | sudo -S pwd
 
 ###### expectでパスフレーズ入力を自動化
 expect << EOF
