@@ -652,7 +652,9 @@ Other recommended OS
 
 [EndeavourOS](https://endeavouros.com/)  
 
-[openSUSE MicroOS](https://get.opensuse.org/microos/)  
+[openSUSE Leap Micro](https://get.opensuse.org/ja/leapmicro/)  
+
+[BigLinux](https://www.biglinux.com.br/)
 
 ----
 ```

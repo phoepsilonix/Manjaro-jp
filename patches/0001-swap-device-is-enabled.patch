@@ -1,33 +1,23 @@
-From cfc4d48f583c31476c402b321e403b7703fdef62 Mon Sep 17 00:00:00 2001
+From cc2a1f911800dc7cee51fc45bd804db04cb3ae91 Mon Sep 17 00:00:00 2001
 From: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
 Date: Fri, 5 Apr 2024 15:26:23 +0900
 Subject: [PATCH] swap device is enabled.
 
-If fdisk is used, sudo is required due to permissions.
-It is also better to specify LC_ALL=C for internationalisation.
-With lsblk, neither is necessary.
+If fdisk is used, It is also better to specify LC_ALL=C for internationalisation.
 Pre-mounting swap could cause the calamares installer to fail when erasing disks or resizing partitions during installation,
 but this is no longer the case with the calamares fix.
 Therefore, in the live environment, automounting of swap is again enabled.
 ---
- PKGBUILD                  | 14 +++++++++++---
- swap-device-enabled.patch | 30 ++++++++++++++++++++++++++++++
- 2 files changed, 41 insertions(+), 3 deletions(-)
+ PKGBUILD                  | 12 ++++++++++--
+ swap-device-enabled.patch | 33 +++++++++++++++++++++++++++++++++
+ 2 files changed, 43 insertions(+), 2 deletions(-)
  create mode 100644 swap-device-enabled.patch
 
 diff --git a/PKGBUILD b/PKGBUILD
-index bcd57a6..3d8ead7 100644
+index bcd57a6..1b78bc5 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -10,20 +10,28 @@ pkgname=('manjaro-live-base'
- 	'manjaro-live-systemd'
- 	'manjaro-live-skel'
- 	'manjaro-live-portable-efi')
--pkgver=20240214
-+pkgver=20240405
- pkgrel=1
- pkgdesc='Manjaro Linux live session'
- arch=('any')
+@@ -17,13 +17,21 @@ arch=('any')
  url="https://gitlab.manjaro.org/tools/development-tools/manjaro-tools-livecd"
  license=('GPL')
  makedepends=('git')
@@ -37,7 +27,7 @@ index bcd57a6..3d8ead7 100644
 +        swap-device-enabled.patch
 +)
 +sha256sums=('SKIP'
-+            'efa5cf73fed4f0cb69900d60aefb4eca60d14e9234aa8cc06b3b7b4f5d88a840')
++            '233c2fa3e5da7a6a812652a401c3c7351586ae46c9d588dc6d7631bfd443a90f')
  
  pkgver() {
  	date +%Y%m%d
@@ -53,10 +43,10 @@ index bcd57a6..3d8ead7 100644
  	make PREFIX=/usr SYSCONFDIR=/etc
 diff --git a/swap-device-enabled.patch b/swap-device-enabled.patch
 new file mode 100644
-index 0000000..b4e6d38
+index 0000000..0aa5280
 --- /dev/null
 +++ b/swap-device-enabled.patch
-@@ -0,0 +1,30 @@
+@@ -0,0 +1,33 @@
 +diff --git a/bin/manjaro-live.in b/bin/manjaro-live.in
 +index 45e6f91..cf68871 100755
 +--- a/bin/manjaro-live.in
@@ -75,18 +65,21 @@ index 0000000..b4e6d38
 + livetimer=$(get_timer_ms)
 + configure_language
 +diff --git a/lib/util-live.sh b/lib/util-live.sh
-+index 8b05554..3a5313a 100644
++index 8b05554..89211dd 100644
 +--- a/lib/util-live.sh
 ++++ b/lib/util-live.sh
-+@@ -309,7 +309,7 @@ configure_sudoers_d(){
++@@ -309,9 +309,9 @@ configure_sudoers_d(){
 + }
 + 
 + configure_swap(){
 +-	local swapdev="$(fdisk -l 2>/dev/null | grep swap | cut -d' ' -f1)"
-++	local swapdev="$(lsblk -l -f -n -p | grep '\[SWAP\]' | cut -d' ' -f1)"
+++	local swapdev="$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}')
 + 	if [ -e "${swapdev}" ]; then
-+ 		swapon ${swapdev}
++-		swapon ${swapdev}
+++		swapon "${swapdev}" || (mkswap "${swapdev}" && swapon "${swapdev}")
 + 	fi
++ }
++ 
 -- 
 2.44.0
 

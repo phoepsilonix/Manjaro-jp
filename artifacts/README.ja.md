@@ -682,7 +682,9 @@ Linux系OSで動きます。
 
 [EndeavourOS](https://endeavouros.com/)  
 
-[openSUSE MicroOS](https://get.opensuse.org/ja/microos/)  
+[openSUSE Leap Micro](https://get.opensuse.org/ja/leapmicro/)  
+
+[BigLinux](https://www.biglinux.com.br/)
 
 ----
 [Manjaroレポジトリミラー試験稼働中](https://mirror.phoepsilonix.love/manjaro/)

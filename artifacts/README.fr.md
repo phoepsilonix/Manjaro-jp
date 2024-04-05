@@ -647,7 +647,9 @@ Autres systèmes d'exploitation recommandés
 
 [EndeavourOS](https://endeavouros.com/)  
 
-[openSUSE MicroOS](https://get.opensuse.org/fr/microos/)  
+[openSUSE Leap Micro](https://get.opensuse.org/ja/leapmicro/)  
+
+[BigLinux](https://www.biglinux.com.br/)
 
 ----
 ```
