@@ -80,7 +80,7 @@ gsettings set org.gnome.desktop.interface gtk-im-module ''
 The kererl-6.6 series is used in the official Manjaro iso, but the iso distributed here uses the newest kernel possible. Currently, it is kernel-6.8 series.  
 We use clang instead of gcc to build the kernel and kernel modules.  
 We also enable the kernel's rust support.  
-If you want to use the official Manjaro kernel, install it by specifying the repository `core` as in the following command.
+If you want to use the official Manjaro kernel, install it by specifying the repository 'core' as in the following command.
 ```
 sudo pacman -S core/linux66 core/linux66-headers
 ```
@@ -120,7 +120,8 @@ Please feel free to try it out.
 Thank you for the valuable storage.  
 It is distributed in the above three places.
 
-[MEGA Storage](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A") is recommended as you can upload files larger than 4G.
+[MEGA Storage](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A") is recommended as you can upload files larger than 4G.  
+[pCloud](https://partner.pcloud.com/r/119318) and sizes larger than 4G are no problem. This cloud storage system has a lifetime buy-out plan.
 
 If you want to download from MEGA Storage using the command line, megatools is useful.
 ```
@@ -640,6 +641,9 @@ xz 5.6.1-2
 
 ##### 20240404
 kernel-6.8.3
+
+##### 20240405
+kernel-6.8.4
 
 
 ----

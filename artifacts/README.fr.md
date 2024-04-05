@@ -79,7 +79,7 @@ gsettings set org.gnome.desktop.interface gtk-im-module ''
 La série kererl-6.6 est utilisée dans l'iso officielle de Manjaro, mais l'iso distribuée ici utilise le noyau le plus récent possible. Actuellement, il s'agit de la série kernel-6.8.  
 Nous utilisons clang au lieu de gcc pour compiler le noyau et les modules du noyau.  
 Nous activons également le support rust du noyau.  
-Si vous souhaitez utiliser le noyau officiel de Manjaro, installez-le en spécifiant le dépôt `core` comme dans la commande suivante.
+Si vous souhaitez utiliser le noyau officiel de Manjaro, installez-le en spécifiant le dépôt 'core' comme dans la commande suivante.
 ```
 sudo pacman -S core/linux66 core/linux66-headers
 ```
@@ -118,7 +118,8 @@ Vous pouvez l'essayer si vous le souhaitez.
 Merci pour ce précieux stockage.  
 Il est distribué dans les trois emplacements ci-dessus.
 
-[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0), où vous pouvez télécharger des fichiers d'une taille de 4G ou plus.
+[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0), où vous pouvez télécharger des fichiers d'une taille de 4G ou plus.  
+[pCloud] (https://partner.pcloud.com/r/119318), les tailles supérieures à 4G ne posent pas de problème. Il s'agit d'un stockage en nuage avec un plan de rachat à vie.
 
 Si vous voulez télécharger depuis MEGA Storage en utilisant la ligne de commande, megatools est utile.
 ```
@@ -635,6 +636,9 @@ xz 5.6.1-2
 
 ##### 20240404
 kernel-6.8.3
+
+##### 20240405
+kernel-6.8.4
 
 
 ----

@@ -2,24 +2,22 @@
 
 ## [Manjaro Linux](https://manjaro.org/) 日語支援
 
-默認支援日語輸入和日語顯示，包括即時ISO(現場ISO)。  
-[kernel-6.8.x](https://kernel.org/).
+包含咧即時環境,一開始就會裝日文輸入同顯示。
+採用[kernel-6.8系列](https://kernel.org/)。
 
-按照公式，我們計劃準備三種類型：KDE、Xfce、GNOME。  
-分發檔是 ISO 和一些包檔。  
-從U盤啟動。  
-使用 Ventoy 從 U 盤啟動可能更容易。  
-建議在部署 Ventoy 時用 ext4 重新格式化第一個分區。  
+預計會像官方版一樣,提供KDE、Xfce、GNOME三種桌面環境。
+發佈檔案是ISO同一部份套件檔案,可以從USB記憶體等啟動。
+
+使用[Ventoy](https://ventoy.net/)從USB啟動會較方便,不過在裝Ventoy的時陣最好先將第一個分區重新格式化做ext4。
 
 ----
-### 關於安裝Ventoy
-使用Manjaro Linux將ventoy安裝到USB驅動器的步驟
+### Ventoy的安裝
+若係Manjaro Linux,可以按呢種作法:
 ```
 sudo pacman -S ventoy
 ventoygui
 ```
-一般Linux  
-使用aria2的下載命令示例  
+如果係Linux全般,而且下載用的是aria2,作法係:
 ```
 aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.97/ventoy-1.0.97-linux.tar.gz
 tar xf ventoy-1.0.97-linux.tar.gz
@@ -27,63 +25,65 @@ cd ventoy-1.0.97
 ./VentoyGUI.x86_64 
 ```
 
-Windows  
-使用瀏覽器或其他方式下載[Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.97/ventoy-1.0.97-windows.zip)。  
-打開下載的zip文件並運行ventoy2disk.exe
+如果係Windows,可以去Ventoy[官網](https://github.com/ventoy/Ventoy/releases/)下載,接著解開下載的zip檔案,直接執行ventoy2disk.exe就好矣。
 
 ----
-### 主要特點
+### Manjaro-JP的主要特色
 
-Linux kernel應該盡可能是最新的。  
-此外，clang 用於構建kernel。  
-日語輸入(fcitx5-mozc)，日語字體作為標準安裝。  
-採用[floorp](https://floorp.ablaze.one)作為標準瀏覽器。  
-LibreOffice作為辦公軟體作為標準安裝。  
-我們已預設安裝了pacman-static套件。如果因為函式庫的不合一致，導致套件更新變得困難，請使用它。
+採用較新的Linux kernel,並且用clang來編譯kernel。
+預設就裝好日文輸入法(Mozc)同日文字型。  
+標準瀏覽器採用[Floorp](https://floorp.ablaze.one/)。  
+辦公室套件預設裝[LibreOffice](https://ja.libreoffice.org)。  
+標準裝pacman-static,如果因為函式庫衝突導致更新有問題,可以用pacman-static來更新。
 
 ##### 注意事項
-1. 不支援安全啟動  
-它不受支援，因此請在BIOS設置中禁用安全啟動。  
-（如果你想要安全啟動支援，[Ubuntu][Ubuntu] 更快。 [Ubuntu flavours][Ubuntu flavours] 還提供多個桌面環境。）
-
+1. 不支援安全開機
+需要在BIOS關閉安全開機才能安裝,不過安裝後可以再啟用。
+(如果需要支援安全開機,[Ubuntu][Ubuntu]會較簡單。佇[Ubuntu flavours][Ubuntu flavours]有提供幾種桌面環境。日文支援也會較簡單。)
 [Ubuntu]: https://ubuntu.com/download/desktop
 [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
-2. 如果安裝程式螢幕在安裝過程中消失  
-通常可以通過手動設置交換分區來避免它。  
-如果交換分區是 /dev/sdX，請嘗試使用如下命令手動啟用交換：
+2. 即時環境無法安裝snap應用程式
+安裝後就會啟用,但若真係一定想試,也可以手動啟用。
+```
+sudo systemctl start snapd.service
+```
+
+3. 如果安裝的時陣畫面消失
+可以手動設定swap分區來解決。
+如果swap分區是/dev/sdX,可以用下面的指令手動啟用swap:
 ```
 sudo mkswap /dev/sdX
 sudo swapon /dev/sdX
 ```
+如果swap沒啟用,可以用lsblk來檢查裝置,接著啟用swap分區:
 ```
-# 如果未啟用交換，請檢查 lsblk 中的設備以啟用交換分區。
-[[ $（swapon --show） == “” ]] && SWAP=$（lsblk -l -f -n -p | awk '{if （$2==“swap”） print $1}'） && （ sudo swapon $SWAP || （sudo mkswap $SWAP && sudo swapon $SWAP）
+[[ $(swapon --show) == "" ]] && SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
 ```
-
-此外，使用以下命令，讓我們指定它不受 OOM killer（強制退出）的約束。
+另外,可以用下面的指令來設定OOM killer(強制終止程序)的例外對象:
 ```
-皮多夫 -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
-pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
+pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 ```
 
-3. 在某些应用程序中无法输入日文时  
-如果仍保留旧设置并在 gtk-im-module 中进行了某些设置，可能会出现在某些应用程序中无法输入日语的情况。
+4. 部分應用程式無法輸入日文
+如果有古老的設定猶原存在,而且 'gtk-im-module' 有設定,會導致部分應用程式無法輸入日文。
 ```
 gsettings get org.gnome.desktop.interface gtk-im-module
 ```
-如果该命令显示 "gtk-im-context-simple "或类似设置，请使用以下命令删除该设置。
+如果這個指令會顯示 'gtk-im-context-simple' 之類的結果,代表有設定值存在。這時就需要用下面的指令來清除設定:
 ```
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
-4. Manjaro官方和我們的kernel的區別
-Manjaro官方的iso採用了kererl-6.6系，但我們這裡發布的iso儘可能採用新的kernel。目前是kernel-6.8系。
-我們使用clang而不是gcc來構建kernel和kernel模組。
-此外，我們也啟用了kernel的rust支持。
-如果你想使用Manjaro官方的kernel，可以指定存儲庫core並使用以下命令進行安裝：
+5. kernel版本比官方Manjaro新
+Manjaro官方的iso,採用kernel-6.6系列,但這馆配布的isoは會盡量採用較新的kernel。目前是kernel-6.8系列。
+
+kernel同kernel模組的編譯是用clang,而不是gcc。
+另外kernel也有支援rust。
+
+如果需要Manjaro官方的kernel,可以指定core repository來裝:
 ```
-sudo pacman -S core/kernel66 core/kernel66-headers
+sudo pacman -S core/linux66 core/linux66-headers
 ```
 
 ##### 附加說明： 2023-02-11  
@@ -93,7 +93,7 @@ sudo pacman -S core/kernel66 core/kernel66-headers
 
 ----
 ### 分發位置
-實時環境和安裝 ISO 可在以下分發目標獲得。  
+即時環境同安裝用的ISO會佇下面分發。  
 如果您願意，請嘗試一下。  
 
 [![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
@@ -114,52 +114,54 @@ sudo pacman -S core/kernel66 core/kernel66-headers
 [TERA-ICON]: ./img/terabox_logo.svg
 [pCloud-ICON]: ./img/pcloud_icon.svg
 
-感謝您的寶貴存儲空間。  
-分佈於以上三地。
+感謝你們提供寶貴的儲存空間。
+我們會佇這些所在分發檔案。
 
-[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0) 建議使用 ，因為它也可以上傳大於 4G 的檔。
+Terabox會分割上傳大於4GB的檔案,因為會產生費用。下載之後請先將檔案合併做一個檔案才使用。Mac同ios可以用keka,Windows可以用7-zip操作會較簡單。
 
-如果你想用命令列從MEGA Storage下載，megatools很方便。
+[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0)就可以上傳大於4GB的檔案,所以我們建議使用。  
+[pCloud](https://partner.pcloud.com/r/119318)也可以處理大於4GB的檔案,是一種終身購買型的雲端儲存服務。
+
+如果用指令佇MEGA Storage下載,megatools會較方便。
+
 ```
 sudo pacman -S megatools
 ```
-
 ```
 megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
 ```
 
 ----
-### 註釋
-##### 對 manjaro-tools-iso 的更改
-1. 鏡像清單的第一行是用於構建的套件的標準目的地。  
-默認情況下，不讀取鏡像清單，並使用 EU 伺服器。
-2. 為了優先將我準備好的套件包含在 ISO 中，優先考慮 user-repos.conf 中指定的存儲庫的順序。  
-主要包括最新版本的kernel。
+### 備忘錄
+##### manjaro-tools-iso的變更
+1. 用來建置ISO的套件下載來源,設定做讀取mirror list的第一行。
+預設讀取的是歐洲的server。
 
-### 更新歷史記錄
-<details><summary>迄今為止的歷史</summary>
+2. 為了優先包含自己準備的套件,設定user-repos.conf來提高該repository的優先順序。
+主要是為了包含最新版的kernel。
 
+### 更新歷程
+<details><summary>以前的進展</summary>
 ##### 20220401
-kernel-5.17.1（克隆構建）  
-Linux517-Broadcom-WL，Linux517-ZFS軟體包也被構建和添加。  
-有關對 broadcom-wl-dkms 軟體包的修改，https://gitlab.com/phoepsilonix/Manjaro-jp 請參閱 [包資料夾](https://gitlab.com/phoepsilonix/Manjaro-jp/-/tree/main/Packages/broadcom-wl-dkms)。
+採用kernel-5.17.1 (clang編譯)
+也編譯了linux517-broadcom-wl同linux517-zfs套件並加入。
+對broadcom-wl-dkms套件的修正詳情,請參考[gitlab](https://gitlab.com/phoepsilonix/Manjaro-jp)的[Packages資料夾](https://gitlab.com/phoepsilonix/Manjaro-jp/-/tree/main/Packages/broadcom-wl-dkms)。
 
 ##### 20220408
-標準瀏覽器現在只有[Vivaldi](https://vivaldi.com/)。  
-當然，您可以自由地將其更改為其他瀏覽器。  
-實時環境引導時的預設 GRUB 值現在面向日本。
+標準瀏覽器改用[Vivaldi](https://vivaldi.com/)。
+當然其他瀏覽器也可以自由更改。
+調整了Live環境開機時GRUB的預設值為日本向。
 
 ##### 20220411
-包更新中的錯誤修復。  
-添加日語字體。  
-[森澤公司](https://www.morisawa.co.jp/) [根據SIL OFL許可證發佈](https://www.morisawa.co.jp/about/news/6706)
-森澤BIZ UD字體[森澤BIZ UD Mincho](https://github.com/googlefonts/morisawa-biz-ud-mincho)，[森澤BIZ UD哥特式](https://github.com/googlefonts/morisawa-biz-ud-gothic) 預裝。  
-它是在Github上發佈的字體的記錄。 還包括許可證檔。 （我也自己構建了它，但二進位檔有所不同沒有。)
-有關詳細資訊，請查看上述網站和 Github 文件。  
-[森澤BIZ+字體 讓我們支援](https://www.morisawa.co.jp/products/fonts/bizplus/lineup/)。
+修正了套件更新的問題。
+加入日文字型。
+預裝了[Morisawa Inc.](https://www.morisawa.co.jp/)在[SIL OFL授權](https://www.morisawa.co.jp/about/news/6706)下發佈的[Morisawa BIZ UD明朝](https://github.com/googlefonts/morisawa-biz-ud-mincho)同[Morisawa BIZ UDゴシック](https://github.com/googlefonts/morisawa-biz-ud-gothic)字型。
+直接使用佇Github公開的字型檔案,也包含授權文件。(我自己編譯的話,二進位檔案是無差異的)
+詳細資訊請參考官方網站或Github上的文件說明。
+請大家支持[Morisawa BIZ+ 字型](https://www.morisawa.co.jp/products/fonts/bizplus/lineup/)。
 
 ##### 20220413
-我們已經在UR中註冊了Morisawa BIZ UD字體包。
+將Morisawa BIZ UD字型套件登錄到AUR。
 
 ##### 20220414
 更新到kernel-5.17.3。
@@ -168,10 +170,10 @@ Linux517-Broadcom-WL，Linux517-ZFS軟體包也被構建和添加。
 更新到kernel-5.17.4。
 
 ##### 20220422
-日語 將輸入更改為fcitx5-mozc。
+將日文輸入法改為fcitx5-mozc。
 
 ##### 20220424
-日語啟用鍵盤和Mozc作為標準。
+預設啟用日文鍵盤同Mozc輸入法。
 
 ##### 20220428
 kernel-5.17.5
@@ -180,7 +182,7 @@ kernel-5.17.5
 kernel-5.17.6
 
 ##### 20220513
-桌面環境 GNOME 已更新到 GNOME 42。
+GNOME桌面環境更新到GNOME 42。
 
 ##### 20220517
 kernel-5.17.8
@@ -192,8 +194,8 @@ kernel-5.17.9
 kernel-5.17.11
 
 ##### 20220527
-已將 NVIDIA 驅動程式版本更新為 515.43.04。
-添加了kernel-5.18 系列。
+nvidia驅動程式更新到515.43.04版。
+加入kernel-5.18系列。
 
 ##### 20220531
 kernel-5.17.12
@@ -204,9 +206,60 @@ kernel-5.17.13
 kernel-5.18.2
 
 ##### 20220608
-與辦公軟體相關的更改  
-消除了安裝程式中辦公軟體的選擇。  
-主要是為了減少容量，我們取消了安裝程式中辦公軟體的選擇，並將要安裝的標準辦公軟體從onlyoffice-desktopeditor更改為libreoffice-fresh。
+辦公室軟體相關變更
+移除安裝程式中的辦公室軟體選項。
+為了減少容量,移除了安裝程式中的辦公室軟體選項,將預設安裝的辦公室軟體從onlyoffice-desktopeditor改為libreoffice-fresh。
+
+##### 20220611
+kernel-5.17.14
+kernel-5.18.3
+nvidia驅動程式更新到515.48.07版。
+修正virtualbox-host-dkms可以用linux518編譯。
+將manjaro-jp repository加入pacman.conf。
+
+##### 20220614
+修正安裝程式的bug。
+GNOME版本將文字編輯器從gedit改為gnome-text-editor。
+
+##### 20220619
+kernel-5.18.5
+
+##### 20220624
+kernel-5.18.6
+將音訊相關的manjaro-pulse改為manjaro-pipewire。
+
+##### 20220627
+kernel-5.18.7
+
+##### 20220630
+kernel-5.18.8
+nvidia-utils 515.57
+
+##### 20220703
+kernel-5.18.9
+
+##### 20220706
+啟用cups-browsed。
+加入ipp-usb套件。
+
+##### 20220709
+kernel-5.18.10
+
+##### 20220714
+kernel-5.18.11
+
+##### 20220716
+kernel-5.18.12
+
+##### 20220725
+kernel-5.18.14
+
+##### 20220731
+kernel-5.18.15
+
+##### 20220805
+kernel-5.18.16
+nvidia-utils 515.65
 
 ##### 20220812
 kernel-5.18.17
@@ -236,7 +289,7 @@ kernel-5.19.9
 kernel-5.19.10
 
 ##### 20220925
-kernel-5.19.11  
+kernel-5.19.11
 nvidia-utils 515.76
 
 ##### 20221003
@@ -246,34 +299,34 @@ kernel-5.19.12
 kernel-5.19.14
 
 ##### 20221013
-kernel-5.19.15  
+kernel-5.19.15
 nvidia-utils 520.56.06
 
 ##### 20221016
-kernel-5.19.16  
+kernel-5.19.16
 nvidia-utils 520.56.06-2
 
 ##### 20221025
-kernel-6.0.3  
-已將標準瀏覽器更改為 [Floorp](https://floorp.ablaze.one/)。
+kernel-6.0.3
+將標準瀏覽器改為[Floorp](https://floorp.ablaze.one/)。
 
 ##### 20221105
-kernel-6.0.7  
-甲基吡啶-32-2
+kernel-6.0.7
+mkinitcpio-32-2
 
 ##### 20221112
-使用flatpak版本[Firefox](https://www.mozilla.org/ja/firefox/browsers/)或[Floorp](https://floorp.ablaze.one/)作為標準瀏覽器。  
+標準瀏覽器採用flatpak版[Firefox](https://www.mozilla.org/ja/firefox/browsers/)或[Floorp](https://floorp.ablaze.one/)。
 kernel-6.0.8
 
 ##### 20221118
 kernel-6.0.9
 
 ##### 20221128
-kernel-6.0.10  
-將 LibreOffice 更改為 flatpak 版本。  
-將FCITX5的默認鍵盤更改為日語（假名86）。  
-將 gnome-terminal 的初始字體更改為 FirgeNerd 控制台。  
-以下字體已預安裝。  
+kernel-6.0.10
+將LibreOffice改為flatpak版本。
+調整fcitx5初始設定的鍵盤為日文(kana 86)。
+將gnome-terminal的初始字型改為FirgeNerd Console。
+預裝以下字型:
 [Firge：Firge，一種合成Fira Mono和Genshin Gothic的程式設計字體](https://github.com/yuru7/Firge)  
 [HackGen：合成Hack和Genju Gothic Hakugen（HackGen）的程式設計字體](https://github.com/yuru7/HackGen)
 
@@ -323,12 +376,13 @@ kernel-6.1.9
 
 ##### 20230210
 kernel-6.1.11  
-英偉達實用工具 525.89.02  
-Manjaro-jp 儲存庫 URL 已更改。  
-（OSDN 到 OSDN Web。 這可能是暫時的。 ）  
-ISO檔通過[SourceForge](https://sourceforge.net/projects/manjaro-jp/)分發。  
-我們對 Calamares 安裝程式進行了一些更改。  
-（減少安裝程式在重負載下崩潰的情況。 ）   
+nvidia-utils更新到525.89.02版本  
+改變Manjaro-jp的repository網址  
+(從OSDN改為OSDN Web,可能是暫時性的變更)  
+
+ISO檔案會佇[SourceForge](https://sourceforge.net/projects/manjaro-jp/)上面分發  
+對Calamares安裝程式做一些修改  
+(可以減少安裝程式在高負荷狀況下被強制終止的情況)  
 
 ##### 20230214
 manjaro-release 22.0.3  
@@ -358,8 +412,8 @@ kernel-6.2.6
 manjaro-release 22.0.5  
 kernel-6.2.7  
 
-* 我們已經發佈了一個暫時未經驗證的軟體包。  
-很抱歉給您帶來麻煩，但請嘗試使用以下命令重新安裝 Manjaro 官方分發的軟體包。
+* 我們一時性予發佈無夠檢查就緒的套件。
+不好意思攏予你帶來麻煩,請用下面的指令重新裝一下Manjaro官方發佈的套件。
 ```
 sudo pacman-static -S core/curl
 ```
@@ -426,8 +480,8 @@ kernel-6.4.3
 kernel-6.4.4
 
 ##### 20230721
-我已經準備了一個安裝manjaro-jp簽名鑰匙的包。  
-如果因為manjaro-jp簽名鑰匙出現錯誤，請嘗試以下的命令來修復它。  
+我們有一个安裝manjaro-jp簽名鍵的套件。  
+如果發生因為manjaro-jp簽名鍵的錯誤,請用下面的指令來處理:
 ```
 sudo pacman-key --populate manjaro_jp
 sudo pacman -Sy
@@ -443,31 +497,29 @@ kernel-6.4.6
 kernel-6.4.7
 
 ##### 20230729
-當執行軟體的新增和刪除（pamac update）時，在已簽名數據庫的存儲庫中更新簽名文件時會出現問題。  
-為了解決這個問題，我已對pacman包進行了微調。  
+當執行軟體的新增同刪除(pamac update)的時陣,有發生佇提供簽名資料庫的repository,簽名檔案無法正常更新的問題。
+為了解決是件代誌,我們對pacman套件做一些微調整。
 
 ##### 20230731
-* 我在安裝環境中設定了讀取manjaro_jp的簽名金鑰檔案。(calamares)
+* 我們予安裝目的地的環境載入manjaro_jp的簽名鍵檔案。(calamares)
+閣予早先對pacman套件的修正做伙,應該會免受簽名鍵無夠整齊而產生錯誤的情況。
+但若果真有錯誤發生,請試試下面的步驟:
 
-我认为，通过我先前对pacman包的修正以及消除签名键中的不一致，应该已经消除了错误发生的情况。  
-然而，如果出现错误，请尝试以下步骤。  
-
-初始化签名键数据库。
+初始化簽名鍵資料庫
 ```
 sudo pacman-key --init
 sudo pacman-key --populate
 ```
 
-重新加载包信息。
+重新載入套件資訊
 ```
 sudo pacman -Syy
 sudo pacman -Fyy
 ```
 
 ##### 20230805
-* 修复了以下问题：在[添加/删除软件]更新检查后导致包信息损坏和意外终止。(pamac)。
-* 在[添加/删除软件]中搜索已安装的软件包时，flatpak和snap应用程序现在包含在搜索中（libpamac）。   
-
+* 佇[軟體的新增同刪除]的時陣,更新檢查之後,修正一个問題,就是套件資訊會損毀而無法正常結束的情況。(pamac)
+* 佇[軟體的新增同刪除]的時陣,若是尋找已經裝的套件,會連flatpak同snap的應用程式也納入尋找的對象。(libpamac)
 kernel-6.4.8
 
 ##### 20230813
@@ -526,8 +578,8 @@ kernel-6.6.1
 ##### 20231121
 kernel-6.6.2  
 
-manjaro-jp database signatures have been removed. Only the package will be signed.  
-If you get a signature error with pamac, try the following command.
+我們予manjaro-jp的資料庫拄無簽名,只有套件會有簽名。
+如果佇pamac出現簽名的錯誤,請試試下面的指令:
 ```
 sudo rm /var/tmp/pamac/dbs/sync/manjaro-jp*sig
 sudo rm /var/lib/pacman/sync/manjaro-jp*sig
@@ -584,9 +636,19 @@ xz 5.6.1-2
 ##### 20240404
 kernel-6.8.3
 
+##### 20240405
+kernel-6.8.4
+
 
 ----
-其他推薦的操作系統  
+佇Linux作業系統會使用的影像編輯軟體推薦:
+
+[DaVinci Resolve 18 | Blackmagic Design](https://www.blackmagicdesign.com/products/davinciresolve)
+免費版本已經夠用,使用起來毋是問題。
+如果用付錢的Studio版本,會有更多實用的功能。
+
+----
+其他推薦的作業系統:  
 [Ubuntu][Ubuntu]  
 [Ubuntu flavours][Ubuntu flavours]  
 
@@ -600,6 +662,7 @@ kernel-6.8.3
 [BigLinux](https://www.biglinux.com.br/)
 
 ----
+Manjaro repository鏡像站試運轉中
 ```
 [manjaro-jp]
 SigLevel = Optional TrustAll
@@ -614,7 +677,7 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 (GPG signing public key:57B49CC5AA4F00FC) <phoepsilonix at phoepsilonix dot love>  
 
 ----
-### 對於這個活動的支持，我們非常歡迎。
+### 歡迎大家支持這項活動。
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
 

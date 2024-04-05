@@ -94,7 +94,7 @@ pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 ```
 
 4. 一部アプリで日本語入力ができない場合  
-古い設定が残っていて、gtk-im-moduleになにか設定されている場合、一部アプリで入力できないケースがあるようです。
+古い設定が残っていて、'gtk-im-module'になにか設定されている場合、一部アプリで入力できないケースがあるようです。
 ```
 gsettings get org.gnome.desktop.interface gtk-im-module
 ```
@@ -103,7 +103,7 @@ gsettings get org.gnome.desktop.interface gtk-im-module
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
-5. Manjaro公式とのkernelの違い
+5. Manjaro公式とのkernelの違い  
 kererl-6.6系がManjaro公式のisoでは採用されていますが、ここで配布しているisoはなるべく新しいkernelを採用しています。現在はkernel-6.8系です。  
 kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
 またkernelのrust対応も有効にしています。  
@@ -140,8 +140,8 @@ sudo pacman -S core/linux66 core/linux66-headers
 
 Teraboxでは、ファイルサイズ4G以上は、コストがかかるので、分割形式でアップロードしています。ダウンロードした後に、一つのファイルにまとめてから、ご利用ください。Mac,iosではkeka,Windowsでは7-zipが操作がわかりやすいようです。  
 
-
-[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0)は、ファイルサイズ4G以上のものもアップロードできるので、お勧めです。
+[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0)は、ファイルサイズ4G以上のものもアップロードできるので、お勧めです。  
+[pCloud](https://partner.pcloud.com/r/119318)も4G以上のサイズも大丈夫です。生涯買い切りタイプのプランがあるクラウドストレージです。
 
 コマンドラインで、MEGA Storageからダウンロードする場合、megatoolsが便利です。
 ```
@@ -663,6 +663,9 @@ xz 5.6.1-2
 
 ##### 20240404
 kernel-6.8.3
+
+##### 20240405
+kernel-6.8.4
 
 
 ----
