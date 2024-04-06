@@ -2,7 +2,9 @@
 #
 NO_OOM_KILLER="$$"
 source ./keychain.sh
-echo $NO_OOM_KILLER | xargs -n1 sudo choom -n -1000 -p 
+gpg -dq ~/.ssh/pass.gpg|sudo -S pwd
+echo "start"
+gpg -dq ~/.ssh/pass.gpg|sudo -S choom -n -1000 -p $$
 #sudo rm /var/lib/manjaro-tools/buildiso/* -rf
 
 # 参照するiso-profilesはカレントディレクトリが優先される。
