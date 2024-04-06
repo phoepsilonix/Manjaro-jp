@@ -24,8 +24,8 @@ ecryptfs-utils
 efibootmgr
 exfatprogs
 f2fs-tools
-grub
 glibc-locales
+grub
 #haveged
 inetutils
 intel-ucode
