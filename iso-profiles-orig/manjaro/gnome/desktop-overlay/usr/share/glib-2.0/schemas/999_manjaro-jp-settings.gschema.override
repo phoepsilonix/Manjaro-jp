@@ -60,7 +60,6 @@ show-trash=true
 show-mounts=true
 show-mounts-only-mounted=true
 dock-position='LEFT'
-extend-height=true
 
 [org.gnome.desktop.peripherals.touchpad]
 send-events='disabled'
