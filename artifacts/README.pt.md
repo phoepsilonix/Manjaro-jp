@@ -670,6 +670,7 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 
 ----
 ### O apoio a esta atividade é muito bem-vindo.
+[Square](https://square.link/u/fZd2BXjR)  
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
 

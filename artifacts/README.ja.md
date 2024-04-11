@@ -712,6 +712,7 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 
 ----
 ### この活動へのご支援を歓迎します。  
+[Square](https://square.link/u/fZd2BXjR)  
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
 
