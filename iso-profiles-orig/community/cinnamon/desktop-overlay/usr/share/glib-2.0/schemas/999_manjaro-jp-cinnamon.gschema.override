@@ -2,8 +2,11 @@
 layouts=['jp\tkana86']
 
 [org.cinnamon.desktop.peripherals.keyboard]
-numlock-state=true
-remember-numlock-state=false
+numlock-state='on'
+remember-numlock-state='off'
+
+[org.cinnamon.desktop.peripherals.touchpad]
+send-events='disabled-on-external-mouse'
 
 [org.cinnamon]
 favorite-apps=['one.ablaze.floorp.desktop', 'org.manjaro.pamac.manager.desktop', 'cinnamon-settings.desktop', 'hexchat.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop']
