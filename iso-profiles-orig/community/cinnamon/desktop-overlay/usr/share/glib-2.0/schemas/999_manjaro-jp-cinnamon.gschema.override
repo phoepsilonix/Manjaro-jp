@@ -1,9 +1,13 @@
 [org.gnome.libgnomekbd.keyboard]
 layouts=['jp\tkana86']
 
-[org.cinnamon.desktop.peripherals.keyboard]
+[org.cinnamon.settings-daemon.peripherals.keyboard]
 numlock-state='on'
 remember-numlock-state='off'
+
+[org.cinnamon.desktop.peripherals.keyboard]
+numlock-state=true
+remember-numlock-state=false
 
 [org.cinnamon.desktop.peripherals.touchpad]
 send-events='disabled-on-external-mouse'
