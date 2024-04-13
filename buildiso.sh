@@ -32,7 +32,7 @@ editions=(
 #        "manjaro gnome-next"
        "manjaro xfce"
        "manjaro architect"
-#        "community cinnamon"
+        "community cinnamon"
 #        "community mate"
        # "community openbox"
 #	"community lxqt"
@@ -77,7 +77,7 @@ do
         # Packages-Rootに追加
             echo "cat $pkgs2 >> $pkgdir/$path/$pkg3"
             cat $pkgs2 >> $pkgdir/$path/$pkg3
-            if [[ "${data[1]}" != "gnome" ]] ;then
+            if [[ "${data[1]}" != "gnome" && "${data[1]}" != "kde" ]] ;then
                 echo "manjaro-asian-input-support-ibus" >> $pkgdir/$path/$pkg2
             fi
         fi
