@@ -297,3 +297,4 @@ xorg-server
 #xorg-twm                          # antiquated; optional for xorg-xinit
 xorg-xinit
 
+manjaro-jp/ibus-mozc-with-jp-dict

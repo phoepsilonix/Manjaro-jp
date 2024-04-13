@@ -223,3 +223,5 @@ xorg-xhost
 xorg-xkill
 >extra xorg-xrandr                 # optional for inxi
 
+manjaro-jp/ibus-mozc-with-jp-dict
+manjaro-asian-input-support-ibus
