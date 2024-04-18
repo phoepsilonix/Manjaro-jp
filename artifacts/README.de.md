@@ -644,6 +644,9 @@ kernel-6.8.4
 ##### 20240411
 kernel-6.8.5
 
+##### 20240418
+kernel-6.8.7
+
 
 ----
 Andere empfohlene Betriebssysteme  

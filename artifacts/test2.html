@@ -10,12 +10,12 @@
     <script src="./highlight.min.js"></script>
     <script src="./print-code.js"></script>
     <link rel="stylesheet" type="text/css" href="./fonts.css" />
-<script src="./wasm/wasm_markdown.js"></script>
+<script src="./wasm/wasm_markdown.js?__NOCACHE__"></script>
 <script type="module">
 window.onload=function() {
 async function md2html(data) {
         const { pulldown_cmark: wasm } = wasm_bindgen;
-        await wasm_bindgen("./wasm/wasm_markdown_bg.wasm");
+        await wasm_bindgen("./wasm/wasm_markdown_bg.wasm?__NOCACHE__");
         let text = document.createTextNode(wasm(data));
         let el = document.getElementById( "readme" );
         el.innerHTML = text.data;
@@ -26,7 +26,7 @@ async function md2html(data) {
         addCopyBtn();
 }
 
-var markdown_file = './README.ja.md';
+var markdown_file = './README.test.md';
 fetch(markdown_file)
     .then(response => response.text())
     .then(data => {

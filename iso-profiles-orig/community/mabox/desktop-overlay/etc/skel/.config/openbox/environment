@@ -1,5 +1,0 @@
-## Modify xdg-open behaviour
-export XDG_CURRENT_DESKTOP=XFCE
-
-#export QT_QPA_PLATFORMTHEME=qt5ct
-export PATH=$HOME/bin:$PATH
