@@ -331,7 +331,7 @@ make_image_root() {
             echo 'MHWD64_IS_LIB32="'${multilib}'"' > "${path}/etc/mhwd-x86_64.conf"
         fi
 
-	cp "${tmp_dir}/custom-pacman.conf" "${path}/etc/pacman.conf" && sync
+        cp "${tmp_dir}/custom-pacman.conf" "${path}/etc/pacman.conf" && sync
         pacman -Qr "${path}" > "${path}/rootfs-pkgs.txt"
         copy_overlay "${profile_dir}/root-overlay" "${path}"
 
