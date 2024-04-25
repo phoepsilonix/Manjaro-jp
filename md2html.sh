@@ -1,5 +1,6 @@
 #!/bin/sh
 
+cmd=pulldown-cmark
 cmd=md2html
 cd artifacts
 for f in ./*.*.md

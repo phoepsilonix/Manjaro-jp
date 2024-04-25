@@ -1,7 +1,7 @@
 /// <reference path="./highlight.min.ts" />
-
+import Prism from "prismjs";
 function addCopyBtn() {
-    hljs.highlightAll();
+    Prism.highlightAll();
     Array.prototype.forEach.call(document.querySelectorAll('pre > code'), addCopyButton);
 }
 

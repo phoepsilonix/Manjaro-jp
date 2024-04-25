@@ -16,7 +16,7 @@
 
 # Japanese Fonts
 ipa-fonts
-ttf-sazanami
+#ttf-sazanami
 noto-fonts-cjk
 noto-fonts-extra
 adobe-source-han-sans-jp-fonts
@@ -29,6 +29,9 @@ ttf-hackgen
 # Emoji Fonts
 noto-fonts-emoji
 unicode-emoji
+# AUR
+emoji-fontconfig
+
 # nodejs-emojione
 
 # browser
