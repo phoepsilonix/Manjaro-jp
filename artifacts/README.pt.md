@@ -645,6 +645,9 @@ kernel-6.8.5
 ##### 20240418
 kernel-6.8.7
 
+##### 20240429
+kernel-6.8.8
+
 
 ----
 Outros sistemas operativos recomendados.  
@@ -677,6 +680,7 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 ----
 ### O apoio a esta atividade é muito bem-vindo.
 [Square](https://square.link/u/fZd2BXjR)  
+[Paypal](https://paypal.me/phoepsilonix)  
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
 

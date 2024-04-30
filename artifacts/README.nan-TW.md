@@ -645,6 +645,9 @@ kernel-6.8.5
 ##### 20240418
 kernel-6.8.7
 
+##### 20240429
+kernel-6.8.8
+
 
 ----
 佇Linux作業系統會使用的影像編輯軟體推薦:
@@ -685,6 +688,7 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 ----
 ### 歡迎大家支持這項活動。
 [Square](https://square.link/u/fZd2BXjR)  
+[Paypal](https://paypal.me/phoepsilonix)  
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
 

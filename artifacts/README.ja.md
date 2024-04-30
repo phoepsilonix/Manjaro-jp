@@ -673,6 +673,9 @@ kernel-6.8.5
 ##### 20240418
 kernel-6.8.7
 
+##### 20240429
+kernel-6.8.8
+
 
 ----
 ###### おすすめ映像編集ソフト  
@@ -719,6 +722,7 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 ----
 ### この活動へのご支援を歓迎します。  
 [Square](https://square.link/u/fZd2BXjR)  
+[Paypal](https://paypal.me/phoepsilonix)  
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
 

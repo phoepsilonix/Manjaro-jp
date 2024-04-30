@@ -15,7 +15,7 @@
 window.onload=function() {
 async function md2html(data) {
         const { pulldown_cmark: wasm } = wasm_bindgen;
-        await wasm_bindgen("./wasm/wasm_markdown_bg.wasm?__NOCACHE__");
+        await wasm_bindgen("./wasm/wasm_markdown_bg.wasm");
         let text = document.createTextNode(wasm(data));
         let el = document.getElementById( "readme" );
         el.innerHTML = text.data;
