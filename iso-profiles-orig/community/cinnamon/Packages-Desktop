@@ -147,7 +147,6 @@ flatpak
 #>extra gprename                    # required by nemo-bulk-rename
 >extra gufw
 htop
->extra hexchat                     # depends on gtk2, replace?
 icon-naming-utils
 inxi
 >extra libgsf                      # optional for nemo
@@ -164,7 +163,7 @@ mintstick
 #>extra mugshot                    # obsolete
 >multilib lib32-mesa-utils         # Why?
 >extra onboard
->extra parcellite
+>extra clipit
 pavucontrol
 >extra poppler-data                # required by gimp
 >extra powertop
