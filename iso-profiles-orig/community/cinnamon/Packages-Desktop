@@ -156,7 +156,6 @@ lightdm-slick-greeter              # required by lightdm-settings
 manjaro-application-utility        # optional for manjaro-hello
 manjaro-hello
 manjaro-settings-manager-notifier  # optional for manjaro-settings-manager
->extra microsoft-office-web-jak
 #>basic midori                     # dropped to AUR
 mintstick
 >extra mousetweaks                 # optional for onboard
@@ -221,5 +220,8 @@ xorg-xhost
 xorg-xkill
 >extra xorg-xrandr                 # optional for inxi
 
-manjaro-jp/ibus-mozc-with-jp-dict
-manjaro-asian-input-support-ibus
+#manjaro-jp/ibus-mozc-with-jp-dict
+#manjaro-asian-input-support-ibus
+manjaro-jp/fcitx5-mozc-with-jp-dict
+fcitx5-im
+manjaro-asian-input-support-fcitx5

@@ -243,5 +243,8 @@ xdg-utils
 >basic squashfs-tools
 xiccd # enable color profile settings
 #tlp
-manjaro-jp/ibus-mozc-with-jp-dict
-manjaro-asian-input-support-ibus
+#manjaro-jp/ibus-mozc-with-jp-dict
+#manjaro-asian-input-support-ibus
+manjaro-jp/fcitx5-mozc-with-jp-dict
+fcitx5-im
+manjaro-asian-input-support-fcitx5

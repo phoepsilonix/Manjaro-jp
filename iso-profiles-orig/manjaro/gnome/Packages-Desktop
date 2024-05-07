@@ -139,7 +139,7 @@ xdg-user-dirs-gtk
 #evolution                         # thunderbird included instead
 file-roller
 #>extra geary                      # thunderbird included instead
-gedit
+#gedit                             # using gnome-text-editor for now
 #ghex
 #gitg
 #glade
@@ -250,7 +250,7 @@ manjaro-application-utility       # required by manjaro-hello, no need to be exp
 manjaro-hello
 manjaro-settings-manager
 manjaro-settings-manager-notifier
-#manjaro-starter
+manjaro-starter
 #mousetweaks
 >extra nautilus-admin
 nautilus-empty-file
@@ -296,4 +296,9 @@ xorg-server
 #xorg-twm                          # antiquated; optional for xorg-xinit
 xorg-xinit
 
-manjaro-jp/ibus-mozc-with-jp-dict
+
+#manjaro-jp/ibus-mozc-with-jp-dict
+manjaro-jp/fcitx5-mozc-with-jp-dict
+manjaro-jp/gnome-shell-extension-kimpanel
+fcitx5-im
+manjaro-asian-input-support-fcitx5
