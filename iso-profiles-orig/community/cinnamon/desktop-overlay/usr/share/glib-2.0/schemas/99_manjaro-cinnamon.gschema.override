@@ -67,8 +67,8 @@ input-feedback-sounds=false
 [org.gnome.Terminal.Legacy.Profile]
 background-color='rgb(0,0,0)'
 foreground-color='rgb(170,179,170)'
-use-theme-colors=false
-font='Droid Sans Mono Regular 11'
+use-theme-colors=true
+font='FirgeNerd Console 16'
 
 [org.nemo.desktop]
 font='Cantarell 10'

@@ -45,17 +45,18 @@ editions=(
 # 初期化
 #rm -rf $artifacts
 #mkdir -p $artifacts
-#rm -rf $pkgdir
+rm -rf $pkgdir
 #mkdir -p $pkgdir
-#cp -a iso-profiles-orig $pkgdir
-#cp -r iso-profiles-orig/shared $pkgdir/
+cp -a iso-profiles-orig $pkgdir
+cp -r iso-profiles-orig/shared $pkgdir/
 sync
 
 # profiles.confを微修正
 # user-repos.confを追加したiso-profilesを用意する
 
-rm -r "$pkgdir/shared/"
-cp -r iso-profiles-orig/shared "$pkgdir/"
+#rm -r "$pkgdir/shared/"
+#cp -r iso-profiles-orig/shared "$pkgdir/"
+sync
 # add Japanese pkgs and vivaldi
 for edition in "${editions[@]}"
 do
@@ -77,9 +78,9 @@ do
         # Packages-Rootに追加
             echo "cat $pkgs2 >> $pkgdir/$path/$pkg3"
             cat $pkgs2 >> $pkgdir/$path/$pkg3
-            if [[ "${data[1]}" != "gnome" && "${data[1]}" != "kde" ]] ;then
-                echo "manjaro-asian-input-support-ibus" >> $pkgdir/$path/$pkg2
-            fi
+            #if [[ "${data[1]}" != "gnome" && "${data[1]}" != "kde" ]] ;then
+            #    echo "manjaro-asian-input-support-ibus" >> $pkgdir/$path/$pkg2
+            #fi
         fi
         sync
 done
