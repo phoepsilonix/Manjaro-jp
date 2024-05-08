@@ -154,11 +154,15 @@ breeze-gtk
 breeze-icons
 gnome-themes-standard
 #gtk-theme-breath
-oxygen
-oxygen-icons
+#oxygen
+#oxygen-icons
 #plasma5-themes-breath  # Default
-#sddm-breath-theme  # Default
+sddm-breath-theme  # Default
 grub-theme-manjaro
+breeze5 # Fore Qt5 Breeze style
+breeze-gtk
+plymouth
+plymouth-theme-manjaro
 #illyria-wallpaper
 #>extra wallpapers-2018
 #>extra manjaro-wallpapers-18.0
