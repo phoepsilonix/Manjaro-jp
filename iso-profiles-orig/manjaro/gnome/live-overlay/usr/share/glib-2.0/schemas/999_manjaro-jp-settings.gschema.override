@@ -65,3 +65,7 @@ dock-position='LEFT'
 send-events='disabled'
 disable-while-typing=true
 
+[org.gnome.shell.extensions.kimpanel]
+vertical=true
+font='FirgeNerd Console 16'
+
