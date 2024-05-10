@@ -394,6 +394,7 @@ make_image_desktop() {
 
         if [[ "${profile}" != "architect" && "${profile}" != "netinstall" ]]; then
 	        systemd-nspawn -D ${path} glib-compile-schemas /usr/share/glib-2.0/schemas/
+	        systemd-nspawn -D ${path} glib-compile-schemas /usr/share/gnome-shell/extensions/kimpanel@kde.org/schemas/
 	        systemd-nspawn -D ${path} update-desktop-database /usr/share/applications/ /var/lib/flatpak/exports/share/applications/
 	        [[ -e ${path}/usr/share/xfce4/helpers ]] && systemd-nspawn -D ${path} update-desktop-database /usr/share/xfce4/helpers/
         fi
@@ -453,6 +454,7 @@ make_image_live() {
 	
         if [[ "${profile}" != "architect" && "${profile}" != "netinstall" ]]; then
 	        systemd-nspawn -D ${path} glib-compile-schemas /usr/share/glib-2.0/schemas/
+	        systemd-nspawn -D ${path} glib-compile-schemas /usr/share/gnome-shell/extensions/kimpanel@kde.org/schemas/
 	        systemd-nspawn -D ${path} update-desktop-database /usr/share/applications/ /var/lib/flatpak/exports/share/applications/
 	        [[ -e ${path}/usr/share/xfce4/helpers ]] && systemd-nspawn -D ${path} update-desktop-database /usr/share/xfce4/helpers/
         fi
