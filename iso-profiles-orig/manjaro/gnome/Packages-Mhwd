@@ -14,15 +14,15 @@ manjaro-jp/KERNEL-bbswitch
 manjaro-jp/KERNEL-broadcom-wl
 manjaro-jp/KERNEL-r8168
 manjaro-jp/KERNEL-zfs
-zfs-utils
+zfs-utils # only used for architect which we don't ship
 #manjaro-jp/KERNEL-rt3562sta
 #manjaro-jp/KERNEL-virtualbox-guest-modules
 #manjaro-jp/KERNEL-headers
-zfs-dkms
+#zfs-dkms
 libva-intel-driver
 libva-mesa-driver
-libva-vdpau-driver
->multilib lib32-libva-vdpau-driver
+#libva-vdpau-driver
+#>multilib lib32-libva-vdpau-driver
 libxaw
 libxpm
 libxvmc
@@ -45,8 +45,6 @@ mesa-vdpau
 >nonfree_multilib lib32-nvidia-470xx-utils
 >nonfree_multilib lib32-nvidia-390xx-utils
 >nonfree_multilib lib32-nvidia-utils
-opencl-clover-mesa
-opencl-rusticl-mesa
 open-vm-tools
 primus
 qemu-guest-agent

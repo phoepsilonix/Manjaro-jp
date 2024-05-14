@@ -1,4 +1,4 @@
-manjaro-jp/calamares5
+manjaro-jp/calamares
 cinnamon-live
 clonezilla
 grub-theme-live-manjaro
@@ -7,3 +7,8 @@ manjaro-live-skel
 manjaro-live-systemd
 mkinitcpio-nfs-utils
 nbd
+
+btrfs-assistant
+gparted
+manjaro-rescue
+virtualbox-guest-utils

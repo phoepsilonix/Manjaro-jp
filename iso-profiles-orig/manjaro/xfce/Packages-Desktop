@@ -18,7 +18,6 @@ usb_modeswitch
 grub-btrfs
 >extra timeshift-autosnap-manjaro
 
-
 ## Libraries for Sound/Audio/Video
 alsa-firmware
 alsa-utils
@@ -66,7 +65,7 @@ terminus-font
 ## Package management
 >extra apparmor
 #>extra gnome-software-snap
-pamac-gtk
+pamac-gtk3
 >extra snapd
 >extra snapd-glib
 >extra libpamac-snap-plugin
@@ -141,7 +140,6 @@ xfce4-whiskermenu-plugin
 xfce4-xkb-plugin
 xfce4-pulseaudio-plugin
 pavucontrol
-pipewire-pulse
 
 ## Themes
 >extra manjaro-wallpapers-18.0
@@ -178,7 +176,7 @@ manjaro-hello
 manjaro-application-utility
 manjaro-settings-manager
 manjaro-settings-manager-notifier
-#>basic midori
+#>basic midori                     # dropped to AUR
 >extra mlocate
 mousepad
 mugshot
@@ -189,7 +187,7 @@ screenfetch
 evince
 >extra poppler-data  # CKJ support for pdf
 #>basic sylpheed # mail client
-#>extra thunderbird
+>extra thunderbird
 >extra vlc
 >extra viewnior
 >extra xfburn
@@ -206,7 +204,7 @@ unrar  # RAR archive support
 ## Settings packages
 >extra manjaro-xfce-settings
 >basic manjaro-xfce-minimal-settings
-extra/manjaro-browser-settings
+manjaro-browser-settings
 
 ## Xorg Input Drivers
 xf86-input-elographics
@@ -223,7 +221,7 @@ libva-mesa-driver
 #libva-vdpau-driver
 mesa-utils
 >multilib lib32-mesa-utils
-numlockl
+numlockx
 xdg-user-dirs
 xorg-server
 xorg-twm
@@ -243,8 +241,10 @@ xdg-utils
 >basic squashfs-tools
 xiccd # enable color profile settings
 #tlp
+
 #manjaro-jp/ibus-mozc-with-jp-dict
 #manjaro-asian-input-support-ibus
 manjaro-jp/fcitx5-mozc-with-jp-dict
 fcitx5-im
 manjaro-asian-input-support-fcitx5
+

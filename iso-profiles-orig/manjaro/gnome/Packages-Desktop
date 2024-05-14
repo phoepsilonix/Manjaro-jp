@@ -25,23 +25,26 @@ grub-btrfs
 ## Libraries for Sound/Audio/Video
 
 >extra libdvdcss
-manjaro-alsa
-manjaro-gstreamer
+>extra manjaro-alsa
+>extra manjaro-gstreamer
 >extra manjaro-modem
-manjaro-pipewire
+>extra manjaro-pipewire
 
 
 ## Fonts
-#adobe-source-sans-pro-fonts
+
+#adobe-source-code-pro-fonts       # required by gsettings-desktop-schemas
+#adobe-source-han-sans-cn-fonts
+#adobe-source-han-sans-hk-fonts
 #adobe-source-han-sans-jp-fonts
 #adobe-source-han-sans-kr-fonts
 #adobe-source-han-sans-otc-fonts
 #adobe-source-han-sans-tw-fonts
-#adobe-source-han-sans-cn-fonts
+#adobe-source-sans-fonts
 noto-fonts                         # default font
->extra noto-fonts-cjk                     # Asian fonts, optional for noto-fonts
+>extra noto-fonts-cjk              # Asian fonts, optional for noto-fonts
 >extra noto-fonts-emoji            # required by gnome-characters, optional for noto-fonts
->extra noto-fonts-extra                   # additional languages, optional for noto-fonts
+>extra noto-fonts-extra            # additional languages, optional for noto-fonts
 #ttf-dejavu                        # required by firefox
 #ttf-droid                         # required by firefox
 ttf-hack                           # default monspace font
@@ -53,18 +56,17 @@ ttf-hack                           # default monspace font
 ## Package management
 
 pamac-gnome-integration
->extra pamac-flatpak-plugin
+>extra libpamac-flatpak-plugin
 pamac-gtk
->extra pamac-snap-plugin
-snapd
-snapd-glib
+>extra libpamac-snap-plugin
+#snapd
+#snapd-glib
 
 
 ## Printing
 
 >extra manjaro-printer
 >extra system-config-printer       # optional for gnome-control-center & manjaro-printer
-
 
 
 ## GNOME group
@@ -97,7 +99,7 @@ gnome-shell
 gnome-shell-extensions
 #gnome-software                    # pamac-gtk used instead
 gnome-system-monitor
-gnome-text-editor                 # gedit included instead
+gnome-text-editor
 gnome-tour
 gnome-user-docs
 >extra gnome-user-share            # optional for gnome-control-center
@@ -245,7 +247,7 @@ ibus
 inxi
 #>extra libappindicator-gtk3       # required by gnome-shell-extension-appindicator
 lollypop
-manjaro-application-utility       # required by manjaro-hello, no need to be explicitly installed
+manjaro-application-utility        # required by manjaro-hello, no need to be explicitly installed
 #manjaro-gnome-vanilla             # unmaintained, needs updating
 manjaro-hello
 manjaro-settings-manager
@@ -262,7 +264,7 @@ nautilus-empty-file
 #tlp                               # conflicts with power-profiles-daemon
 >extra touche
 >extra webapp-manager
-xdg-utils
+#xdg-utils                         # already a dependency of anything that requires it
 
 ## Optional dependencies for file-roller
 >extra lrzip
@@ -281,7 +283,7 @@ mesa-utils
 ## Settings packages
 #>extra lighter-gnome
 manjaro-base-skel
-extra/manjaro-browser-settings
+manjaro-browser-settings
 >extra manjaro-gnome-extension-settings
 manjaro-gnome-settings
 >extra manjaro-settings-samba
@@ -296,9 +298,8 @@ xorg-server
 #xorg-twm                          # antiquated; optional for xorg-xinit
 xorg-xinit
 
-
 #manjaro-jp/ibus-mozc-with-jp-dict
-manjaro-jp/fcitx5-mozc-with-jp-dict
 manjaro-jp/gnome-shell-extension-kimpanel
+manjaro-jp/fcitx5-mozc-with-jp-dict
 fcitx5-im
 manjaro-asian-input-support-fcitx5

@@ -39,6 +39,7 @@ iptables
 iputils
 jfsutils
 manjaro-jp/KERNEL
+manjaro-jp/KERNEL-headers
 less
 licenses
 linux-firmware
