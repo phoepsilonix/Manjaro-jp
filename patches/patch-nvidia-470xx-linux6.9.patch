@@ -285,20 +285,24 @@ index 0000000..7c18f43
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index 31e0080..85247e2 100644
+index a4e6b70..1fc895b 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -19,8 +19,14 @@ makedepends=("${_linuxprefix}-headers")
- provides=("nvidia=${pkgver}" 'NVIDIA-MODULE')
- options=(!strip)
- _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
--source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
--sha256sums=('4a4b2f1a0e5f4403dcc94b5df9970cb064fccee44e82282e6f03dbde6e4dfff0')
-+source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+@@ -22,11 +22,18 @@ _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
+ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+         '0001-Fix-conftest-to-ignore-implicit-function-declaration.patch'
+         '0002-Fix-conftest-to-use-a-short-wchar_t.patch'
+-        '0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch')
++        '0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch'
 +        '001-fix-function-declaration.patch'
 +        '002-Kbuild-clang-options.patch'
-+        'nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch')
-+sha256sums=('4a4b2f1a0e5f4403dcc94b5df9970cb064fccee44e82282e6f03dbde6e4dfff0'
++        'nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch'
++        )
+ sha256sums=('4a4b2f1a0e5f4403dcc94b5df9970cb064fccee44e82282e6f03dbde6e4dfff0'
+             'e9df0c3c563466f7d747a3bf45900ba7804b072c899cde016e8d557e1921d60e'
+             '1181bef2128bd4d74b661164bed8a1eb19c917e68fedbcaf65a24a4c2638cb8f'
+-            '84f3e59f2730752c0c4ef8bd2488953ccad13eb91a7f045488754e3bd61a1a6e')
++            '84f3e59f2730752c0c4ef8bd2488953ccad13eb91a7f045488754e3bd61a1a6e'
 +            '21dfe8ac31e7f13837a624c3891367c1a29dec74e63cfd24eb18e3eb4de59777'
 +            '4f2ed1d27f5f34a9b9a86041717b8d894f7d3b207e2450e77508108ebf47ac56'
 +            '702af56eef8bba8c3137f98c298ee204e391c6fcffc960631481c3f1e87ed6a8')
