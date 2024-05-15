@@ -38,8 +38,9 @@ ttf-dejavu                         # required by thunderbird
 
 ## Package management
 pamac-gtk3
->extra libpamac-flatpak-plugin
->extra libpamac-snap-plugin
+>extra manjaro-jp/libpamac
+>extra manjaro-jp/libpamac-flatpak-plugin
+>extra manjaro-jp/libpamac-snap-plugin
 
 
 ## Printing

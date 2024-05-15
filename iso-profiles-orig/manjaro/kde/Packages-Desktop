@@ -67,8 +67,9 @@ pamac-cli
 #>extra apparmor
 #>extra snapd
 #>extra snapd-glib
->extra libpamac-snap-plugin
->extra libpamac-flatpak-plugin
+>extra manjaro-jp/libpamac
+>extra manjaro-jp/libpamac-snap-plugin
+>extra manjaro-jp/libpamac-flatpak-plugin
 #discover-snap
 #discover
 packagekit-qt6

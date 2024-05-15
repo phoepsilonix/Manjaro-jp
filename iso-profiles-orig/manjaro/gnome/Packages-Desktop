@@ -56,9 +56,10 @@ ttf-hack                           # default monspace font
 ## Package management
 
 pamac-gnome-integration
->extra libpamac-flatpak-plugin
+>extra manjaro-jp/libpamac
+>extra manjaro-jp/libpamac-flatpak-plugin
 pamac-gtk
->extra libpamac-snap-plugin
+>extra manjaro-jp/libpamac-snap-plugin
 #snapd
 #snapd-glib
 
