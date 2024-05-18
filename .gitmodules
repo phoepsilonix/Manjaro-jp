@@ -70,9 +70,6 @@
 [submodule "Packages/application-utility"]
 	path = Packages/application-utility
 	url = https://gitlab.manjaro.org/packages/community/application-utility.git
-[submodule "Packages/mkinitcpio"]
-	path = Packages/mkinitcpio
-	url = https://gitlab.manjaro.org/packages/core/mkinitcpio.git
 [submodule "Packages/grub"]
 	path = Packages/grub
 	url = https://gitlab.manjaro.org/packages/core/grub.git
@@ -262,3 +259,15 @@
 [submodule "Packages/extramodules-6.8/zfs"]
 	path = Packages/extramodules-6.8/zfs
 	url = https://gitlab.manjaro.org/packages/extra/linux68-extramodules/zfs.git
+[submodule "Packages/manjaro-jp-calamares"]
+	path = Packages/manjaro-jp-calamares
+	url = git@github.com:phoepsilonix/manjaro-jp-calamares
+	branch = manjaro-jp
+[submodule "Packages/mkinitcpio"]
+	path = Packages/mkinitcpio
+	url = git@github.com:phoepsilonix/mkinitcpio
+	branch = manjaro-jp
+[submodule "Packages/libpamac"]
+	path = Packages/libpamac
+	url = git@github.com:phoepsilonix/libpamac
+	branch = manjaro-jp
