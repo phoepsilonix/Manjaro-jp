@@ -285,43 +285,39 @@ index 0000000..0a80ac2
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index af79045..12c8ea3 100644
+index ae84ef9..72ea6c1 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -19,16 +19,29 @@ makedepends=("${_linuxprefix}-headers")
- provides=("nvidia=${pkgver}" 'NVIDIA-MODULE')
- options=(!strip)
- _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
--source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
--sha256sums=('4a4b2f1a0e5f4403dcc94b5df9970cb064fccee44e82282e6f03dbde6e4dfff0')
-+source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+@@ -20,11 +20,17 @@ _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
+ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+         '0001-Fix-conftest-to-ignore-implicit-function-declaration.patch'
+         '0002-Fix-conftest-to-use-a-short-wchar_t.patch'
+-        '0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch')
++        '0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch'
 +        '001-fix-function-declaration.patch'
 +        '002-Kbuild-clang-options.patch'
 +        'nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch')
-+sha256sums=('4a4b2f1a0e5f4403dcc94b5df9970cb064fccee44e82282e6f03dbde6e4dfff0'
+ sha256sums=('4a4b2f1a0e5f4403dcc94b5df9970cb064fccee44e82282e6f03dbde6e4dfff0'
+             'e9df0c3c563466f7d747a3bf45900ba7804b072c899cde016e8d557e1921d60e'
+             '1181bef2128bd4d74b661164bed8a1eb19c917e68fedbcaf65a24a4c2638cb8f'
+-            '84f3e59f2730752c0c4ef8bd2488953ccad13eb91a7f045488754e3bd61a1a6e')
++            '84f3e59f2730752c0c4ef8bd2488953ccad13eb91a7f045488754e3bd61a1a6e'
 +            'b8971052d71cfafc80ce2e13d4c3d09ffe6e82864b3bdfb6daf5de26e51d7ff7'
 +            'af29e448e44af8b60e1108278c6c679762ae032428991dbb7ca20e722567fd7b'
 +            '8a42b7c50717db4d00f718a52754b220b196c6da7429ab8fe3c3b8cac72716a1')
  
  _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
  
- prepare() {
-     sh "${_pkg}.run" --extract-only
- 
--    cd "${_pkg}/kernel"
--    # patches here
-+    cd "${_pkg}"
-+    local src
-+    for src in "${source[@]}"; do
-+        src="${src%%::*}"
-+        src="${src##*/}"
-+        [[ $src = *.patch ]] || continue
-+        msg2 "Applying patch: $src..."
-+        patch -Np1 < "../$src"
-+    done
+@@ -38,6 +44,9 @@ prepare() {
+     patch -Np1 -i "${srcdir}"/0001-Fix-conftest-to-ignore-implicit-function-declaration.patch
+     patch -Np1 -i "${srcdir}"/0002-Fix-conftest-to-use-a-short-wchar_t.patch
+     patch -Np1 -i "${srcdir}"/0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch
++    patch -Np2 -i "${srcdir}"/001-fix-function-declaration.patch
++    patch -Np2 -i "${srcdir}"/002-Kbuild-clang-options.patch
++    patch -Np2 -i "${srcdir}"/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
+     popd
  }
  
- build() {
 diff --git a/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 new file mode 100644
 index 0000000..6f57c79

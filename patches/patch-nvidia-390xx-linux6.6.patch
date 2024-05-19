@@ -224,28 +224,28 @@ index 0000000..7e32ad4
 +         return;
 diff --git a/002-Kbuild-clang-options.patch b/002-Kbuild-clang-options.patch
 new file mode 100644
-index 0000000..b9c2f8a
+index 0000000..fcae597
 --- /dev/null
 +++ b/002-Kbuild-clang-options.patch
 @@ -0,0 +1,13 @@
-+diff --git a/kernel/Kbuild b/kernel/Kbuild
-+index 85aa267..0922557 100644
-+--- a/kernel/Kbuild
-++++ b/kernel/Kbuild
++diff --git a/Kbuild b/Kbuild
++index a9099a9..a63ade5 100644
++--- a/Kbuild
+++++ b/Kbuild
 +@@ -63,7 +63,7 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
 + 
 + EXTRA_CFLAGS += -I$(src)/common/inc
 + EXTRA_CFLAGS += -I$(src)
-+-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error
-++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error
++-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error -fpermissive
+++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error -fpermissive
 + EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"390.157\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE -Wno-sign-compare -Wno-format-extra-args
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index 37d25dd..e06d4e2 100644
+index 4d0d0eb..289c4d5 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -33,6 +33,9 @@ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+@@ -31,6 +31,9 @@ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
          'kernel-6.3.patch'
          'kernel-6.4.patch'
          'kernel-6.6.patch'
@@ -253,28 +253,28 @@ index 37d25dd..e06d4e2 100644
 +        '002-Kbuild-clang-options.patch'
 +        'nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch'
          'buildfix_kernel_6.5-garbage-collect-all-references-to-get_user.patch'
-         'buildfix_kernel_6.5-handle-get_user_pages-vmas-argument-remova.patch')
- sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
-@@ -40,6 +43,9 @@ sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
+         'buildfix_kernel_6.5-handle-get_user_pages-vmas-argument-remova.patch'
+         'gcc14.patch')
+@@ -39,6 +42,9 @@ sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
              '4284f95f808df4e43afc4632e3fc1f87da1a805f0f6f9af1f6b519c7cf7562b4'
              '6a73ba0760c278a835ec5dcc6f3a9e0f8f0787fde95e832c38e8038152242708'
              '070879076eb75801ecf42819ccf89f09556db421475cb883413b10876a306f87'
 +            'e480e7bd77d7e0e3d5b48282bd2d5ce387564c61c04cfd2287ceb591d191f3cc'
-+            '2da853724551ae20fcfd0026ccd2ebeae5b0602b113eec5c5e7e84e91fd6b10d'
++            '24725b4a4a377960c995b99b086d98dcc03855234695dba561e39940319c16c0'
 +            '80549d160b8273e2bbe81d50764161f72d496c677db10364f6d38234105e44f0'
              'b50bfc1f45c706fed3429bf2a876d127405a8a0c7617042ef088ca5493b0814f'
-             'dbb15bb863a74513946738be1ae223f26eab0e631b8ecb05b0f9c52549fdb847')
- 
-@@ -55,6 +61,9 @@ prepare() {
+             'dbb15bb863a74513946738be1ae223f26eab0e631b8ecb05b0f9c52549fdb847'
+             'af840e7e03aa9cf311c0d1e32469596e5e728a0206cbe06f99bbc22e3de25a12')
+@@ -58,6 +64,9 @@ prepare() {
      patch -Np1 -i ${srcdir}/buildfix_kernel_6.5-garbage-collect-all-references-to-get_user.patch
      patch -Np1 -i ${srcdir}/buildfix_kernel_6.5-handle-get_user_pages-vmas-argument-remova.patch
      patch -Np1 -i ${srcdir}/kernel-6.6.patch
 +    patch -p2 -i ${srcdir}/001-fix-function-declaration.patch
-+    patch -p2 -i ${srcdir}/002-Kbuild-clang-options.patch
++    patch -p1 -i ${srcdir}/002-Kbuild-clang-options.patch
 +    patch -Np1 -i ${srcdir}/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
+     popd
  }
  
- build() {
 diff --git a/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch b/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
 new file mode 100644
 index 0000000..3ef5996
