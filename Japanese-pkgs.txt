@@ -106,3 +106,4 @@ seahorse
 intel-ucode
 amd-ucode
 update-grub
+manjaro-jp/mkinitcpio

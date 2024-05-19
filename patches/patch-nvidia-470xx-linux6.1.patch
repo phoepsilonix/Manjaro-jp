@@ -1,6 +1,6 @@
 diff --git a/001-fix-function-declaration.patch b/001-fix-function-declaration.patch
 new file mode 100644
-index 0000000..8a2736a
+index 0000000..4e66fde
 --- /dev/null
 +++ b/001-fix-function-declaration.patch
 @@ -0,0 +1,261 @@
@@ -25,7 +25,7 @@ index 0000000..8a2736a
 + {
 +     return NV_NUM_CPUS();
 + }
-+@@ -1176,7 +1176,7 @@ void NV_API_CALL os_get_screen_info(
++@@ -1179,7 +1179,7 @@ void NV_API_CALL os_get_screen_info(
 + #endif
 + }
 + 
@@ -285,51 +285,49 @@ index 0000000..0a80ac2
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index f6f3840..bb4c77e 100644
+index 581d461..77dab47 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -17,8 +17,14 @@ makedepends=("${_linuxprefix}-headers")
- provides=("nvidia=${pkgver}" 'NVIDIA-MODULE')
- options=(!strip)
- _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
--source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
--sha256sums=('4a4b2f1a0e5f4403dcc94b5df9970cb064fccee44e82282e6f03dbde6e4dfff0')
-+source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+@@ -20,11 +20,17 @@ _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
+ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+         '0001-Fix-conftest-to-ignore-implicit-function-declaration.patch'
+         '0002-Fix-conftest-to-use-a-short-wchar_t.patch'
+-        '0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch')
++        '0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch'
 +        '001-fix-function-declaration.patch'
 +        '002-Kbuild-clang-options.patch'
 +        'nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch')
-+sha256sums=('4a4b2f1a0e5f4403dcc94b5df9970cb064fccee44e82282e6f03dbde6e4dfff0'
-+            'b8971052d71cfafc80ce2e13d4c3d09ffe6e82864b3bdfb6daf5de26e51d7ff7'
+ sha256sums=('4a4b2f1a0e5f4403dcc94b5df9970cb064fccee44e82282e6f03dbde6e4dfff0'
+             'e9df0c3c563466f7d747a3bf45900ba7804b072c899cde016e8d557e1921d60e'
+             '1181bef2128bd4d74b661164bed8a1eb19c917e68fedbcaf65a24a4c2638cb8f'
+-            '84f3e59f2730752c0c4ef8bd2488953ccad13eb91a7f045488754e3bd61a1a6e')
++            '84f3e59f2730752c0c4ef8bd2488953ccad13eb91a7f045488754e3bd61a1a6e'
++            '48ffe6af7318722e589dcdcf7733e0935efcee4478a0b734e75fa493356517d5'
 +            'af29e448e44af8b60e1108278c6c679762ae032428991dbb7ca20e722567fd7b'
-+            '8a42b7c50717db4d00f718a52754b220b196c6da7429ab8fe3c3b8cac72716a1')
++            '139559deb19ceae1454673391f15eaf50a8353aba2a9ef12f58edf30063314fd')
  
  _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
  
-@@ -26,6 +32,14 @@ prepare() {
-     sh "${_pkg}.run" --extract-only
- 
-     cd "${_pkg}"
-+    local src
-+    for src in "${source[@]}"; do
-+        src="${src%%::*}"
-+        src="${src##*/}"
-+        [[ $src = *.patch ]] || continue
-+        msg2 "Applying patch: $src..."
-+        patch -Np1 < "../$src"
-+    done
+@@ -38,6 +44,9 @@ prepare() {
+     patch -Np1 -i "${srcdir}"/0001-Fix-conftest-to-ignore-implicit-function-declaration.patch
+     patch -Np1 -i "${srcdir}"/0002-Fix-conftest-to-use-a-short-wchar_t.patch
+     patch -Np1 -i "${srcdir}"/0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch
++    patch -p2 -i "${srcdir}"/001-fix-function-declaration.patch
++    patch -p2 -i "${srcdir}"/002-Kbuild-clang-options.patch
++    patch -p2 -i "${srcdir}"/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
+     popd
  }
  
- build() {
 diff --git a/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 new file mode 100644
-index 0000000..6f57c79
+index 0000000..ba382b3
 --- /dev/null
 +++ b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 @@ -0,0 +1,56 @@
 +diff -ur a/kernel/conftest.sh b/kernel/conftest.sh
 +--- a/kernel/conftest.sh	2023-06-01 20:00:46.719933661 +0800
 ++++ b/kernel/conftest.sh	2023-06-01 21:26:23.218584390 +0800
-+@@ -255,6 +255,9 @@
++@@ -204,6 +204,9 @@
 +             CFLAGS="$CFLAGS -mfentry -DCC_USING_FENTRY"
 +         fi
 +     fi
@@ -339,7 +337,7 @@ index 0000000..6f57c79
 + }
 +
 + CONFTEST_PREAMBLE="#include \"conftest/headers.h\"
-+@@ -294,6 +297,12 @@
++@@ -277,6 +280,12 @@
 +     echo "$CONFTEST_PREAMBLE
 +     $CODE" > conftest$$.c
 +
@@ -352,7 +350,7 @@ index 0000000..6f57c79
 +     $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
 +     rm -f conftest$$.c
 +
-+@@ -4765,14 +4812,14 @@
++@@ -5205,14 +5214,14 @@
 +                 echo "However, mixing compiler versions between the kernel";
 +                 echo "and kernel modules can result in subtle bugs that are";
 +                 echo "difficult to diagnose.";
@@ -374,7 +372,7 @@ index 0000000..6f57c79
 +diff -ur a/kernel/Kbuild b/kernel/Kbuild
 +--- a/kernel/Kbuild	2023-06-01 20:00:46.716600311 +0800
 ++++ b/kernel/Kbuild	2023-06-01 21:37:31.631878921 +0800
-+@@ -68,6 +68,7 @@
++@@ -73,6 +73,7 @@
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 + EXTRA_CFLAGS += -DNV_KERNEL_INTERFACE_LAYER

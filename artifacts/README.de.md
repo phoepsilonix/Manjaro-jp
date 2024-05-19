@@ -657,6 +657,12 @@ kernel-6.8.8
 ##### 20240503
 kernel-6.8.9
 
+##### 20240515
+kernel-6.9.0
+
+##### 20240520
+kernel-6.9.1
+
 
 ----
 Andere empfohlene Betriebssysteme  

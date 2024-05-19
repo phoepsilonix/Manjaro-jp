@@ -224,65 +224,64 @@ index 0000000..7e32ad4
 +         return;
 diff --git a/002-Kbuild-clang-options.patch b/002-Kbuild-clang-options.patch
 new file mode 100644
-index 0000000..b9c2f8a
+index 0000000..f8dfaa5
 --- /dev/null
 +++ b/002-Kbuild-clang-options.patch
 @@ -0,0 +1,13 @@
-+diff --git a/kernel/Kbuild b/kernel/Kbuild
-+index 85aa267..0922557 100644
-+--- a/kernel/Kbuild
++diff --git a/kernel/Kbuild.orig b/kernel/Kbuild
++index a9099a9..a63ade5 100644
++--- a/kernel/Kbuild.orig
 ++++ b/kernel/Kbuild
 +@@ -63,7 +63,7 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
 + 
 + EXTRA_CFLAGS += -I$(src)/common/inc
 + EXTRA_CFLAGS += -I$(src)
-+-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error
-++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error
++-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error -fpermissive
+++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error -fpermissive
 + EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"390.157\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE -Wno-sign-compare -Wno-format-extra-args
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index 2b30b7f..689826e 100644
+index 3adf320..b8f5550 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -26,16 +26,25 @@ makedepends=("${_linuxprefix}-headers")
- provides=("nvidia=${pkgver}" 'NVIDIA-MODULE')
+@@ -27,9 +27,15 @@ provides=("nvidia=${pkgver}" 'NVIDIA-MODULE')
  options=(!strip)
  _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
--source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
--sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581')
-+source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+-        'gcc14.patch')
++        'gcc14.patch'
 +        '001-fix-function-declaration.patch'
 +        '002-Kbuild-clang-options.patch'
 +        'nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch')
-+sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
+ sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
+-            'af840e7e03aa9cf311c0d1e32469596e5e728a0206cbe06f99bbc22e3de25a12')
++            'af840e7e03aa9cf311c0d1e32469596e5e728a0206cbe06f99bbc22e3de25a12'
 +            'e480e7bd77d7e0e3d5b48282bd2d5ce387564c61c04cfd2287ceb591d191f3cc'
-+            '2da853724551ae20fcfd0026ccd2ebeae5b0602b113eec5c5e7e84e91fd6b10d'
-+            '80549d160b8273e2bbe81d50764161f72d496c677db10364f6d38234105e44f0')
++            '6dcf1d878484ba92c00cd0c5e1d40e7262c4f95c5044d82dd92ff00b1ed37f04'
++            '2b7e78d3888f3f6bd509b09fc4bec974561334f1438aafc38de3903302829b76')
  
  _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
  
- prepare() {
-     sh "${_pkg}.run" --extract-only
+@@ -38,6 +44,9 @@ prepare() {
  
--    cd "${_pkg}"
-+    cd "${_pkg}/kernel"
-     # patches here
-+    patch -p2 -i ${srcdir}/001-fix-function-declaration.patch
-+    patch -p2 -i ${srcdir}/002-Kbuild-clang-options.patch
+     cd "${_pkg}"
+     patch -Np1 -i ../gcc14.patch
++    patch -p1 -i ${srcdir}/001-fix-function-declaration.patch
++    patch -p1 -i ${srcdir}/002-Kbuild-clang-options.patch
 +    patch -Np1 -i ${srcdir}/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
  }
  
  build() {
 diff --git a/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch b/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
 new file mode 100644
-index 0000000..3ef5996
+index 0000000..6c08098
 --- /dev/null
 +++ b/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
 @@ -0,0 +1,93 @@
-+diff -ur a/conftest.sh b/conftest.sh
-+--- a/conftest.sh	2023-06-01 20:00:46.719933661 +0800
-++++ b/conftest.sh	2023-06-01 21:26:23.218584390 +0800
++diff -ur a/kernel/conftest.sh b/kernel/conftest.sh
++--- a/kernel/conftest.sh	2023-06-01 20:00:46.719933661 +0800
+++++ b/kernel/conftest.sh	2023-06-01 21:26:23.218584390 +0800
 +@@ -255,6 +255,9 @@
 +             CFLAGS="$CFLAGS -mfentry -DCC_USING_FENTRY"
 +         fi
@@ -351,9 +350,9 @@ index 0000000..3ef5996
 +         fi
 +     ;;
 +
-+diff -ur a/Kbuild b/Kbuild
-+--- a/Kbuild	2023-06-01 20:00:46.716600311 +0800
-++++ b/Kbuild	2023-06-01 21:37:31.631878921 +0800
++diff -ur a/kernel/Kbuild b/kernel/Kbuild
++--- a/kernel/Kbuild	2023-06-01 20:00:46.716600311 +0800
+++++ b/kernel/Kbuild	2023-06-01 21:37:31.631878921 +0800
 +@@ -68,6 +68,7 @@
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
@@ -362,12 +361,12 @@ index 0000000..3ef5996
 +
 + #
 + # Detect SGI UV systems and apply system-specific optimizations.
-+diff -ur a/nvidia-drm/nvidia-drm-fb.c b/nvidia-drm/nvidia-drm-fb.c
-+--- a/nvidia-drm/nvidia-drm-fb.c	2023-06-01 20:00:46.723267010 +0800
-++++ b/nvidia-drm/nvidia-drm-fb.c	2023-06-01 21:55:43.793928784 +0800
-+@@ -31,6 +31,7 @@
++diff -ur a/kernel/nvidia-drm/nvidia-drm-fb.c b/kernel/nvidia-drm/nvidia-drm-fb.c
++--- a/kernel/nvidia-drm/nvidia-drm-fb.c
+++++ b/kernel/nvidia-drm/nvidia-drm-fb.c
++@@ -30,6 +30,7 @@
++ #include "nvidia-drm-utils.h"
 + #include "nvidia-drm-gem.h"
-+ #include "nvidia-drm-helper.h"
 + 
 ++#include <drm/drm_modeset_helper.h>
 + #include <drm/drm_crtc_helper.h>
