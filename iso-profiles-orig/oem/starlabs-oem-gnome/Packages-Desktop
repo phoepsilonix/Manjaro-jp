@@ -216,8 +216,7 @@ nautilus-empty-file
 polkit-gnome
 >extra timeshift
 xdg-utils
->extra caffeine-ng
->extra libappindicator-gtk3
+#>extra libappindicator-gtk3       # required by gnome-shell-extension-appindicator
 lollypop
 >extra fragments
 >extra ffmpegthumbnailer

@@ -209,7 +209,6 @@ nautilus-empty-file
 polkit-gnome
 >extra timeshift
 xdg-utils
->extra caffeine-ng
 >extra libappindicator-gtk3
 lollypop
 >extra fragments
