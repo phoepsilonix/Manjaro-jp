@@ -697,6 +697,8 @@ Linux系OSで動きます。
 無料版でも十分、使えます。  
 有料版のStudioだと、より便利な機能が使えます。  
 
+[ShotCut](https://shotcut.org/)
+
 ----
 その他のおすすめOS  
 [Ubuntu][Ubuntu]  

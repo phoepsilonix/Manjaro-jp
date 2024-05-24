@@ -668,6 +668,8 @@ kernel-6.9.1
 免費版本已經夠用,使用起來毋是問題。
 如果用付錢的Studio版本,會有更多實用的功能。
 
+[ShotCut](https://shotcut.org/)
+
 ----
 其他推薦的作業系統:  
 [Ubuntu][Ubuntu]  
