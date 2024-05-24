@@ -60,7 +60,6 @@ psmisc
 reiserfsprogs
 sed
 shadow
-spectre-meltdown-checker
 s-nail
 sudo
 sysfsutils
