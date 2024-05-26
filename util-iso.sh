@@ -371,9 +371,7 @@ make_image_desktop() {
 	        systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update org.freedesktop.Platform -y
 	        systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install org.freedesktop.Platform.VAAPI.Intel//23.08 -y
 	        systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update org.freedesktop.Platform -y
-            sync
-	        systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update -y
-	        systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update org.freedesktop.Platform.openh264 -y 
+	        #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update org.freedesktop.Platform.openh264 -y 
                 #systemd-nspawn -D ${path} flatpak install -y org.mozilla.firefox
                 # Office Soft
                 #systemd-nspawn -D ${path} flatpak install -y org.libreoffice.LibreOffice
@@ -387,6 +385,7 @@ make_image_desktop() {
                 # Mailer org.mozilla.Thunderbird
                 systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install -y org.mozilla.Thunderbird
         fi
+	            systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update -y
                 systemd-nspawn -D ${path} chmod u-s /usr/bin/bwrap
 
         if [[ -e "${path}/usr/share/calamares/branding/manjaro/calamares-sidebar.qml" ]]; then
