@@ -661,6 +661,9 @@ kernel-6.9.0
 ##### 20240520
 kernel-6.9.1
 
+##### 20240527
+kernel-6.9.2
+
 
 ----
 Outros sistemas operativos recomendados.  

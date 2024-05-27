@@ -66,6 +66,6 @@ show-mounts-only-mounted=true
 dock-position='LEFT'
 
 [org.gnome.desktop.peripherals.touchpad]
-send-events='disabled'
+send-events='disabled-on-external-mouse'
 disable-while-typing=true
 
