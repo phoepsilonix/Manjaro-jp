@@ -385,8 +385,10 @@ make_image_desktop() {
                 # Mailer org.mozilla.Thunderbird
                 systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install -y org.mozilla.Thunderbird
         fi
+        if [[ "${profile}" != "architect" && "${profile}" != "netinstall" ]]; then
 	            systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update -y
                 systemd-nspawn -D ${path} chmod u-s /usr/bin/bwrap
+        fi
 
         if [[ -e "${path}/usr/share/calamares/branding/manjaro/calamares-sidebar.qml" ]]; then
             configure_branding "${path}"
