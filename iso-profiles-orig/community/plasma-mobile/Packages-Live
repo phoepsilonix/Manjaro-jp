@@ -6,7 +6,7 @@ nbd
 mkinitcpio-nfs-utils
 
 ## GUI installer
-calamares
+calamares5
 squashfs-tools
 xdg-user-dirs
 
