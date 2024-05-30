@@ -1,0 +1,1 @@
+SUBSYSTEM=="block", SUBSYSTEMS=="usb", ENV{ID_PART_ENTRY_NAME}=="Ventoy", ENV{UDISKS_AUTO}="1"
