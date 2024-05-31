@@ -21,14 +21,14 @@ ventoygui
 General Linux  
 Example of download command using aria2  
 ```bash
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.97/ventoy-1.0.97-linux.tar.gz
-tar xf ventoy-1.0.97-linux.tar.gz
-cd ventoy-1.0.97
-./VentoyGUI.x86_64
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.98/ventoy-1.0.98-linux.tar.gz
+tar xf ventoy-1.0.98-linux.tar.gz
+cd ventoy-1.0.98
+./VentoyGUI.$(uname -m)
 ```
 
 Windows  
-Download [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.97/ventoy-1.0.97-windows.zip) using a browser or something.  
+Download [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.98/ventoy-1.0.98-windows.zip) using a browser or something.  
 Open the downloaded zip file and run ventoy2disk.exe.
 
 ----

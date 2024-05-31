@@ -10,6 +10,15 @@ app-menu-icon-name='start-here'
 picture-options='stretched'
 picture-uri='file:///usr/share/backgrounds/cinnamon_default.jpg'
 
+[org.cinnamon.desktop.interface]
+cursor-theme='Bibata-Modern-Ice'
+font-name='Cantarell 10'
+gtk-theme='Mint-L-Dark-Teal'
+icon-theme='Papirus-Adapta-Nokto-Maia'
+
+[org.cinnamon.theme]
+name='Mint-L-Dark-Teal'
+
 [org.cinnamon.desktop.screensaver]
 ask-for-away-message=false
 date-format='%A %b %d'
@@ -69,7 +78,7 @@ background-color='rgb(0,0,0)'
 foreground-color='rgb(170,179,170)'
 use-theme-colors=false
 use-system-font=false
-font='FirgeNerd Console 16'
+font='FirgeNerd Console 18'
 
 [org.nemo.desktop]
 font='Cantarell 10'

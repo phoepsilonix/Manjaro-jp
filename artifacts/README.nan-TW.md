@@ -19,10 +19,10 @@ ventoygui
 ```
 如果係Linux全般,而且下載用的是aria2,作法係:
 ```bash
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.97/ventoy-1.0.97-linux.tar.gz
-tar xf ventoy-1.0.97-linux.tar.gz
-cd ventoy-1.0.97
-./VentoyGUI.x86_64 
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.98/ventoy-1.0.98-linux.tar.gz
+tar xf ventoy-1.0.98-linux.tar.gz
+cd ventoy-1.0.98
+./VentoyGUI.$(uname -m)
 ```
 
 如果係Windows,可以去Ventoy[官網](https://github.com/ventoy/Ventoy/releases/)下載,接著解開下載的zip檔案,直接執行ventoy2disk.exe就好矣。

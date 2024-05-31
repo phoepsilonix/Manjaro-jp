@@ -14,16 +14,3 @@ send-events='disabled-on-external-mouse'
 
 [org.cinnamon]
 favorite-apps=['one.ablaze.floorp.desktop', 'org.manjaro.pamac.manager.desktop', 'cinnamon-settings.desktop', 'hexchat.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop']
-
-[org.gnome.desktop.interface]
-gtk-theme=Mint-X-Blue'
-
-[org.cinnamon.desktop.interface]
-cursor-theme='Bibata-Modern-Ice'
-gtk-theme='Mint-X-Blue'
-font-name='Cantarell 10'
-icon-theme='Papirus-Adapta-Nokto-Maia'
-
-[org.cinnamon.theme]
-name='Mint-X-Blue'
-
