@@ -11,7 +11,7 @@ mobile-broadband-provider-info
 modemmanager
 >multilib lib32-mesa-utils
 nss-mdns
-numlockl
+numlockx
 powertop
 alsa-utils
 avahi
@@ -33,7 +33,5 @@ xf86-input-evdev
 xf86-input-libinput
 #xf86-input-mouse # deprecated
 xf86-input-void
-xorg-server-utils
 xorg-twm
-xorg-utils
 xorg-xinit
