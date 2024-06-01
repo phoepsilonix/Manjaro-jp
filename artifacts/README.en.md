@@ -709,6 +709,9 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 [ofuse](https://ofuse.me/phoepsilonix)  
 [give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
 
+Signal  
+[<svg id="MANJARO-QR"><image id="MANJARO-QR" xlink:href="./img/signal_mobile_coin-min.png"/></svg>](./img/signal_mobile_coin-min.png)  
+
 BTC  
 ```3B6u3pzaeyB2YrDcXWDfGE7pHxx2xuu9KQ```
 
