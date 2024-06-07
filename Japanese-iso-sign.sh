@@ -24,6 +24,9 @@ do
 		#-w "https://osdn.net/projects/manjaro-jp/storage/$f" \
 #		-w "https://manjaro-jp.phoepsilonix.love/$f" \
         fi
+    #if [[ ! -e $f.zsync ]] ; then
+    #    zsyncmake $f
+    #fi
 done
 
 echo "sha256sums"

@@ -22,6 +22,7 @@ keychain --clear
 
 ###### sshのパスフレーズを復号化する
 PASSPHRASE=$(gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -dq $ssh_pass)
+echo $PASSPHRASE|sudo -S pwd
 KEY_FILENAME=$1
 
 #spawn ssh-add $HOME/.ssh/$KEY_FILENAME
