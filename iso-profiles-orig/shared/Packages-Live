@@ -1,8 +1,8 @@
 btrfs-assistant
-calamares5
+manjaro-jp/calamares5
 clonezilla
 gparted
-grub-theme-live-manjaro
+>manjaro grub-theme-live-manjaro
 gsmartcontrol
 #manjaro-architect
 manjaro-live-skel
@@ -13,3 +13,5 @@ nbd
 snapper-gui
 timeshift
 virtualbox-guest-utils
+squashfs-tools
+
