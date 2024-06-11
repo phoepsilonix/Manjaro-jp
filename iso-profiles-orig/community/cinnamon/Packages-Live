@@ -1,14 +1,17 @@
+btrfs-assistant
 manjaro-jp/calamares5
-cinnamon-live
 clonezilla
-grub-theme-live-manjaro
+gparted
+>manjaro grub-theme-live-manjaro
 gsmartcontrol
+#manjaro-architect
 manjaro-live-skel
 manjaro-live-systemd
+manjaro-rescue
 mkinitcpio-nfs-utils
 nbd
-
-btrfs-assistant
-gparted
-manjaro-rescue
+snapper-gui
+timeshift
 virtualbox-guest-utils
+squashfs-tools
+
