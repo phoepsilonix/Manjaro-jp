@@ -37,12 +37,13 @@ done
 #-R 古いパッケージを削除
 #nvidia unstable stable
 SRC=rsync://ftp.tsukuba.wide.ad.jp/manjaro/
+SRC=rsync://ftp.riken.jp/manjaro
 SRC=/var/www/manjaro/
 #rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/unstable/extra/x86_64/{libxnvctrl,nvidia-*{utils,dkms,settings},virtualbox-host-dkms,zfs-utils,zfs-dkms}* ./
 #rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/unstable/multilib/x86_64/lib32-nvidia-*utils* ./
 #rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/stable/extra/x86_64/{libxnvctrl,nvidia-*{utils,dkms,settings},virtualbox-host-dkms,zfs-utils,zfs-dkms}* ./
 #rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/stable/multilib/x86_64/lib32-nvidia-*utils* ./
-rsync -rtLvH --safe-links --delete-after --delay-updates --include="libxnvctrl*x86_64*" --include="*nvidia-*utils*x86_64*" --include="*nvidia-dkms*x86_64*" --include "*nvidia-settings*x86_64*" --include="virtualbox-host-dkms*x86_64*" --include="zfs-utils*x86_64*" --include="zfs-dkms*x86_64*" --exclude="*" $SRC/pool/sync/ $SRC/pool/overlay/ ./
+rsync -rtLvH --safe-links --delete-after --delay-updates --include="libxnvctrl*x86_64*" --include="*nvidia-*utils*x86_64*" --include="*nvidia-dkms*x86_64*" --include "*nvidia-*settings*x86_64*" --include="virtualbox-host-dkms*x86_64*" --include="zfs-utils*x86_64*" --include="zfs-dkms*x86_64*" --exclude="*" $SRC/pool/sync/ $SRC/pool/overlay/ ./
 sync
 
 #nvidia以外のパッケージの登録。古いものを削除。

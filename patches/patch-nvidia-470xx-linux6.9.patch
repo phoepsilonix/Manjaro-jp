@@ -267,12 +267,12 @@ index 0000000..821ddf6
 +         return;
 diff --git a/002-Kbuild-clang-options.patch b/002-Kbuild-clang-options.patch
 new file mode 100644
-index 0000000..7c18f43
+index 0000000..5cdebbf
 --- /dev/null
 +++ b/002-Kbuild-clang-options.patch
 @@ -0,0 +1,13 @@
 +diff --git a/Kbuild b/Kbuild
-+index 1889bd6..9f18a1b 100644
++index eadd8b2..cf2d6a7 100644
 +--- a/Kbuild
 ++++ b/Kbuild
 +@@ -68,7 +68,7 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
@@ -281,13 +281,22 @@ index 0000000..7c18f43
 + EXTRA_CFLAGS += -I$(src)
 +-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
 ++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
-+ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.239.06\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
++ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.256.02\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index a4e6b70..1fc895b 100644
+index b3772cd..528ea3b 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
+@@ -9,7 +9,7 @@ _linuxprefix=linux69
+ pkgname="${_linuxprefix}-nvidia-470xx"
+ pkgdesc="NVIDIA drivers for linux"
+ pkgver=470.256.02
+-pkgrel=2
++pkgrel=8
+ arch=('x86_64')
+ url="http://www.nvidia.com/"
+ license=('custom')
 @@ -22,11 +22,18 @@ _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
  source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
          '0001-Fix-conftest-to-ignore-implicit-function-declaration.patch'
@@ -298,13 +307,13 @@ index a4e6b70..1fc895b 100644
 +        '002-Kbuild-clang-options.patch'
 +        'nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch'
 +        )
- sha256sums=('4a4b2f1a0e5f4403dcc94b5df9970cb064fccee44e82282e6f03dbde6e4dfff0'
-             'e9df0c3c563466f7d747a3bf45900ba7804b072c899cde016e8d557e1921d60e'
-             '1181bef2128bd4d74b661164bed8a1eb19c917e68fedbcaf65a24a4c2638cb8f'
--            '84f3e59f2730752c0c4ef8bd2488953ccad13eb91a7f045488754e3bd61a1a6e')
-+            '84f3e59f2730752c0c4ef8bd2488953ccad13eb91a7f045488754e3bd61a1a6e'
+ sha256sums=('fe8f58732055dacc4af0c4bb2371022d6e116e9f9594d7d3bea71f5a8a29e2b1'
+             'eafd8a3c9740f34c8a0ccd0942d05318be94889eeb64ff66c54c8d8524ff5fd0'
+             'aad55ebe45fca932ebeea5071bde489d3533bcccb3fe16995c8e70929b62e01a'
+-            '2339209c742bf58e5aa1e5c369e925f0c78eeb74537288183b683882ebf78809')
++            '2339209c742bf58e5aa1e5c369e925f0c78eeb74537288183b683882ebf78809'
 +            '21dfe8ac31e7f13837a624c3891367c1a29dec74e63cfd24eb18e3eb4de59777'
-+            '4f2ed1d27f5f34a9b9a86041717b8d894f7d3b207e2450e77508108ebf47ac56'
++            '4ab8c26367a23a64963a0a13917079577190382a1198d471a74c9a1ac06ae3da'
 +            '702af56eef8bba8c3137f98c298ee204e391c6fcffc960631481c3f1e87ed6a8')
  
  _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
