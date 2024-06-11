@@ -697,17 +697,4 @@ Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 (GPG signing public key:57B49CC5AA4F00FC) <phoepsilonix at phoepsilonix dot love>  
 
 ----
-### O apoio a esta atividade é muito bem-vindo.
-[Square](https://square.link/u/fZd2BXjR)  
-[Paypal](https://paypal.me/phoepsilonix)  
-[ofuse](https://ofuse.me/phoepsilonix)  
-[give me OniGiri](https://www.buymeacoffee.com/phoepsilonix)  
-
-Signal  
-[<svg id="MANJARO-QR"><image id="MANJARO-QR" xlink:href="./img/signal_mobile_coin-min.png"/></svg>](./img/signal_mobile_coin-min.png)  
-
-BTC  
-```3B6u3pzaeyB2YrDcXWDfGE7pHxx2xuu9KQ```
-
-ETH(main net)  
-```0xba50bb991196151b0870e4ea00a518552134c47d```
+[O apoio a esta atividade é muito bem-vindo.](./donate.html)  
