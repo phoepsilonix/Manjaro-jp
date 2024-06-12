@@ -19,9 +19,9 @@ ventoygui
 ```
 如果係Linux全般,而且下載用的是aria2,作法係:
 ```bash
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.98/ventoy-1.0.98-linux.tar.gz
-tar xf ventoy-1.0.98-linux.tar.gz
-cd ventoy-1.0.98
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.99/ventoy-1.0.99-linux.tar.gz
+tar xf ventoy-1.0.99-linux.tar.gz
+cd ventoy-1.0.99
 ./VentoyGUI.$(uname -m)
 ```
 
@@ -682,13 +682,10 @@ kernel-6.9.3
 [Ubuntu flavours][Ubuntu flavours]  
 
 [Linux Mint](https://linuxmint.com/)  
-[MX Linux](https://mxlinux.org/)  
 
 [EndeavourOS](https://endeavouros.com/)  
 
 [openSUSE Leap Micro](https://get.opensuse.org/ja/leapmicro/)  
-
-[BigLinux](https://www.biglinux.com.br/)
 
 ----
 Manjaro repository鏡像站試運轉中

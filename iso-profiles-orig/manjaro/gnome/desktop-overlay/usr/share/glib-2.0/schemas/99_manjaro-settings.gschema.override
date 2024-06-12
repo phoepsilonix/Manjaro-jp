@@ -9,9 +9,6 @@ index-on-battery=true
 picture-uri='file:///usr/share/backgrounds/manjaro/abstract-l.png'
 picture-uri-dark='file:///usr/share/backgrounds/manjaro/abstract-d.png'
 
-[org.gnome.settings-daemon.plugins.color]
-night-light-enabled=true
-
 [org.gnome.desktop.peripherals.touchpad]
 tap-to-click=true
 click-method='areas'

@@ -19,14 +19,14 @@ ventoygui
 Linux geral  
 Exemplo de comando de download usando aria2
 ```bash
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.98/ventoy-1.0.98-linux.tar.gz
-tar xf ventoy-1.0.98-linux.tar.gz
-cd ventoy-1.0.98
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.99/ventoy-1.0.99-linux.tar.gz
+tar xf ventoy-1.0.99-linux.tar.gz
+cd ventoy-1.0.99
 ./VentoyGUI.$(uname -m)
 ```
 
 Windows
-Baixe o [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.98/ventoy-1.0.98-windows.zip) usando um navegador ou algo assim.  
+Baixe o [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.0.99/ventoy-1.0.99-windows.zip) usando um navegador ou algo assim.  
 Abra o arquivo zip baixado e execute o ventoy2disk.exe.
 
 ----
@@ -674,13 +674,10 @@ Outros sistemas operativos recomendados.
 [Ubuntu flavours][Ubuntu flavours]  
 
 [Linux Mint](https://linuxmint.com/)  
-[MX Linux](https://mxlinux.org/)  
 
 [EndeavourOS](https://endeavouros.com/)  
 
 [openSUSE Leap Micro](https://get.opensuse.org/ja/leapmicro/)  
-
-[BigLinux](https://www.biglinux.com.br/)
 
 ----
 ```
