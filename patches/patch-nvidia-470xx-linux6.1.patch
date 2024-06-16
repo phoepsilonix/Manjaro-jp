@@ -1,6 +1,6 @@
 diff --git a/001-fix-function-declaration.patch b/001-fix-function-declaration.patch
 new file mode 100644
-index 0000000..4e66fde
+index 0000000..8a2736a
 --- /dev/null
 +++ b/001-fix-function-declaration.patch
 @@ -0,0 +1,261 @@
@@ -25,7 +25,7 @@ index 0000000..4e66fde
 + {
 +     return NV_NUM_CPUS();
 + }
-+@@ -1179,7 +1179,7 @@ void NV_API_CALL os_get_screen_info(
++@@ -1176,7 +1176,7 @@ void NV_API_CALL os_get_screen_info(
 + #endif
 + }
 + 
@@ -267,12 +267,12 @@ index 0000000..4e66fde
 +         return;
 diff --git a/002-Kbuild-clang-options.patch b/002-Kbuild-clang-options.patch
 new file mode 100644
-index 0000000..0a80ac2
+index 0000000..ff5b193
 --- /dev/null
 +++ b/002-Kbuild-clang-options.patch
 @@ -0,0 +1,13 @@
 +diff --git a/kernel/Kbuild b/kernel/Kbuild
-+index 1889bd6..9f18a1b 100644
++index eadd8b2..cf2d6a7 100644
 +--- a/kernel/Kbuild
 ++++ b/kernel/Kbuild
 +@@ -68,7 +68,7 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
@@ -281,11 +281,11 @@ index 0000000..0a80ac2
 + EXTRA_CFLAGS += -I$(src)
 +-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
 ++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
-+ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.239.06\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
++ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.256.02\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index 581d461..77dab47 100644
+index b5b41a2..ae1d4d6 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -20,11 +20,17 @@ _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
@@ -297,14 +297,14 @@ index 581d461..77dab47 100644
 +        '001-fix-function-declaration.patch'
 +        '002-Kbuild-clang-options.patch'
 +        'nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch')
- sha256sums=('4a4b2f1a0e5f4403dcc94b5df9970cb064fccee44e82282e6f03dbde6e4dfff0'
-             'e9df0c3c563466f7d747a3bf45900ba7804b072c899cde016e8d557e1921d60e'
-             '1181bef2128bd4d74b661164bed8a1eb19c917e68fedbcaf65a24a4c2638cb8f'
--            '84f3e59f2730752c0c4ef8bd2488953ccad13eb91a7f045488754e3bd61a1a6e')
-+            '84f3e59f2730752c0c4ef8bd2488953ccad13eb91a7f045488754e3bd61a1a6e'
-+            '48ffe6af7318722e589dcdcf7733e0935efcee4478a0b734e75fa493356517d5'
-+            'af29e448e44af8b60e1108278c6c679762ae032428991dbb7ca20e722567fd7b'
-+            '139559deb19ceae1454673391f15eaf50a8353aba2a9ef12f58edf30063314fd')
+ sha256sums=('fe8f58732055dacc4af0c4bb2371022d6e116e9f9594d7d3bea71f5a8a29e2b1'
+             'eafd8a3c9740f34c8a0ccd0942d05318be94889eeb64ff66c54c8d8524ff5fd0'
+             'aad55ebe45fca932ebeea5071bde489d3533bcccb3fe16995c8e70929b62e01a'
+-            '2339209c742bf58e5aa1e5c369e925f0c78eeb74537288183b683882ebf78809')
++            '2339209c742bf58e5aa1e5c369e925f0c78eeb74537288183b683882ebf78809'
++            'b8971052d71cfafc80ce2e13d4c3d09ffe6e82864b3bdfb6daf5de26e51d7ff7'
++            '3643bcae9681e722b93021c55c48338b787e0d5f87a594fa06dfe3385fb9b6c0'
++            '8a42b7c50717db4d00f718a52754b220b196c6da7429ab8fe3c3b8cac72716a1')
  
  _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
  
@@ -312,22 +312,22 @@ index 581d461..77dab47 100644
      patch -Np1 -i "${srcdir}"/0001-Fix-conftest-to-ignore-implicit-function-declaration.patch
      patch -Np1 -i "${srcdir}"/0002-Fix-conftest-to-use-a-short-wchar_t.patch
      patch -Np1 -i "${srcdir}"/0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch
-+    patch -p2 -i "${srcdir}"/001-fix-function-declaration.patch
-+    patch -p2 -i "${srcdir}"/002-Kbuild-clang-options.patch
-+    patch -p2 -i "${srcdir}"/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
++    patch -Np2 -i "${srcdir}"/001-fix-function-declaration.patch
++    patch -Np2 -i "${srcdir}"/002-Kbuild-clang-options.patch
++    patch -Np2 -i "${srcdir}"/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
      popd
  }
  
 diff --git a/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 new file mode 100644
-index 0000000..ba382b3
+index 0000000..6f57c79
 --- /dev/null
 +++ b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 @@ -0,0 +1,56 @@
 +diff -ur a/kernel/conftest.sh b/kernel/conftest.sh
 +--- a/kernel/conftest.sh	2023-06-01 20:00:46.719933661 +0800
 ++++ b/kernel/conftest.sh	2023-06-01 21:26:23.218584390 +0800
-+@@ -204,6 +204,9 @@
++@@ -255,6 +255,9 @@
 +             CFLAGS="$CFLAGS -mfentry -DCC_USING_FENTRY"
 +         fi
 +     fi
@@ -337,7 +337,7 @@ index 0000000..ba382b3
 + }
 +
 + CONFTEST_PREAMBLE="#include \"conftest/headers.h\"
-+@@ -277,6 +280,12 @@
++@@ -294,6 +297,12 @@
 +     echo "$CONFTEST_PREAMBLE
 +     $CODE" > conftest$$.c
 +
@@ -350,7 +350,7 @@ index 0000000..ba382b3
 +     $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
 +     rm -f conftest$$.c
 +
-+@@ -5205,14 +5214,14 @@
++@@ -4765,14 +4812,14 @@
 +                 echo "However, mixing compiler versions between the kernel";
 +                 echo "and kernel modules can result in subtle bugs that are";
 +                 echo "difficult to diagnose.";
@@ -372,7 +372,7 @@ index 0000000..ba382b3
 +diff -ur a/kernel/Kbuild b/kernel/Kbuild
 +--- a/kernel/Kbuild	2023-06-01 20:00:46.716600311 +0800
 ++++ b/kernel/Kbuild	2023-06-01 21:37:31.631878921 +0800
-+@@ -73,6 +73,7 @@
++@@ -68,6 +68,7 @@
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 + EXTRA_CFLAGS += -DNV_KERNEL_INTERFACE_LAYER

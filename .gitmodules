@@ -223,42 +223,6 @@
 [submodule "Packages/extramodules-6.9/zfs"]
 	path = Packages/extramodules-6.9/zfs
 	url = https://gitlab.manjaro.org/packages/extra/linux69-extramodules/zfs.git
-[submodule "Packages/extramodules-6.8/acpi_call"]
-	path = Packages/extramodules-6.8/acpi_call
-	url = https://gitlab.manjaro.org/packages/extra/linux68-extramodules/acpi_call.git
-[submodule "Packages/extramodules-6.8/bbswitch"]
-	path = Packages/extramodules-6.8/bbswitch
-	url = https://gitlab.manjaro.org/packages/extra/linux68-extramodules/bbswitch.git
-[submodule "Packages/extramodules-6.8/broadcom-wl"]
-	path = Packages/extramodules-6.8/broadcom-wl
-	url = https://gitlab.manjaro.org/packages/extra/linux68-extramodules/broadcom-wl.git
-[submodule "Packages/extramodules-6.8/nvidia"]
-	path = Packages/extramodules-6.8/nvidia
-	url = https://gitlab.manjaro.org/packages/extra/linux68-extramodules/nvidia.git
-[submodule "Packages/extramodules-6.8/nvidia-390xx"]
-	path = Packages/extramodules-6.8/nvidia-390xx
-	url = https://gitlab.manjaro.org/packages/extra/linux68-extramodules/nvidia-390xx.git
-[submodule "Packages/extramodules-6.8/nvidia-470xx"]
-	path = Packages/extramodules-6.8/nvidia-470xx
-	url = https://gitlab.manjaro.org/packages/extra/linux68-extramodules/nvidia-470xx.git
-[submodule "Packages/extramodules-6.8/r8168"]
-	path = Packages/extramodules-6.8/r8168
-	url = https://gitlab.manjaro.org/packages/extra/linux68-extramodules/r8168.git
-[submodule "Packages/extramodules-6.8/rtl8723bu"]
-	path = Packages/extramodules-6.8/rtl8723bu
-	url = https://gitlab.manjaro.org/packages/extra/linux68-extramodules/rtl8723bu.git
-[submodule "Packages/extramodules-6.8/tp_smapi"]
-	path = Packages/extramodules-6.8/tp_smapi
-	url = https://gitlab.manjaro.org/packages/extra/linux68-extramodules/tp_smapi.git
-[submodule "Packages/extramodules-6.8/vhba-module"]
-	path = Packages/extramodules-6.8/vhba-module
-	url = https://gitlab.manjaro.org/packages/extra/linux68-extramodules/vhba-module.git
-[submodule "Packages/extramodules-6.8/virtualbox"]
-	path = Packages/extramodules-6.8/virtualbox
-	url = https://gitlab.manjaro.org/packages/extra/linux68-extramodules/virtualbox.git
-[submodule "Packages/extramodules-6.8/zfs"]
-	path = Packages/extramodules-6.8/zfs
-	url = https://gitlab.manjaro.org/packages/extra/linux68-extramodules/zfs.git
 [submodule "Packages/manjaro-jp-calamares"]
 	path = Packages/manjaro-jp-calamares
 	url = git@github.com:phoepsilonix/manjaro-jp-calamares

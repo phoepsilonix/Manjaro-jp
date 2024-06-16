@@ -288,15 +288,6 @@ diff --git a/PKGBUILD b/PKGBUILD
 index b3772cd..528ea3b 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -9,7 +9,7 @@ _linuxprefix=linux69
- pkgname="${_linuxprefix}-nvidia-470xx"
- pkgdesc="NVIDIA drivers for linux"
- pkgver=470.256.02
--pkgrel=2
-+pkgrel=8
- arch=('x86_64')
- url="http://www.nvidia.com/"
- license=('custom')
 @@ -22,11 +22,18 @@ _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
  source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
          '0001-Fix-conftest-to-ignore-implicit-function-declaration.patch'
