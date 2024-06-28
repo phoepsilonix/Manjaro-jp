@@ -137,7 +137,7 @@ qt5ct                              # required by manjaro-cinnamon settings
 >extra celluloid
 >extra deluge
 >extra ffmpegthumbnailer
-#firefox
+#>basic firefox
 flatpak
 >extra galculator
 >extra gcolor3
@@ -176,7 +176,7 @@ touchegg                           # optional for cinnamon
 tree
 >extra udiskie
 vi
->extra vivaldi
+>extra vivaldi                     # firefox included in minimal edition
 >extra vivaldi-ffmpeg-codecs       # optional for vivaldi
 >extra webapp-manager
 xdg-utils
