@@ -75,13 +75,13 @@ do
             echo ${data[1]}
             echo "cat $pkgs >> $pkgdir/$path/$pkg2"
             cat $pkgs >> $pkgdir/$path/$pkg2
+        fi
         # Packages-Rootに追加
             echo "cat $pkgs2 >> $pkgdir/$path/$pkg3"
             cat $pkgs2 >> $pkgdir/$path/$pkg3
             #if [[ "${data[1]}" != "gnome" && "${data[1]}" != "kde" ]] ;then
             #    echo "manjaro-asian-input-support-ibus" >> $pkgdir/$path/$pkg2
             #fi
-        fi
         sync
 done
 
