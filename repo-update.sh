@@ -51,13 +51,13 @@ sync
 #pkgfiles=$(ls -v *.pkg.tar.*)
 #echo $pkgfiles
 #repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
-pkgfiles=$(ls -v *.pkg.tar.{zst,xz} --ignore={manjaro-jp.,nvidia-,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}* --ignore=*.sig --ignore=*.html)
+pkgfiles=$(ls -v --ignore={manjaro-jp.,nvidia-,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}* --ignore=*.sig --ignore=*.html)
 echo $pkgfiles
 LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -R -v --include-sigs --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
 #nvidia関連のパッケージの追加
 # nvidia stable unstable ともに残す
-pkgfiles=$(ls -v {nvidia,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}*.pkg.tar.{zst,xz})
+pkgfiles=$(ls -v {nvidia,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}*.pkg.tar.* | grep -v '\.sig$')
 echo $pkgfiles
 LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
