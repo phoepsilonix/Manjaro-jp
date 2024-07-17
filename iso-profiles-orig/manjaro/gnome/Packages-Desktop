@@ -254,7 +254,7 @@ manjaro-application-utility        # required by manjaro-hello, no need to be ex
 manjaro-hello
 manjaro-settings-manager
 manjaro-settings-manager-notifier
-manjaro-starter
+#manjaro-starter
 #mousetweaks
 >extra nautilus-admin
 nautilus-empty-file

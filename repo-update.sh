@@ -48,15 +48,19 @@ sync
 
 #nvidia以外のパッケージの登録。古いものを削除。
 # バージョンでsortしておく。repo-addは、あとから追加されたものが優先されるため。
-pkgfiles=$(ls -v --ignore={manjaro-jp.,nvidia-,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}* --ignore=*.sig --ignore=*.html)
+#pkgfiles=$(ls -v *.pkg.tar.*)
+#echo $pkgfiles
+#repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
+pkgfiles=$(ls -v *.pkg.tar.{zst,xz} --ignore={manjaro-jp.,nvidia-,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}* --ignore=*.sig --ignore=*.html)
 echo $pkgfiles
-LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -R --sign --key $repo_key ${pkgfiles}
+LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -R -v --include-sigs --sign --key $repo_key ${pkgfiles}
+#repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
 #nvidia関連のパッケージの追加
 # nvidia stable unstable ともに残す
-pkgfiles=$(ls -v {nvidia,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}*.zst)
+pkgfiles=$(ls -v {nvidia,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}*.pkg.tar.{zst,xz})
 echo $pkgfiles
-LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz --sign --key $repo_key ${pkgfiles}
-
+LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
+#repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -n --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -R --sign --key $repo_key ./*.zst 
 #repo-add $repo.db.tar.xz -n -R --sign --key $repo_key ./*.zst
@@ -103,7 +107,10 @@ EOF
 
 rm index.html
 rm ~/www/artifacts -rf
-(cd ../.. && for f in $(find artifacts/ -type d);do mkdir -p ~/www/$f; files=$(ls -Fd $f/* | grep -v "/$"| sed 's/[*@]$//');ln $files ~/www/$f/ ;done)
+
+#(cd ../.. && for f in $(find artifacts/ -type d);do mkdir -p ~/www/$f; files=$(ls -Fd $f/* | grep -v "/$"| sed 's/[*@]$//');ln $files ~/www/$f/ ;done)
+mkdir -p ~/www/artifacts
+(cd ../.. && cp -al artifacts/* ~/www/artifacts)
 # h2oサーバーの生成するindex.htmlを取得。sf,osdnへアップロードするため。
 rm ~/www/artifacts/manjaro-jp/index.html
 aria2c -c https://manjaro-jp.phoepsilonix.love/manjaro-jp/

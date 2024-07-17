@@ -10,4 +10,3 @@ manjaro-jp/fastfetch-git
 manjaro-jp/mkinitcpio
 intel-ucode
 amd-ucode
-glib2-devel
