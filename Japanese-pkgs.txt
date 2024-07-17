@@ -99,6 +99,7 @@ mpv
 vlc
 streamlink
 yt-dlp
+p7zip-full-bin
 
 #gpg openpgp libreoffice
 seahorse
