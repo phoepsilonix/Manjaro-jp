@@ -50,6 +50,9 @@ do
         #git switch -f master
         #git pull origin master
         case "$kver" in
+            "6.10" ) 
+                patch1="patch-${m}-linux6.10.patch" 
+                patch2="kmod-sign-${m}-linux6.9.patch" ;;
             "6.9" ) 
                 patch1="patch-${m}-linux6.9.patch" 
                 patch2="kmod-sign-${m}-linux6.9.patch" ;;

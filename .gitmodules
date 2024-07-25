@@ -235,3 +235,39 @@
 	path = Packages/libpamac
 	url = git@github.com:phoepsilonix/libpamac
 	branch = manjaro-jp
+[submodule "Packages/extramodules-6.10/acpi_call"]
+	path = Packages/extramodules-6.10/acpi_call
+	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/acpi_call.git
+[submodule "Packages/extramodules-6.10/bbswitch"]
+	path = Packages/extramodules-6.10/bbswitch
+	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/bbswitch.git
+[submodule "Packages/extramodules-6.10/broadcom-wl"]
+	path = Packages/extramodules-6.10/broadcom-wl
+	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/broadcom-wl.git
+[submodule "Packages/extramodules-6.10/nvidia"]
+	path = Packages/extramodules-6.10/nvidia
+	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/nvidia.git
+[submodule "Packages/extramodules-6.10/nvidia-390xx"]
+	path = Packages/extramodules-6.10/nvidia-390xx
+	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/nvidia-390xx.git
+[submodule "Packages/extramodules-6.10/nvidia-470xx"]
+	path = Packages/extramodules-6.10/nvidia-470xx
+	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/nvidia-470xx.git
+[submodule "Packages/extramodules-6.10/rtl8723bu"]
+	path = Packages/extramodules-6.10/rtl8723bu
+	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/rtl8723bu.git
+[submodule "Packages/extramodules-6.10/tp_smapi"]
+	path = Packages/extramodules-6.10/tp_smapi
+	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/tp_smapi.git
+[submodule "Packages/extramodules-6.10/vhba-module"]
+	path = Packages/extramodules-6.10/vhba-module
+	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/vhba-module.git
+[submodule "Packages/extramodules-6.10/virtualbox"]
+	path = Packages/extramodules-6.10/virtualbox
+	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/virtualbox.git
+[submodule "Packages/extramodules-6.10/zfs"]
+	path = Packages/extramodules-6.10/zfs
+	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/zfs.git
+[submodule "Packages/extramodules-6.10/r8168"]
+	path = Packages/extramodules-6.10/r8168
+	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/r8168.git

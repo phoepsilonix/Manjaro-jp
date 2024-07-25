@@ -58,6 +58,7 @@ LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -R -v --include-sigs --sign --
 #nvidia関連のパッケージの追加
 # nvidia stable unstable ともに残す
 pkgfiles=$(ls -v {nvidia,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}*.pkg.tar.* | grep -v '\.sig$')
+pkgfiles=$(ls -v *.pkg.tar.* | grep -v '\.sig$')
 echo $pkgfiles
 LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
@@ -106,7 +107,7 @@ expect << EOF
 EOF
 
 rm index.html
-rm ~/www/artifacts -rf
+rm ~/www/artifacts/* -rf
 
 #(cd ../.. && for f in $(find artifacts/ -type d);do mkdir -p ~/www/$f; files=$(ls -Fd $f/* | grep -v "/$"| sed 's/[*@]$//');ln $files ~/www/$f/ ;done)
 mkdir -p ~/www/artifacts
