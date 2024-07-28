@@ -245,15 +245,6 @@ diff --git a/PKGBUILD b/PKGBUILD
 index c0fc8c1..90d131c 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -14,7 +14,7 @@ _linuxprefix=linux610
- pkgname="${_linuxprefix}-nvidia-390xx"
- pkgdesc="NVIDIA drivers for linux"
- pkgver=390.157
--pkgrel=4
-+pkgrel=1
- arch=('x86_64')
- url="http://www.nvidia.com/"
- license=('custom')
 @@ -33,7 +33,10 @@ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
          'kernel-6.6.patch'
          'kernel-6.8.patch'

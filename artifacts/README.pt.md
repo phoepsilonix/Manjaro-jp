@@ -2,7 +2,7 @@
 
 ## Suporte em língua japonesa para [Manjaro Linux](https://manjaro.org/)
 　Suporta a entrada e exibição japonesa por defeito, incluindo ambientes ao vivo.  
-[kernel-6.9 series](https://kernel.org/).
+[kernel-6.10 series](https://kernel.org/).
 
 KDE, Xfce e GNOME estarão disponíveis de acordo com a versão oficial.  
 Os ficheiros de distribuição são ISO e alguns ficheiros de pacotes.  
@@ -76,7 +76,7 @@ gsettings set org.gnome.desktop.interface gtk-im-module ''
 
 4. diferenças em relação ao kernel oficial do Manjaro
 A série kererl-6.6 foi usada no iso oficial Manjaro. O último Manjaro parece ter mudado para a série kernel-6.9.  
-O ISO distribuído aqui usa um novo kernel tanto quanto possível. Atualmente, é a série kernel-6.9.  
+O ISO distribuído aqui usa um novo kernel tanto quanto possível. Atualmente, é a série kernel-6.10.  
 O kernel e os módulos do kernel são construídos usando clang em vez de gcc.  
 Nós também habilitamos o suporte a Rust no kernel.  
 Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repositório 'core', como no seguinte comando.
@@ -683,10 +683,13 @@ kernel-6.9.8
 
 ##### 20240712
 kernel-6.9.9
-</details>
 
 ##### 20240719
 kernel-6.9.10
+</details>
+
+##### 20240725
+kernel-6.10.1
 
 
 ----
