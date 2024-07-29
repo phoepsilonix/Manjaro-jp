@@ -71,6 +71,8 @@ pamac-gtk3
 >extra manjaro-jp/libpamac
 >extra manjaro-jp/libpamac-snap-plugin
 >extra manjaro-jp/libpamac-flatpak-plugin
+#>extra pamac-snap-plugin
+#>extra pamac-flatpak-plugin
 
 ## Printing
 >extra manjaro-printer

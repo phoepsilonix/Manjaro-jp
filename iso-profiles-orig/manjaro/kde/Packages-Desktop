@@ -70,6 +70,8 @@ pamac-cli
 >extra manjaro-jp/libpamac
 >extra manjaro-jp/libpamac-snap-plugin
 >extra manjaro-jp/libpamac-flatpak-plugin
+#>extra pamac-snap-plugin
+#>extra pamac-flatpak-plugin
 #discover-snap
 #discover
 packagekit-qt6

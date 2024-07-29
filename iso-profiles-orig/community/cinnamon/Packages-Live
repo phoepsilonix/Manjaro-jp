@@ -11,6 +11,7 @@ manjaro-rescue
 mkinitcpio-nfs-utils
 nbd
 snapper-gui
+testdisk
 timeshift
 virtualbox-guest-utils
 squashfs-tools

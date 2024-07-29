@@ -9,19 +9,20 @@ manjaro-jp/KERNEL-tp_smapi
 manjaro-jp/KERNEL-vhba-module
 manjaro-jp/KERNEL-virtualbox-host-modules
 manjaro-jp/KERNEL-rtl8723bu
+
 manjaro-jp/KERNEL-bbswitch
 manjaro-jp/KERNEL-broadcom-wl
 manjaro-jp/KERNEL-r8168
 manjaro-jp/KERNEL-zfs
-zfs-utils # only used for architect which we don't ship
+zfs-utils
 #manjaro-jp/KERNEL-rt3562sta
 #manjaro-jp/KERNEL-virtualbox-guest-modules
-#manjaro-jp/KERNEL-headers
-#zfs-dkms
+manjaro-jp/KERNEL-headers
+zfs-dkms
 libva-intel-driver
 libva-mesa-driver
-#libva-vdpau-driver
-#>multilib lib32-libva-vdpau-driver
+libva-vdpau-driver
+>multilib lib32-libva-vdpau-driver
 libxaw
 libxpm
 libxvmc
@@ -55,10 +56,13 @@ virtualbox-guest-utils
 vulkan-mesa-layers
 vulkan-swrast
 vulkan-virtio
+vulkan-icd-loader
 vulkan-radeon
 >multilib lib32-vulkan-radeon
 vulkan-intel
 >multilib lib32-vulkan-intel
+vulkan-nouveau
+>multilib lib32-vulkan-nouveau
 xf86-input-vmmouse
 xf86-video-amdgpu
 xf86-video-ati

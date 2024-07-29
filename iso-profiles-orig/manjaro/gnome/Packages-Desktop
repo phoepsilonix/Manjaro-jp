@@ -58,10 +58,12 @@ ttf-hack                           # default monspace font
 pamac-gnome-integration
 >extra manjaro-jp/libpamac
 >extra manjaro-jp/libpamac-flatpak-plugin
+#>extra pamac-flatpak-plugin
 pamac-gtk
 >extra manjaro-jp/libpamac-snap-plugin
 #snapd
 #snapd-glib
+#>extra pamac-snap-plugin
 
 
 ## Printing
@@ -249,12 +251,11 @@ ibus
 inxi
 #>extra libappindicator-gtk3       # required by gnome-shell-extension-appindicator
 lollypop
-manjaro-application-utility        # required by manjaro-hello, no need to be explicitly installed
+manjaro-application-utility        # optional for manjaro-hello
 #manjaro-gnome-vanilla             # unmaintained, needs updating
 manjaro-hello
 manjaro-settings-manager
 manjaro-settings-manager-notifier
-#manjaro-starter
 #mousetweaks
 >extra nautilus-admin
 nautilus-empty-file
@@ -305,3 +306,4 @@ manjaro-jp/gnome-shell-extension-kimpanel
 manjaro-jp/fcitx5-mozc-with-jp-dict
 fcitx5-im
 manjaro-asian-input-support-fcitx5
+

@@ -41,6 +41,8 @@ pamac-gtk3
 >extra manjaro-jp/libpamac
 >extra manjaro-jp/libpamac-flatpak-plugin
 >extra manjaro-jp/libpamac-snap-plugin
+#>extra pamac-flatpak-plugin
+#>extra pamac-snap-plugin
 
 
 ## Printing
@@ -137,7 +139,7 @@ qt5ct                              # required by manjaro-cinnamon settings
 >extra celluloid
 >extra deluge
 >extra ffmpegthumbnailer
-#>basic firefox
+#>basic firefox                     # vivaldi included in full edition
 flatpak
 >extra galculator
 >extra gcolor3
@@ -225,3 +227,4 @@ xorg-xkill
 manjaro-jp/fcitx5-mozc-with-jp-dict
 fcitx5-im
 manjaro-asian-input-support-fcitx5
+
