@@ -35,7 +35,7 @@ echo "sha256sums"
 #| xargs -I{} sha256sum {} >> SHA256SUMS
 ls -1 *.iso *.sig > ~/.cache/mytmp1
 #ls -1 *.iso *.sig firefox/*.iso firefox/*.sig > ~/.cache/mytmp1
-cat SHA256SUMS | awk '{print $2}' > ~/.cache/mytmp2
+cat SHA256SUMS | awk '{sub(/^\*/,"", $2);print $2}' > ~/.cache/mytmp2
 files=($(diff -u ~/.cache/mytmp2 ~/.cache/mytmp1 | tail +4))
 rm ~/.cache/mytmp1 ~/.cache/mytmp2
 
@@ -66,7 +66,7 @@ file=(${files[@]/#-*})
 for f in ${file[@]}
 do
         echo + ${f:1}
-        sha256sum ${f:1} >> SHA256SUMS
+        sha256sum -b ${f:1} >> SHA256SUMS
 done
 
 sort -k2 -u SHA256SUMS > tmp && mv tmp SHA256SUMS
