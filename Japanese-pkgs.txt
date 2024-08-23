@@ -109,3 +109,6 @@ amd-ucode
 update-grub
 manjaro-jp/mkinitcpio
 manjaro-jp/manjaro_jp-keyring
+
+# floorp or firefox
+speech-dispatcher  
