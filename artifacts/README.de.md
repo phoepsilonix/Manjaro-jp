@@ -84,7 +84,7 @@ Wenn Sie den offiziellen Manjaro-Kernel verwenden möchten, installieren Sie ihn
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 ```sh
-sudo pacman -S core/linux69 core/linux69-headers
+sudo pacman -S core/linux610 core/linux610-headers
 ```
 
 ##### Hinzugefügt: 2023-02-11  

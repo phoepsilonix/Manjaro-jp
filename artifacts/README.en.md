@@ -86,7 +86,7 @@ If you want to use the official Manjaro kernel, install it by specifying the rep
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 ```sh
-sudo pacman -S core/linux69 core/linux69-headers
+sudo pacman -S core/linux610 core/linux610-headers
 ```
 
 ##### Addition: 2023-02-11

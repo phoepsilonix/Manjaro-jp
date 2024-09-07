@@ -85,7 +85,7 @@ Si vous souhaitez utiliser le noyau officiel de Manjaro, installez-le en spécif
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 ```sh
-sudo pacman -S core/linux69 core/linux69-headers
+sudo pacman -S core/linux610 core/linux610-headers
 ```
 
 ##### Ajouté : 2023-02-11  

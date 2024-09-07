@@ -86,7 +86,7 @@ kernel同kernel模組的編譯是用clang,而不是gcc。
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 ```sh
-sudo pacman -S core/linux69 core/linux69-headers
+sudo pacman -S core/linux610 core/linux610-headers
 ```
 
 ##### 附加說明： 2023-02-11  
