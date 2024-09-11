@@ -365,13 +365,15 @@ make_image_desktop() {
         if [[ "${profile}" != "architect" && "${profile}" != "netinstall" ]]; then
                 manjaro-chroot ${path} sysctl kernel.unprivileged_userns_clone=1
                 manjaro-chroot ${path} chmod u+s /usr/bin/bwrap
-                systemd-nspawn -D ${path} flatpak remote-add  --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+                systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak remote-add  --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+	            systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update -y
 	        # Browser 
 	        systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install one.ablaze.floorp/x86_64/stable -y --system
-	        systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update org.freedesktop.Platform -y
-	        systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install org.freedesktop.Platform.VAAPI.Intel//23.08 -y
-	        systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update org.freedesktop.Platform -y
+	        #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update org.freedesktop.Platform -y
+	        #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install org.freedesktop.Platform.VAAPI.Intel//23.08 -y
+	        #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update org.freedesktop.Platform -y
 	        #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update org.freedesktop.Platform.openh264 -y 
+	        systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install org.freedesktop.Platform.VAAPI.Intel//24.08 -y
                 #systemd-nspawn -D ${path} flatpak install -y org.mozilla.firefox
                 # Office Soft
                 #systemd-nspawn -D ${path} flatpak install -y org.libreoffice.LibreOffice
@@ -384,6 +386,7 @@ make_image_desktop() {
         if [[ "${profile}" == "xfce" ]]; then
                 # Mailer org.mozilla.Thunderbird
                 systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install -y org.mozilla.Thunderbird
+	            systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install org.freedesktop.Platform.VAAPI.Intel//23.08 -y
         fi
         if [[ "${profile}" != "architect" && "${profile}" != "netinstall" ]]; then
 	            systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update -y
