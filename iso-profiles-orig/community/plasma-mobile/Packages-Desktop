@@ -10,7 +10,6 @@ buho
 calindori
 desktop-file-utils
 dhcpcd
-discover
 dnsmasq
 drkonqi
 #kasts
@@ -64,7 +63,6 @@ okular
 openssh
 oxygen-sounds
 p7zip
-packagekit-qt5
 pacmanlogviewer
 parted
 pipewire-media-session

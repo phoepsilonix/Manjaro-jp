@@ -88,8 +88,6 @@ terminus-font
 
 ## Package management
 #appimagelauncher
-packagekit-qt5
-discover
 flatpak
 xdg-desktop-portal
 xdg-desktop-portal-kde

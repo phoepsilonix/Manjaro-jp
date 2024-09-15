@@ -61,8 +61,6 @@ terminus-font
 >extra ttf-droid
 
 ## Package management
-packagekit-qt5
-discover
 xdg-desktop-portal
 xdg-desktop-portal-kde
 fwupd

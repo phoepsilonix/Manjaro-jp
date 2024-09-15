@@ -87,9 +87,7 @@ terminus-font
 ## Games
 >extra steam-manjaro
 
-## Package management
-#packagekit-qt5
-#discover
+## Package managemen
 flatpak
 #fwupd 
 octopi

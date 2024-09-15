@@ -1,7 +1,16 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 7c71c06..a16f561 100644
+index 31f00cb..15d56a0 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
+@@ -14,7 +14,7 @@ pkgrel=1
+ pkgdesc='Virtualbox host kernel modules for Manjaro Kernel'
+ arch=('x86_64')
+ url='http://virtualbox.org'
+-license=('GPL')
++license=('GPL-3.0-only')
+ groups=("${_linuxprefix}-extramodules")
+ depends=("${_linuxprefix}")
+ makedepends=("${_linuxprefix}-headers" "virtualbox-host-dkms=$pkgver")
 @@ -26,6 +26,27 @@ build() {
    _kernver="$(cat /usr/src/${_linuxprefix}/version)"
  
