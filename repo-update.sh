@@ -43,7 +43,7 @@ SRC=/var/www/manjaro/
 #rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/unstable/multilib/x86_64/lib32-nvidia-*utils* ./
 #rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/stable/extra/x86_64/{libxnvctrl,nvidia-*{utils,dkms,settings},virtualbox-host-dkms,zfs-utils,zfs-dkms}* ./
 #rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/stable/multilib/x86_64/lib32-nvidia-*utils* ./
-rsync -rtLvH --safe-links --delete-after --delay-updates --include="libxnvctrl*x86_64*" --include="*nvidia-*utils*x86_64*" --include="*nvidia-dkms*x86_64*" --include "*nvidia-*settings*x86_64*" --include="virtualbox-host-dkms*x86_64*" --include="zfs-utils*x86_64*" --include="zfs-dkms*x86_64*" --exclude="*" $SRC/pool/sync/ $SRC/pool/overlay/ ./
+rsync -rtLvH --safe-links --delete-after --delay-updates --include="libxnvctrl*x86_64*" --include="*nvidia-*utils*x86_64*" --include="egl-gbm-*x86_64*" --include="*nvidia-dkms*x86_64*" --include "*nvidia-*settings*x86_64*" --include="virtualbox-host-dkms*x86_64*" --include="zfs-utils*x86_64*" --include="zfs-dkms*x86_64*" --exclude="*" $SRC/pool/sync/ $SRC/pool/overlay/ ./
 sync
 
 #nvidia以外のパッケージの登録。古いものを削除。
@@ -51,13 +51,13 @@ sync
 #pkgfiles=$(ls -v *.pkg.tar.*)
 #echo $pkgfiles
 #repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
-pkgfiles=$(ls -v --ignore={manjaro-jp.,nvidia-,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}* --ignore=*.sig --ignore=*.html)
+pkgfiles=$(ls -v --ignore={manjaro-jp.,nvidia-,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms,egl-gbm-}* --ignore=*.sig --ignore=*.html)
 echo $pkgfiles
 LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -R -v --include-sigs --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
 #nvidia関連のパッケージの追加
 # nvidia stable unstable ともに残す
-pkgfiles=$(ls -v {nvidia,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms}*.pkg.tar.* | grep -v '\.sig$')
+pkgfiles=$(ls -v {nvidia,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms,egl-gbm-}*.pkg.tar.* | grep -v '\.sig$')
 pkgfiles=$(ls -v *.pkg.tar.* | grep -v '\.sig$')
 echo $pkgfiles
 LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
