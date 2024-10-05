@@ -34,8 +34,12 @@ for m in $(cat ./extramodules.txt)
 do
         # $mがなかったら、追加する。
         echo $m;
-        [[ ! -e ./$m/ ]] && (git submodule update --init $m || git submodule add ssh://git@gitlab.manjaro.org:22277/packages/extra/$curdir/$m $m || continue;)
-
+        echo 
+        DIR=$(basename `pwd`)
+        echo ssh://git@gitlab.manjaro.org:22277/packages/extra/$DIR/$m.git
+        echo https://gitlab.manjaro.org/packages/extra/$DIR/$m.git
+        [[ ! -e ./$m/ ]] && (git submodule update --init $m || git submodule add ssh://git@gitlab.manjaro.org:22277/packages/extra/$DIR/$m.git $m || continue;)
+#       [[ ! -e ./$m/ ]] && (git submodule update --init $m || git submodule add https://gitlab.manjaro.org/packages/extra/$DIR/$m.git $m || continue;)
         # masterブランチをchekoutして、pullでリモートの最新版を取得する
         cd $m || continue
         
@@ -50,6 +54,9 @@ do
         #git switch -f master
         #git pull origin master
         case "$kver" in
+            "6.11" ) 
+                patch1="patch-${m}-linux6.10.patch" 
+                patch2="kmod-sign-${m}-linux6.9.patch" ;;
             "6.10" ) 
                 patch1="patch-${m}-linux6.10.patch" 
                 patch2="kmod-sign-${m}-linux6.9.patch" ;;

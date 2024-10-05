@@ -1,5 +1,6 @@
 ## Network
 
+>extra manjaro-modem
 networkmanager                     # optional for gnome-control-center
 >extra networkmanager-openconnect
 >extra networkmanager-openvpn
@@ -27,7 +28,6 @@ grub-btrfs
 >extra libdvdcss
 >extra manjaro-alsa
 >extra manjaro-gstreamer
->extra manjaro-modem
 >extra manjaro-pipewire
 
 
@@ -123,7 +123,7 @@ sushi
 totem
 tracker3-miners
 xdg-desktop-portal-gnome
-xdg-user-dirs-gtk
+xdg-user-dirs-gtk                  # will be required by nautilus with next version
 #yelp                              # required by gnome-user-docs
 
 
