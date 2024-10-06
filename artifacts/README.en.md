@@ -37,7 +37,6 @@ The Linux kernel is adopted with the latest version as much as possible.
 Clang is used for kernel building.  
 Japanese input (fcitx5-mozc) and Japanese font are standardly installed.  
 The standard browser is either the flatpak version of [Firefox](https://www.mozilla.org/ja/firefox/browsers/) or [Floorp](https://floorp.ablaze.one/).  
-Flatpak version of [LibreOffice](https://www.libreoffice.org) is standardly installed as an office software.  
 We have installed the pacman-static package as standard. Please use this if package updates become difficult due to library inconsistencies.  
 
 ##### Notes

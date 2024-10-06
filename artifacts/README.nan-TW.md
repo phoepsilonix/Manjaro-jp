@@ -33,7 +33,6 @@ cd ventoy-1.0.99
 採用較新的Linux kernel,並且用clang來編譯kernel。
 預設就裝好日文輸入法(Mozc)同日文字型。  
 標準瀏覽器採用[Floorp](https://floorp.ablaze.one/)。  
-辦公室套件預設裝[LibreOffice](https://ja.libreoffice.org)。  
 標準裝pacman-static,如果因為函式庫衝突導致更新有問題,可以用pacman-static來更新。
 
 ##### 注意事項

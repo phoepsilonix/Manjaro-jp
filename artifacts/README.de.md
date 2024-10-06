@@ -35,7 +35,6 @@ Der Linux-Kernel ist so aktuell wie möglich.
 Der Kernel wird mit clang gebaut.  
 Japanische Eingabe (fcitx5-mozc) und japanische Schriftarten sind standardmäßig installiert.  
 [Floorp](https://floorp.ablaze.one/) werden als Standardbrowser verwendet.  
-[LibreOffice](https://ja.libreoffice.org) wird als Standard-Office-Software installiert.  
 Wir haben das Paket pacman-static standardmäßig installiert. Bitte verwenden Sie dieses, wenn Paketaktualisierungen aufgrund von Bibliotheksinkonsistenzen schwierig werden.  
 
 ##### Hinweise.

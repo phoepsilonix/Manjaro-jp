@@ -36,7 +36,6 @@ Le noyau Linux est aussi à jour que possible.
 Le noyau est construit à l'aide de clang.  
 L'entrée japonaise (fcitx5-mozc) et les polices japonaises sont installées en standard.  
 [Floorp](https://floorp.ablaze.one/) seront utilisées comme navigateur standard.  
-[LibreOffice](https://ja.libreoffice.org) sera installée comme logiciel de bureautique standard.  
 Nous avons installé le paquet pacman-static par défaut. Veuillez l'utiliser si les mises à jour des paquets deviennent difficiles en raison d'incohérences de bibliothèque.  
 
 ##### Notes.

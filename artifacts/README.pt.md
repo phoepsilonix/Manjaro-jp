@@ -35,7 +35,6 @@ O kernel Linux está tão actualizado quanto possível.
 Além disso, o clang é utilizado para construir o kernel.  
 A entrada japonesa (fcitx5-mozc) e as fontes japonesas são instaladas como padrão.  
 As versões [Floorp](https://floorp.ablaze.one/) serão utilizadas como o navegador padrão.  
-A versão [LibreOffice](https://ja.libreoffice.org) será instalada como software de escritório standard.  
 Instalamos o pacote pacman-static por padrão. Por favor, use-o se as atualizações de pacotes se tornarem difíceis devido a inconsistências da biblioteca.  
 
 ##### Notas.

@@ -53,7 +53,7 @@ Linuxカーネルは、なるべく最新のものを採用します。
 またカーネルのビルドにはclangを用います。  
 日本語入力(Mozc)、日本語フォントを標準インストールします。  
 標準ブラウザとして、[Floorp](https://floorp.ablaze.one/)を採用します。  
-オフィスソフトとして[LibreOffice](https://ja.libreoffice.org)を標準インストールします。  
+オフィスソフトは、インストール時点で候補から選択できます。  
 pacman-staticパッケージを標準導入しています。ライブラリの不整合によって、パッケージ更新が困難になった場合に、ご利用ください。  
 ```bash
 sudo pacman-static -Syyu
@@ -104,8 +104,8 @@ gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
 5. Manjaro公式とのkernelの違い  
-kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.9系に移行したようです。  
-ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.10系です。  
+kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.10系に移行したようです。  
+ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.11系です。  
 kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
 またkernelのrust対応も有効にしています。  
 Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
