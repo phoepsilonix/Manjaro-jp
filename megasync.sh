@@ -5,7 +5,7 @@ mega=~/MEGAsync/
 
 #files=$(rsync -ahP [$KAGOYA4]:gitlab/Manjaro-jp/artifacts/*.iso* artifacts/  -e "ssh -p22022" -n|tail -n +2)
 
-for e in gnome kde xfce architect cinnamon #mate
+for e in gnome kde xfce architect #cinnamon #mate
 do
     if [[ "$e" != "architect" ]] ; then
         sf=$(cd ${src}; ls -1rv *${e}*floorp.iso | head -n 1)

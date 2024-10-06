@@ -2,7 +2,7 @@
 background-color='rgb(69,70,73)'
 use-theme-colors=true
 use-system-font=false
-font='FirgeNerd Console 13'
+font='FirgeNerd Console 16'
 foreground-color='rgb(220,233,235)'
 background-color='rgb(27,34,36)'
 palette=['rgb(46,52,54)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(114,159,207)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(238,238,236)']
@@ -11,12 +11,16 @@ visible-name='manjaro'
 
 [org.gnome.shell]
 always-show-log-out=true
+disable-user-extensions=false
 favorite-apps=['one.ablaze.floorp.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'gnome-terminal.desktop', 'org.manjaro.pamac.manager.desktop', 'calamares.desktop', 'manjaro-architect.desktop']
-enabled-extensions=['pamac-updates@manjaro.org', 'dash-to-dock@micxgx.gmail.com', 'appindicatorsupport@rgcjonas.gmail.com', 'gnome-ui-tune@itstime.tech', 'legacyschemeautoswitcher@joshimukul29.gmail.com', 'x11gestures@joseexposito.github.io', 'custom-accent-colors@demiskp', 'space-bar@luchrioh']
+enabled-extensions=['pamac-updates@manjaro.org', 'dash-to-dock@micxgx.gmail.com', 'appindicatorsupport@rgcjonas.gmail.com', 'gnome-ui-tune@itstime.tech', 'legacyschemeautoswitcher@joshimukul29.gmail.com', 'x11gestures@joseexposito.github.io', 'custom-accent-colors@demiskp', 'kimpanel@kde.org']
 
 [org.gnome.desktop.input-sources]
-sources=[('xkb', 'jp+kana86')]
-xkb-options=['lv3:ralt_switch']
+sources=[('ibus', 'mozc-jp'), ('xkb', 'jp+kana86')]
+mru-sources=[('ibus', 'mozc-jp'), ('xkb', 'jp+kana86')]
+per-window=false
+show-all-sources=false
+xkb-options=['']
 
 [org.gnome.desktop.media-handling]
 autorun-x-content-start-app=['x-content/ostree-repository']
@@ -31,10 +35,11 @@ cursor-theme='Bibata-Modern-Classic'
 document-font-name='Noto Sans CJK JP 12'
 enable-animations=true
 font-name='Noto Sans CJK JP 11'
-gtk-im-module='gtk-im-context-simple'
+gtk-im-module=''
 gtk-theme='Adw-dark'
 icon-theme='Papirus-Dark-Maia'
 monospace-font-name='FirgeNerd Console 11'
+text-scaling-factor=1.25
 
 [org.gnome.desktop.wm.preferences]
 titlebar-uses-system-font=false
@@ -44,4 +49,23 @@ titlebar-font="Noto Sans CJK JP Bold 11"
 
 [org.gnome.desktop.a11y]
 always-show-universal-access-status=true
+
+[org.gnome.desktop.interface]
+clock-show-weekday=true
+
+[org.gnome.shell.extensions.kimpanel]
+vertical=true
+font='FirgeNerd Console 16'
+
+[org.gnome.shell.extensions.dash-to-dock]
+extend-height=true
+always-center-icons=false
+show-trash=true
+show-mounts=true
+show-mounts-only-mounted=true
+dock-position='LEFT'
+
+[org.gnome.desktop.peripherals.touchpad]
+send-events='disabled-on-external-mouse'
+disable-while-typing=true
 
