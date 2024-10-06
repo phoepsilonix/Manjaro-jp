@@ -36,7 +36,7 @@ document-font-name='Noto Sans CJK JP 12'
 enable-animations=true
 font-name='Noto Sans CJK JP 11'
 gtk-im-module=''
-gtk-theme='Adw-dark'
+gtk-theme='adw-gtk3-dark'
 icon-theme='Papirus-Dark-Maia'
 monospace-font-name='FirgeNerd Console 11'
 text-scaling-factor=1.25
@@ -68,4 +68,10 @@ dock-position='LEFT'
 [org.gnome.desktop.peripherals.touchpad]
 send-events='disabled-on-external-mouse'
 disable-while-typing=true
+
+[org.gnome.settings-daemon.plugins.power]
+sleep-inactive-ac-timeout 900
+sleep-inactive-ac-type 'nothing'
+sleep-inactive-battery-timeout 900
+sleep-inactive-battery-type 'nothing'
 
