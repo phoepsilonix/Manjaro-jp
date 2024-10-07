@@ -2,7 +2,7 @@
 
 ## Prise en charge de la langue japonaise pour [Manjaro Linux](https://manjaro.org/)
 　Prise en charge de la saisie et de l'affichage en japonais par défaut, y compris dans les environnements dynamiques.  
-[série kernel-6.10](https://kernel.org/).
+[série kernel-6.11](https://kernel.org/).
 
 KDE, Xfce et GNOME seront disponibles selon la version officielle.  
 Les fichiers de distribution sont des ISO et quelques fichiers de paquets.  
@@ -75,8 +75,8 @@ gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
 4. différences entre le noyau et le noyau officiel de Manjaro
-La série kererl-6.6 a été utilisée dans l’iso officiel de Manjaro. Le dernier Manjaro semble être passé à la série kernel-6.9.  
-L’ISO distribué ici utilise autant que possible un nouveau noyau. Actuellement, il s’agit de la série kernel-6.10.  
+La série kererl-6.6 a été utilisée dans l’iso officiel de Manjaro. Le dernier Manjaro semble être passé à la série kernel-6.10.  
+L’ISO distribué ici utilise autant que possible un nouveau noyau. Actuellement, il s’agit de la série kernel-6.11.  
 Nous utilisons clang au lieu de gcc pour compiler le noyau et les modules du noyau.  
 Nous activons également le support rust du noyau.  
 Si vous souhaitez utiliser le noyau officiel de Manjaro, installez-le en spécifiant le dépôt 'core' comme dans la commande suivante.
@@ -708,10 +708,13 @@ kernel-6.10.10
 
 ##### 20240919
 kernel-6.10.11
-</details>
 
 ##### 20241001
 kernel-6.10.12
+</details>
+
+##### 20241007
+kernel-6.11.2
 
 
 ----

@@ -3,7 +3,7 @@
 ## [Manjaro Linux](https://manjaro.org/) 日語支援
 
 包含咧即時環境,一開始就會裝日文輸入同顯示。
-採用[kernel-6.10系列](https://kernel.org/)。
+採用[kernel-6.11系列](https://kernel.org/)。
 
 預計會像官方版一樣,提供KDE、Xfce、GNOME三種桌面環境。
 發佈檔案是ISO同一部份套件檔案,可以從USB記憶體等啟動。
@@ -75,8 +75,8 @@ gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
 5. kernel版本比官方Manjaro新
-kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎已經轉移到kernel-6.9系列了。
-這裡分發的iso儘可能採用新的kernel。目前是kernel-6.10系列。
+kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎已經轉移到kernel-6.10系列了。
+這裡分發的iso儘可能採用新的kernel。目前是kernel-6.11系列。
 kernel同kernel模組的編譯是用clang,而不是gcc。
 另外kernel也有支援rust。
 
@@ -706,10 +706,13 @@ kernel-6.10.10
 
 ##### 20240919
 kernel-6.10.11
-</details>
 
 ##### 20241001
 kernel-6.10.12
+</details>
+
+##### 20241007
+kernel-6.11.2
 
 
 ----
