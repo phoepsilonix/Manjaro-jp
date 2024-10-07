@@ -39,7 +39,6 @@ gtk-im-module=''
 gtk-theme='adw-gtk3-dark'
 icon-theme='Papirus-Dark-Maia'
 monospace-font-name='FirgeNerd Console 11'
-text-scaling-factor=1.25
 
 [org.gnome.desktop.wm.preferences]
 titlebar-uses-system-font=false
