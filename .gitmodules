@@ -231,10 +231,6 @@
 	path = Packages/mkinitcpio
 	url = git@github.com:phoepsilonix/mkinitcpio
 	branch = manjaro-jp
-[submodule "Packages/libpamac"]
-	path = Packages/libpamac
-	url = git@github.com:phoepsilonix/libpamac
-	branch = manjaro-jp
 [submodule "Packages/extramodules-6.10/acpi_call"]
 	path = Packages/extramodules-6.10/acpi_call
 	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/acpi_call.git
@@ -307,3 +303,6 @@
 [submodule "Packages/extramodules-6.11/zfs"]
 	path = Packages/extramodules-6.11/zfs
 	url = https://gitlab.manjaro.org/packages/extra/linux611-extramodules/zfs.git
+[submodule "Packages/libpamac"]
+	path = Packages/libpamac
+	url = git@github:phoepsilonix/libpamac-makepkg
