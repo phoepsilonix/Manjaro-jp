@@ -267,5 +267,5 @@ power-profiles-daemon
 #manjaro-asian-input-support-ibus
 manjaro-jp/fcitx5-mozc-with-jp-dict
 fcitx5-im
-manjaro-asian-input-support-fcitx5
+#manjaro-asian-input-support-fcitx5
 
