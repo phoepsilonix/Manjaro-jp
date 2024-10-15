@@ -1,16 +1,2 @@
-[Desktops]
-Id_1=36adfd42-e06a-4a42-ae1b-e3ff00d72292
-Id_2=523f7a6f-3dcc-4982-8147-eea952c3c023
-Rows=2
-
-[Tiling]
-padding=4
-
-[Tiling][22533721-a90f-5604-b2f0-c0edd8fc27ea]
-tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
-
 [Wayland]
 InputMethod[$e]=/usr/share/applications/fcitx5-wayland-launcher.desktop
-
-[Xwayland]
-Scale=1.25
