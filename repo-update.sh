@@ -1,6 +1,13 @@
 #!/bin/sh
 #set -eux
 
+export LC_ALL=C.UTF-8
+export LANG=C.utf8
+#export TAR_READER_OPTIONS="--option=pathnameencoding=UTF-8 --options=!pax_global_header"
+#export TAR_WRITER_OPTIONS="--format=ustar --options=pax_restricted"
+#export TAR_READER_OPTIONS="--option=pathnameencoding=UTF-8"
+#export TAR_WRITER_OPTIONS="--option=pathnameencoding=UTF-8"
+
 repo_dir=./artifacts/manjaro-jp
 repo_key=$(cat ~/.gnupg/sign.txt)
 usb=/run/media/phoepsilonix/Ventoy
@@ -53,14 +60,14 @@ sync
 #repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
 pkgfiles=$(ls -v --ignore={manjaro-jp.,nvidia-,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms,egl-gbm-}* --ignore=*.sig --ignore=*.html)
 echo $pkgfiles
-LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -R -v --include-sigs --sign --key $repo_key ${pkgfiles}
+repo-add $repo.db.tar.xz -R -v --include-sigs --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
 #nvidia関連のパッケージの追加
 # nvidia stable unstable ともに残す
 pkgfiles=$(ls -v {nvidia,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms,egl-gbm-}*.pkg.tar.* | grep -v '\.sig$')
 pkgfiles=$(ls -v *.pkg.tar.* | grep -v '\.sig$')
 echo $pkgfiles
-LOCALE=C LANG=C LC_ALL=C repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
+repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -n --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -R --sign --key $repo_key ./*.zst 
