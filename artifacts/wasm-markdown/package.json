@@ -1,5 +1,6 @@
 {
   "name": "wasm-markdown",
+  "type": "module",
   "collaborators": [
     "Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love"
   ],
@@ -10,7 +11,7 @@
     "wasm_markdown.js",
     "wasm_markdown.d.ts"
   ],
-  "module": "wasm_markdown.js",
+  "main": "wasm_markdown.js",
   "types": "wasm_markdown.d.ts",
   "sideEffects": [
     "./snippets/*"

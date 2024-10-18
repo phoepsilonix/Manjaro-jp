@@ -25,6 +25,7 @@ morisawa-biz-ud-mincho-fonts
 morisawa-biz-ud-gothic-fonts
 ttf-firge
 ttf-hackgen
+ttf-bizter
 
 # Emoji Fonts
 noto-fonts-emoji
