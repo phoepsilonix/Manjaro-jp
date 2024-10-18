@@ -1,6 +1,6 @@
 # Maintainer: Sherlock Holo <sherlockya(at)gmail.com>
 
-_commit=92ea411091955a7f3032839ce3c382711f834f39
+_commit=ac9d2decbbe42aa5106c5ff32969ad4456ec5c79
 pkgname=gnome-shell-extension-kimpanel
 pkgver=20241019
 pkgrel=1
@@ -11,7 +11,7 @@ url="https://github.com/wengxt/kimpanel-for-gnome-shell"
 depends=('gnome-shell' 'zip' 'unzip')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/phoepsilonix/gnome-shell-extension-kimpanel.git#commit=${_commit}")
-sha256sums=('SKIP')
+sha256sums=('e9eafe8c8f567069c93034599296172f3e12d41d9d98a343dad9e6c034b8c93c')
 
 _extensionname="kimpanel@kde.org"
 _gitname="gnome-shell-extension-kimpanel"
