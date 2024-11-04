@@ -39,6 +39,7 @@ cd ventoy-1.0.99
 1. 不支援安全開機
 需要在BIOS關閉安全開機才能安裝,不過安裝後可以再啟用。
 (如果需要支援安全開機,[Ubuntu][Ubuntu]會較簡單。佇[Ubuntu flavours][Ubuntu flavours]有提供幾種桌面環境。日文支援也會較簡單。)
+
 [Ubuntu]: https://ubuntu.com/download/desktop
 [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
@@ -712,10 +713,16 @@ kernel-6.10.12
 
 ##### 20241007
 kernel-6.11.2
-</details>
 
 ##### 20241011
 kernel-6.11.3
+
+##### 20241023
+kernel-6.11.5
+</details>
+
+##### 20241101
+kernel-6.11.6
 
 
 ----
