@@ -7,7 +7,6 @@ yay
 paru-static
 manjaro-jp/manjaro_jp-keyring
 manjaro-jp/fastfetch-git
-manjaro-jp/mkinitcpio
 intel-ucode
 amd-ucode
 iptables-nft
