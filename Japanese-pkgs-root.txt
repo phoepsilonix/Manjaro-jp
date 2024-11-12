@@ -10,3 +10,5 @@ manjaro-jp/fastfetch-git
 intel-ucode
 amd-ucode
 iptables-nft
+zlib-ng
+zlib-ng-compat
