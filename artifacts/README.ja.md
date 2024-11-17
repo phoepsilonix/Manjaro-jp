@@ -93,7 +93,13 @@ sudo swapon /dev/sdX
 pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 ```
 
-4. 一部アプリで日本語入力ができない場合  
+4. インストール途中でインストーラー画面が消える場合には(その２)  
+まれに異常終了で落ちる場合があるようです。厳密には調べていませんが、ブートローダ関係のモジュールかパーティション情報を収集するモジュールが関連していそうです。その場合には、再度起動しなおすか、`/tmp`以下に生成されたcalamaresインストーラー関連のファイルを一旦削除して、インストーラーを立ち上げ直すことを試してみてください。
+```sh
+sudo rm -rf /tmp/*calamares*
+```
+
+5. 一部アプリで日本語入力ができない場合  
 古い設定が残っていて、`gtk-im-module`になにか設定されている場合、一部アプリで入力できないケースがあるようです。
 ```bash
 gsettings get org.gnome.desktop.interface gtk-im-module
@@ -103,7 +109,7 @@ gsettings get org.gnome.desktop.interface gtk-im-module
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
-5. Manjaro公式とのkernelの違い  
+6. Manjaro公式とのkernelの違い  
 kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.10系に移行したようです。  
 ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.11系です。  
 kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
