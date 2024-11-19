@@ -724,10 +724,14 @@ kernel-6.11.5
 
 ##### 20241101
 kernel-6.11.6
-</details>
 
 ##### 20241109
 kernel-6.11.7
+</details>
+
+##### 20241118
+kernel-6.12
+Das ZFS-Modul wird nicht unterstützt
 
 
 ----
