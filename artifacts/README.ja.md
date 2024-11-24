@@ -19,7 +19,7 @@ Linuxには、いろんなディストリビューションといわれるもの
 ----
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
-[kernel-6.11系](https://kernel.org/)。
+[kernel-6.12系](https://kernel.org/)。
 
 公式に合わせて、KDE、Xfce、GNOMEの３種類を用意する予定です。  
 配布ファイルはISOと一部パッケージファイルです。  
@@ -111,7 +111,7 @@ gsettings set org.gnome.desktop.interface gtk-im-module ''
 
 6. Manjaro公式とのkernelの違い  
 kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.10系に移行したようです。  
-ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.11系です。  
+ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.12系です。  
 kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
 またkernelのrust対応も有効にしています。  
 Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
@@ -760,10 +760,14 @@ kernel-6.11.6
 
 ##### 20241109
 kernel-6.11.7
-</details>
 
 ##### 20241118
-kernel-6.12
+kernel-6.12  
+zfsモジュールは未対応
+</details>
+
+##### 20241123
+kernel-6.12.1  
 zfsモジュールは未対応
 
 

@@ -2,7 +2,7 @@
 
 ## Unterstützung der japanischen Sprache für [Manjaro Linux](https://manjaro.org/)
 　Unterstützt standardmäßig japanische Eingabe und Anzeige, einschließlich Live-Umgebungen.  
-[Kernel-6.11 Serie](https://kernel.org/).
+[Kernel-6.12 Serie](https://kernel.org/).
 
 KDE, Xfce und GNOME werden für den offiziellen Gebrauch verfügbar sein.  
 Die Distributionsdateien sind ISO und einige Paketdateien.  
@@ -75,7 +75,7 @@ gsettings set org.gnome.desktop.interface gtk-im-module ''
 
 4. Kernel-Unterschiede zum offiziellen Manjaro-Kernel
 Die Kererl-6.6-Serie wurde in der offiziellen Manjaro-ISO verwendet. Das neueste Manjaro scheint auf die Kernel-6.10-Serie umgestiegen zu sein.  
-Die hier verteilte ISO verwendet so weit wie möglich einen neuen Kernel. Derzeit ist es die Kernel-6.11-Serie.  
+Die hier verteilte ISO verwendet so weit wie möglich einen neuen Kernel. Derzeit ist es die Kernel-6.12-Serie.  
 Wir verwenden clang anstelle von gcc, um den Kernel und die Kernelmodule zu erstellen.  
 Wir aktivieren auch die Rust-Unterstützung des Kernels.  
 Wenn Sie den offiziellen Manjaro-Kernel verwenden möchten, installieren Sie ihn, indem Sie das Repository 'core' wie in dem folgenden Befehl angeben.
@@ -727,10 +727,14 @@ kernel-6.11.6
 
 ##### 20241109
 kernel-6.11.7
-</details>
 
 ##### 20241118
-kernel-6.12
+kernel-6.12  
+Das ZFS-Modul wird nicht unterstützt
+</details>
+
+##### 20241123
+kernel-6.12.1  
 Das ZFS-Modul wird nicht unterstützt
 
 
