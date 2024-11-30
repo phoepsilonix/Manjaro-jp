@@ -5,7 +5,6 @@ KERNEL-r8168
 KERNEL-virtualbox-guest-modules
 libva-intel-driver
 libva-mesa-driver
-libva-vdpau-driver
 >multilib lib32-libva-vdpau-driver 
 libxaw
 libxpm

@@ -129,7 +129,7 @@ sushi
 #tecla                             # required by gnome-control-center
 totem
 #xdg-desktop-portal-gnome
-xdg-user-dirs-gtk
+xdg-user-dirs-gtk                  # will be required by nautilus with next version
 #yelp                              # required by gnome-user-docs
 
 
@@ -160,7 +160,8 @@ file-roller
 #gnome-photos
 #gnome-recipes
 #gnome-sound-recorder
-gnome-terminal-fedora
+#gnome-terminal-fedora
+gnome-terminal
 gnome-tweaks
 #gnome-usage
 #polari
@@ -194,7 +195,6 @@ gnome-tweaks
 
 >extra gnome-shell-extension-appindicator
 >extra gnome-shell-extension-arc-menu
->extra gnome-shell-extension-custom-accent-colors
 >extra gnome-shell-extension-dash-to-dock
 >extra gnome-shell-extension-dash-to-panel
 >extra gnome-shell-extension-forge
