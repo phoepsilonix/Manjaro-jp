@@ -248,7 +248,6 @@ libva
 libva-mesa-driver
 libva-vdpau-driver
 >multilib lib32-libva-mesa-driver
->multilib lib32-libva-vdpau-driver
 mesa
 mesa-utils
 >multilib lib32-mesa-utils

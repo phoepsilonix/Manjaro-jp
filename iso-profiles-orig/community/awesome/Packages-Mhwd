@@ -21,7 +21,6 @@ manjaro-jp/KERNEL-headers
 zfs-dkms
 libva-intel-driver
 libva-mesa-driver
->multilib lib32-libva-vdpau-driver
 libxaw
 libxpm
 libxvmc

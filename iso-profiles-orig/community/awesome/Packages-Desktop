@@ -224,7 +224,6 @@ manjaro-zsh-config
 ## Xorg Server and Graphics
 >extra >multilib lib32-libva-intel-driver
 >extra >multilib lib32-libva-mesa-driver
->extra >multilib lib32-libva-vdpau-driver
 >extra libva-intel-driver
 >extra libva-mesa-driver
 >extra libva-vdpau-driver
