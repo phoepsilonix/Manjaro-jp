@@ -1,0 +1,605 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 6d0151e..3d50d43 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -20,9 +20,11 @@ makedepends=('git' "${_linuxprefix}-headers")
+ provides=("${_module}")
+ _commit=af3a408d6399655b0db23c2c8720436ca725ca47  # master
+ source=("git+https://github.com/lwfinger/rtl8723bu.git#commit=${_commit}"
+-        'blacklist-rtl8xxxu.conf')
++        'blacklist-rtl8xxxu.conf'
++         static.patch)
+ sha256sums=('a9ff148d393079de8618db758905d42e48f098e6c7ebd5b12518f4e4a1117da2'
+-            '7c726ad04083c8e620bc11c837e5f51d3e9e2a5c3e19c333b2968eb39f1ef07e')
++            '7c726ad04083c8e620bc11c837e5f51d3e9e2a5c3e19c333b2968eb39f1ef07e'
++            '24b1e36cc3a26e9cc0050e0d51078b26a9e19176bc7cbfcee553d61bc9c38d71')
+ 
+ pkgver() {
+     cd "${_module}"
+@@ -34,6 +36,7 @@ prepare() {
+ 
+     # do not compile with CONCURRENT_MODE
+     sed -i 's/EXTRA_CFLAGS += -DCONFIG_CONCURRENT_MODE/#EXTRA_CFLAGS += -DCONFIG_CONCURRENT_MODE/g' Makefile
++    patch -p1 -i ../static.patch
+ }
+ 
+ build() {
+diff --git a/static.patch b/static.patch
+new file mode 100644
+index 0000000..652b5b9
+--- /dev/null
++++ b/static.patch
+@@ -0,0 +1,573 @@
++diff --git a/core/rtw_ap.c b/core/rtw_ap.c
++index 66d771c..3fa3f29 100644
++--- a/core/rtw_ap.c
+++++ b/core/rtw_ap.c
++@@ -305,7 +305,7 @@ void rtw_remove_bcn_ie(_adapter *padapter, WLAN_BSSID_EX *pnetwork, u8 index)
++ }
++ 
++ 
++-u8 chk_sta_is_alive(struct sta_info *psta)
+++static u8 chk_sta_is_alive(struct sta_info *psta)
++ {
++ 	u8 ret = _FALSE;
++ 	#ifdef DBG_EXPIRATION_CHK
++diff --git a/core/rtw_cmd.c b/core/rtw_cmd.c
++index d37f249..3535ae8 100644
++--- a/core/rtw_cmd.c
+++++ b/core/rtw_cmd.c
++@@ -267,7 +267,7 @@ void rtw_free_cmd_priv (struct	cmd_priv *pcmdpriv)
++ 
++ }
++ 
++-int rtw_cmd_filter(struct cmd_priv *pcmdpriv, struct cmd_obj *cmd_obj)
+++static int rtw_cmd_filter(struct cmd_priv *pcmdpriv, struct cmd_obj *cmd_obj)
++ {
++ 	u8 bAllow = _FALSE; //set to _TRUE to allow enqueuing cmd when hw_init_completed is _FALSE
++ 
++@@ -2481,7 +2481,7 @@ static void dynamic_chk_wk_hdl(_adapter *padapter)
++ 
++ #ifdef CONFIG_LPS
++ 
++-void lps_ctrl_wk_hdl(_adapter *padapter, u8 lps_ctrl_type)
+++static void lps_ctrl_wk_hdl(_adapter *padapter, u8 lps_ctrl_type)
++ {
++ 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);
++ 	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
++@@ -2545,8 +2545,9 @@ void lps_ctrl_wk_hdl(_adapter *padapter, u8 lps_ctrl_type)
++ 			break;
++ 		case LPS_CTRL_TRAFFIC_BUSY:
++ 			LPS_Leave(padapter, "LPS_CTRL_TRAFFIC_BUSY");
+++            break;
++ 		default:
++-			break;
+++            break;
++ 	}
++ 
++ 
++diff --git a/core/rtw_ieee80211.c b/core/rtw_ieee80211.c
++index 5c97492..56f9c9d 100644
++--- a/core/rtw_ieee80211.c
+++++ b/core/rtw_ieee80211.c
++@@ -1308,7 +1308,7 @@ static u8 key_char2num(u8 ch)
++ 	 return 0xff;
++ }
++ 
++-u8 str_2char2num(u8 hch, u8 lch)
+++static u8 str_2char2num(u8 hch, u8 lch)
++ {
++ 	return ((key_char2num(hch) * 10 ) + key_char2num(lch));
++ }
++diff --git a/core/rtw_mlme.c b/core/rtw_mlme.c
++index 1b7a9a3..2236e5a 100644
++--- a/core/rtw_mlme.c
+++++ b/core/rtw_mlme.c
++@@ -103,7 +103,7 @@ exit:
++ 	return res;
++ }
++ 
++-void rtw_mfree_mlme_priv_lock (struct mlme_priv *pmlmepriv)
+++static void rtw_mfree_mlme_priv_lock (struct mlme_priv *pmlmepriv)
++ {
++ 	_rtw_spinlock_free(&pmlmepriv->lock);
++ 	_rtw_spinlock_free(&(pmlmepriv->free_bss_pool.lock));
++@@ -469,7 +469,7 @@ void rtw_free_mlme_priv (struct mlme_priv *pmlmepriv)
++ 
++ }
++ 
++-int	rtw_enqueue_network(_queue *queue, struct wlan_network *pnetwork)
+++static int	rtw_enqueue_network(_queue *queue, struct wlan_network *pnetwork)
++ {
++ 	int	res;
++ 
++@@ -489,7 +489,7 @@ static struct	wlan_network *rtw_dequeue_network(_queue *queue)
++ }
++ */
++ 
++-struct	wlan_network *rtw_alloc_network(struct	mlme_priv *pmlmepriv )//(_queue	*free_queue)
+++static struct	wlan_network *rtw_alloc_network(struct	mlme_priv *pmlmepriv )//(_queue	*free_queue)
++ {
++ 	struct	wlan_network	*pnetwork;
++ 
++@@ -498,7 +498,7 @@ struct	wlan_network *rtw_alloc_network(struct	mlme_priv *pmlmepriv )//(_queue	*f
++ 	return pnetwork;
++ }
++ 
++-void rtw_free_network(struct mlme_priv *pmlmepriv, struct	wlan_network *pnetwork, u8 is_freeall)//(struct	wlan_network *pnetwork, _queue	*free_queue)
+++static void rtw_free_network(struct mlme_priv *pmlmepriv, struct	wlan_network *pnetwork, u8 is_freeall)//(struct	wlan_network *pnetwork, _queue	*free_queue)
++ {
++ 
++ 	RT_TRACE(_module_rtl871x_mlme_c_,_drv_err_,("rtw_free_network==> ssid = %s \n\n" , pnetwork->network.Ssid.Ssid));
++@@ -506,7 +506,7 @@ void rtw_free_network(struct mlme_priv *pmlmepriv, struct	wlan_network *pnetwork
++ 
++ }
++ 
++-void rtw_free_network_nolock(_adapter * padapter, struct wlan_network *pnetwork )
+++static void rtw_free_network_nolock(_adapter * padapter, struct wlan_network *pnetwork )
++ {
++ 
++ 	//RT_TRACE(_module_rtl871x_mlme_c_,_drv_err_,("rtw_free_network==> ssid = %s \n\n" , pnetwork->network.Ssid.Ssid));
++@@ -927,7 +927,7 @@ exit:
++ 
++ }
++ 
++-void rtw_add_network(_adapter *adapter, WLAN_BSSID_EX *pnetwork)
+++static void rtw_add_network(_adapter *adapter, WLAN_BSSID_EX *pnetwork)
++ {
++ 	_irqL irqL;
++ 	struct	mlme_priv	*pmlmepriv = &(((_adapter *)adapter)->mlmepriv);
++@@ -956,7 +956,7 @@ void rtw_add_network(_adapter *adapter, WLAN_BSSID_EX *pnetwork)
++ //			   (3) WMM
++ //			   (4) HT
++ //                     (5) others
++-int rtw_is_desired_network(_adapter *adapter, struct wlan_network *pnetwork)
+++static int rtw_is_desired_network(_adapter *adapter, struct wlan_network *pnetwork)
++ {
++ 	struct security_priv *psecuritypriv = &adapter->securitypriv;
++ 	struct mlme_priv *pmlmepriv = &adapter->mlmepriv;
++diff --git a/core/rtw_mlme_ext.c b/core/rtw_mlme_ext.c
++index c2b0935..27263a3 100644
++--- a/core/rtw_mlme_ext.c
+++++ b/core/rtw_mlme_ext.c
++@@ -2405,6 +2405,7 @@ unsigned int OnAssocRsp(_adapter *padapter, union recv_frame *precv_frame)
++ 
++ 			case _ERPINFO_IE_:
++ 				ERP_IE_handler(padapter, pIE);
+++                break;
++ 
++ 			default:
++ 				break;
++diff --git a/core/rtw_pwrctrl.c b/core/rtw_pwrctrl.c
++index c7ffe2f..13cf89b 100644
++--- a/core/rtw_pwrctrl.c
+++++ b/core/rtw_pwrctrl.c
++@@ -420,7 +420,7 @@ exit:
++ #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0)
++ void pwr_state_check_handler(RTW_TIMER_HDL_ARGS)
++ #else
++-void pwr_state_check_handler(struct timer_list *t)
+++static void pwr_state_check_handler(struct timer_list *t)
++ #endif
++ {
++ #if LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0)
++diff --git a/core/rtw_recv.c b/core/rtw_recv.c
++index ce8f663..860ebf3 100644
++--- a/core/rtw_recv.c
+++++ b/core/rtw_recv.c
++@@ -123,7 +123,7 @@ exit:
++ 
++ }
++ 
++-void rtw_mfree_recv_priv_lock(struct recv_priv *precvpriv)
+++static void rtw_mfree_recv_priv_lock(struct recv_priv *precvpriv)
++ {
++ 	_rtw_spinlock_free(&precvpriv->lock);
++ #ifdef CONFIG_RECV_THREAD_MODE
++@@ -416,7 +416,7 @@ struct recv_buf *rtw_dequeue_recvbuf (_queue *queue)
++ 
++ }
++ 
++-sint recvframe_chkmic(_adapter *adapter,  union recv_frame *precvframe){
+++static sint recvframe_chkmic(_adapter *adapter,  union recv_frame *precvframe){
++ 
++ 	sint	i,res=_SUCCESS;
++ 	u32	datalen;
++@@ -562,7 +562,7 @@ exit:
++ }
++ 
++ //decrypt and set the ivlen,icvlen of the recv_frame
++-union recv_frame *decryptor(_adapter *padapter,union recv_frame *precv_frame)
+++static union recv_frame *decryptor(_adapter *padapter,union recv_frame *precv_frame)
++ {
++ 
++ 	struct rx_pkt_attrib *prxattrib = &precv_frame->u.hdr.attrib;
++@@ -687,7 +687,7 @@ union recv_frame *decryptor(_adapter *padapter,union recv_frame *precv_frame)
++ 
++ }
++ //###set the security information in the recv_frame
++-union recv_frame *portctrl(_adapter *adapter,union recv_frame * precv_frame)
+++static union recv_frame *portctrl(_adapter *adapter,union recv_frame * precv_frame)
++ {
++ 	u8 *psta_addr = NULL;
++ 	u8 *ptr;
++@@ -756,7 +756,7 @@ union recv_frame *portctrl(_adapter *adapter,union recv_frame * precv_frame)
++ 	return prtnframe;
++ }
++ 
++-sint recv_decache(union recv_frame *precv_frame, u8 bretry,
+++static sint recv_decache(union recv_frame *precv_frame, u8 bretry,
++ 		  struct stainfo_rxcache *prxcache)
++ {
++ 	sint tid = precv_frame->u.hdr.attrib.priority;
++@@ -791,7 +791,7 @@ sint recv_decache(union recv_frame *precv_frame, u8 bretry,
++ 
++ }
++ 
++-void process_pwrbit_data(_adapter *padapter, union recv_frame *precv_frame)
+++static void process_pwrbit_data(_adapter *padapter, union recv_frame *precv_frame)
++ {
++ #ifdef CONFIG_AP_MODE
++ 	unsigned char pwrbit;
++@@ -836,7 +836,7 @@ void process_pwrbit_data(_adapter *padapter, union recv_frame *precv_frame)
++ #endif
++ }
++ 
++-void process_wmmps_data(_adapter *padapter, union recv_frame *precv_frame)
+++static void process_wmmps_data(_adapter *padapter, union recv_frame *precv_frame)
++ {
++ #ifdef CONFIG_AP_MODE
++ 	struct rx_pkt_attrib *pattrib = &precv_frame->u.hdr.attrib;
++@@ -1005,7 +1005,7 @@ exit:
++ }
++ #endif
++ 
++-void count_rx_stats(_adapter *padapter, union recv_frame *prframe,
+++static void count_rx_stats(_adapter *padapter, union recv_frame *prframe,
++ 		    struct sta_info*sta)
++ {
++ 	int	sz;
++@@ -1516,7 +1516,7 @@ exit:
++ 
++ }
++ 
++-sint validate_recv_ctrl_frame(_adapter *padapter, union recv_frame *precv_frame)
+++static sint validate_recv_ctrl_frame(_adapter *padapter, union recv_frame *precv_frame)
++ {
++ 	struct rx_pkt_attrib *pattrib = &precv_frame->u.hdr.attrib;
++ 	struct sta_priv *pstapriv = &padapter->stapriv;
++@@ -1675,7 +1675,7 @@ sint validate_recv_ctrl_frame(_adapter *padapter, union recv_frame *precv_frame)
++ 
++ }
++ 
++-sint validate_recv_mgnt_frame(PADAPTER padapter, union recv_frame *precv_frame)
+++static sint validate_recv_mgnt_frame(PADAPTER padapter, union recv_frame *precv_frame)
++ {
++ 	//struct mlme_priv *pmlmepriv = &adapter->mlmepriv;
++ 
++@@ -1764,7 +1764,7 @@ sint validate_recv_mgnt_frame(PADAPTER padapter, union recv_frame *precv_frame)
++ 
++ }
++ 
++-sint validate_recv_data_frame(_adapter *adapter, union recv_frame *precv_frame)
+++static sint validate_recv_data_frame(_adapter *adapter, union recv_frame *precv_frame)
++ {
++ 	u8 bretry;
++ 	u8 *psa, *pda, *pbssid;
++@@ -2055,7 +2055,7 @@ static inline void dump_rx_packet(u8 *ptr)
++ 	DBG_871X("############################# \n");
++ }
++ 
++-sint validate_recv_frame(_adapter *adapter, union recv_frame *precv_frame)
+++static sint validate_recv_frame(_adapter *adapter, union recv_frame *precv_frame)
++ {
++ 	//shall check frame subtype, to / from ds, da, bssid
++ 
++@@ -2269,7 +2269,7 @@ exit:
++ //remove the wlanhdr and add the eth_hdr
++ #if 1
++ 
++-sint wlanhdr_to_ethhdr ( union recv_frame *precvframe)
+++static sint wlanhdr_to_ethhdr ( union recv_frame *precvframe)
++ {
++ 	sint	rmv_len;
++ 	u16	eth_type, len;
++@@ -2546,7 +2546,7 @@ static void recvframe_expand_pkt(
++ }
++ 
++ //perform defrag
++-union recv_frame *recvframe_defrag(_adapter *adapter,_queue *defrag_q)
+++static union recv_frame *recvframe_defrag(_adapter *adapter,_queue *defrag_q)
++ {
++ 	_list	 *plist, *phead;
++ 	u8	*data,wlanhdr_offset;
++@@ -2843,7 +2843,7 @@ static int amsdu_to_msdu(_adapter *padapter, union recv_frame *prframe)
++ 	return ret;
++ }
++ 
++-int check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl, u16 seq_num)
+++static int check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl, u16 seq_num)
++ {
++ 	PADAPTER padapter = preorder_ctrl->padapter;
++ 	struct dvobj_priv *psdpriv = padapter->dvobj;
++@@ -2916,7 +2916,7 @@ int check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl, u16 seq_num)
++ 	return _TRUE;
++ }
++ 
++-int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
+++static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
++ 			      union recv_frame *prframe)
++ {
++ 	struct rx_pkt_attrib *pattrib = &prframe->u.hdr.attrib;
++@@ -2978,7 +2978,7 @@ int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl,
++ 
++ }
++ 
++-void recv_indicatepkts_pkt_loss_cnt(struct debug_priv *pdbgpriv, u64 prev_seq,
+++static void recv_indicatepkts_pkt_loss_cnt(struct debug_priv *pdbgpriv, u64 prev_seq,
++ 				    u64 current_seq)
++ {
++ 	if(current_seq < prev_seq)
++@@ -2992,7 +2992,7 @@ void recv_indicatepkts_pkt_loss_cnt(struct debug_priv *pdbgpriv, u64 prev_seq,
++ 	}
++ }
++ 
++-int recv_indicatepkts_in_order(_adapter *padapter,
+++static int recv_indicatepkts_in_order(_adapter *padapter,
++ 			       struct recv_reorder_ctrl *preorder_ctrl,
++ 			       int bforced)
++ {
++@@ -3125,7 +3125,7 @@ int recv_indicatepkts_in_order(_adapter *padapter,
++ 
++ }
++ 
++-int recv_indicatepkt_reorder(_adapter *padapter, union recv_frame *prframe)
+++static int recv_indicatepkt_reorder(_adapter *padapter, union recv_frame *prframe)
++ {
++ 	_irqL irql;
++ 	int retval = _SUCCESS;
++@@ -3291,7 +3291,7 @@ void rtw_reordering_ctrl_timeout_handler(void *pcontext)
++ 
++ }
++ 
++-int process_recv_indicatepkts(_adapter *padapter, union recv_frame *prframe)
+++static int process_recv_indicatepkts(_adapter *padapter, union recv_frame *prframe)
++ {
++ 	int retval = _SUCCESS;
++ 	//struct recv_priv *precvpriv = &padapter->recvpriv;
++@@ -3540,7 +3540,7 @@ _recv_data_drop:
++ 	return ret;
++ }
++ 
++-int recv_func(_adapter *padapter, union recv_frame *rframe)
+++static int recv_func(_adapter *padapter, union recv_frame *rframe)
++ {
++ 	int ret;
++ 	struct rx_pkt_attrib *prxattrib = &rframe->u.hdr.attrib;
++diff --git a/core/rtw_sta_mgt.c b/core/rtw_sta_mgt.c
++index 28039f1..f309b6d 100644
++--- a/core/rtw_sta_mgt.c
+++++ b/core/rtw_sta_mgt.c
++@@ -163,7 +163,7 @@ inline struct sta_info *rtw_get_stainfo_by_offset(struct sta_priv *stapriv, int
++ 	return (struct sta_info *)(stapriv->pstainfo_buf + offset * sizeof(struct sta_info));
++ }
++ 
++-void	_rtw_free_sta_xmit_priv_lock(struct sta_xmit_priv *psta_xmitpriv)
+++static void	_rtw_free_sta_xmit_priv_lock(struct sta_xmit_priv *psta_xmitpriv)
++ {
++ 
++ 
++@@ -188,7 +188,7 @@ static void	_rtw_free_sta_recv_priv_lock(struct sta_recv_priv *psta_recvpriv)
++ 
++ }
++ 
++-void rtw_mfree_stainfo(struct sta_info *psta)
+++static void rtw_mfree_stainfo(struct sta_info *psta)
++ {
++ 
++ 
++@@ -200,7 +200,7 @@ void rtw_mfree_stainfo(struct sta_info *psta)
++ 
++ 
++ // this function is used to free the memory of lock || sema for all stainfos
++-void rtw_mfree_all_stainfo(struct sta_priv *pstapriv )
+++static void rtw_mfree_all_stainfo(struct sta_priv *pstapriv )
++ {
++ 	_irqL	 irqL;
++ 	_list	*plist, *phead;
++@@ -222,7 +222,7 @@ void rtw_mfree_all_stainfo(struct sta_priv *pstapriv )
++ 	SPIN_UNLOCK_BH(pstapriv->sta_hash_lock, &irqL);
++ }
++ 
++-void rtw_mfree_sta_priv_lock(struct	sta_priv *pstapriv)
+++static void rtw_mfree_sta_priv_lock(struct	sta_priv *pstapriv)
++ {
++ #ifdef CONFIG_AP_MODE
++ 	struct wlan_acl_pool *pacl_list = &pstapriv->acl_list;
++diff --git a/core/rtw_wlan_util.c b/core/rtw_wlan_util.c
++index eb2bda3..725ca35 100644
++--- a/core/rtw_wlan_util.c
+++++ b/core/rtw_wlan_util.c
++@@ -252,7 +252,7 @@ u8 judge_network_type(_adapter *padapter, unsigned char *rate, int ratelen)
++ 	return	network_type;
++ }
++ 
++-unsigned char ratetbl_val_2wifirate(unsigned char rate)
+++static unsigned char ratetbl_val_2wifirate(unsigned char rate)
++ {
++ 	unsigned char val = 0;
++ 
++@@ -309,7 +309,7 @@ unsigned char ratetbl_val_2wifirate(unsigned char rate)
++ 	return val;
++ }
++ 
++-int is_basicrate(_adapter *padapter, unsigned char rate)
+++static int is_basicrate(_adapter *padapter, unsigned char rate)
++ {
++ 	int i;
++ 	unsigned char val;
++@@ -328,7 +328,7 @@ int is_basicrate(_adapter *padapter, unsigned char rate)
++ 	return _FALSE;
++ }
++ 
++-unsigned int ratetbl2rateset(_adapter *padapter, unsigned char *rateset)
+++static unsigned int ratetbl2rateset(_adapter *padapter, unsigned char *rateset)
++ {
++ 	int i;
++ 	unsigned char rate;
++@@ -2226,6 +2226,7 @@ unsigned int is_ap_in_tkip(_adapter *padapter)
++ 					{
++ 						return _TRUE;
++ 					}
+++                    break;
++ 
++ 				default:
++ 					break;
++@@ -2325,7 +2326,7 @@ unsigned int is_ap_in_wep(_adapter *padapter)
++ 
++ }
++ 
++-int wifirate2_ratetbl_inx(unsigned char rate)
+++static int wifirate2_ratetbl_inx(unsigned char rate)
++ {
++ 	int	inx = 0;
++ 	rate = rate & 0x7f;
++@@ -2457,7 +2458,7 @@ unsigned char get_highest_rate_idx(u32 mask)
++ 	return rate_idx;
++ }
++ 
++-unsigned char get_highest_mcs_rate(struct HT_caps_element *pHT_caps)
+++static unsigned char get_highest_mcs_rate(struct HT_caps_element *pHT_caps)
++ {
++ 	int i, mcs_rate;
++ 
++@@ -2479,7 +2480,7 @@ void Update_RA_Entry(_adapter *padapter, struct sta_info *psta)
++ 	rtw_hal_update_ra_mask(psta, 0);
++ }
++ 
++-void enable_rate_adaptive(_adapter *padapter, struct sta_info *psta)
+++static void enable_rate_adaptive(_adapter *padapter, struct sta_info *psta)
++ {
++ 	Update_RA_Entry(padapter, psta);
++ }
++diff --git a/core/rtw_xmit.c b/core/rtw_xmit.c
++index 5e6d02b..147e11f 100644
++--- a/core/rtw_xmit.c
+++++ b/core/rtw_xmit.c
++@@ -306,7 +306,7 @@ exit:
++ 	return res;
++ }
++ 
++-void  rtw_mfree_xmit_priv_lock (struct xmit_priv *pxmitpriv)
+++static void  rtw_mfree_xmit_priv_lock (struct xmit_priv *pxmitpriv)
++ {
++ 	_rtw_spinlock_free(&pxmitpriv->lock);
++ 	_rtw_free_sema(&pxmitpriv->xmit_sema);
++diff --git a/hal/odm.c b/hal/odm.c
++index 8bbc515..479362f 100644
++--- a/hal/odm.c
+++++ b/hal/odm.c
++@@ -1041,7 +1041,7 @@ static VOID odm_CmnInfoInit_Debug(PDM_ODM_T pDM_Odm)
++ 
++ }
++ 
++-VOID
+++static VOID
++ odm_CmnInfoHook_Debug(
++ 	IN		PDM_ODM_T		pDM_Odm
++ 	)
++@@ -1075,7 +1075,7 @@ odm_CmnInfoHook_Debug(
++ 		ODM_RT_TRACE(pDM_Odm,ODM_COMP_COMMON, ODM_DBG_LOUD, ("pOnePathCCA=%d\n",*(pDM_Odm->pOnePathCCA)) );
++ }
++ 
++-VOID
+++static VOID
++ odm_CmnInfoUpdate_Debug(
++ 	IN		PDM_ODM_T		pDM_Odm
++ 	)
++@@ -1603,7 +1603,7 @@ VOID odm_SwAntDivChkAntSwitchCallback(void *FunctionContext)
++ }
++ #else //#if(defined(CONFIG_SW_ANTENNA_DIVERSITY))
++ 
++-VOID odm_SwAntDivInit(	IN		PDM_ODM_T		pDM_Odm	) {}
+++static VOID odm_SwAntDivInit(	IN		PDM_ODM_T		pDM_Odm	) {}
++ VOID ODM_SwAntDivChkPerPktRssi(
++ 	IN PDM_ODM_T	pDM_Odm,
++ 	IN u1Byte		StationID,
++@@ -1616,7 +1616,7 @@ VOID odm_SwAntDivChkAntSwitch(
++ static VOID ODM_SwAntDivResetBeforeLink(	IN		PDM_ODM_T		pDM_Odm	){}
++ VOID ODM_SwAntDivRestAfterLink(	IN		PDM_ODM_T		pDM_Odm	){}
++ VOID odm_SwAntDetectInit(	IN		PDM_ODM_T		pDM_Odm){}
++-VOID odm_SwAntDivChkAntSwitchCallback(void *FunctionContext){}
+++static VOID odm_SwAntDivChkAntSwitchCallback(void *FunctionContext){}
++ 
++ #endif //#if(defined(CONFIG_SW_ANTENNA_DIVERSITY))
++ 
++@@ -1935,7 +1935,7 @@ static VOID odm_HwAntDiv(PDM_ODM_T pDM_Odm)
++ 
++ #else //#if(defined(CONFIG_HW_ANTENNA_DIVERSITY))
++ 
++-VOID odm_InitHybridAntDiv(	IN PDM_ODM_T	pDM_Odm		){}
+++static VOID odm_InitHybridAntDiv(	IN PDM_ODM_T	pDM_Odm		){}
++ VOID odm_HwAntDiv(	IN	PDM_ODM_T	pDM_Odm){}
++ static VOID ODM_SetTxAntByTxInfo_88C_92D(	IN		PDM_ODM_T		pDM_Odm){ }
++ 
++diff --git a/include/rtw_recv.h b/include/rtw_recv.h
++index 0d200b2..0c8dd47 100644
++--- a/include/rtw_recv.h
+++++ b/include/rtw_recv.h
++@@ -592,7 +592,7 @@ __inline static u8 *recvframe_pull_tail(union recv_frame *precvframe, sint sz)
++ 
++ __inline static _buffer * get_rxbuf_desc(union recv_frame *precvframe)
++ {
++-	_buffer * buf_desc;
+++	_buffer * buf_desc = NULL;
++ 
++ 	if(precvframe==NULL)
++ 		return NULL;
++@@ -613,7 +613,7 @@ __inline static union recv_frame *rxmem_to_recvframe(u8 *rxmem)
++ __inline static union recv_frame *pkt_to_recvframe(_pkt *pkt)
++ {
++ 
++-	u8 * buf_star;
+++	u8 * buf_star = NULL;
++ 	union recv_frame * precv_frame;
++ 
++ 	precv_frame = rxmem_to_recvframe((unsigned char*)buf_star);
++diff --git a/include/wlan_bssdef.h b/include/wlan_bssdef.h
++index 806d6e3..ee8faaa 100644
++--- a/include/wlan_bssdef.h
+++++ b/include/wlan_bssdef.h
++@@ -102,7 +102,7 @@ typedef struct _NDIS_802_11_VARIABLE_IEs
++ {
++   UCHAR  ElementID;
++   UCHAR  Length;
++-  UCHAR  data[1];
+++  UCHAR  data[7];
++ } NDIS_802_11_VARIABLE_IEs, *PNDIS_802_11_VARIABLE_IEs;
++ 
++ 
++diff --git a/os_dep/os_intfs.c b/os_dep/os_intfs.c
++index 597976c..855acc3 100644
++--- a/os_dep/os_intfs.c
+++++ b/os_dep/os_intfs.c
++@@ -920,7 +920,7 @@ void rtw_stop_drv_threads (_adapter *padapter)
++ 	rtw_hal_stop_thread(padapter);
++ }
++ 
++-u8 rtw_init_default_value(_adapter *padapter)
+++static u8 rtw_init_default_value(_adapter *padapter)
++ {
++ 	u8 ret  = _SUCCESS;
++ 	struct registry_priv* pregistrypriv = &padapter->registrypriv;
++diff --git a/os_dep/usb_intf.c b/os_dep/usb_intf.c
++index 36e02a6..7105b0e 100644
++--- a/os_dep/usb_intf.c
+++++ b/os_dep/usb_intf.c
++@@ -684,7 +684,7 @@ exit:
++ 	return ret;
++ }
++ 
++-int rtw_resume_process(_adapter *padapter)
+++static int rtw_resume_process(_adapter *padapter)
++ {
++ 	int ret,pm_cnt = 0;
++ 	struct pwrctrl_priv *pwrpriv = adapter_to_pwrctl(padapter);

@@ -1,0 +1,39 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 5c34e3b..8346667 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -48,7 +48,14 @@ build() {
+     _kernver="$(cat /usr/src/${_linuxprefix}/version)"
+ 
+     cd "${_pkg}"
++    LD=ld.lld \
+     make -C kernel SYSSRC=/usr/lib/modules/"${_kernver}/build" module
++    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
++    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
++    for file in kernel/*.ko
++    do
++        /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $file
++    done
+ }
+ 
+ package() {
+@@ -58,7 +65,18 @@ package() {
+     install -Dm 644 kernel/*.ko -t "${pkgdir}/usr/lib/modules/${_kernver}/extramodules/"
+ 
+     # compress each module individually
+-    find "${pkgdir}" -name '*.ko' -exec zstd --rm -19 {} +
++    COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h|grep -v ALL)
++    COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
++    COMPRESS=${COMPRESS% 1}
++    case $COMPRESS in
++    ZSTD)
++        COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
++        ;;
++    XZ)
++        COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
++        ;;
++    esac
++    find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
+ 
+     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+ }

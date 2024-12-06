@@ -54,35 +54,38 @@ do
         #git switch -f master
         #git pull origin master
         case "$kver" in
+            "6.12" ) 
+                patch1="patch-${m}-linux6.11.patch"
+                patch2="kmod-sign-${m}-linux6.11.patch" ;;
             "6.11" ) 
-                patch1="patch-${m}-linux6.10.patch" 
-                patch2="kmod-sign-${m}-linux6.9.patch" ;;
+                patch1="patch-${m}-linux6.11.patch"
+                patch2="kmod-sign-${m}-linux6.11.patch" ;;
             "6.10" ) 
-                patch1="patch-${m}-linux6.10.patch" 
+                patch1="patch-${m}-linux6.10.patch"
                 patch2="kmod-sign-${m}-linux6.9.patch" ;;
             "6.9" ) 
-                patch1="patch-${m}-linux6.9.patch" 
+                patch1="patch-${m}-linux6.9.patch"
                 patch2="kmod-sign-${m}-linux6.9.patch" ;;
             "6.8" ) 
-                patch1="patch-${m}-linux6.8.patch" 
+                patch1="patch-${m}-linux6.8.patch"
                 patch2="kmod-sign-${m}-linux6.8.patch" ;;
             "6.7" ) 
-                patch1="patch-${m}-linux6.7.patch" 
+                patch1="patch-${m}-linux6.7.patch"
                 patch2="kmod-sign-${m}-linux6.7.patch" ;;
             "6.6" ) 
-                patch1="patch-${m}-linux6.6.patch" 
+                patch1="patch-${m}-linux6.6.patch"
                 patch2="kmod-sign-${m}-linux6.6.patch" ;;
             "6.5" ) 
-                patch1="patch-${m}-linux6.5.patch" 
+                patch1="patch-${m}-linux6.5.patch"
                 patch2="kmod-sign-${m}-linux6.5.patch" ;;
             "6.4" ) 
-                patch1="patch-${m}-linux6.4.patch" 
+                patch1="patch-${m}-linux6.4.patch"
                 patch2="kmod-sign-${m}-linux6.4.patch" ;;
             "6.1" ) 
-                patch1="patch-${m}-linux6.1.patch" 
+                patch1="patch-${m}-linux6.1.patch"
                 patch2="kmod-sign-${m}-linux6.1.patch" ;;
             * ) 
-                patch1="patch-${m}.patch" 
+                patch1="patch-${m}.patch"
                 patch2="kmod-sign-${m}.patch" ;;
         esac
             echo $patch1

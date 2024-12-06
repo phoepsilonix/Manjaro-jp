@@ -1,0 +1,13 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index baaece1..c4ed4b6 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -15,7 +15,7 @@ arch=('x86_64')
+ url="https://github.com/nix-community/acpi_call"
+ license=('GPL')
+ groups=("${_linuxprefix}-extramodules")
+-depends=("${_linuxprefix}")
++depends=("${_linuxprefix}" 'perl')
+ makedepends=("${_linuxprefix}-headers" "acpi_call-dkms=$pkgver")
+ provides=("${_module}")
+ conflicts=("${_module}-dkms")

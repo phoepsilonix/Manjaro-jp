@@ -1,0 +1,41 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index baaece1..4a008e2 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -24,6 +24,15 @@ build() {
+   _kernver="$(cat /usr/src/${_linuxprefix}/version)"
+ 
+   fakeroot dkms build --dkmstree "$srcdir" -m "${_module}/$pkgver" -k "${_kernver}"
++  cd "$srcdir/$_module/$pkgver/$_kernver/$CARCH/module"
++  if [ -f *.ko.zst ] ;then
++          zstd --rm -q -d *.zst
++  elif [ -f *.ko.xz ] ;then
++          xz -q -d *.xz
++  fi
++  SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
++  SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
++  /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $_module.*
+ }
+ 
+ package() {
+@@ -33,7 +42,19 @@ package() {
+     "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
+ 
+   # compress each module individually
+-  find "${pkgdir}" -name '*.ko' -exec zstd --rm -19 {} +
++  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h|grep -v ALL)
++  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
++  COMPRESS=${COMPRESS% 1}
++  case $COMPRESS in
++  ZSTD)
++    COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
++    ;;
++  XZ)
++    COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
++    ;;
++  esac
++  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
++  sync
+ 
+   echo acpi_call | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+ 
