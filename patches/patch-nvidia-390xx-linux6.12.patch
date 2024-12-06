@@ -1,0 +1,490 @@
+diff --git a/001-fix-function-declaration.patch b/001-fix-function-declaration.patch
+new file mode 100644
+index 0000000..7e32ad4
+--- /dev/null
++++ b/001-fix-function-declaration.patch
+@@ -0,0 +1,218 @@
++diff --git a/kernel/nvidia/os-interface.c b/kernel/nvidia/os-interface.c
++index 262171f..d1b7093 100644
++--- a/kernel/nvidia/os-interface.c
+++++ b/kernel/nvidia/os-interface.c
++@@ -876,14 +876,14 @@ void NV_API_CALL os_unmap_kernel_numa(
++ }
++ 
++ // flush the cpu's cache, uni-processor version
++-NV_STATUS NV_API_CALL os_flush_cpu_cache()
+++NV_STATUS NV_API_CALL os_flush_cpu_cache(void)
++ {
++     CACHE_FLUSH();
++     return NV_OK;
++ }
++ 
++ // flush the cache of all cpus
++-NV_STATUS NV_API_CALL os_flush_cpu_cache_all()
+++NV_STATUS NV_API_CALL os_flush_cpu_cache_all(void)
++ {
++ #if defined(NVCPU_FAMILY_ARM)
++     CACHE_FLUSH_ALL();
++@@ -941,7 +941,7 @@ NV_STATUS NV_API_CALL os_flush_user_cache(NvU64 start, NvU64 end,
++ #endif
++ }
++ 
++-void NV_API_CALL os_flush_cpu_write_combine_buffer()
+++void NV_API_CALL os_flush_cpu_write_combine_buffer(void)
++ {
++     WRITE_COMBINE_FLUSH();
++ }
++@@ -1070,14 +1070,14 @@ void NV_API_CALL os_dbg_breakpoint(void)
++ #endif // DEBUG
++ }
++ 
++-NvU32 NV_API_CALL os_get_cpu_number()
+++NvU32 NV_API_CALL os_get_cpu_number(void)
++ {
++     NvU32 cpu_id = get_cpu();
++     put_cpu();
++     return cpu_id;
++ }
++ 
++-NvU32 NV_API_CALL os_get_cpu_count()
+++NvU32 NV_API_CALL os_get_cpu_count(void)
++ {
++     return NV_NUM_CPUS();
++ }
++@@ -1152,7 +1152,7 @@ void NV_API_CALL os_get_screen_info(
++ #endif
++ }
++ 
++-void NV_API_CALL os_dump_stack()
+++void NV_API_CALL os_dump_stack(void)
++ {
++ #if defined(DEBUG)
++     dump_stack();
++diff --git a/kernel/nvidia/nvlink_linux.c b/kernel/nvidia/nvlink_linux.c
++index ba57b86..961540c 100644
++--- a/kernel/nvidia/nvlink_linux.c
+++++ b/kernel/nvidia/nvlink_linux.c
++@@ -636,7 +636,7 @@ void NVLINK_API_CALL nvlink_assert(int cond)
++     }
++ }
++ 
++-void * NVLINK_API_CALL nvlink_allocLock()
+++void * NVLINK_API_CALL nvlink_allocLock(void)
++ {
++     struct semaphore *sema;
++ 
++diff --git a/kernel/nvidia-uvm/uvm_common.c b/kernel/nvidia-uvm/uvm_common.c
++index 0f4516a..f8dfafd 100644
++--- a/kernel/nvidia-uvm/uvm_common.c
+++++ b/kernel/nvidia-uvm/uvm_common.c
++@@ -60,7 +60,7 @@ static int uvm_debug_prints = UVM_IS_DEBUG() || UVM_IS_DEVELOP();
++ module_param(uvm_debug_prints, int, S_IRUGO|S_IWUSR);
++ MODULE_PARM_DESC(uvm_debug_prints, "Enable uvm debug prints.");
++ 
++-bool uvm_debug_prints_enabled()
+++bool uvm_debug_prints_enabled(void)
++ {
++     return uvm_debug_prints != 0;
++ }
++diff --git a/kernel/nvidia-uvm/uvm8_procfs.c b/kernel/nvidia-uvm/uvm8_procfs.c
++index f179127..480e1ae 100644
++--- a/kernel/nvidia-uvm/uvm8_procfs.c
+++++ b/kernel/nvidia-uvm/uvm8_procfs.c
++@@ -58,7 +58,7 @@ bool uvm_procfs_is_debug_enabled(void)
++     return uvm_enable_debug_procfs != 0;
++ }
++ 
++-NV_STATUS uvm_procfs_init()
+++NV_STATUS uvm_procfs_init(void)
++ {
++     if (!uvm_procfs_is_enabled())
++         return NV_OK;
++@@ -74,7 +74,7 @@ NV_STATUS uvm_procfs_init()
++     return NV_OK;
++ }
++ 
++-void uvm_procfs_exit()
+++void uvm_procfs_exit(void)
++ {
++     uvm_procfs_destroy_entry(uvm_proc_dir);
++ }
++@@ -103,7 +103,7 @@ void uvm_procfs_destroy_entry(struct proc_dir_entry *entry)
++     procfs_destroy_entry_with_root(entry, entry);
++ }
++ 
++-struct proc_dir_entry *uvm_procfs_get_gpu_base_dir()
+++struct proc_dir_entry *uvm_procfs_get_gpu_base_dir(void)
++ {
++     return uvm_proc_gpus;
++ }
++diff --git a/kernel/nvidia-uvm/uvm8_tools.c b/kernel/nvidia-uvm/uvm8_tools.c
++index 1dc7c97..db722b5 100644
++--- a/kernel/nvidia-uvm/uvm8_tools.c
+++++ b/kernel/nvidia-uvm/uvm8_tools.c
++@@ -2038,7 +2038,7 @@ NV_STATUS uvm_api_tools_get_processor_uuid_table(UVM_TOOLS_GET_PROCESSOR_UUID_TA
++     return NV_OK;
++ }
++ 
++-void uvm_tools_flush_events()
+++void uvm_tools_flush_events(void)
++ {
++     tools_schedule_completed_events();
++ 
++diff --git a/kernel/nvidia-uvm/uvm8_lock.c b/kernel/nvidia-uvm/uvm8_lock.c
++index 593d9d0..fde2cbc 100644
++--- a/kernel/nvidia-uvm/uvm8_lock.c
+++++ b/kernel/nvidia-uvm/uvm8_lock.c
++@@ -309,7 +309,7 @@ bool __uvm_check_all_unlocked(uvm_thread_context_t *uvm_context)
++     return false;
++ }
++ 
++-bool __uvm_thread_check_all_unlocked()
+++bool __uvm_thread_check_all_unlocked(void)
++ {
++     return __uvm_check_all_unlocked(uvm_thread_context());
++ }
++diff --git a/kernel/nvidia-uvm/uvm8_push.c b/kernel/nvidia-uvm/uvm8_push.c
++index 732073a..3a0b0e4 100644
++--- a/kernel/nvidia-uvm/uvm8_push.c
+++++ b/kernel/nvidia-uvm/uvm8_push.c
++@@ -100,7 +100,7 @@ NV_STATUS __uvm_push_begin_acquire(uvm_channel_manager_t *manager,
++     return NV_OK;
++ }
++ 
++-bool uvm_push_info_is_tracking_descriptions()
+++bool uvm_push_info_is_tracking_descriptions(void)
++ {
++     return uvm_debug_enable_push_desc != 0;
++ }
++diff --git a/kernel/nvidia-uvm/uvm8_perf_heuristics.c b/kernel/nvidia-uvm/uvm8_perf_heuristics.c
++index 531531a..8d6cb6f 100644
++--- a/kernel/nvidia-uvm/uvm8_perf_heuristics.c
+++++ b/kernel/nvidia-uvm/uvm8_perf_heuristics.c
++@@ -26,7 +26,7 @@
++ #include "uvm8_perf_thrashing.h"
++ #include "uvm8_perf_prefetch.h"
++ 
++-NV_STATUS uvm_perf_heuristics_init()
+++NV_STATUS uvm_perf_heuristics_init(void)
++ {
++     NV_STATUS status;
++ 
++@@ -41,7 +41,7 @@ NV_STATUS uvm_perf_heuristics_init()
++     return NV_OK;
++ }
++ 
++-void uvm_perf_heuristics_exit()
+++void uvm_perf_heuristics_exit(void)
++ {
++     uvm_perf_prefetch_exit();
++     uvm_perf_thrashing_exit();
++diff --git a/kernel/nvidia-uvm/uvm8_perf_thrashing.c b/kernel/nvidia-uvm/uvm8_perf_thrashing.c
++index 0ed3b18..8fd6b21 100644
++--- a/kernel/nvidia-uvm/uvm8_perf_thrashing.c
+++++ b/kernel/nvidia-uvm/uvm8_perf_thrashing.c
++@@ -1321,7 +1321,7 @@ void uvm_perf_thrashing_unload(uvm_va_space_t *va_space)
++     uvm_perf_module_unload(&g_module_thrashing, va_space);
++ }
++ 
++-NV_STATUS uvm_perf_thrashing_init()
+++NV_STATUS uvm_perf_thrashing_init(void)
++ {
++     NV_STATUS status;
++     g_uvm_perf_thrashing_enable = uvm_perf_thrashing_enable != 0;
++@@ -1398,7 +1398,7 @@ error:
++     return status;
++ }
++ 
++-void uvm_perf_thrashing_exit()
+++void uvm_perf_thrashing_exit(void)
++ {
++     kmem_cache_destroy_safe(&g_va_block_thrashing_info_cache);
++ }
++diff --git a/kernel/nvidia-uvm/uvm8_perf_prefetch.c b/kernel/nvidia-uvm/uvm8_perf_prefetch.c
++index 4f390ee..1e19626 100644
++--- a/kernel/nvidia-uvm/uvm8_perf_prefetch.c
+++++ b/kernel/nvidia-uvm/uvm8_perf_prefetch.c
++@@ -459,7 +459,7 @@ void uvm_perf_prefetch_unload(uvm_va_space_t *va_space)
++     uvm_perf_module_unload(&g_module_prefetch, va_space);
++ }
++ 
++-NV_STATUS uvm_perf_prefetch_init()
+++NV_STATUS uvm_perf_prefetch_init(void)
++ {
++     g_uvm_perf_prefetch_enable = uvm_perf_prefetch_enable != 0;
++ 
++@@ -497,7 +497,7 @@ NV_STATUS uvm_perf_prefetch_init()
++     return NV_OK;
++ }
++ 
++-void uvm_perf_prefetch_exit()
+++void uvm_perf_prefetch_exit(void)
++ {
++     if (!g_uvm_perf_prefetch_enable)
++         return;
+diff --git a/002-Kbuild-clang-options.patch b/002-Kbuild-clang-options.patch
+new file mode 100644
+index 0000000..d9a6040
+--- /dev/null
++++ b/002-Kbuild-clang-options.patch
+@@ -0,0 +1,13 @@
++diff --git a/kernel/Kbuild b/kernel/Kbuild
++index 85aa267..0922557 100644
++--- a/kernel/Kbuild
+++++ b/kernel/Kbuild
++@@ -63,7 +63,7 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
++ 
++ EXTRA_CFLAGS += -I$(src)/common/inc
++ EXTRA_CFLAGS += -I$(src)
++-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error -fpermissive
+++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error
++ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"390.157\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE -Wno-sign-compare -Wno-format-extra-args
++ EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
++ EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
+diff --git a/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch b/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
+new file mode 100644
+index 0000000..353bd6d
+--- /dev/null
++++ b/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
+@@ -0,0 +1,94 @@
++diff -ur a/kernel/conftest.sh b/kernel/conftest.sh
++--- a/kernel/conftest.sh	2023-06-01 20:00:46.719933661 +0800
+++++ b/kernel/conftest.sh	2023-06-01 21:26:23.218584390 +0800
++@@ -255,6 +255,9 @@
++             CFLAGS="$CFLAGS -mfentry -DCC_USING_FENTRY"
++         fi
++     fi
+++
+++    # Warnings
+++    CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
++ }
++
++ CONFTEST_PREAMBLE="#include \"conftest/headers.h\"
++@@ -294,6 +297,12 @@
++     echo "$CONFTEST_PREAMBLE
++     $CODE" > conftest$$.c
++
+++    if [ -n "$PRINT" ]; then
+++        >&2 echo "$CONFTEST_PREAMBLE
+++        $CODE"
+++        >&2 echo "$CC $CFLAGS -c conftest$$.c"
+++    fi
+++
++     $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
++     rm -f conftest$$.c
++
++@@ -860,6 +869,25 @@
++                 return
++             fi
++
+++            echo "$CONFTEST_PREAMBLE
+++            #include <linux/acpi.h>
+++
+++            acpi_op_remove conftest_op_remove_routine;
+++
+++            void conftest_acpi_device_ops_remove(struct acpi_device *device) {
+++                return conftest_op_remove_routine(device);
+++            }" > conftest$$.c
+++
+++            $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
+++            rm -f conftest$$.c
+++
+++            if [ -f conftest$$.o ]; then
+++                rm -f conftest$$.o
+++                echo "#define NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT 1" | append_conftest "types"
+++                echo "#define NV_ACPI_DEVICE_OPS_REMOVE_VOID_RETURN" | append_conftest "types"
+++                return
+++            fi
+++
++             CODE="
++             #include <linux/acpi.h>
++
++@@ -4765,14 +4812,14 @@
++                 echo "However, mixing compiler versions between the kernel";
++                 echo "and kernel modules can result in subtle bugs that are";
++                 echo "difficult to diagnose.";
++-                echo "";
++-                echo "*** Failed CC version check. Bailing out! ***";
++-                echo "";
+++                # echo "";
+++                # echo "*** Failed CC version check. Bailing out! ***";
+++                # echo "";
++             elif [ "$VERBOSE" = "just_msg" ]; then
++                 echo "The kernel was built with ${kernel_cc_string}, but the" \
++                      "current compiler version is `$CC --version | head -n 1`.";
++             fi
++-            exit 1;
+++            exit 0;
++         fi
++     ;;
++
++diff -ur a/kernel/Kbuild b/kernel/Kbuild
++--- a/kernel/Kbuild	2023-06-01 20:00:46.716600311 +0800
+++++ b/kernel/Kbuild	2023-06-01 21:37:31.631878921 +0800
++@@ -68,6 +68,7 @@
++ EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
++ EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
++ EXTRA_CFLAGS += -DNV_KERNEL_INTERFACE_LAYER
+++EXTRA_CFLAGS += -Wno-error=unused-command-line-argument -Wno-error=strict-prototypes
++
++ #
++ # Detect SGI UV systems and apply system-specific optimizations.
++diff -ur a/kernel/nvidia-drm/nvidia-drm-fb.c b/kernel/nvidia-drm/nvidia-drm-fb.c
++--- a/kernel/nvidia-drm/nvidia-drm-fb.c	2023-06-01 20:00:46.723267010 +0800
+++++ b/kernel/nvidia-drm/nvidia-drm-fb.c	2023-06-01 21:55:43.793928784 +0800
++@@ -31,6 +31,7 @@
++ #include "nvidia-drm-gem.h"
++ #include "nvidia-drm-helper.h"
++ 
+++#include <drm/drm_modeset_helper.h>
++ #include <drm/drm_crtc_helper.h>
++ 
++ static void nv_drm_framebuffer_destroy(struct drm_framebuffer *fb)
++
+diff --git a/kernel-6.12.patch b/kernel-6.12.patch
+new file mode 100644
+index 0000000..98e0ffe
+--- /dev/null
++++ b/kernel-6.12.patch
+@@ -0,0 +1,111 @@
++From 839b964bd5be20275a4d1add020e68e407380adb Mon Sep 17 00:00:00 2001
++From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
++Date: Sat, 17 Aug 2024 14:26:04 +0000
++Subject: [PATCH] Tentative fix for NVIDIA 470.256.02 driver for Linux 6.12-rc1
++
++Note that the fix requires enabling DRM kernel mode setting
++(add the `nvidia-drm.modeset=1` parameter to the kernel command line).
++
++(Thanks xtexChooser for the memory management fixes!)
++---
++ nvidia-drm/nvidia-drm-drv.c | 47 +++++++++++++++++++++++++++++++++++++
++ 1 file changed, 47 insertions(+)
++
++diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
++index f350134..d6233a5 100644
++--- a/kernel/nvidia-drm/nvidia-drm-drv.c
+++++ b/kernel/nvidia-drm/nvidia-drm-drv.c
++@@ -84,6 +84,11 @@
++ #include <drm/drm_atomic_helper.h>
++ #endif
++ 
+++#include <linux/version.h>
+++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
+++#include <drm/drm_client.h>
+++#endif
+++
++ static struct nv_drm_device *dev_list = NULL;
++ 
++ #if defined(NV_DRM_ATOMIC_MODESET_AVAILABLE)
++@@ -168,7 +173,12 @@ static const struct drm_mode_config_funcs nv_mode_config_funcs = {
++     .atomic_check  = nv_drm_atomic_check,
++     .atomic_commit = nv_drm_atomic_commit,
++ 
+++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 12, 0)
+++    // Rel. commit. "drm: Remove struct drm_mode_config_funcs.output_poll_changed" (Thomas Zimmermann, 12 Aug 2024)
+++    // Replace this callback with a DRM client's hotplug callback.
+++    // This is required for e.g. /sys/class/drm/card*/modes to work.
++     .output_poll_changed = nv_drm_output_poll_changed,
+++#endif
++ };
++ 
++ static void nv_drm_event_callback(const struct NvKmsKapiEvent *event)
++@@ -739,6 +749,10 @@ static const struct file_operations nv_drm_fops = {
++     .read           = drm_read,
++ 
++     .llseek         = noop_llseek,
+++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
+++    // Rel. commit. "fs: move FMODE_UNSIGNED_OFFSET to fop_flags" (Christian Brauner, 9 Aug 2024)
+++    .fop_flags      = FOP_UNSIGNED_OFFSET,
+++#endif
++ };
++ 
++ static const struct drm_ioctl_desc nv_drm_ioctls[] = {
++@@ -906,7 +920,18 @@ static void nv_drm_update_drm_driver_features(void)
++ #endif /* NV_DRM_ATOMIC_MODESET_AVAILABLE */
++ }
++ 
+++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
+++static int hotplug_helper_client_hotplug(struct drm_client_dev *client)
+++{
+++    nv_drm_output_poll_changed(client->dev);
+++    return 0;
+++}
++ 
+++static const struct drm_client_funcs nv_hotplug_helper_client_funcs = {
+++    .owner      = THIS_MODULE,
+++    .hotplug    = hotplug_helper_client_hotplug,
+++};
+++#endif
++ 
++ /*
++  * Helper function for allocate/register DRM device for given NVIDIA GPU ID.
++@@ -962,6 +987,20 @@ static void nv_drm_register_drm_device(const nv_gpu_info_t *gpu_info)
++         goto failed_drm_register;
++     }
++ 
+++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
+++    /* Register a DRM client for receiving hotplug events */
+++    struct drm_client_dev *client = kzalloc(sizeof(*client), GFP_KERNEL);
+++    if (client == NULL || drm_client_init(dev, client,
+++        "nv-hotplug-helper", &nv_hotplug_helper_client_funcs)) {
+++        printk(KERN_WARNING "Failed to initialize the nv-hotplug-helper DRM client"
+++            " (ensure DRM kernel mode setting is enabled via nvidia-drm.modeset=1).\n");
+++        goto failed_drm_client_init;
+++    }
+++
+++    drm_client_register(client);
+++    pr_info("Registered the nv-hotplug-helper DRM client.\n");
+++#endif
+++
++     /* Add NVIDIA-DRM device into list */
++ 
++     nv_dev->next = dev_list;
++@@ -969,6 +1008,14 @@ static void nv_drm_register_drm_device(const nv_gpu_info_t *gpu_info)
++ 
++     return; /* Success */
++ 
+++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
+++failed_drm_client_init:
+++
+++    kfree(client);
+++    drm_dev_unregister(dev);
+++
+++#endif
+++
++ failed_drm_register:
++ 
++     nv_drm_dev_free(dev);
++-- 
++2.47.0
++
+diff --git a/PKGBUILD b/PKGBUILD
+index 98de7dd..e541182 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -33,7 +33,11 @@ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+         'kernel-6.6.patch'
+         'kernel-6.8.patch'
+         'kernel-6.10.patch'
+-        'gcc14.patch')
++        'kernel-6.12.patch'
++        'gcc14.patch'
++        '001-fix-function-declaration.patch'
++        '002-Kbuild-clang-options.patch'
++        'nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch')
+ sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
+             '6c5f5b11dbb43f40f4e2c6a2b5417f44b50cf29d16bbd091420b7e737acb6ccd'
+             'a94d34cda96d443d02d992ee7962ce7c9949134b899e366fc3dafaf48bc19ebe'
+@@ -43,7 +47,11 @@ sha256sums=('162317a49aa5a521eb888ec12119bfe5a45cec4e8653efc575a2d04fb05bf581'
+             '11917658c2f4bb1d8c1a4603b9e3844cc9be10171fb6df0e9b482c07a3a3b6aa'
+             '4add71eff4d4c7970a518faa4c6fbf83879c6237b082a37eb6427de4f1b95bfe'
+             'efc5e88c082d405d53c0a5b22891cd295620ebf02ef6b488ab752df772d5b4ba'
+-            'af840e7e03aa9cf311c0d1e32469596e5e728a0206cbe06f99bbc22e3de25a12')
++            'a2d9eea61edfe93f041e5fc09f493cbf770e0404b286617e2431443310dc1e3c'
++            'af840e7e03aa9cf311c0d1e32469596e5e728a0206cbe06f99bbc22e3de25a12'
++            'e480e7bd77d7e0e3d5b48282bd2d5ce387564c61c04cfd2287ceb591d191f3cc'
++            'da671ce5c360ecb41da98976c0e6fd3879cd459ca0933294b831ccccdb84d813'
++            'b084524a6e90e9ad712d1b6b4048811d494a6a2a8670d0e99357f8d8840143d8')
+ 
+ _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
+ 
