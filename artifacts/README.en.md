@@ -47,7 +47,11 @@ It is not supported, so please disable Secure Boot in BIOS settings.
 [Ubuntu]: https://ubuntu.com/download/desktop
 [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
-2. If the installer screen disappears during installation  
+2. If the installer crashes during manual partitioning.  
+try selecting "Coexistence with other OS" or "Replace partition" before choosing manual partitioning. By selecting "Coexistence with other OS" or "Replace partition" first, you can complete the collection of partition information.
+After that, selecting manual partitioning will make it easier to avoid crashes.
+
+3. If the installer screen disappears during installation  
 In many cases, it can be avoided by setting the swap partition manually.  
 If the swap partition is /dev/sdX, try to manually enable swap with the following command.  
 ```bash
@@ -65,7 +69,7 @@ pidof -xw Xwayland calamares_polkit|xargs -n1 sudo choom -n -1000 -p
 pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
-3. When Japanese input is not possible in some apps  
+4. When Japanese input is not possible in some apps  
 If old settings remain and something has been set in `gtk-im-module`, there may be cases where you cannot input Japanese in some apps.
 ```bash
 gsettings get org.gnome.desktop.interface gtk-im-module
@@ -75,7 +79,7 @@ If this command shows `gtk-im-context-simple` or similar, remove the setting wit
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
-4. kernel differences from the official Manjaro kernel
+5. kernel differences from the official Manjaro kernel
 The kererl-6.6 series was used in the official Manjaro iso. The latest Manjaro seems to have moved to the kernel-6.10 series.- 
 The ISO distributed here uses a new kernel as much as possible. Currently, it is kernel-6.12 series.
 We use clang instead of gcc to build the kernel and kernel modules.  
@@ -85,7 +89,7 @@ If you want to use the official Manjaro kernel, install it by specifying the rep
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 ```sh
-sudo pacman -S core/linux611 core/linux611-headers
+sudo pacman -S core/linux612 core/linux612-headers
 ```
 
 ##### Addition: 2023-02-11

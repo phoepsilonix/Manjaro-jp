@@ -43,13 +43,16 @@ cd ventoy-1.0.99
 [Ubuntu]: https://ubuntu.com/download/desktop
 [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
-2. 即時環境無法安裝snap應用程式
+2. 即時環境無法安裝snap應用程式  
 安裝後就會啟用,但若真係一定想試,也可以手動啟用。
 ```bash
 sudo systemctl start snapd.service
 ```
 
-3. 如果安裝的時陣畫面消失
+3. 如果安裝程式在手動分割區時崩潰  
+請嘗試在選擇手動分割區之前，選擇「與其他作業系統共存」或「替換分割區」。通過先選擇「與其他作業系統共存」或「替換分割區」，您可以完成分割區資訊的收集。之後，選擇手動分割區將更容易避免崩潰。
+
+4. 如果安裝的時陣畫面消失  
 可以手動設定swap分區來解決。
 如果swap分區是/dev/sdX,可以用下面的指令手動啟用swap:
 ```bash
@@ -65,7 +68,7 @@ sudo swapon /dev/sdX
 pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 ```
 
-4. 部分應用程式無法輸入日文
+5. 部分應用程式無法輸入日文  
 如果有古老的設定猶原存在,而且 `gtk-im-module` 有設定,會導致部分應用程式無法輸入日文。
 ```bash
 gsettings get org.gnome.desktop.interface gtk-im-module
@@ -75,7 +78,7 @@ gsettings get org.gnome.desktop.interface gtk-im-module
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
-5. kernel版本比官方Manjaro新
+6. kernel版本比官方Manjaro新  
 kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎已經轉移到kernel-6.10系列了。
 這裡分發的iso儘可能採用新的kernel。目前是kernel-6.12系列。
 kernel同kernel模組的編譯是用clang,而不是gcc。
@@ -86,7 +89,7 @@ kernel同kernel模組的編譯是用clang,而不是gcc。
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 ```sh
-sudo pacman -S core/linux611 core/linux611-headers
+sudo pacman -S core/linux612 core/linux612-headers
 ```
 
 ##### 附加說明： 2023-02-11  

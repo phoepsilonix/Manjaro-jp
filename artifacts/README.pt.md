@@ -45,7 +45,11 @@ Não suportado, por isso, por favor, desactivar o Secure Boot nas definições d
 [Ubuntu]: https://ubuntu.com/download/desktop
 [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
-2. Se o ecrã do instalador desaparecer durante a instalação  
+2. Se o instalador travar durante a partição manual.  
+tente selecionar "Coexistência com outros sistemas operacionais" ou "Substituir partição" antes de escolher a partição manual. Ao selecionar "Coexistência com outros sistemas operacionais" ou "Substituir partição" primeiro, você pode completar a coleta das informações da partição.
+Depois disso, selecionar a partição manual facilitará a evitação de travamentos.
+
+3. Se o ecrã do instalador desaparecer durante a instalação  
 É muitas vezes possível evitar isto, definindo manualmente a partição swap.  
 Se a partição swap for /dev/sdX, tente activar a partição swap manualmente com o seguinte comando.
 ```bash
@@ -63,7 +67,7 @@ pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
-3. Quando não é possível introduzir a língua japonesa em algumas aplicações  
+4. Quando não é possível introduzir a língua japonesa em algumas aplicações  
 Algumas aplicações podem não ser capazes de introduzir o japonês se a configuração antiga ainda estiver em vigor e algo tiver sido definido no `gtk-im-module`.
 ```bash
 gsettings get org.gnome.desktop.interface gtk-im-module
@@ -73,7 +77,7 @@ Se este comando mostrar `gtk-im-context-simple` ou similar, remova a configuraç
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
-4. diferenças em relação ao kernel oficial do Manjaro
+5. diferenças em relação ao kernel oficial do Manjaro
 A série kererl-6.6 foi usada no iso oficial Manjaro. O último Manjaro parece ter mudado para a série kernel-6.10.  
 O ISO distribuído aqui usa um novo kernel tanto quanto possível. Atualmente, é a série kernel-6.12.  
 O kernel e os módulos do kernel são construídos usando clang em vez de gcc.  

@@ -46,7 +46,11 @@ Non pris en charge, veuillez donc désactiver Secure Boot dans les paramètres d
 [Ubuntu]: https://ubuntu.com/download/desktop
 [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
-2. si l'écran d'installation disparaît pendant l'installation  
+2. Si l'installateur plante pendant la partition manuelle.
+essayez de sélectionner « Coexistence avec d'autres systèmes d'exploitation » ou « Remplacer la partition » avant de choisir la partition manuelle. En sélectionnant d'abord « Coexistence avec d'autres systèmes d'exploitation » ou « Remplacer la partition », vous pouvez terminer la collecte des informations de partition.
+Après cela, sélectionner la partition manuelle facilitera l'évitement des plantages.
+
+3. si l'écran d'installation disparaît pendant l'installation  
 Ce problème peut souvent être évité en activant manuellement la partition swap.  
 Si la partition swap est /dev/sdX, essayez d'activer le swap manuellement avec la commande suivante.
 
@@ -64,7 +68,7 @@ pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
-3. Lorsque la saisie du japonais n'est pas possible dans certaines applications  
+4. Lorsque la saisie du japonais n'est pas possible dans certaines applications  
 Si d'anciens réglages subsistent et que quelque chose a été défini dans `gtk-im-module`, il peut y avoir des cas où vous ne pouvez pas saisir le japonais dans certaines applications.
 ```bash
 gsettings get org.gnome.desktop.interface gtk-im-module
@@ -74,7 +78,7 @@ Si cette commande affiche `gtk-im-context-simple` ou similaire, supprimez le par
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
-4. différences entre le noyau et le noyau officiel de Manjaro
+5. différences entre le noyau et le noyau officiel de Manjaro
 La série kererl-6.6 a été utilisée dans l’iso officiel de Manjaro. Le dernier Manjaro semble être passé à la série kernel-6.10.  
 L’ISO distribué ici utilise autant que possible un nouveau noyau. Actuellement, il s’agit de la série kernel-6.12.  
 Nous utilisons clang au lieu de gcc pour compiler le noyau et les modules du noyau.  
@@ -84,7 +88,7 @@ Si vous souhaitez utiliser le noyau officiel de Manjaro, installez-le en spécif
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 ```sh
-sudo pacman -S core/linux611 core/linux611-headers
+sudo pacman -S core/linux612 core/linux612-headers
 ```
 
 ##### Ajouté : 2023-02-11  

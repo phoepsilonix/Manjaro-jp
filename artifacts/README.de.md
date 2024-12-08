@@ -45,7 +45,10 @@ Nicht unterstützt, daher bitte Secure Boot in den BIOS-Einstellungen deaktivier
 [Ubuntu]: https://ubuntu.com/download/desktop
 [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
-2. Wenn der Bildschirm des Installationsprogramms während der Installation verschwindet  
+2. Wenn der Installer während der manuellen Partitionierung abstürzt.  
+versuchen Sie, zuerst „Koexistenz mit anderen Betriebssystemen“ oder „Partition ersetzen“ auszuwählen, bevor Sie die manuelle Partitionierung wählen. Indem Sie zuerst „Koexistenz mit anderen Betriebssystemen“ oder „Partition ersetzen“ auswählen, können Sie die Sammlung der Partitionierungsinformationen abschließen. Danach wird es einfacher, Abstürze zu vermeiden, wenn Sie die manuelle Partitionierung auswählen.
+
+3. Wenn der Bildschirm des Installationsprogramms während der Installation verschwindet  
 Oft lässt sich dies vermeiden, indem man die Swap-Partition manuell einstellt.  
 Wenn die Swap-Partition /dev/sdX ist, versuchen Sie, die Swap-Partition manuell mit dem folgenden Befehl zu aktivieren.
 ```bash
@@ -63,7 +66,7 @@ pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
 pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
 ```
 
-3. Wenn die japanische Eingabe in einigen Anwendungen nicht möglich ist  
+4. Wenn die japanische Eingabe in einigen Anwendungen nicht möglich ist  
 Wenn alte Einstellungen beibehalten werden und etwas im `gtk-im-module` eingestellt wurde, kann es vorkommen, dass die japanische Eingabe in einigen Anwendungen nicht möglich ist.
 ```bash
 gsettings get org.gnome.desktop.interface gtk-im-module
@@ -73,7 +76,7 @@ Wenn dieser Befehl `gtk-im-context-simple` oder ähnliches anzeigt, entfernen Si
 gsettings set org.gnome.desktop.interface gtk-im-module ''
 ```
 
-4. Kernel-Unterschiede zum offiziellen Manjaro-Kernel
+5. Kernel-Unterschiede zum offiziellen Manjaro-Kernel
 Die Kererl-6.6-Serie wurde in der offiziellen Manjaro-ISO verwendet. Das neueste Manjaro scheint auf die Kernel-6.10-Serie umgestiegen zu sein.  
 Die hier verteilte ISO verwendet so weit wie möglich einen neuen Kernel. Derzeit ist es die Kernel-6.12-Serie.  
 Wir verwenden clang anstelle von gcc, um den Kernel und die Kernelmodule zu erstellen.  
@@ -83,7 +86,7 @@ Wenn Sie den offiziellen Manjaro-Kernel verwenden möchten, installieren Sie ihn
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 ```sh
-sudo pacman -S core/linux611 core/linux611-headers
+sudo pacman -S core/linux612 core/linux612-headers
 ```
 
 ##### Hinzugefügt: 2023-02-11  
