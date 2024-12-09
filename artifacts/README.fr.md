@@ -79,7 +79,7 @@ Après cela, sélectionner la partition manuelle facilitera l'évitement des pla
     ```
 
 5. différences entre le noyau et le noyau officiel de Manjaro
-    La série kererl-6.6 a été utilisée dans l’iso officiel de Manjaro. Le dernier Manjaro semble être passé à la série kernel-6.10.  
+    La série kererl-6.6 a été utilisée dans l’iso officiel de Manjaro. Le dernier Manjaro semble être passé à la série kernel-6.12.  
     L’ISO distribué ici utilise autant que possible un nouveau noyau. Actuellement, il s’agit de la série kernel-6.12.  
     Nous utilisons clang au lieu de gcc pour compiler le noyau et les modules du noyau.  
     Nous activons également le support rust du noyau.  

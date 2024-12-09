@@ -108,7 +108,7 @@ sudo pacman-static -Syyu
     ```
 
 6. Manjaro公式とのkernelの違い  
-    kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.10系に移行したようです。  
+    kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.12系に移行したようです。  
     ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.12系です。  
     kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
     またkernelのrust対応も有効にしています。  

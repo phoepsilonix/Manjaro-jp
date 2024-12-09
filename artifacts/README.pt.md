@@ -78,7 +78,7 @@ Depois disso, selecionar a partição manual facilitará a evitação de travame
     ```
 
 5. diferenças em relação ao kernel oficial do Manjaro
-    A série kererl-6.6 foi usada no iso oficial Manjaro. O último Manjaro parece ter mudado para a série kernel-6.10.  
+    A série kererl-6.6 foi usada no iso oficial Manjaro. O último Manjaro parece ter mudado para a série kernel-6.12.  
     O ISO distribuído aqui usa um novo kernel tanto quanto possível. Atualmente, é a série kernel-6.12.  
     O kernel e os módulos do kernel são construídos usando clang em vez de gcc.  
     Nós também habilitamos o suporte a Rust no kernel.  

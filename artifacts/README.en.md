@@ -80,7 +80,7 @@ After that, selecting manual partitioning will make it easier to avoid crashes.
     ```
 
 5. kernel differences from the official Manjaro kernel
-    The kererl-6.6 series was used in the official Manjaro iso. The latest Manjaro seems to have moved to the kernel-6.10 series.- 
+    The kererl-6.6 series was used in the official Manjaro iso. The latest Manjaro seems to have moved to the kernel-6.12 series.- 
     The ISO distributed here uses a new kernel as much as possible. Currently, it is kernel-6.12 series.
     We use clang instead of gcc to build the kernel and kernel modules.  
     We also enable the kernel's rust support.  

@@ -77,7 +77,7 @@ versuchen Sie, zuerst „Koexistenz mit anderen Betriebssystemen“ oder „Part
     ```
 
 5. Kernel-Unterschiede zum offiziellen Manjaro-Kernel
-    Die Kererl-6.6-Serie wurde in der offiziellen Manjaro-ISO verwendet. Das neueste Manjaro scheint auf die Kernel-6.10-Serie umgestiegen zu sein.  
+    Die Kererl-6.6-Serie wurde in der offiziellen Manjaro-ISO verwendet. Das neueste Manjaro scheint auf die Kernel-6.12-Serie umgestiegen zu sein.  
     Die hier verteilte ISO verwendet so weit wie möglich einen neuen Kernel. Derzeit ist es die Kernel-6.12-Serie.  
     Wir verwenden clang anstelle von gcc, um den Kernel und die Kernelmodule zu erstellen.  
     Wir aktivieren auch die Rust-Unterstützung des Kernels.  

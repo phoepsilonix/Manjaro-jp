@@ -79,7 +79,7 @@ cd ventoy-1.0.99
     ```
 
 6. kernel版本比官方Manjaro新  
-    kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎已經轉移到kernel-6.10系列了。
+    kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎已經轉移到kernel-6.12系列了。
     這裡分發的iso儘可能採用新的kernel。目前是kernel-6.12系列。
     kernel同kernel模組的編譯是用clang,而不是gcc。
     另外kernel也有支援rust。
