@@ -50,8 +50,8 @@ tente selecionar "Coexistência com outros sistemas operacionais" ou "Substituir
 Depois disso, selecionar a partição manual facilitará a evitação de travamentos.
 
 3. Se o ecrã do instalador desaparecer durante a instalação  
-É muitas vezes possível evitar isto, definindo manualmente a partição swap.  
-Se a partição swap for /dev/sdX, tente activar a partição swap manualmente com o seguinte comando.
+    É muitas vezes possível evitar isto, definindo manualmente a partição swap.  
+    Se a partição swap for /dev/sdX, tente activar a partição swap manualmente com o seguinte comando.
     ```bash
     sudo mkswap /dev/sdX
     sudo swapon /dev/sdX
@@ -68,7 +68,7 @@ Se a partição swap for /dev/sdX, tente activar a partição swap manualmente c
     ```
 
 4. Quando não é possível introduzir a língua japonesa em algumas aplicações  
-Algumas aplicações podem não ser capazes de introduzir o japonês se a configuração antiga ainda estiver em vigor e algo tiver sido definido no `gtk-im-module`.
+    Algumas aplicações podem não ser capazes de introduzir o japonês se a configuração antiga ainda estiver em vigor e algo tiver sido definido no `gtk-im-module`.
     ```bash
     gsettings get org.gnome.desktop.interface gtk-im-module
     ```
@@ -78,10 +78,10 @@ Algumas aplicações podem não ser capazes de introduzir o japonês se a config
     ```
 
 5. diferenças em relação ao kernel oficial do Manjaro
-A série kererl-6.6 foi usada no iso oficial Manjaro. O último Manjaro parece ter mudado para a série kernel-6.10.  
-O ISO distribuído aqui usa um novo kernel tanto quanto possível. Atualmente, é a série kernel-6.12.  
-O kernel e os módulos do kernel são construídos usando clang em vez de gcc.  
-Nós também habilitamos o suporte a Rust no kernel.  
+    A série kererl-6.6 foi usada no iso oficial Manjaro. O último Manjaro parece ter mudado para a série kernel-6.10.  
+    O ISO distribuído aqui usa um novo kernel tanto quanto possível. Atualmente, é a série kernel-6.12.  
+    O kernel e os módulos do kernel são construídos usando clang em vez de gcc.  
+    Nós também habilitamos o suporte a Rust no kernel.  
 Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repositório 'core', como no seguinte comando.
     ```sh
     sudo pacman -S core/linux66 core/linux66-headers

@@ -49,8 +49,8 @@ Nicht unterstützt, daher bitte Secure Boot in den BIOS-Einstellungen deaktivier
 versuchen Sie, zuerst „Koexistenz mit anderen Betriebssystemen“ oder „Partition ersetzen“ auszuwählen, bevor Sie die manuelle Partitionierung wählen. Indem Sie zuerst „Koexistenz mit anderen Betriebssystemen“ oder „Partition ersetzen“ auswählen, können Sie die Sammlung der Partitionierungsinformationen abschließen. Danach wird es einfacher, Abstürze zu vermeiden, wenn Sie die manuelle Partitionierung auswählen.
 
 3. Wenn der Bildschirm des Installationsprogramms während der Installation verschwindet  
-Oft lässt sich dies vermeiden, indem man die Swap-Partition manuell einstellt.  
-Wenn die Swap-Partition /dev/sdX ist, versuchen Sie, die Swap-Partition manuell mit dem folgenden Befehl zu aktivieren.
+    Oft lässt sich dies vermeiden, indem man die Swap-Partition manuell einstellt.  
+    Wenn die Swap-Partition /dev/sdX ist, versuchen Sie, die Swap-Partition manuell mit dem folgenden Befehl zu aktivieren.
     ```bash
     sudo mkswap /dev/sdX
     sudo swapon /dev/sdX
@@ -67,7 +67,7 @@ Wenn die Swap-Partition /dev/sdX ist, versuchen Sie, die Swap-Partition manuell 
     ```
 
 4. Wenn die japanische Eingabe in einigen Anwendungen nicht möglich ist  
-Wenn alte Einstellungen beibehalten werden und etwas im `gtk-im-module` eingestellt wurde, kann es vorkommen, dass die japanische Eingabe in einigen Anwendungen nicht möglich ist.
+    Wenn alte Einstellungen beibehalten werden und etwas im `gtk-im-module` eingestellt wurde, kann es vorkommen, dass die japanische Eingabe in einigen Anwendungen nicht möglich ist.
     ```bash
     gsettings get org.gnome.desktop.interface gtk-im-module
     ```
@@ -77,11 +77,11 @@ Wenn alte Einstellungen beibehalten werden und etwas im `gtk-im-module` eingeste
     ```
 
 5. Kernel-Unterschiede zum offiziellen Manjaro-Kernel
-Die Kererl-6.6-Serie wurde in der offiziellen Manjaro-ISO verwendet. Das neueste Manjaro scheint auf die Kernel-6.10-Serie umgestiegen zu sein.  
-Die hier verteilte ISO verwendet so weit wie möglich einen neuen Kernel. Derzeit ist es die Kernel-6.12-Serie.  
-Wir verwenden clang anstelle von gcc, um den Kernel und die Kernelmodule zu erstellen.  
-Wir aktivieren auch die Rust-Unterstützung des Kernels.  
-Wenn Sie den offiziellen Manjaro-Kernel verwenden möchten, installieren Sie ihn, indem Sie das Repository 'core' wie in dem folgenden Befehl angeben.
+    Die Kererl-6.6-Serie wurde in der offiziellen Manjaro-ISO verwendet. Das neueste Manjaro scheint auf die Kernel-6.10-Serie umgestiegen zu sein.  
+    Die hier verteilte ISO verwendet so weit wie möglich einen neuen Kernel. Derzeit ist es die Kernel-6.12-Serie.  
+    Wir verwenden clang anstelle von gcc, um den Kernel und die Kernelmodule zu erstellen.  
+    Wir aktivieren auch die Rust-Unterstützung des Kernels.  
+    Wenn Sie den offiziellen Manjaro-Kernel verwenden möchten, installieren Sie ihn, indem Sie das Repository 'core' wie in dem folgenden Befehl angeben.
     ```sh
     sudo pacman -S core/linux66 core/linux66-headers
     ```

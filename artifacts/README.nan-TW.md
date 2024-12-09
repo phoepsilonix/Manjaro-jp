@@ -44,7 +44,7 @@ cd ventoy-1.0.99
 [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
 2. 即時環境無法安裝snap應用程式  
-安裝後就會啟用,但若真係一定想試,也可以手動啟用。
+    安裝後就會啟用,但若真係一定想試,也可以手動啟用。
     ```bash
     sudo systemctl start snapd.service
     ```
@@ -53,8 +53,8 @@ cd ventoy-1.0.99
 請嘗試在選擇手動分割區之前，選擇「與其他作業系統共存」或「替換分割區」。通過先選擇「與其他作業系統共存」或「替換分割區」，您可以完成分割區資訊的收集。之後，選擇手動分割區將更容易避免崩潰。
 
 4. 如果安裝的時陣畫面消失  
-可以手動設定swap分區來解決。
-如果swap分區是/dev/sdX,可以用下面的指令手動啟用swap:
+    可以手動設定swap分區來解決。
+    如果swap分區是/dev/sdX,可以用下面的指令手動啟用swap:
     ```bash
     sudo mkswap /dev/sdX
     sudo swapon /dev/sdX
@@ -69,7 +69,7 @@ cd ventoy-1.0.99
     ```
 
 5. 部分應用程式無法輸入日文  
-如果有古老的設定猶原存在,而且 `gtk-im-module` 有設定,會導致部分應用程式無法輸入日文。
+    如果有古老的設定猶原存在,而且 `gtk-im-module` 有設定,會導致部分應用程式無法輸入日文。
     ```bash
     gsettings get org.gnome.desktop.interface gtk-im-module
     ```
@@ -79,10 +79,10 @@ cd ventoy-1.0.99
     ```
 
 6. kernel版本比官方Manjaro新  
-kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎已經轉移到kernel-6.10系列了。
-這裡分發的iso儘可能採用新的kernel。目前是kernel-6.12系列。
-kernel同kernel模組的編譯是用clang,而不是gcc。
-另外kernel也有支援rust。
+    kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎已經轉移到kernel-6.10系列了。
+    這裡分發的iso儘可能採用新的kernel。目前是kernel-6.12系列。
+    kernel同kernel模組的編譯是用clang,而不是gcc。
+    另外kernel也有支援rust。
 
     如果需要Manjaro官方的kernel,可以指定core repository來裝:
     ```sh

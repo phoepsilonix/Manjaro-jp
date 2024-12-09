@@ -52,8 +52,8 @@ try selecting "Coexistence with other OS" or "Replace partition" before choosing
 After that, selecting manual partitioning will make it easier to avoid crashes.
 
 3. If the installer screen disappears during installation  
-In many cases, it can be avoided by setting the swap partition manually.  
-If the swap partition is /dev/sdX, try to manually enable swap with the following command.  
+    In many cases, it can be avoided by setting the swap partition manually.  
+    If the swap partition is /dev/sdX, try to manually enable swap with the following command.  
     ```bash
     sudo mkswap /dev/sdX
     sudo swapon /dev/sdX
@@ -70,7 +70,7 @@ If the swap partition is /dev/sdX, try to manually enable swap with the followin
     ```
 
 4. When Japanese input is not possible in some apps  
-If old settings remain and something has been set in `gtk-im-module`, there may be cases where you cannot input Japanese in some apps.
+    If old settings remain and something has been set in `gtk-im-module`, there may be cases where you cannot input Japanese in some apps.
     ```bash
     gsettings get org.gnome.desktop.interface gtk-im-module
     ```
@@ -80,11 +80,11 @@ If old settings remain and something has been set in `gtk-im-module`, there may 
     ```
 
 5. kernel differences from the official Manjaro kernel
-The kererl-6.6 series was used in the official Manjaro iso. The latest Manjaro seems to have moved to the kernel-6.10 series.- 
-The ISO distributed here uses a new kernel as much as possible. Currently, it is kernel-6.12 series.
-We use clang instead of gcc to build the kernel and kernel modules.  
-We also enable the kernel's rust support.  
-If you want to use the official Manjaro kernel, install it by specifying the repository 'core' as in the following command.
+    The kererl-6.6 series was used in the official Manjaro iso. The latest Manjaro seems to have moved to the kernel-6.10 series.- 
+    The ISO distributed here uses a new kernel as much as possible. Currently, it is kernel-6.12 series.
+    We use clang instead of gcc to build the kernel and kernel modules.  
+    We also enable the kernel's rust support.  
+    If you want to use the official Manjaro kernel, install it by specifying the repository 'core' as in the following command.
     ```sh
     sudo pacman -S core/linux66 core/linux66-headers
     ```

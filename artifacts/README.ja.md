@@ -71,7 +71,7 @@ sudo pacman-static -Syyu
 [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
 2. ISOから起動したライブ環境ではsnapアプリケーションのインストールは停止されています。  
-インストール後の環境では有効になりますが、どうしても試したい場合には手動で有効化できます。
+    インストール後の環境では有効になりますが、どうしても試したい場合には手動で有効化できます。
     ```bash
     sudo systemctl start snapd.service
     ```
@@ -80,8 +80,8 @@ sudo pacman-static -Syyu
 パーティションの手動設定を選択するよりも前に、いったん他OSとの「共存」または「パーティションの置換」を選んでみてください。先に「他OSとの共存」「パーティションの置換」を選ぶことによって、パーティション情報の収集を終了させておきます。その後、パーティションの手動設定を選ぶことで、異常終了を回避しやすくなります。
 
 4. インストール途中でインストーラー画面が消える場合には  
-swapパーティションを手動で設定することで、回避できる場合が多いです。  
-swapパーティションを/dev/sdXとした場合、次のようなコマンドで手動でswapを有効にしてみてください。
+    swapパーティションを手動で設定することで、回避できる場合が多いです。  
+    swapパーティションを/dev/sdXとした場合、次のようなコマンドで手動でswapを有効にしてみてください。
     ```bash
     sudo mkswap /dev/sdX
     sudo swapon /dev/sdX
@@ -98,7 +98,7 @@ swapパーティションを/dev/sdXとした場合、次のようなコマン�
     ```
 
 5. 一部アプリで日本語入力ができない場合  
-古い設定が残っていて、`gtk-im-module`になにか設定されている場合、一部アプリで入力できないケースがあるようです。
+    古い設定が残っていて、`gtk-im-module`になにか設定されている場合、一部アプリで入力できないケースがあるようです。
     ```bash
     gsettings get org.gnome.desktop.interface gtk-im-module
     ```
@@ -108,11 +108,11 @@ swapパーティションを/dev/sdXとした場合、次のようなコマン�
     ```
 
 6. Manjaro公式とのkernelの違い  
-kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.10系に移行したようです。  
-ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.12系です。  
-kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
-またkernelのrust対応も有効にしています。  
-Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
+    kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.10系に移行したようです。  
+    ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.12系です。  
+    kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
+    またkernelのrust対応も有効にしています。  
+    Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
     ```sh
     sudo pacman -S core/linux66 core/linux66-headers
     ```
