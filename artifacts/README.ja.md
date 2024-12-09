@@ -116,7 +116,7 @@ Manjaro公式のkernelを利用したい場合には、下記コマンドのよ�
 sudo pacman -S core/linux66 core/linux66-headers
 ```
 ```sh
-sudo pacman -S core/linux611 core/linux611-headers
+sudo pacman -S core/linux612 core/linux612-headers
 ```
 
 ----
