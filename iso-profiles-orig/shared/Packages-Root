@@ -28,6 +28,8 @@ intel-ucode
 jfsutils
 manjaro-jp/KERNEL
 less
+wireless-regdb
+linux-firmware
 logrotate
 lvm2
 man-db

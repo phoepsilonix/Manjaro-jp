@@ -739,10 +739,14 @@ kernel-6.11.7
 ##### 20241118
 kernel-6.12  
 zfs module is not supported
-</details>
 
 ##### 20241123
 kernel-6.12.1  
+zfs module is not supported
+</details>
+
+##### 20241206
+kernel-6.12.3  
 zfs module is not supported
 
 
