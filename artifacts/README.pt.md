@@ -52,30 +52,30 @@ Depois disso, selecionar a partição manual facilitará a evitação de travame
 3. Se o ecrã do instalador desaparecer durante a instalação  
 É muitas vezes possível evitar isto, definindo manualmente a partição swap.  
 Se a partição swap for /dev/sdX, tente activar a partição swap manualmente com o seguinte comando.
-```bash
-sudo mkswap /dev/sdX
-sudo swapon /dev/sdX
-```
-```bash
-# Se a swap não estiver activada, utilizar lsblk para examinar o dispositivo e activar a partição swap.
-[[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
-```
+    ```bash
+    sudo mkswap /dev/sdX
+    sudo swapon /dev/sdX
+    ```
+    ```bash
+    # Se a swap não estiver activada, utilizar lsblk para examinar o dispositivo e activar a partição swap.
+    [[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
+    ```
 
-O seguinte comando deve também ser utilizado para especificar que o assassino OOM (terminação forçada) não é aplicável.
-```bash
-pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
-pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
-```
+    O seguinte comando deve também ser utilizado para especificar que o assassino OOM (terminação forçada) não é aplicável.
+    ```bash
+    pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
+    pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
+    ```
 
 4. Quando não é possível introduzir a língua japonesa em algumas aplicações  
 Algumas aplicações podem não ser capazes de introduzir o japonês se a configuração antiga ainda estiver em vigor e algo tiver sido definido no `gtk-im-module`.
-```bash
-gsettings get org.gnome.desktop.interface gtk-im-module
-```
-Se este comando mostrar `gtk-im-context-simple` ou similar, remova a configuração com o seguinte comando.
-```bash
-gsettings set org.gnome.desktop.interface gtk-im-module ''
-```
+    ```bash
+    gsettings get org.gnome.desktop.interface gtk-im-module
+    ```
+    Se este comando mostrar `gtk-im-context-simple` ou similar, remova a configuração com o seguinte comando.
+    ```bash
+    gsettings set org.gnome.desktop.interface gtk-im-module ''
+    ```
 
 5. diferenças em relação ao kernel oficial do Manjaro
 A série kererl-6.6 foi usada no iso oficial Manjaro. O último Manjaro parece ter mudado para a série kernel-6.10.  
@@ -83,12 +83,12 @@ O ISO distribuído aqui usa um novo kernel tanto quanto possível. Atualmente, �
 O kernel e os módulos do kernel são construídos usando clang em vez de gcc.  
 Nós também habilitamos o suporte a Rust no kernel.  
 Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repositório 'core', como no seguinte comando.
-```sh
-sudo pacman -S core/linux66 core/linux66-headers
-```
-```sh
-sudo pacman -S core/linux611 core/linux611-headers
-```
+    ```sh
+    sudo pacman -S core/linux66 core/linux66-headers
+    ```
+    ```sh
+    sudo pacman -S core/linux612 core/linux612-headers
+    ```
 
 ##### Adicionado: 2023-02-11  
 Na última versão (de 2023-02-11) de [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), as medidas acima foram acrescentadas.  

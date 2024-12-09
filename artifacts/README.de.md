@@ -51,30 +51,30 @@ versuchen Sie, zuerst „Koexistenz mit anderen Betriebssystemen“ oder „Part
 3. Wenn der Bildschirm des Installationsprogramms während der Installation verschwindet  
 Oft lässt sich dies vermeiden, indem man die Swap-Partition manuell einstellt.  
 Wenn die Swap-Partition /dev/sdX ist, versuchen Sie, die Swap-Partition manuell mit dem folgenden Befehl zu aktivieren.
-```bash
-sudo mkswap /dev/sdX
-sudo swapon /dev/sdX
-```
-```bash
-# Wenn Swap nicht aktiviert ist, verwenden Sie lsblk, um das Gerät zu untersuchen und die Swap-Partition zu aktivieren.
-[[ $(swapon --show) == "" ]] && SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
-```
+    ```bash
+    sudo mkswap /dev/sdX
+    sudo swapon /dev/sdX
+    ```
+    ```bash
+    # Wenn Swap nicht aktiviert ist, verwenden Sie lsblk, um das Gerät zu untersuchen und die Swap-Partition zu aktivieren.
+    [[ $(swapon --show) == "" ]] && SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
+    ```
 
-Verwenden Sie auch den folgenden Befehl, um anzugeben, dass Sie nicht dem OOM-Killer (erzwungene Beendigung) unterliegen wollen.
-```bash
-pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
-pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
-```
+    Verwenden Sie auch den folgenden Befehl, um anzugeben, dass Sie nicht dem OOM-Killer (erzwungene Beendigung) unterliegen wollen.
+    ```bash
+    pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
+    pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
+    ```
 
 4. Wenn die japanische Eingabe in einigen Anwendungen nicht möglich ist  
 Wenn alte Einstellungen beibehalten werden und etwas im `gtk-im-module` eingestellt wurde, kann es vorkommen, dass die japanische Eingabe in einigen Anwendungen nicht möglich ist.
-```bash
-gsettings get org.gnome.desktop.interface gtk-im-module
-```
-Wenn dieser Befehl `gtk-im-context-simple` oder ähnliches anzeigt, entfernen Sie die Einstellung mit dem folgenden Befehl.
-```bash
-gsettings set org.gnome.desktop.interface gtk-im-module ''
-```
+    ```bash
+    gsettings get org.gnome.desktop.interface gtk-im-module
+    ```
+    Wenn dieser Befehl `gtk-im-context-simple` oder ähnliches anzeigt, entfernen Sie die Einstellung mit dem folgenden Befehl.
+    ```bash
+    gsettings set org.gnome.desktop.interface gtk-im-module ''
+    ```
 
 5. Kernel-Unterschiede zum offiziellen Manjaro-Kernel
 Die Kererl-6.6-Serie wurde in der offiziellen Manjaro-ISO verwendet. Das neueste Manjaro scheint auf die Kernel-6.10-Serie umgestiegen zu sein.  
@@ -82,12 +82,12 @@ Die hier verteilte ISO verwendet so weit wie möglich einen neuen Kernel. Derzei
 Wir verwenden clang anstelle von gcc, um den Kernel und die Kernelmodule zu erstellen.  
 Wir aktivieren auch die Rust-Unterstützung des Kernels.  
 Wenn Sie den offiziellen Manjaro-Kernel verwenden möchten, installieren Sie ihn, indem Sie das Repository 'core' wie in dem folgenden Befehl angeben.
-```sh
-sudo pacman -S core/linux66 core/linux66-headers
-```
-```sh
-sudo pacman -S core/linux612 core/linux612-headers
-```
+    ```sh
+    sudo pacman -S core/linux66 core/linux66-headers
+    ```
+    ```sh
+    sudo pacman -S core/linux612 core/linux612-headers
+    ```
 
 ##### Hinzugefügt: 2023-02-11  
 In der neuesten Version (vom 2023-02-11) von [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/) sind die oben genannten Maßnahmen hinzugefügt worden.  

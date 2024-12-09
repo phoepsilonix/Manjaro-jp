@@ -45,9 +45,9 @@ cd ventoy-1.0.99
 
 2. 即時環境無法安裝snap應用程式  
 安裝後就會啟用,但若真係一定想試,也可以手動啟用。
-```bash
-sudo systemctl start snapd.service
-```
+    ```bash
+    sudo systemctl start snapd.service
+    ```
 
 3. 如果安裝程式在手動分割區時崩潰  
 請嘗試在選擇手動分割區之前，選擇「與其他作業系統共存」或「替換分割區」。通過先選擇「與其他作業系統共存」或「替換分割區」，您可以完成分割區資訊的收集。之後，選擇手動分割區將更容易避免崩潰。
@@ -55,28 +55,28 @@ sudo systemctl start snapd.service
 4. 如果安裝的時陣畫面消失  
 可以手動設定swap分區來解決。
 如果swap分區是/dev/sdX,可以用下面的指令手動啟用swap:
-```bash
-sudo mkswap /dev/sdX
-sudo swapon /dev/sdX
-```
-如果swap沒啟用,可以用lsblk來檢查裝置,接著啟用swap分區:
-```bash
-[[ $(swapon --show) == "" ]] && SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
-```
-另外,可以用下面的指令來設定OOM killer(強制終止程序)的例外對象:
-```bash
-pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
-```
+    ```bash
+    sudo mkswap /dev/sdX
+    sudo swapon /dev/sdX
+    ```
+    如果swap沒啟用,可以用lsblk來檢查裝置,接著啟用swap分區:
+    ```bash
+    [[ $(swapon --show) == "" ]] && SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
+    ```
+    另外,可以用下面的指令來設定OOM killer(強制終止程序)的例外對象:
+    ```bash
+    pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
+    ```
 
 5. 部分應用程式無法輸入日文  
 如果有古老的設定猶原存在,而且 `gtk-im-module` 有設定,會導致部分應用程式無法輸入日文。
-```bash
-gsettings get org.gnome.desktop.interface gtk-im-module
-```
-如果這個指令會顯示 `gtk-im-context-simple` 之類的結果,代表有設定值存在。這時就需要用下面的指令來清除設定:
-```bash
-gsettings set org.gnome.desktop.interface gtk-im-module ''
-```
+    ```bash
+    gsettings get org.gnome.desktop.interface gtk-im-module
+    ```
+    如果這個指令會顯示 `gtk-im-context-simple` 之類的結果,代表有設定值存在。這時就需要用下面的指令來清除設定:
+    ```bash
+    gsettings set org.gnome.desktop.interface gtk-im-module ''
+    ```
 
 6. kernel版本比官方Manjaro新  
 kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎已經轉移到kernel-6.10系列了。
@@ -84,13 +84,13 @@ kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎�
 kernel同kernel模組的編譯是用clang,而不是gcc。
 另外kernel也有支援rust。
 
-如果需要Manjaro官方的kernel,可以指定core repository來裝:
-```sh
-sudo pacman -S core/linux66 core/linux66-headers
-```
-```sh
-sudo pacman -S core/linux612 core/linux612-headers
-```
+    如果需要Manjaro官方的kernel,可以指定core repository來裝:
+    ```sh
+    sudo pacman -S core/linux66 core/linux66-headers
+    ```
+    ```sh
+    sudo pacman -S core/linux612 core/linux612-headers
+    ```
 
 ##### 附加說明： 2023-02-11  
 [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/) 在最新版本的（2023-02-11-）中，增加了上述措施。  

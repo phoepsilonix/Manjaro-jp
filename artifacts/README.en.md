@@ -54,30 +54,30 @@ After that, selecting manual partitioning will make it easier to avoid crashes.
 3. If the installer screen disappears during installation  
 In many cases, it can be avoided by setting the swap partition manually.  
 If the swap partition is /dev/sdX, try to manually enable swap with the following command.  
-```bash
-sudo mkswap /dev/sdX
-sudo swapon /dev/sdX
-```
-```bash
-# If swap is not enabled, use lsblk to examine the device and enable the swap partition.
-[[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
-```
+    ```bash
+    sudo mkswap /dev/sdX
+    sudo swapon /dev/sdX
+    ```
+    ```bash
+    # If swap is not enabled, use lsblk to examine the device and enable the swap partition.
+    [[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
+    ```
 
-Also, specify the target that is excluded from OOM killer (force termination) with the following command.
-```bash
-pidof -xw Xwayland calamares_polkit|xargs -n1 sudo choom -n -1000 -p
-pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
-```
+    Also, specify the target that is excluded from OOM killer (force termination) with the following command.
+    ```bash
+    pidof -xw Xwayland calamares_polkit|xargs -n1 sudo choom -n -1000 -p
+    pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
+    ```
 
 4. When Japanese input is not possible in some apps  
 If old settings remain and something has been set in `gtk-im-module`, there may be cases where you cannot input Japanese in some apps.
-```bash
-gsettings get org.gnome.desktop.interface gtk-im-module
-```
-If this command shows `gtk-im-context-simple` or similar, remove the setting with the following command.
-```bash
-gsettings set org.gnome.desktop.interface gtk-im-module ''
-```
+    ```bash
+    gsettings get org.gnome.desktop.interface gtk-im-module
+    ```
+    If this command shows `gtk-im-context-simple` or similar, remove the setting with the following command.
+    ```bash
+    gsettings set org.gnome.desktop.interface gtk-im-module ''
+    ```
 
 5. kernel differences from the official Manjaro kernel
 The kererl-6.6 series was used in the official Manjaro iso. The latest Manjaro seems to have moved to the kernel-6.10 series.- 
@@ -85,12 +85,12 @@ The ISO distributed here uses a new kernel as much as possible. Currently, it is
 We use clang instead of gcc to build the kernel and kernel modules.  
 We also enable the kernel's rust support.  
 If you want to use the official Manjaro kernel, install it by specifying the repository 'core' as in the following command.
-```sh
-sudo pacman -S core/linux66 core/linux66-headers
-```
-```sh
-sudo pacman -S core/linux612 core/linux612-headers
-```
+    ```sh
+    sudo pacman -S core/linux66 core/linux66-headers
+    ```
+    ```sh
+    sudo pacman -S core/linux612 core/linux612-headers
+    ```
 
 ##### Addition: 2023-02-11
 In the latest version (2023-02-11~) of [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), the above measures have been added.

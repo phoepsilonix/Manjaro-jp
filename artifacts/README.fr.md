@@ -54,29 +54,29 @@ Après cela, sélectionner la partition manuelle facilitera l'évitement des pla
 Ce problème peut souvent être évité en activant manuellement la partition swap.  
 Si la partition swap est /dev/sdX, essayez d'activer le swap manuellement avec la commande suivante.
 
-```bash
-sudo mkswap /dev/sdX
-sudo swapon /dev/sdX
-```
-```bash
-# Si le swap n'est pas activé, utilisez lsblk pour examiner le périphérique et activer la partition swap.
-[[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
-```
-La commande suivante doit également être utilisée pour spécifier que le tueur OOM (terminaison forcée) n'est pas applicable.
-```bash
-pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
-pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
-```
+    ```bash
+    sudo mkswap /dev/sdX
+    sudo swapon /dev/sdX
+    ```
+    ```bash
+    # Si le swap n'est pas activé, utilisez lsblk pour examiner le périphérique et activer la partition swap.
+    [[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
+    ```
+    La commande suivante doit également être utilisée pour spécifier que le tueur OOM (terminaison forcée) n'est pas applicable.
+    ```bash
+    pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
+    pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
+    ```
 
 4. Lorsque la saisie du japonais n'est pas possible dans certaines applications  
 Si d'anciens réglages subsistent et que quelque chose a été défini dans `gtk-im-module`, il peut y avoir des cas où vous ne pouvez pas saisir le japonais dans certaines applications.
-```bash
-gsettings get org.gnome.desktop.interface gtk-im-module
-```
-Si cette commande affiche `gtk-im-context-simple` ou similaire, supprimez le paramètre avec la commande suivante.
-```bash
-gsettings set org.gnome.desktop.interface gtk-im-module ''
-```
+    ```bash
+    gsettings get org.gnome.desktop.interface gtk-im-module
+    ```
+    Si cette commande affiche `gtk-im-context-simple` ou similaire, supprimez le paramètre avec la commande suivante.
+    ```bash
+    gsettings set org.gnome.desktop.interface gtk-im-module ''
+    ```
 
 5. différences entre le noyau et le noyau officiel de Manjaro
 La série kererl-6.6 a été utilisée dans l’iso officiel de Manjaro. Le dernier Manjaro semble être passé à la série kernel-6.10.  
@@ -84,12 +84,12 @@ L’ISO distribué ici utilise autant que possible un nouveau noyau. Actuellemen
 Nous utilisons clang au lieu de gcc pour compiler le noyau et les modules du noyau.  
 Nous activons également le support rust du noyau.  
 Si vous souhaitez utiliser le noyau officiel de Manjaro, installez-le en spécifiant le dépôt 'core' comme dans la commande suivante.
-```sh
-sudo pacman -S core/linux66 core/linux66-headers
-```
-```sh
-sudo pacman -S core/linux612 core/linux612-headers
-```
+    ```sh
+    sudo pacman -S core/linux66 core/linux66-headers
+    ```
+    ```sh
+    sudo pacman -S core/linux612 core/linux612-headers
+    ```
 
 ##### Ajouté : 2023-02-11  
 Dans la dernière version (du 2023-02-11) de [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), les mesures ci-dessus ont été ajoutées.  
