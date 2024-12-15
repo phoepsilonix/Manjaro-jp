@@ -743,11 +743,14 @@ zfs module is not supported
 ##### 20241123
 kernel-6.12.1  
 zfs module is not supported
-</details>
 
 ##### 20241206
 kernel-6.12.3  
 zfs module is not supported
+</details>
+
+##### 20241209
+kernel-6.12.4  
 
 
 ----

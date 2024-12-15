@@ -737,11 +737,14 @@ O módulo zfs não é compatível
 ##### 20241123
 kernel-6.12.1  
 O módulo zfs não é compatível
-</details>
 
 ##### 20241206
 kernel-6.12.3  
 O módulo zfs não é compatível
+</details>
+
+##### 20241209
+kernel-6.12.4  
 
 
 ----

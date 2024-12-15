@@ -738,11 +738,14 @@ Das ZFS-Modul wird nicht unterstützt
 ##### 20241123
 kernel-6.12.1  
 Das ZFS-Modul wird nicht unterstützt
-</details>
 
 ##### 20241206
 kernel-6.12.3  
 Das ZFS-Modul wird nicht unterstützt
+</details>
+
+##### 20241209
+kernel-6.12.4  
 
 
 ----

@@ -738,11 +738,14 @@ le module zfs n'est pas pris en charge
 ##### 20241123
 kernel-6.12.1  
 le module zfs n'est pas pris en charge
-</details>
 
 ##### 20241206
 kernel-6.12.3  
 le module zfs n'est pas pris en charge
+</details>
+
+##### 20241209
+kernel-6.12.4  
 
 
 ----
