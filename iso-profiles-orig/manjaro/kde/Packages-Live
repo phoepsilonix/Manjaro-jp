@@ -15,4 +15,8 @@ testdisk
 timeshift
 virtualbox-guest-utils
 squashfs-tools
-
+# fcitx5.install for Live env
+manjaro-jp/fcitx5
+manjaro-jp/fcitx5-mozc-with-jp-dict
+fcitx5-im
+manjaro-jp/manjaro-asian-input-support-fcitx5

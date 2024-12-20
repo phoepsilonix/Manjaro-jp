@@ -745,10 +745,13 @@ le module zfs n'est pas pris en charge
 
 ##### 20241209
 kernel-6.12.4  
-</details>
 
 ##### 20241215
 kernel-6.12.5  
+</details>
+
+##### 20241220
+kernel-6.12.6  
 
 
 ----
