@@ -1,9 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-/**
- * @param {string} text
- * @returns {string}
- */
 export function pulldown_cmark(text: string): string;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;

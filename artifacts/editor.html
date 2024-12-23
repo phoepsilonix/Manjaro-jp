@@ -51,6 +51,18 @@
         image#MANJARO-QR { width: 180px; height: 180px; }
         image#MANJARO-ICON { width: 32px; height: 32px; }
     </style>
+</head>
+<body>
+    <header></header>
+    <section class="main-section">
+        <div class="columnLeft">
+            <textarea id="source-markdown">
+            </textarea>
+        </div>
+        <div id="output-html" class="columnRight">
+        </div>
+    </section>
+    <footer></footer>
 <script type="module">
 import init, { pulldown_cmark as wasm } from './wasm-markdown/wasm_markdown.js';
 let markdown_file = './README.ja.md';
@@ -90,22 +102,10 @@ function md2html(data) {
         const links = output.querySelectorAll("a[href^='http']:not([href*='" + location.hostname + "'])");
         for (let i = 0; i < links.length; ++i) {
             links[i].setAttribute('target', '_blank');
-        }
-        addCopyBtn();
-}
+            }
+            addCopyBtn();
+            }
 
 </script>
-</head>
-<body>
-<header></header>
-<section class="main-section">
-<div class="columnLeft">
-<textarea id="source-markdown">
-</textarea>
-</div>
-<div id="output-html" class="columnRight">
-</div>
-</section>
-<footer></footer>
 </body>
 </html>
