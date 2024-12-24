@@ -37,11 +37,11 @@ cd ventoy-1.0.99
 
 ##### 注意事項
 1. 不支援安全開機
-需要在BIOS關閉安全開機才能安裝,不過安裝後可以再啟用。
-(如果需要支援安全開機,[Ubuntu][Ubuntu]會較簡單。佇[Ubuntu flavours][Ubuntu flavours]有提供幾種桌面環境。日文支援也會較簡單。)
+    需要在BIOS關閉安全開機才能安裝,不過安裝後可以再啟用。
+    (如果需要支援安全開機,[Ubuntu][Ubuntu]會較簡單。佇[Ubuntu flavours][Ubuntu flavours]有提供幾種桌面環境。日文支援也會較簡單。)
 
-[Ubuntu]: https://ubuntu.com/download/desktop
-[Ubuntu flavours]: https://ubuntu.com/desktop/flavours
+    [Ubuntu]: https://ubuntu.com/download/desktop
+    [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
 2. 即時環境無法安裝snap應用程式  
     安裝後就會啟用,但若真係一定想試,也可以手動啟用。
@@ -50,25 +50,10 @@ cd ventoy-1.0.99
     ```
 
 3. 如果安裝程式在手動分割區時崩潰  
-請嘗試在選擇手動分割區之前，選擇「與其他作業系統共存」或「替換分割區」。通過先選擇「與其他作業系統共存」或「替換分割區」，您可以完成分割區資訊的收集。之後，選擇手動分割區將更容易避免崩潰。
+    請嘗試在選擇手動分割區之前，選擇「與其他作業系統共存」或「替換分割區」。通過先選擇「與其他作業系統共存」或「替換分割區」，您可以完成分割區資訊的收集。之後，選擇手動分割區將更容易避免崩潰。  
+    我提交了一個合併請求來改善這個問題，並且它已經被納入官方的 Calamares。它也已經反映在 Manjaro 的 Calamares 倉庫中，因此未來這個問題可能會在官方 ISO 中得到解決。  
 
-4. 如果安裝的時陣畫面消失  
-    可以手動設定swap分區來解決。
-    如果swap分區是/dev/sdX,可以用下面的指令手動啟用swap:
-    ```bash
-    sudo mkswap /dev/sdX
-    sudo swapon /dev/sdX
-    ```
-    如果swap沒啟用,可以用lsblk來檢查裝置,接著啟用swap分區:
-    ```bash
-    [[ $(swapon --show) == "" ]] && SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
-    ```
-    另外,可以用下面的指令來設定OOM killer(強制終止程序)的例外對象:
-    ```bash
-    pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
-    ```
-
-5. 部分應用程式無法輸入日文  
+4. 部分應用程式無法輸入日文  
     如果有古老的設定猶原存在,而且 `gtk-im-module` 有設定,會導致部分應用程式無法輸入日文。
     ```bash
     gsettings get org.gnome.desktop.interface gtk-im-module
@@ -78,7 +63,7 @@ cd ventoy-1.0.99
     gsettings set org.gnome.desktop.interface gtk-im-module ''
     ```
 
-6. kernel版本比官方Manjaro新  
+5. kernel版本比官方Manjaro新  
     kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎已經轉移到kernel-6.12系列了。
     這裡分發的iso儘可能採用新的kernel。目前是kernel-6.12系列。
     kernel同kernel模組的編譯是用clang,而不是gcc。
@@ -91,6 +76,17 @@ cd ventoy-1.0.99
     ```sh
     sudo pacman -S core/linux612 core/linux612-headers
     ```
+
+6. 與日本語輸入相關  
+    - manjaro-asian-input-support-fcitx5  
+      修正為可以在 Wayland 和 X11 上使用。
+    - manjaro-application-utility  
+      修改為顯示 fcitx5 而不是 fcitx 作為選項。
+    - fcitx5  
+      調整為當 KDE 中 KWin 的虛擬鍵盤啟用時，fcitx5 不會自動啟動。  
+      也會創建 KWin 的設定檔，以便在 KDE 環境中從 KWin 啟動 fcitx5。
+    - fcitx5-mozc  
+      如果設定檔不存在，將會創建並設置初始值。
 
 ##### 附加說明： 2023-02-11  
 [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/) 在最新版本的（2023-02-11-）中，增加了上述措施。  

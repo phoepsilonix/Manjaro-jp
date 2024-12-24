@@ -61,14 +61,14 @@ sudo pacman-static -Syyu
 
 ##### 注意事項
 1. セキュアブートには非対応  
-インストーラーが対応していませんので、BIOSの設定でセキュアブートを無効にしてご利用ください。  
-インストール後、対応することは可能です。  
-[Manjaro Linuxでセキュアブート(secure boot)(shim-singed)](https://zenn.dev/phoepsilonix/articles/90ad66114a4982)  
-[Manjaro Linuxでセキュアブート(secure boot)(efitools)](https://zenn.dev/phoepsilonix/articles/5e6488bb46f37e)  
-（セキュアブート対応を望む場合、[Ubuntu][Ubuntu]は簡単です。[Ubuntu flavours][Ubuntu flavours]でデスクトップ環境も複数提供されています。日本語対応も簡単です。）  
+    インストーラーが対応していませんので、BIOSの設定でセキュアブートを無効にしてご利用ください。  
+    インストール後、対応することは可能です。  
+    [Manjaro Linuxでセキュアブート(secure boot)(shim-singed)](https://zenn.dev/phoepsilonix/articles/90ad66114a4982)  
+    [Manjaro Linuxでセキュアブート(secure boot)(efitools)](https://zenn.dev/phoepsilonix/articles/5e6488bb46f37e)  
+    （セキュアブート対応を望む場合、[Ubuntu][Ubuntu]は簡単です。[Ubuntu flavours][Ubuntu flavours]でデスクトップ環境も複数提供されています。日本語対応も簡単です。）  
 
-[Ubuntu]: https://ubuntu.com/download/desktop
-[Ubuntu flavours]: https://ubuntu.com/desktop/flavours
+    [Ubuntu]: https://ubuntu.com/download/desktop
+    [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
 2. ISOから起動したライブ環境ではsnapアプリケーションのインストールは停止されています。  
     インストール後の環境では有効になりますが、どうしても試したい場合には手動で有効化できます。
@@ -77,27 +77,10 @@ sudo pacman-static -Syyu
     ```
 
 3. パーティションの手動設定で、インストーラーが異常終了する場合  
-パーティションの手動設定を選択するよりも前に、いったん他OSとの「共存」または「パーティションの置換」を選んでみてください。先に「他OSとの共存」「パーティションの置換」を選ぶことによって、パーティション情報の収集を終了させておきます。その後、パーティションの手動設定を選ぶことで、異常終了を回避しやすくなります。
+    パーティションの手動設定を選択するよりも前に、いったん他OSとの「共存」または「パーティションの置換」を選んでみてください。先に「他OSとの共存」「パーティションの置換」を選ぶことによって、パーティション情報の収集を終了させておきます。その後、パーティションの手動設定を選ぶことで、異常終了を回避しやすくなります。  
+    この問題を改善するマージリクエストを提出したところ、calamares公式に取り込まれました。またManjaroのcalamaresレポジトリにも反映されましたので、将来的には公式ISOにおいても、この問題が改善されていることでしょう。
 
-4. インストール途中でインストーラー画面が消える場合には  
-    swapパーティションを手動で設定することで、回避できる場合が多いです。  
-    swapパーティションを/dev/sdXとした場合、次のようなコマンドで手動でswapを有効にしてみてください。
-    ```bash
-    sudo mkswap /dev/sdX
-    sudo swapon /dev/sdX
-    ```
-    ```bash
-    # swapが有効ではない場合、lsblkでデバイスを調べて、swapパーティションを有効にします。
-    [[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
-    ```
-
-    また次のコマンドで、OOM killer（強制終了）の対象外を指定しておきましょう。
-
-    ```bash
-    pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
-    ```
-
-5. 一部アプリで日本語入力ができない場合  
+4. 一部アプリで日本語入力ができない場合  
     古い設定が残っていて、`gtk-im-module`になにか設定されている場合、一部アプリで入力できないケースがあるようです。
     ```bash
     gsettings get org.gnome.desktop.interface gtk-im-module
@@ -107,7 +90,7 @@ sudo pacman-static -Syyu
     gsettings set org.gnome.desktop.interface gtk-im-module ''
     ```
 
-6. Manjaro公式とのkernelの違い  
+5. Manjaro公式とのkernelの違い  
     kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.12系に移行したようです。  
     ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.12系です。  
     kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
@@ -120,17 +103,16 @@ sudo pacman-static -Syyu
     sudo pacman -S core/linux612 core/linux612-headers
     ```
 
-7. 日本語入力関係(2024/12/18〜)
+6. 日本語入力関連(2024/12/18〜)
     - manjaro-asian-input-support-fcitx5  
-      Wayland,X11どちらでも使えるように修正しました。  
+      Wayland,X11どちらでも使えるように修正しました。
     - manjaro-application-utility  
-      fcitxではなくfcitx5が選択肢にでてくるようにしました。  
+      fcitxではなくfcitx5が選択肢にでてくるようにしました。
     - fcitx5  
       KDEでKWinの仮想キーボードが有効な場合、fcitx5が自動起動されないように調整しました。  
       KDE環境において、fcitx5がKWinから起動されるように、KWinの設定ファイルも作成されます。  
     - fcitx5-mozc  
-      設定ファイルが存在しない場合、設定ファイルが作成され、初期値が設定されます。  
-
+      設定ファイルが存在しない場合、設定ファイルが作成され、初期値が設定されます。
 
 ----
 ### 配布場所

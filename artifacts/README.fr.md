@@ -40,35 +40,17 @@ Nous avons installé le paquet pacman-static par défaut. Veuillez l'utiliser si
 
 ##### Notes.
 1. secure boot non pris en charge  
-Non pris en charge, veuillez donc désactiver Secure Boot dans les paramètres du BIOS.  
-(Si vous souhaitez que le démarrage sécurisé soit pris en charge, [Ubuntu][Ubuntu] est le moyen le plus rapide. Plusieurs environnements de bureau sont également disponibles sur [Ubuntu flavours][Ubuntu flavours]).
+    Non pris en charge, veuillez donc désactiver Secure Boot dans les paramètres du BIOS.  
+    (Si vous souhaitez que le démarrage sécurisé soit pris en charge, [Ubuntu][Ubuntu] est le moyen le plus rapide. Plusieurs environnements de bureau sont également disponibles sur [Ubuntu flavours][Ubuntu flavours]).
 
-[Ubuntu]: https://ubuntu.com/download/desktop
-[Ubuntu flavours]: https://ubuntu.com/desktop/flavours
+    [Ubuntu]: https://ubuntu.com/download/desktop
+    [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
 2. Si l'installateur plante pendant la partition manuelle.
-essayez de sélectionner « Coexistence avec d'autres systèmes d'exploitation » ou « Remplacer la partition » avant de choisir la partition manuelle. En sélectionnant d'abord « Coexistence avec d'autres systèmes d'exploitation » ou « Remplacer la partition », vous pouvez terminer la collecte des informations de partition.
-Après cela, sélectionner la partition manuelle facilitera l'évitement des plantages.
+    essayez de sélectionner « Coexistence avec d'autres systèmes d'exploitation » ou « Remplacer la partition » avant de choisir la partition manuelle. En sélectionnant d'abord « Coexistence avec d'autres systèmes d'exploitation » ou « Remplacer la partition », vous pouvez terminer la collecte des informations de partition. Après cela, sélectionner la partition manuelle facilitera l'évitement des plantages.  
+    J'ai soumis une demande de fusion pour améliorer ce problème, et elle a été intégrée dans le Calamares officiel. Elle a également été reflétée dans le dépôt Calamares de Manjaro, donc à l'avenir, ce problème sera probablement résolu dans l'ISO officiel.  
 
-3. si l'écran d'installation disparaît pendant l'installation  
-    Ce problème peut souvent être évité en activant manuellement la partition swap.  
-    Si la partition swap est /dev/sdX, essayez d'activer le swap manuellement avec la commande suivante.
-
-    ```bash
-    sudo mkswap /dev/sdX
-    sudo swapon /dev/sdX
-    ```
-    ```bash
-    # Si le swap n'est pas activé, utilisez lsblk pour examiner le périphérique et activer la partition swap.
-    [[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
-    ```
-    La commande suivante doit également être utilisée pour spécifier que le tueur OOM (terminaison forcée) n'est pas applicable.
-    ```bash
-    pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
-    pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
-    ```
-
-4. Lorsque la saisie du japonais n'est pas possible dans certaines applications  
+3. Lorsque la saisie du japonais n'est pas possible dans certaines applications  
     Si d'anciens réglages subsistent et que quelque chose a été défini dans `gtk-im-module`, il peut y avoir des cas où vous ne pouvez pas saisir le japonais dans certaines applications.
     ```bash
     gsettings get org.gnome.desktop.interface gtk-im-module
@@ -78,7 +60,7 @@ Après cela, sélectionner la partition manuelle facilitera l'évitement des pla
     gsettings set org.gnome.desktop.interface gtk-im-module ''
     ```
 
-5. différences entre le noyau et le noyau officiel de Manjaro
+4. différences entre le noyau et le noyau officiel de Manjaro
     La série kererl-6.6 a été utilisée dans l’iso officiel de Manjaro. Le dernier Manjaro semble être passé à la série kernel-6.12.  
     L’ISO distribué ici utilise autant que possible un nouveau noyau. Actuellement, il s’agit de la série kernel-6.12.  
     Nous utilisons clang au lieu de gcc pour compiler le noyau et les modules du noyau.  
@@ -90,6 +72,17 @@ Après cela, sélectionner la partition manuelle facilitera l'évitement des pla
     ```sh
     sudo pacman -S core/linux612 core/linux612-headers
     ```
+
+5. Lié à la saisie en japonais  
+    - manjaro-asian-input-support-fcitx5  
+      Corrigé pour fonctionner à la fois sur Wayland et X11.
+    - manjaro-application-utility  
+      Modifié pour afficher fcitx5 comme option au lieu de fcitx.
+    - fcitx5  
+      Ajusté pour que fcitx5 ne se lance pas automatiquement lorsque le clavier virtuel de KWin est activé dans KDE.
+      Un fichier de configuration pour KWin sera également créé afin de permettre à fcitx5 de se lancer depuis KWin dans l'environnement KDE.
+    - fcitx5-mozc  
+      Si le fichier de configuration n'existe pas, il sera créé avec des valeurs par défaut.
 
 ##### Ajouté : 2023-02-11  
 Dans la dernière version (du 2023-02-11) de [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), les mesures ci-dessus ont été ajoutées.  

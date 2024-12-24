@@ -39,35 +39,17 @@ Instalamos o pacote pacman-static por padrão. Por favor, use-o se as atualizaç
 
 ##### Notas.
 1. bota segura não suportada  
-Não suportado, por isso, por favor, desactivar o Secure Boot nas definições da BIOS.  
-(Se quiser suporte de arranque seguro, o [Ubuntu][Ubuntu] é a forma mais rápida. Vários ambientes de trabalho estão também disponíveis em [Ubuntu flavours][Ubuntu flavours]).
+    Não suportado, por isso, por favor, desactivar o Secure Boot nas definições da BIOS.  
+    (Se quiser suporte de arranque seguro, o [Ubuntu][Ubuntu] é a forma mais rápida. Vários ambientes de trabalho estão também disponíveis em [Ubuntu flavours][Ubuntu flavours]).
 
-[Ubuntu]: https://ubuntu.com/download/desktop
-[Ubuntu flavours]: https://ubuntu.com/desktop/flavours
+    [Ubuntu]: https://ubuntu.com/download/desktop
+    [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
 2. Se o instalador travar durante a partição manual.  
-tente selecionar "Coexistência com outros sistemas operacionais" ou "Substituir partição" antes de escolher a partição manual. Ao selecionar "Coexistência com outros sistemas operacionais" ou "Substituir partição" primeiro, você pode completar a coleta das informações da partição.
-Depois disso, selecionar a partição manual facilitará a evitação de travamentos.
+    tente selecionar "Coexistência com outros sistemas operacionais" ou "Substituir partição" antes de escolher a partição manual. Ao selecionar "Coexistência com outros sistemas operacionais" ou "Substituir partição" primeiro, você pode completar a coleta das informações da partição. Depois disso, selecionar a partição manual facilitará a evitação de travamentos.  
+    Eu enviei um pedido de mesclagem para melhorar este problema, e ele foi incorporado ao Calamares oficial. Também foi refletido no repositório Calamares do Manjaro, então, no futuro, esse problema provavelmente será resolvido na ISO oficial.  
 
-3. Se o ecrã do instalador desaparecer durante a instalação  
-    É muitas vezes possível evitar isto, definindo manualmente a partição swap.  
-    Se a partição swap for /dev/sdX, tente activar a partição swap manualmente com o seguinte comando.
-    ```bash
-    sudo mkswap /dev/sdX
-    sudo swapon /dev/sdX
-    ```
-    ```bash
-    # Se a swap não estiver activada, utilizar lsblk para examinar o dispositivo e activar a partição swap.
-    [[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
-    ```
-
-    O seguinte comando deve também ser utilizado para especificar que o assassino OOM (terminação forçada) não é aplicável.
-    ```bash
-    pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
-    pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
-    ```
-
-4. Quando não é possível introduzir a língua japonesa em algumas aplicações  
+3. Quando não é possível introduzir a língua japonesa em algumas aplicações  
     Algumas aplicações podem não ser capazes de introduzir o japonês se a configuração antiga ainda estiver em vigor e algo tiver sido definido no `gtk-im-module`.
     ```bash
     gsettings get org.gnome.desktop.interface gtk-im-module
@@ -77,7 +59,7 @@ Depois disso, selecionar a partição manual facilitará a evitação de travame
     gsettings set org.gnome.desktop.interface gtk-im-module ''
     ```
 
-5. diferenças em relação ao kernel oficial do Manjaro
+4. diferenças em relação ao kernel oficial do Manjaro
     A série kererl-6.6 foi usada no iso oficial Manjaro. O último Manjaro parece ter mudado para a série kernel-6.12.  
     O ISO distribuído aqui usa um novo kernel tanto quanto possível. Atualmente, é a série kernel-6.12.  
     O kernel e os módulos do kernel são construídos usando clang em vez de gcc.  
@@ -89,6 +71,17 @@ Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repo
     ```sh
     sudo pacman -S core/linux612 core/linux612-headers
     ```
+
+5. Relacionado à entrada em japonês  
+    - manjaro-asian-input-support-fcitx5  
+      Corrigido para funcionar tanto no Wayland quanto no X11.
+    - manjaro-application-utility  
+      Alterado para mostrar fcitx5 como uma opção em vez de fcitx.
+    - fcitx5  
+      Ajustado para que o fcitx5 não inicie automaticamente quando o teclado virtual do KWin estiver ativado no KDE.  
+      Um arquivo de configuração para o KWin também será criado para permitir que o fcitx5 seja iniciado a partir do KWin no ambiente KDE.
+    - fcitx5-mozc  
+      Se o arquivo de configuração não existir, ele será criado com configurações padrão.
 
 ##### Adicionado: 2023-02-11  
 Na última versão (de 2023-02-11) de [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), as medidas acima foram acrescentadas.  

@@ -41,35 +41,17 @@ We have installed the pacman-static package as standard. Please use this if pack
 
 ##### Notes
 1. Does not support Secure Boot  
-It is not supported, so please disable Secure Boot in BIOS settings.  
-(If you want secure boot support, [Ubuntu][Ubuntu] is faster. There are multiple desktop environments provided in [Ubuntu flavours][Ubuntu flavours].)
+    It is not supported, so please disable Secure Boot in BIOS settings.  
+    (If you want secure boot support, [Ubuntu][Ubuntu] is faster. There are multiple desktop environments provided in [Ubuntu flavours][Ubuntu flavours].)
 
-[Ubuntu]: https://ubuntu.com/download/desktop
-[Ubuntu flavours]: https://ubuntu.com/desktop/flavours
+    [Ubuntu]: https://ubuntu.com/download/desktop
+    [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
 2. If the installer crashes during manual partitioning.  
-try selecting "Coexistence with other OS" or "Replace partition" before choosing manual partitioning. By selecting "Coexistence with other OS" or "Replace partition" first, you can complete the collection of partition information.
-After that, selecting manual partitioning will make it easier to avoid crashes.
+    try selecting "Coexistence with other OS" or "Replace partition" before choosing manual partitioning. By selecting "Coexistence with other OS" or "Replace partition" first, you can complete the collection of partition information. After that, selecting manual partitioning will make it easier to avoid crashes.  
+    I submitted a merge request to improve this issue, and it has been incorporated into the official Calamares. It has also been reflected in the Manjaro Calamares repository, so in the future, this issue will likely be resolved in the official ISO as well.
 
-3. If the installer screen disappears during installation  
-    In many cases, it can be avoided by setting the swap partition manually.  
-    If the swap partition is /dev/sdX, try to manually enable swap with the following command.  
-    ```bash
-    sudo mkswap /dev/sdX
-    sudo swapon /dev/sdX
-    ```
-    ```bash
-    # If swap is not enabled, use lsblk to examine the device and enable the swap partition.
-    [[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
-    ```
-
-    Also, specify the target that is excluded from OOM killer (force termination) with the following command.
-    ```bash
-    pidof -xw Xwayland calamares_polkit|xargs -n1 sudo choom -n -1000 -p
-    pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
-    ```
-
-4. When Japanese input is not possible in some apps  
+3. When Japanese input is not possible in some apps  
     If old settings remain and something has been set in `gtk-im-module`, there may be cases where you cannot input Japanese in some apps.
     ```bash
     gsettings get org.gnome.desktop.interface gtk-im-module
@@ -79,7 +61,7 @@ After that, selecting manual partitioning will make it easier to avoid crashes.
     gsettings set org.gnome.desktop.interface gtk-im-module ''
     ```
 
-5. kernel differences from the official Manjaro kernel
+4. kernel differences from the official Manjaro kernel
     The kererl-6.6 series was used in the official Manjaro iso. The latest Manjaro seems to have moved to the kernel-6.12 series.- 
     The ISO distributed here uses a new kernel as much as possible. Currently, it is kernel-6.12 series.
     We use clang instead of gcc to build the kernel and kernel modules.  
@@ -91,6 +73,17 @@ After that, selecting manual partitioning will make it easier to avoid crashes.
     ```sh
     sudo pacman -S core/linux612 core/linux612-headers
     ```
+
+5. Japanese Input Related(2024/12/18-)
+    - manjaro-asian-input-support-fcitx5  
+      Fixed to work on both Wayland and X11.
+    - manjaro-application-utility  
+      Changed to show fcitx5 as an option instead of fcitx.
+    - fcitx5  
+      Adjusted so that fcitx5 does not automatically start when the virtual keyboard of KWin is enabled in KDE.  
+      A configuration file for KWin will also be created to allow fcitx5 to start from KWin in the KDE environment.
+    - fcitx5-mozc  
+      If the configuration file does not exist, it will be created with default settings.
 
 ##### Addition: 2023-02-11
 In the latest version (2023-02-11~) of [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), the above measures have been added.

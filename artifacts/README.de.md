@@ -39,34 +39,17 @@ Wir haben das Paket pacman-static standardmäßig installiert. Bitte verwenden S
 
 ##### Hinweise.
 1. Secure Boot nicht unterstützt  
-Nicht unterstützt, daher bitte Secure Boot in den BIOS-Einstellungen deaktivieren.  
-(Wenn Sie Secure-Boot-Unterstützung wünschen, ist [Ubuntu][Ubuntu] der schnellste Weg. Verschiedene Desktop-Umgebungen sind auch unter [Ubuntu flavours][Ubuntu flavours] verfügbar).
+    Nicht unterstützt, daher bitte Secure Boot in den BIOS-Einstellungen deaktivieren.  
+    (Wenn Sie Secure-Boot-Unterstützung wünschen, ist [Ubuntu][Ubuntu] der schnellste Weg. Verschiedene Desktop-Umgebungen sind auch unter [Ubuntu flavours][Ubuntu flavours] verfügbar).
 
-[Ubuntu]: https://ubuntu.com/download/desktop
-[Ubuntu flavours]: https://ubuntu.com/desktop/flavours
+    [Ubuntu]: https://ubuntu.com/download/desktop
+    [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
 2. Wenn der Installer während der manuellen Partitionierung abstürzt.  
-versuchen Sie, zuerst „Koexistenz mit anderen Betriebssystemen“ oder „Partition ersetzen“ auszuwählen, bevor Sie die manuelle Partitionierung wählen. Indem Sie zuerst „Koexistenz mit anderen Betriebssystemen“ oder „Partition ersetzen“ auswählen, können Sie die Sammlung der Partitionierungsinformationen abschließen. Danach wird es einfacher, Abstürze zu vermeiden, wenn Sie die manuelle Partitionierung auswählen.
+    versuchen Sie, zuerst „Koexistenz mit anderen Betriebssystemen“ oder „Partition ersetzen“ auszuwählen, bevor Sie die manuelle Partitionierung wählen. Indem Sie zuerst „Koexistenz mit anderen Betriebssystemen“ oder „Partition ersetzen“ auswählen, können Sie die Sammlung der Partitionierungsinformationen abschließen. Danach wird es einfacher, Abstürze zu vermeiden, wenn Sie die manuelle Partitionierung auswählen.  
+    Ich habe einen Merge-Request zur Verbesserung dieses Problems eingereicht, und er wurde in das offizielle Calamares integriert. Er wurde auch im Manjaro Calamares-Repository übernommen, sodass dieses Problem in Zukunft wahrscheinlich auch im offiziellen ISO behoben sein wird.  
 
-3. Wenn der Bildschirm des Installationsprogramms während der Installation verschwindet  
-    Oft lässt sich dies vermeiden, indem man die Swap-Partition manuell einstellt.  
-    Wenn die Swap-Partition /dev/sdX ist, versuchen Sie, die Swap-Partition manuell mit dem folgenden Befehl zu aktivieren.
-    ```bash
-    sudo mkswap /dev/sdX
-    sudo swapon /dev/sdX
-    ```
-    ```bash
-    # Wenn Swap nicht aktiviert ist, verwenden Sie lsblk, um das Gerät zu untersuchen und die Swap-Partition zu aktivieren.
-    [[ $(swapon --show) == "" ]] && SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
-    ```
-
-    Verwenden Sie auch den folgenden Befehl, um anzugeben, dass Sie nicht dem OOM-Killer (erzwungene Beendigung) unterliegen wollen.
-    ```bash
-    pidof -xw Xwayland calamares_polkit | xargs -n1 sudo choom -n -1000 -p
-    pidof -xw gnome-shell gnome-session-binary xdg-desktop-portal-gnome gdm gjs gvfsd-fuse udisksd | xargs -n1 sudo choom -n -1000 -p
-    ```
-
-4. Wenn die japanische Eingabe in einigen Anwendungen nicht möglich ist  
+3. Wenn die japanische Eingabe in einigen Anwendungen nicht möglich ist  
     Wenn alte Einstellungen beibehalten werden und etwas im `gtk-im-module` eingestellt wurde, kann es vorkommen, dass die japanische Eingabe in einigen Anwendungen nicht möglich ist.
     ```bash
     gsettings get org.gnome.desktop.interface gtk-im-module
@@ -76,7 +59,7 @@ versuchen Sie, zuerst „Koexistenz mit anderen Betriebssystemen“ oder „Part
     gsettings set org.gnome.desktop.interface gtk-im-module ''
     ```
 
-5. Kernel-Unterschiede zum offiziellen Manjaro-Kernel
+4. Kernel-Unterschiede zum offiziellen Manjaro-Kernel
     Die Kererl-6.6-Serie wurde in der offiziellen Manjaro-ISO verwendet. Das neueste Manjaro scheint auf die Kernel-6.12-Serie umgestiegen zu sein.  
     Die hier verteilte ISO verwendet so weit wie möglich einen neuen Kernel. Derzeit ist es die Kernel-6.12-Serie.  
     Wir verwenden clang anstelle von gcc, um den Kernel und die Kernelmodule zu erstellen.  
@@ -88,6 +71,17 @@ versuchen Sie, zuerst „Koexistenz mit anderen Betriebssystemen“ oder „Part
     ```sh
     sudo pacman -S core/linux612 core/linux612-headers
     ```
+
+5. Japanische Eingabe Bezogen(2024/12/18-)
+    - manjaro-asian-input-support-fcitx5  
+      Korrigiert, um sowohl unter Wayland als auch unter X11 zu funktionieren.
+    - manjaro-application-utility  
+      Geändert, um fcitx5 anstelle von fcitx als Option anzuzeigen.
+    - fcitx5
+      Angepasst, damit fcitx5 nicht automatisch startet, wenn die virtuelle Tastatur von KWin in KDE aktiviert ist.  
+      Eine Konfigurationsdatei für KWin wird ebenfalls erstellt, damit fcitx5 in der KDE-Umgebung von KWin gestartet werden kann.
+    - fcitx5-mozc  
+      Wenn die Konfigurationsdatei nicht vorhanden ist, wird sie mit den Standardwerten erstellt.
 
 ##### Hinzugefügt: 2023-02-11  
 In der neuesten Version (vom 2023-02-11) von [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/) sind die oben genannten Maßnahmen hinzugefügt worden.  
