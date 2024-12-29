@@ -50,17 +50,17 @@ SRC=/var/www/manjaro/
 #rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/unstable/multilib/x86_64/lib32-nvidia-*utils* ./
 #rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/stable/extra/x86_64/{libxnvctrl,nvidia-*{utils,dkms,settings},virtualbox-host-dkms,zfs-utils,zfs-dkms}* ./
 #rsync -rtLvH --safe-links --delete-after --delay-updates $SRC/stable/multilib/x86_64/lib32-nvidia-*utils* ./
-rsync -rtLvH --safe-links --delete-after --delay-updates --include="libxnvctrl*x86_64*" --include="*nvidia-*utils*x86_64*" --include="egl-gbm-*x86_64*" --include="egl-wayland*x86_64*" --include="egl-x11*x86_64*" --include="*nvidia-dkms*x86_64*" --include "*nvidia-*settings*x86_64*" --include="virtualbox-host-dkms*x86_64*" --include="zfs-utils*x86_64*" --include="zfs-dkms*x86_64*" --exclude="*" $SRC/pool/sync/ $SRC/pool/overlay/ ./
-cp -al ../../virtualbox-host-dkms*.pkg.tar.* ./
-for f in virtualbox-host-dkms-*.pkg.tar.{zst,xz}
-do
-	[[ ! -f "$f.sig" ]] && { echo "gpg sign: $f" ; gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback --default-key $repo_key -v -b $f; }
-done
-for f in virtualbox-host-dkms*.pkg.tar.*.sig
-do
-	echo "$f ${f%.*} gpg verify"
-	gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -v --default-key $repo_key --verify $f ${f%.*} || { echo "pkg verify error" ; exit 1; }
-done
+rsync -rtLvH --safe-links --delete-after --delay-updates --include="libxnvctrl*x86_64*" --include="*nvidia-*utils*x86_64*" --include="egl-gbm-*x86_64*" --include="egl-wayland*x86_64*" --include="egl-x11*x86_64*" --include="*nvidia-dkms*x86_64*" --include "*nvidia-*settings*x86_64*" --include="virtualbox-host-dkms*x86_64*" --include="zfs-utils*x86_64*" --include="zfs-dkms*x86_64*" --include="python-legacy-cgi*" --exclude="*" $SRC/pool/sync/ $SRC/pool/overlay/ ./
+#cp -al ../../virtualbox-host-dkms*.pkg.tar.* ./
+#for f in virtualbox-host-dkms-*.pkg.tar.{zst,xz}
+#do
+#	[[ ! -f "$f.sig" ]] && { echo "gpg sign: $f" ; gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback --default-key $repo_key -v -b $f; }
+#done
+#for f in virtualbox-host-dkms*.pkg.tar.*.sig
+#do
+#	echo "$f ${f%.*} gpg verify"
+#	gpg --passphrase-file $gpg_pass --batch --pinentry-mode=loopback -v --default-key $repo_key --verify $f ${f%.*} || { echo "pkg verify error" ; exit 1; }
+#done
 sync
 
 #nvidia以外のパッケージの登録。古いものを削除。
@@ -68,7 +68,7 @@ sync
 #pkgfiles=$(ls -v *.pkg.tar.*)
 #echo $pkgfiles
 #repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
-pkgfiles=$(ls -v --ignore={manjaro-jp.,nvidia-,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms,egl-gbm-,egl-wayland-,egl-x11-}* --ignore=*.sig --ignore=*.html)
+pkgfiles=$(ls -v --ignore={manjaro-jp.,nvidia-,lib32-nvidia,libxnvctrl,virtualbox-host-dkms,zfs-utils,zfs-dkms,egl-gbm-,egl-wayland-,egl-x11-,python-legacy-cgi-}* --ignore=*.sig --ignore=*.html)
 echo $pkgfiles
 repo-add $repo.db.tar.xz -R -v --include-sigs --sign --key $repo_key ${pkgfiles}
 #repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
