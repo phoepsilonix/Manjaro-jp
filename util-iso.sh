@@ -363,17 +363,19 @@ make_image_desktop() {
         [[ -e ${profile_dir}/desktop-overlay ]] && copy_overlay "${profile_dir}/desktop-overlay" "${path}"
         
         if [[ "${profile}" != "architect" && "${profile}" != "netinstall" ]]; then
-                manjaro-chroot ${path} sysctl kernel.unprivileged_userns_clone=1
-                manjaro-chroot ${path} chmod u+s /usr/bin/bwrap
+                #manjaro-chroot ${path} sysctl kernel.unprivileged_userns_clone=1
+                #manjaro-chroot ${path} chmod u+s /usr/bin/bwrap
                 systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak remote-add  --system --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	            systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update -y
 	        # Browser 
-	        systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install one.ablaze.floorp/x86_64/stable -y --system
+	            #run_safe "floorp-setup"
+            #
+	        #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install one.ablaze.floorp/x86_64/stable -y --system
+	        #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install org.freedesktop.Platform.VAAPI.Intel//24.08 -y
 	        #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update org.freedesktop.Platform -y
 	        #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install org.freedesktop.Platform.VAAPI.Intel//23.08 -y
 	        #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update org.freedesktop.Platform -y
 	        #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update org.freedesktop.Platform.openh264 -y 
-	        systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install org.freedesktop.Platform.VAAPI.Intel//24.08 -y
                 #systemd-nspawn -D ${path} flatpak install -y org.mozilla.firefox
                 # Office Soft
                 #systemd-nspawn -D ${path} flatpak install -y org.libreoffice.LibreOffice
@@ -383,14 +385,16 @@ make_image_desktop() {
                 #systemd-nspawn -D ${path} flatpak install -y io.missioncenter.MissionCenter
         fi
         
-        if [[ "${profile}" == "xfce" ]]; then
+        #if [[ "${profile}" == "xfce" ]]; then
                 # Mailer org.mozilla.Thunderbird
-                systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install -y org.mozilla.Thunderbird
-	            systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install org.freedesktop.Platform.VAAPI.Intel//23.08 -y
-        fi
+
+                #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN sudo pacman -S thunderbird --noconfirm
+                #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install -y org.mozilla.Thunderbird
+	            #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install org.freedesktop.Platform.VAAPI.Intel//23.08 -y
+        #fi
         if [[ "${profile}" != "architect" && "${profile}" != "netinstall" ]]; then
 	            systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update -y
-                systemd-nspawn -D ${path} chmod u-s /usr/bin/bwrap
+                #systemd-nspawn -D ${path} chmod u-s /usr/bin/bwrap
         fi
 
         if [[ -e "${path}/usr/share/calamares/branding/manjaro/calamares-sidebar.qml" ]]; then
@@ -730,4 +734,55 @@ prepare_profile(){
 build(){
     prepare_profile "$1"
     make_profile
+}
+
+floorp-setup(){
+#!/bin/bash
+##################################################################################################################
+# This section here is just to understand where the script is and then come back here at the end of the execution.
+SOURCE="${BASH_SOURCE[0]}"
+# Following cycle to resolve $SOURCE until the file is no longer a symlink
+while [ -h "$SOURCE" ]; do 
+  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+# If $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" 
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+##################################################################################################################
+# Want to go back to the symlink if that is supposed behaviour? Then delete until here and uncomment next line
+#DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+##################################################################################################################
+#
+# HERE IS WHERE YOUR ACTUAL SCRIPT BEGINS:
+#
+# Defining variables:
+TEMPACCOUNT="liveuser"
+DESTINATION="/home/$TEMPACCOUNT"
+# Adding your temp user and giving it a home folder where it can downloads the source code
+useradd -m -p $(openssl passwd -1 $TEMPACCOUNT) $TEMPACCOUNT
+# He has to launch the command as non-root user, but he'll need to give admin permission at the end. Adding to sudoers.
+echo "$TEMPACCOUNT ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+# Next line is to install packages needed to install yay. I may have forgotten some. I leave the line commented.
+#pacman -S git make fakeroot go binutils --noconfirm
+# Move to his home folder
+cd $DESTINATION
+# Create the script in his home folder
+echo '#!/bin/bash' > $DESTINATION/floorp-setup.sh
+echo -e "git clone https://aur.archlinux.org/floorp-bin.git\ncd $DESTINATION/floorp-bin\nmakepkg --noconfirm -si" >> $DESTINATION/floorp-setup.sh
+chmod +x $DESTINATION/floorp-setup.sh
+# Done, now pass the following commands to the SU session we're about to open. << is crucial here, That's what you missed
+su $TEMPACCOUNT<<'EOF'
+set -e
+/bin/bash "floorp-setup.sh"
+exit
+EOF
+# Remove the temp user from sudoers file by deleting last line
+sed '$d' /etc/sudoers > /etc/sudoers
+# The following line is actually pretty useless, userdel -r will wipe this anyway
+rm -R floorp-*
+# And we go back to home sweet home
+cd $DIR
+# And we delete the temp user
+userdel -r $TEMPACCOUNT
 }
