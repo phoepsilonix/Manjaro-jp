@@ -369,6 +369,9 @@ make_image_desktop() {
 	            systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak update -y
 	        # Browser 
 	            #run_safe "floorp-setup"
+        if [[ "${profile}" == "gnome" || "${profile}" == "kde" ]]; then
+	            run_safe "mimeapps-setup"
+        fi
             #
 	        #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install one.ablaze.floorp/x86_64/stable -y --system
 	        #systemd-nspawn -D ${path} --capability=CAP_NET_ADMIN flatpak install org.freedesktop.Platform.VAAPI.Intel//24.08 -y
@@ -785,4 +788,11 @@ rm -R floorp-*
 cd $DIR
 # And we delete the temp user
 userdel -r $TEMPACCOUNT
+}
+
+mimeapps-setup() {
+    for handler in application/x-extension-htm application/x-extension-html application/x-extension-shtml application/x-extension-xht application/x-extension-xhtml application/xhtml+xml text/html x-scheme-handler/chrome x-scheme-handler/http x-scheme-handler/https;
+    do
+        xdg-mime default /usr/share/applications/floorp.desktop $handler
+    done
 }
