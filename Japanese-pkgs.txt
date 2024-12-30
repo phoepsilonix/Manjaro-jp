@@ -5,7 +5,7 @@
 
 # AUR fcitx5-input-support
 #manjaro-jp/manjaro-asian-input-support-fcitx5
-manjaro-jp/manjaro-asian-input-support-fcitx5
+manjaro-asian-input-support-fcitx5
 
 #ibus-mozc no need asian-input-support
 #manjaro-jp/ibus-mozc-with-jp-dict
