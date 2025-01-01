@@ -258,7 +258,8 @@ power-profiles-daemon
 #manjaro-jp/ibus-mozc-with-jp-dict
 #manjaro-asian-input-support-ibus
 manjaro-jp/fcitx5-mozc-with-jp-dict
-manjaro-jp/fcitx5
+fcitx5
+fcitx5-kde-kwin-settings
 fcitx5-im
 manjaro-asian-input-support-fcitx5
 

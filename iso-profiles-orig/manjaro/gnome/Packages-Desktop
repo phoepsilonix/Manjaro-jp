@@ -302,7 +302,7 @@ xorg-server                        # required by gdm
 #manjaro-jp/ibus-mozc-with-jp-dict
 manjaro-jp/gnome-shell-extension-kimpanel
 manjaro-jp/fcitx5-mozc-with-jp-dict
-manjaro-jp/fcitx5
+fcitx5
 fcitx5-im
 manjaro-asian-input-support-fcitx5
 
