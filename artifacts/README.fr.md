@@ -80,6 +80,7 @@ Nous avons installé le paquet pacman-static par défaut. Veuillez l'utiliser si
       Maintenant, fcitx5 apparaît comme une option au lieu de fcitx. (Adopté officiellement.)
     - fcitx5  
       Des ajustements ont été effectués pour créer un fichier de configuration pour KWin afin que fcitx5 puisse être lancé depuis KWin dans l'environnement KDE.
+      (J'ai préparé un paquet qui ne fait que l'écriture de la configuration KWin. Le paquet AUR `fcitx5-kde-kwin-settings` y correspond.)
     - fcitx5-mozc  
       Si le fichier de configuration n'existe pas, il sera créé avec des valeurs par défaut définies.
 

@@ -84,6 +84,7 @@ cd ventoy-1.0.99
       現在fcitx5作為選項出現，而不是fcitx。（已正式採用。）
     - fcitx5  
       已經調整以創建KWin的配置文件，以便在KDE環境中可以從KWin啟動fcitx5。
+      (我準備了一個僅用於寫入 KWin 配置的套件。AUR 的 `fcitx5-kde-kwin-settings` 套件就是其中之一。)
     - fcitx5-mozc  
       如果配置文件不存在，將創建配置文件並設置初始值。
 

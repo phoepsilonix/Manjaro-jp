@@ -79,6 +79,7 @@ Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repo
       Agora, fcitx5 aparece como uma opção em vez de fcitx. (Adotado oficialmente.)
     - fcitx5  
       Ajustes foram feitos para criar um arquivo de configuração para KWin, de modo que o fcitx5 possa ser iniciado a partir do KWin no ambiente KDE.
+      (Preparei um pacote que apenas escreve a configuração do KWin. O pacote AUR `fcitx5-kde-kwin-settings` corresponde a isso.)
     - fcitx5-mozc  
       Se o arquivo de configuração não existir, ele será criado com valores padrão definidos.
 
