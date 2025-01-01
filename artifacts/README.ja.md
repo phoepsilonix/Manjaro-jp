@@ -106,12 +106,11 @@ sudo pacman-static -Syyu
 
 6. 日本語入力関連(2024/12/18〜)
     - manjaro-asian-input-support-fcitx5  
-      Wayland,X11どちらでも使えるように修正しました。
+      GNOME、KDEのWaylandまたはX11環境、いずれでも使えるように修正しました。(公式に取り込まれました。）
     - manjaro-application-utility  
-      fcitxではなくfcitx5が選択肢にでてくるようにしました。
+      fcitxではなくfcitx5が選択肢にでてくるようにしました。（公式に取り込まれました。）
     - fcitx5  
-      KDEでKWinの仮想キーボードが有効な場合、fcitx5が自動起動されないように調整しました。  
-      KDE環境において、fcitx5がKWinから起動されるように、KWinの設定ファイルも作成されます。  
+      KDE環境において、fcitx5がKWinから起動されるように、KWinの設定ファイルを作成するよう調整しました。  
     - fcitx5-mozc  
       設定ファイルが存在しない場合、設定ファイルが作成され、初期値が設定されます。
 

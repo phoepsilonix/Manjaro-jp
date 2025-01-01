@@ -79,14 +79,13 @@ cd ventoy-1.0.99
 
 6. 與日本語輸入相關  
     - manjaro-asian-input-support-fcitx5  
-      修正為可以在 Wayland 和 X11 上使用。
+      已經修改為可以在GNOME和KDE環境下的Wayland或X11中使用。（已正式採用。）
     - manjaro-application-utility  
-      修改為顯示 fcitx5 而不是 fcitx 作為選項。
+      現在fcitx5作為選項出現，而不是fcitx。（已正式採用。）
     - fcitx5  
-      調整為當 KDE 中 KWin 的虛擬鍵盤啟用時，fcitx5 不會自動啟動。  
-      也會創建 KWin 的設定檔，以便在 KDE 環境中從 KWin 啟動 fcitx5。
+      已經調整以創建KWin的配置文件，以便在KDE環境中可以從KWin啟動fcitx5。
     - fcitx5-mozc  
-      如果設定檔不存在，將會創建並設置初始值。
+      如果配置文件不存在，將創建配置文件並設置初始值。
 
 ##### 附加說明： 2023-02-11  
 [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/) 在最新版本的（2023-02-11-）中，增加了上述措施。  

@@ -74,14 +74,13 @@ Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repo
 
 5. Relacionado à entrada em japonês  
     - manjaro-asian-input-support-fcitx5  
-      Corrigido para funcionar tanto no Wayland quanto no X11.
+      Foi modificado para funcionar tanto em ambientes GNOME quanto KDE no Wayland ou X11. (Adotado oficialmente.)
     - manjaro-application-utility  
-      Alterado para mostrar fcitx5 como uma opção em vez de fcitx.
+      Agora, fcitx5 aparece como uma opção em vez de fcitx. (Adotado oficialmente.)
     - fcitx5  
-      Ajustado para que o fcitx5 não inicie automaticamente quando o teclado virtual do KWin estiver ativado no KDE.  
-      Um arquivo de configuração para o KWin também será criado para permitir que o fcitx5 seja iniciado a partir do KWin no ambiente KDE.
+      Ajustes foram feitos para criar um arquivo de configuração para KWin, de modo que o fcitx5 possa ser iniciado a partir do KWin no ambiente KDE.
     - fcitx5-mozc  
-      Se o arquivo de configuração não existir, ele será criado com configurações padrão.
+      Se o arquivo de configuração não existir, ele será criado com valores padrão definidos.
 
 ##### Adicionado: 2023-02-11  
 Na última versão (de 2023-02-11) de [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), as medidas acima foram acrescentadas.  

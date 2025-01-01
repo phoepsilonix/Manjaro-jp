@@ -74,14 +74,13 @@ Wir haben das Paket pacman-static standardmäßig installiert. Bitte verwenden S
 
 5. Japanische Eingabe Bezogen(2024/12/18-)
     - manjaro-asian-input-support-fcitx5  
-      Korrigiert, um sowohl unter Wayland als auch unter X11 zu funktionieren.
+      Es wurde so modifiziert, dass es sowohl in GNOME- als auch in KDE-Umgebungen unter Wayland oder X11 funktioniert. (Offiziell übernommen.)
     - manjaro-application-utility  
-      Geändert, um fcitx5 anstelle von fcitx als Option anzuzeigen.
+      Jetzt erscheint fcitx5 als Option anstelle von fcitx. (Offiziell übernommen.)
     - fcitx5
-      Angepasst, damit fcitx5 nicht automatisch startet, wenn die virtuelle Tastatur von KWin in KDE aktiviert ist.  
-      Eine Konfigurationsdatei für KWin wird ebenfalls erstellt, damit fcitx5 in der KDE-Umgebung von KWin gestartet werden kann.
+      Es wurden Anpassungen vorgenommen, um eine Konfigurationsdatei für KWin zu erstellen, damit fcitx5 aus KWin in der KDE-Umgebung gestartet werden kann.
     - fcitx5-mozc  
-      Wenn die Konfigurationsdatei nicht vorhanden ist, wird sie mit den Standardwerten erstellt.
+      Wenn die Konfigurationsdatei nicht vorhanden ist, wird sie erstellt und die Standardwerte werden festgelegt.
 
 ##### Hinzugefügt: 2023-02-11  
 In der neuesten Version (vom 2023-02-11) von [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/) sind die oben genannten Maßnahmen hinzugefügt worden.  
