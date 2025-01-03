@@ -3,6 +3,7 @@ openssl
 openssl-1.1
 pacman-static
 yay
+fakeroot
 #paru
 paru-static
 manjaro-jp/manjaro_jp-keyring

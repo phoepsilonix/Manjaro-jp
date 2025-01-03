@@ -37,6 +37,9 @@ emoji-fontconfig
 
 # nodejs-emojione
 
+# fontconfig
+noto-cjk-fontconfig
+
 # browser
 # flatpak floorp or firefox
 # aur floorp
