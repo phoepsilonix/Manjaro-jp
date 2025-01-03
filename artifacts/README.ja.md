@@ -115,7 +115,7 @@ sudo pacman-static -Syyu
       fcitxではなくfcitx5が選択肢にでてくるようにしました。（公式に取り込まれました。）
     - fcitx5  
       KDE環境において、fcitx5がKWinから起動されるように、KWinの設定ファイルを作成するよう調整しました。  
-      (kwinのコンフィグの書き込みのみ行なうパッケージを用意しました。AURのfcitx5-kde-kwin-settingsパッケージがそれに該当します。)  
+      (kwinのコンフィグの書き込みのみ行なうパッケージを用意しました。AURの`fcitx5-kde-kwin-settings`パッケージがそれに該当します。)  
     - fcitx5-mozc  
       設定ファイルが存在しない場合、設定ファイルが作成され、初期値が設定されます。
 
