@@ -108,7 +108,7 @@ sudo pacman-static -Syyu
     sudo pacman -S core/linux612 core/linux612-headers
     ```
 
-6. 日本語入力関連(2024/12/18〜)
+6. 日本語入力、表示関連(2024/12/18〜)
     - manjaro-asian-input-support-fcitx5  
       GNOME、KDEのWaylandまたはX11環境、いずれでも使えるように修正しました。(公式に取り込まれました。）
     - manjaro-application-utility  
@@ -118,6 +118,11 @@ sudo pacman-static -Syyu
       (kwinのコンフィグの書き込みのみ行なうパッケージを用意しました。AURの`fcitx5-kde-kwin-settings`パッケージがそれに該当します。)  
     - fcitx5-mozc  
       設定ファイルが存在しない場合、設定ファイルが作成され、初期値が設定されます。
+    - noto-cjk-fontconfig  
+      表示するフォントの優先順位を調整するパッケージを追加しました。
+      ```sh
+      paru -S noto-cjk-fontconfig
+      ```
 
 ----
 ### 配布場所
@@ -778,10 +783,13 @@ kernel-6.12.5
 
 ##### 20241220
 kernel-6.12.6  
-</details>
 
 ##### 20241227
 kernel-6.12.7  
+</details>
+
+##### 20250103
+kernel-6.12.8  
 
 
 ----

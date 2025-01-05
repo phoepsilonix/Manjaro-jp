@@ -87,6 +87,11 @@ cd ventoy-1.0.99
       (我準備了一個僅用於寫入 KWin 配置的套件。AUR 的 `fcitx5-kde-kwin-settings` 套件就是其中之一。)
     - fcitx5-mozc  
       如果配置文件不存在，將創建配置文件並設置初始值。
+    - noto-cjk-fontconfig  
+      加入了一個調整顯示字型優先順序的套件。
+      ```sh
+      paru -S noto-cjk-fontconfig
+      ```
 
 ##### 附加說明： 2023-02-11  
 [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/) 在最新版本的（2023-02-11-）中，增加了上述措施。  
@@ -748,10 +753,13 @@ kernel-6.12.5
 
 ##### 20241220
 kernel-6.12.6  
-</details>
 
 ##### 20241227
 kernel-6.12.7  
+</details>
+
+##### 20250103
+kernel-6.12.8  
 
 
 ----

@@ -82,6 +82,11 @@ Wir haben das Paket pacman-static standardmäßig installiert. Bitte verwenden S
       (Ich habe ein Paket vorbereitet, das nur das Schreiben der KWin-Konfiguration durchführt. Das AUR-Paket `fcitx5-kde-kwin-settings` gehört dazu.)
     - fcitx5-mozc  
       Wenn die Konfigurationsdatei nicht vorhanden ist, wird sie erstellt und die Standardwerte werden festgelegt.
+    - noto-cjk-fontconfig  
+      Ein Paket wurde hinzugefügt, um die Priorität der anzuzeigenden Schriftarten anzupassen.
+      ```sh
+      paru -S noto-cjk-fontconfig
+      ```
 
 ##### Hinzugefügt: 2023-02-11  
 In der neuesten Version (vom 2023-02-11) von [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/) sind die oben genannten Maßnahmen hinzugefügt worden.  
@@ -745,10 +750,13 @@ kernel-6.12.5
 
 ##### 20241220
 kernel-6.12.6  
-</details>
 
 ##### 20241227
 kernel-6.12.7  
+</details>
+
+##### 20250103
+kernel-6.12.8  
 
 
 ----

@@ -82,6 +82,11 @@ Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repo
       (Preparei um pacote que apenas escreve a configuração do KWin. O pacote AUR `fcitx5-kde-kwin-settings` corresponde a isso.)
     - fcitx5-mozc  
       Se o arquivo de configuração não existir, ele será criado com valores padrão definidos.
+    - noto-cjk-fontconfig  
+      Um pacote foi adicionado para ajustar a prioridade das fontes a serem exibidas.
+      ```sh
+      paru -S noto-cjk-fontconfig
+      ```
 
 ##### Adicionado: 2023-02-11  
 Na última versão (de 2023-02-11) de [Manjaro-JP](https://sourceforge.net/projects/manjaro-jp/), as medidas acima foram acrescentadas.  
@@ -743,10 +748,13 @@ kernel-6.12.5
 
 ##### 20241220
 kernel-6.12.6  
-</details>
 
 ##### 20241227
 kernel-6.12.7  
+</details>
+
+##### 20250103
+kernel-6.12.8  
 
 
 ----
