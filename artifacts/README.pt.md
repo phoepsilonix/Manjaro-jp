@@ -82,10 +82,10 @@ Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repo
       (Preparei um pacote que apenas escreve a configuração do KWin. O pacote AUR `fcitx5-kde-kwin-settings` corresponde a isso.)
     - fcitx5-mozc  
       Se o arquivo de configuração não existir, ele será criado com valores padrão definidos.
-    - noto-cjk-fontconfig  
+    - noto-cjk-fontconfig, emoji-fontconfig  
       Um pacote foi adicionado para ajustar a prioridade das fontes a serem exibidas.
       ```sh
-      paru -S noto-cjk-fontconfig
+      paru -S noto-cjk-fontconfig emoji-fontconfig
       ```
 
 ##### Adicionado: 2023-02-11  

@@ -84,10 +84,10 @@ We have installed the pacman-static package as standard. Please use this if pack
       (I have prepared a package that only writes the KWin configuration. The AUR package `fcitx5-kde-kwin-settings` corresponds to this.)
     - fcitx5-mozc  
       If the configuration file does not exist, it will be created with default values set.
-    - noto-cjk-fontconfig  
+    - noto-cjk-fontconfig, emoji-fontconfig  
       A package has been added to adjust the priority of the fonts to be displayed.
       ```sh
-      paru -S noto-cjk-fontconfig
+      paru -S noto-cjk-fontconfig emoji-fontconfig
       ```
 
 ##### Addition: 2023-02-11

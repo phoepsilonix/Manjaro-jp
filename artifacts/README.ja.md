@@ -121,7 +121,7 @@ sudo pacman-static -Syyu
     - noto-cjk-fontconfig  
       表示するフォントの優先順位を調整するパッケージを追加しました。
       ```sh
-      paru -S noto-cjk-fontconfig
+      paru -S noto-cjk-fontconfig emoji-fontconfig
       ```
 
 ----

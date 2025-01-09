@@ -87,10 +87,10 @@ cd ventoy-1.0.99
       (我準備了一個僅用於寫入 KWin 配置的套件。AUR 的 `fcitx5-kde-kwin-settings` 套件就是其中之一。)
     - fcitx5-mozc  
       如果配置文件不存在，將創建配置文件並設置初始值。
-    - noto-cjk-fontconfig  
+    - noto-cjk-fontconfig, emoji-fontconfig  
       加入了一個調整顯示字型優先順序的套件。
       ```sh
-      paru -S noto-cjk-fontconfig
+      paru -S noto-cjk-fontconfig emoji-fontconfig
       ```
 
 ##### 附加說明： 2023-02-11  

@@ -82,10 +82,10 @@ Wir haben das Paket pacman-static standardmäßig installiert. Bitte verwenden S
       (Ich habe ein Paket vorbereitet, das nur das Schreiben der KWin-Konfiguration durchführt. Das AUR-Paket `fcitx5-kde-kwin-settings` gehört dazu.)
     - fcitx5-mozc  
       Wenn die Konfigurationsdatei nicht vorhanden ist, wird sie erstellt und die Standardwerte werden festgelegt.
-    - noto-cjk-fontconfig  
+    - noto-cjk-fontconfig, emoji-fontconfig  
       Ein Paket wurde hinzugefügt, um die Priorität der anzuzeigenden Schriftarten anzupassen.
       ```sh
-      paru -S noto-cjk-fontconfig
+      paru -S noto-cjk-fontconfig emoji-fontconfig
       ```
 
 ##### Hinzugefügt: 2023-02-11  
