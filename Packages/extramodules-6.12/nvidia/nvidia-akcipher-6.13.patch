@@ -1,0 +1,12 @@
+diff -Npur kernel-open.org/nvidia/libspdm_ecc.c kernel-open/nvidia/libspdm_ecc.c
+--- a/kernel-open/nvidia/libspdm_ecc.c	2024-10-10 19:15:10.000000000 +0700
++++ b/kernel-open/nvidia/libspdm_ecc.c	2024-11-26 09:46:53.623372011 +0700
+@@ -309,7 +309,7 @@ bool lkca_ecdsa_verify(void *ec_context,
+     akcipher_request_set_callback(req, CRYPTO_TFM_REQ_MAY_BACKLOG |
+                                   CRYPTO_TFM_REQ_MAY_SLEEP, crypto_req_done, &wait);
+     akcipher_request_set_crypt(req, &sg, NULL, ber_len, hash_size);
+-    err = crypto_wait_req(crypto_akcipher_verify(req), &wait);
++    err = crypto_wait_req(crypto_akcipher_encrypt(req), &wait);
+ 
+     if (err != 0){
+         pr_info("Verify FAILED %d\n", -err);

@@ -1,0 +1,58 @@
+# Maintainer: Philip Müller <philm[at]manjaro[dot]org>
+# Maintainer: Bernhard Landauer <bernhard@manjaro.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Ray Rashif <schiv@archlinux.org>
+# Contributor: Mateusz Herych <heniekk@gmail.com>
+# Contributor: Charles Lindsay <charles@chaoslizard.org>
+
+_linuxprefix=linux612
+
+_module=vhba-module
+pkgname="${_linuxprefix}-${_module}"
+pkgver=20240917
+pkgrel=15
+pkgdesc="Kernel module that emulates SCSI devices"
+arch=('x86_64')
+url="https://cdemu.sourceforge.io/"
+license=('GPL-2.0-or-later')
+depends=("${_linuxprefix}")
+makedepends=("${_linuxprefix}-headers")
+provides=("${_module}=$pkgver" "VHBA-MODULE")
+groups=("${_linuxprefix}-extramodules")
+source=("http://downloads.sourceforge.net/cdemu/${_module}-$pkgver.tar.xz")
+sha256sums=('ce34cbae2c36cef8d7d09c5f6bd42d6871b9b530bb70b4ca100f964823fe0e98')
+
+prepare() {
+  cd "${_module}-$pkgver"
+}
+
+build() {
+  _kernver="$(cat /usr/src/${_linuxprefix}/version)"
+
+  cd "${_module}-$pkgver"
+  make KERNELRELEASE="${_kernver}"
+  SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
+  SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
+  /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 vhba.ko
+}
+
+package() {
+  _kernver="$(cat /usr/src/${_linuxprefix}/version)"
+
+  cd "${_module}-$pkgver"
+  install -Dm644 *.ko -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
+  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h|grep -v ALL)
+  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
+  COMPRESS=${COMPRESS% 1}
+  case $COMPRESS in
+  ZSTD)
+    COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
+    ;;
+  XZ)
+    COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
+    ;;
+  esac
+ 
+  find "$pkgdir" -name '*.ko' -exec strip --strip-debug {} +
+  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
+}

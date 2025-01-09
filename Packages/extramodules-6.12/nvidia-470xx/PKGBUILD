@@ -1,0 +1,92 @@
+# Maintainer: Bernhard Landauer <bernhard@manjaro.org>
+# Maintainer: Philip Müller <philm[at]manjaro[dot]org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
+
+_linuxprefix=linux612
+
+pkgname="${_linuxprefix}-nvidia-470xx"
+pkgdesc="NVIDIA drivers for linux"
+pkgver=470.256.02
+pkgrel=15
+arch=('x86_64')
+url="http://www.nvidia.com/"
+license=('custom')
+groups=("${_linuxprefix}-extramodules")
+depends=("${_linuxprefix}" "nvidia-utils=${pkgver}")
+makedepends=("${_linuxprefix}-headers")
+provides=("nvidia=${pkgver}" 'NVIDIA-MODULE')
+options=(!strip)
+_durl="https://us.download.nvidia.com/XFree86/Linux-x86"
+source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+        '0001-Fix-conftest-to-ignore-implicit-function-declaration.patch'
+        '0002-Fix-conftest-to-use-a-short-wchar_t.patch'
+        '0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch'
+        '001-fix-function-declaration.patch'
+        '002-Kbuild-clang-options.patch'
+        'nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch'
+        'kernel-6.10.patch' 'kernel-6.12.patch' 'make-modesetting-default.patch'
+        'kernel-6.13.patch')
+sha256sums=('fe8f58732055dacc4af0c4bb2371022d6e116e9f9594d7d3bea71f5a8a29e2b1'
+            'eafd8a3c9740f34c8a0ccd0942d05318be94889eeb64ff66c54c8d8524ff5fd0'
+            'aad55ebe45fca932ebeea5071bde489d3533bcccb3fe16995c8e70929b62e01a'
+            '2339209c742bf58e5aa1e5c369e925f0c78eeb74537288183b683882ebf78809'
+            '21dfe8ac31e7f13837a624c3891367c1a29dec74e63cfd24eb18e3eb4de59777'
+            '4ab8c26367a23a64963a0a13917079577190382a1198d471a74c9a1ac06ae3da'
+            '702af56eef8bba8c3137f98c298ee204e391c6fcffc960631481c3f1e87ed6a8'
+            '94c3429db54954d8529ec135770d7dfda08185287565c38368f25f6d76ce3399'
+            'df5414c80a2e8b8a836481156cbb5ce4e142da71c70860218a112731036cbf35'
+            '8741bef0f17be4e69eb1d24d0d2c417d06e92a5fb26800f580c8628b7fbf0ee5'
+            'b7269028c2fa0f0c6d5319f031ab5cbcba7911cd67a96fcc55753d19622e4ccd')
+
+_pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
+
+prepare() {
+    sh "${_pkg}.run" --extract-only
+
+    cd "${_pkg}/kernel"
+    local src
+    for src in "${source[@]}"; do
+        src="${src%%::*}"
+        src="${src##*/}"
+        [[ $src = *.patch ]] || continue
+        msg2 "Applying patch: $src..."
+        patch -Np1 < "../../$src"
+    done
+}
+
+build() {
+    _kernver="$(cat /usr/src/${_linuxprefix}/version)"
+
+    cd "${_pkg}"
+    LD=ld.lld \
+    make -C kernel SYSSRC=/usr/lib/modules/"${_kernver}/build" module
+    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
+    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
+    for file in kernel/*.ko
+    do
+        /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $file
+    done
+}
+
+package() {
+    _kernver="$(cat /usr/src/${_linuxprefix}/version)"
+
+    cd "${_pkg}"
+    install -Dm 644 kernel/*.ko -t "${pkgdir}/usr/lib/modules/${_kernver}/extramodules/"
+
+    # compress each module individually
+    COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h|grep -v ALL)
+    COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
+    COMPRESS=${COMPRESS% 1}
+    case $COMPRESS in
+    ZSTD)
+        COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
+        ;;
+    XZ)
+        COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
+        ;;
+    esac
+    find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
+
+    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+}

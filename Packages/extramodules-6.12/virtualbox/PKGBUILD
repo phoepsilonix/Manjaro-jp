@@ -1,0 +1,74 @@
+# Maintainer: Bernhard Landauer <bernhard@manjaro.org>
+# Maintainer: Philip Müller <philm[at]manjaro[dot]org>
+# Contributor: Christian Hesse <eworm@archlinux.org>
+# Contributor: Sébastien "Seblu" Luttringer
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+
+_linuxprefix=linux612
+
+pkgname=("${_linuxprefix}-virtualbox-host-modules")
+pkgver=7.1.4
+_pkgver="${pkgver}_OSE"
+pkgrel=15
+pkgdesc='Virtualbox host kernel modules for Manjaro Kernel'
+arch=('x86_64')
+url='http://virtualbox.org'
+license=('GPL-3.0-only')
+groups=("${_linuxprefix}-extramodules")
+depends=("${_linuxprefix}")
+makedepends=("${_linuxprefix}-headers" "virtualbox-host-dkms=$pkgver")
+provides=('VIRTUALBOX-HOST-MODULES')
+conflicts=("${_linuxprefix}-virtualbox-modules" 'virtualbox-host-dkms')
+replaces=("${_linuxprefix}-virtualbox-modules")
+
+build() {
+  _kernver="$(cat /usr/src/${_linuxprefix}/version)"
+
+  fakeroot dkms build --dkmstree "$srcdir" -m vboxhost/${pkgver}_OSE -k ${_kernver}
+  cd "$srcdir/vboxhost/$_pkgver/$_kernver/$CARCH/module"
+  for f in *.ko.*
+  do
+          case "$f" in
+          *.zst)
+                zstd -d $f
+                COMPRESS=zstd
+                ;;
+          *.xz)
+                xz -d $f
+                COMPRESS=xz
+                ;;
+          esac
+  done
+
+  SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
+  SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
+  for f in *.ko
+  do
+          /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $f
+  done
+}
+
+package() {
+  _kernver="$(cat /usr/src/${_linuxprefix}/version)"
+
+  cd "vboxhost/${pkgver}_OSE/${_kernver}/$CARCH/module"
+  install -Dm 644 *.ko* -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
+
+  # compress each module individually
+  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h|grep -v ALL)
+  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
+  COMPRESS=${COMPRESS% 1}
+  case $COMPRESS in
+  ZSTD)
+    COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
+    ;;
+  XZ)
+    COMP_CMD="xz -T0 -f -q -9 --lzma2=dict=2MiB"
+    ;;
+  esac
+  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
+
+  # systemd module loading
+  printf '%s\n' vboxdrv vboxnetadp vboxnetflt |
+  install -Dm 644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+}

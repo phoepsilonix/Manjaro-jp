@@ -1,0 +1,56 @@
+diff -ur a/conftest.sh b/conftest.sh
+--- a/conftest.sh	2023-06-01 20:00:46.719933661 +0800
++++ b/conftest.sh	2023-06-01 21:26:23.218584390 +0800
+@@ -255,6 +255,9 @@
+             CFLAGS="$CFLAGS -mfentry -DCC_USING_FENTRY"
+         fi
+     fi
++
++    # Warnings
++    CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
+ }
+
+ CONFTEST_PREAMBLE="#include \"conftest/headers.h\"
+@@ -294,6 +297,12 @@
+     echo "$CONFTEST_PREAMBLE
+     $CODE" > conftest$$.c
+
++    if [ -n "$PRINT" ]; then
++        >&2 echo "$CONFTEST_PREAMBLE
++        $CODE"
++        >&2 echo "$CC $CFLAGS -c conftest$$.c"
++    fi
++
+     $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
+     rm -f conftest$$.c
+
+@@ -4765,14 +4812,14 @@
+                 echo "However, mixing compiler versions between the kernel";
+                 echo "and kernel modules can result in subtle bugs that are";
+                 echo "difficult to diagnose.";
+-                echo "";
+-                echo "*** Failed CC version check. Bailing out! ***";
+-                echo "";
++                # echo "";
++                # echo "*** Failed CC version check. Bailing out! ***";
++                # echo "";
+             elif [ "$VERBOSE" = "just_msg" ]; then
+                 echo "The kernel was built with ${kernel_cc_string}, but the" \
+                      "current compiler version is `$CC --version | head -n 1`.";
+             fi
+-            exit 1;
++            exit 0;
+         fi
+     ;;
+
+diff -ur a/Kbuild b/Kbuild
+--- a/Kbuild	2023-06-01 20:00:46.716600311 +0800
++++ b/Kbuild	2023-06-01 21:37:31.631878921 +0800
+@@ -68,6 +68,7 @@
+ EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
+ EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
+ EXTRA_CFLAGS += -DNV_KERNEL_INTERFACE_LAYER
++EXTRA_CFLAGS += -Wno-error=unused-command-line-argument -Wno-error=strict-prototypes
+
+ #
+ # Detect SGI UV systems and apply system-specific optimizations.
