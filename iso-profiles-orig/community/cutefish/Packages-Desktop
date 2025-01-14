@@ -4,7 +4,6 @@
 ## Extra Network packages
 >extra mobile-broadband-provider-info
 >extra networkmanager-openconnect
->extra networkmanager-pptp
 >extra networkmanager-vpnc
 >extra nss-mdns
 >extra usb_modeswitch

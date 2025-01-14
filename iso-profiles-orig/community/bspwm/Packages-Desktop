@@ -83,7 +83,6 @@ networkmanager
 networkmanager-dmenu
 networkmanager-openconnect
 networkmanager-openvpn
-networkmanager-pptp
 networkmanager-vpnc
 openresolv
 yay

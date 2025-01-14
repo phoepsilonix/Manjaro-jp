@@ -3,7 +3,6 @@
 networkmanager
 >extra networkmanager-openconnect
 >extra networkmanager-openvpn
->extra networkmanager-pptp
 >extra networkmanager-vpnc
 >extra nss-mdns # NSS support for mDNS (optdepend for avahi)
 >extra ntp

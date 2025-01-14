@@ -62,7 +62,6 @@ openresolv
 >extra avahi
 >extra networkmanager-openconnect
 >extra networkmanager-openvpn
->extra networkmanager-pptp
 >extra networkmanager-vpnc
 
 

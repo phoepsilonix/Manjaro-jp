@@ -74,7 +74,6 @@ netctl
 network-manager-applet
 networkmanager-openconnect
 networkmanager-openvpn
-networkmanager-pptp
 networkmanager-vpnc
 nss-mdns
 numlockl

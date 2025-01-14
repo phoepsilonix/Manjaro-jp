@@ -2,7 +2,6 @@
 networkmanager
 >extra networkmanager-openconnect
 >extra networkmanager-openvpn
->extra networkmanager-pptp
 >extra network-manager-sstp
 >extra networkmanager-strongswan
 >extra networkmanager-vpnc
