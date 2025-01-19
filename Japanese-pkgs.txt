@@ -116,5 +116,5 @@ update-grub
 manjaro-jp/manjaro_jp-keyring
 
 # floorp or firefox
-#floorp-bin
+floorp-bin
 speech-dispatcher  
