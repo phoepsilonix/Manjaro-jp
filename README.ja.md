@@ -19,7 +19,7 @@ Linuxには、いろんなディストリビューションといわれるもの
 ----
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
-[kernel-6.11系](https://kernel.org/)。
+[kernel-6.12系](https://kernel.org/)。
 
 公式に合わせて、KDE、Xfce、GNOMEの３種類を用意する予定です。  
 配布ファイルはISOと一部パッケージファイルです。  
@@ -53,75 +53,83 @@ Linuxカーネルは、なるべく最新のものを採用します。
 またカーネルのビルドにはclangを用います。  
 日本語入力(Mozc)、日本語フォントを標準インストールします。  
 標準ブラウザとして、[Floorp](https://floorp.ablaze.one/)を採用します。  
+flatpak版ブラウザは、パフォーマンスに問題があるようです。推測ですが、AppArmorの設定がflatpak向けには、最適化されていないのではないかと思います。そのため標準で使うブラウザとしては、AUR版floorp-binやextraレポジトリのFirefoxを採用する予定です。(2024-12-30〜)  
 オフィスソフトは、インストール時点で候補から選択できます。  
 pacman-staticパッケージを標準導入しています。ライブラリの不整合によって、パッケージ更新が困難になった場合に、ご利用ください。  
 ```bash
 sudo pacman-static -Syyu
 ```
 
+#### お知らせ
+日本語対応に必要な修正などが、お陰様で公式パッケージにも一部、取り込まれました。Manjaro-jpの役割を一つ終えたといっていいかと思います。公式のレポジトリと、いくつかのAURパッケージを取り込めば、快適な日本語環境を構築できる状態になったと言えます。  
+カーネルの更新や、公式の更新の状態を見つつ、今後の対応を考えたいと思っています。  
+
 ##### 注意事項
 1. セキュアブートには非対応  
-インストーラーが対応していませんので、BIOSの設定でセキュアブートを無効にしてご利用ください。  
-インストール後、対応することは可能です。  
-[Manjaro Linuxでセキュアブート(secure boot)(shim-singed)](https://zenn.dev/phoepsilonix/articles/90ad66114a4982)  
-[Manjaro Linuxでセキュアブート(secure boot)(efitools)](https://zenn.dev/phoepsilonix/articles/5e6488bb46f37e)  
-（セキュアブート対応を望む場合、[Ubuntu][Ubuntu]は簡単です。[Ubuntu flavours][Ubuntu flavours]でデスクトップ環境も複数提供されています。日本語対応も簡単です。）  
+    インストーラーが対応していませんので、BIOSの設定でセキュアブートを無効にしてご利用ください。  
+    インストール後、対応することは可能です。  
+    [Manjaro Linuxでセキュアブート(secure boot)(shim-singed)](https://zenn.dev/phoepsilonix/articles/90ad66114a4982)  
+    [Manjaro Linuxでセキュアブート(secure boot)(efitools)](https://zenn.dev/phoepsilonix/articles/5e6488bb46f37e)  
+    （セキュアブート対応を望む場合、[Ubuntu][Ubuntu]は簡単です。[Ubuntu flavours][Ubuntu flavours]でデスクトップ環境も複数提供されています。日本語対応も簡単です。）  
 
-[Ubuntu]: https://ubuntu.com/download/desktop
-[Ubuntu flavours]: https://ubuntu.com/desktop/flavours
+    [Ubuntu]: https://ubuntu.com/download/desktop
+    [Ubuntu flavours]: https://ubuntu.com/desktop/flavours
 
 2. ISOから起動したライブ環境ではsnapアプリケーションのインストールは停止されています。  
-インストール後の環境では有効になりますが、どうしても試したい場合には手動で有効化できます。
-```bash
-sudo systemctl start snapd.service
-```
+    インストール後の環境では有効になりますが、どうしても試したい場合には手動で有効化できます。
+    ```bash
+    sudo systemctl start snapd.service
+    ```
 
-3. インストール途中でインストーラー画面が消える場合には  
-swapパーティションを手動で設定することで、回避できる場合が多いです。  
-swapパーティションを/dev/sdXとした場合、次のようなコマンドで手動でswapを有効にしてみてください。
-```bash
-sudo mkswap /dev/sdX
-sudo swapon /dev/sdX
-```
-```bash
-# swapが有効ではない場合、lsblkでデバイスを調べて、swapパーティションを有効にします。
-[[ $(swapon --show) == "" ]] &&  SWAP=$(lsblk -l -f -n -p | awk '{if ($2=="swap") print $1}') && ( sudo swapon $SWAP || (sudo mkswap $SWAP && sudo swapon $SWAP) )
-```
-
-また次のコマンドで、OOM killer（強制終了）の対象外を指定しておきましょう。
-```bash
-pidof -xw calamares_polkit | xargs -n1 sudo choom -n -1000 -p
-```
+3. パーティションの手動設定で、インストーラーが異常終了する場合  
+    パーティションの手動設定を選択するよりも前に、いったん他OSとの「共存」または「パーティションの置換」を選んでみてください。先に「他OSとの共存」「パーティションの置換」を選ぶことによって、パーティション情報の収集を終了させておきます。その後、パーティションの手動設定を選ぶことで、異常終了を回避しやすくなります。  
+    この問題を改善するマージリクエストを提出したところ、calamares公式に取り込まれました。またManjaroのcalamaresレポジトリにも反映されましたので、将来的には公式ISOにおいても、この問題が改善されていることでしょう。
 
 4. 一部アプリで日本語入力ができない場合  
-古い設定が残っていて、`gtk-im-module`になにか設定されている場合、一部アプリで入力できないケースがあるようです。
-```bash
-gsettings get org.gnome.desktop.interface gtk-im-module
-```
-このコマンドで`gtk-im-context-simple`などが表示されたら、次のコマンドで設定を消しましょう。
-```bash
-gsettings set org.gnome.desktop.interface gtk-im-module ''
-```
+    古い設定が残っていて、`gtk-im-module`になにか設定されている場合、一部アプリで入力できないケースがあるようです。
+    ```bash
+    gsettings get org.gnome.desktop.interface gtk-im-module
+    ```
+    このコマンドで`gtk-im-context-simple`などが表示されたら、次のコマンドで設定を消しましょう。
+    ```bash
+    gsettings set org.gnome.desktop.interface gtk-im-module ''
+    ```
 
 5. Manjaro公式とのkernelの違い  
-kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.10系に移行したようです。  
-ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.11系です。  
-kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
-またkernelのrust対応も有効にしています。  
-Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
-```sh
-sudo pacman -S core/linux66 core/linux66-headers
-```
-```sh
-sudo pacman -S core/linux611 core/linux611-headers
-```
+    kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.12系に移行したようです。  
+    ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.12系です。  
+    kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
+    またkernelのrust対応も有効にしています。  
+    Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
+    ```sh
+    sudo pacman -S core/linux66 core/linux66-headers
+    ```
+    ```sh
+    sudo pacman -S core/linux612 core/linux612-headers
+    ```
+
+6. 日本語入力、表示関連(2024/12/18〜)
+    - manjaro-asian-input-support-fcitx5  
+      GNOME、KDEのWaylandまたはX11環境、いずれでも使えるように修正しました。(公式に取り込まれました。）
+    - manjaro-application-utility  
+      fcitxではなくfcitx5が選択肢にでてくるようにしました。（公式に取り込まれました。）
+    - fcitx5  
+      KDE環境において、fcitx5がKWinから起動されるように、KWinの設定ファイルを作成するよう調整しました。  
+      (kwinのコンフィグの書き込みのみ行なうパッケージを用意しました。AURの`fcitx5-kde-kwin-settings`パッケージがそれに該当します。)  
+    - fcitx5-mozc  
+      設定ファイルが存在しない場合、設定ファイルが作成され、初期値が設定されます。
+    - noto-cjk-fontconfig  
+      表示するフォントの優先順位を調整するパッケージを追加しました。
+      ```sh
+      paru -S noto-cjk-fontconfig emoji-fontconfig
+      ```
 
 ----
 ### 配布場所
 ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
 よかったら、お試しください。
 
-[![SourceForge][SF-ICON]][SOURCEFORGE-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>][SOURCEFORGE-folder]
+[![SourceForge][SF-ICON-BADGE]][SOURCEFORGE-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>][SOURCEFORGE-folder]
 ---|---
 [![pCloud][pCloud-ICON]][pCloud-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-pcloud.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/pcloud_icon.svg"/></svg>][pCloud-folder]
 [![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
@@ -136,6 +144,7 @@ sudo pacman -S core/linux611 core/linux611-headers
 [GD-ICON]: ./img/Google_Drive_icon.svg
 [TERA-ICON]: ./img/terabox_logo.svg
 [pCloud-ICON]: ./img/pcloud_icon.svg
+[SF-ICON-BADGE]: https://b.sf-syn.com/badge_img/3508051/oss-sf-favorite-white?achievement=oss-sf-favorite&r=https://manjaro-jp.phoepsilonix.love/index.html
 
 貴重な、ストレージをありがとうございます。  
 上記にて配布しています。
@@ -751,10 +760,46 @@ kernel-6.11.5
 
 ##### 20241101
 kernel-6.11.6
-</details>
 
 ##### 20241109
 kernel-6.11.7
+
+##### 20241118
+kernel-6.12  
+zfsモジュールは未対応
+
+##### 20241123
+kernel-6.12.1  
+zfsモジュールは未対応
+
+##### 20241206
+kernel-6.12.3  
+zfsモジュールは未対応
+
+##### 20241209
+kernel-6.12.4  
+
+##### 20241215
+kernel-6.12.5  
+
+##### 20241220
+kernel-6.12.6  
+
+##### 20241227
+kernel-6.12.7  
+
+##### 20250103
+kernel-6.12.8  
+
+##### 20250109
+kernel-6.12.9  
+
+##### 20250117
+kernel-6.12.10  
+</details>
+
+##### 20250117
+kernel-6.12.10  
 
 
 ----
