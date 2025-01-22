@@ -1,7 +1,0 @@
-Type=Application
-Categories=GNOME;GTK;System;
-StartupNotify=false
-Name=Manjaro Hello
-Exec=/usr/bin/manjaro-hello
-Icon=manjaro
-X-GNOME-Autostart-Delay=8
