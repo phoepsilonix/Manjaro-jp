@@ -133,6 +133,8 @@ breeze-gtk
 plymouth
 plymouth-theme-manjaro
 
+papirus-icon-theme
+
 ## KDE Applications
 ark
 #>extra digikam
