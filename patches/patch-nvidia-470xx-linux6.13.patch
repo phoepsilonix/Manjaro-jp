@@ -296,7 +296,7 @@ index 7804076..9ae29f7 100644
 +        'kernel-6.13.patch'
 +        '001-fix-function-declaration.patch'
 +        '002-Kbuild-clang-options.patch'
-+        'nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch'
++        'nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch')
  sha256sums=('fe8f58732055dacc4af0c4bb2371022d6e116e9f9594d7d3bea71f5a8a29e2b1'
              'eafd8a3c9740f34c8a0ccd0942d05318be94889eeb64ff66c54c8d8524ff5fd0'
              'aad55ebe45fca932ebeea5071bde489d3533bcccb3fe16995c8e70929b62e01a'
