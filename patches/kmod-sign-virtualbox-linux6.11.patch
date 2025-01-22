@@ -1,8 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index af86764..a4d7156 100644
+index 228421d..2b6955c 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -13,7 +13,7 @@ pkgrel=12
+@@ -13,7 +13,7 @@ pkgrel=1
  pkgdesc='Virtualbox host kernel modules for Manjaro Kernel'
  arch=('x86_64')
  url='http://virtualbox.org'
@@ -40,7 +40,7 @@ index af86764..a4d7156 100644
  
  package() {
 @@ -34,7 +55,18 @@ package() {
-   install -Dm 644 * -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
+   install -Dm 644 *.ko* -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
  
    # compress each module individually
 -  find "${pkgdir}" -name '*.ko' -exec zstd --rm -19 {} +

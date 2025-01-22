@@ -18,6 +18,8 @@ elif [[ "$ver" == "5.10" ]] ;then ver=6.1
 else ver=6.1
 fi
 
+KVER=$(echo $kver|tr -d ".")
+echo $KVER
 gpg -dq ~/.ssh/pass.gpg | sudo -S pwd >/dev/null
 sudo chown -R phoepsilonix:phoepsilonix $exdir
 #cd r8168
@@ -35,26 +37,30 @@ do
         # $mがなかったら、追加する。
         echo $m;
         echo 
-        DIR=$(basename `pwd`)
+        DIR=linux$KVER-extramodules
         echo ssh://git@gitlab.manjaro.org:22277/packages/extra/$DIR/$m.git
         echo https://gitlab.manjaro.org/packages/extra/$DIR/$m.git
+        #[[ ! -e ./$m/ ]] && (git submodule update --init $m || git submodule add ssh://git@gitlab.manjaro.org:22277/packages/extra/$DIR/$m.git $m || continue;)
         [[ ! -e ./$m/ ]] && (git submodule update --init $m || git submodule add ssh://git@gitlab.manjaro.org:22277/packages/extra/$DIR/$m.git $m || continue;)
 #       [[ ! -e ./$m/ ]] && (git submodule update --init $m || git submodule add https://gitlab.manjaro.org/packages/extra/$DIR/$m.git $m || continue;)
-        # masterブランチをchekoutして、pullでリモートの最新版を取得する
+        # mainブランチをchekoutして、pullでリモートの最新版を取得する
         cd $m || continue
         
         git clean -d -f -e .*\.patch
         #git diff --binary HEAD | git apply --check --stat --apply --allow-empty -R -
-        git reset --hard master
-        git switch master
+        git reset --hard main
+        git switch main
         git clean ./ -f
         #git reset --hard HEAD~
         git pull
-        git checkout master
+        git checkout main
         #git switch -f master
         #git pull origin master
         case "$kver" in
-            "6.12" ) 
+            "6.13") 
+                patch1="patch-${m}-linux6.13.patch"
+                patch2="kmod-sign-${m}-linux6.11.patch" ;;
+            "6.12") 
                 patch1="patch-${m}-linux6.11.patch"
                 patch2="kmod-sign-${m}-linux6.11.patch" ;;
             "6.11" ) 

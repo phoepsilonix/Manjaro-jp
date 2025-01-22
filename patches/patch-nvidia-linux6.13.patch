@@ -1,0 +1,12 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 6353d58..eee8ebe 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -44,6 +44,7 @@ build() {
+     _kernver="$(cat /usr/src/${_linuxprefix}/version)"
+ 
+     cd "${_pkg}"
++    export LD=ld.lld
+     make -C kernel-open SYSSRC=/usr/lib/modules/"${_kernver}/build" module
+     make -C kernel SYSSRC=/usr/lib/modules/"${_kernver}/build" module
+ }
