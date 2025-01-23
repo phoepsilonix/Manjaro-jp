@@ -112,81 +112,9 @@
 [submodule "Packages/manjaro-live"]
 	path = Packages/manjaro-live
 	url = https://gitlab.manjaro.org/packages/extra/manjaro-live.git
-[submodule "Packages/extramodules-6.1/acpi_call"]
-	path = Packages/extramodules-6.1/acpi_call
-	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/acpi_call
-[submodule "Packages/extramodules-6.1/bbswitch"]
-	path = Packages/extramodules-6.1/bbswitch
-	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/bbswitch
-[submodule "Packages/extramodules-6.1/broadcom-wl"]
-	path = Packages/extramodules-6.1/broadcom-wl
-	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/broadcom-wl
-[submodule "Packages/extramodules-6.1/nvidia"]
-	path = Packages/extramodules-6.1/nvidia
-	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/nvidia
-[submodule "Packages/extramodules-6.1/nvidia-390xx"]
-	path = Packages/extramodules-6.1/nvidia-390xx
-	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/nvidia-390xx
-[submodule "Packages/extramodules-6.1/nvidia-470xx"]
-	path = Packages/extramodules-6.1/nvidia-470xx
-	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/nvidia-470xx
-[submodule "Packages/extramodules-6.1/r8168"]
-	path = Packages/extramodules-6.1/r8168
-	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/r8168
-[submodule "Packages/extramodules-6.1/rtl8723bu"]
-	path = Packages/extramodules-6.1/rtl8723bu
-	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/rtl8723bu
-[submodule "Packages/extramodules-6.1/tp_smapi"]
-	path = Packages/extramodules-6.1/tp_smapi
-	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/tp_smapi
-[submodule "Packages/extramodules-6.1/vhba-module"]
-	path = Packages/extramodules-6.1/vhba-module
-	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/vhba-module
-[submodule "Packages/extramodules-6.1/virtualbox-modules"]
-	path = Packages/extramodules-6.1/virtualbox
-	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/virtualbox-modules
-[submodule "Packages/extramodules-6.1/zfs"]
-	path = Packages/extramodules-6.1/zfs
-	url = https://gitlab.manjaro.org/packages/extra/linux61-extramodules/zfs
 [submodule "Packages/calamares"]
 	path = Packages/calamares
 	url = https://gitlab.manjaro.org/packages/extra/calamares.git
-[submodule "Packages/extramodules-6.6/acpi_call"]
-	path = Packages/extramodules-6.6/acpi_call
-	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/acpi_call
-[submodule "Packages/extramodules-6.6/bbswitch"]
-	path = Packages/extramodules-6.6/bbswitch
-	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/bbswitch
-[submodule "Packages/extramodules-6.6/broadcom-wl"]
-	path = Packages/extramodules-6.6/broadcom-wl
-	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/broadcom-wl
-[submodule "Packages/extramodules-6.6/nvidia"]
-	path = Packages/extramodules-6.6/nvidia
-	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/nvidia
-[submodule "Packages/extramodules-6.6/nvidia-390xx"]
-	path = Packages/extramodules-6.6/nvidia-390xx
-	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/nvidia-390xx
-[submodule "Packages/extramodules-6.6/nvidia-470xx"]
-	path = Packages/extramodules-6.6/nvidia-470xx
-	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/nvidia-470xx
-[submodule "Packages/extramodules-6.6/r8168"]
-	path = Packages/extramodules-6.6/r8168
-	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/r8168
-[submodule "Packages/extramodules-6.6/rtl8723bu"]
-	path = Packages/extramodules-6.6/rtl8723bu
-	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/rtl8723bu
-[submodule "Packages/extramodules-6.6/tp_smapi"]
-	path = Packages/extramodules-6.6/tp_smapi
-	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/tp_smapi
-[submodule "Packages/extramodules-6.6/vhba-module"]
-	path = Packages/extramodules-6.6/vhba-module
-	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/vhba-module
-[submodule "Packages/extramodules-6.6/zfs"]
-	path = Packages/extramodules-6.6/zfs
-	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/zfs
-[submodule "Packages/extramodules-6.6/virtualbox"]
-	path = Packages/extramodules-6.6/virtualbox
-	url = https://gitlab.manjaro.org/packages/extra/linux66-extramodules/virtualbox
 [submodule "Packages/extramodules-6.9/acpi_call"]
 	path = Packages/extramodules-6.9/acpi_call
 	url = https://gitlab.manjaro.org/packages/extra/linux69-extramodules/acpi_call.git
@@ -267,42 +195,6 @@
 [submodule "Packages/extramodules-6.10/r8168"]
 	path = Packages/extramodules-6.10/r8168
 	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/r8168.git
-[submodule "Packages/extramodules-6.11/acpi_call"]
-	path = Packages/extramodules-6.11/acpi_call
-	url = https://gitlab.manjaro.org/packages/extra/linux611-extramodules/acpi_call.git
-[submodule "Packages/extramodules-6.11/bbswitch"]
-	path = Packages/extramodules-6.11/bbswitch
-    url = https://gitlab.manjaro.org/packages/extra/linux611-extramodules/bbswitch.git
-[submodule "Packages/extramodules-6.11/broadcom-wl"]
-	path = Packages/extramodules-6.11/broadcom-wl
-	url = https://gitlab.manjaro.org/packages/extra/linux611-extramodules/broadcom-wl.git
-[submodule "Packages/extramodules-6.11/nvidia"]
-	path = Packages/extramodules-6.11/nvidia
-	url = https://gitlab.manjaro.org/packages/extra/linux611-extramodules/nvidia.git
-[submodule "Packages/extramodules-6.11/nvidia-390xx"]
-	path = Packages/extramodules-6.11/nvidia-390xx
-	url = https://gitlab.manjaro.org/packages/extra/linux611-extramodules/nvidia-390xx.git
-[submodule "Packages/extramodules-6.11/nvidia-470xx"]
-	path = Packages/extramodules-6.11/nvidia-470xx
-	url = https://gitlab.manjaro.org/packages/extra/linux611-extramodules/nvidia-470xx.git
-[submodule "Packages/extramodules-6.11/r8168"]
-	path = Packages/extramodules-6.11/r8168
-	url = https://gitlab.manjaro.org/packages/extra/linux611-extramodules/r8168.git
-[submodule "Packages/extramodules-6.11/rtl8723bu"]
-	path = Packages/extramodules-6.11/rtl8723bu
-	url = https://gitlab.manjaro.org/packages/extra/linux611-extramodules/rtl8723bu.git
-[submodule "Packages/extramodules-6.11/tp_smapi"]
-	path = Packages/extramodules-6.11/tp_smapi
-	url = https://gitlab.manjaro.org/packages/extra/linux611-extramodules/tp_smapi.git
-[submodule "Packages/extramodules-6.11/vhba-module"]
-	path = Packages/extramodules-6.11/vhba-module
-	url = https://gitlab.manjaro.org/packages/extra/linux611-extramodules/vhba-module.git
-[submodule "Packages/extramodules-6.11/virtualbox"]
-	path = Packages/extramodules-6.11/virtualbox
-	url = https://gitlab.manjaro.org/packages/extra/linux611-extramodules/virtualbox.git
-[submodule "Packages/extramodules-6.11/zfs"]
-	path = Packages/extramodules-6.11/zfs
-	url = https://gitlab.manjaro.org/packages/extra/linux611-extramodules/zfs.git
 [submodule "Packages/libpamac"]
 	path = Packages/libpamac
 	url = git@github:phoepsilonix/libpamac-makepkg
