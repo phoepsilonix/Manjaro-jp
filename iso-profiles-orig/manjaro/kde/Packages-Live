@@ -18,6 +18,5 @@ squashfs-tools
 # fcitx5.install for Live env
 manjaro-jp/fcitx5-mozc-with-jp-dict
 fcitx5
-fcitx5-kde-kwin-settings
 fcitx5-im
 manjaro-asian-input-support-fcitx5
