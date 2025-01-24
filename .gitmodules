@@ -234,3 +234,39 @@
 [submodule "Packages/extramodules-6.13/zfs"]
 	path = Packages/extramodules-6.13/zfs
 	url = https://gitlab.manjaro.org/packages/extra/linux613-extramodules/zfs
+[submodule "Packages/extramodules-6.12/acpi_call"]
+	path = Packages/extramodules-6.12/acpi_call
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux612-extramodules/acpi_call.git
+[submodule "Packages/extramodules-6.12/bbswitch"]
+	path = Packages/extramodules-6.12/bbswitch
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux612-extramodules/bbswitch.git
+[submodule "Packages/extramodules-6.12/broadcom-wl"]
+	path = Packages/extramodules-6.12/broadcom-wl
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux612-extramodules/broadcom-wl.git
+[submodule "Packages/extramodules-6.12/nvidia"]
+	path = Packages/extramodules-6.12/nvidia
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux612-extramodules/nvidia.git
+[submodule "Packages/extramodules-6.12/nvidia-390xx"]
+	path = Packages/extramodules-6.12/nvidia-390xx
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux612-extramodules/nvidia-390xx.git
+[submodule "Packages/extramodules-6.12/nvidia-470xx"]
+	path = Packages/extramodules-6.12/nvidia-470xx
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux612-extramodules/nvidia-470xx.git
+[submodule "Packages/extramodules-6.12/r8168"]
+	path = Packages/extramodules-6.12/r8168
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux612-extramodules/r8168.git
+[submodule "Packages/extramodules-6.12/rtl8723bu"]
+	path = Packages/extramodules-6.12/rtl8723bu
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux612-extramodules/rtl8723bu.git
+[submodule "Packages/extramodules-6.12/tp_smapi"]
+	path = Packages/extramodules-6.12/tp_smapi
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux612-extramodules/tp_smapi.git
+[submodule "Packages/extramodules-6.12/vhba-module"]
+	path = Packages/extramodules-6.12/vhba-module
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux612-extramodules/vhba-module.git
+[submodule "Packages/extramodules-6.12/virtualbox"]
+	path = Packages/extramodules-6.12/virtualbox
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux612-extramodules/virtualbox.git
+[submodule "Packages/extramodules-6.12/zfs"]
+	path = Packages/extramodules-6.12/zfs
+	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux612-extramodules/zfs.git
