@@ -796,10 +796,13 @@ kernel-6.12.9
 
 ##### 20250117
 kernel-6.12.10  
-</details>
 
 ##### 20250117
 kernel-6.12.10  
+</details>
+
+##### 20250122
+kernel-6.13  
 
 
 ----
@@ -819,8 +822,6 @@ Linux系OSで動きます。
 [Linux Mint](https://linuxmint.com/)  
 
 [EndeavourOS](https://endeavouros.com/)  
-
-[openSUSE Leap Micro](https://get.opensuse.org/ja/leapmicro/)  
 
 ----
 [Manjaroレポジトリミラー試験稼働中](https://mirror.phoepsilonix.love/manjaro/)

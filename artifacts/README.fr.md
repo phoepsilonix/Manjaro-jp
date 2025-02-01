@@ -759,10 +759,13 @@ kernel-6.12.8
 
 ##### 20250109
 kernel-6.12.9  
-</details>
 
 ##### 20250117
 kernel-6.12.10  
+</details>
+
+##### 20250122
+kernel-6.13  
 
 
 ----
@@ -773,8 +776,6 @@ Autres systèmes d'exploitation recommandés
 [Linux Mint](https://linuxmint.com/)  
 
 [EndeavourOS](https://endeavouros.com/)  
-
-[openSUSE Leap Micro](https://get.opensuse.org/ja/leapmicro/)  
 
 ----
 ```

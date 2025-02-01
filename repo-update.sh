@@ -135,9 +135,12 @@ rm ~/www/artifacts/manjaro-jp/index.html
 aria2c -c https://manjaro-jp.phoepsilonix.love/manjaro-jp/
 ln -f index.html ~/www/artifacts/manjaro-jp/
 
-# localhost
+# Backup(localhost)
 gpg -dq $gpg_pass.gpg | sudo -S pwd > /dev/null
-sudo rsync -avP --progress --delete --delete-after ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
+#sudo rsync -avPHL --progress --delete --delete-after ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
+#rsync -avPHL --progress --delete --delete-after ./ ~/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
+rm ~/manjaro-jp/
+mkdir -p ~/manjaro-jp/ && cp -al ./* ~/manjaro-jp/
 
 # usb
 #sudo rsync -avP --progress  ./ $usb/artifacts/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }

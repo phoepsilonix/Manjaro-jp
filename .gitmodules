@@ -197,7 +197,7 @@
 	url = https://gitlab.manjaro.org/packages/extra/linux610-extramodules/r8168.git
 [submodule "Packages/libpamac"]
 	path = Packages/libpamac
-	url = git@github:phoepsilonix/libpamac-makepkg
+	url = git@github.com:phoepsilonix/libpamac-makepkg
 [submodule "Packages/extramodules-6.13/acpi_call"]
 	path = Packages/extramodules-6.13/acpi_call
 	url = https://gitlab.manjaro.org/packages/extra/linux613-extramodules/acpi_call
