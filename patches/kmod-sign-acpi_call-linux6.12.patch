@@ -1,5 +1,5 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index c0ebfa0..12ed424 100644
+index 53e3bb4..0e7988a 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -24,6 +24,15 @@ build() {
@@ -19,7 +19,7 @@ index c0ebfa0..12ed424 100644
  
  package() {
 @@ -33,7 +42,19 @@ package() {
-   install -Dm644 *.ko* -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
+     "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
  
    # compress each module individually
 -  find "${pkgdir}" -name '*.ko' -exec zstd --rm -19 {} +

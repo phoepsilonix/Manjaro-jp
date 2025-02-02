@@ -59,35 +59,37 @@ do
         case "$kver" in
             "6.13") 
                 patch1="patch-${m}-linux6.13.patch"
-                patch2="kmod-sign-${m}-linux6.11.patch" ;;
+                patch2="kmod-sign-${m}-linux6.13.patch" ;;
             "6.12") 
                 patch1="patch-${m}-linux6.11.patch"
-                patch2="kmod-sign-${m}-linux6.11.patch" ;;
-            "6.11" ) 
+                patch2="kmod-sign-${m}-linux6.12.patch"
+        		[[ ! -e ~/gitlab/Manjaro-jp/patches/$patch2 ]] && patch2="kmod-sign-${m}-linux-6.11.patch"
+				;;
+            "6.11") 
                 patch1="patch-${m}-linux6.11.patch"
                 patch2="kmod-sign-${m}-linux6.11.patch" ;;
-            "6.10" ) 
+            "6.10") 
                 patch1="patch-${m}-linux6.10.patch"
                 patch2="kmod-sign-${m}-linux6.9.patch" ;;
-            "6.9" ) 
+            "6.9") 
                 patch1="patch-${m}-linux6.9.patch"
                 patch2="kmod-sign-${m}-linux6.9.patch" ;;
-            "6.8" ) 
+            "6.8") 
                 patch1="patch-${m}-linux6.8.patch"
                 patch2="kmod-sign-${m}-linux6.8.patch" ;;
-            "6.7" ) 
+            "6.7") 
                 patch1="patch-${m}-linux6.7.patch"
                 patch2="kmod-sign-${m}-linux6.7.patch" ;;
-            "6.6" ) 
+            "6.6") 
                 patch1="patch-${m}-linux6.6.patch"
                 patch2="kmod-sign-${m}-linux6.6.patch" ;;
-            "6.5" ) 
+            "6.5") 
                 patch1="patch-${m}-linux6.5.patch"
                 patch2="kmod-sign-${m}-linux6.5.patch" ;;
-            "6.4" ) 
+            "6.4") 
                 patch1="patch-${m}-linux6.4.patch"
                 patch2="kmod-sign-${m}-linux6.4.patch" ;;
-            "6.1" ) 
+            "6.1") 
                 patch1="patch-${m}-linux6.1.patch"
                 patch2="kmod-sign-${m}-linux6.1.patch" ;;
             * ) 

@@ -1,8 +1,8 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index c0ebfa0..12ed424 100644
+index 8b59790..508dab4 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -24,6 +24,15 @@ build() {
+@@ -21,6 +21,15 @@ build() {
    _kernver="$(cat /usr/src/${_linuxprefix}/version)"
  
    fakeroot dkms build --dkmstree "$srcdir" -m "${_module}/$pkgver" -k "${_kernver}"
@@ -14,14 +14,14 @@ index c0ebfa0..12ed424 100644
 +  fi
 +  SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
 +  SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
-+  /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $_module.*
++  /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 *.ko
  }
  
- package() {
-@@ -33,7 +42,19 @@ package() {
-   install -Dm644 *.ko* -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
+ package(){
+@@ -30,7 +39,18 @@ package(){
+     ${_module}/${pkgver}/${_kernver}/${CARCH}/module/*
  
-   # compress each module individually
+   # compress kernel modules
 -  find "${pkgdir}" -name '*.ko' -exec zstd --rm -19 {} +
 +  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h|grep -v ALL)
 +  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
@@ -35,7 +35,6 @@ index c0ebfa0..12ed424 100644
 +    ;;
 +  esac
 +  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
-+  sync
  
-   echo acpi_call | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
- 
+   install -Dm644 "/usr/share/licenses/${_module}-dkms"/* -t \
+     "${pkgdir}/usr/share/licenses/$pkgname/"
