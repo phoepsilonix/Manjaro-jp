@@ -139,7 +139,7 @@ ln -f index.html ~/www/artifacts/manjaro-jp/
 gpg -dq $gpg_pass.gpg | sudo -S pwd > /dev/null
 #sudo rsync -avPHL --progress --delete --delete-after ./ /root/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
 #rsync -avPHL --progress --delete --delete-after ./ ~/manjaro-jp/ || { echo "rsync to local backup error"; exit 1; }
-rm ~/manjaro-jp/
+rm -rf ~/manjaro-jp/
 mkdir -p ~/manjaro-jp/ && cp -al ./* ~/manjaro-jp/
 
 # usb

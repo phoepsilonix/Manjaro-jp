@@ -133,6 +133,8 @@ breeze-gtk
 plymouth
 plymouth-theme-manjaro
 
+# needed by manjaro-application-utility
+# category icons(Browsers, Backup,etc)
 papirus-icon-theme
 
 ## KDE Applications
