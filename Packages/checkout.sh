@@ -15,6 +15,8 @@ echo $exdir
 echo "kver" $kver
 if [[ "$ver" == "6.1" ]] ;then ver=6.6
 elif [[ "$ver" == "5.10" ]] ;then ver=6.1
+elif [[ "$ver" == "6.12" ]] ;then ver=6.13
+elif [[ "$ver" == "6.13" ]] ;then ver=6.12
 else ver=6.1
 fi
 

@@ -1,0 +1,31 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 6e2ec56..e33188a 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -45,8 +45,25 @@ build() {
+ package() {
+   _kernver="$(cat /usr/src/${_linuxprefix}/version)"
+ 
++  cd "${_module}"
++  SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
++  SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
++  /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 ${_module}.ko
++  cd ..
+   find . -name "*.ko" -exec install -Dt "$pkgdir/usr/lib/modules/${_kernver}/extramodules" {} +
+-  find "${pkgdir}" -name '*.ko' -exec zstd --rm -19 {} +
++  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h|grep -v ALL)
++  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
++  COMPRESS=${COMPRESS% 1}
++  case $COMPRESS in
++  ZSTD)
++    COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
++    ;;
++  XZ)
++    COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
++    ;;
++  esac
++  find "$pkgdir" -name "*.ko" -exec strip --strip-debug {} +
++  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
+ 
+   # load module on startup
+   echo tp_smapi | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
