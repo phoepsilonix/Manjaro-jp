@@ -18,10 +18,20 @@ MSG=$(cat <<EOF
 EOF
 )
 echo $MSG
-curl -v -X POST $url \
--H 'Content-Type: application/json' \
--H "Authorization: Bearer $token" \
--d "$MSG"
+#curl -v -X POST $url \
+#-H 'Content-Type: application/json' \
+curl -H "Authorization: Bearer $token" $url --json @- <<HERE
+{
+     "to": "${user}",
+	 "messages": [
+        {
+            "type":"text",
+            "text":"${P}"
+        }
+    ]
+}
+HERE
+#-d "$MSG"
 exit 0
 
 #-H 'X-Line-Retry-Key: {UUID}' \
