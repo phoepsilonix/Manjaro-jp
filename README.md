@@ -19,7 +19,7 @@ Linuxには、いろんなディストリビューションといわれるもの
 ----
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
-[kernel-6.12系](https://kernel.org/)。
+[kernel-6.13系](https://kernel.org/)。
 
 公式に合わせて、KDE、Xfce、GNOMEの３種類を用意する予定です。  
 配布ファイルはISOと一部パッケージファイルです。  
@@ -37,14 +37,14 @@ ventoygui
 Linux全般  
 ダウンロードコマンドがaria2の場合の例
 ```bash
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.0.99/ventoy-1.0.99-linux.tar.gz
-tar xf ventoy-1.0.99-linux.tar.gz
-cd ventoy-1.0.99
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.00/ventoy-1.1.00-linux.tar.gz
+tar xf ventoy-1.1.00-linux.tar.gz
+cd ventoy-1.1.00
 ./VentoyGUI.$(uname -m)
 ```
 
 Windowsの場合  
-ブラウザなどで[Ventoy](https://github.com/ventoy/Ventoy/releases/)を[ダウンロード](https://github.com/ventoy/Ventoy/releases/download/v1.0.99/ventoy-1.0.99-windows.zip)します。
+ブラウザなどで[Ventoy](https://github.com/ventoy/Ventoy/releases/)を[ダウンロード](https://github.com/ventoy/Ventoy/releases/download/v1.1.00/ventoy-1.1.00-windows.zip)します。
 ダウンロードしたzipファイルを開いて、ventoy2disk.exeを実行しましょう。
 
 ----
@@ -97,7 +97,7 @@ sudo pacman-static -Syyu
 
 5. Manjaro公式とのkernelの違い  
     kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.12系に移行したようです。  
-    ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.12系です。  
+    ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.13系です。  
     kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
     またkernelのrust対応も有効にしています。  
     Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
@@ -802,10 +802,16 @@ kernel-6.12.10
 
 ##### 20250122
 kernel-6.13  
-</details>
 
 ##### 20250202
 kernel-6.13.1  
+
+##### 20250208
+kernel-6.13.2  
+</details>
+
+##### 20250218
+kernel-6.13.3  
 
 
 ----
