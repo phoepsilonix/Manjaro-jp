@@ -24,4 +24,5 @@ if [ "$count" -gt 1 ]; then
 else
   echo "Only one unique date found ($dates), no files will be deleted."
 fi
+sleep 1
 ls ~/torrent/*.torrent|xargs -I{} curl --data-binary "@/{}" 'http://127.0.0.1:3030/torrents?overwrite=true'
