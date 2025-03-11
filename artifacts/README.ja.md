@@ -37,14 +37,14 @@ ventoygui
 Linux全般  
 ダウンロードコマンドがaria2の場合の例
 ```bash
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.00/ventoy-1.1.00-linux.tar.gz
-tar xf ventoy-1.1.00-linux.tar.gz
-cd ventoy-1.1.00
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.05/ventoy-1.1.05-linux.tar.gz
+tar xf ventoy-1.1.05-linux.tar.gz
+cd ventoy-1.1.05
 ./VentoyGUI.$(uname -m)
 ```
 
 Windowsの場合  
-ブラウザなどで[Ventoy](https://github.com/ventoy/Ventoy/releases/)を[ダウンロード](https://github.com/ventoy/Ventoy/releases/download/v1.1.00/ventoy-1.1.00-windows.zip)します。
+ブラウザなどで[Ventoy](https://github.com/ventoy/Ventoy/releases/)を[ダウンロード](https://github.com/ventoy/Ventoy/releases/download/v1.1.05/ventoy-1.1.05-windows.zip)します。
 ダウンロードしたzipファイルを開いて、ventoy2disk.exeを実行しましょう。
 
 ----

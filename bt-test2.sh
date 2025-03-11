@@ -5,6 +5,7 @@ pid=$(pgrep rqbit)
 [[ -n "$pid" ]] && echo "kill" $pid && kill $pid && sleep 3
 rm -rf ~/.local/share/session/*
 rqbit server start ~/torrent/ &
+sleep 5
 
 dates=$(curl -s 'http://127.0.0.1:3030/torrents' | \
   jq -r '.[].[] | .name' | \
@@ -13,6 +14,11 @@ dates=$(curl -s 'http://127.0.0.1:3030/torrents' | \
   uniq)
 
 count=$(echo "$dates" | wc -l)
+
+#jq -r --arg latest "$latest" '.[].[] | .info_hash' | \
+curl -s 'http://127.0.0.1:3030/torrents' | \
+jq -r '.[].[] | .info_hash' | \
+xargs -I{} curl -X POST "http://127.0.0.1:3030/torrents/{}/delete"
 
 if [ "$count" -gt 1 ]; then
   latest=$(echo "$dates" | tail -1)

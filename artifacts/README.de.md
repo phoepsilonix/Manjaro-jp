@@ -20,13 +20,13 @@ ventoygui
 Allgemeines Linux  
 Beispiel für einen Download-Befehl mit aria2  
 ```bash
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.00/ventoy-1.1.00-linux.tar.gz
-tar xf ventoy-1.1.00-linux.tar.gz
-cd ventoy-1.1.00
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.05/ventoy-1.1.05-linux.tar.gz
+tar xf ventoy-1.1.05-linux.tar.gz
+cd ventoy-1.1.05
 ./VentoyGUI.$(uname -m)
 ```
 Windows  
-Laden Sie [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.1.00/ventoy-1.1.00-windows.zip) mit einem Browser oder etwas herunter.  
+Laden Sie [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.1.05/ventoy-1.1.05-windows.zip) mit einem Browser oder etwas herunter.  
 Öffnen Sie die heruntergeladene Zip-Datei und führen Sie ventoy2disk.exe aus.
 
 ----
