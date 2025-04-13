@@ -55,11 +55,13 @@ os-prober
 perl
 rsync
 s-nail
+sbctl
 sof-firmware
 sudo
 sysfsutils
 systemd
 texinfo
+udev-usb-sync
 usbutils
 vi
 wget
