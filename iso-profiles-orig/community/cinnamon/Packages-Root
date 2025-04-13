@@ -67,6 +67,7 @@ procps-ng
 psmisc
 rsync
 s-nail
+sbctl
 sed
 shadow
 sudo
@@ -75,6 +76,7 @@ systemd-sysvcompat
 tar
 texinfo
 tlp
+udev-usb-sync
 usbutils
 util-linux
 vi

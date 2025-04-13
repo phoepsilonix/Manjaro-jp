@@ -285,10 +285,10 @@ index 0000000..5cdebbf
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index 35c1256..456b443 100644
+index 36710fa..ca0e302 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -18,12 +18,18 @@ provides=("nvidia=${pkgver}" 'NVIDIA-MODULE')
+@@ -18,6 +18,9 @@ provides=("nvidia=${pkgver}" 'NVIDIA-MODULE')
  options=(!strip)
  _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
  source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
@@ -298,8 +298,9 @@ index 35c1256..456b443 100644
          '0001-Fix-conftest-to-ignore-implicit-function-declaration.patch'
          '0002-Fix-conftest-to-use-a-short-wchar_t.patch'
          '0003-Fix-conftest-to-use-nv_drm_gem_vmap-which-has-the-se.patch'
-         'kernel-6.10.patch' 'kernel-6.12.patch' 'make-modesetting-default.patch'
-         'kernel-6.13.patch')
+@@ -27,6 +30,9 @@ source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+         'kernel-6.13.patch'
+         'kernel-6.14.patch')
  sha256sums=('fe8f58732055dacc4af0c4bb2371022d6e116e9f9594d7d3bea71f5a8a29e2b1'
 +            '21dfe8ac31e7f13837a624c3891367c1a29dec74e63cfd24eb18e3eb4de59777'
 +            '4ab8c26367a23a64963a0a13917079577190382a1198d471a74c9a1ac06ae3da'

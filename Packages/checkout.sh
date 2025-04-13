@@ -45,20 +45,24 @@ do
         #[[ ! -e ./$m/ ]] && (git submodule update --init $m || git submodule add ssh://git@gitlab.manjaro.org:22277/packages/extra/$DIR/$m.git $m || continue;)
         [[ ! -e ./$m/ ]] && (git submodule update --init $m || git submodule add ssh://git@gitlab.manjaro.org:22277/packages/extra/$DIR/$m.git $m || continue;)
 #       [[ ! -e ./$m/ ]] && (git submodule update --init $m || git submodule add https://gitlab.manjaro.org/packages/extra/$DIR/$m.git $m || continue;)
-        # mainブランチをchekoutして、pullでリモートの最新版を取得する
+        # masterブランチをchekoutして、pullでリモートの最新版を取得する
         cd $m || continue
         
         git clean -d -f -e .*\.patch
         #git diff --binary HEAD | git apply --check --stat --apply --allow-empty -R -
-        git reset --hard main
-        git switch main
+        git reset --hard master
+        git switch master
+		#git restore .
         git clean ./ -f
         #git reset --hard HEAD~
         git pull
-        git checkout main
+        git checkout master
         #git switch -f master
         #git pull origin master
         case "$kver" in
+            "6.14") 
+                patch1="patch-${m}-linux6.14.patch"
+                patch2="kmod-sign-${m}-linux6.14.patch" ;;
             "6.13") 
                 patch1="patch-${m}-linux6.13.patch"
                 patch2="kmod-sign-${m}-linux6.13.patch" ;;
@@ -101,10 +105,12 @@ do
             echo $patch1
             echo $patch2
         if [[ ! -e ~/gitlab/Manjaro-jp/patches/$patch1 ]];then
-            patch1="patch-*${m}\.patch"
+            #patch1="patch-*${m}\.patch"
+            patch1="patch-${m}-linux6.13.patch"
         fi
         if [[ ! -e ~/gitlab/Manjaro-jp/patches/$patch2 ]];then
-            patch2="kmod-sign-*${m}\.patch"
+            #patch2="kmod-sign-*${m}\.patch"
+            patch2="kmod-sign-${m}-linux6.13.patch"
         fi
         for patch in ~/gitlab/Manjaro-jp/patches/$patch1 ~/gitlab/Manjaro-jp/patches/$patch2
         do

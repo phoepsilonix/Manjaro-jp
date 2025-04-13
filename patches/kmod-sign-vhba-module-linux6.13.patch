@@ -1,5 +1,5 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 378028c..c9f46a4 100644
+index 47f64fe..dda48ad 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -31,6 +31,9 @@ build() {
@@ -12,11 +12,11 @@ index 378028c..c9f46a4 100644
  }
  
  package() {
-@@ -38,7 +41,18 @@ package() {
- 
+@@ -39,5 +42,18 @@ package() {
    cd "${_module}-$pkgver"
    install -Dm644 *.ko -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
--
+ 
+-  find "$pkgdir" -name '*.ko' -exec zstd --rm -19 {} +
 +  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h|grep -v ALL)
 +  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
 +  COMPRESS=${COMPRESS% 1}
@@ -29,7 +29,6 @@ index 378028c..c9f46a4 100644
 +    ;;
 +  esac
 + 
-   find "$pkgdir" -name '*.ko' -exec strip --strip-debug {} +
--  find "$pkgdir" -name '*.ko' -exec xz {} +
++  find "$pkgdir" -name '*.ko' -exec strip --strip-debug {} +
 +  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
  }

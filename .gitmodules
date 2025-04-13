@@ -270,3 +270,39 @@
 [submodule "Packages/extramodules-6.12/zfs"]
 	path = Packages/extramodules-6.12/zfs
 	url = ssh://git@gitlab.manjaro.org:22277/packages/extra/linux612-extramodules/zfs.git
+[submodule "Packages/extramodules-6.14/acpi_call"]
+	path = Packages/extramodules-6.14/acpi_call
+	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/acpi_call
+[submodule "Packages/extramodules-6.14/bbswitch"]
+	path = Packages/extramodules-6.14/bbswitch
+	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/bbswitch
+[submodule "Packages/extramodules-6.14/broadcom-wl"]
+	path = Packages/extramodules-6.14/broadcom-wl
+	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/broadcom-wl
+[submodule "Packages/extramodules-6.14/nvidia"]
+	path = Packages/extramodules-6.14/nvidia
+	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/nvidia
+[submodule "Packages/extramodules-6.14/nvidia-390xx"]
+	path = Packages/extramodules-6.14/nvidia-390xx
+	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/nvidia-390xx
+[submodule "Packages/extramodules-6.14/nvidia-470xx"]
+	path = Packages/extramodules-6.14/nvidia-470xx
+	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/nvidia-470xx
+[submodule "Packages/extramodules-6.14/r8168"]
+	path = Packages/extramodules-6.14/r8168
+	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/r8168
+[submodule "Packages/extramodules-6.14/rtl8723bu"]
+	path = Packages/extramodules-6.14/rtl8723bu
+	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/rtl8723bu
+[submodule "Packages/extramodules-6.14/tp_smapi"]
+	path = Packages/extramodules-6.14/tp_smapi
+	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/tp_smapi
+[submodule "Packages/extramodules-6.14/vhba-module"]
+	path = Packages/extramodules-6.14/vhba-module
+	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/vhba-module
+[submodule "Packages/extramodules-6.14/zfs"]
+	path = Packages/extramodules-6.14/zfs
+	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/zfs
+[submodule "Packages/extramodules-6.14/virtualbox"]
+	path = Packages/extramodules-6.14/virtualbox
+	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/virtualbox

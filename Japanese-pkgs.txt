@@ -96,7 +96,7 @@ shim-signed
 zram-generator
 
 # MEGA storage
-megatools
+#megatools
 #megasync-bin
 
 numlockl
