@@ -2,7 +2,7 @@
 
 _commit=dee6a539ea078b062d36d300b8e9a9c5691910bf
 pkgname=gnome-shell-extension-kimpanel
-pkgver=20241019
+pkgver=20250408
 pkgrel=1
 pkgdesc="KDE's kimpanel implementation for GNOME Shell, now support fcitx"
 arch=("i686" "x86_64")
