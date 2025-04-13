@@ -2,6 +2,7 @@
 
 ORIGINAL_REPO=$(grep "^source" PKGBUILD |grep "git+https"|sed -e "s|.*com/\(.*\)\#.*|\1|" -e "s|.git$||")
 LATEST_COMMIT=$(curl -s https://api.github.com/repos/$ORIGINAL_REPO/commits/gnome-46|jq -r ".sha")
+LATEST_COMMIT=$(curl -s https://api.github.com/repos/$ORIGINAL_REPO/commits/master|jq -r ".sha")
 echo $ORIGINAL_REPO
 echo "Latest :" $LATEST_COMMIT
 
