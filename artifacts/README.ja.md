@@ -19,7 +19,7 @@ Linuxには、いろんなディストリビューションといわれるもの
 ----
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
-[kernel-6.13系](https://kernel.org/)。
+[kernel-6.14系](https://kernel.org/)。
 
 公式に合わせて、KDE、Xfce、GNOMEの３種類を用意する予定です。  
 配布ファイルはISOと一部パッケージファイルです。  
@@ -97,15 +97,15 @@ sudo pacman-static -Syyu
 
 5. Manjaro公式とのkernelの違い  
     kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.12系に移行したようです。  
-    ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.13系です。  
+    ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.14系です。  
     kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
     またkernelのrust対応も有効にしています。  
     Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
     ```sh
-    sudo pacman -S core/linux66 core/linux66-headers
+    sudo pacman -S core/linux612 core/linux612-headers
     ```
     ```sh
-    sudo pacman -S core/linux612 core/linux612-headers
+    sudo pacman -S core/linux613 core/linux613-headers
     ```
 
 6. 日本語入力、表示関連(2024/12/18〜)
@@ -814,10 +814,14 @@ kernel-6.13.3
 
 ##### 20250228
 kernel-6.13.5  
-</details>
 
 ##### 20250325
 kernel-6.13.8  
+</details>
+
+##### 20250414
+kernel-6.14.2  
+
 
 
 ----
