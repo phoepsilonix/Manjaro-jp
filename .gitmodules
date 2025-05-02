@@ -306,3 +306,6 @@
 [submodule "Packages/extramodules-6.14/virtualbox"]
 	path = Packages/extramodules-6.14/virtualbox
 	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/virtualbox
+[submodule "Packages/extramodules-6.14/nvidia-open"]
+	path = Packages/extramodules-6.14/nvidia-open
+	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/nvidia-open
