@@ -268,7 +268,7 @@ nautilus-open-any-terminal
 #xdg-utils                         # already a dependency of anything that requires it
 
 ## Optional dependencies for file-roller
->extra 7zip
+#>extra 7zip
 >extra squashfs-tools
 >extra unace
 >extra unrar
