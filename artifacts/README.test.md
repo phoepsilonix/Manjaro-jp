@@ -102,10 +102,10 @@ sudo pacman-static -Syyu
     またkernelのrust対応も有効にしています。  
     Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
     ```sh
-    sudo pacman -S core/linux612 core/linux612-headers
+    sudo pacman -S core/linux66 core/linux66-headers
     ```
     ```sh
-    sudo pacman -S core/linux613 core/linux613-headers
+    sudo pacman -S core/linux612 core/linux612-headers
     ```
 
 6. 日本語入力、表示関連(2024/12/18〜)
