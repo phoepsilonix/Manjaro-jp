@@ -236,7 +236,7 @@ xdg-utils
 #>extra kernel-alive
 
 ## Misc
->basic squashfs-tools
+#>basic squashfs-tools
 xiccd # enable color profile settings
 #tlp
 

@@ -49,7 +49,7 @@ ttf-hack                           # default monspace font
 #ttf-inconsolata
 >extra ttf-indic-otf               # India fonts
 #ttf-liberation                    # required by firefox
-
+ttf-meslo-nerd-font-powerlevel10k  # default GNOME Console font for manjaro-zsh-config
 
 ## Package management
 
@@ -256,6 +256,7 @@ manjaro-settings-manager-notifier
 #mousetweaks
 >extra nautilus-admin
 nautilus-empty-file
+nautilus-open-any-terminal
 #>extra onlyoffice-desktopeditors  # office program is chosen during install
 #polkit-gnome                      # deprecated
 >extra power-profiles-daemon       # optional for gnome-control-center
@@ -267,11 +268,12 @@ nautilus-empty-file
 #xdg-utils                         # already a dependency of anything that requires it
 
 ## Optional dependencies for file-roller
->extra lrzip
->extra p7zip
+>extra 7zip
 >extra squashfs-tools
 >extra unace
 >extra unrar
+#>extra unzip                      # required by gnome-shell
+>extra zip
 
 ## Optional dependencies for inxi
 dmidecode

@@ -256,7 +256,7 @@ xdg-utils
 power-profiles-daemon
 
 ## Misc
->basic squashfs-tools
+#>basic squashfs-tools
 
 #manjaro-jp/ibus-mozc-with-jp-dict
 #manjaro-asian-input-support-ibus
