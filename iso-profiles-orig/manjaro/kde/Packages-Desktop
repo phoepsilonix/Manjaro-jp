@@ -58,7 +58,7 @@ terminus-font
 >extra ttf-droid
 
 ## Package management
-pamac-gtk3
+pamac-gtk
 pamac-tray-icon-plasma
 pamac-cli
 #>extra apparmor
