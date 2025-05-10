@@ -785,10 +785,13 @@ kernel-6.14.2
 
 ##### 20250426
 kernel-6.14.4  
-</details>
 
 ##### 20250503
 kernel-6.14.5  
+</details>
+
+##### 20250510
+kernel-6.14.6  
 
 ----
 Outros sistemas operativos recomendados.  
