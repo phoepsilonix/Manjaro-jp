@@ -2,15 +2,6 @@ diff --git a/PKGBUILD b/PKGBUILD
 index 08401ec..f3a35d3 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -6,7 +6,7 @@ _linuxprefix=linux614
- 
- pkgname="${_linuxprefix}-nvidia-470xx"
- pkgver=470.256.02
--pkgrel=13
-+pkgrel=8
- pkgdesc="NVIDIA kernel modules for ${_linuxprefix}"
- arch=('x86_64')
- url="https://www.nvidia.com/"
 @@ -21,6 +21,27 @@ build() {
      _kernver="$(cat /usr/src/${_linuxprefix}/version)"
  

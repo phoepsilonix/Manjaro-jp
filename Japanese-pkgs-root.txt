@@ -7,7 +7,8 @@ fakeroot
 #paru
 paru-static
 manjaro-jp/manjaro_jp-keyring
-manjaro-jp/fastfetch-git
+#manjaro-jp/fastfetch-git
+fastfetch
 intel-ucode
 amd-ucode
 iptables-nft

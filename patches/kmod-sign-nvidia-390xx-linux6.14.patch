@@ -1,5 +1,5 @@
 diff --git a/PKGBUILD b/PKGBUILD
-index 27ffe01..ba3837d 100644
+index 4b8a786..1638aa2 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -28,6 +28,27 @@ build() {
