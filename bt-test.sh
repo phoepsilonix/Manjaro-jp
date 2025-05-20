@@ -4,11 +4,11 @@
 trackers=$(sed -e '/^$/d' trackers_all.txt trackers_all_ip.txt trackers_best.txt| sort | uniq | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/,/g' -e 's/,,/,/g' -e's/,$//')
 #MAGNET=""
 #TORRENT=$(ls artifacts/*.torrent |xargs -n1 echo -n " -T ")
-TORRENT=$(ls $(pwd)/artifacts/*.torrent)
+TORRENT=$(ls ~/torrent/*.torrent)
 #TORRENT2=$(ls artifacts/firefox/*.torrent)
-PARALLEL=$(($(ls artifacts/*.torrent |wc -l)*4))
+PARALLEL=$(($(ls ~/torrent/*.torrent |wc -l)*4))
 #PARALLEL2=$(($(ls artifacts/firefox/*.torrent |wc -l)*4))
-ARTIFACTS=$(pwd)/artifacts/
+ARTIFACTS=$HOME/torrent/
 #for f in $TORRENT
 #do
 #    MAGNET+=" $(python torrent2magnet/torrent2magnet.py $f 2>/dev/null)"
@@ -29,8 +29,10 @@ aria2c -V --seed-ratio=0.0 -j$PARALLEL -x2 -s2 -P -c $TORRENT -d$ARTIFACTS --ena
     --dht-listen-port=6881 --dht-message-timeout=10 \
     --listen-port=6889 \
     -D \
+	--log-level=debug --log=$HOME/.aria2/aria2.log
 
 #    --bt-seed-unverified=true -D
+#	--seed-ratio=0.0 \
 
 #   --conf $(pwd)/aria2.conf
 #COMMENT

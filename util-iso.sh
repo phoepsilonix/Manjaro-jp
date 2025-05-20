@@ -323,6 +323,7 @@ make_image_root() {
         msg "Prepare [Base installation] (rootfs)"
         local path="${work_dir}/rootfs"
         mkdir -p ${path}
+        sync
 
         chroot_create "${path}" "${packages}" || die
 
@@ -331,7 +332,7 @@ make_image_root() {
             echo 'MHWD64_IS_LIB32="'${multilib}'"' > "${path}/etc/mhwd-x86_64.conf"
         fi
 
-        cp "${tmp_dir}/custom-pacman.conf" "${path}/etc/pacman.conf" && sync
+		cp "${tmp_dir}/custom-pacman.conf" "${path}/etc/pacman.conf" && sync
         pacman -Qr "${path}" > "${path}/rootfs-pkgs.txt"
         copy_overlay "${profile_dir}/root-overlay" "${path}"
 
@@ -350,6 +351,7 @@ make_image_desktop() {
         msg "Prepare [Desktop installation] (desktopfs)"
         local path="${work_dir}/desktopfs"
         mkdir -p ${path}
+        sync
 
         mount_fs_root "${path}"
 
@@ -496,6 +498,7 @@ make_image_mhwd() {
         msg "Prepare [drivers repository] (mhwdfs)"
         local path="${work_dir}/mhwdfs"
         mkdir -p ${path}${mhwd_repo}
+        sync
 
         mount_fs_select "${path}"
 	cp "${tmp_dir}/custom-pacman.conf" "${path}/etc/pacman.conf" && sync
@@ -526,6 +529,7 @@ make_image_boot() {
         local boot="${iso_root}/boot"
 
         mkdir -p ${boot}
+        sync
 
         cp ${work_dir}/rootfs/boot/vmlinuz* ${boot}/vmlinuz-${target_arch}
 
