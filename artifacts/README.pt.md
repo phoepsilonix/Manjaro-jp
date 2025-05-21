@@ -72,7 +72,11 @@ Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repo
     sudo pacman -S core/linux612 core/linux612-headers
     ```
 
-5. Relacionado à entrada em japonês  
+5. limitações relativas ao VirtualBox  
+    O kernel fornecido pelo Manjaro-JP como padrão é um kernel com CONFIG_CFI_CLANG ativado, por isso o virtualbox pode não funcionar.  
+    Se isto não funcionar, por favor use o kernel fornecido pelo Manjaro-JP ou outros kernels oficiais do Manjaro.
+
+6. Relacionado à entrada em japonês  
     - manjaro-asian-input-support-fcitx5  
       Foi modificado para funcionar tanto em ambientes GNOME quanto KDE no Wayland ou X11. (Adotado oficialmente.)
     - manjaro-application-utility  

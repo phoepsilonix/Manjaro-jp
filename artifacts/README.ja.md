@@ -108,7 +108,11 @@ sudo pacman-static -Syyu
     sudo pacman -S core/linux613 core/linux613-headers
     ```
 
-6. 日本語入力、表示関連(2024/12/18〜)
+6. VirtualBoxに関する制限事項  
+    Manjaro-JPが標準で提供しているkernelは、CONFIG_CFI_CLANGを有効にしているkernelのため、virtualboxが動作しない場合があります。  
+    動作しない場合には、Manjaro公式などが提供するkernelをご利用ください。
+
+7. 日本語入力、表示関連(2024/12/18〜)
     - manjaro-asian-input-support-fcitx5  
       GNOME、KDEのWaylandまたはX11環境、いずれでも使えるように修正しました。(公式に取り込まれました。）
     - manjaro-application-utility  

@@ -77,7 +77,11 @@ cd ventoy-1.1.05
     sudo pacman -S core/linux612 core/linux612-headers
     ```
 
-6. 與日本語輸入相關  
+6. VirtualBox的限制事項  
+    Manjaro-JP標準提供的kernel啟用了CONFIG_CFI_CLANG，因此可能無法運行VirtualBox。
+    如果無法運行，請使用Manjaro官方等提供的kernel。
+
+7. 與日本語輸入相關  
     - manjaro-asian-input-support-fcitx5  
       已經修改為可以在GNOME和KDE環境下的Wayland或X11中使用。（已正式採用。）
     - manjaro-application-utility  

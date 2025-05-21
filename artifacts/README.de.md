@@ -71,8 +71,11 @@ Wir haben das Paket pacman-static standardmäßig installiert. Bitte verwenden S
     ```sh
     sudo pacman -S core/linux612 core/linux612-headers
     ```
+5. Einschränkungen in Bezug auf VirtualBox  
+    Der von Manjaro-JP standardmäßig bereitgestellte Kernel ist ein Kernel mit aktiviertem CONFIG_CFI_CLANG, so dass Virtualbox möglicherweise nicht funktioniert.  
+    Sollte dies nicht funktionieren, verwenden Sie bitte den von Manjaro-JP bereitgestellten Kernel oder andere offizielle Manjaro-Kernel.
 
-5. Japanische Eingabe Bezogen(2024/12/18-)
+6. Japanische Eingabe Bezogen(2024/12/18-)
     - manjaro-asian-input-support-fcitx5  
       Es wurde so modifiziert, dass es sowohl in GNOME- als auch in KDE-Umgebungen unter Wayland oder X11 funktioniert. (Offiziell übernommen.)
     - manjaro-application-utility  
