@@ -30,7 +30,7 @@ KEY_FILENAME=$1
 
 ###### expectでパスフレーズ入力を自動化
 expect <<EOF
-  spawn keychain --agents ssh --eval $KEY_FILENAME
+  spawn keychain --eval $KEY_FILENAME
   expect {
     "* passphrase *:" {
       send "$PASSPHRASE\r"
