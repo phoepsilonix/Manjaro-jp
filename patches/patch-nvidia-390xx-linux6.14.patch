@@ -1,10 +1,10 @@
 diff --git a/002-Kbuild-clang-options.patch b/002-Kbuild-clang-options.patch
 new file mode 100644
-index 0000000..0e62aae
+index 0000000..f33bbbe
 --- /dev/null
 +++ b/002-Kbuild-clang-options.patch
 @@ -0,0 +1,13 @@
-+diff --git a/Kbuild.orig b/Kbuild
++diff --git a/Kbuild b/Kbuild
 +index e3d5a13..0e92475 100644
 +--- a/Kbuild
 ++++ b/Kbuild
@@ -18,7 +18,7 @@ index 0000000..0e62aae
 + EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
 + EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
 diff --git a/PKGBUILD b/PKGBUILD
-index 27ffe01..6e18eda 100644
+index 2d86562..8333451 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -23,10 +23,32 @@ depends=("${_linuxprefix}" "nvidia-utils=${pkgver}" 'libglvnd')
@@ -29,8 +29,8 @@ index 27ffe01..6e18eda 100644
 +002-Kbuild-clang-options.patch
 +nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
 +)
-+sha256sums=('7ab8f56c2137e1181afeb3ed1cb10103628da163696bf116ab0c6ca2d8a66b57'
-+            'b084524a6e90e9ad712d1b6b4048811d494a6a2a8670d0e99357f8d8840143d8')
++sha256sums=('4454ae87c85ff0f3d02cecd96c1484c52ba511b9ac4916f2f74e3abb218a7d18'
++            '533de2dee00eae2b08ab6529459c6a57219d952c2cea079b86fc545aabc8958d')
 +
 +prepare() {
 +    _kernver="$(cat /usr/src/${_linuxprefix}/version)"
@@ -43,7 +43,7 @@ index 27ffe01..6e18eda 100644
 +	rm -r ${srcdir}/nvidia/${pkgver}/source
 +	ln -s ${srcdir}/nvidia/${pkgver}/source2 ${srcdir}/nvidia/${pkgver}/source
 +	cd ${srcdir}/nvidia/${pkgver}/source
-+	patch -p1 -i ${srcdir}/002-Kbuild-clang-options.patch
++	#patch -p1 -i ${srcdir}/002-Kbuild-clang-options.patch
 +	patch -p2 -i ${srcdir}/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
 +}
  
@@ -56,10 +56,10 @@ index 27ffe01..6e18eda 100644
  
 diff --git a/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch b/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
 new file mode 100644
-index 0000000..353bd6d
+index 0000000..34ec2d7
 --- /dev/null
 +++ b/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
-@@ -0,0 +1,94 @@
+@@ -0,0 +1,95 @@
 +diff -ur a/kernel/conftest.sh b/kernel/conftest.sh
 +--- a/kernel/conftest.sh	2023-06-01 20:00:46.719933661 +0800
 ++++ b/kernel/conftest.sh	2023-06-01 21:26:23.218584390 +0800
@@ -131,17 +131,6 @@ index 0000000..353bd6d
 +         fi
 +     ;;
 +
-+diff -ur a/kernel/Kbuild b/kernel/Kbuild
-+--- a/kernel/Kbuild	2023-06-01 20:00:46.716600311 +0800
-++++ b/kernel/Kbuild	2023-06-01 21:37:31.631878921 +0800
-+@@ -68,6 +68,7 @@
-+ EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
-+ EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
-+ EXTRA_CFLAGS += -DNV_KERNEL_INTERFACE_LAYER
-++EXTRA_CFLAGS += -Wno-error=unused-command-line-argument -Wno-error=strict-prototypes
-+
-+ #
-+ # Detect SGI UV systems and apply system-specific optimizations.
 +diff -ur a/kernel/nvidia-drm/nvidia-drm-fb.c b/kernel/nvidia-drm/nvidia-drm-fb.c
 +--- a/kernel/nvidia-drm/nvidia-drm-fb.c	2023-06-01 20:00:46.723267010 +0800
 ++++ b/kernel/nvidia-drm/nvidia-drm-fb.c	2023-06-01 21:55:43.793928784 +0800
@@ -154,3 +143,15 @@ index 0000000..353bd6d
 + 
 + static void nv_drm_framebuffer_destroy(struct drm_framebuffer *fb)
 +
++diff --git a/kernel/Kbuild b/kernel/Kbuild
++index 3b7bc06..69ed6b7 100644
++--- a/kernel/Kbuild
+++++ b/kernel/Kbuild
++@@ -61,6 +61,7 @@ ccflags-y += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"390.157\" -Wno-u
++ ccflags-y += $(call cc-option,-Werror=undef,)
++ ccflags-y += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
++ ccflags-y += -DNV_KERNEL_INTERFACE_LAYER
+++ccflags-y += -Wno-error=unused-command-line-argument -Wno-error=strict-prototypes
++ 
++ #
++ # Detect SGI UV systems and apply system-specific optimizations.

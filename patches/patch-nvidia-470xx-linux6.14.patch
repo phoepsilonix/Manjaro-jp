@@ -1,22 +1,36 @@
 diff --git a/002-Kbuild-clang-options.patch b/002-Kbuild-clang-options.patch
 new file mode 100644
-index 0000000..a915dfb
+index 0000000..4104744
 --- /dev/null
 +++ b/002-Kbuild-clang-options.patch
-@@ -0,0 +1,11 @@
-+diff --git a/Kbuild.orig b/Kbuild
-+index 9d5c5d5..a10b97b 100644
+@@ -0,0 +1,25 @@
++diff --git a/Kbuild b/Kbuild
++index e4b91db..6bbee08 100644
++--- a/Kbuild
+++++ b/Kbuild
 +@@ -69,7 +69,7 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
-+ EXTRA_CFLAGS += -std=gnu17
-+ EXTRA_CFLAGS += -I$(src)/common/inc
-+ EXTRA_CFLAGS += -I$(src)
-+-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
-++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
-+ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.256.02\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
-+ EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
-+ EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
++ ccflags-y += -std=gnu17
++ ccflags-y += -I$(src)/common/inc
++ ccflags-y += -I$(src)
++-ccflags-y += -Wall -MD $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
+++ccflags-y += -Wall $(DEFINES) $(INCLUDES) -Wno-cast-qual -Wno-error -Wno-format-extra-args
++ ccflags-y += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.256.02\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE
++ ccflags-y += $(call cc-option,-Werror=undef,)
++ ccflags-y += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
++diff --git a/Kbuild b/Kbuild
++index 6bbee08..0ae9d77 100644
++--- a/Kbuild
+++++ b/Kbuild
++@@ -74,6 +74,7 @@ ccflags-y += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.256.02\" -Wn
++ ccflags-y += $(call cc-option,-Werror=undef,)
++ ccflags-y += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
++ ccflags-y += -DNV_KERNEL_INTERFACE_LAYER
+++ccflags-y += -Wno-error=unused-command-line-argument -Wno-error=strict-prototypes
++ 
++ #
++ # Detect SGI UV systems and apply system-specific optimizations.
 diff --git a/PKGBUILD b/PKGBUILD
-index 85b12dd..a684cc0 100644
+index 39012a4..533a790 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
 @@ -15,8 +15,29 @@ groups=("${_linuxprefix}-extramodules")
@@ -27,8 +41,8 @@ index 85b12dd..a684cc0 100644
 +002-Kbuild-clang-options.patch
 +nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 +)
-+sha256sums=('94d5468db94a962d4a7c70345101bf17aba76be380515914c5b16e3c576c0cef'
-+            '031ca86593ced93185f6bdcf0a2dad211d2728ea95eaf1f3fcc1b2aba073658a')
++sha256sums=('f2e1bebcc512633a169bed87fb2358e31030d82846fb8a49c2ae853acd0b09f0'
++            '66c191e2228e0bff8a83b86ab1e45161a2ef2d6d2db1f55471b9159ad4d49a00')
  options=(!strip)
  
 +prepare() {
@@ -51,10 +65,10 @@ index 85b12dd..a684cc0 100644
  
 diff --git a/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 new file mode 100644
-index 0000000..0234f3a
+index 0000000..a371740
 --- /dev/null
 +++ b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
-@@ -0,0 +1,57 @@
+@@ -0,0 +1,45 @@
 +diff -ur a/conftest.sh b/conftest.sh
 +--- a/conftest.sh	2023-06-01 20:00:46.719933661 +0800
 ++++ b/conftest.sh	2023-06-01 21:26:23.218584390 +0800
@@ -100,15 +114,3 @@ index 0000000..0234f3a
 +         fi
 +     ;;
 +
-+diff --git a/Kbuild.orig b/Kbuild
-+index a10b97b..3b3c23c 100644
-+--- a/Kbuild
-++++ b/Kbuild
-+@@ -74,6 +74,7 @@ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"470.256.02\"
-+ EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
-+ EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
-+ EXTRA_CFLAGS += -DNV_KERNEL_INTERFACE_LAYER
-++EXTRA_CFLAGS += -Wno-error=unused-command-line-argument -Wno-error=strict-prototypes
-+ 
-+ #
-+ # Detect SGI UV systems and apply system-specific optimizations.
