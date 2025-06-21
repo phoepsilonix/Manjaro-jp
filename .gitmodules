@@ -309,3 +309,42 @@
 [submodule "Packages/extramodules-6.14/nvidia-open"]
 	path = Packages/extramodules-6.14/nvidia-open
 	url = https://gitlab.manjaro.org/packages/extra/linux614-extramodules/nvidia-open
+[submodule "Packages/extramodules-6.15/acpi_call"]
+	path = Packages/extramodules-6.15/acpi_call
+	url = https://gitlab.manjaro.org/packages/extra/linux615-extramodules/acpi_call
+[submodule "Packages/extramodules-6.15/bbswitch"]
+	path = Packages/extramodules-6.15/bbswitch
+	url = https://gitlab.manjaro.org/packages/extra/linux615-extramodules/bbswitch
+[submodule "Packages/extramodules-6.15/broadcom-wl"]
+	path = Packages/extramodules-6.15/broadcom-wl
+	url = https://gitlab.manjaro.org/packages/extra/linux615-extramodules/broadcom-wl
+[submodule "Packages/extramodules-6.15/nvidia"]
+	path = Packages/extramodules-6.15/nvidia
+	url = https://gitlab.manjaro.org/packages/extra/linux615-extramodules/nvidia
+[submodule "Packages/extramodules-6.15/nvidia-open"]
+	path = Packages/extramodules-6.15/nvidia-open
+	url = https://gitlab.manjaro.org/packages/extra/linux615-extramodules/nvidia-open
+[submodule "Packages/extramodules-6.15/nvidia-390xx"]
+	path = Packages/extramodules-6.15/nvidia-390xx
+	url = https://gitlab.manjaro.org/packages/extra/linux615-extramodules/nvidia-390xx
+[submodule "Packages/extramodules-6.15/nvidia-470xx"]
+	path = Packages/extramodules-6.15/nvidia-470xx
+	url = https://gitlab.manjaro.org/packages/extra/linux615-extramodules/nvidia-470xx
+[submodule "Packages/extramodules-6.15/r8168"]
+	path = Packages/extramodules-6.15/r8168
+	url = https://gitlab.manjaro.org/packages/extra/linux615-extramodules/r8168
+[submodule "Packages/extramodules-6.15/rtl8723bu"]
+	path = Packages/extramodules-6.15/rtl8723bu
+	url = https://gitlab.manjaro.org/packages/extra/linux615-extramodules/rtl8723bu
+[submodule "Packages/extramodules-6.15/tp_smapi"]
+	path = Packages/extramodules-6.15/tp_smapi
+	url = https://gitlab.manjaro.org/packages/extra/linux615-extramodules/tp_smapi
+[submodule "Packages/extramodules-6.15/vhba-module"]
+	path = Packages/extramodules-6.15/vhba-module
+	url = https://gitlab.manjaro.org/packages/extra/linux615-extramodules/vhba-module
+[submodule "Packages/extramodules-6.15/virtualbox"]
+	path = Packages/extramodules-6.15/virtualbox
+	url = https://gitlab.manjaro.org/packages/extra/linux615-extramodules/virtualbox
+[submodule "Packages/extramodules-6.15/zfs"]
+	path = Packages/extramodules-6.15/zfs
+	url = https://gitlab.manjaro.org/packages/extra/linux615-extramodules/zfs
