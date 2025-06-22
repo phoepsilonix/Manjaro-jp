@@ -2,7 +2,7 @@
 ### 
 ## Japanese language support for [Manjaro Linux](https://manjaro.org/)
 　The default includes support for Japanese input and display, including the live environment.  
-[kernel-6.14 series](https://kernel.org/).  
+[kernel-6.15 series](https://kernel.org/).  
 
 We plan to provide three types of official environments: KDE, Xfce, and GNOME.  
 The distribution files include ISO and some package files.  
@@ -63,7 +63,7 @@ We have installed the pacman-static package as standard. Please use this if pack
 
 4. kernel differences from the official Manjaro kernel
     The kererl-6.6 series was used in the official Manjaro iso. The latest Manjaro seems to have moved to the kernel-6.12 series.- 
-    The ISO distributed here uses a new kernel as much as possible. Currently, it is kernel-6.14 series.
+    The ISO distributed here uses a new kernel as much as possible. Currently, it is kernel-6.15 series.
     We use clang instead of gcc to build the kernel and kernel modules.  
     We also enable the kernel's rust support.  
     If you want to use the official Manjaro kernel, install it by specifying the repository 'core' as in the following command.
@@ -801,10 +801,13 @@ kernel-6.14.5
 
 ##### 20250510
 kernel-6.14.6  
-</details>
 
 ##### 20250521
 kernel-6.14.7  
+</details>
+
+##### 20250620
+kernel-6.15.3  
 
 
 ----
