@@ -1,5 +1,5 @@
 [org.gnome.libgnomekbd.keyboard]
-layouts=['jp\tkana86']
+layouts=['jp']
 
 [org.cinnamon.settings-daemon.peripherals.keyboard]
 numlock-state='on'

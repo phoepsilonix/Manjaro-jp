@@ -111,6 +111,6 @@ switch-to-workspace-right=['<Super>Page_Down', '<Super><Alt>Right', '<Control><A
 folder-children=['accessories', 'games', 'office', 'system-tools']
 
 [org.gnome.desktop.input-sources]
-sources=[('xkb', 'jp+kana86')]
+sources=[('xkb', 'jp')]
 xkb-options=['lv3:ralt_switch']
 

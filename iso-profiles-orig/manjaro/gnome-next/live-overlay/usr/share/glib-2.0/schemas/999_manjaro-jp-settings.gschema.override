@@ -15,7 +15,7 @@ favorite-apps=['one.ablaze.floorp.desktop', 'org.gnome.Nautilus.desktop', 'org.g
 enabled-extensions=['pamac-updates@manjaro.org', 'dash-to-dock@micxgx.gmail.com', 'appindicatorsupport@rgcjonas.gmail.com', 'gnome-ui-tune@itstime.tech', 'legacyschemeautoswitcher@joshimukul29.gmail.com', 'x11gestures@joseexposito.github.io', 'custom-accent-colors@demiskp', 'space-bar@luchrioh']
 
 [org.gnome.desktop.input-sources]
-sources=[('xkb', 'jp+kana86')]
+sources=[('xkb', 'jp')]
 xkb-options=['lv3:ralt_switch']
 
 [org.gnome.desktop.media-handling]

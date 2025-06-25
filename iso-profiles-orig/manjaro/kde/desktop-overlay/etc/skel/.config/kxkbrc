@@ -5,5 +5,3 @@ update_info=kxkb.upd:remove-empty-lists,kxkb.upd:add-back-resetoptions,kxkb_vari
 DisplayNames=
 LayoutList=jp
 Use=true
-VariantList=kana86
-

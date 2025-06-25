@@ -3,7 +3,7 @@ favourites=['one.ablaze.floorp.desktop', 'mate-terminal.desktop', 'caja-browser.
 pinned-shortcuts=['matecc.desktop', 'pamac-manager.desktop']
 
 [org.mate.peripherals-keyboard-xkb.kbd]
-layouts=['jp\tkana86']
+layouts=['jp']
 options=['terminate\tterminate:ctrl_alt_bksp']
 
 [org.mate.desktop.peripherals.keyboard]
