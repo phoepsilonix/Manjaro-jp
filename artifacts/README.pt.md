@@ -801,10 +801,14 @@ kernel-6.14.7
 
 ##### 20250620
 kernel-6.15.3  
-</details>
 
 ##### 20250630
 kernel-6.15.4  
+</details>
+
+##### 20250711
+kernel-6.15.6  
+
 
 ----
 Outros sistemas operativos recomendados.  
