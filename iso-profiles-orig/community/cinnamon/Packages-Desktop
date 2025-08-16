@@ -81,13 +81,18 @@ cinnamon-translations              # optional for various cinnamon packages
 ## X-Apps group
 
 >extra bulky
+fingwit
+gnome-online-accounts-gtk
 >extra pix
 #sticky
 #thingy
 xed
 >extra xapp-appimage-thumbnailer
 >extra xapp-epub-thumbnailer
+>extra xapp-gimp-thumbnailer
+>extra xapp-jxl-thumbnailer
 >extra xapp-mp3-thumbnailer
+>extra xapp-ora-thumbnailer
 >extra xapp-raw-thumbnailer
 >extra xapp-vorbiscomment-thumbnailer
 >extra xreader
@@ -123,8 +128,10 @@ bibata-cursor-theme                # required by manjaro-cinnamon settings
 gnome-themes-extra
 grub-theme-manjaro
 kvantum-manjaro                    # required by manjaro-cinnamon settings
+mint-l-icons
 mint-l-theme                       # required by manjaro-cinnamon settings
 mint-themes                        # required by manjaro-cinnamon settings
+mint-y-icons
 papirus-maia-icon-theme            # required by manjaro-cinnamon settings
 #plymouth-theme-manjaro-cinnamon   # optional for manjaro-cinnamon settings
 qt5ct                              # required by manjaro-cinnamon settings
@@ -143,7 +150,6 @@ flatpak
 >extra galculator
 >extra gcolor3
 >extra gimp
->extra gnome-online-accounts       # optional for cinnamon-control-center, required by gnome-control-center
 >extra gnome-screenshot
 >extra gparted
 #>extra gprename                    # required by nemo-bulk-rename

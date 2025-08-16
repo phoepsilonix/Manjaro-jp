@@ -30,10 +30,10 @@ index 0000000..4104744
 + #
 + # Detect SGI UV systems and apply system-specific optimizations.
 diff --git a/PKGBUILD b/PKGBUILD
-index 39012a4..533a790 100644
+index fc402ba..fa52192 100644
 --- a/PKGBUILD
 +++ b/PKGBUILD
-@@ -15,8 +15,29 @@ groups=("${_linuxprefix}-extramodules")
+@@ -15,11 +15,33 @@ groups=("${_linuxprefix}-extramodules")
  depends=("${_linuxprefix}" "nvidia-utils=${pkgver}" 'libglvnd')
  makedepends=("${_linuxprefix}-headers" "nvidia-dkms=$pkgver")
  provides=("nvidia=${pkgver}" 'NVIDIA-MODULE')
@@ -62,6 +62,10 @@ index 39012a4..533a790 100644
 +
  build() {
      _kernver="$(cat /usr/src/${_linuxprefix}/version)"
+ 
++    export IGNORE_CC_MISMATCH=1
+     fakeroot dkms build --dkmstree "${srcdir}" -m nvidia/${pkgver} -k ${_kernver}
+ }
  
 diff --git a/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch b/nvidia-graphics-drivers-legacy-470xx-with-clang-16.patch
 new file mode 100644
