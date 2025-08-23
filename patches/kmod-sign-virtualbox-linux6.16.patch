@@ -1,0 +1,77 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index f2e7434..dd3113c 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -13,7 +13,7 @@ pkgrel=15
+ pkgdesc='Virtualbox host kernel modules for Manjaro Kernel'
+ arch=('x86_64')
+ url='http://virtualbox.org'
+-license=('GPL')
++license=('GPL-3.0-only')
+ groups=("${_linuxprefix}-extramodules")
+ depends=("${_linuxprefix}")
+ makedepends=("${_linuxprefix}-headers" "virtualbox-host-dkms=$pkgver")
+@@ -21,10 +21,43 @@ provides=('VIRTUALBOX-HOST-MODULES')
+ conflicts=("${_linuxprefix}-virtualbox-modules" 'virtualbox-host-dkms')
+ replaces=("${_linuxprefix}-virtualbox-modules")
+ 
++prepare() {
++    _kernver="$(cat /usr/src/${_linuxprefix}/version)"
++    dkms add --dkmstree "$srcdir" -m vboxhost/${pkgver}_OSE -k ${_kernver}
++
++	mkdir -p ${srcdir}/vboxhost/${pkgver}_OSE/source2/
++	cp -r ${srcdir}/vboxhost/${pkgver}_OSE/source/* ${srcdir}/vboxhost/${pkgver}_OSE/source2/
++	#sed -i "s/-MD//" ${srcdir}/nvidia/${pkgver}/source2/Kbuild
++	rm -r ${srcdir}/vboxhost/${pkgver}_OSE/source
++	ln -s ${srcdir}/vboxhost/${pkgver}_OSE/source2 ${srcdir}/vboxhost/${pkgver}_OSE/source
++	sed -i -e "s/!CONFIG_CFI_CLANG//" ${srcdir}/vboxhost/${pkgver}_OSE/source/dkms.conf
++}
++
+ build() {
+   _kernver="$(cat /usr/src/${_linuxprefix}/version)"
+ 
+   fakeroot dkms build --dkmstree "$srcdir" -m vboxhost/${pkgver}_OSE -k ${_kernver}
++  cd "$srcdir/vboxhost/$_pkgver/$_kernver/$CARCH/module"
++  for f in *.ko.*
++  do
++          case "$f" in
++          *.zst)
++                zstd -d $f
++                COMPRESS=zstd
++                ;;
++          *.xz)
++                xz -d $f
++                COMPRESS=xz
++                ;;
++          esac
++  done
++
++  SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
++  SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
++  for f in *.ko
++  do
++          /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 $f
++  done
+ }
+ 
+ package() {
+@@ -34,7 +67,18 @@ package() {
+   install -Dm 644 *.ko* -t "$pkgdir/usr/lib/modules/${_kernver}/extramodules/"
+ 
+   # compress each module individually
+-  find "${pkgdir}" -name '*.ko' -exec zstd --rm -19 {} +
++  COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h|grep -v ALL)
++  COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
++  COMPRESS=${COMPRESS% 1}
++  case $COMPRESS in
++  ZSTD)
++    COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
++    ;;
++  XZ)
++    COMP_CMD="xz -T0 -f -q -9 --lzma2=dict=2MiB"
++    ;;
++  esac
++  find "${pkgdir}" -name '*.ko' -exec $COMP_CMD {} +
+ 
+   # systemd module loading
+   printf '%s\n' vboxdrv vboxnetadp vboxnetflt |

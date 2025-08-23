@@ -1,0 +1,32 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index b30e54b..a02478a 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -43,6 +43,27 @@ build() {
+ 
+     export IGNORE_CC_MISMATCH=1
+     fakeroot dkms build --dkmstree "${srcdir}" -m nvidia/${pkgver} -k ${_kernver}
++    SIG_HASH=$(grep -o "CONFIG_MODULE_SIG_HASH.*" /usr/lib/modules/$_kernver/build/include/config/auto.conf)
++    SIG_HASH=${SIG_HASH#CONFIG_MODULE_SIG_HASH=}
++    COMPRESS=$(grep -o "CONFIG_MODULE_COMPRESS_.* 1" /usr/lib/modules/$_kernver/build/include/generated/autoconf.h|grep -v ALL)
++    COMPRESS=${COMPRESS#CONFIG_MODULE_COMPRESS_}
++    COMPRESS=${COMPRESS% 1}
++    case $COMPRESS in
++    ZSTD)
++        COMP_CMD="zstd -T0 -22 --ultra --auto-threads=physical --rm -f"
++		DECOMP_CMD="zstd -d"
++        ;;
++    XZ)
++        COMP_CMD="xz -T0 -f -v -9 --lzma2=dict=2MiB"
++		DECOMP_CMD="xz -d"
++        ;;
++    esac
++    for file in nvidia/${pkgver}/${_kernver}/${CARCH}/module/*.ko.zst
++    do
++		$DECOMP_CMD -d $file
++        /usr/lib/modules/${_kernver}/build/scripts/sign-file $SIG_HASH /var/lib/dkms/signing_key-${_kernver}.pem /var/lib/dkms/signing_key-${_kernver}.x509 ${file%.zst}
++		$COMP_CMD ${file%.zst}
++    done
+ }
+ 
+ package() {

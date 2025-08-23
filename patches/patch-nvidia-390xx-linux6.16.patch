@@ -1,0 +1,157 @@
+diff --git a/002-Kbuild-clang-options.patch b/002-Kbuild-clang-options.patch
+new file mode 100644
+index 0000000..f33bbbe
+--- /dev/null
++++ b/002-Kbuild-clang-options.patch
+@@ -0,0 +1,13 @@
++diff --git a/Kbuild b/Kbuild
++index e3d5a13..0e92475 100644
++--- a/Kbuild
+++++ b/Kbuild
++@@ -64,7 +64,7 @@ $(foreach _module, $(NV_KERNEL_MODULES), \
++ EXTRA_CFLAGS += -std=gnu17
++ EXTRA_CFLAGS += -I$(src)/common/inc
++ EXTRA_CFLAGS += -I$(src)
++-EXTRA_CFLAGS += -Wall -MD $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error -fpermissive
+++EXTRA_CFLAGS += -Wall $(DEFINES) $(INCLUDES) -Wsign-compare -Wno-cast-qual -Wno-error -fpermissive
++ EXTRA_CFLAGS += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"390.157\" -Wno-unused-function -Wuninitialized -fno-strict-aliasing -mno-red-zone -mcmodel=kernel -DNV_UVM_ENABLE -Wno-sign-compare -Wno-format-extra-args
++ EXTRA_CFLAGS += $(call cc-option,-Werror=undef,)
++ EXTRA_CFLAGS += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
+diff --git a/PKGBUILD b/PKGBUILD
+index a3067bf..ec6f2f5 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -23,10 +23,32 @@ depends=("${_linuxprefix}" "nvidia-utils=${pkgver}" 'libglvnd')
+ makedepends=("${_linuxprefix}-headers" "nvidia-dkms=$pkgver")
+ provides=("nvidia=${pkgver}" 'NVIDIA-MODULE')
+ options=(!strip)
++source=(
++002-Kbuild-clang-options.patch
++nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
++)
++sha256sums=('4454ae87c85ff0f3d02cecd96c1484c52ba511b9ac4916f2f74e3abb218a7d18'
++            '533de2dee00eae2b08ab6529459c6a57219d952c2cea079b86fc545aabc8958d')
++
++prepare() {
++    _kernver="$(cat /usr/src/${_linuxprefix}/version)"
++
++	dkms add --dkmstree "${srcdir}" -m nvidia/${pkgver} -k ${_kernver}
++
++	mkdir -p ${srcdir}/nvidia/${pkgver}/source2/
++	cp -r ${srcdir}/nvidia/${pkgver}/source/* ${srcdir}/nvidia/${pkgver}/source2/
++	#sed -i "s/-MD//" ${srcdir}/nvidia/${pkgver}/source2/Kbuild
++	rm -r ${srcdir}/nvidia/${pkgver}/source
++	ln -s ${srcdir}/nvidia/${pkgver}/source2 ${srcdir}/nvidia/${pkgver}/source
++	cd ${srcdir}/nvidia/${pkgver}/source
++	#patch -p1 -i ${srcdir}/002-Kbuild-clang-options.patch
++	patch -p2 -i ${srcdir}/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
++}
+ 
+ build() {
+     _kernver="$(cat /usr/src/${_linuxprefix}/version)"
+ 
++    export IGNORE_CC_MISMATCH=1
+     fakeroot dkms build --dkmstree "${srcdir}" -m nvidia/${pkgver} -k ${_kernver}
+ }
+ 
+diff --git a/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch b/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
+new file mode 100644
+index 0000000..34ec2d7
+--- /dev/null
++++ b/nvidia-graphics-drivers-legacy-390xx-kernel-6.3-with-clang.patch
+@@ -0,0 +1,95 @@
++diff -ur a/kernel/conftest.sh b/kernel/conftest.sh
++--- a/kernel/conftest.sh	2023-06-01 20:00:46.719933661 +0800
+++++ b/kernel/conftest.sh	2023-06-01 21:26:23.218584390 +0800
++@@ -255,6 +255,9 @@
++             CFLAGS="$CFLAGS -mfentry -DCC_USING_FENTRY"
++         fi
++     fi
+++
+++    # Warnings
+++    CFLAGS="$CFLAGS -Wno-error=implicit-function-declaration"
++ }
++
++ CONFTEST_PREAMBLE="#include \"conftest/headers.h\"
++@@ -294,6 +297,12 @@
++     echo "$CONFTEST_PREAMBLE
++     $CODE" > conftest$$.c
++
+++    if [ -n "$PRINT" ]; then
+++        >&2 echo "$CONFTEST_PREAMBLE
+++        $CODE"
+++        >&2 echo "$CC $CFLAGS -c conftest$$.c"
+++    fi
+++
++     $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
++     rm -f conftest$$.c
++
++@@ -860,6 +869,25 @@
++                 return
++             fi
++
+++            echo "$CONFTEST_PREAMBLE
+++            #include <linux/acpi.h>
+++
+++            acpi_op_remove conftest_op_remove_routine;
+++
+++            void conftest_acpi_device_ops_remove(struct acpi_device *device) {
+++                return conftest_op_remove_routine(device);
+++            }" > conftest$$.c
+++
+++            $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
+++            rm -f conftest$$.c
+++
+++            if [ -f conftest$$.o ]; then
+++                rm -f conftest$$.o
+++                echo "#define NV_ACPI_DEVICE_OPS_REMOVE_ARGUMENT_COUNT 1" | append_conftest "types"
+++                echo "#define NV_ACPI_DEVICE_OPS_REMOVE_VOID_RETURN" | append_conftest "types"
+++                return
+++            fi
+++
++             CODE="
++             #include <linux/acpi.h>
++
++@@ -4765,14 +4812,14 @@
++                 echo "However, mixing compiler versions between the kernel";
++                 echo "and kernel modules can result in subtle bugs that are";
++                 echo "difficult to diagnose.";
++-                echo "";
++-                echo "*** Failed CC version check. Bailing out! ***";
++-                echo "";
+++                # echo "";
+++                # echo "*** Failed CC version check. Bailing out! ***";
+++                # echo "";
++             elif [ "$VERBOSE" = "just_msg" ]; then
++                 echo "The kernel was built with ${kernel_cc_string}, but the" \
++                      "current compiler version is `$CC --version | head -n 1`.";
++             fi
++-            exit 1;
+++            exit 0;
++         fi
++     ;;
++
++diff -ur a/kernel/nvidia-drm/nvidia-drm-fb.c b/kernel/nvidia-drm/nvidia-drm-fb.c
++--- a/kernel/nvidia-drm/nvidia-drm-fb.c	2023-06-01 20:00:46.723267010 +0800
+++++ b/kernel/nvidia-drm/nvidia-drm-fb.c	2023-06-01 21:55:43.793928784 +0800
++@@ -31,6 +31,7 @@
++ #include "nvidia-drm-gem.h"
++ #include "nvidia-drm-helper.h"
++ 
+++#include <drm/drm_modeset_helper.h>
++ #include <drm/drm_crtc_helper.h>
++ 
++ static void nv_drm_framebuffer_destroy(struct drm_framebuffer *fb)
++
++diff --git a/kernel/Kbuild b/kernel/Kbuild
++index 3b7bc06..69ed6b7 100644
++--- a/kernel/Kbuild
+++++ b/kernel/Kbuild
++@@ -61,6 +61,7 @@ ccflags-y += -D__KERNEL__ -DMODULE -DNVRM -DNV_VERSION_STRING=\"390.157\" -Wno-u
++ ccflags-y += $(call cc-option,-Werror=undef,)
++ ccflags-y += -DNV_SPECTRE_V2=$(NV_SPECTRE_V2)
++ ccflags-y += -DNV_KERNEL_INTERFACE_LAYER
+++ccflags-y += -Wno-error=unused-command-line-argument -Wno-error=strict-prototypes
++ 
++ #
++ # Detect SGI UV systems and apply system-specific optimizations.
