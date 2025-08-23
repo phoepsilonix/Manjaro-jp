@@ -19,9 +19,9 @@ ventoygui
 ```
 如果係Linux全般,而且下載用的是aria2,作法係:
 ```bash
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.05/ventoy-1.1.05-linux.tar.gz
-tar xf ventoy-1.1.05-linux.tar.gz
-cd ventoy-1.1.05
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.07/ventoy-1.1.07-linux.tar.gz
+tar xf ventoy-1.1.07-linux.tar.gz
+cd ventoy-1.1.07
 ./VentoyGUI.$(uname -m)
 ```
 
