@@ -2,7 +2,7 @@
 
 ## Prise en charge de la langue japonaise pour [Manjaro Linux](https://manjaro.org/)
 　Prise en charge de la saisie et de l'affichage en japonais par défaut, y compris dans les environnements dynamiques.  
-[série kernel-6.15](https://kernel.org/).
+[série kernel-6.16](https://kernel.org/).
 
 KDE, Xfce et GNOME seront disponibles selon la version officielle.  
 Les fichiers de distribution sont des ISO et quelques fichiers de paquets.  
@@ -62,7 +62,7 @@ Nous avons installé le paquet pacman-static par défaut. Veuillez l'utiliser si
 
 4. différences entre le noyau et le noyau officiel de Manjaro
     La série kererl-6.6 a été utilisée dans l’iso officiel de Manjaro. Le dernier Manjaro semble être passé à la série kernel-6.12.  
-    L’ISO distribué ici utilise autant que possible un nouveau noyau. Actuellement, il s’agit de la série kernel-6.15.  
+    L’ISO distribué ici utilise autant que possible un nouveau noyau. Actuellement, il s’agit de la série kernel-6.16.  
     Nous utilisons clang au lieu de gcc pour compiler le noyau et les modules du noyau.  
     Nous activons également le support rust du noyau.  
     Si vous souhaitez utiliser le noyau officiel de Manjaro, installez-le en spécifiant le dépôt 'core' comme dans la commande suivante.
