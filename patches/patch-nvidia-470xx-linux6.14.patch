@@ -63,7 +63,7 @@ index fc402ba..fa52192 100644
  build() {
      _kernver="$(cat /usr/src/${_linuxprefix}/version)"
  
-+    export IGNORE_CC_MISMATCH=1
++    #export IGNORE_CC_MISMATCH=1
      fakeroot dkms build --dkmstree "${srcdir}" -m nvidia/${pkgver} -k ${_kernver}
  }
  
