@@ -99,7 +99,6 @@ sudo pacman-static -Syyu
     ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.17系です。  
     Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
     ```sh
-
     sudo pacman -S core/linux66 core/linux66-headers
     ```
     ```sh
