@@ -4,20 +4,20 @@
 
 ## Normal MHWD package list
 
-manjaro-jp/KERNEL-acpi_call
-manjaro-jp/KERNEL-tp_smapi
-manjaro-jp/KERNEL-vhba-module
-manjaro-jp/KERNEL-virtualbox-host-modules
-manjaro-jp/KERNEL-rtl8723bu
+extra/KERNEL-acpi_call
+extra/KERNEL-tp_smapi
+extra/KERNEL-vhba-module
+extra/KERNEL-virtualbox-host-modules
+extra/KERNEL-rtl8723bu
 
-manjaro-jp/KERNEL-bbswitch
-manjaro-jp/KERNEL-broadcom-wl
-manjaro-jp/KERNEL-r8168
-manjaro-jp/KERNEL-zfs
+extra/KERNEL-bbswitch
+extra/KERNEL-broadcom-wl
+extra/KERNEL-r8168
+extra/KERNEL-zfs
 zfs-utils
-#manjaro-jp/KERNEL-rt3562sta
-#manjaro-jp/KERNEL-virtualbox-guest-modules
-manjaro-jp/KERNEL-headers
+#extra/KERNEL-rt3562sta
+#extra/KERNEL-virtualbox-guest-modules
+core/KERNEL-headers
 #zfs-dkms
 libva-intel-driver
 libva-mesa-driver
@@ -26,22 +26,22 @@ libxpm
 libxvmc
 >multilib lib32-libxvmc
 >multilib lib32-primus
->nonfree_x86_64 manjaro-jp/KERNEL-nvidia-390xx
->nonfree_x86_64 manjaro-jp/KERNEL-nvidia-470xx
->nonfree_x86_64 manjaro-jp/KERNEL-nvidia
->nonfree_x86_64 manjaro-jp/KERNEL-nvidia-open
+>nonfree_x86_64 extra/KERNEL-nvidia-390xx
+>nonfree_x86_64 extra/KERNEL-nvidia-470xx
+>nonfree_x86_64 extra/KERNEL-nvidia
+>nonfree_x86_64 extra/KERNEL-nvidia-open
 >nonfree_x86_64 nvidia-390xx-utils
 >nonfree_x86_64 nvidia-390xx-settings
 >nonfree_x86_64 libxnvctrl-390xx
 >nonfree_x86_64 nvidia-470xx-utils
 >nonfree_x86_64 nvidia-470xx-settings
 >nonfree_x86_64 libxnvctrl-470xx
->nonfree_x86_64 nvidia-utils
->nonfree_x86_64 nvidia-settings
->nonfree_x86_64 libxnvctrl
+>nonfree_x86_64 extra/nvidia-utils
+>nonfree_x86_64 extra/nvidia-settings
+>nonfree_x86_64 extra/libxnvctrl
 >nonfree_multilib lib32-nvidia-470xx-utils
 >nonfree_multilib lib32-nvidia-390xx-utils
->nonfree_multilib lib32-nvidia-utils
+>nonfree_multilib multilib/lib32-nvidia-utils
 open-vm-tools
 primus
 qemu-guest-agent

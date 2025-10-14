@@ -19,7 +19,7 @@ Linuxには、いろんなディストリビューションといわれるもの
 ----
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
-[kernel-6.16系](https://kernel.org/)。
+[kernel-6.17系](https://kernel.org/)。
 
 公式に合わせて、KDE、Xfce、GNOMEの３種類を用意する予定です。  
 配布ファイルはISOと一部パッケージファイルです。  
@@ -50,7 +50,6 @@ Windowsの場合
 ----
 ### Manjaro-JPの主な特徴
 Linuxカーネルは、なるべく最新のものを採用します。  
-またカーネルのビルドにはclangを用います。  
 日本語入力(Mozc)、日本語フォントを標準インストールします。  
 標準ブラウザとして、[Floorp](https://floorp.ablaze.one/)を採用します。  
 flatpak版ブラウザは、パフォーマンスに問題があるようです。推測ですが、AppArmorの設定がflatpak向けには、最適化されていないのではないかと思います。そのため標準で使うブラウザとしては、AUR版floorp-binやextraレポジトリのFirefoxを採用する予定です。(2024-12-30〜)  
@@ -97,9 +96,7 @@ sudo pacman-static -Syyu
 
 5. Manjaro公式とのkernelの違い  
     kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.12系に移行したようです。  
-    ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.16系です。  
-    kernelおよびkernelモジュールのビルドにgccではなくclangを使用しています。  
-    またkernelのrust対応も有効にしています。  
+    ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.17系です。  
     Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
     ```sh
     sudo pacman -S core/linux66 core/linux66-headers
@@ -848,10 +845,13 @@ kernel-6.15.10
 
 ##### 20250830
 kernel-6.16.4  
-</details>
 
 ##### 20251001
 kernel-6.16.9  
+</details>
+
+##### 20251014
+kernel-6.17.1  
 
 
 ----

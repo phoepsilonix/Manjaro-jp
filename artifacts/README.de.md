@@ -2,7 +2,7 @@
 
 ## Unterstützung der japanischen Sprache für [Manjaro Linux](https://manjaro.org/)
 　Unterstützt standardmäßig japanische Eingabe und Anzeige, einschließlich Live-Umgebungen.  
-[Kernel-6.16 Serie](https://kernel.org/).
+[Kernel-6.17 Serie](https://kernel.org/).
 
 KDE, Xfce und GNOME werden für den offiziellen Gebrauch verfügbar sein.  
 Die Distributionsdateien sind ISO und einige Paketdateien.  
@@ -32,7 +32,6 @@ Laden Sie [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.1.07/ve
 ----
 ### Hauptmerkmale.
 Der Linux-Kernel ist so aktuell wie möglich.  
-Der Kernel wird mit clang gebaut.  
 Japanische Eingabe (fcitx5-mozc) und japanische Schriftarten sind standardmäßig installiert.  
 [Floorp](https://floorp.ablaze.one/) werden als Standardbrowser verwendet.  
 Wir haben das Paket pacman-static standardmäßig installiert. Bitte verwenden Sie dieses, wenn Paketaktualisierungen aufgrund von Bibliotheksinkonsistenzen schwierig werden.  
@@ -61,9 +60,7 @@ Wir haben das Paket pacman-static standardmäßig installiert. Bitte verwenden S
 
 4. Kernel-Unterschiede zum offiziellen Manjaro-Kernel
     Die Kererl-6.6-Serie wurde in der offiziellen Manjaro-ISO verwendet. Das neueste Manjaro scheint auf die Kernel-6.12-Serie umgestiegen zu sein.  
-    Die hier verteilte ISO verwendet so weit wie möglich einen neuen Kernel. Derzeit ist es die Kernel-6.16-Serie.  
-    Wir verwenden clang anstelle von gcc, um den Kernel und die Kernelmodule zu erstellen.  
-    Wir aktivieren auch die Rust-Unterstützung des Kernels.  
+    Die hier verteilte ISO verwendet so weit wie möglich einen neuen Kernel. Derzeit ist es die Kernel-6.17-Serie.  
     Wenn Sie den offiziellen Manjaro-Kernel verwenden möchten, installieren Sie ihn, indem Sie das Repository 'core' wie in dem folgenden Befehl angeben.
     ```sh
     sudo pacman -S core/linux66 core/linux66-headers
@@ -815,10 +812,13 @@ kernel-6.15.10
 
 ##### 20250830
 kernel-6.16.4  
-</details>
 
 ##### 20251001
 kernel-6.16.9  
+</details>
+
+##### 20251014
+kernel-6.17.1  
 
 
 ----

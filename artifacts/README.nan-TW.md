@@ -3,7 +3,7 @@
 ## [Manjaro Linux](https://manjaro.org/) 日語支援
 
 包含咧即時環境,一開始就會裝日文輸入同顯示。
-採用[kernel-6.16系列](https://kernel.org/)。
+採用[kernel-6.17系列](https://kernel.org/)。
 
 預計會像官方版一樣,提供KDE、Xfce、GNOME三種桌面環境。
 發佈檔案是ISO同一部份套件檔案,可以從USB記憶體等啟動。
@@ -30,7 +30,7 @@ cd ventoy-1.1.07
 ----
 ### Manjaro-JP的主要特色
 
-採用較新的Linux kernel,並且用clang來編譯kernel。
+採用較新的Linux kernel。
 預設就裝好日文輸入法(Mozc)同日文字型。  
 標準瀏覽器採用[Floorp](https://floorp.ablaze.one/)。  
 標準裝pacman-static,如果因為函式庫衝突導致更新有問題,可以用pacman-static來更新。
@@ -65,9 +65,7 @@ cd ventoy-1.1.07
 
 5. kernel版本比官方Manjaro新  
     kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎已經轉移到kernel-6.12系列了。
-    這裡分發的iso儘可能採用新的kernel。目前是kernel-6.16系列。
-    kernel同kernel模組的編譯是用clang,而不是gcc。
-    另外kernel也有支援rust。
+    這裡分發的iso儘可能採用新的kernel。目前是kernel-6.17系列。
 
     如果需要Manjaro官方的kernel,可以指定core repository來裝:
     ```sh
@@ -819,11 +817,13 @@ kernel-6.15.10
 
 ##### 20250830
 kernel-6.16.4  
-</details>
 
 ##### 20251001
 kernel-6.16.9  
+</details>
 
+##### 20251014
+kernel-6.17.1  
 
 ----
 佇Linux作業系統會使用的影像編輯軟體推薦:

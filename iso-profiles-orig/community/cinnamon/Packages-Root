@@ -26,8 +26,8 @@ install-grub
 inetutils
 intel-ucode
 jfsutils
-manjaro-jp/KERNEL
-manjaro-jp/KERNEL-headers
+core/KERNEL
+core/KERNEL-headers
 less
 wireless-regdb
 linux-firmware

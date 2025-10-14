@@ -30,7 +30,7 @@ glibc-locales
 inetutils
 intel-ucode
 jfsutils
-manjaro-jp/KERNEL
+core/KERNEL
 less
 logrotate
 lvm2

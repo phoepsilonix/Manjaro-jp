@@ -1,6 +1,6 @@
 git
-manjaro-jp/KERNEL-broadcom-wl
-manjaro-jp/KERNEL-r8168
+extra/KERNEL-broadcom-wl
+extra/KERNEL-r8168
 maia-console
 manjaro-architect-launcher
 mkinitcpio-nfs-utils

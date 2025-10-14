@@ -2,7 +2,7 @@
 
 ## Suporte em língua japonesa para [Manjaro Linux](https://manjaro.org/)
 　Suporta a entrada e exibição japonesa por defeito, incluindo ambientes ao vivo.  
-[kernel-6.16 series](https://kernel.org/).
+[kernel-6.17 series](https://kernel.org/).
 
 KDE, Xfce e GNOME estarão disponíveis de acordo com a versão oficial.  
 Os ficheiros de distribuição são ISO e alguns ficheiros de pacotes.  
@@ -32,7 +32,6 @@ Abra o arquivo zip baixado e execute o ventoy2disk.exe.
 ----
 ### Características principais.
 O kernel Linux está tão actualizado quanto possível.  
-Além disso, o clang é utilizado para construir o kernel.  
 A entrada japonesa (fcitx5-mozc) e as fontes japonesas são instaladas como padrão.  
 As versões [Floorp](https://floorp.ablaze.one/) serão utilizadas como o navegador padrão.  
 Instalamos o pacote pacman-static por padrão. Por favor, use-o se as atualizações de pacotes se tornarem difíceis devido a inconsistências da biblioteca.  
@@ -61,10 +60,8 @@ Instalamos o pacote pacman-static por padrão. Por favor, use-o se as atualizaç
 
 4. diferenças em relação ao kernel oficial do Manjaro
     A série kererl-6.6 foi usada no iso oficial Manjaro. O último Manjaro parece ter mudado para a série kernel-6.12.  
-    O ISO distribuído aqui usa um novo kernel tanto quanto possível. Atualmente, é a série kernel-6.16.  
-    O kernel e os módulos do kernel são construídos usando clang em vez de gcc.  
-    Nós também habilitamos o suporte a Rust no kernel.  
-Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repositório 'core', como no seguinte comando.
+    O ISO distribuído aqui usa um novo kernel tanto quanto possível. Atualmente, é a série kernel-6.17.  
+    Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repositório 'core', como no seguinte comando.
     ```sh
     sudo pacman -S core/linux66 core/linux66-headers
     ```
@@ -814,10 +811,13 @@ kernel-6.15.10
 
 ##### 20250830
 kernel-6.16.4  
-</details>
 
 ##### 20251001
 kernel-6.16.9  
+</details>
+
+##### 20251014
+kernel-6.17.1  
 
 
 ----
