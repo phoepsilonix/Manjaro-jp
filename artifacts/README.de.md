@@ -826,9 +826,10 @@ Andere empfohlene Betriebssysteme
 [Ubuntu][Ubuntu]  
 [Ubuntu flavours][Ubuntu flavours]  
 
+[SparkyLinux - SparkyLinux project page](https://sparkylinux.org/)
 [Linux Mint](https://linuxmint.com/)  
 
-[EndeavourOS](https://endeavouros.com/)  
+[Calam-Arch-Installer](https://sourceforge.net/projects/blue-arch-installer/files/arch-installer/)
 
 ----
 ```
