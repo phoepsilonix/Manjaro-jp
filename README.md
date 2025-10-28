@@ -105,11 +105,7 @@ sudo pacman-static -Syyu
     sudo pacman -S core/linux612 core/linux612-headers
     ```
 
-6. VirtualBoxに関する制限事項  
-    Manjaro-JPが標準で提供しているkernelは、CONFIG_CFI_CLANGを有効にしているkernelのため、virtualboxが動作しない場合があります。  
-    動作しない場合には、Manjaro公式などが提供するkernelをご利用ください。
-
-7. 日本語入力、表示関連(2024/12/18〜)
+6. 日本語入力、表示関連(2024/12/18〜)
     - manjaro-asian-input-support-fcitx5  
       GNOME、KDEのWaylandまたはX11環境、いずれでも使えるように修正しました。(公式に取り込まれました。）
     - manjaro-application-utility  
@@ -876,10 +872,10 @@ Linux系OSで動きます。
 [Ubuntu][Ubuntu]  
 [Ubuntu flavours | Ubuntu][Ubuntu flavours]  
 
-[SparkyLinux - SparkyLinux project page](https://sparkylinux.org/)
+[SparkyLinux - SparkyLinux project page](https://sparkylinux.org/)  
 [Linux Mint](https://linuxmint.com/)  
 
-[Calam-Arch-Installer](https://sourceforge.net/projects/blue-arch-installer/files/arch-installer/)
+[Calam-Arch-Installer](https://sourceforge.net/projects/blue-arch-installer/files/arch-installer/)  
 
 ----
 [Manjaroレポジトリミラー試験稼働中](https://mirror.phoepsilonix.love/manjaro/)

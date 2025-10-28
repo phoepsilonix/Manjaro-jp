@@ -70,9 +70,9 @@ sync
 
 #nvidia以外のパッケージの登録。古いものを削除。
 # バージョンでsortしておく。repo-addは、あとから追加されたものが優先されるため。
-#pkgfiles=$(ls -v *.pkg.tar.*)
-#echo $pkgfiles
-#repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
+pkgfiles=$(ls -v *.pkg.tar.zst *.pkg.tar.xz)
+echo $pkgfiles
+repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
 
 
 # kernel module nvidia関連の新しいものをふくめ、複数バージョンをレポジトリに加えるため

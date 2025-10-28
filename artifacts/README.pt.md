@@ -69,11 +69,7 @@ Instalamos o pacote pacman-static por padrão. Por favor, use-o se as atualizaç
     sudo pacman -S core/linux612 core/linux612-headers
     ```
 
-5. limitações relativas ao VirtualBox  
-    O kernel fornecido pelo Manjaro-JP como padrão é um kernel com CONFIG_CFI_CLANG ativado, por isso o virtualbox pode não funcionar.  
-    Se isto não funcionar, por favor use o kernel fornecido pelo Manjaro-JP ou outros kernels oficiais do Manjaro.
-
-6. Relacionado à entrada em japonês  
+5. Relacionado à entrada em japonês  
     - manjaro-asian-input-support-fcitx5  
       Foi modificado para funcionar tanto em ambientes GNOME quanto KDE no Wayland ou X11. (Adotado oficialmente.)
     - manjaro-application-utility  
@@ -825,10 +821,10 @@ Outros sistemas operativos recomendados.
 [Ubuntu][Ubuntu]  
 [Ubuntu flavours][Ubuntu flavours]  
 
-[SparkyLinux - SparkyLinux project page](https://sparkylinux.org/)
+[SparkyLinux - SparkyLinux project page](https://sparkylinux.org/)  
 [Linux Mint](https://linuxmint.com/)  
 
-[Calam-Arch-Installer](https://sourceforge.net/projects/blue-arch-installer/files/arch-installer/)
+[Calam-Arch-Installer](https://sourceforge.net/projects/blue-arch-installer/files/arch-installer/)  
 
 ----
 ```

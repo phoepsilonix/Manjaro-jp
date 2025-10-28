@@ -868,10 +868,10 @@ Linux系OSで動きます。
 [Ubuntu][Ubuntu]  
 [Ubuntu flavours | Ubuntu][Ubuntu flavours]  
 
-[SparkyLinux - SparkyLinux project page](https://sparkylinux.org/)
+[SparkyLinux - SparkyLinux project page](https://sparkylinux.org/)  
 [Linux Mint](https://linuxmint.com/)  
 
-[Calam-Arch-Installer](https://sourceforge.net/projects/blue-arch-installer/files/arch-installer/)
+[Calam-Arch-Installer](https://sourceforge.net/projects/blue-arch-installer/files/arch-installer/)  
 
 ----
 [Manjaroレポジトリミラー試験稼働中](https://mirror.phoepsilonix.love/manjaro/)

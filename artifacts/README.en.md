@@ -72,11 +72,7 @@ We have installed the pacman-static package as standard. Please use this if pack
     sudo pacman -S core/linux612 core/linux612-headers
     ```
 
-5. limitations regarding VirtualBox  
-    The kernel provided by Manjaro-JP as standard is a kernel with CONFIG_CFI_CLANG enabled, so virtualbox may not work.  
-    If this does not work, please use the kernel provided by Manjaro-JP or other official Manjaro kernels.
-
-6. Japanese Input Related(2024/12/18-)
+5. Japanese Input Related(2024/12/18-)
     - manjaro-asian-input-support-fcitx5  
       It has been modified to work in both GNOME and KDE environments on Wayland or X11. (Officially adopted.)
     - manjaro-application-utility  
@@ -832,9 +828,10 @@ Other recommended OS
 [Ubuntu][Ubuntu]  
 [Ubuntu flavours][Ubuntu flavours]  
 
+[SparkyLinux - SparkyLinux project page](https://sparkylinux.org/)  
 [Linux Mint](https://linuxmint.com/)  
 
-[EndeavourOS](https://endeavouros.com/)  
+[Calam-Arch-Installer](https://sourceforge.net/projects/blue-arch-installer/files/arch-installer/)  
 
 ----
 ```
