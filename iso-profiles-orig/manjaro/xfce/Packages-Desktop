@@ -46,15 +46,18 @@ udisks2
 
 ## Fonts
 ttf-dejavu
-# cantarell-fonts        # Installed as gnome-themes-standard dependency
 noto-fonts               # default font
 noto-fonts-cjk           # asian fonts - needed big package, ~76 mb compressed
+>extra noto-fonts-emoji  # optional for noto-fonts
+>extra noto-fonts-extra  # additional languages, optional for noto-fonts
 adobe-source-sans-pro-fonts
 # adobe-source-han-sans-jp-fonts
 # adobe-source-han-sans-kr-fonts
 # adobe-source-han-sans-cn-fonts
 # >extra noto-fonts-emoji
 terminus-font
+ttf-hack-nerd                      # default monospace font
+ttf-meslo-nerd-font-powerlevel10k  # default font for manjaro-zsh-config
 >extra ttf-inconsolata
 >extra ttf-indic-otf
 >extra ttf-liberation
@@ -146,13 +149,13 @@ pavucontrol
 >extra manjaro-wallpapers-18.0
 >extra wallpapers-2018
 >extra wallpapers-juhraya
-gnome-themes-standard
 grub-theme-manjaro
 matcha-gtk-theme
 xcursor-simpleandsoft
 xcursor-vanilla-dmz-aa
 plymouth
 plymouth-theme-manjaro
+illyria-wallpaper
 
 ## Applications
 bash-completion
@@ -181,14 +184,13 @@ manjaro-settings-manager-notifier
 mousepad
 mugshot
 >basic parole # media player
->extra pidgin
 powertop
 screenfetch
 evince
 >extra poppler-data  # CKJ support for pdf
 #>basic sylpheed # mail client
 >extra thunderbird
->extra vlc
+#>extra vlc
 >extra viewnior
 >extra xfburn
 >extra yelp

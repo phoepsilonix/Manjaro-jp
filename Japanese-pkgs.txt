@@ -86,8 +86,8 @@ pipewire-x11-bell
 ipp-usb
 
 #mouse touchpad
-gestures
-libinput-gestures
+#gestures
+#libinput-gestures
 
 #secure boot
 mokutil
