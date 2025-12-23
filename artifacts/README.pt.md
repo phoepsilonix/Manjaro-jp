@@ -2,7 +2,7 @@
 
 ## Suporte em língua japonesa para [Manjaro Linux](https://manjaro.org/)
 　Suporta a entrada e exibição japonesa por defeito, incluindo ambientes ao vivo.  
-[kernel-6.17 series](https://kernel.org/).
+[kernel-6.18 series](https://kernel.org/).
 
 KDE, Xfce e GNOME estarão disponíveis de acordo com a versão oficial.  
 Os ficheiros de distribuição são ISO e alguns ficheiros de pacotes.  
@@ -42,6 +42,9 @@ sudo pacman-static -Syyu
 paru-static -Syyu
 ```
 
+#### Aviso
+Devido a limites de capacidade, distribuir arquivos ISO no SourceForge ficou difícil. Por favor, baixe de pCloud, MEGA, Terabox ou similares.
+
 ##### Notas.
 1. bota segura não suportada  
     Não suportado, por isso, por favor, desactivar o Secure Boot nas definições da BIOS.  
@@ -66,7 +69,7 @@ paru-static -Syyu
 
 4. diferenças em relação ao kernel oficial do Manjaro
     A série kererl-6.6 foi usada no iso oficial Manjaro. O último Manjaro parece ter mudado para a série kernel-6.12.  
-    O ISO distribuído aqui usa um novo kernel tanto quanto possível. Atualmente, é a série kernel-6.17.  
+    O ISO distribuído aqui usa um novo kernel tanto quanto possível. Atualmente, é a série kernel-6.18.  
     Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repositório 'core', como no seguinte comando.
     ```sh
     sudo pacman -S core/linux66 core/linux66-headers
@@ -816,10 +819,14 @@ kernel-6.16.4
 
 ##### 20251001
 kernel-6.16.9  
-</details>
 
 ##### 20251014
 kernel-6.17.1  
+</details>
+
+##### 20251223
+kernel-6.18.2  
+pacman-7.1.0(libalpm16)  
 
 
 ----

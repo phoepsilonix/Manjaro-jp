@@ -3,7 +3,7 @@
 ## [Manjaro Linux](https://manjaro.org/) 日語支援
 
 包含咧即時環境,一開始就會裝日文輸入同顯示。
-採用[kernel-6.17系列](https://kernel.org/)。
+採用[Kernel-6.18系列](https://kernel.org/)。
 
 預計會像官方版一樣,提供KDE、Xfce、GNOME三種桌面環境。
 發佈檔案是ISO同一部份套件檔案,可以從USB記憶體等啟動。
@@ -41,6 +41,10 @@ sudo pacman-static -Syyu
 paru-static -Syyu
 ```
 
+
+#### 公告
+因容量限制，喺 SourceForge 分發 ISO 變困難。請從 pCloud、MEGA、Terabox 等下載。
+
 ##### 注意事項
 1. 不支援安全開機
     需要在BIOS關閉安全開機才能安裝,不過安裝後可以再啟用。
@@ -71,7 +75,7 @@ paru-static -Syyu
 
 5. kernel版本比官方Manjaro新  
     kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎已經轉移到kernel-6.12系列了。
-    這裡分發的iso儘可能採用新的kernel。目前是kernel-6.17系列。
+    這裡分發的iso儘可能採用新的kernel。目前是kernel-6.18系列。
 
     如果需要Manjaro官方的kernel,可以指定core repository來裝:
     ```sh
@@ -822,10 +826,14 @@ kernel-6.16.4
 
 ##### 20251001
 kernel-6.16.9  
-</details>
 
 ##### 20251014
 kernel-6.17.1  
+</details>
+
+##### 20251223
+kernel-6.18.2  
+pacman-7.1.0(libalpm16)  
 
 ----
 佇Linux作業系統會使用的影像編輯軟體推薦:

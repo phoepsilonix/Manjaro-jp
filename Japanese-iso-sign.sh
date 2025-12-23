@@ -22,11 +22,11 @@ do
 	#	-w "https://sourceforge.net/projects/manjaro-jp/files/$f/download" \
      #           $f -o $f.torrent
 	mktorrent -a "udp://tracker.openbittorrent.com:80,udp://tracker.opentrackr.org:1337" \
-	  -w "https://sourceforge.net/projects/manjaro-jp/files/$f/download" \
 	  -o $f.torrent $f
 
 		#-w "https://osdn.net/projects/manjaro-jp/storage/$f" \
-	  #-w "https://manjaro-jp.phoepsilonix.love/path/to/iso" \
+	  #-w "https://sourceforge.net/projects/manjaro-jp/files/$f/download" \
+	  #-w "https://manjaro-jp.phoepsilonix.love/iso/$f" \
 #		-w "https://manjaro-jp.phoepsilonix.love/$f" \
         fi
     #if [[ ! -e $f.zsync ]] ; then

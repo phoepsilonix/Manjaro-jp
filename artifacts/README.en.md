@@ -2,7 +2,7 @@
 ### 
 ## Japanese language support for [Manjaro Linux](https://manjaro.org/)
 　The default includes support for Japanese input and display, including the live environment.  
-[kernel-6.17 series](https://kernel.org/).  
+[Kernel-6.18 series](https://kernel.org/).  
 
 We plan to provide three types of official environments: KDE, Xfce, and GNOME.  
 The distribution files include ISO and some package files.  
@@ -45,6 +45,9 @@ sudo pacman-static -Syyu
 paru-static -Syyu
 ```
 
+#### Notice
+Because of storage limits, sharing ISO files on SourceForge is now hard. Please download them from places like pCloud, MEGA, or Terabox.
+
 ##### Notes
 1. Does not support Secure Boot  
     It is not supported, so please disable Secure Boot in BIOS settings.  
@@ -69,7 +72,7 @@ paru-static -Syyu
 
 4. kernel differences from the official Manjaro kernel
     The kererl-6.6 series was used in the official Manjaro iso. The latest Manjaro seems to have moved to the kernel-6.12 series.- 
-    The ISO distributed here uses a new kernel as much as possible. Currently, it is kernel-6.17 series.
+    The ISO distributed here uses a new kernel as much as possible. Currently, it is kernel-6.18 series.
     If you want to use the official Manjaro kernel, install it by specifying the repository 'core' as in the following command.
     ```sh
     sudo pacman -S core/linux66 core/linux66-headers
@@ -108,9 +111,8 @@ Therefore, as an additional measure, the use of zram-generator has been added.
 he live environment & installation ISO is published at the following distribution site.  
 Please feel free to try it out.
 
-[![SourceForge][SF-ICON-BADGE]][SOURCEFORGE-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>][SOURCEFORGE-folder]
----|---
 [![pCloud][pCloud-ICON]][pCloud-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-pcloud.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/pcloud_icon.svg"/></svg>][pCloud-folder]
+---|---
 [![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
 [![Terabox][TERA-ICON]][TERABOX-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>][TERABOX-folder]
 
@@ -823,10 +825,14 @@ kernel-6.16.4
 
 ##### 20251001
 kernel-6.16.9  
-</details>
 
 ##### 20251014
 kernel-6.17.1  
+</details>
+
+##### 20251223
+kernel-6.18.2  
+pacman-7.1.0(libalpm16)  
 
 
 ----

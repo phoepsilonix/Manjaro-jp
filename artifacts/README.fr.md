@@ -2,7 +2,7 @@
 
 ## Prise en charge de la langue japonaise pour [Manjaro Linux](https://manjaro.org/)
 　Prise en charge de la saisie et de l'affichage en japonais par défaut, y compris dans les environnements dynamiques.  
-[série kernel-6.17](https://kernel.org/).
+[série kernel-6.18](https://kernel.org/).
 
 KDE, Xfce et GNOME seront disponibles selon la version officielle.  
 Les fichiers de distribution sont des ISO et quelques fichiers de paquets.  
@@ -43,6 +43,9 @@ sudo pacman-static -Syyu
 paru-static -Syyu
 ```
 
+#### Avis
+À cause des limites de capacité, la distribution des fichiers ISO sur SourceForge est devenue difficile. Veuillez les télécharger depuis pCloud, MEGA, Terabox ou d'autres sites similaires.
+
 ##### Notes.
 1. secure boot non pris en charge  
     Non pris en charge, veuillez donc désactiver Secure Boot dans les paramètres du BIOS.  
@@ -67,7 +70,7 @@ paru-static -Syyu
 
 4. différences entre le noyau et le noyau officiel de Manjaro
     La série kererl-6.6 a été utilisée dans l’iso officiel de Manjaro. Le dernier Manjaro semble être passé à la série kernel-6.12.  
-    L’ISO distribué ici utilise autant que possible un nouveau noyau. Actuellement, il s’agit de la série kernel-6.17.  
+    L’ISO distribué ici utilise autant que possible un nouveau noyau. Actuellement, il s’agit de la série kernel-6.18.  
     Si vous souhaitez utiliser le noyau officiel de Manjaro, installez-le en spécifiant le dépôt 'core' comme dans la commande suivante.
     ```sh
     sudo pacman -S core/linux66 core/linux66-headers
@@ -817,10 +820,14 @@ kernel-6.16.4
 
 ##### 20251001
 kernel-6.16.9  
-</details>
 
 ##### 20251014
 kernel-6.17.1  
+</details>
+
+##### 20251223
+kernel-6.18.2  
+pacman-7.1.0(libalpm16)  
 
 
 ----

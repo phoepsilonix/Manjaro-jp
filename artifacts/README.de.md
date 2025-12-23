@@ -2,7 +2,7 @@
 
 ## Unterstützung der japanischen Sprache für [Manjaro Linux](https://manjaro.org/)
 　Unterstützt standardmäßig japanische Eingabe und Anzeige, einschließlich Live-Umgebungen.  
-[Kernel-6.17 Serie](https://kernel.org/).
+[Kernel-6.18 Serie](https://kernel.org/).
 
 KDE, Xfce und GNOME werden für den offiziellen Gebrauch verfügbar sein.  
 Die Distributionsdateien sind ISO und einige Paketdateien.  
@@ -41,6 +41,9 @@ sudo pacman-static -Syyu
 ```bash
 paru-static -Syyu
 ```
+
+#### Hinweis
+Wegen Grenzen bei der Speicherkapazität ist es schwierig geworden, ISO-Dateien auf SourceForge zu verteilen. Bitte laden Sie sie von pCloud, MEGA, Terabox oder ähnlichen herunter.
 
 ##### Hinweise.
 1. Secure Boot nicht unterstützt  
@@ -817,10 +820,14 @@ kernel-6.16.4
 
 ##### 20251001
 kernel-6.16.9  
-</details>
 
 ##### 20251014
 kernel-6.17.1  
+</details>
+
+##### 20251223
+kernel-6.18.2  
+pacman-7.1.0(libalpm16)  
 
 
 ----

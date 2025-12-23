@@ -19,7 +19,7 @@ Linuxには、いろんなディストリビューションといわれるもの
 ----
 ## [Manjaro Linux](https://manjaro.org/) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
-[kernel-6.17系](https://kernel.org/)。
+[Kernel-6.18系](https://kernel.org/)。
 
 公式に合わせて、KDE、Xfce、GNOMEの３種類を用意する予定です。  
 配布ファイルはISOと一部パッケージファイルです。  
@@ -65,6 +65,7 @@ paru-static -Syyu
 #### お知らせ
 日本語対応に必要な修正などが、お陰様で公式パッケージにも一部、取り込まれました。Manjaro-jpの役割を一つ終えたといっていいかと思います。公式のレポジトリと、いくつかのAURパッケージを取り込めば、快適な日本語環境を構築できる状態になったと言えます。  
 カーネルの更新や、公式の更新の状態を見つつ、今後の対応を考えたいと思っています。  
+容量制限の関係で、SourceForgeでのISO配布は難しくなりました。pCloud,MEGA,Teraboxなどからダウンロードをお願いいたします。  
 
 ##### 注意事項
 1. セキュアブートには非対応  
@@ -99,7 +100,7 @@ paru-static -Syyu
 
 5. Manjaro公式とのkernelの違い  
     kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.12系に移行したようです。  
-    ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.17系です。  
+    ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.18系です。  
     Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
     ```sh
     sudo pacman -S core/linux66 core/linux66-headers
@@ -851,10 +852,14 @@ kernel-6.16.4
 
 ##### 20251001
 kernel-6.16.9  
-</details>
 
 ##### 20251014
 kernel-6.17.1  
+</details>
+
+##### 20251223
+kernel-6.18.2   
+pacman-7.1.0(libalpm16)  
 
 
 ----
