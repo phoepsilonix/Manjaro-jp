@@ -34,6 +34,12 @@ cd ventoy-1.1.07
 預設就裝好日文輸入法(Mozc)同日文字型。  
 標準瀏覽器採用[Floorp](https://floorp.ablaze.one/)。  
 標準裝pacman-static,如果因為函式庫衝突導致更新有問題,可以用pacman-static來更新。
+```bash
+sudo pacman-static -Syyu
+```
+```bash
+paru-static -Syyu
+```
 
 ##### 注意事項
 1. 不支援安全開機

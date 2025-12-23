@@ -36,6 +36,12 @@ Le noyau Linux est aussi à jour que possible.
 L'entrée japonaise (fcitx5-mozc) et les polices japonaises sont installées en standard.  
 [Floorp](https://floorp.ablaze.one/) seront utilisées comme navigateur standard.  
 Nous avons installé le paquet pacman-static par défaut. Veuillez l'utiliser si les mises à jour des paquets deviennent difficiles en raison d'incohérences de bibliothèque.  
+```bash
+sudo pacman-static -Syyu
+```
+```bash
+paru-static -Syyu
+```
 
 ##### Notes.
 1. secure boot non pris en charge  

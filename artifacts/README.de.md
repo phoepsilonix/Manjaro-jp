@@ -35,6 +35,12 @@ Der Linux-Kernel ist so aktuell wie möglich.
 Japanische Eingabe (fcitx5-mozc) und japanische Schriftarten sind standardmäßig installiert.  
 [Floorp](https://floorp.ablaze.one/) werden als Standardbrowser verwendet.  
 Wir haben das Paket pacman-static standardmäßig installiert. Bitte verwenden Sie dieses, wenn Paketaktualisierungen aufgrund von Bibliotheksinkonsistenzen schwierig werden.  
+```bash
+sudo pacman-static -Syyu
+```
+```bash
+paru-static -Syyu
+```
 
 ##### Hinweise.
 1. Secure Boot nicht unterstützt  

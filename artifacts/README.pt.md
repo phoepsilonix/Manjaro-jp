@@ -35,6 +35,12 @@ O kernel Linux está tão actualizado quanto possível.
 A entrada japonesa (fcitx5-mozc) e as fontes japonesas são instaladas como padrão.  
 As versões [Floorp](https://floorp.ablaze.one/) serão utilizadas como o navegador padrão.  
 Instalamos o pacote pacman-static por padrão. Por favor, use-o se as atualizações de pacotes se tornarem difíceis devido a inconsistências da biblioteca.  
+```bash
+sudo pacman-static -Syyu
+```
+```bash
+paru-static -Syyu
+```
 
 ##### Notas.
 1. bota segura não suportada  

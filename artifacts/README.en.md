@@ -38,6 +38,12 @@ Clang is used for kernel building.
 Japanese input (fcitx5-mozc) and Japanese font are standardly installed.  
 The standard browser is either the flatpak version of [Firefox](https://www.mozilla.org/ja/firefox/browsers/) or [Floorp](https://floorp.ablaze.one/).  
 We have installed the pacman-static package as standard. Please use this if package updates become difficult due to library inconsistencies.  
+```bash
+sudo pacman-static -Syyu
+```
+```bash
+paru-static -Syyu
+```
 
 ##### Notes
 1. Does not support Secure Boot  
