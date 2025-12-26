@@ -106,7 +106,8 @@ vlc
 streamlink
 yt-dlp
 #p7zip-full-bin
-7-zip-full
+#7-zip-full
+7zip
 
 #gpg openpgp libreoffice
 seahorse

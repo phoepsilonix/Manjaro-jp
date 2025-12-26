@@ -72,6 +72,7 @@ sync
 # バージョンでsortしておく。repo-addは、あとから追加されたものが優先されるため。
 pkgfiles=$(ls -v *.pkg.tar.zst *.pkg.tar.xz)
 echo $pkgfiles
+#repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
 repo-add $repo.db.tar.xz -v --include-sigs --sign --key $repo_key ${pkgfiles}
 
 

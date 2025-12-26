@@ -346,7 +346,7 @@ xorg-server                        # optional for libgdm
 #xorg-xinit                        # not needed by anything
 
 #manjaro-jp/ibus-mozc-with-jp-dict
-manjaro-jp/gnome-shell-extension-kimpanel
+manjaro-jp/gnome-shell-extension-kimpanel-git
 manjaro-jp/fcitx5-mozc-with-jp-dict
 fcitx5
 fcitx5-im
