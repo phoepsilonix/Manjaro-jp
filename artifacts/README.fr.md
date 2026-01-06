@@ -20,14 +20,14 @@ ventoygui
 Linux général  
 Exemple de commande de téléchargement en utilisant aria2  
 ```bash
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.07/ventoy-1.1.07-linux.tar.gz
-tar xf ventoy-1.1.07-linux.tar.gz
-cd ventoy-1.1.07
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.10/ventoy-1.1.10-linux.tar.gz
+tar xf ventoy-1.1.10-linux.tar.gz
+cd ventoy-1.1.10
 ./VentoyGUI.$(uname -m)
 ```
 
 Windows  
-Téléchargez [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.1.07/ventoy-1.1.07-windows.zip) à l’aide d’un navigateur ou autre chose.  
+Téléchargez [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.1.10/ventoy-1.1.10-windows.zip) à l’aide d’un navigateur ou autre chose.  
 Ouvrez le fichier zip téléchargé et exécutez ventoy2disk.exe.
 
 ----
@@ -69,7 +69,7 @@ paru-static -Syyu
     ```
 
 4. différences entre le noyau et le noyau officiel de Manjaro
-    La série kererl-6.6 a été utilisée dans l’iso officiel de Manjaro. Le dernier Manjaro semble être passé à la série kernel-6.12.  
+    La série kererl-6.6 a été utilisée dans l’iso officiel de Manjaro. Le dernier Manjaro semble être passé à la série kernel-6.18.  
     L’ISO distribué ici utilise autant que possible un nouveau noyau. Actuellement, il s’agit de la série kernel-6.18.  
     Si vous souhaitez utiliser le noyau officiel de Manjaro, installez-le en spécifiant le dépôt 'core' comme dans la commande suivante.
     ```sh
@@ -77,6 +77,9 @@ paru-static -Syyu
     ```
     ```sh
     sudo pacman -S core/linux612 core/linux612-headers
+    ```
+    ```sh
+    sudo pacman -S core/linux618 core/linux618-headers
     ```
 
 5. Lié à la saisie en japonais  

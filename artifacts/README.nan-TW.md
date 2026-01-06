@@ -19,9 +19,9 @@ ventoygui
 ```
 如果係Linux全般,而且下載用的是aria2,作法係:
 ```bash
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.07/ventoy-1.1.07-linux.tar.gz
-tar xf ventoy-1.1.07-linux.tar.gz
-cd ventoy-1.1.07
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.10/ventoy-1.1.10-linux.tar.gz
+tar xf ventoy-1.1.10-linux.tar.gz
+cd ventoy-1.1.10
 ./VentoyGUI.$(uname -m)
 ```
 
@@ -74,7 +74,7 @@ paru-static -Syyu
     ```
 
 5. kernel版本比官方Manjaro新  
-    kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎已經轉移到kernel-6.12系列了。
+    kererl-6.6系列在Manjaro官方的iso中被採用了。最新的Manjaro似乎已經轉移到kernel-6.18系列了。
     這裡分發的iso儘可能採用新的kernel。目前是kernel-6.18系列。
 
     如果需要Manjaro官方的kernel,可以指定core repository來裝:
@@ -83,6 +83,9 @@ paru-static -Syyu
     ```
     ```sh
     sudo pacman -S core/linux612 core/linux612-headers
+    ```
+    ```sh
+    sudo pacman -S core/linux618 core/linux618-headers
     ```
 
 6. 與日本語輸入相關  

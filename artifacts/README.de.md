@@ -20,13 +20,13 @@ ventoygui
 Allgemeines Linux  
 Beispiel für einen Download-Befehl mit aria2  
 ```bash
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.07/ventoy-1.1.07-linux.tar.gz
-tar xf ventoy-1.1.07-linux.tar.gz
-cd ventoy-1.1.07
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.10/ventoy-1.1.10-linux.tar.gz
+tar xf ventoy-1.1.10-linux.tar.gz
+cd ventoy-1.1.10
 ./VentoyGUI.$(uname -m)
 ```
 Windows  
-Laden Sie [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.1.07/ventoy-1.1.07-windows.zip) mit einem Browser oder etwas herunter.  
+Laden Sie [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.1.10/ventoy-1.1.10-windows.zip) mit einem Browser oder etwas herunter.  
 Öffnen Sie die heruntergeladene Zip-Datei und führen Sie ventoy2disk.exe aus.
 
 ----
@@ -68,14 +68,17 @@ Wegen Grenzen bei der Speicherkapazität ist es schwierig geworden, ISO-Dateien 
     ```
 
 4. Kernel-Unterschiede zum offiziellen Manjaro-Kernel
-    Die Kererl-6.6-Serie wurde in der offiziellen Manjaro-ISO verwendet. Das neueste Manjaro scheint auf die Kernel-6.12-Serie umgestiegen zu sein.  
-    Die hier verteilte ISO verwendet so weit wie möglich einen neuen Kernel. Derzeit ist es die Kernel-6.17-Serie.  
+    Die Kererl-6.6-Serie wurde in der offiziellen Manjaro-ISO verwendet. Das neueste Manjaro scheint auf die Kernel-6.18-Serie umgestiegen zu sein.  
+    Die hier verteilte ISO verwendet so weit wie möglich einen neuen Kernel. Derzeit ist es die Kernel-6.18-Serie.  
     Wenn Sie den offiziellen Manjaro-Kernel verwenden möchten, installieren Sie ihn, indem Sie das Repository 'core' wie in dem folgenden Befehl angeben.
     ```sh
     sudo pacman -S core/linux66 core/linux66-headers
     ```
     ```sh
     sudo pacman -S core/linux612 core/linux612-headers
+    ```
+    ```sh
+    sudo pacman -S core/linux618 core/linux618-headers
     ```
 5. Japanische Eingabe Bezogen(2024/12/18-)
     - manjaro-asian-input-support-fcitx5  

@@ -19,14 +19,14 @@ ventoygui
 Linux geral  
 Exemplo de comando de download usando aria2
 ```bash
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.07/ventoy-1.1.07-linux.tar.gz
-tar xf ventoy-1.1.07-linux.tar.gz
-cd ventoy-1.1.07
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.10/ventoy-1.1.10-linux.tar.gz
+tar xf ventoy-1.1.10-linux.tar.gz
+cd ventoy-1.1.10
 ./VentoyGUI.$(uname -m)
 ```
 
 Windows
-Baixe o [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.1.07/ventoy-1.1.07-windows.zip) usando um navegador ou algo assim.  
+Baixe o [Ventoy](https://github.com/ventoy/Ventoy/releases/download/v1.1.10/ventoy-1.1.10-windows.zip) usando um navegador ou algo assim.  
 Abra o arquivo zip baixado e execute o ventoy2disk.exe.
 
 ----
@@ -68,7 +68,7 @@ Devido a limites de capacidade, distribuir arquivos ISO no SourceForge ficou dif
     ```
 
 4. diferenças em relação ao kernel oficial do Manjaro
-    A série kererl-6.6 foi usada no iso oficial Manjaro. O último Manjaro parece ter mudado para a série kernel-6.12.  
+    A série kererl-6.6 foi usada no iso oficial Manjaro. O último Manjaro parece ter mudado para a série kernel-6.18.  
     O ISO distribuído aqui usa um novo kernel tanto quanto possível. Atualmente, é a série kernel-6.18.  
     Se você quiser usar o kernel oficial do Manjaro, instale-o especificando o repositório 'core', como no seguinte comando.
     ```sh
@@ -76,6 +76,9 @@ Devido a limites de capacidade, distribuir arquivos ISO no SourceForge ficou dif
     ```
     ```sh
     sudo pacman -S core/linux612 core/linux612-headers
+    ```
+    ```sh
+    sudo pacman -S core/linux618 core/linux618-headers
     ```
 
 5. Relacionado à entrada em japonês  

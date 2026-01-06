@@ -37,14 +37,14 @@ ventoygui
 Linux全般  
 ダウンロードコマンドがaria2の場合の例
 ```bash
-aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.07/ventoy-1.1.07-linux.tar.gz
-tar xf ventoy-1.1.07-linux.tar.gz
-cd ventoy-1.1.07
+aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.10/ventoy-1.1.10-linux.tar.gz
+tar xf ventoy-1.1.10-linux.tar.gz
+cd ventoy-1.1.10
 ./VentoyGUI.$(uname -m)
 ```
 
 Windowsの場合  
-ブラウザなどで[Ventoy](https://github.com/ventoy/Ventoy/releases/)を[ダウンロード](https://github.com/ventoy/Ventoy/releases/download/v1.1.07/ventoy-1.1.07-windows.zip)します。
+ブラウザなどで[Ventoy](https://github.com/ventoy/Ventoy/releases/)を[ダウンロード](https://github.com/ventoy/Ventoy/releases/download/v1.1.10/ventoy-1.1.10-windows.zip)します。
 ダウンロードしたzipファイルを開いて、ventoy2disk.exeを実行しましょう。
 
 ----
@@ -99,7 +99,7 @@ paru-static -Syyu
     ```
 
 5. Manjaro公式とのkernelの違い  
-    kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.12系に移行したようです。  
+    kererl-6.6系がManjaro公式のisoでは採用されていました。最新のManjaroはkernel-6.18系に移行したようです。  
     ここで配布しているisoは、なるべく新しいkernelを採用しています。現在はkernel-6.18系です。  
     Manjaro公式のkernelを利用したい場合には、下記コマンドのようにレポジトリcoreを指定してインストールしてください。
     ```sh
@@ -107,6 +107,9 @@ paru-static -Syyu
     ```
     ```sh
     sudo pacman -S core/linux612 core/linux612-headers
+    ```
+    ```sh
+    sudo pacman -S core/linux618 core/linux618-headers
     ```
 
 6. 日本語入力、表示関連(2024/12/18〜)
