@@ -21,6 +21,11 @@ Allgemeines Linux
 Beispiel für einen Download-Befehl mit aria2  
 ```bash
 aria2c -c https://github.com/ventoy/Ventoy/releases/download/v1.1.10/ventoy-1.1.10-linux.tar.gz
+```
+```sh
+aria2c -c -Uaria2c/1.37.0 https://sourceforge.net/projects/ventoy/files/v1.1.10/ventoy-1.1.10-linux.tar.gz
+```
+```sh
 tar xf ventoy-1.1.10-linux.tar.gz
 cd ventoy-1.1.10
 ./VentoyGUI.$(uname -m)
