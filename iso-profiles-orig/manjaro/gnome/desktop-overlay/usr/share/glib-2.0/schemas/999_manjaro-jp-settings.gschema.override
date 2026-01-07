@@ -12,7 +12,7 @@ visible-name='manjaro'
 [org.gnome.shell]
 always-show-log-out=true
 disable-user-extensions=false
-favorite-apps=['floorp.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'gnome-terminal.desktop', 'org.manjaro.pamac.manager.desktop', 'calamares.desktop', 'manjaro-architect.desktop']
+favorite-apps=['floorp.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'org.gnome.Console.desktop', 'org.manjaro.pamac.manager.desktop', 'calamares.desktop', 'manjaro-architect.desktop']
 enabled-extensions=['pamac-updates@manjaro.org', 'x11gestures@joseexposito.github.io', 'custom-accent-colors@demiskp', 'kimpanel@kde.org', 'legacyschemeautoswitcher@joshimukul29.gmail.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'gnome-ui-tune@itstime.tech', 'dash-to-dock@micxgx.gmail.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com']
 
 [org.gnome.desktop.input-sources]

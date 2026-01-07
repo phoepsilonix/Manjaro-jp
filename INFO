@@ -1,6 +1,6 @@
 [Manjaro Linux](https://manjaro.org) の日本語対応
 　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。
-[kernel](https://www.kernel.org)-6.2系(mainline)(clang製)。
+[kernel](https://www.kernel.org)-6.18系(mainline)(clang製)。
 公式に合わせて、KDE,Xfce,GNOMEの３種類を用意する予定です。
 配布ファイルはISOと一部パッケージファイルです。
 標準ブラウザとして、flatpak版[Firefox](https://www.mozilla.org/ja/firefox/browsers/)または[Floorp](https://floorp.ablaze.one/)を採用します。  
