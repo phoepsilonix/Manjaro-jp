@@ -44,6 +44,7 @@ noto-cjk-fontconfig
 # flatpak floorp or firefox
 # aur floorp
 #floorp
+brave-browser
 
 # vivaldi option pkg
 libnotify

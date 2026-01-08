@@ -5,8 +5,8 @@
     },
     "launcherList": {
         "type": "generic",
-        "default": ["floorp.desktop", "org.gnome.Terminal.desktop", "nemo.desktop"],
-        "value": ["floorp.desktop", "org.gnome.Terminal.desktop", "nemo.desktop"]
+        "default": ["floorp.desktop", "brave-browser.desktop", "org.gnome.Terminal.desktop", "nemo.desktop"],
+        "value": ["floorp.desktop", "brave-browser.desktop", "org.gnome.Terminal.desktop", "nemo.desktop"]
     },
     "allow-dragging": {
         "type": "switch",

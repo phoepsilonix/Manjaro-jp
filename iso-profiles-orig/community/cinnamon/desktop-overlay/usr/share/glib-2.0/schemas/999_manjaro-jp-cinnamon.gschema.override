@@ -13,4 +13,4 @@ remember-numlock-state=false
 send-events='disabled-on-external-mouse'
 
 [org.cinnamon]
-favorite-apps=['floorp.desktop', 'org.manjaro.pamac.manager.desktop', 'cinnamon-settings.desktop', 'hexchat.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop']
+favorite-apps=['floorp.desktop', 'brave-browser.desktog', 'org.manjaro.pamac.manager.desktop', 'cinnamon-settings.desktop', 'hexchat.desktop', 'org.gnome.Terminal.desktop', 'nemo.desktop']

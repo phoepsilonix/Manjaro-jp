@@ -160,11 +160,13 @@
         "type": "generic",
         "default": [
             "floorp.desktop",
+            "brave-browser.desktop",
             "org.gnome.Terminal.desktop",
             "nemo.desktop"
         ],
         "value": [
             "floorp.desktop",
+            "brave-browser.desktop",
             "vivaldi-stable.desktop",
             "org.gnome.Terminal.desktop",
             "nemo.desktop"
