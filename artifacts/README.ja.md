@@ -132,6 +132,21 @@ paru-static -Syyu
       ```sh
       paru -S noto-cjk-fontconfig emoji-fontconfig
       ```
+7. Grub(Boot Loader)の予備作成
+    ```sh
+    sudo grub-install /dev/sdX --target=x86_64-efi --efi-directory=/boot/efi/  --bootloader-id=backup
+    ```
+
+8. SSD関連
+    https://wiki.debian.org/SSDOptimization#Mounting_SSD_filesystems
+
+    IO Scheduler
+    ```sh
+    cat /sys/block/*/queue/scheduler
+    ```
+    [I/O 性能のチューニング | システム分析／チューニングガイド | openSUSE Leap 15.7](https://www.belbel.or.jp/opensuse-manuals_ja/cha-tuning-io.html)
+    [What is the suggested I/O scheduler to improve disk performance when using Red Hat Enterprise Linux with virtualization? - Red Hat Customer Portal](https://access.redhat.com/solutions/5427)
+    [Linux の I/Oスケジューラー事情 2023 – SlackNote](https://slacknotebook.com/linux-io-scheduler-2023/)
 
 ----
 ### 配布場所
