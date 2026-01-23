@@ -849,6 +849,7 @@ pacman-7.1.0(libalpm16)
 免費版本已經夠用,使用起來毋是問題。
 如果用付錢的Studio版本,會有更多實用的功能。
 
+[OpenShot](https://www.openshot.org/ja/)
 [ShotCut](https://shotcut.org/)
 
 ----
