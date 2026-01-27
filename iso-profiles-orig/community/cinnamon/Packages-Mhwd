@@ -18,7 +18,7 @@ extra/KERNEL-zfs
 zfs-utils
 #extra/KERNEL-rt3562sta
 #extra/KERNEL-virtualbox-guest-modules
-core/KERNEL-headers
+core/linux-meta-headers
 #zfs-dkms
 libva-intel-driver
 libva-mesa-driver
