@@ -1,6 +1,5 @@
 #linux-api-headers
 openssl
-openssl-1.1
 pacman-static
 yay
 fakeroot
