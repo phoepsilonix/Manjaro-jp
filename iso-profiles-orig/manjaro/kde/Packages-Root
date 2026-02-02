@@ -28,8 +28,8 @@ grub
 inetutils
 intel-ucode
 jfsutils
-core/linux-meta
-core/linux-meta-headers
+core/KERNEL
+core/KERNEL-headers
 less
 logrotate
 lvm2
