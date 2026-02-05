@@ -144,9 +144,9 @@ paru-static -Syyu
     ```sh
     cat /sys/block/*/queue/scheduler
     ```
-    [I/O 性能のチューニング | システム分析／チューニングガイド | openSUSE Leap 15.7](https://www.belbel.or.jp/opensuse-manuals_ja/cha-tuning-io.html)
-    [What is the suggested I/O scheduler to improve disk performance when using Red Hat Enterprise Linux with virtualization? - Red Hat Customer Portal](https://access.redhat.com/solutions/5427)
-    [Linux の I/Oスケジューラー事情 2023 – SlackNote](https://slacknotebook.com/linux-io-scheduler-2023/)
+    [I/O 性能のチューニング | システム分析／チューニングガイド | openSUSE Leap 15.7](https://www.belbel.or.jp/opensuse-manuals_ja/cha-tuning-io.html)  
+    [What is the suggested I/O scheduler to improve disk performance when using Red Hat Enterprise Linux with virtualization? - Red Hat Customer Portal](https://access.redhat.com/solutions/5427)  
+    [Linux の I/Oスケジューラー事情 2023 – SlackNote](https://slacknotebook.com/linux-io-scheduler-2023/)  
 
 ----
 ### 配布場所
