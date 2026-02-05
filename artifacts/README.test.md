@@ -901,7 +901,6 @@ Server = https://mirror.phoepsilonix.love/manjaro/stable/$repo/$arch
 [manjaro-jp]
 SigLevel = PackageRequired
 Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
-#Server = https://manjaro-jp.sourceforge.io/manjaro-jp/
 ```
 
 ----

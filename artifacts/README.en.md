@@ -858,7 +858,6 @@ Other recommended OS
 [manjaro-jp]
 SigLevel = Optional TrustAll
 Server = https://manjaro-jp.phoepsilonix.love/manjaro-jp/
-#Server = https://manjaro-jp.sourceforge.io/manjaro-jp/
 ```
 
 ----
