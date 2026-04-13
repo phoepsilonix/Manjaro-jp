@@ -1,14 +1,19 @@
 ## [Manjaro Linux JP](https://sourceforge.net/projects/manjaro-jp/)
 
 ## Suporte em língua japonesa para [Manjaro Linux](https://manjaro.org/)
-　Suporta a entrada e exibição japonesa por defeito, incluindo ambientes ao vivo.  
-[kernel-6.18 series](https://kernel.org/).
 
-KDE, Xfce e GNOME estarão disponíveis de acordo com a versão oficial.  
-Os ficheiros de distribuição são ISO e alguns ficheiros de pacotes.  
-Arranque a partir de uma memória USB ou similar.   
-Arrancar a partir de um cartão de memória USB pode ser mais fácil com [Ventoy](https://ventoy.net/).  
-Recomenda-se reformatar a primeira partição com ext4 ao instalar Ventoy.
+O Manjaro-jp decidiu encerrar sua função e vai parar de distribuir sua ISO personalizada.  
+Obrigado por todo o apoio até agora.  
+Existem dois motivos principais para essa decisão:  
+
+1. Os principais ajustes que fizemos foram incorporados na versão oficial do Manjaro.  
+Por isso, agora é possível usar o Manjaro normalmente apenas com os pacotes oficiais. O processo de configuração também não é difícil.  
+Não há mais atrasos nas atualizações dos pacotes de entrada de texto em japonês.  
+2. Especialmente para o Fcitx5-Mozc, que é muito usado para digitar em japonês,
+ as atualizações devem agora ocorrer sem problemas, graças às atualizações do repositório de pacotes do Arch Linux.  
+No ano passado, ele foi atualizado pela primeira vez em vários anos graças ao meu pedido de merge, mas a partir de agora, acredito que não haverá mais atrasos nas atualizações devido à melhoria no sistema. (Desde que o mantenedor verifique regularmente, não deve haver problemas.)  
+
+Por esses motivos, vamos parar de distribuir a ISO e manter apenas a página de apresentação do Manjaro.  
 
 ### Sobre a instalação do Ventoy
 Passos para instalar o ventoy em um pen drive usando o Manjaro Linux
@@ -113,13 +118,8 @@ Portanto, como medida adicional, foi adicionado o uso de zram-generador.
 
 ---
 ### Localização de distribuição.
-Os ISOs para ambiente vivo e instalação estão disponíveis nos seguintes locais de distribuição.  
-Se desejar, pode experimentá-lo.
-
-[![pCloud][pCloud-ICON]][pCloud-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-pcloud.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/pcloud_icon.svg"/></svg>][pCloud-folder]
----|---
-[![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
-[![Terabox][TERA-ICON]][TERABOX-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>][TERABOX-folder]
+~~Os ISOs para ambiente vivo e instalação estão disponíveis nos seguintes locais de distribuição.  
+Se desejar, pode experimentá-lo.~~
 
 [MEGA-folder]: https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0 "MEGA"
 [SOURCEFORGE-folder]: https://sourceforge.net/projects/manjaro-jp/ "SourceForge"
@@ -132,21 +132,7 @@ Se desejar, pode experimentá-lo.
 [pCloud-ICON]: ./img/pcloud_icon.svg
 [SF-ICON-BADGE]: https://b.sf-syn.com/badge_img/3508051/oss-sf-favorite-white?achievement=oss-sf-favorite&r=https://manjaro-jp.phoepsilonix.love/index.html
 
-Obrigado pelo valioso armazenamento.  
-É distribuído nos três locais acima referidos.
-
-[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0), onde pode carregar ficheiros de 4G ou mais em tamanho.  
-[pCloud] (https://partner.pcloud.com/r/119318), tamanhos maiores que 4G não são problema. Este sistema de armazenamento na nuvem também tem um plano de compra vitalício.
-
-Se você quiser baixar do MEGA Storage usando a linha de comando, o megatools é útil.
-```bash
-sudo pacman -S megatools
-```
-
-```bash
-megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
-```
-
+----
 ### Memorando
 ##### manjaro-tools-iso mudanças
 1. A primeira linha da lista de espelhos é utilizada como padrão para onde obter os pacotes utilizados para o buildiso.  

@@ -1,31 +1,27 @@
 # [Manjaro Linux JP](https://sourceforge.net/projects/manjaro-jp/)
 
 ## [Manjaro Linux](https://manjaro.org/) とは
+
+Manjaro-jpは、その役目を終えることにし、ISOの配布は取りやめることにしました。今まで、ありがとうございました。  
+
+理由としては、２点あります。
+1. 主な調整部分は、Manjaro公式に取り込んでもらえました。  
+そのため公式パッケージだけで、普通に使えるようになっています。手順も難しくありません。   
+2. 日本語入力パッケージの更新に停滞がなくなった。
+また日本語入力でよく用いられているFcitx5-Mozcの更新についても、ベースとなっているArchLinuxのパッケージのレポジトリの更新によって、今後は、その更新に停滞がなくなると思います。昨年、私のマージリクエストで数年ぶりに更新されたみたいな感じでしたが、今後は仕組み的に更新が停滞する心配がなくなったと思います。（メンテナーの方が、定期的にチェックされていれば、問題は起きないと思います。）  
+
+以上の理由から、ISOの配布は取りやめ、Manjaroの紹介のみ、残しておくことにいたします。
+
+----
+
 [Manjaro Linux](https://manjaro.org)はx86_64系またはarm系プロセッサーのパソコンで動くLinux OSです。  
 
 インターネットのサイトを閲覧するためのブラウザや表計算などのオフィス向けソフト、映像編集ソフトなど、いろんなソフトが動きます。  
-
-Manjaro-jpは、標準で日本語環境を整えることを目指して、いろいろと調整しています。  
-USBディスクなどから、起動するライブISO環境兼インストーラーを用意しています。  
-もしよかったら、お試しください。  
 
 Linuxには、いろんなディストリビューションといわれるものがありますが、プログラムのソースが公開されているものが多く、また互換性を保つ努力が継続されています。  
 またディストリビューションを超えて、アプリケーションを配布する仕組みとして、[Flatpak](https://flatpak.org/)と[Snaps](https://snapcraft.io/about)といった仕組みが作られてきました。Manjaro LinuxもFlatpakとSnapsにも対応していますので、他のLinuxディストリビューションと同じように、いろんなアプリケーションが動作可能です。またAppImage形式のソフトも[gearlever](https://flathub.org/ja/apps/it.mijorus.gearlever)パッケージなどをインストールすれば、扱いやすくなるでしょう。  
 多くのディストリビューションが存在するのは、デスクトップ環境の差異だったり、OSの更新作業のための保守部分やセキュリティ対策をどうするか、といった部分で、ポリシーだったり、やり方が異なるからです。  
 ただ、基本的には同じアプリケーションが動作する場合がほとんどなので、一般のユーザーには、あまり関係ないことです。自分が使いやすい、ユーザーが多そうなものを選べば大丈夫だと思います。  
-
-なおManjaro LinuxはArm系プロセッサーにも対応していますが、その日本語対応は、サーバーもパソコンも手元に持っていないため、検証が難しいので、未対応です。x86_64系のパソコンでご利用ください。  
-
-----
-## [Manjaro Linux](https://manjaro.org/) の日本語対応
-　ライブ環境も含めたデフォルトでの日本語入力および日本語表示に対応します。  
-[Kernel-6.18系](https://kernel.org/)。
-
-公式に合わせて、KDE、Xfce、GNOMEの３種類を用意する予定です。  
-配布ファイルはISOと一部パッケージファイルです。  
-USBメモリなどから起動してください。   
-USBメモリからの起動は、[Ventoy](https://ventoy.net/)を使うと楽かもしれません。  
-Ventoyの導入時に最初のパーティションをext4でフォーマットし直すのがお勧めです。
 
 ----
 ### Ventoyのインストールについて
@@ -53,24 +49,6 @@ Windowsの場合
 ダウンロードしたzipファイルを開いて、ventoy2disk.exeを実行しましょう。
 
 ----
-### Manjaro-JPの主な特徴
-Linuxカーネルは、なるべく最新のものを採用します。  
-日本語入力(Mozc)、日本語フォントを標準インストールします。  
-標準ブラウザとして、[Floorp](https://floorp.ablaze.one/)を採用します。  
-flatpak版ブラウザは、パフォーマンスに問題があるようです。推測ですが、AppArmorの設定がflatpak向けには、最適化されていないのではないかと思います。そのため標準で使うブラウザとしては、AUR版floorp-binやextraレポジトリのFirefoxを採用する予定です。(2024-12-30〜)  
-オフィスソフトは、インストール時点で候補から選択できます。  
-pacman-staticパッケージを標準導入しています。ライブラリの不整合によって、パッケージ更新が困難になった場合に、ご利用ください。  
-```bash
-sudo pacman-static -Syyu
-```
-```bash
-paru-static -Syyu
-```
-
-#### お知らせ
-日本語対応に必要な修正などが、お陰様で公式パッケージにも一部、取り込まれました。Manjaro-jpの役割を一つ終えたといっていいかと思います。公式のレポジトリと、いくつかのAURパッケージを取り込めば、快適な日本語環境を構築できる状態になったと言えます。  
-カーネルの更新や、公式の更新の状態を見つつ、今後の対応を考えたいと思っています。  
-容量制限の関係で、SourceForgeでのISO配布は難しくなりました。pCloud,MEGA,Teraboxなどからダウンロードをお願いいたします。  
 
 ##### 注意事項
 1. セキュアブートには非対応  
@@ -150,13 +128,8 @@ paru-static -Syyu
 
 ----
 ### 配布場所
-ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
-よかったら、お試しください。
-
-[![pCloud][pCloud-ICON]][pCloud-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-pcloud.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/pcloud_icon.svg"/></svg>][pCloud-folder]
----|---
-[![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
-[![Terabox][TERA-ICON]][TERABOX-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>][TERABOX-folder]
+~~ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
+よかったら、お試しください。~~
 
 [MEGA-folder]: https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0 "MEGA"
 [SOURCEFORGE-folder]: https://sourceforge.net/projects/manjaro-jp/ "SourceForge"
@@ -168,23 +141,6 @@ paru-static -Syyu
 [TERA-ICON]: ./img/terabox_logo.svg
 [pCloud-ICON]: ./img/pcloud_icon.svg
 [SF-ICON-BADGE]: https://b.sf-syn.com/badge_img/3508051/oss-sf-favorite-white?achievement=oss-sf-favorite&r=https://manjaro-jp.phoepsilonix.love/index.html
-
-貴重な、ストレージをありがとうございます。  
-上記にて配布しています。
-
-Teraboxでは、ファイルサイズ4G以上は、コストがかかるので、分割形式でアップロードしています。ダウンロードした後に、一つのファイルにまとめてから、ご利用ください。Mac,iosではkeka,Windowsでは7-zipが操作がわかりやすいようです。  
-
-[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0)は、ファイルサイズ4G以上のものもアップロードできるので、お勧めです。  
-[pCloud](https://partner.pcloud.com/r/119318)も4G以上のサイズも大丈夫です。生涯買い切りタイプのプランがあるクラウドストレージです。
-
-コマンドラインで、MEGA Storageからダウンロードする場合、megatoolsが便利です。
-```bash
-sudo pacman -S megatools
-```
-
-```bash
-megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
-```
 
 ----
 ## 参考：導入ガイド
@@ -905,7 +861,10 @@ Linux系OSで動きます。
 [SparkyLinux - SparkyLinux project page](https://sparkylinux.org/)  
 [Linux Mint](https://linuxmint.com/)  
 
+Arch系  
 [Calam-Arch-Installer](https://sourceforge.net/projects/blue-arch-installer/files/arch-installer/)  
+[EndeavourOS](https://endeavouros.com/)  
+[CachyOS](https://cachyos.org/)  
 
 ----
 [Manjaroレポジトリミラー試験稼働中](https://mirror.phoepsilonix.love/manjaro/)

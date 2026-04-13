@@ -2,13 +2,18 @@
 
 ## [Manjaro Linux](https://manjaro.org/) 日語支援
 
-包含咧即時環境,一開始就會裝日文輸入同顯示。
-採用[Kernel-6.18系列](https://kernel.org/)。
+Manjaro-jp 已決定結束它的使命，並停止提供自製 ISO 的下載。  
+一直以來，真的很感謝大家的支援。  
+做出這個決定的原因主要有兩點：  
 
-預計會像官方版一樣,提供KDE、Xfce、GNOME三種桌面環境。
-發佈檔案是ISO同一部份套件檔案,可以從USB記憶體等啟動。
+1. 我們之前所做的主要調整，已經被官方 Manjaro 收錄了。  
+因此，現在只需要使用官方套件，就可以很正常地使用 Manjaro，設定步驟也不複雜。  
+日文輸入法的套件更新不再有停滯的問題。  
+2. 特別是大家常用的 Fcitx5-Mozc，其更新現在會因為基礎 
+Arch Linux 套件庫的更新，而能順利進行。  
+去年雖然靠著我的 Merge Request，才時隔數年終於更新了一次，但今後在機制上應該不會再發生更新停滯的狀況了。（只要維護者能定期檢查，就不會有問題。）  
 
-使用[Ventoy](https://ventoy.net/)從USB啟動會較方便,不過在裝Ventoy的時陣最好先將第一個分區重新格式化做ext4。
+基於以上理由，我們將停止 ISO 的提供，只保留 Manjaro 的介紹頁面。  
 
 ----
 ### Ventoy的安裝
@@ -116,13 +121,8 @@ paru-static -Syyu
 
 ----
 ### 分發位置
-即時環境同安裝用的ISO會佇下面分發。  
-如果您願意，請嘗試一下。  
-
-[![pCloud][pCloud-ICON]][pCloud-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-pcloud.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/pcloud_icon.svg"/></svg>][pCloud-folder]
----|---
-[![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
-[![Terabox][TERA-ICON]][TERABOX-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>][TERABOX-folder]
+~~即時環境同安裝用的ISO會佇下面分發。  
+如果您願意，請嘗試一下。~~  
 
 [MEGA-folder]: https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0 "MEGA"
 [SOURCEFORGE-folder]: https://sourceforge.net/projects/manjaro-jp/ "SourceForge"
@@ -134,23 +134,6 @@ paru-static -Syyu
 [TERA-ICON]: ./img/terabox_logo.svg
 [pCloud-ICON]: ./img/pcloud_icon.svg
 [SF-ICON-BADGE]: https://b.sf-syn.com/badge_img/3508051/oss-sf-favorite-white?achievement=oss-sf-favorite&r=https://manjaro-jp.phoepsilonix.love/index.html
-
-感謝你們提供寶貴的儲存空間。
-我們會佇這些所在分發檔案。
-
-Terabox會分割上傳大於4GB的檔案,因為會產生費用。下載之後請先將檔案合併做一個檔案才使用。Mac同ios可以用keka,Windows可以用7-zip操作會較簡單。
-
-[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0)就可以上傳大於4GB的檔案,所以我們建議使用。  
-[pCloud](https://partner.pcloud.com/r/119318)也可以處理大於4GB的檔案,是一種終身購買型的雲端儲存服務。
-
-如果用指令佇MEGA Storage下載,megatools會較方便。
-
-```bash
-sudo pacman -S megatools
-```
-```bash
-megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
-```
 
 ----
 ### 備忘錄

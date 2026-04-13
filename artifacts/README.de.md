@@ -1,14 +1,19 @@
 # [Manjaro Linux JP](https://sourceforge.net/projects/manjaro-jp/)
 
 ## Unterstützung der japanischen Sprache für [Manjaro Linux](https://manjaro.org/)
-　Unterstützt standardmäßig japanische Eingabe und Anzeige, einschließlich Live-Umgebungen.  
-[Kernel-6.18 Serie](https://kernel.org/).
 
-KDE, Xfce und GNOME werden für den offiziellen Gebrauch verfügbar sein.  
-Die Distributionsdateien sind ISO und einige Paketdateien.  
-Booten Sie von einem USB-Speicherstick oder ähnlichem.   
-Das Booten von einem USB-Speicherstick kann mit [Ventoy](https://ventoy.net/) einfacher sein.  
-Es wird empfohlen, die erste Partition bei der Installation von Ventoy mit ext4 neu zu formatieren.
+Manjaro-jp hat beschlossen, seine Aufgabe zu beenden und die Verteilung des eigenen ISO-Images einzustellen.  
+Vielen Dank für eure Unterstützung bisher.  
+Es gibt zwei Hauptgründe dafür:  
+
+1. Die wichtigsten Anpassungen wurden inzwischen in das offizielle Manjaro übernommen.  
+Dadurch kann man Manjaro jetzt problemlos nur mit den offiziellen Paketen nutzen. Die Einrichtung ist auch nicht kompliziert.  
+Es gibt keine Verzögerungen mehr bei der Aktualisierung der japanischen Eingabepakete.  
+2. Insbesondere bei Fcitx5-Mozc, das häufig für die japanische Eingabe verwendet wird,
+ sollten die Updates nun regelmäßig erfolgen, da das zugrunde liegende Arch-Linux-Paket-Repository aktualisiert wird.  
+Letztes Jahr wurde es dank meines Merge-Requests nach mehreren Jahren endlich wieder aktualisiert, aber zukünftig sollte es durch die verbesserte Struktur keine Verzögerungen mehr geben. (Solange der Maintainer regelmäßig nachschaut, dürfte es keine Probleme geben.)  
+
+Aus diesen Gründen stellen wir die ISO-Verteilung ein und behalten nur die Vorstellungsseite für Manjaro.  
 
 ----
 ### Über die Installation von Ventoy
@@ -112,13 +117,8 @@ Daher wurde als zusätzliche Maßnahme die Verwendung von zram-generator hinzuge
 
 ----
 ### Vertriebsort.
-Live-Umgebung & Installations-ISOs sind auf den folgenden Distributionsseiten verfügbar.  
-Sie können sie ausprobieren, wenn Sie möchten.
-
-[![pCloud][pCloud-ICON]][pCloud-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-pcloud.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/pcloud_icon.svg"/></svg>][pCloud-folder]
----|---
-[![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
-[![Terabox][TERA-ICON]][TERABOX-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>][TERABOX-folder]
+~~Live-Umgebung & Installations-ISOs sind auf den folgenden Distributionsseiten verfügbar.  
+Sie können sie ausprobieren, wenn Sie möchten.~~
 
 [MEGA-folder]: https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0 "MEGA"
 [SOURCEFORGE-folder]: https://sourceforge.net/projects/manjaro-jp/ "SourceForge"
@@ -130,21 +130,6 @@ Sie können sie ausprobieren, wenn Sie möchten.
 [TERA-ICON]: ./img/terabox_logo.svg
 [pCloud-ICON]: ./img/pcloud_icon.svg
 [SF-ICON-BADGE]: https://b.sf-syn.com/badge_img/3508051/oss-sf-favorite-white?achievement=oss-sf-favorite&r=https://manjaro-jp.phoepsilonix.love/index.html
-
-Vielen Dank für die wertvolle Speicherung.  
-Er wird an den drei oben genannten Orten verteilt.
-
-[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0), wo Sie Dateien mit einer Größe von 4G oder mehr hochladen können.  
-[pCloud](https://partner.pcloud.com/r/119318) unterstützt Größen von 4G und mehr. Es handelt sich um einen Cloud-Speicherdienst mit einem lebenslangen Rückkaufplan.
-
-Wenn Sie von MEGA Storage mit der Befehlszeile herunterladen möchten, ist megatools nützlich.
-```bash
-sudo pacman -S megatools
-```
-
-```bash
-megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
-```
 
 ----
 ### Memorandum

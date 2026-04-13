@@ -1,14 +1,19 @@
 # [Manjaro Linux JP](https://sourceforge.net/projects/manjaro-jp/)
 
 ## Prise en charge de la langue japonaise pour [Manjaro Linux](https://manjaro.org/)
-　Prise en charge de la saisie et de l'affichage en japonais par défaut, y compris dans les environnements dynamiques.  
-[série kernel-6.18](https://kernel.org/).
 
-KDE, Xfce et GNOME seront disponibles selon la version officielle.  
-Les fichiers de distribution sont des ISO et quelques fichiers de paquets.  
-Démarrez à partir d'une clé USB ou similaire.   
-Le démarrage à partir d'une clé USB peut être plus facile avec [Ventoy](https://ventoy.net/).  
-Il est recommandé de reformater la première partition avec ext4 lors de l'installation de Ventoy.
+Manjaro-jp hat beschlossen, seine Aufgabe zu beenden und die Verteilung des eigenen ISO-Images einzustellen.  
+Vielen Dank für eure Unterstützung bisher.  
+Es gibt zwei Hauptgründe dafür:  
+
+1. Die wichtigsten Anpassungen wurden inzwischen in das offizielle Manjaro übernommen.  
+Dadurch kann man Manjaro jetzt problemlos nur mit den offiziellen Paketen nutzen. Die Einrichtung ist auch nicht kompliziert.  
+Es gibt keine Verzögerungen mehr bei der Aktualisierung der japanischen Eingabepakete.  
+2. Insbesondere bei Fcitx5-Mozc, das häufig für die japanische Eingabe verwendet wird,
+ sollten die Updates nun regelmäßig erfolgen, da das zugrunde liegende Arch-Linux-Paket-Repository aktualisiert wird.  
+Letztes Jahr wurde es dank meines Merge-Requests nach mehreren Jahren endlich wieder aktualisiert, aber zukünftig sollte es durch die verbesserte Struktur keine Verzögerungen mehr geben. (Solange der Maintainer regelmäßig nachschaut, dürfte es keine Probleme geben.)  
+
+Aus diesen Gründen stellen wir die ISO-Verteilung ein und behalten nur die Vorstellungsseite für Manjaro.  
 
 ----
 ### À propos de l’installation de Ventoy
@@ -113,13 +118,8 @@ Les commentaires ci-dessus indiquent que le swap peut ne pas être activé selon
 Par conséquent, comme mesure supplémentaire, l'utilisation de zram-generator a été ajoutée.
 
 ### Lieu de distribution.
-L'environnement réel et les ISO d'installation sont disponibles sur les sites de distribution suivants.  
-Vous pouvez l'essayer si vous le souhaitez.
-
-[![pCloud][pCloud-ICON]][pCloud-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-pcloud.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/pcloud_icon.svg"/></svg>][pCloud-folder]
----|---
-[![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
-[![Terabox][TERA-ICON]][TERABOX-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>][TERABOX-folder]
+~~L'environnement réel et les ISO d'installation sont disponibles sur les sites de distribution suivants.  
+Vous pouvez l'essayer si vous le souhaitez.~~
 
 [MEGA-folder]: https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0 "MEGA"
 [SOURCEFORGE-folder]: https://sourceforge.net/projects/manjaro-jp/ "SourceForge"
@@ -131,21 +131,6 @@ Vous pouvez l'essayer si vous le souhaitez.
 [TERA-ICON]: ./img/terabox_logo.svg
 [pCloud-ICON]: ./img/pcloud_icon.svg
 [SF-ICON-BADGE]: https://b.sf-syn.com/badge_img/3508051/oss-sf-favorite-white?achievement=oss-sf-favorite&r=https://manjaro-jp.phoepsilonix.love/index.html
-
-Merci pour ce précieux stockage.  
-Il est distribué dans les trois emplacements ci-dessus.
-
-[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0), où vous pouvez télécharger des fichiers d'une taille de 4G ou plus.  
-[pCloud] (https://partner.pcloud.com/r/119318), les tailles supérieures à 4G ne posent pas de problème. Il s'agit d'un stockage en nuage avec un plan de rachat à vie.
-
-Si vous voulez télécharger depuis MEGA Storage en utilisant la ligne de commande, megatools est utile.
-```bash
-sudo pacman -S megatools
-```
-
-```bash
-megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
-```
 
 ----
 ### Memorandum

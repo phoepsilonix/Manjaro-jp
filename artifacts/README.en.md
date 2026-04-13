@@ -1,14 +1,19 @@
 # [Manjaro Linux JP](https://sourceforge.net/projects/manjaro-jp/)
 ### 
 ## Japanese language support for [Manjaro Linux](https://manjaro.org/)
-　The default includes support for Japanese input and display, including the live environment.  
-[Kernel-6.18 series](https://kernel.org/).  
 
-We plan to provide three types of official environments: KDE, Xfce, and GNOME.  
-The distribution files include ISO and some package files.  
-Please start from a USB memory or SSD disk, etc.  
-Starting from a USB memory may be easier with [Ventoy](https://ventoy.net/).  
-It is recommended to format the first partition as ext4 during the introduction of Ventoy.  
+Manjaro-jp has decided to end its role and will stop distributing its custom ISO.  
+Thank you for your support all this time.  
+There are two main reasons for this decision:  
+
+1. The main adjustments we made have now been officially included in Manjaro.  
+Thanks to this, you can now use Manjaro normally with only the official packages. The setup process is also not difficult.  
+There is no longer any delay in updating the Japanese input packages.  
+2. In particular, updates for Fcitx5-Mozc (which is commonly used for Japanese input)
+ should now proceed smoothly, because the base Arch Linux package repository is being updated regularly.  
+Last year, it was updated for the first time in several years thanks to my merge request, but from now on, I believe there will be no more delays in updates due to the improved system. (As long as the maintainer checks it regularly, there should be no problems.)  
+
+For these reasons, we will stop distributing the ISO and keep only the introduction page for Manjaro.  
 
 ----
 ### About installing Ventoy
@@ -116,13 +121,8 @@ Therefore, as an additional measure, the use of zram-generator has been added.
 
 ----
 ### Place of distribution
-he live environment & installation ISO is published at the following distribution site.  
-Please feel free to try it out.
-
-[![pCloud][pCloud-ICON]][pCloud-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-pcloud.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/pcloud_icon.svg"/></svg>][pCloud-folder]
----|---
-[![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
-[![Terabox][TERA-ICON]][TERABOX-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>][TERABOX-folder]
+~~he live environment & installation ISO is published at the following distribution site.  
+Please feel free to try it out.~~
 
 [MEGA-folder]: https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0 "MEGA"
 [SOURCEFORGE-folder]: https://sourceforge.net/projects/manjaro-jp/ "SourceForge"
@@ -134,21 +134,6 @@ Please feel free to try it out.
 [TERA-ICON]: ./img/terabox_logo.svg
 [pCloud-ICON]: ./img/pcloud_icon.svg
 [SF-ICON-BADGE]: https://b.sf-syn.com/badge_img/3508051/oss-sf-favorite-white?achievement=oss-sf-favorite&r=https://manjaro-jp.phoepsilonix.love/index.html
-
-Thank you for the valuable storage.  
-It is distributed in the above three places.
-
-[MEGA Storage](https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A") is recommended as you can upload files larger than 4G.  
-[pCloud](https://partner.pcloud.com/r/119318) and sizes larger than 4G are no problem. This cloud storage system has a lifetime buy-out plan.
-
-If you want to download from MEGA Storage using the command line, megatools is useful.
-```bash
-sudo pacman -S megatools
-```
-
-```bash
-megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
-```
 
 ----
 ### Memo

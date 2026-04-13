@@ -1,13 +1,21 @@
 # [Manjaro Linux JP](https://sourceforge.net/projects/manjaro-jp/)
 
 ## [Manjaro Linux](https://manjaro.org/) とは
+
+Manjaro-jpは、その役目を終えることにし、ISOの配布は取りやめることにしました。今まで、ありがとうございました。  
+
+理由としては、２点あります。
+1. 主な調整部分は、Manjaro公式に取り込んでもらえました。  
+そのため公式パッケージだけで、普通に使えるようになっています。手順も難しくありません。   
+2. 日本語入力パッケージの更新に停滞がなくなった。
+また日本語入力でよく用いられているFcitx5-Mozcの更新についても、ベースとなっているArchLinuxのパッケージのレポジトリの更新によって、今後は、その更新に停滞がなくなると思います。昨年、私のマージリクエストで数年ぶりに更新されたみたいな感じでしたが、今後は仕組み的に更新が停滞する心配がなくなったと思います。（メンテナーの方が、定期的にチェックされていれば、問題は起きないと思います。）  
+
+以上の理由から、ISOの配布は取りやめ、Manjaroの紹介のみ、残しておくことにいたします。
+
+----
 [Manjaro Linux](https://manjaro.org)はx86_64系またはarm系プロセッサーのパソコンで動くLinux OSです。  
 
 インターネットのサイトを閲覧するためのブラウザや表計算などのオフィス向けソフト、映像編集ソフトなど、いろんなソフトが動きます。  
-
-Manjaro-jpは、標準で日本語環境を整えることを目指して、いろいろと調整しています。  
-USBディスクなどから、起動するライブISO環境兼インストーラーを用意しています。  
-もしよかったら、お試しください。  
 
 Linuxには、いろんなディストリビューションといわれるものがありますが、プログラムのソースが公開されているものが多く、また互換性を保つ努力が継続されています。  
 またディストリビューションを超えて、アプリケーションを配布する仕組みとして、[Flatpak](https://flatpak.org/)と[Snaps](https://snapcraft.io/about)といった仕組みが作られてきました。Manjaro LinuxもFlatpakとSnapsにも対応していますので、他のLinuxディストリビューションと同じように、いろんなアプリケーションが動作可能です。  
@@ -126,14 +134,8 @@ sudo pacman-static -Syyu
 
 ----
 ### 配布場所
-ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
-よかったら、お試しください。
-
-[![SourceForge][SF-ICON-BADGE]][SOURCEFORGE-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-sourceforge.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/sourceforge-icon.svg"/></svg>][SOURCEFORGE-folder]
----|---
-[![pCloud][pCloud-ICON]][pCloud-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-pcloud.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/pcloud_icon.svg"/></svg>][pCloud-folder]
-[![MEGA][MEGA-ICON]][MEGA-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-mega.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/mega-icon.svg"/></svg>][MEGA-folder]
-[![Terabox][TERA-ICON]][TERABOX-folder] | [<svg id = "MANJARO-QR"><image id = "MANJARO-QR" xlink:href = "./img/qr-manjaro-jp-terabox.png"/><image id = "MANJARO-ICON" x="76" y="76" xlink:href = "./img/terabox_logo.svg"/></svg>][TERABOX-folder]
+~~ライブ環境＆インストール用のISOを下記の配布先で公開しています。  
+よかったら、お試しください。~~
 
 [MEGA-folder]: https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A/aff=gVLIePn4Hy0 "MEGA"
 [SOURCEFORGE-folder]: https://sourceforge.net/projects/manjaro-jp/ "SourceForge"
@@ -145,23 +147,6 @@ sudo pacman-static -Syyu
 [TERA-ICON]: ./img/terabox_logo.svg
 [pCloud-ICON]: ./img/pcloud_icon.svg
 [SF-ICON-BADGE]: https://b.sf-syn.com/badge_img/3508051/oss-sf-favorite-white?achievement=oss-sf-favorite&r=https://manjaro-jp.phoepsilonix.love/index.html
-
-貴重な、ストレージをありがとうございます。  
-上記にて配布しています。
-
-Teraboxでは、ファイルサイズ4G以上は、コストがかかるので、分割形式でアップロードしています。ダウンロードした後に、一つのファイルにまとめてから、ご利用ください。Mac,iosではkeka,Windowsでは7-zipが操作がわかりやすいようです。  
-
-[MEGA Storage](https://mega.nz/storage/aff=gVLIePn4Hy0)は、ファイルサイズ4G以上のものもアップロードできるので、お勧めです。  
-[pCloud](https://partner.pcloud.com/r/119318)も4G以上のサイズも大丈夫です。生涯買い切りタイプのプランがあるクラウドストレージです。
-
-コマンドラインで、MEGA Storageからダウンロードする場合、megatoolsが便利です。
-```bash
-sudo pacman -S megatools
-```
-
-```bash
-megatools dl --choose-files https://mega.nz/folder/YOVmSaxD#JUuILxlHAM9bdyx3DKLD0A
-```
 
 ----
 ## 参考：導入ガイド
@@ -824,7 +809,9 @@ Linux系OSで動きます。
 
 [Linux Mint](https://linuxmint.com/)  
 
+Arch系  
 [EndeavourOS](https://endeavouros.com/)  
+[CachyOS](https://cachyos.org/)  
 
 ----
 [Manjaroレポジトリミラー試験稼働中](https://mirror.phoepsilonix.love/manjaro/)
